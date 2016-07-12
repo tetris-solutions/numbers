@@ -1,0 +1,34 @@
+{
+  "name": "tetris/numbers",
+  "description": "Gateway to external metrics",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christian Amaral",
+      "email": "darthcas@gmail.com"
+    }
+  ],
+  "require": {
+    "robmorgan/phinx": "^0.6.2",
+    "tetris/slim-kit": "^0.0.15",
+    "tetris/adwords": "dev-master#v0.0.18",
+    "tetris/monostash": "dev-master#v0.0.5",
+    "pugx/shortid-php": "^0.1.0",
+    "facebook/php-sdk-v4": "^5.2",
+    "facebook/php-ads-sdk": "^2.6",
+    "aura/sql": "^2.5",
+    "aura/sqlquery": "^2.6",
+    "vlucas/phpdotenv": "^2.3",
+    "nategood/httpful": "^0.2.20"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:tetris-solutions/adwords.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:tetris-solutions/monostash.git"
+    }
+  ]
+}
