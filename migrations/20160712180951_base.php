@@ -6,6 +6,11 @@ class Base extends AbstractMigration
 {
     public function change()
     {
+        $this->table('type', ['id' => false, 'primary_key' => ['id']])
+            ->addColumn('id', 'string', ['limit' => 30])
+            ->addColumn('creation', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'timezone' => true])
+            ->create();
+
         $this->table('platform', ['id' => false, 'primary_key' => ['id']])
             ->addColumn('id', 'string', ['limit' => 30])
             ->addColumn('name', 'string', ['limit' => 50])
@@ -16,9 +21,11 @@ class Base extends AbstractMigration
             ->addColumn('id', 'string', ['limit' => 30])
             ->addColumn('name', 'string', ['limit' => 100])
             ->addColumn('platform', 'string', ['limit' => 30, 'null' => true])
+            ->addColumn('type', 'string', ['limit' => 30])
             ->addColumn('creation', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'timezone' => true])
             ->addColumn('super_metric', 'string', ['limit' => 30, 'null' => true])
             ->addForeignKey('platform', 'platform', 'id', ['update' => 'RESTRICT', 'delete' => 'CASCADE'])
+            ->addForeignKey('type', 'type', 'id', ['update' => 'RESTRICT', 'delete' => 'CASCADE'])
             ->addForeignKey('super_metric', 'metric', 'id', ['update' => 'RESTRICT', 'delete' => 'SET_NULL'])
             ->create();
 

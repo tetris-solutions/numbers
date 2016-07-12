@@ -20,6 +20,20 @@ class Minimal extends AbstractSeed
             ])
             ->save();
 
+        $this->table('type')
+            ->insert([
+                [
+                    'id' => 'quantity'
+                ],
+                [
+                    'id' => 'currency'
+                ],
+                [
+                    'id' => 'percentage'
+                ]
+            ])
+            ->save();
+
         $this->table('entity')
             ->insert([
                 [
@@ -35,19 +49,23 @@ class Minimal extends AbstractSeed
             ->insert([
                 [
                     'id' => 'cost',
-                    'name' => 'Cost'
+                    'name' => 'Cost',
+                    'type' => 'currency'
                 ],
                 [
                     'id' => 'clicks',
-                    'name' => 'Clicks'
+                    'name' => 'Clicks',
+                    'type' => 'quantity'
                 ],
                 [
                     'id' => 'impressions',
-                    'name' => 'Impressions'
+                    'name' => 'Impressions',
+                    'type' => 'quantity'
                 ],
                 [
                     'id' => 'ctr',
-                    'name' => 'Click-through rate'
+                    'name' => 'Click-through rate',
+                    'type' => 'percentage'
                 ]
             ])
             ->save();
