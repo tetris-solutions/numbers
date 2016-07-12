@@ -6,5 +6,5 @@ A statics gateway API that collects and normalizes numbers from external platfor
 
 ## Roadmap:
 * create database schema
-* seed a few metrics into it: *cost, ctr*
+* seed a few metrics into it: *cost, impressions, clicks, ctr*
 * implement API
