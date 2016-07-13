@@ -70,6 +70,31 @@ class Minimal extends AbstractSeed
             ])
             ->save();
 
+        $this->table('report')
+            ->insert([
+                [
+                    'id' => 'CAMPAIGN_PERFORMANCE_REPORT',
+                    'dimensions' => json_encode([
+                        'network' => 'AdNetworkType1',
+                        'date' => 'Date'
+                    ]),
+                    'filters' => json_encode([
+                        'id' => 'CampaignId'
+                    ])
+                ],
+                [
+                    'id' => 'ACCOUNT_PERFORMANCE_REPORT',
+                    'dimensions' => json_encode([
+                        'network' => 'AdNetworkType1',
+                        'date' => 'Date'
+                    ])
+                ],
+                [
+                    'id' => 'GENERIC'
+                ]
+            ])
+            ->save();
+
         $this->table('metric_source')
             ->insert([
                 [
@@ -78,7 +103,8 @@ class Minimal extends AbstractSeed
                     'entity' => 'Campaign',
                     'platform' => 'adwords',
                     'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
-                    'fields' => json_encode(['Cost'])
+                    'fields' => json_encode(['Cost']),
+                    'eval' => 'a => a.Cost'
                 ],
                 [
                     'id' => Shortid::generate(),
@@ -94,7 +120,8 @@ class Minimal extends AbstractSeed
                     'entity' => 'Campaign',
                     'platform' => 'adwords',
                     'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
-                    'fields' => json_encode(['Clicks'])
+                    'fields' => json_encode(['Clicks']),
+                    'eval' => 'a => Number(a.Clicks)'
                 ],
                 [
                     'id' => Shortid::generate(),
