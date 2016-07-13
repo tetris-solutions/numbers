@@ -70,32 +70,82 @@ class Minimal extends AbstractSeed
             ])
             ->save();
 
-        $this->table('metric_entity')
+        $this->table('metric_source')
             ->insert([
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'cost',
-                    'entity' => 'Campaign'
+                    'entity' => 'Campaign',
+                    'platform' => 'adwords',
+                    'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
+                    'fields' => json_encode(['Cost'])
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'cost',
-                    'entity' => 'Account'
+                    'entity' => 'Account',
+                    'platform' => 'adwords',
+                    'report' => 'ACCOUNT_PERFORMANCE_REPORT',
+                    'fields' => json_encode(['Cost'])
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'clicks',
-                    'entity' => 'Campaign'
+                    'entity' => 'Campaign',
+                    'platform' => 'adwords',
+                    'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
+                    'fields' => json_encode(['Clicks'])
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'ctr',
-                    'entity' => 'Campaign'
+                    'entity' => 'Campaign',
+                    'platform' => 'adwords',
+                    'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
+                    'fields' => json_encode(['Ctr'])
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'impressions',
-                    'entity' => 'Campaign'
+                    'entity' => 'Campaign',
+                    'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
+                    'platform' => 'adwords',
+                    'fields' => json_encode(['Impressions'])
+                ],
+                [
+                    'id' => Shortid::generate(),
+                    'metric' => 'cost',
+                    'entity' => 'Campaign',
+                    'platform' => 'facebook',
+                    'fields' => json_encode(['spend'])
+                ],
+                [
+                    'id' => Shortid::generate(),
+                    'metric' => 'cost',
+                    'entity' => 'Account',
+                    'platform' => 'facebook',
+                    'fields' => json_encode(['spend'])
+                ],
+                [
+                    'id' => Shortid::generate(),
+                    'metric' => 'clicks',
+                    'entity' => 'Campaign',
+                    'platform' => 'facebook',
+                    'fields' => json_encode(['clicks'])
+                ],
+                [
+                    'id' => Shortid::generate(),
+                    'metric' => 'ctr',
+                    'entity' => 'Campaign',
+                    'platform' => 'facebook',
+                    'fields' => json_encode(['fields'])
+                ],
+                [
+                    'id' => Shortid::generate(),
+                    'metric' => 'impressions',
+                    'entity' => 'Campaign',
+                    'platform' => 'facebook',
+                    'fields' => json_encode(['impressions'])
                 ]
             ])
             ->save();
