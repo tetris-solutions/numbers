@@ -19,16 +19,17 @@ class AdwordsResolver extends Client implements Resolver
                 ->during($query->since, $query->until);
 
             foreach ($config['filters'] as $filter => $value) {
-                if (is_scalar($value)) {
-                    $select->where($filter, $value);
-                } else {
+                if (is_array($value)) {
                     $select->where($filter, $value, 'IN');
+                } else {
+                    $select->where($filter, $value);
                 }
             }
 
-            // @todo more than one row;
-
-            $rows[] = self::evalMetric($select->fetchOne(), $config);
+            $ls = $select->fetchAll();
+            foreach ($ls as $line) {
+                $rows[] = self::evalMetric($line, $config);
+            }
         }
 
         return $rows;

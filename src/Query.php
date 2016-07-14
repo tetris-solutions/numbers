@@ -107,6 +107,7 @@ class Query
             }
 
             $foundMetrics[] = $metric['id'];
+            $fields = json_decode($source->fields);
             $parsedMetrics[] = [
                 'id' => $metric['id'],
                 'name' => $metric['name'],
@@ -115,7 +116,7 @@ class Query
                 'eval' => $source->eval,
                 'entity' => $entity,
                 'platform' => $platform,
-                'fields' => json_decode($source->fields),
+                'fields' => array_combine($fields, $fields),
                 'report' => $source->report
             ];
         }
@@ -148,13 +149,8 @@ class Query
             if (strpos($filter, '(') !== false) {
                 $openParentheses = strpos($filter, '(');
                 $key = substr($filter, 0, $openParentheses);
-                $value = substr($filter, $openParentheses + 1, -1);
-                $filters[$key] = $value;
-            } else if (strpos($filter, '[') !== false) {
-                $openParentheses = strpos($filter, '(');
-                $key = substr($filter, 0, $openParentheses);
                 $values = explode('|', substr($filter, $openParentheses + 1, -1));
-                $filters[$key] = $values;
+                $filters[$key] = count($values) === 1 ? $values[0] : $values;
             }
         }
 
@@ -207,7 +203,7 @@ class Query
             $metric['filters'] = [];
             $metric['dimensions'] = [];
 
-            $reports[$reportId] = isset($reports[$reportId]) ? $reports[$reportId] : [
+            $currentReport = isset($reports[$reportId]) ? $reports[$reportId] : [
                 'fields' => [],
                 'metrics' => [],
                 'filters' => [],
@@ -221,35 +217,42 @@ class Query
                 ->where('report.id = ?', $reportId))
                 ->fetchObject();
 
-            $report = [
+            $attributeNameMap = [
                 'filters' => empty($r->filters) ? [] : json_decode($r->filters, true),
                 'dimensions' => empty($r->dimensions) ? [] : json_decode($r->dimensions, true)
             ];
 
 
-            foreach ($this->filters as $name => $value) {
-                if (isset($report['filters'][$name])) {
-                    $field = $report['filters'][$name];
-                    $metric['filters'][$field] = $value;
+            foreach ($this->filters as $sourceAttributeName => $value) {
+                if (isset($attributeNameMap['filters'][$sourceAttributeName])) {
+                    $targetAttributeName = $attributeNameMap['filters'][$sourceAttributeName];
+                    $metric['filters'][$targetAttributeName] = $value;
                 }
             }
 
-            foreach ($this->groupBy as $column) {
-                if (isset($report['dimensions'][$column])) {
-                    $metric['dimensions'][] = $report['dimensions'][$column];
+            foreach ($this->groupBy as $sourceAttributeName) {
+                if (isset($attributeNameMap['dimensions'][$sourceAttributeName])) {
+                    $targetAttributeName = $attributeNameMap['dimensions'][$sourceAttributeName];
+                    $metric['dimensions'][$targetAttributeName] = $sourceAttributeName;
+
+                    if (empty($metric['fields'][$targetAttributeName])) {
+                        $metric['fields'][$targetAttributeName] = $sourceAttributeName;
+                    }
                 }
             }
 
-            $reports[$reportId]['metrics'][] = $metric;
+            $currentReport['metrics'][] = $metric;
 
-            foreach (['dimensions', 'filters', 'fields'] as $key) {
-                $reports[$reportId][$key] = array_unique(
+            foreach (['dimensions', 'filters', 'fields'] as $configKey) {
+                $currentReport[$configKey] = array_unique(
                     array_merge(
-                        $reports[$reportId][$key],
-                        $metric[$key]
+                        $currentReport[$configKey],
+                        $metric[$configKey]
                     )
                 );
             }
+
+            $reports[$reportId] = $currentReport;
         }
 
         return $reports;

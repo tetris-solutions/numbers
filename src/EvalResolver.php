@@ -15,6 +15,8 @@ trait EvalResolver
             ? (object)$result
             : $result;
 
+        // if $result is not a object (eg. a simple float)
+        // create a new object to make it so
         if (is_scalar($result)) {
             if (count($report['fields']) !== 1) {
                 throw new \Exception('Could not read report response', 500);
@@ -42,6 +44,8 @@ trait EvalResolver
 
             $row->{$metric['id']} = $fn($result);
         }
+
+        $row->__source = $result;
 
         return $row;
     }
