@@ -104,7 +104,7 @@ class Minimal extends AbstractSeed
                     'platform' => 'adwords',
                     'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
                     'fields' => json_encode(['Cost']),
-                    'eval' => 'a => a.Cost'
+                    'eval' => '$data->Cost'
                 ],
                 [
                     'id' => Shortid::generate(),
@@ -112,7 +112,8 @@ class Minimal extends AbstractSeed
                     'entity' => 'Account',
                     'platform' => 'adwords',
                     'report' => 'ACCOUNT_PERFORMANCE_REPORT',
-                    'fields' => json_encode(['Cost'])
+                    'fields' => json_encode(['Cost']),
+                    'eval' => '$data->Cost'
                 ],
                 [
                     'id' => Shortid::generate(),
@@ -121,7 +122,7 @@ class Minimal extends AbstractSeed
                     'platform' => 'adwords',
                     'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
                     'fields' => json_encode(['Clicks']),
-                    'eval' => 'a => Number(a.Clicks)'
+                    'eval' => '(int)$data->Clicks'
                 ],
                 [
                     'id' => Shortid::generate(),
@@ -129,7 +130,8 @@ class Minimal extends AbstractSeed
                     'entity' => 'Campaign',
                     'platform' => 'adwords',
                     'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
-                    'fields' => json_encode(['Ctr'])
+                    'fields' => json_encode(['Ctr']),
+                    'eval' => 'floatval(str_replace("%", "", $data->Ctr)) / 100'
                 ],
                 [
                     'id' => Shortid::generate(),
@@ -137,42 +139,48 @@ class Minimal extends AbstractSeed
                     'entity' => 'Campaign',
                     'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
                     'platform' => 'adwords',
-                    'fields' => json_encode(['Impressions'])
+                    'fields' => json_encode(['Impressions']),
+                    'eval' => '$data->Impressions'
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'cost',
                     'entity' => 'Campaign',
                     'platform' => 'facebook',
-                    'fields' => json_encode(['spend'])
+                    'fields' => json_encode(['spend']),
+                    'eval' => '$data->spend'
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'cost',
                     'entity' => 'Account',
                     'platform' => 'facebook',
-                    'fields' => json_encode(['spend'])
+                    'fields' => json_encode(['spend']),
+                    'eval' => '$data->spend'
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'clicks',
                     'entity' => 'Campaign',
                     'platform' => 'facebook',
-                    'fields' => json_encode(['clicks'])
+                    'fields' => json_encode(['clicks']),
+                    'eval' => '$data->clicks'
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'ctr',
                     'entity' => 'Campaign',
                     'platform' => 'facebook',
-                    'fields' => json_encode(['fields'])
+                    'fields' => json_encode(['ctr']),
+                    'eval' => '$data->ctr'
                 ],
                 [
                     'id' => Shortid::generate(),
                     'metric' => 'impressions',
                     'entity' => 'Campaign',
                     'platform' => 'facebook',
-                    'fields' => json_encode(['impressions'])
+                    'fields' => json_encode(['impressions']),
+                    'eval' => '$data->impressions'
                 ]
             ])
             ->save();

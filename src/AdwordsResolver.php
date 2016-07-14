@@ -5,11 +5,13 @@ use Tetris\Adwords\Client;
 
 class AdwordsResolver extends Client implements Resolver
 {
+    use EvalResolver;
+
     function resolve(Query $query): array
     {
+        $rows = [];
         $this->SetClientCustomerId($query->adAccountId);
         $reports = $query->getReports();
-        $rows = [];
 
         foreach ($reports as $reportName => $config) {
             $select = $this->select($config['fields'])
@@ -24,7 +26,9 @@ class AdwordsResolver extends Client implements Resolver
                 }
             }
 
-            $rows[] = $select->fetchOne();
+            // @todo more than one row;
+
+            $rows[] = self::evalMetric($select->fetchOne(), $config);
         }
 
         return $rows;

@@ -43,6 +43,7 @@ class Base extends AbstractMigration
             ->addColumn('entity', 'string', ['limit' => 30])
             ->addColumn('platform', 'string', ['limit' => 30])
             ->addColumn('fields', 'jsonb')
+            ->addColumn('eval', 'string', ['limit' => 1000])
             ->addColumn('report', 'string', ['limit' => 50, 'default' => 'GENERIC'])
             ->addColumn('creation', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'timezone' => true])
             ->addForeignKey('report', 'report', 'id', ['update' => 'RESTRICT', 'delete' => 'CASCADE'])
