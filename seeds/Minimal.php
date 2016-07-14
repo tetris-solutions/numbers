@@ -140,7 +140,7 @@ class Minimal extends AbstractSeed
                     'report' => 'CAMPAIGN_PERFORMANCE_REPORT',
                     'platform' => 'adwords',
                     'fields' => json_encode(['Impressions']),
-                    'eval' => '$data->Impressions'
+                    'eval' => '(int)$data->Impressions'
                 ],
                 [
                     'id' => Shortid::generate(),

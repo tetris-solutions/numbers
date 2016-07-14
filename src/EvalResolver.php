@@ -20,13 +20,7 @@ trait EvalResolver
                 throw new \Exception('Could not read report response', 500);
             }
 
-            $obj = new \stdClass();
-            $obj->{$report['fields'][0]} = $result;
-            $result = $obj;
-        }
-
-        if (is_scalar($result) && count($report['fields']) === 1) {
-            $obj = new \stdClass();
+            $obj = new stdClass();
             $obj->{$report['fields'][0]} = $result;
             $result = $obj;
         }
