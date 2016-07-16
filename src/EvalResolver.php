@@ -29,6 +29,12 @@ trait EvalResolver
 
         $row = new stdClass();
 
+        foreach ($report['dimensions'] as $dimension) {
+            $row->{$dimension} = isset($result->{$dimension})
+                ? $result->{$dimension}
+                : NULL;
+        }
+
         foreach ($report['metrics'] as $metric) {
             $fnBody = $metric['eval'];
 
@@ -45,7 +51,7 @@ trait EvalResolver
             $row->{$metric['id']} = $fn($result);
         }
 
-        $row->__source = $result;
+//        $row->__source = $result;
 
         return $row;
     }
