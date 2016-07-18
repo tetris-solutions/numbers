@@ -5,8 +5,6 @@ use Tetris\Adwords\Client;
 
 class AdwordsResolver extends Client implements Resolver
 {
-    use EvalResolver;
-
     function resolve(Query $query): array
     {
         $rows = [];
@@ -27,8 +25,9 @@ class AdwordsResolver extends Client implements Resolver
             }
 
             $ls = $select->fetchAll();
+
             foreach ($ls as $line) {
-                $rows[] = self::evalMetric($line, $config);
+                $rows[] = parseMetrics($line, $config);
             }
         }
 

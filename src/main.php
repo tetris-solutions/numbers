@@ -7,7 +7,7 @@ require 'TKMApi.php';
 require 'constants.php';
 require 'Query.php';
 require 'Resolver.php';
-require 'EvalResolver.php';
+require 'functions/parse-metrics.php';
 require 'FacebookResolver.php';
 require 'AdwordsResolver.php';
 require_once 'logger.php';

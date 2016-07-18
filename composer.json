@@ -11,7 +11,7 @@
   "require": {
     "robmorgan/phinx": "^0.6.2",
     "tetris/slim-kit": "^0.0.15",
-    "tetris/adwords": "dev-master#v0.0.21",
+    "tetris/adwords": "dev-master#v0.0.22",
     "tetris/monostash": "dev-master#v0.0.5",
     "pugx/shortid-php": "^0.1.0",
     "facebook/php-sdk-v4": "^5.2",
