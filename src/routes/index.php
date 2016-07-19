@@ -15,7 +15,7 @@ global $app;
  *      &from=2016-07-01
  *      &to=2016-07-12
  *      &filters=id(185416194)
- *      &group_by=network
+ *      &dimensions=network
  */
 $app->get('/',
     function (Request $request, Response $response, array $params) {

@@ -20,9 +20,9 @@ class Query
     public $tetrisAccountId;
 
     /**
-     * @var array $groupBy
+     * @var array $dimensions
      */
-    public $groupBy;
+    public $dimensions;
 
     /**
      * @var string $entity
@@ -182,9 +182,9 @@ class Query
             ? []
             : self::parseFilters(explode(',', $query['filters']));
 
-        $this->groupBy = empty($query['group_by'])
+        $this->dimensions = empty($query['dimensions'])
             ? []
-            : explode(',', $query['group_by']);
+            : explode(',', $query['dimensions']);
     }
 
     /**
@@ -230,7 +230,7 @@ class Query
                 }
             }
 
-            foreach ($this->groupBy as $sourceAttributeName) {
+            foreach ($this->dimensions as $sourceAttributeName) {
                 if (isset($attributeNameMap['dimensions'][$sourceAttributeName])) {
                     $targetAttributeName = $attributeNameMap['dimensions'][$sourceAttributeName];
                     $metric['dimensions'][$targetAttributeName] = $sourceAttributeName;
