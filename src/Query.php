@@ -150,6 +150,9 @@ class Query
                 $openParentheses = strpos($filter, '(');
                 $key = substr($filter, 0, $openParentheses);
                 $values = explode('|', substr($filter, $openParentheses + 1, -1));
+
+                if (empty($values)) continue;
+
                 $filters[$key] = count($values) === 1 ? $values[0] : $values;
             }
         }
