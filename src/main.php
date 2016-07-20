@@ -18,3 +18,4 @@ $container = $app->getContainer();
 $container['tkm'] = new TKMApi($app);
 
 require 'routes/index.php';
+require 'routes/meta.php';
