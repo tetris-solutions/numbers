@@ -13,15 +13,14 @@ function uniq(array $s): array
 
 $app->get('/meta',
     function (Request $request, Response $response, array $params) {
-        $query = $request->getQueryParams();
         $ls = sql::run(sql::select([
             'metric_source.metric',
             'report.dimensions',
             'report.filters'])
             ->from('metric_source')
             ->join('inner', 'report', 'report.id = metric_source.report')
-            ->where('metric_source.entity = ?', $query['entity'])
-            ->where('metric_source.platform = ?', $query['platform']))
+            ->where('metric_source.entity = ?', $request->getQueryParam('entity'))
+            ->where('metric_source.platform = ?', $request->getQueryParam('platform')))
             ->fetchAll();
 
         $metrics = [];
@@ -30,7 +29,7 @@ $app->get('/meta',
 
         foreach ($ls as $row) {
             $metrics[] = $row['metric'];
-            $dimensions = array_merge($filters, array_keys(
+            $dimensions = array_merge($dimensions, array_keys(
                 json_decode($row['dimensions'], true)
             ));
             $filters = array_merge($filters, array_keys(

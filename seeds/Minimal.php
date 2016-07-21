@@ -75,6 +75,7 @@ class Minimal extends AbstractSeed
                 [
                     'id' => 'CAMPAIGN_PERFORMANCE_REPORT',
                     'dimensions' => json_encode([
+                        'id' => 'CampaignId',
                         'network' => 'AdNetworkType1',
                         'date' => 'Date'
                     ]),
