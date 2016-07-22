@@ -15,6 +15,10 @@ class Query
     ];
 
     /**
+     * @var string
+     */
+    private $locale;
+    /**
      * @var string $tetrisAccountId
      */
     public $tetrisAccountId;
@@ -70,11 +74,11 @@ class Query
         }
     }
 
-    private static function parseMetrics(array $requestedMetrics, string $entity, string $platform): array
+    private function parseMetrics(array $requestedMetrics, string $entity, string $platform): array
     {
         $query = sql::select([
             'metric.id',
-            'metric.name',
+            'metric.names',
             'metric.type'])
             ->from('metric')
             ->where('metric.id = ?', $requestedMetrics[0]);
@@ -101,6 +105,8 @@ class Query
                 ->where('metric_source.entity = ?', $entity)
                 ->where('metric_source.platform = ?', $platform))
                 ->fetchObject();
+
+            $metric['name'] = $metric['names'][$this->locale];
 
             if (empty($source)) {
                 throw new \Exception("Metric '{$metric['name']}' can not be used with {$entity}@{$platform}", 400);
@@ -160,10 +166,11 @@ class Query
         return $filters;
     }
 
-    function __construct(array $query)
+    function __construct(string $locale, array $query)
     {
         self::validateQuery($query);
 
+        $this->locale = $locale;
         $this->metrics = [];
         $this->entity = $query['entity'];
         $this->platform = $query['platform'];
@@ -179,7 +186,7 @@ class Query
 
         $this->metrics = empty($query['metrics'])
             ? []
-            : self::parseMetrics(explode(',', $query['metrics']), $this->entity, $this->platform);
+            : $this->parseMetrics(explode(',', $query['metrics']), $this->entity, $this->platform);
 
         $this->filters = empty($query['filters'])
             ? []
@@ -213,17 +220,27 @@ class Query
                 'dimensions' => []
             ];
 
-            $r = sql::run(sql::select([
-                'report.dimensions',
-                'report.filters'])
+            $attributeNameMap = [
+                'filters' => [],
+                'dimensions' => []
+            ];
+
+            $report = sql::run(sql::select(['report.attributes'])
                 ->from('report')
                 ->where('report.id = ?', $reportId))
                 ->fetchObject();
 
-            $attributeNameMap = [
-                'filters' => empty($r->filters) ? [] : json_decode($r->filters, true),
-                'dimensions' => empty($r->dimensions) ? [] : json_decode($r->dimensions, true)
-            ];
+            if (!empty($report->attributes)) {
+                $attributes = json_decode($report->attributes, true);
+                foreach ($attributes as $id => $attribute) {
+                    if ($attribute['is_dimension']) {
+                        $attributeNameMap['dimensions'][$id] = $attribute['property'];
+                    }
+                    if ($attribute['is_filter']) {
+                        $attributeNameMap['filters'][$id] = $attribute['property'];
+                    }
+                }
+            }
 
 
             foreach ($this->filters as $sourceAttributeName => $value) {

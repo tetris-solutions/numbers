@@ -49,49 +49,87 @@ class Minimal extends AbstractSeed
             ->insert([
                 [
                     'id' => 'cost',
-                    'name' => 'Cost',
+                    'names' => json_encode([
+                        'en' => 'Cost',
+                        'pt-BR' => 'Custo'
+                    ]),
                     'type' => 'currency'
                 ],
                 [
                     'id' => 'clicks',
-                    'name' => 'Clicks',
+                    'names' => json_encode([
+                        'en' => 'Clicks',
+                        'pt-BR' => 'Cliques'
+                    ]),
                     'type' => 'quantity'
                 ],
                 [
                     'id' => 'impressions',
-                    'name' => 'Impressions',
+                    'names' => json_encode([
+                        'en' => 'Impressions',
+                        'pt-BR' => 'Impressões'
+                    ]),
                     'type' => 'quantity'
                 ],
                 [
                     'id' => 'ctr',
-                    'name' => 'Click-through rate',
+                    'names' => json_encode([
+                        'en' => 'Click-through rate',
+                        'pt-BR' => 'CTR'
+                    ]),
                     'type' => 'percentage'
                 ]
             ])
             ->save();
 
+        $dateAttr = [
+            'property' => 'Date',
+            'names' => [
+                'en' => 'Date',
+                'pt-BR' => 'Data'
+            ],
+            'is_dimension' => true,
+            'is_filter' => false
+        ];
+
+        $networkAttr = [
+            'property' => 'AdNetworkType1',
+            'names' => [
+                'en' => 'AD Network',
+                'pt-BR' => 'Pilar de mídia'
+            ],
+            'is_dimension' => true,
+            'is_filter' => false
+        ];
+
         $this->table('report')
             ->insert([
                 [
                     'id' => 'CAMPAIGN_PERFORMANCE_REPORT',
-                    'dimensions' => json_encode([
-                        'id' => 'CampaignId',
-                        'network' => 'AdNetworkType1',
-                        'date' => 'Date'
-                    ]),
-                    'filters' => json_encode([
-                        'id' => 'CampaignId'
+                    'attributes' => json_encode([
+                        'id' => [
+                            'property' => 'CampaignId',
+                            'names' => [
+                                'en' => 'Campaign Id',
+                                'pt-BR' => 'Id da Campanha'
+                            ],
+                            'is_dimension' => true,
+                            'is_filter' => true
+                        ],
+                        'date' => $dateAttr,
+                        'network' => $networkAttr
                     ])
                 ],
                 [
                     'id' => 'ACCOUNT_PERFORMANCE_REPORT',
-                    'dimensions' => json_encode([
-                        'network' => 'AdNetworkType1',
-                        'date' => 'Date'
+                    'attributes' => json_encode([
+                        'date' => $dateAttr,
+                        'network' => $networkAttr
                     ])
                 ],
                 [
-                    'id' => 'GENERIC'
+                    'id' => 'GENERIC',
+                    'attributes' => json_encode([])
                 ]
             ])
             ->save();

@@ -3,6 +3,7 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Tetris\Services\FlagsService;
 
 global $app;
 
@@ -19,11 +20,16 @@ global $app;
  */
 $app->get('/',
     function (Request $request, Response $response, array $params) {
+        /**
+         * @var FlagsService $flags
+         */
+        $flags = $this->flags;
+        $locale = $flags->getLocale();
         $classes = [
             'adwords' => AdwordsResolver::class,
             'facebook' => FacebookResolver::class
         ];
-        $query = new Query($request->getQueryParams());
+        $query = new Query($locale, $request->getQueryParams());
         /**
          * @var TKMApi $tkm
          */

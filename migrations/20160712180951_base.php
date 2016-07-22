@@ -19,7 +19,7 @@ class Base extends AbstractMigration
 
         $this->table('metric', ['id' => false, 'primary_key' => ['id']])
             ->addColumn('id', 'string', ['limit' => 30])
-            ->addColumn('name', 'string', ['limit' => 100])
+            ->addColumn('names', 'jsonb')
             ->addColumn('type', 'string', ['limit' => 30])
             ->addColumn('creation', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'timezone' => true])
             ->addForeignKey('type', 'type', 'id', ['update' => 'RESTRICT', 'delete' => 'CASCADE'])
@@ -32,8 +32,7 @@ class Base extends AbstractMigration
 
         $this->table('report', ['id' => false, 'primary_key' => ['id']])
             ->addColumn('id', 'string', ['limit' => 50])
-            ->addColumn('dimensions', 'jsonb', ['null' => true])
-            ->addColumn('filters', 'jsonb', ['null' => true])
+            ->addColumn('attributes', 'jsonb')
             ->addColumn('creation', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'timezone' => true])
             ->create();
 
