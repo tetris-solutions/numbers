@@ -43,13 +43,15 @@ $app->get('/meta',
                 $attributes[$id] = [
                     'id' => $id,
                     'name' => $attribute['names'][$locale],
-                    'is_metric' => false,
+                    'is_metric' => $attribute['is_metric'],
                     'is_dimension' => $attribute['is_dimension'],
                     'is_filter' => $attribute['is_filter']
                 ];
+
                 if ($attribute['is_dimension']) {
                     $dimensions[] = $id;
                 }
+
                 if ($attribute['is_filter']) {
                     $filters[] = $id;
                 }

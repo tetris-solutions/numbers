@@ -1,0 +1,4056 @@
+{
+    "entities": [
+        "Campaign",
+        "Account"
+    ],
+    "metrics": {
+        "activeviewcpm": {
+            "id": "activeviewcpm",
+            "type": "currency",
+            "names": {
+                "en": "Active View avg. CPM",
+                "pt-BR": "Active View avg. CPM"
+            }
+        },
+        "activeviewctr": {
+            "id": "activeviewctr",
+            "type": "quantity",
+            "names": {
+                "en": "Active View viewable CTR",
+                "pt-BR": "Active View viewable CTR"
+            }
+        },
+        "activeviewimpressions": {
+            "id": "activeviewimpressions",
+            "type": "quantity",
+            "names": {
+                "en": "Active View viewable impressions",
+                "pt-BR": "Active View viewable impressions"
+            }
+        },
+        "activeviewmeasurability": {
+            "id": "activeviewmeasurability",
+            "type": "quantity",
+            "names": {
+                "en": "Active View measurable impr. / impr.",
+                "pt-BR": "Active View measurable impr. / impr."
+            }
+        },
+        "activeviewmeasurablecost": {
+            "id": "activeviewmeasurablecost",
+            "type": "currency",
+            "names": {
+                "en": "Active View measurable cost",
+                "pt-BR": "Active View measurable cost"
+            }
+        },
+        "activeviewmeasurableimpressions": {
+            "id": "activeviewmeasurableimpressions",
+            "type": "quantity",
+            "names": {
+                "en": "Active View measurable impr.",
+                "pt-BR": "Active View measurable impr."
+            }
+        },
+        "activeviewviewability": {
+            "id": "activeviewviewability",
+            "type": "quantity",
+            "names": {
+                "en": "Active View viewable impr. / measurable impr.",
+                "pt-BR": "Active View viewable impr. / measurable impr."
+            }
+        },
+        "allconversionrate": {
+            "id": "allconversionrate",
+            "type": "percentage",
+            "names": {
+                "en": "All conv. rate",
+                "pt-BR": "All conv. rate"
+            }
+        },
+        "allconversions": {
+            "id": "allconversions",
+            "type": "quantity",
+            "names": {
+                "en": "All conv.",
+                "pt-BR": "All conv."
+            }
+        },
+        "allconversionvalue": {
+            "id": "allconversionvalue",
+            "type": "quantity",
+            "names": {
+                "en": "All conv. value",
+                "pt-BR": "All conv. value"
+            }
+        },
+        "averagecost": {
+            "id": "averagecost",
+            "type": "currency",
+            "names": {
+                "en": "Avg. Cost",
+                "pt-BR": "Avg. Cost"
+            }
+        },
+        "averagecpc": {
+            "id": "averagecpc",
+            "type": "currency",
+            "names": {
+                "en": "Avg. CPC",
+                "pt-BR": "Avg. CPC"
+            }
+        },
+        "averagecpe": {
+            "id": "averagecpe",
+            "type": "quantity",
+            "names": {
+                "en": "Avg. CPE",
+                "pt-BR": "Avg. CPE"
+            }
+        },
+        "averagecpm": {
+            "id": "averagecpm",
+            "type": "currency",
+            "names": {
+                "en": "Avg. CPM",
+                "pt-BR": "Avg. CPM"
+            }
+        },
+        "averagecpv": {
+            "id": "averagecpv",
+            "type": "quantity",
+            "names": {
+                "en": "Avg. CPV",
+                "pt-BR": "Avg. CPV"
+            }
+        },
+        "averagefrequency": {
+            "id": "averagefrequency",
+            "type": "quantity",
+            "names": {
+                "en": "Avg. impr. freq. per cookie",
+                "pt-BR": "Avg. impr. freq. per cookie"
+            }
+        },
+        "averagepageviews": {
+            "id": "averagepageviews",
+            "type": "quantity",
+            "names": {
+                "en": "Pages / session",
+                "pt-BR": "Pages / session"
+            }
+        },
+        "averageposition": {
+            "id": "averageposition",
+            "type": "quantity",
+            "names": {
+                "en": "Avg. position",
+                "pt-BR": "Avg. position"
+            }
+        },
+        "averagetimeonsite": {
+            "id": "averagetimeonsite",
+            "type": "quantity",
+            "names": {
+                "en": "Avg. session duration (seconds)",
+                "pt-BR": "Avg. session duration (seconds)"
+            }
+        },
+        "bouncerate": {
+            "id": "bouncerate",
+            "type": "percentage",
+            "names": {
+                "en": "Bounce rate",
+                "pt-BR": "Bounce rate"
+            }
+        },
+        "clickassistedconversions": {
+            "id": "clickassistedconversions",
+            "type": "quantity",
+            "names": {
+                "en": "Click Assisted Conv.",
+                "pt-BR": "Click Assisted Conv."
+            }
+        },
+        "clickassistedconversionsoverlastclickconversions": {
+            "id": "clickassistedconversionsoverlastclickconversions",
+            "type": "quantity",
+            "names": {
+                "en": "Click Assisted Conv. / Last Click Conv.",
+                "pt-BR": "Click Assisted Conv. / Last Click Conv."
+            }
+        },
+        "clickassistedconversionvalue": {
+            "id": "clickassistedconversionvalue",
+            "type": "quantity",
+            "names": {
+                "en": "Click Assisted Conv. Value",
+                "pt-BR": "Click Assisted Conv. Value"
+            }
+        },
+        "clickconversionrate": {
+            "id": "clickconversionrate",
+            "type": "percentage",
+            "names": {
+                "en": "Click conversion rate",
+                "pt-BR": "Click conversion rate"
+            }
+        },
+        "clickconversionratesignificance": {
+            "id": "clickconversionratesignificance",
+            "type": "quantity",
+            "names": {
+                "en": "Click conversion rate ACE indicator",
+                "pt-BR": "Click conversion rate ACE indicator"
+            }
+        },
+        "clicks": {
+            "id": "clicks",
+            "type": "quantity",
+            "names": {
+                "en": "Clicks",
+                "pt-BR": "Clicks"
+            }
+        },
+        "clicksignificance": {
+            "id": "clicksignificance",
+            "type": "quantity",
+            "names": {
+                "en": "Clicks ACE indicator",
+                "pt-BR": "Clicks ACE indicator"
+            }
+        },
+        "contentbudgetlostimpressionshare": {
+            "id": "contentbudgetlostimpressionshare",
+            "type": "raw",
+            "names": {
+                "en": "Content Lost IS (budget)",
+                "pt-BR": "Content Lost IS (budget)"
+            }
+        },
+        "contentimpressionshare": {
+            "id": "contentimpressionshare",
+            "type": "raw",
+            "names": {
+                "en": "Content Impr. share",
+                "pt-BR": "Content Impr. share"
+            }
+        },
+        "contentranklostimpressionshare": {
+            "id": "contentranklostimpressionshare",
+            "type": "raw",
+            "names": {
+                "en": "Content Lost IS (rank)",
+                "pt-BR": "Content Lost IS (rank)"
+            }
+        },
+        "conversionrate": {
+            "id": "conversionrate",
+            "type": "percentage",
+            "names": {
+                "en": "Conv. rate",
+                "pt-BR": "Conv. rate"
+            }
+        },
+        "conversions": {
+            "id": "conversions",
+            "type": "quantity",
+            "names": {
+                "en": "Conversions",
+                "pt-BR": "Conversions"
+            }
+        },
+        "conversionvalue": {
+            "id": "conversionvalue",
+            "type": "quantity",
+            "names": {
+                "en": "Total conv. value",
+                "pt-BR": "Total conv. value"
+            }
+        },
+        "convertedclicks": {
+            "id": "convertedclicks",
+            "type": "quantity",
+            "names": {
+                "en": "Converted clicks",
+                "pt-BR": "Converted clicks"
+            }
+        },
+        "convertedclickssignificance": {
+            "id": "convertedclickssignificance",
+            "type": "quantity",
+            "names": {
+                "en": "Converted clicks ACE indicator",
+                "pt-BR": "Converted clicks ACE indicator"
+            }
+        },
+        "cost": {
+            "id": "cost",
+            "type": "currency",
+            "names": {
+                "en": "Cost",
+                "pt-BR": "Cost"
+            }
+        },
+        "costperallconversion": {
+            "id": "costperallconversion",
+            "type": "currency",
+            "names": {
+                "en": "Cost / all conv.",
+                "pt-BR": "Cost / all conv."
+            }
+        },
+        "costperconversion": {
+            "id": "costperconversion",
+            "type": "currency",
+            "names": {
+                "en": "Cost / conv.",
+                "pt-BR": "Cost / conv."
+            }
+        },
+        "costperconvertedclick": {
+            "id": "costperconvertedclick",
+            "type": "currency",
+            "names": {
+                "en": "Cost / converted click",
+                "pt-BR": "Cost / converted click"
+            }
+        },
+        "costperconvertedclicksignificance": {
+            "id": "costperconvertedclicksignificance",
+            "type": "quantity",
+            "names": {
+                "en": "Cost/converted click ACE indicator",
+                "pt-BR": "Cost/converted click ACE indicator"
+            }
+        },
+        "costsignificance": {
+            "id": "costsignificance",
+            "type": "quantity",
+            "names": {
+                "en": "Cost ACE indicator",
+                "pt-BR": "Cost ACE indicator"
+            }
+        },
+        "cpcsignificance": {
+            "id": "cpcsignificance",
+            "type": "quantity",
+            "names": {
+                "en": "CPC ACE indicator",
+                "pt-BR": "CPC ACE indicator"
+            }
+        },
+        "cpmsignificance": {
+            "id": "cpmsignificance",
+            "type": "quantity",
+            "names": {
+                "en": "CPM ACE indicator",
+                "pt-BR": "CPM ACE indicator"
+            }
+        },
+        "crossdeviceconversions": {
+            "id": "crossdeviceconversions",
+            "type": "quantity",
+            "names": {
+                "en": "Cross-device conv.",
+                "pt-BR": "Cross-device conv."
+            }
+        },
+        "ctr": {
+            "id": "ctr",
+            "type": "percentage",
+            "names": {
+                "en": "CTR",
+                "pt-BR": "CTR"
+            }
+        },
+        "ctrsignificance": {
+            "id": "ctrsignificance",
+            "type": "quantity",
+            "names": {
+                "en": "CTR ACE indicator",
+                "pt-BR": "CTR ACE indicator"
+            }
+        },
+        "engagementrate": {
+            "id": "engagementrate",
+            "type": "percentage",
+            "names": {
+                "en": "Engagement rate",
+                "pt-BR": "Engagement rate"
+            }
+        },
+        "engagements": {
+            "id": "engagements",
+            "type": "quantity",
+            "names": {
+                "en": "Engagements",
+                "pt-BR": "Engagements"
+            }
+        },
+        "gmailforwards": {
+            "id": "gmailforwards",
+            "type": "quantity",
+            "names": {
+                "en": "Gmail forwards",
+                "pt-BR": "Gmail forwards"
+            }
+        },
+        "gmailsaves": {
+            "id": "gmailsaves",
+            "type": "quantity",
+            "names": {
+                "en": "Gmail saves",
+                "pt-BR": "Gmail saves"
+            }
+        },
+        "gmailsecondaryclicks": {
+            "id": "gmailsecondaryclicks",
+            "type": "quantity",
+            "names": {
+                "en": "Gmail clicks to website",
+                "pt-BR": "Gmail clicks to website"
+            }
+        },
+        "impressionassistedconversions": {
+            "id": "impressionassistedconversions",
+            "type": "quantity",
+            "names": {
+                "en": "Impr. Assisted Conv.",
+                "pt-BR": "Impr. Assisted Conv."
+            }
+        },
+        "impressionassistedconversionsoverlastclickconversions": {
+            "id": "impressionassistedconversionsoverlastclickconversions",
+            "type": "quantity",
+            "names": {
+                "en": "Impr. Assisted Conv. / Last Click Conv.",
+                "pt-BR": "Impr. Assisted Conv. / Last Click Conv."
+            }
+        },
+        "impressionassistedconversionvalue": {
+            "id": "impressionassistedconversionvalue",
+            "type": "quantity",
+            "names": {
+                "en": "Impr. Assisted Conv. Value",
+                "pt-BR": "Impr. Assisted Conv. Value"
+            }
+        },
+        "impressionreach": {
+            "id": "impressionreach",
+            "type": "raw",
+            "names": {
+                "en": "Unique cookies",
+                "pt-BR": "Unique cookies"
+            }
+        },
+        "impressions": {
+            "id": "impressions",
+            "type": "quantity",
+            "names": {
+                "en": "Impressions",
+                "pt-BR": "Impressions"
+            }
+        },
+        "impressionsignificance": {
+            "id": "impressionsignificance",
+            "type": "quantity",
+            "names": {
+                "en": "Impressions ACE indicator",
+                "pt-BR": "Impressions ACE indicator"
+            }
+        },
+        "interactionrate": {
+            "id": "interactionrate",
+            "type": "percentage",
+            "names": {
+                "en": "Interaction Rate",
+                "pt-BR": "Interaction Rate"
+            }
+        },
+        "interactions": {
+            "id": "interactions",
+            "type": "quantity",
+            "names": {
+                "en": "Interactions",
+                "pt-BR": "Interactions"
+            }
+        },
+        "interactiontypes": {
+            "id": "interactiontypes",
+            "type": "quantity",
+            "names": {
+                "en": "Interaction Types",
+                "pt-BR": "Interaction Types"
+            }
+        },
+        "invalidclickrate": {
+            "id": "invalidclickrate",
+            "type": "percentage",
+            "names": {
+                "en": "Invalid click rate",
+                "pt-BR": "Invalid click rate"
+            }
+        },
+        "invalidclicks": {
+            "id": "invalidclicks",
+            "type": "quantity",
+            "names": {
+                "en": "Invalid clicks",
+                "pt-BR": "Invalid clicks"
+            }
+        },
+        "numofflineimpressions": {
+            "id": "numofflineimpressions",
+            "type": "quantity",
+            "names": {
+                "en": "Phone impressions",
+                "pt-BR": "Phone impressions"
+            }
+        },
+        "numofflineinteractions": {
+            "id": "numofflineinteractions",
+            "type": "quantity",
+            "names": {
+                "en": "Phone calls",
+                "pt-BR": "Phone calls"
+            }
+        },
+        "offlineinteractionrate": {
+            "id": "offlineinteractionrate",
+            "type": "quantity",
+            "names": {
+                "en": "PTR",
+                "pt-BR": "PTR"
+            }
+        },
+        "percentnewvisitors": {
+            "id": "percentnewvisitors",
+            "type": "percentage",
+            "names": {
+                "en": "% new sessions",
+                "pt-BR": "% new sessions"
+            }
+        },
+        "positionsignificance": {
+            "id": "positionsignificance",
+            "type": "quantity",
+            "names": {
+                "en": "Position ACE indicator",
+                "pt-BR": "Position ACE indicator"
+            }
+        },
+        "relativectr": {
+            "id": "relativectr",
+            "type": "quantity",
+            "names": {
+                "en": "Relative CTR",
+                "pt-BR": "Relative CTR"
+            }
+        },
+        "searchbudgetlostimpressionshare": {
+            "id": "searchbudgetlostimpressionshare",
+            "type": "raw",
+            "names": {
+                "en": "Search Lost IS (budget)",
+                "pt-BR": "Search Lost IS (budget)"
+            }
+        },
+        "searchexactmatchimpressionshare": {
+            "id": "searchexactmatchimpressionshare",
+            "type": "raw",
+            "names": {
+                "en": "Search Exact match IS",
+                "pt-BR": "Search Exact match IS"
+            }
+        },
+        "searchimpressionshare": {
+            "id": "searchimpressionshare",
+            "type": "raw",
+            "names": {
+                "en": "Search Impr. share",
+                "pt-BR": "Search Impr. share"
+            }
+        },
+        "searchranklostimpressionshare": {
+            "id": "searchranklostimpressionshare",
+            "type": "raw",
+            "names": {
+                "en": "Search Lost IS (rank)",
+                "pt-BR": "Search Lost IS (rank)"
+            }
+        },
+        "valueperallconversion": {
+            "id": "valueperallconversion",
+            "type": "quantity",
+            "names": {
+                "en": "Value / all conv.",
+                "pt-BR": "Value / all conv."
+            }
+        },
+        "valueperconversion": {
+            "id": "valueperconversion",
+            "type": "quantity",
+            "names": {
+                "en": "Value / conv.",
+                "pt-BR": "Value / conv."
+            }
+        },
+        "valueperconvertedclick": {
+            "id": "valueperconvertedclick",
+            "type": "quantity",
+            "names": {
+                "en": "Value / converted click",
+                "pt-BR": "Value / converted click"
+            }
+        },
+        "videoquartile100rate": {
+            "id": "videoquartile100rate",
+            "type": "percentage",
+            "names": {
+                "en": "Video played to 100%",
+                "pt-BR": "Video played to 100%"
+            }
+        },
+        "videoquartile25rate": {
+            "id": "videoquartile25rate",
+            "type": "percentage",
+            "names": {
+                "en": "Video played to 25%",
+                "pt-BR": "Video played to 25%"
+            }
+        },
+        "videoquartile50rate": {
+            "id": "videoquartile50rate",
+            "type": "percentage",
+            "names": {
+                "en": "Video played to 50%",
+                "pt-BR": "Video played to 50%"
+            }
+        },
+        "videoquartile75rate": {
+            "id": "videoquartile75rate",
+            "type": "percentage",
+            "names": {
+                "en": "Video played to 75%",
+                "pt-BR": "Video played to 75%"
+            }
+        },
+        "videoviewrate": {
+            "id": "videoviewrate",
+            "type": "percentage",
+            "names": {
+                "en": "View rate",
+                "pt-BR": "View rate"
+            }
+        },
+        "videoviews": {
+            "id": "videoviews",
+            "type": "quantity",
+            "names": {
+                "en": "Views",
+                "pt-BR": "Views"
+            }
+        },
+        "viewthroughconversions": {
+            "id": "viewthroughconversions",
+            "type": "quantity",
+            "names": {
+                "en": "View-through conv.",
+                "pt-BR": "View-through conv."
+            }
+        },
+        "viewthroughconversionssignificance": {
+            "id": "viewthroughconversionssignificance",
+            "type": "quantity",
+            "names": {
+                "en": "View-through conv. ACE indicator",
+                "pt-BR": "View-through conv. ACE indicator"
+            }
+        }
+    },
+    "reports": {
+        "CAMPAIGN_PERFORMANCE_REPORT": {
+            "id": "CAMPAIGN_PERFORMANCE_REPORT",
+            "attributes": {
+                "accountcurrencycode": {
+                    "property": "AccountCurrencyCode",
+                    "names": {
+                        "en": "Currency",
+                        "pt-BR": "Currency"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "accountdescriptivename": {
+                    "property": "AccountDescriptiveName",
+                    "names": {
+                        "en": "Account",
+                        "pt-BR": "Account"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "accounttimezoneid": {
+                    "property": "AccountTimeZoneId",
+                    "names": {
+                        "en": "Time zone",
+                        "pt-BR": "Time zone"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "activeviewcpm": {
+                    "property": "ActiveViewCpm",
+                    "names": {
+                        "en": "Active View avg. CPM",
+                        "pt-BR": "Active View avg. CPM"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewctr": {
+                    "property": "ActiveViewCtr",
+                    "names": {
+                        "en": "Active View viewable CTR",
+                        "pt-BR": "Active View viewable CTR"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewimpressions": {
+                    "property": "ActiveViewImpressions",
+                    "names": {
+                        "en": "Active View viewable impressions",
+                        "pt-BR": "Active View viewable impressions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewmeasurability": {
+                    "property": "ActiveViewMeasurability",
+                    "names": {
+                        "en": "Active View measurable impr. / impr.",
+                        "pt-BR": "Active View measurable impr. / impr."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewmeasurablecost": {
+                    "property": "ActiveViewMeasurableCost",
+                    "names": {
+                        "en": "Active View measurable cost",
+                        "pt-BR": "Active View measurable cost"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewmeasurableimpressions": {
+                    "property": "ActiveViewMeasurableImpressions",
+                    "names": {
+                        "en": "Active View measurable impr.",
+                        "pt-BR": "Active View measurable impr."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewviewability": {
+                    "property": "ActiveViewViewability",
+                    "names": {
+                        "en": "Active View viewable impr. / measurable impr.",
+                        "pt-BR": "Active View viewable impr. / measurable impr."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "adnetworktype1": {
+                    "property": "AdNetworkType1",
+                    "names": {
+                        "en": "Network",
+                        "pt-BR": "Network"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "adnetworktype2": {
+                    "property": "AdNetworkType2",
+                    "names": {
+                        "en": "Network (with search partners)",
+                        "pt-BR": "Network (with search partners)"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "advertiserexperimentsegmentationbin": {
+                    "property": "AdvertiserExperimentSegmentationBin",
+                    "names": {
+                        "en": "ACE split",
+                        "pt-BR": "ACE split"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "advertisingchannelsubtype": {
+                    "property": "AdvertisingChannelSubType",
+                    "names": {
+                        "en": "Advertising Sub Channel",
+                        "pt-BR": "Advertising Sub Channel"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "advertisingchanneltype": {
+                    "property": "AdvertisingChannelType",
+                    "names": {
+                        "en": "Advertising Channel",
+                        "pt-BR": "Advertising Channel"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "allconversionrate": {
+                    "property": "AllConversionRate",
+                    "names": {
+                        "en": "All conv. rate",
+                        "pt-BR": "All conv. rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "allconversions": {
+                    "property": "AllConversions",
+                    "names": {
+                        "en": "All conv.",
+                        "pt-BR": "All conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "allconversionvalue": {
+                    "property": "AllConversionValue",
+                    "names": {
+                        "en": "All conv. value",
+                        "pt-BR": "All conv. value"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "amount": {
+                    "property": "Amount",
+                    "names": {
+                        "en": "Budget",
+                        "pt-BR": "Budget"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "averagecost": {
+                    "property": "AverageCost",
+                    "names": {
+                        "en": "Avg. Cost",
+                        "pt-BR": "Avg. Cost"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecpc": {
+                    "property": "AverageCpc",
+                    "names": {
+                        "en": "Avg. CPC",
+                        "pt-BR": "Avg. CPC"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecpe": {
+                    "property": "AverageCpe",
+                    "names": {
+                        "en": "Avg. CPE",
+                        "pt-BR": "Avg. CPE"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecpm": {
+                    "property": "AverageCpm",
+                    "names": {
+                        "en": "Avg. CPM",
+                        "pt-BR": "Avg. CPM"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecpv": {
+                    "property": "AverageCpv",
+                    "names": {
+                        "en": "Avg. CPV",
+                        "pt-BR": "Avg. CPV"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagefrequency": {
+                    "property": "AverageFrequency",
+                    "names": {
+                        "en": "Avg. impr. freq. per cookie",
+                        "pt-BR": "Avg. impr. freq. per cookie"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagepageviews": {
+                    "property": "AveragePageviews",
+                    "names": {
+                        "en": "Pages / session",
+                        "pt-BR": "Pages / session"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averageposition": {
+                    "property": "AveragePosition",
+                    "names": {
+                        "en": "Avg. position",
+                        "pt-BR": "Avg. position"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagetimeonsite": {
+                    "property": "AverageTimeOnSite",
+                    "names": {
+                        "en": "Avg. session duration (seconds)",
+                        "pt-BR": "Avg. session duration (seconds)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "basecampaignid": {
+                    "property": "BaseCampaignId",
+                    "names": {
+                        "en": "Base Campaign ID",
+                        "pt-BR": "Base Campaign ID"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "biddingstrategyid": {
+                    "property": "BiddingStrategyId",
+                    "names": {
+                        "en": "Bid Strategy ID",
+                        "pt-BR": "Bid Strategy ID"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "biddingstrategyname": {
+                    "property": "BiddingStrategyName",
+                    "names": {
+                        "en": "Bid Strategy Name",
+                        "pt-BR": "Bid Strategy Name"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "biddingstrategytype": {
+                    "property": "BiddingStrategyType",
+                    "names": {
+                        "en": "Bid Strategy Type",
+                        "pt-BR": "Bid Strategy Type"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "bidtype": {
+                    "property": "BidType",
+                    "names": {
+                        "en": "Conversion optimizer bid type",
+                        "pt-BR": "Conversion optimizer bid type"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "bouncerate": {
+                    "property": "BounceRate",
+                    "names": {
+                        "en": "Bounce rate",
+                        "pt-BR": "Bounce rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "budgetid": {
+                    "property": "BudgetId",
+                    "names": {
+                        "en": "Budget ID",
+                        "pt-BR": "Budget ID"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "id": {
+                    "property": "CampaignId",
+                    "names": {
+                        "en": "Campaign ID",
+                        "pt-BR": "Campaign ID"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "mobilebidmodifier": {
+                    "property": "CampaignMobileBidModifier",
+                    "names": {
+                        "en": "Mobile bid adj.",
+                        "pt-BR": "Mobile bid adj."
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "name": {
+                    "property": "CampaignName",
+                    "names": {
+                        "en": "Campaign",
+                        "pt-BR": "Campaign"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "status": {
+                    "property": "CampaignStatus",
+                    "names": {
+                        "en": "Campaign state",
+                        "pt-BR": "Campaign state"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "trialtype": {
+                    "property": "CampaignTrialType",
+                    "names": {
+                        "en": "Campaign Trial Type",
+                        "pt-BR": "Campaign Trial Type"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "clickassistedconversions": {
+                    "property": "ClickAssistedConversions",
+                    "names": {
+                        "en": "Click Assisted Conv.",
+                        "pt-BR": "Click Assisted Conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clickassistedconversionsoverlastclickconversions": {
+                    "property": "ClickAssistedConversionsOverLastClickConversions",
+                    "names": {
+                        "en": "Click Assisted Conv. / Last Click Conv.",
+                        "pt-BR": "Click Assisted Conv. / Last Click Conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clickassistedconversionvalue": {
+                    "property": "ClickAssistedConversionValue",
+                    "names": {
+                        "en": "Click Assisted Conv. Value",
+                        "pt-BR": "Click Assisted Conv. Value"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clickconversionrate": {
+                    "property": "ClickConversionRate",
+                    "names": {
+                        "en": "Click conversion rate",
+                        "pt-BR": "Click conversion rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clickconversionratesignificance": {
+                    "property": "ClickConversionRateSignificance",
+                    "names": {
+                        "en": "Click conversion rate ACE indicator",
+                        "pt-BR": "Click conversion rate ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clicks": {
+                    "property": "Clicks",
+                    "names": {
+                        "en": "Clicks",
+                        "pt-BR": "Clicks"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clicksignificance": {
+                    "property": "ClickSignificance",
+                    "names": {
+                        "en": "Clicks ACE indicator",
+                        "pt-BR": "Clicks ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clicktype": {
+                    "property": "ClickType",
+                    "names": {
+                        "en": "Click type",
+                        "pt-BR": "Click type"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "contentbudgetlostimpressionshare": {
+                    "property": "ContentBudgetLostImpressionShare",
+                    "names": {
+                        "en": "Content Lost IS (budget)",
+                        "pt-BR": "Content Lost IS (budget)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "contentimpressionshare": {
+                    "property": "ContentImpressionShare",
+                    "names": {
+                        "en": "Content Impr. share",
+                        "pt-BR": "Content Impr. share"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "contentranklostimpressionshare": {
+                    "property": "ContentRankLostImpressionShare",
+                    "names": {
+                        "en": "Content Lost IS (rank)",
+                        "pt-BR": "Content Lost IS (rank)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "conversioncategoryname": {
+                    "property": "ConversionCategoryName",
+                    "names": {
+                        "en": "Conversion category",
+                        "pt-BR": "Conversion category"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "conversionrate": {
+                    "property": "ConversionRate",
+                    "names": {
+                        "en": "Conv. rate",
+                        "pt-BR": "Conv. rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "conversions": {
+                    "property": "Conversions",
+                    "names": {
+                        "en": "Conversions",
+                        "pt-BR": "Conversions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "conversiontrackerid": {
+                    "property": "ConversionTrackerId",
+                    "names": {
+                        "en": "Conversion Tracker Id",
+                        "pt-BR": "Conversion Tracker Id"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "conversiontypename": {
+                    "property": "ConversionTypeName",
+                    "names": {
+                        "en": "Conversion name",
+                        "pt-BR": "Conversion name"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "conversionvalue": {
+                    "property": "ConversionValue",
+                    "names": {
+                        "en": "Total conv. value",
+                        "pt-BR": "Total conv. value"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "convertedclicks": {
+                    "property": "ConvertedClicks",
+                    "names": {
+                        "en": "Converted clicks",
+                        "pt-BR": "Converted clicks"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "convertedclickssignificance": {
+                    "property": "ConvertedClicksSignificance",
+                    "names": {
+                        "en": "Converted clicks ACE indicator",
+                        "pt-BR": "Converted clicks ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "cost": {
+                    "property": "Cost",
+                    "names": {
+                        "en": "Cost",
+                        "pt-BR": "Cost"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "costperallconversion": {
+                    "property": "CostPerAllConversion",
+                    "names": {
+                        "en": "Cost / all conv.",
+                        "pt-BR": "Cost / all conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "costperconversion": {
+                    "property": "CostPerConversion",
+                    "names": {
+                        "en": "Cost / conv.",
+                        "pt-BR": "Cost / conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "costperconvertedclick": {
+                    "property": "CostPerConvertedClick",
+                    "names": {
+                        "en": "Cost / converted click",
+                        "pt-BR": "Cost / converted click"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "costperconvertedclicksignificance": {
+                    "property": "CostPerConvertedClickSignificance",
+                    "names": {
+                        "en": "Cost/converted click ACE indicator",
+                        "pt-BR": "Cost/converted click ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "costsignificance": {
+                    "property": "CostSignificance",
+                    "names": {
+                        "en": "Cost ACE indicator",
+                        "pt-BR": "Cost ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "cpcsignificance": {
+                    "property": "CpcSignificance",
+                    "names": {
+                        "en": "CPC ACE indicator",
+                        "pt-BR": "CPC ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "cpmsignificance": {
+                    "property": "CpmSignificance",
+                    "names": {
+                        "en": "CPM ACE indicator",
+                        "pt-BR": "CPM ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "crossdeviceconversions": {
+                    "property": "CrossDeviceConversions",
+                    "names": {
+                        "en": "Cross-device conv.",
+                        "pt-BR": "Cross-device conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "ctr": {
+                    "property": "Ctr",
+                    "names": {
+                        "en": "CTR",
+                        "pt-BR": "CTR"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "ctrsignificance": {
+                    "property": "CtrSignificance",
+                    "names": {
+                        "en": "CTR ACE indicator",
+                        "pt-BR": "CTR ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "customerdescriptivename": {
+                    "property": "CustomerDescriptiveName",
+                    "names": {
+                        "en": "Client name",
+                        "pt-BR": "Client name"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "date": {
+                    "property": "Date",
+                    "names": {
+                        "en": "Day",
+                        "pt-BR": "Day"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "dayofweek": {
+                    "property": "DayOfWeek",
+                    "names": {
+                        "en": "Day of week",
+                        "pt-BR": "Day of week"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "device": {
+                    "property": "Device",
+                    "names": {
+                        "en": "Device",
+                        "pt-BR": "Device"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "enddate": {
+                    "property": "EndDate",
+                    "names": {
+                        "en": "End date",
+                        "pt-BR": "End date"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "engagementrate": {
+                    "property": "EngagementRate",
+                    "names": {
+                        "en": "Engagement rate",
+                        "pt-BR": "Engagement rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "engagements": {
+                    "property": "Engagements",
+                    "names": {
+                        "en": "Engagements",
+                        "pt-BR": "Engagements"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "enhancedcpcenabled": {
+                    "property": "EnhancedCpcEnabled",
+                    "names": {
+                        "en": "Enhanced CPC enabled",
+                        "pt-BR": "Enhanced CPC enabled"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "enhancedcpvenabled": {
+                    "property": "EnhancedCpvEnabled",
+                    "names": {
+                        "en": "Enhanced CPV enabled",
+                        "pt-BR": "Enhanced CPV enabled"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "externalcustomerid": {
+                    "property": "ExternalCustomerId",
+                    "names": {
+                        "en": "Customer ID",
+                        "pt-BR": "Customer ID"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "gmailforwards": {
+                    "property": "GmailForwards",
+                    "names": {
+                        "en": "Gmail forwards",
+                        "pt-BR": "Gmail forwards"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "gmailsaves": {
+                    "property": "GmailSaves",
+                    "names": {
+                        "en": "Gmail saves",
+                        "pt-BR": "Gmail saves"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "gmailsecondaryclicks": {
+                    "property": "GmailSecondaryClicks",
+                    "names": {
+                        "en": "Gmail clicks to website",
+                        "pt-BR": "Gmail clicks to website"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "hourofday": {
+                    "property": "HourOfDay",
+                    "names": {
+                        "en": "Hour of day",
+                        "pt-BR": "Hour of day"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "impressionassistedconversions": {
+                    "property": "ImpressionAssistedConversions",
+                    "names": {
+                        "en": "Impr. Assisted Conv.",
+                        "pt-BR": "Impr. Assisted Conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "impressionassistedconversionsoverlastclickconversions": {
+                    "property": "ImpressionAssistedConversionsOverLastClickConversions",
+                    "names": {
+                        "en": "Impr. Assisted Conv. / Last Click Conv.",
+                        "pt-BR": "Impr. Assisted Conv. / Last Click Conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "impressionassistedconversionvalue": {
+                    "property": "ImpressionAssistedConversionValue",
+                    "names": {
+                        "en": "Impr. Assisted Conv. Value",
+                        "pt-BR": "Impr. Assisted Conv. Value"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "impressionreach": {
+                    "property": "ImpressionReach",
+                    "names": {
+                        "en": "Unique cookies",
+                        "pt-BR": "Unique cookies"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "impressions": {
+                    "property": "Impressions",
+                    "names": {
+                        "en": "Impressions",
+                        "pt-BR": "Impressions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "impressionsignificance": {
+                    "property": "ImpressionSignificance",
+                    "names": {
+                        "en": "Impressions ACE indicator",
+                        "pt-BR": "Impressions ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "interactionrate": {
+                    "property": "InteractionRate",
+                    "names": {
+                        "en": "Interaction Rate",
+                        "pt-BR": "Interaction Rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "interactions": {
+                    "property": "Interactions",
+                    "names": {
+                        "en": "Interactions",
+                        "pt-BR": "Interactions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "interactiontypes": {
+                    "property": "InteractionTypes",
+                    "names": {
+                        "en": "Interaction Types",
+                        "pt-BR": "Interaction Types"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "invalidclickrate": {
+                    "property": "InvalidClickRate",
+                    "names": {
+                        "en": "Invalid click rate",
+                        "pt-BR": "Invalid click rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "invalidclicks": {
+                    "property": "InvalidClicks",
+                    "names": {
+                        "en": "Invalid clicks",
+                        "pt-BR": "Invalid clicks"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "isbudgetexplicitlyshared": {
+                    "property": "IsBudgetExplicitlyShared",
+                    "names": {
+                        "en": "Budget explicitly shared",
+                        "pt-BR": "Budget explicitly shared"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "labelids": {
+                    "property": "LabelIds",
+                    "names": {
+                        "en": "Label IDs",
+                        "pt-BR": "Label IDs"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "labels": {
+                    "property": "Labels",
+                    "names": {
+                        "en": "Labels",
+                        "pt-BR": "Labels"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "month": {
+                    "property": "Month",
+                    "names": {
+                        "en": "Month",
+                        "pt-BR": "Month"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "monthofyear": {
+                    "property": "MonthOfYear",
+                    "names": {
+                        "en": "Month of Year",
+                        "pt-BR": "Month of Year"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "numofflineimpressions": {
+                    "property": "NumOfflineImpressions",
+                    "names": {
+                        "en": "Phone impressions",
+                        "pt-BR": "Phone impressions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "numofflineinteractions": {
+                    "property": "NumOfflineInteractions",
+                    "names": {
+                        "en": "Phone calls",
+                        "pt-BR": "Phone calls"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "offlineinteractionrate": {
+                    "property": "OfflineInteractionRate",
+                    "names": {
+                        "en": "PTR",
+                        "pt-BR": "PTR"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "percentnewvisitors": {
+                    "property": "PercentNewVisitors",
+                    "names": {
+                        "en": "% new sessions",
+                        "pt-BR": "% new sessions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "period": {
+                    "property": "Period",
+                    "names": {
+                        "en": "Budget period",
+                        "pt-BR": "Budget period"
+                    },
+                    "is_metric": false,
+                    "is_filter": false,
+                    "is_dimension": true
+                },
+                "positionsignificance": {
+                    "property": "PositionSignificance",
+                    "names": {
+                        "en": "Position ACE indicator",
+                        "pt-BR": "Position ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "primarycompanyname": {
+                    "property": "PrimaryCompanyName",
+                    "names": {
+                        "en": "Company name",
+                        "pt-BR": "Company name"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "quarter": {
+                    "property": "Quarter",
+                    "names": {
+                        "en": "Quarter",
+                        "pt-BR": "Quarter"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "relativectr": {
+                    "property": "RelativeCtr",
+                    "names": {
+                        "en": "Relative CTR",
+                        "pt-BR": "Relative CTR"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "searchbudgetlostimpressionshare": {
+                    "property": "SearchBudgetLostImpressionShare",
+                    "names": {
+                        "en": "Search Lost IS (budget)",
+                        "pt-BR": "Search Lost IS (budget)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "searchexactmatchimpressionshare": {
+                    "property": "SearchExactMatchImpressionShare",
+                    "names": {
+                        "en": "Search Exact match IS",
+                        "pt-BR": "Search Exact match IS"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "searchimpressionshare": {
+                    "property": "SearchImpressionShare",
+                    "names": {
+                        "en": "Search Impr. share",
+                        "pt-BR": "Search Impr. share"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "searchranklostimpressionshare": {
+                    "property": "SearchRankLostImpressionShare",
+                    "names": {
+                        "en": "Search Lost IS (rank)",
+                        "pt-BR": "Search Lost IS (rank)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "servingstatus": {
+                    "property": "ServingStatus",
+                    "names": {
+                        "en": "Campaign serving status",
+                        "pt-BR": "Campaign serving status"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "slot": {
+                    "property": "Slot",
+                    "names": {
+                        "en": "Top vs. Other",
+                        "pt-BR": "Top vs. Other"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "startdate": {
+                    "property": "StartDate",
+                    "names": {
+                        "en": "Start date",
+                        "pt-BR": "Start date"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "trackingurltemplate": {
+                    "property": "TrackingUrlTemplate",
+                    "names": {
+                        "en": "Tracking template",
+                        "pt-BR": "Tracking template"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "urlcustomparameters": {
+                    "property": "UrlCustomParameters",
+                    "names": {
+                        "en": "Custom parameter",
+                        "pt-BR": "Custom parameter"
+                    },
+                    "is_metric": false,
+                    "is_filter": false,
+                    "is_dimension": true
+                },
+                "valueperallconversion": {
+                    "property": "ValuePerAllConversion",
+                    "names": {
+                        "en": "Value / all conv.",
+                        "pt-BR": "Value / all conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "valueperconversion": {
+                    "property": "ValuePerConversion",
+                    "names": {
+                        "en": "Value / conv.",
+                        "pt-BR": "Value / conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "valueperconvertedclick": {
+                    "property": "ValuePerConvertedClick",
+                    "names": {
+                        "en": "Value / converted click",
+                        "pt-BR": "Value / converted click"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "videoquartile100rate": {
+                    "property": "VideoQuartile100Rate",
+                    "names": {
+                        "en": "Video played to 100%",
+                        "pt-BR": "Video played to 100%"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "videoquartile25rate": {
+                    "property": "VideoQuartile25Rate",
+                    "names": {
+                        "en": "Video played to 25%",
+                        "pt-BR": "Video played to 25%"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "videoquartile50rate": {
+                    "property": "VideoQuartile50Rate",
+                    "names": {
+                        "en": "Video played to 50%",
+                        "pt-BR": "Video played to 50%"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "videoquartile75rate": {
+                    "property": "VideoQuartile75Rate",
+                    "names": {
+                        "en": "Video played to 75%",
+                        "pt-BR": "Video played to 75%"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "videoviewrate": {
+                    "property": "VideoViewRate",
+                    "names": {
+                        "en": "View rate",
+                        "pt-BR": "View rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "videoviews": {
+                    "property": "VideoViews",
+                    "names": {
+                        "en": "Views",
+                        "pt-BR": "Views"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "viewthroughconversions": {
+                    "property": "ViewThroughConversions",
+                    "names": {
+                        "en": "View-through conv.",
+                        "pt-BR": "View-through conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "viewthroughconversionssignificance": {
+                    "property": "ViewThroughConversionsSignificance",
+                    "names": {
+                        "en": "View-through conv. ACE indicator",
+                        "pt-BR": "View-through conv. ACE indicator"
+                    },
+                    "is_metric": true,
+                    "is_filter": false,
+                    "is_dimension": false
+                },
+                "week": {
+                    "property": "Week",
+                    "names": {
+                        "en": "Week",
+                        "pt-BR": "Week"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "year": {
+                    "property": "Year",
+                    "names": {
+                        "en": "Year",
+                        "pt-BR": "Year"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                }
+            }
+        },
+        "ACCOUNT_PERFORMANCE_REPORT": {
+            "id": "ACCOUNT_PERFORMANCE_REPORT",
+            "attributes": {
+                "currencycode": {
+                    "property": "AccountCurrencyCode",
+                    "names": {
+                        "en": "Currency",
+                        "pt-BR": "Currency"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "descriptivename": {
+                    "property": "AccountDescriptiveName",
+                    "names": {
+                        "en": "Account",
+                        "pt-BR": "Account"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "timezoneid": {
+                    "property": "AccountTimeZoneId",
+                    "names": {
+                        "en": "Time zone",
+                        "pt-BR": "Time zone"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "activeviewcpm": {
+                    "property": "ActiveViewCpm",
+                    "names": {
+                        "en": "Active View avg. CPM",
+                        "pt-BR": "Active View avg. CPM"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewctr": {
+                    "property": "ActiveViewCtr",
+                    "names": {
+                        "en": "Active View viewable CTR",
+                        "pt-BR": "Active View viewable CTR"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewimpressions": {
+                    "property": "ActiveViewImpressions",
+                    "names": {
+                        "en": "Active View viewable impressions",
+                        "pt-BR": "Active View viewable impressions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewmeasurability": {
+                    "property": "ActiveViewMeasurability",
+                    "names": {
+                        "en": "Active View measurable impr. / impr.",
+                        "pt-BR": "Active View measurable impr. / impr."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewmeasurablecost": {
+                    "property": "ActiveViewMeasurableCost",
+                    "names": {
+                        "en": "Active View measurable cost",
+                        "pt-BR": "Active View measurable cost"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewmeasurableimpressions": {
+                    "property": "ActiveViewMeasurableImpressions",
+                    "names": {
+                        "en": "Active View measurable impr.",
+                        "pt-BR": "Active View measurable impr."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "activeviewviewability": {
+                    "property": "ActiveViewViewability",
+                    "names": {
+                        "en": "Active View viewable impr. / measurable impr.",
+                        "pt-BR": "Active View viewable impr. / measurable impr."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "adnetworktype1": {
+                    "property": "AdNetworkType1",
+                    "names": {
+                        "en": "Network",
+                        "pt-BR": "Network"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "adnetworktype2": {
+                    "property": "AdNetworkType2",
+                    "names": {
+                        "en": "Network (with search partners)",
+                        "pt-BR": "Network (with search partners)"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "allconversionrate": {
+                    "property": "AllConversionRate",
+                    "names": {
+                        "en": "All conv. rate",
+                        "pt-BR": "All conv. rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "allconversions": {
+                    "property": "AllConversions",
+                    "names": {
+                        "en": "All conv.",
+                        "pt-BR": "All conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "allconversionvalue": {
+                    "property": "AllConversionValue",
+                    "names": {
+                        "en": "All conv. value",
+                        "pt-BR": "All conv. value"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecost": {
+                    "property": "AverageCost",
+                    "names": {
+                        "en": "Avg. Cost",
+                        "pt-BR": "Avg. Cost"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecpc": {
+                    "property": "AverageCpc",
+                    "names": {
+                        "en": "Avg. CPC",
+                        "pt-BR": "Avg. CPC"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecpe": {
+                    "property": "AverageCpe",
+                    "names": {
+                        "en": "Avg. CPE",
+                        "pt-BR": "Avg. CPE"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecpm": {
+                    "property": "AverageCpm",
+                    "names": {
+                        "en": "Avg. CPM",
+                        "pt-BR": "Avg. CPM"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averagecpv": {
+                    "property": "AverageCpv",
+                    "names": {
+                        "en": "Avg. CPV",
+                        "pt-BR": "Avg. CPV"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "averageposition": {
+                    "property": "AveragePosition",
+                    "names": {
+                        "en": "Avg. position",
+                        "pt-BR": "Avg. position"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "canmanageclients": {
+                    "property": "CanManageClients",
+                    "names": {
+                        "en": "Can manage clients",
+                        "pt-BR": "Can manage clients"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "clickconversionrate": {
+                    "property": "ClickConversionRate",
+                    "names": {
+                        "en": "Click conversion rate",
+                        "pt-BR": "Click conversion rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clicks": {
+                    "property": "Clicks",
+                    "names": {
+                        "en": "Clicks",
+                        "pt-BR": "Clicks"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "clicktype": {
+                    "property": "ClickType",
+                    "names": {
+                        "en": "Click type",
+                        "pt-BR": "Click type"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "contentbudgetlostimpressionshare": {
+                    "property": "ContentBudgetLostImpressionShare",
+                    "names": {
+                        "en": "Content Lost IS (budget)",
+                        "pt-BR": "Content Lost IS (budget)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "contentimpressionshare": {
+                    "property": "ContentImpressionShare",
+                    "names": {
+                        "en": "Content Impr. share",
+                        "pt-BR": "Content Impr. share"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "contentranklostimpressionshare": {
+                    "property": "ContentRankLostImpressionShare",
+                    "names": {
+                        "en": "Content Lost IS (rank)",
+                        "pt-BR": "Content Lost IS (rank)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "conversioncategoryname": {
+                    "property": "ConversionCategoryName",
+                    "names": {
+                        "en": "Conversion category",
+                        "pt-BR": "Conversion category"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "conversionrate": {
+                    "property": "ConversionRate",
+                    "names": {
+                        "en": "Conv. rate",
+                        "pt-BR": "Conv. rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "conversions": {
+                    "property": "Conversions",
+                    "names": {
+                        "en": "Conversions",
+                        "pt-BR": "Conversions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "conversiontrackerid": {
+                    "property": "ConversionTrackerId",
+                    "names": {
+                        "en": "Conversion Tracker Id",
+                        "pt-BR": "Conversion Tracker Id"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "conversiontypename": {
+                    "property": "ConversionTypeName",
+                    "names": {
+                        "en": "Conversion name",
+                        "pt-BR": "Conversion name"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "conversionvalue": {
+                    "property": "ConversionValue",
+                    "names": {
+                        "en": "Total conv. value",
+                        "pt-BR": "Total conv. value"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "convertedclicks": {
+                    "property": "ConvertedClicks",
+                    "names": {
+                        "en": "Converted clicks",
+                        "pt-BR": "Converted clicks"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "cost": {
+                    "property": "Cost",
+                    "names": {
+                        "en": "Cost",
+                        "pt-BR": "Cost"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "costperallconversion": {
+                    "property": "CostPerAllConversion",
+                    "names": {
+                        "en": "Cost / all conv.",
+                        "pt-BR": "Cost / all conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "costperconversion": {
+                    "property": "CostPerConversion",
+                    "names": {
+                        "en": "Cost / conv.",
+                        "pt-BR": "Cost / conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "costperconvertedclick": {
+                    "property": "CostPerConvertedClick",
+                    "names": {
+                        "en": "Cost / converted click",
+                        "pt-BR": "Cost / converted click"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "crossdeviceconversions": {
+                    "property": "CrossDeviceConversions",
+                    "names": {
+                        "en": "Cross-device conv.",
+                        "pt-BR": "Cross-device conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "ctr": {
+                    "property": "Ctr",
+                    "names": {
+                        "en": "CTR",
+                        "pt-BR": "CTR"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "customerdescriptivename": {
+                    "property": "CustomerDescriptiveName",
+                    "names": {
+                        "en": "Client name",
+                        "pt-BR": "Client name"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "date": {
+                    "property": "Date",
+                    "names": {
+                        "en": "Day",
+                        "pt-BR": "Day"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "dayofweek": {
+                    "property": "DayOfWeek",
+                    "names": {
+                        "en": "Day of week",
+                        "pt-BR": "Day of week"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "device": {
+                    "property": "Device",
+                    "names": {
+                        "en": "Device",
+                        "pt-BR": "Device"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "engagementrate": {
+                    "property": "EngagementRate",
+                    "names": {
+                        "en": "Engagement rate",
+                        "pt-BR": "Engagement rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "engagements": {
+                    "property": "Engagements",
+                    "names": {
+                        "en": "Engagements",
+                        "pt-BR": "Engagements"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "externalcustomerid": {
+                    "property": "ExternalCustomerId",
+                    "names": {
+                        "en": "Customer ID",
+                        "pt-BR": "Customer ID"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "hourofday": {
+                    "property": "HourOfDay",
+                    "names": {
+                        "en": "Hour of day",
+                        "pt-BR": "Hour of day"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "impressions": {
+                    "property": "Impressions",
+                    "names": {
+                        "en": "Impressions",
+                        "pt-BR": "Impressions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "interactionrate": {
+                    "property": "InteractionRate",
+                    "names": {
+                        "en": "Interaction Rate",
+                        "pt-BR": "Interaction Rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "interactions": {
+                    "property": "Interactions",
+                    "names": {
+                        "en": "Interactions",
+                        "pt-BR": "Interactions"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "interactiontypes": {
+                    "property": "InteractionTypes",
+                    "names": {
+                        "en": "Interaction Types",
+                        "pt-BR": "Interaction Types"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "invalidclickrate": {
+                    "property": "InvalidClickRate",
+                    "names": {
+                        "en": "Invalid click rate",
+                        "pt-BR": "Invalid click rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "invalidclicks": {
+                    "property": "InvalidClicks",
+                    "names": {
+                        "en": "Invalid clicks",
+                        "pt-BR": "Invalid clicks"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "isautotaggingenabled": {
+                    "property": "IsAutoTaggingEnabled",
+                    "names": {
+                        "en": "Auto tagging enabled",
+                        "pt-BR": "Auto tagging enabled"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "istestaccount": {
+                    "property": "IsTestAccount",
+                    "names": {
+                        "en": "Test account",
+                        "pt-BR": "Test account"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "month": {
+                    "property": "Month",
+                    "names": {
+                        "en": "Month",
+                        "pt-BR": "Month"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "monthofyear": {
+                    "property": "MonthOfYear",
+                    "names": {
+                        "en": "Month of Year",
+                        "pt-BR": "Month of Year"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "primarycompanyname": {
+                    "property": "PrimaryCompanyName",
+                    "names": {
+                        "en": "Company name",
+                        "pt-BR": "Company name"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "quarter": {
+                    "property": "Quarter",
+                    "names": {
+                        "en": "Quarter",
+                        "pt-BR": "Quarter"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "searchbudgetlostimpressionshare": {
+                    "property": "SearchBudgetLostImpressionShare",
+                    "names": {
+                        "en": "Search Lost IS (budget)",
+                        "pt-BR": "Search Lost IS (budget)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "searchexactmatchimpressionshare": {
+                    "property": "SearchExactMatchImpressionShare",
+                    "names": {
+                        "en": "Search Exact match IS",
+                        "pt-BR": "Search Exact match IS"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "searchimpressionshare": {
+                    "property": "SearchImpressionShare",
+                    "names": {
+                        "en": "Search Impr. share",
+                        "pt-BR": "Search Impr. share"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "searchranklostimpressionshare": {
+                    "property": "SearchRankLostImpressionShare",
+                    "names": {
+                        "en": "Search Lost IS (rank)",
+                        "pt-BR": "Search Lost IS (rank)"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "slot": {
+                    "property": "Slot",
+                    "names": {
+                        "en": "Top vs. Other",
+                        "pt-BR": "Top vs. Other"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "valueperallconversion": {
+                    "property": "ValuePerAllConversion",
+                    "names": {
+                        "en": "Value / all conv.",
+                        "pt-BR": "Value / all conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "valueperconversion": {
+                    "property": "ValuePerConversion",
+                    "names": {
+                        "en": "Value / conv.",
+                        "pt-BR": "Value / conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "valueperconvertedclick": {
+                    "property": "ValuePerConvertedClick",
+                    "names": {
+                        "en": "Value / converted click",
+                        "pt-BR": "Value / converted click"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "videoviewrate": {
+                    "property": "VideoViewRate",
+                    "names": {
+                        "en": "View rate",
+                        "pt-BR": "View rate"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "videoviews": {
+                    "property": "VideoViews",
+                    "names": {
+                        "en": "Views",
+                        "pt-BR": "Views"
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "viewthroughconversions": {
+                    "property": "ViewThroughConversions",
+                    "names": {
+                        "en": "View-through conv.",
+                        "pt-BR": "View-through conv."
+                    },
+                    "is_metric": true,
+                    "is_filter": true,
+                    "is_dimension": false
+                },
+                "week": {
+                    "property": "Week",
+                    "names": {
+                        "en": "Week",
+                        "pt-BR": "Week"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                },
+                "year": {
+                    "property": "Year",
+                    "names": {
+                        "en": "Year",
+                        "pt-BR": "Year"
+                    },
+                    "is_metric": false,
+                    "is_filter": true,
+                    "is_dimension": true
+                }
+            }
+        }
+    },
+    "sources": [
+        {
+            "metric": "activeviewcpm",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewCpm"
+            ],
+            "eval": "(float)$data->ActiveViewCpm"
+        },
+        {
+            "metric": "activeviewctr",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewCtr"
+            ],
+            "eval": "(float)$data->ActiveViewCtr"
+        },
+        {
+            "metric": "activeviewimpressions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewImpressions"
+            ],
+            "eval": "(float)$data->ActiveViewImpressions"
+        },
+        {
+            "metric": "activeviewmeasurability",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewMeasurability"
+            ],
+            "eval": "(float)$data->ActiveViewMeasurability"
+        },
+        {
+            "metric": "activeviewmeasurablecost",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewMeasurableCost"
+            ],
+            "eval": "(float)$data->ActiveViewMeasurableCost"
+        },
+        {
+            "metric": "activeviewmeasurableimpressions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewMeasurableImpressions"
+            ],
+            "eval": "(float)$data->ActiveViewMeasurableImpressions"
+        },
+        {
+            "metric": "activeviewviewability",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewViewability"
+            ],
+            "eval": "(float)$data->ActiveViewViewability"
+        },
+        {
+            "metric": "allconversionrate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AllConversionRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->AllConversionRate)) / 100"
+        },
+        {
+            "metric": "allconversions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AllConversions"
+            ],
+            "eval": "(float)$data->AllConversions"
+        },
+        {
+            "metric": "allconversionvalue",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AllConversionValue"
+            ],
+            "eval": "(float)$data->AllConversionValue"
+        },
+        {
+            "metric": "averagecost",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCost"
+            ],
+            "eval": "(float)$data->AverageCost"
+        },
+        {
+            "metric": "averagecpc",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCpc"
+            ],
+            "eval": "(float)$data->AverageCpc"
+        },
+        {
+            "metric": "averagecpe",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCpe"
+            ],
+            "eval": "(float)$data->AverageCpe"
+        },
+        {
+            "metric": "averagecpm",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCpm"
+            ],
+            "eval": "(float)$data->AverageCpm"
+        },
+        {
+            "metric": "averagecpv",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCpv"
+            ],
+            "eval": "(float)$data->AverageCpv"
+        },
+        {
+            "metric": "averagefrequency",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageFrequency"
+            ],
+            "eval": "(float)$data->AverageFrequency"
+        },
+        {
+            "metric": "averagepageviews",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AveragePageviews"
+            ],
+            "eval": "(float)$data->AveragePageviews"
+        },
+        {
+            "metric": "averageposition",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AveragePosition"
+            ],
+            "eval": "(float)$data->AveragePosition"
+        },
+        {
+            "metric": "averagetimeonsite",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageTimeOnSite"
+            ],
+            "eval": "(float)$data->AverageTimeOnSite"
+        },
+        {
+            "metric": "bouncerate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "BounceRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->BounceRate)) / 100"
+        },
+        {
+            "metric": "clickassistedconversions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ClickAssistedConversions"
+            ],
+            "eval": "(float)$data->ClickAssistedConversions"
+        },
+        {
+            "metric": "clickassistedconversionsoverlastclickconversions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ClickAssistedConversionsOverLastClickConversions"
+            ],
+            "eval": "(float)$data->ClickAssistedConversionsOverLastClickConversions"
+        },
+        {
+            "metric": "clickassistedconversionvalue",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ClickAssistedConversionValue"
+            ],
+            "eval": "(float)$data->ClickAssistedConversionValue"
+        },
+        {
+            "metric": "clickconversionrate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ClickConversionRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->ClickConversionRate)) / 100"
+        },
+        {
+            "metric": "clickconversionratesignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ClickConversionRateSignificance"
+            ],
+            "eval": "(float)$data->ClickConversionRateSignificance"
+        },
+        {
+            "metric": "clicks",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "Clicks"
+            ],
+            "eval": "(float)$data->Clicks"
+        },
+        {
+            "metric": "clicksignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ClickSignificance"
+            ],
+            "eval": "(float)$data->ClickSignificance"
+        },
+        {
+            "metric": "contentbudgetlostimpressionshare",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ContentBudgetLostImpressionShare"
+            ],
+            "eval": "$data->ContentBudgetLostImpressionShare"
+        },
+        {
+            "metric": "contentimpressionshare",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ContentImpressionShare"
+            ],
+            "eval": "$data->ContentImpressionShare"
+        },
+        {
+            "metric": "contentranklostimpressionshare",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ContentRankLostImpressionShare"
+            ],
+            "eval": "$data->ContentRankLostImpressionShare"
+        },
+        {
+            "metric": "conversionrate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ConversionRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->ConversionRate)) / 100"
+        },
+        {
+            "metric": "conversions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "Conversions"
+            ],
+            "eval": "(float)$data->Conversions"
+        },
+        {
+            "metric": "conversionvalue",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ConversionValue"
+            ],
+            "eval": "(float)$data->ConversionValue"
+        },
+        {
+            "metric": "convertedclicks",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ConvertedClicks"
+            ],
+            "eval": "(float)$data->ConvertedClicks"
+        },
+        {
+            "metric": "convertedclickssignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ConvertedClicksSignificance"
+            ],
+            "eval": "(float)$data->ConvertedClicksSignificance"
+        },
+        {
+            "metric": "cost",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "Cost"
+            ],
+            "eval": "(float)$data->Cost"
+        },
+        {
+            "metric": "costperallconversion",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CostPerAllConversion"
+            ],
+            "eval": "(float)$data->CostPerAllConversion"
+        },
+        {
+            "metric": "costperconversion",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CostPerConversion"
+            ],
+            "eval": "(float)$data->CostPerConversion"
+        },
+        {
+            "metric": "costperconvertedclick",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CostPerConvertedClick"
+            ],
+            "eval": "(float)$data->CostPerConvertedClick"
+        },
+        {
+            "metric": "costperconvertedclicksignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CostPerConvertedClickSignificance"
+            ],
+            "eval": "(float)$data->CostPerConvertedClickSignificance"
+        },
+        {
+            "metric": "costsignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CostSignificance"
+            ],
+            "eval": "(float)$data->CostSignificance"
+        },
+        {
+            "metric": "cpcsignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CpcSignificance"
+            ],
+            "eval": "(float)$data->CpcSignificance"
+        },
+        {
+            "metric": "cpmsignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CpmSignificance"
+            ],
+            "eval": "(float)$data->CpmSignificance"
+        },
+        {
+            "metric": "crossdeviceconversions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CrossDeviceConversions"
+            ],
+            "eval": "(float)$data->CrossDeviceConversions"
+        },
+        {
+            "metric": "ctr",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "Ctr"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->Ctr)) / 100"
+        },
+        {
+            "metric": "ctrsignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "CtrSignificance"
+            ],
+            "eval": "(float)$data->CtrSignificance"
+        },
+        {
+            "metric": "engagementrate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "EngagementRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->EngagementRate)) / 100"
+        },
+        {
+            "metric": "engagements",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "Engagements"
+            ],
+            "eval": "(float)$data->Engagements"
+        },
+        {
+            "metric": "gmailforwards",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "GmailForwards"
+            ],
+            "eval": "(float)$data->GmailForwards"
+        },
+        {
+            "metric": "gmailsaves",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "GmailSaves"
+            ],
+            "eval": "(float)$data->GmailSaves"
+        },
+        {
+            "metric": "gmailsecondaryclicks",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "GmailSecondaryClicks"
+            ],
+            "eval": "(float)$data->GmailSecondaryClicks"
+        },
+        {
+            "metric": "impressionassistedconversions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ImpressionAssistedConversions"
+            ],
+            "eval": "(float)$data->ImpressionAssistedConversions"
+        },
+        {
+            "metric": "impressionassistedconversionsoverlastclickconversions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ImpressionAssistedConversionsOverLastClickConversions"
+            ],
+            "eval": "(float)$data->ImpressionAssistedConversionsOverLastClickConversions"
+        },
+        {
+            "metric": "impressionassistedconversionvalue",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ImpressionAssistedConversionValue"
+            ],
+            "eval": "(float)$data->ImpressionAssistedConversionValue"
+        },
+        {
+            "metric": "impressionreach",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ImpressionReach"
+            ],
+            "eval": "$data->ImpressionReach"
+        },
+        {
+            "metric": "impressions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "Impressions"
+            ],
+            "eval": "(float)$data->Impressions"
+        },
+        {
+            "metric": "impressionsignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ImpressionSignificance"
+            ],
+            "eval": "(float)$data->ImpressionSignificance"
+        },
+        {
+            "metric": "interactionrate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "InteractionRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->InteractionRate)) / 100"
+        },
+        {
+            "metric": "interactions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "Interactions"
+            ],
+            "eval": "(float)$data->Interactions"
+        },
+        {
+            "metric": "interactiontypes",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "InteractionTypes"
+            ],
+            "eval": "(float)$data->InteractionTypes"
+        },
+        {
+            "metric": "invalidclickrate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "InvalidClickRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->InvalidClickRate)) / 100"
+        },
+        {
+            "metric": "invalidclicks",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "InvalidClicks"
+            ],
+            "eval": "(float)$data->InvalidClicks"
+        },
+        {
+            "metric": "numofflineimpressions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "NumOfflineImpressions"
+            ],
+            "eval": "(float)$data->NumOfflineImpressions"
+        },
+        {
+            "metric": "numofflineinteractions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "NumOfflineInteractions"
+            ],
+            "eval": "(float)$data->NumOfflineInteractions"
+        },
+        {
+            "metric": "offlineinteractionrate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "OfflineInteractionRate"
+            ],
+            "eval": "(float)$data->OfflineInteractionRate"
+        },
+        {
+            "metric": "percentnewvisitors",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "PercentNewVisitors"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->PercentNewVisitors)) / 100"
+        },
+        {
+            "metric": "positionsignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "PositionSignificance"
+            ],
+            "eval": "(float)$data->PositionSignificance"
+        },
+        {
+            "metric": "relativectr",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "RelativeCtr"
+            ],
+            "eval": "(float)$data->RelativeCtr"
+        },
+        {
+            "metric": "searchbudgetlostimpressionshare",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "SearchBudgetLostImpressionShare"
+            ],
+            "eval": "$data->SearchBudgetLostImpressionShare"
+        },
+        {
+            "metric": "searchexactmatchimpressionshare",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "SearchExactMatchImpressionShare"
+            ],
+            "eval": "$data->SearchExactMatchImpressionShare"
+        },
+        {
+            "metric": "searchimpressionshare",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "SearchImpressionShare"
+            ],
+            "eval": "$data->SearchImpressionShare"
+        },
+        {
+            "metric": "searchranklostimpressionshare",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "SearchRankLostImpressionShare"
+            ],
+            "eval": "$data->SearchRankLostImpressionShare"
+        },
+        {
+            "metric": "valueperallconversion",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ValuePerAllConversion"
+            ],
+            "eval": "(float)$data->ValuePerAllConversion"
+        },
+        {
+            "metric": "valueperconversion",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ValuePerConversion"
+            ],
+            "eval": "(float)$data->ValuePerConversion"
+        },
+        {
+            "metric": "valueperconvertedclick",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ValuePerConvertedClick"
+            ],
+            "eval": "(float)$data->ValuePerConvertedClick"
+        },
+        {
+            "metric": "videoquartile100rate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "VideoQuartile100Rate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->VideoQuartile100Rate)) / 100"
+        },
+        {
+            "metric": "videoquartile25rate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "VideoQuartile25Rate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->VideoQuartile25Rate)) / 100"
+        },
+        {
+            "metric": "videoquartile50rate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "VideoQuartile50Rate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->VideoQuartile50Rate)) / 100"
+        },
+        {
+            "metric": "videoquartile75rate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "VideoQuartile75Rate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->VideoQuartile75Rate)) / 100"
+        },
+        {
+            "metric": "videoviewrate",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "VideoViewRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->VideoViewRate)) / 100"
+        },
+        {
+            "metric": "videoviews",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "VideoViews"
+            ],
+            "eval": "(float)$data->VideoViews"
+        },
+        {
+            "metric": "viewthroughconversions",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ViewThroughConversions"
+            ],
+            "eval": "(float)$data->ViewThroughConversions"
+        },
+        {
+            "metric": "viewthroughconversionssignificance",
+            "entity": "Campaign",
+            "platform": "adwords",
+            "report": "CAMPAIGN_PERFORMANCE_REPORT",
+            "fields": [
+                "ViewThroughConversionsSignificance"
+            ],
+            "eval": "(float)$data->ViewThroughConversionsSignificance"
+        },
+        {
+            "metric": "activeviewcpm",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewCpm"
+            ],
+            "eval": "(float)$data->ActiveViewCpm"
+        },
+        {
+            "metric": "activeviewctr",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewCtr"
+            ],
+            "eval": "(float)$data->ActiveViewCtr"
+        },
+        {
+            "metric": "activeviewimpressions",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewImpressions"
+            ],
+            "eval": "(float)$data->ActiveViewImpressions"
+        },
+        {
+            "metric": "activeviewmeasurability",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewMeasurability"
+            ],
+            "eval": "(float)$data->ActiveViewMeasurability"
+        },
+        {
+            "metric": "activeviewmeasurablecost",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewMeasurableCost"
+            ],
+            "eval": "(float)$data->ActiveViewMeasurableCost"
+        },
+        {
+            "metric": "activeviewmeasurableimpressions",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewMeasurableImpressions"
+            ],
+            "eval": "(float)$data->ActiveViewMeasurableImpressions"
+        },
+        {
+            "metric": "activeviewviewability",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ActiveViewViewability"
+            ],
+            "eval": "(float)$data->ActiveViewViewability"
+        },
+        {
+            "metric": "allconversionrate",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AllConversionRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->AllConversionRate)) / 100"
+        },
+        {
+            "metric": "allconversions",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AllConversions"
+            ],
+            "eval": "(float)$data->AllConversions"
+        },
+        {
+            "metric": "allconversionvalue",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AllConversionValue"
+            ],
+            "eval": "(float)$data->AllConversionValue"
+        },
+        {
+            "metric": "averagecost",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCost"
+            ],
+            "eval": "(float)$data->AverageCost"
+        },
+        {
+            "metric": "averagecpc",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCpc"
+            ],
+            "eval": "(float)$data->AverageCpc"
+        },
+        {
+            "metric": "averagecpe",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCpe"
+            ],
+            "eval": "(float)$data->AverageCpe"
+        },
+        {
+            "metric": "averagecpm",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCpm"
+            ],
+            "eval": "(float)$data->AverageCpm"
+        },
+        {
+            "metric": "averagecpv",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AverageCpv"
+            ],
+            "eval": "(float)$data->AverageCpv"
+        },
+        {
+            "metric": "averageposition",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "AveragePosition"
+            ],
+            "eval": "(float)$data->AveragePosition"
+        },
+        {
+            "metric": "clickconversionrate",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ClickConversionRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->ClickConversionRate)) / 100"
+        },
+        {
+            "metric": "clicks",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "Clicks"
+            ],
+            "eval": "(float)$data->Clicks"
+        },
+        {
+            "metric": "contentbudgetlostimpressionshare",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ContentBudgetLostImpressionShare"
+            ],
+            "eval": "$data->ContentBudgetLostImpressionShare"
+        },
+        {
+            "metric": "contentimpressionshare",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ContentImpressionShare"
+            ],
+            "eval": "$data->ContentImpressionShare"
+        },
+        {
+            "metric": "contentranklostimpressionshare",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ContentRankLostImpressionShare"
+            ],
+            "eval": "$data->ContentRankLostImpressionShare"
+        },
+        {
+            "metric": "conversionrate",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ConversionRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->ConversionRate)) / 100"
+        },
+        {
+            "metric": "conversions",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "Conversions"
+            ],
+            "eval": "(float)$data->Conversions"
+        },
+        {
+            "metric": "conversionvalue",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ConversionValue"
+            ],
+            "eval": "(float)$data->ConversionValue"
+        },
+        {
+            "metric": "convertedclicks",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ConvertedClicks"
+            ],
+            "eval": "(float)$data->ConvertedClicks"
+        },
+        {
+            "metric": "cost",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "Cost"
+            ],
+            "eval": "(float)$data->Cost"
+        },
+        {
+            "metric": "costperallconversion",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "CostPerAllConversion"
+            ],
+            "eval": "(float)$data->CostPerAllConversion"
+        },
+        {
+            "metric": "costperconversion",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "CostPerConversion"
+            ],
+            "eval": "(float)$data->CostPerConversion"
+        },
+        {
+            "metric": "costperconvertedclick",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "CostPerConvertedClick"
+            ],
+            "eval": "(float)$data->CostPerConvertedClick"
+        },
+        {
+            "metric": "crossdeviceconversions",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "CrossDeviceConversions"
+            ],
+            "eval": "(float)$data->CrossDeviceConversions"
+        },
+        {
+            "metric": "ctr",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "Ctr"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->Ctr)) / 100"
+        },
+        {
+            "metric": "engagementrate",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "EngagementRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->EngagementRate)) / 100"
+        },
+        {
+            "metric": "engagements",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "Engagements"
+            ],
+            "eval": "(float)$data->Engagements"
+        },
+        {
+            "metric": "impressions",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "Impressions"
+            ],
+            "eval": "(float)$data->Impressions"
+        },
+        {
+            "metric": "interactionrate",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "InteractionRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->InteractionRate)) / 100"
+        },
+        {
+            "metric": "interactions",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "Interactions"
+            ],
+            "eval": "(float)$data->Interactions"
+        },
+        {
+            "metric": "interactiontypes",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "InteractionTypes"
+            ],
+            "eval": "(float)$data->InteractionTypes"
+        },
+        {
+            "metric": "invalidclickrate",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "InvalidClickRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->InvalidClickRate)) / 100"
+        },
+        {
+            "metric": "invalidclicks",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "InvalidClicks"
+            ],
+            "eval": "(float)$data->InvalidClicks"
+        },
+        {
+            "metric": "searchbudgetlostimpressionshare",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "SearchBudgetLostImpressionShare"
+            ],
+            "eval": "$data->SearchBudgetLostImpressionShare"
+        },
+        {
+            "metric": "searchexactmatchimpressionshare",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "SearchExactMatchImpressionShare"
+            ],
+            "eval": "$data->SearchExactMatchImpressionShare"
+        },
+        {
+            "metric": "searchimpressionshare",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "SearchImpressionShare"
+            ],
+            "eval": "$data->SearchImpressionShare"
+        },
+        {
+            "metric": "searchranklostimpressionshare",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "SearchRankLostImpressionShare"
+            ],
+            "eval": "$data->SearchRankLostImpressionShare"
+        },
+        {
+            "metric": "valueperallconversion",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ValuePerAllConversion"
+            ],
+            "eval": "(float)$data->ValuePerAllConversion"
+        },
+        {
+            "metric": "valueperconversion",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ValuePerConversion"
+            ],
+            "eval": "(float)$data->ValuePerConversion"
+        },
+        {
+            "metric": "valueperconvertedclick",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ValuePerConvertedClick"
+            ],
+            "eval": "(float)$data->ValuePerConvertedClick"
+        },
+        {
+            "metric": "videoviewrate",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "VideoViewRate"
+            ],
+            "eval": "floatval(str_replace(\"%\", \"\", $data->VideoViewRate)) / 100"
+        },
+        {
+            "metric": "videoviews",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "VideoViews"
+            ],
+            "eval": "(float)$data->VideoViews"
+        },
+        {
+            "metric": "viewthroughconversions",
+            "entity": "Account",
+            "platform": "adwords",
+            "report": "ACCOUNT_PERFORMANCE_REPORT",
+            "fields": [
+                "ViewThroughConversions"
+            ],
+            "eval": "(float)$data->ViewThroughConversions"
+        }
+    ]
+}

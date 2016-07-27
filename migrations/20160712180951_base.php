@@ -18,7 +18,7 @@ class Base extends AbstractMigration
             ->create();
 
         $this->table('metric', ['id' => false, 'primary_key' => ['id']])
-            ->addColumn('id', 'string', ['limit' => 30])
+            ->addColumn('id', 'string', ['limit' => 100])
             ->addColumn('names', 'jsonb')
             ->addColumn('type', 'string', ['limit' => 30])
             ->addColumn('creation', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'timezone' => true])
@@ -38,7 +38,7 @@ class Base extends AbstractMigration
 
         $this->table('metric_source', ['id' => false, 'primary_key' => ['id']])
             ->addColumn('id', 'string', ['limit' => 30])
-            ->addColumn('metric', 'string', ['limit' => 30])
+            ->addColumn('metric', 'string', ['limit' => 100])
             ->addColumn('entity', 'string', ['limit' => 30])
             ->addColumn('platform', 'string', ['limit' => 30])
             ->addColumn('fields', 'jsonb')
