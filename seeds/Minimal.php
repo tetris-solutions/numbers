@@ -92,16 +92,6 @@ class Minimal extends AbstractSeed
             'is_filter' => false
         ];
 
-        $networkAttr = [
-            'property' => 'AdNetworkType1',
-            'names' => [
-                'en' => 'AD Network',
-                'pt-BR' => 'Pilar de mídia'
-            ],
-            'is_dimension' => true,
-            'is_filter' => false
-        ];
-
         $this->table('report')
             ->insert([
                 [
@@ -110,21 +100,19 @@ class Minimal extends AbstractSeed
                         'id' => [
                             'property' => 'CampaignId',
                             'names' => [
-                                'en' => 'Campaign Id',
-                                'pt-BR' => 'Id da Campanha'
+                                'en' => 'Campaign',
+                                'pt-BR' => 'Campanha'
                             ],
                             'is_dimension' => true,
                             'is_filter' => true
                         ],
-                        'date' => $dateAttr,
-                        'network' => $networkAttr
+                        'date' => $dateAttr
                     ])
                 ],
                 [
                     'id' => 'ACCOUNT_PERFORMANCE_REPORT',
                     'attributes' => json_encode([
-                        'date' => $dateAttr,
-                        'network' => $networkAttr
+                        'date' => $dateAttr
                     ])
                 ],
                 [
