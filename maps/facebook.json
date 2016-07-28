@@ -88,32 +88,32 @@
             "id": "cpc",
             "type": "currency",
             "names": {
-                "en": "Cpc",
-                "pt-BR": "Cpc"
+                "en": "CPC",
+                "pt-BR": "CPC"
             }
         },
         "cpm": {
             "id": "cpm",
             "type": "currency",
             "names": {
-                "en": "Cpm",
-                "pt-BR": "Cpm"
+                "en": "CPM",
+                "pt-BR": "CPM"
             }
         },
         "cpp": {
             "id": "cpp",
             "type": "currency",
             "names": {
-                "en": "Cpp",
-                "pt-BR": "Cpp"
+                "en": "CPP",
+                "pt-BR": "CPP"
             }
         },
         "ctr": {
             "id": "ctr",
             "type": "quantity",
             "names": {
-                "en": "Ctr",
-                "pt-BR": "Ctr"
+                "en": "CTR",
+                "pt-BR": "CTR"
             }
         },
         "deeplink_clicks": {
@@ -542,8 +542,8 @@
                 "cpc": {
                     "property": "cpc",
                     "names": {
-                        "en": "Cpc",
-                        "pt-BR": "Cpc"
+                        "en": "CPC",
+                        "pt-BR": "CPC"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -552,8 +552,8 @@
                 "cpm": {
                     "property": "cpm",
                     "names": {
-                        "en": "Cpm",
-                        "pt-BR": "Cpm"
+                        "en": "CPM",
+                        "pt-BR": "CPM"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -562,8 +562,8 @@
                 "cpp": {
                     "property": "cpp",
                     "names": {
-                        "en": "Cpp",
-                        "pt-BR": "Cpp"
+                        "en": "CPP",
+                        "pt-BR": "CPP"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -572,8 +572,8 @@
                 "ctr": {
                     "property": "ctr",
                     "names": {
-                        "en": "Ctr",
-                        "pt-BR": "Ctr"
+                        "en": "CTR",
+                        "pt-BR": "CTR"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -582,8 +582,8 @@
                 "date": {
                     "property": "date_start",
                     "names": {
-                        "en": "Date Start",
-                        "pt-BR": "Date Start"
+                        "en": "Date",
+                        "pt-BR": "Date"
                     },
                     "is_metric": false,
                     "is_dimension": true,
@@ -1187,8 +1187,8 @@
                 "cpc": {
                     "property": "cpc",
                     "names": {
-                        "en": "Cpc",
-                        "pt-BR": "Cpc"
+                        "en": "CPC",
+                        "pt-BR": "CPC"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1197,8 +1197,8 @@
                 "cpm": {
                     "property": "cpm",
                     "names": {
-                        "en": "Cpm",
-                        "pt-BR": "Cpm"
+                        "en": "CPM",
+                        "pt-BR": "CPM"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1207,8 +1207,8 @@
                 "cpp": {
                     "property": "cpp",
                     "names": {
-                        "en": "Cpp",
-                        "pt-BR": "Cpp"
+                        "en": "CPP",
+                        "pt-BR": "CPP"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1217,8 +1217,8 @@
                 "ctr": {
                     "property": "ctr",
                     "names": {
-                        "en": "Ctr",
-                        "pt-BR": "Ctr"
+                        "en": "CTR",
+                        "pt-BR": "CTR"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1227,8 +1227,8 @@
                 "date": {
                     "property": "date_start",
                     "names": {
-                        "en": "Date Start",
-                        "pt-BR": "Date Start"
+                        "en": "Date",
+                        "pt-BR": "Date"
                     },
                     "is_metric": false,
                     "is_dimension": true,
