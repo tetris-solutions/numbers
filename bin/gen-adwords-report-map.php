@@ -45,7 +45,10 @@ foreach ($mappings as $reportName => $properties) {
     foreach ($properties as $name => $metadata) {
         $id = strtolower($name);
 
-        if (strpos($name, $entity) === 0) {
+        // name looks like <Campaign>FieldName
+        $nameStartsWithEntity = strpos($name, $entity) === 0;
+
+        if ($nameStartsWithEntity) {
             $id = substr($id, strlen($entity));
         }
 

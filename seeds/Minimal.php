@@ -37,18 +37,29 @@ class Minimal extends AbstractSeed
             ])
             ->save();
 
-        $map = json_decode(file_get_contents(__DIR__ . '/../src/adwords-map.json'), true);
+        $adwordsMap = json_decode(file_get_contents(__DIR__ . '/../maps/adwords.json'), true);
+        $fbMap = json_decode(file_get_contents(__DIR__ . '/../maps/facebook.json'), true);
 
         $this->table('entity')
             ->insert(array_map(function ($id) {
                 return ['id' => $id];
-            }, $map['entities']))
+            }, $adwordsMap['entities']))
             ->save();
 
         $metrics = [];
 
-        foreach ($map['metrics'] as $metric) {
-            $metrics[] = [
+        foreach ($adwordsMap['metrics'] as $metric) {
+            $metrics[$metric['id']] = [
+                'id' => $metric['id'],
+                'names' => json_encode($metric['names']),
+                'type' => $metric['type']
+            ];
+        }
+
+        foreach ($fbMap['metrics'] as $metric) {
+            if (isset($metrics[$metric['id']])) continue;
+
+            $metrics[$metric['id']] = [
                 'id' => $metric['id'],
                 'names' => json_encode($metric['names']),
                 'type' => $metric['type']
@@ -56,31 +67,30 @@ class Minimal extends AbstractSeed
         }
 
         $this->table('metric')
-            ->insert($metrics)
+            ->insert(array_values($metrics))
             ->save();
 
-        $reports = [];
-
-        foreach ($map['reports'] as $report) {
-            $reports[] = [
+        $reports = array_merge($fbMap['reports'], $adwordsMap['reports']);
+        $reports = array_map(function ($report) {
+            return [
                 'id' => $report['id'],
                 'attributes' => json_encode($report['attributes'])
             ];
-        }
+        }, $reports);
 
         $this->table('report')
-            ->insert($reports)
+            ->insert(array_values($reports))
             ->save();
 
-        $sources = [];
-        foreach ($map['sources'] as $source) {
+        $sources = array_merge($fbMap['sources'], $adwordsMap['sources']);
+        $sources = array_map(function ($source) {
             $source['id'] = Shortid::generate();
             $source['fields'] = json_encode($source['fields']);
-            $sources[] = $source;
-        }
+            return $source;
+        }, $sources);
 
         $this->table('metric_source')
-            ->insert($sources)
+            ->insert(array_values($sources))
             ->save();
     }
 }

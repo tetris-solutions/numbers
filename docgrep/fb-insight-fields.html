@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="parse-insights.js"></script>
+</head>
+<body>
+<table id='insights' class="_4-ss _5k9x">
+    <thead>
+    <tr>
+        <th>Field</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><p class="_yc"><span><code>account_id</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>ID number that is unique to your ad account.</p>
+            <p></p>
+            <div class="_2pic"><a href="/docs/graph-api/using-graph-api/#fields" target="blank"><span class="_1vet">Default</span></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>account_name</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The grouping of all your specific ads activity. Your ad account includes different campaigns, ads and
+                billing information.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>action_values</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The total revenue returned from conversions or Facebook credit spends that occurred on your website or
+                app.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of actions taken on your ad, Page, app or event after your ad was served to someone, even if
+                they didn't click on it. Actions include Page likes, app installs, conversions, event responses and
+                more. For example, 2 Page likes and 2 comments would be counted as 4 actions.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>ad_id</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>ID number that is unique to each ad.</p>
+            <p></p>
+            <div class="_2pic"><a href="/docs/graph-api/using-graph-api/#fields" target="blank"><span class="_1vet">Default</span></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>ad_name</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>An individual ad includes its creative (ex: the image and text it uses) and the specific audience it
+                targets.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>adset_id</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>ID number that is unique to each ad set.</p>
+            <p></p>
+            <div class="_2pic"><a href="/docs/graph-api/using-graph-api/#fields" target="blank"><span class="_1vet">Default</span></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>adset_name</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>A group of ads that share the same budget and are usually about a single topic.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>age</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The age range of the people you've reached.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>app_store_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The numbers of clicks that go to app store after user clicks your ads</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>buying_type</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The method by which you pay for and target ads in your campaigns: through dynamic auction bidding,
+                fixed-price bidding, or reach and frequency buying.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>call_to_action_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of clicks on the call to action button your ad receives.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>campaign_id</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>ID number that is unique to each campaign.</p>
+            <p></p>
+            <div class="_2pic"><a href="/docs/graph-api/using-graph-api/#fields" target="blank"><span class="_1vet">Default</span></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>campaign_name</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>A group of ad sets that share the same objective.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>canvas_avg_view_percent</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average percentage of the Canvas seen</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>canvas_avg_view_time</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average time spent in seconds, within a Canvas unit</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The total number of clicks on your ad. Depending on what you're promoting, this can include Page likes,
+                event responses or app installs.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cost_per_10_sec_video_view</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average cost per 10-second video view, calculated as the amount spent divided by the number of
+                10-second video views.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cost_per_action_type</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average you've spent on actions. For example, if you spent $20 and you got 10 Page likes, each one
+                cost an average of $2.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cost_per_inline_link_click</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average you paid for each inline link click</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cost_per_inline_post_engagement</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average you paid for each inline post engagement</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cost_per_total_action</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average you've spent on actions. For example, if you spent $20 and you got 10 Page likes, each one
+                cost an average of $2.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cost_per_unique_action_type</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average you paid for each type of unique action.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cost_per_unique_click</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average cost per unique click for these ads, calculated as the amount spent divided by the number of
+                unique clicks received.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cost_per_unique_inline_link_click</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average you paid for each unique inline link click</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>country</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The countries where the people you've reached are located. This is based on information such as a
+                person's hometown, their current city and the geographical location where they tend to be when they
+                visit Facebook.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cpc</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average cost per click for these ads, calculated as the amount spent divided by the number of clicks
+                received.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cpm</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average cost you've paid to have 1,000 impressions on your ad.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>cpp</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average cost you've paid to have your ad served to 1,000 unique people.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>ctr</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of clicks you received divided by the number of impressions.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>date_start</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The start date for your data.</p>
+            <p></p>
+            <div class="_2pic"><a href="/docs/graph-api/using-graph-api/#fields" target="blank"><span class="_1vet">Default</span></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>date_stop</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The end date for your data.</p>
+            <p></p>
+            <div class="_2pic"><a href="/docs/graph-api/using-graph-api/#fields" target="blank"><span class="_1vet">Default</span></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>deeplink_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The numbers of clicks that go to app after user clicks your ads</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>frequency</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average number of times your ad was served to each person.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>frequency_value</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times an ad in your Reach and Frequency campaign was served to each person.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>gender</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>Gender of people you've reached. People who don't list their gender are shown as 'not specified'.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>hourly_stats_aggregated_by_advertiser_time_zone</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>Hourly breakdown aggregated by the time ads were delivered in the advertiser's time zone. For example, if
+                your ads are scheduled to run from 9 AM to 11 AM, but they reach audiences in multiple time zones, they
+                may deliver from 9 AM to 1 PM in the advertiser's time zone. Stats will be aggregated into four groups 9
+                AM - 10 AM, 10 AM - 11 AM, 11 AM - 12 PM, and 12 PM - 1 PM.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>hourly_stats_aggregated_by_audience_time_zone</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>Hourly breakdown aggregated by the time ads were delivered in the audiences' time zone. For example, if
+                your ads are scheduled to run from 9 AM to 11 AM but they reach audiences in multiple time zones, they
+                may deliver from 9 AM to 1 PM in the advertiser's time zone. Stats will be aggregated into two groups 9
+                AM - 10 AM and 10 AM - 11 AM.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>impression_device</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The device where your last ad was served to someone on Facebook. For example "iPhone" if someone viewed
+                your ad on an iPhone.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>impressions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times your ad was served. On our mobile apps an ad is counted as served the first time it's
+                viewed. On all other Facebook interfaces, an ad is served the first time it's placed in a person's News
+                Feed or each time it's placed in the right column.</p>
+            <p></p>
+            <div class="_2pic"><a href="/docs/graph-api/using-graph-api/#fields" target="blank"><span class="_1vet">Default</span></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>inline_link_click_ctr</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>Click-through rate for inline clicks to link.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>inline_link_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of inline link clicks that your ad got</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>inline_post_engagement</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of inline post engagement that your ad got</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>newsfeed_avg_position</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average position where your ad was inserted into people's news feeds on mobile and desktop. Position
+                1 is the one at the top of the feed.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>newsfeed_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The total number of clicks your ad received in people's news feed, on mobile and desktop.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>newsfeed_impressions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The total number of times your ad was inserted into people's news feeds, on mobile and desktop.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>objective</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The objective you selected for your ad, ad set, or campaign. Your objective reflects what you want to
+                achieve with ads.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc _3z_4"><span><code>place_page_id</code></span></p>
+            <div class="clearfix"><a data-hover="tooltip" class="_2pir" href="#" role="button" id="u_0_f"
+                                     data-tooltip-content="Only visible to the following apps: AdPeek, tetris, garupa, ytp, garupa - dev and ytp - dev. "><i
+                    class="img sp_fZxMWSOsN22 sx_5cc18f"></i></a></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The id of the place page involved in impression, click or action.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc _3z_4"><span><code>place_page_name</code></span></p>
+            <div class="clearfix"><a data-hover="tooltip" class="_2pir" href="#" role="button" id="u_0_g"
+                                     data-tooltip-content="Only visible to the following apps: AdPeek, tetris, garupa, ytp, garupa - dev and ytp - dev. "><i
+                    class="img sp_fZxMWSOsN22 sx_5cc18f"></i></a></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The name of the place page involved in impression, click or action. Has to be used together with Business
+                Locations breakdown.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>placement</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>Where your ad was served on Facebook, for example on Newsfeed on a mobile device.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>product_id</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The id and name of the product involved in impression, click or action.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>reach</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of people your ad was served to. This is the same as <code>unique_impressions</code>.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>region</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The regions where the people you've reached are located. This is based on information such as a person's
+                hometown, their current city and the geographical location where they tend to be when they visit
+                Facebook.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>relevance_score</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>AdgroupRelevanceScore</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>Ad relevance score is multiple metrics related to how your audience responded to your ad. Only available
+                at ad level and will not be returned for aggregations at other levels.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>social_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of clicks your ad receives when it's shown with social information (ex: Jane Doe likes
+                this).</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>social_impressions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times your ad was served, with social information. For example, if 3 people are served an
+                ad 2 times each and it includes information about a friend liking your Page, it counts as 6 social
+                impressions.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>social_reach</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of people your ad was served to with social information. For example, if 3 people see an ad 2
+                times each that says a friend likes your Page, it counts as 3 social reaches.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>social_spend</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The total amount you've spent so far for your ads showed with social information. (ex: Jane Doe likes
+                this).</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>spend</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The total amount you've spent so far.</p>
+            <p></p>
+            <div class="_2pic"><a href="/docs/graph-api/using-graph-api/#fields" target="blank"><span class="_1vet">Default</span></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>total_action_value</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The total revenue returned from conversions or Facebook credit spends that occurred on your website or
+                app.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>total_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of actions taken on your ad, Page, app or event after your ad was served to someone, even if
+                they didn't click on it. Actions include Page likes, app installs, conversions, event responses and
+                more. For example, 2 Page likes and 2 comments would be counted as 4 actions.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>total_unique_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of unique people who took an action such as liking your Page or installing your app as a
+                result of your ad. For example, if the same person likes and comments on a post, they will be counted as
+                1 unique person.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of actions taken on your ad, Page, app or event after your ad was served to someone, even if
+                they didn't click on it. Actions include Page likes, app installs, conversions, event responses and
+                more. For example, 2 Page likes and 2 comments would be counted as 4 actions.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The total number of unique people who have clicked on your ad. For example, if 3 people click on the same
+                ad 5 times, it will count as 3 unique clicks.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_ctr</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of people who clicked on your ad divided by the number of people you reached. For example, if
+                you received 20 unique clicks and your ad was served to 1,000 unique people, your unique click-through
+                rate would be 2%.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_impressions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of individuals the ad was served to on the site. This is the same as <code>reach</code>.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_inline_link_click_ctr</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>Click-through rate for unique inline clicks to link.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_inline_link_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of unique inline link clicks that your ad got</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_link_clicks_ctr</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>float</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>Unique click-through rate for clicks to link. The number of people who clicked on the link in your ad
+                that directs people off Facebook divided by the number of people you reached. Example: if you received
+                20 unique clicks to link and your ad was shown to 1,000 unique people, your unique click-through rate
+                would be 2%.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_social_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of individuals who clicked this ad while it had social context.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>unique_social_impressions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of people the ad was served to with social context.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_10_sec_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>This shows the number of total views of at least 10 seconds or to the end of your video, whichever occurs
+                first.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_15_sec_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times your video was viewed more than 15 seconds, including views that skipped to this
+                point.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_30_sec_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>This shows the number of total views of at least 30 seconds or to the end of your video, whichever occurs
+                first.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_avg_pct_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average percentage of your video that people viewed. This is the total video watch percentage for
+                your video divided by the total number of times your video was played.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_avg_sec_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The average length of time people spent viewing your video. This is the total video watch time for your
+                video divided by the total number of times your video was played.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_complete_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>This shows the number of total views of at least 30 seconds or to the end of your video, whichever occurs
+                first.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_p100_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times your video was viewed to 100% of its length, including views that skipped to this
+                point.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_p25_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times your video was viewed to 25% of its length, including views that skipped to this
+                point.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_p50_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times your video was viewed to 50% of its length, including views that skipped to this
+                point.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_p75_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times your video was viewed to 75% of its length, including views that skipped to this
+                point.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>video_p95_watched_actions</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of times your video was viewed to 95% of its length, including views that skipped to this
+                point.</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>website_clicks</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><span>numeric string</span></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The numbers of clicks that go to web after user clicks your ads</p>
+            <p></p></td>
+    </tr>
+    <tr>
+        <td><p class="_yc"><span><code>website_ctr</code></span></p>
+            <div class=""></div>
+            <div class="_yb _yc"><a
+                    href="/docs/marketing-api/reference/ads-action-stats/">list&lt;AdsActionStats&gt;</a></div>
+        </td>
+        <td><p class="_yd"></p>
+            <p>The number of link clicks a product received divided by the number of impressions of the product, only
+                applicable for multi-product ads.</p>
+            <p></p></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

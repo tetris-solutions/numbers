@@ -1,0 +1,422 @@
+{
+  "account_id": {
+    "id": "account_id",
+    "type": "numeric string",
+    "description": "ID number that is unique to your ad account."
+  },
+  "account_name": {
+    "id": "account_name",
+    "type": "string",
+    "description": "The grouping of all your specific ads activity. Your ad account includes different campaigns, ads and billing information."
+  },
+  "action_values": {
+    "id": "action_values",
+    "type": "list<AdsActionStats>",
+    "description": "The total revenue returned from conversions or Facebook credit spends that occurred on your website or app."
+  },
+  "actions": {
+    "id": "actions",
+    "type": "list<AdsActionStats>",
+    "description": "The number of actions taken on your ad, Page, app or event after your ad was served to someone, even if they didn't click on it. Actions include Page likes, app installs, conversions, event responses and more. For example, 2 Page likes and 2 comments would be counted as 4 actions."
+  },
+  "ad_id": {
+    "id": "ad_id",
+    "type": "numeric string",
+    "description": "ID number that is unique to each ad."
+  },
+  "ad_name": {
+    "id": "ad_name",
+    "type": "string",
+    "description": "An individual ad includes its creative (ex: the image and text it uses) and the specific audience it targets."
+  },
+  "adset_id": {
+    "id": "adset_id",
+    "type": "numeric string",
+    "description": "ID number that is unique to each ad set."
+  },
+  "adset_name": {
+    "id": "adset_name",
+    "type": "string",
+    "description": "A group of ads that share the same budget and are usually about a single topic."
+  },
+  "age": {
+    "id": "age",
+    "type": "string",
+    "description": "The age range of the people you've reached."
+  },
+  "app_store_clicks": {
+    "id": "app_store_clicks",
+    "type": "numeric string",
+    "description": "The numbers of clicks that go to app store after user clicks your ads"
+  },
+  "buying_type": {
+    "id": "buying_type",
+    "type": "string",
+    "description": "The method by which you pay for and target ads in your campaigns: through dynamic auction bidding, fixed-price bidding, or reach and frequency buying."
+  },
+  "call_to_action_clicks": {
+    "id": "call_to_action_clicks",
+    "type": "numeric string",
+    "description": "The number of clicks on the call to action button your ad receives."
+  },
+  "campaign_id": {
+    "id": "campaign_id",
+    "type": "numeric string",
+    "description": "ID number that is unique to each campaign."
+  },
+  "campaign_name": {
+    "id": "campaign_name",
+    "type": "string",
+    "description": "A group of ad sets that share the same objective."
+  },
+  "canvas_avg_view_percent": {
+    "id": "canvas_avg_view_percent",
+    "type": "float",
+    "description": "The average percentage of the Canvas seen"
+  },
+  "canvas_avg_view_time": {
+    "id": "canvas_avg_view_time",
+    "type": "float",
+    "description": "The average time spent in seconds, within a Canvas unit"
+  },
+  "clicks": {
+    "id": "clicks",
+    "type": "numeric string",
+    "description": "The total number of clicks on your ad. Depending on what you're promoting, this can include Page likes, event responses or app installs."
+  },
+  "cost_per_10_sec_video_view": {
+    "id": "cost_per_10_sec_video_view",
+    "type": "list<AdsActionStats>",
+    "description": "The average cost per 10-second video view, calculated as the amount spent divided by the number of 10-second video views."
+  },
+  "cost_per_action_type": {
+    "id": "cost_per_action_type",
+    "type": "list<AdsActionStats>",
+    "description": "The average you've spent on actions. For example, if you spent $20 and you got 10 Page likes, each one cost an average of $2."
+  },
+  "cost_per_inline_link_click": {
+    "id": "cost_per_inline_link_click",
+    "type": "float",
+    "description": "The average you paid for each inline link click"
+  },
+  "cost_per_inline_post_engagement": {
+    "id": "cost_per_inline_post_engagement",
+    "type": "float",
+    "description": "The average you paid for each inline post engagement"
+  },
+  "cost_per_total_action": {
+    "id": "cost_per_total_action",
+    "type": "float",
+    "description": "The average you've spent on actions. For example, if you spent $20 and you got 10 Page likes, each one cost an average of $2."
+  },
+  "cost_per_unique_action_type": {
+    "id": "cost_per_unique_action_type",
+    "type": "list<AdsActionStats>",
+    "description": "The average you paid for each type of unique action."
+  },
+  "cost_per_unique_click": {
+    "id": "cost_per_unique_click",
+    "type": "float",
+    "description": "The average cost per unique click for these ads, calculated as the amount spent divided by the number of unique clicks received."
+  },
+  "cost_per_unique_inline_link_click": {
+    "id": "cost_per_unique_inline_link_click",
+    "type": "float",
+    "description": "The average you paid for each unique inline link click"
+  },
+  "country": {
+    "id": "country",
+    "type": "string",
+    "description": "The countries where the people you've reached are located. This is based on information such as a person's hometown, their current city and the geographical location where they tend to be when they visit Facebook."
+  },
+  "cpc": {
+    "id": "cpc",
+    "type": "float",
+    "description": "The average cost per click for these ads, calculated as the amount spent divided by the number of clicks received."
+  },
+  "cpm": {
+    "id": "cpm",
+    "type": "float",
+    "description": "The average cost you've paid to have 1,000 impressions on your ad."
+  },
+  "cpp": {
+    "id": "cpp",
+    "type": "float",
+    "description": "The average cost you've paid to have your ad served to 1,000 unique people."
+  },
+  "ctr": {
+    "id": "ctr",
+    "type": "float",
+    "description": "The number of clicks you received divided by the number of impressions."
+  },
+  "date_start": {
+    "id": "date_start",
+    "type": "string",
+    "description": "The start date for your data."
+  },
+  "date_stop": {
+    "id": "date_stop",
+    "type": "string",
+    "description": "The end date for your data."
+  },
+  "deeplink_clicks": {
+    "id": "deeplink_clicks",
+    "type": "numeric string",
+    "description": "The numbers of clicks that go to app after user clicks your ads"
+  },
+  "frequency": {
+    "id": "frequency",
+    "type": "float",
+    "description": "The average number of times your ad was served to each person."
+  },
+  "frequency_value": {
+    "id": "frequency_value",
+    "type": "string",
+    "description": "The number of times an ad in your Reach and Frequency campaign was served to each person."
+  },
+  "gender": {
+    "id": "gender",
+    "type": "string",
+    "description": "Gender of people you've reached. People who don't list their gender are shown as 'not specified'."
+  },
+  "hourly_stats_aggregated_by_advertiser_time_zone": {
+    "id": "hourly_stats_aggregated_by_advertiser_time_zone",
+    "type": "string",
+    "description": "Hourly breakdown aggregated by the time ads were delivered in the advertiser's time zone. For example, if your ads are scheduled to run from 9 AM to 11 AM, but they reach audiences in multiple time zones, they may deliver from 9 AM to 1 PM in the advertiser's time zone. Stats will be aggregated into four groups 9 AM - 10 AM, 10 AM - 11 AM, 11 AM - 12 PM, and 12 PM - 1 PM."
+  },
+  "hourly_stats_aggregated_by_audience_time_zone": {
+    "id": "hourly_stats_aggregated_by_audience_time_zone",
+    "type": "string",
+    "description": "Hourly breakdown aggregated by the time ads were delivered in the audiences' time zone. For example, if your ads are scheduled to run from 9 AM to 11 AM but they reach audiences in multiple time zones, they may deliver from 9 AM to 1 PM in the advertiser's time zone. Stats will be aggregated into two groups 9 AM - 10 AM and 10 AM - 11 AM."
+  },
+  "impression_device": {
+    "id": "impression_device",
+    "type": "string",
+    "description": "The device where your last ad was served to someone on Facebook. For example \"iPhone\" if someone viewed your ad on an iPhone."
+  },
+  "impressions": {
+    "id": "impressions",
+    "type": "string",
+    "description": "The number of times your ad was served. On our mobile apps an ad is counted as served the first time it's viewed. On all other Facebook interfaces, an ad is served the first time it's placed in a person's News Feed or each time it's placed in the right column."
+  },
+  "inline_link_click_ctr": {
+    "id": "inline_link_click_ctr",
+    "type": "float",
+    "description": "Click-through rate for inline clicks to link."
+  },
+  "inline_link_clicks": {
+    "id": "inline_link_clicks",
+    "type": "numeric string",
+    "description": "The number of inline link clicks that your ad got"
+  },
+  "inline_post_engagement": {
+    "id": "inline_post_engagement",
+    "type": "numeric string",
+    "description": "The number of inline post engagement that your ad got"
+  },
+  "newsfeed_avg_position": {
+    "id": "newsfeed_avg_position",
+    "type": "float",
+    "description": "The average position where your ad was inserted into people's news feeds on mobile and desktop. Position 1 is the one at the top of the feed."
+  },
+  "newsfeed_clicks": {
+    "id": "newsfeed_clicks",
+    "type": "numeric string",
+    "description": "The total number of clicks your ad received in people's news feed, on mobile and desktop."
+  },
+  "newsfeed_impressions": {
+    "id": "newsfeed_impressions",
+    "type": "numeric string",
+    "description": "The total number of times your ad was inserted into people's news feeds, on mobile and desktop."
+  },
+  "objective": {
+    "id": "objective",
+    "type": "string",
+    "description": "The objective you selected for your ad, ad set, or campaign. Your objective reflects what you want to achieve with ads."
+  },
+  "place_page_id": {
+    "id": "place_page_id",
+    "type": "string",
+    "description": "The id of the place page involved in impression, click or action."
+  },
+  "place_page_name": {
+    "id": "place_page_name",
+    "type": "string",
+    "description": "The name of the place page involved in impression, click or action. Has to be used together with Business Locations breakdown."
+  },
+  "placement": {
+    "id": "placement",
+    "type": "string",
+    "description": "Where your ad was served on Facebook, for example on Newsfeed on a mobile device."
+  },
+  "product_id": {
+    "id": "product_id",
+    "type": "string",
+    "description": "The id and name of the product involved in impression, click or action."
+  },
+  "reach": {
+    "id": "reach",
+    "type": "numeric string",
+    "description": "The number of people your ad was served to. This is the same as unique_impressions."
+  },
+  "region": {
+    "id": "region",
+    "type": "string",
+    "description": "The regions where the people you've reached are located. This is based on information such as a person's hometown, their current city and the geographical location where they tend to be when they visit Facebook."
+  },
+  "relevance_score": {
+    "id": "relevance_score",
+    "type": "AdgroupRelevanceScore",
+    "description": "Ad relevance score is multiple metrics related to how your audience responded to your ad. Only available at ad level and will not be returned for aggregations at other levels."
+  },
+  "social_clicks": {
+    "id": "social_clicks",
+    "type": "numeric string",
+    "description": "The number of clicks your ad receives when it's shown with social information (ex: Jane Doe likes this)."
+  },
+  "social_impressions": {
+    "id": "social_impressions",
+    "type": "numeric string",
+    "description": "The number of times your ad was served, with social information. For example, if 3 people are served an ad 2 times each and it includes information about a friend liking your Page, it counts as 6 social impressions."
+  },
+  "social_reach": {
+    "id": "social_reach",
+    "type": "numeric string",
+    "description": "The number of people your ad was served to with social information. For example, if 3 people see an ad 2 times each that says a friend likes your Page, it counts as 3 social reaches."
+  },
+  "social_spend": {
+    "id": "social_spend",
+    "type": "float",
+    "description": "The total amount you've spent so far for your ads showed with social information. (ex: Jane Doe likes this)."
+  },
+  "spend": {
+    "id": "spend",
+    "type": "float",
+    "description": "The total amount you've spent so far."
+  },
+  "total_action_value": {
+    "id": "total_action_value",
+    "type": "float",
+    "description": "The total revenue returned from conversions or Facebook credit spends that occurred on your website or app."
+  },
+  "total_actions": {
+    "id": "total_actions",
+    "type": "numeric string",
+    "description": "The number of actions taken on your ad, Page, app or event after your ad was served to someone, even if they didn't click on it. Actions include Page likes, app installs, conversions, event responses and more. For example, 2 Page likes and 2 comments would be counted as 4 actions."
+  },
+  "total_unique_actions": {
+    "id": "total_unique_actions",
+    "type": "numeric string",
+    "description": "The number of unique people who took an action such as liking your Page or installing your app as a result of your ad. For example, if the same person likes and comments on a post, they will be counted as 1 unique person."
+  },
+  "unique_actions": {
+    "id": "unique_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The number of actions taken on your ad, Page, app or event after your ad was served to someone, even if they didn't click on it. Actions include Page likes, app installs, conversions, event responses and more. For example, 2 Page likes and 2 comments would be counted as 4 actions."
+  },
+  "unique_clicks": {
+    "id": "unique_clicks",
+    "type": "numeric string",
+    "description": "The total number of unique people who have clicked on your ad. For example, if 3 people click on the same ad 5 times, it will count as 3 unique clicks."
+  },
+  "unique_ctr": {
+    "id": "unique_ctr",
+    "type": "float",
+    "description": "The number of people who clicked on your ad divided by the number of people you reached. For example, if you received 20 unique clicks and your ad was served to 1,000 unique people, your unique click-through rate would be 2%."
+  },
+  "unique_impressions": {
+    "id": "unique_impressions",
+    "type": "numeric string",
+    "description": "The number of individuals the ad was served to on the site. This is the same as reach."
+  },
+  "unique_inline_link_click_ctr": {
+    "id": "unique_inline_link_click_ctr",
+    "type": "float",
+    "description": "Click-through rate for unique inline clicks to link."
+  },
+  "unique_inline_link_clicks": {
+    "id": "unique_inline_link_clicks",
+    "type": "numeric string",
+    "description": "The number of unique inline link clicks that your ad got"
+  },
+  "unique_link_clicks_ctr": {
+    "id": "unique_link_clicks_ctr",
+    "type": "float",
+    "description": "Unique click-through rate for clicks to link. The number of people who clicked on the link in your ad that directs people off Facebook divided by the number of people you reached. Example: if you received 20 unique clicks to link and your ad was shown to 1,000 unique people, your unique click-through rate would be 2%."
+  },
+  "unique_social_clicks": {
+    "id": "unique_social_clicks",
+    "type": "numeric string",
+    "description": "The number of individuals who clicked this ad while it had social context."
+  },
+  "unique_social_impressions": {
+    "id": "unique_social_impressions",
+    "type": "numeric string",
+    "description": "The number of people the ad was served to with social context."
+  },
+  "video_10_sec_watched_actions": {
+    "id": "video_10_sec_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "This shows the number of total views of at least 10 seconds or to the end of your video, whichever occurs first."
+  },
+  "video_15_sec_watched_actions": {
+    "id": "video_15_sec_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The number of times your video was viewed more than 15 seconds, including views that skipped to this point."
+  },
+  "video_30_sec_watched_actions": {
+    "id": "video_30_sec_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "This shows the number of total views of at least 30 seconds or to the end of your video, whichever occurs first."
+  },
+  "video_avg_pct_watched_actions": {
+    "id": "video_avg_pct_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The average percentage of your video that people viewed. This is the total video watch percentage for your video divided by the total number of times your video was played."
+  },
+  "video_avg_sec_watched_actions": {
+    "id": "video_avg_sec_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The average length of time people spent viewing your video. This is the total video watch time for your video divided by the total number of times your video was played."
+  },
+  "video_complete_watched_actions": {
+    "id": "video_complete_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "This shows the number of total views of at least 30 seconds or to the end of your video, whichever occurs first."
+  },
+  "video_p100_watched_actions": {
+    "id": "video_p100_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The number of times your video was viewed to 100% of its length, including views that skipped to this point."
+  },
+  "video_p25_watched_actions": {
+    "id": "video_p25_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The number of times your video was viewed to 25% of its length, including views that skipped to this point."
+  },
+  "video_p50_watched_actions": {
+    "id": "video_p50_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The number of times your video was viewed to 50% of its length, including views that skipped to this point."
+  },
+  "video_p75_watched_actions": {
+    "id": "video_p75_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The number of times your video was viewed to 75% of its length, including views that skipped to this point."
+  },
+  "video_p95_watched_actions": {
+    "id": "video_p95_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "The number of times your video was viewed to 95% of its length, including views that skipped to this point."
+  },
+  "website_clicks": {
+    "id": "website_clicks",
+    "type": "numeric string",
+    "description": "The numbers of clicks that go to web after user clicks your ads"
+  },
+  "website_ctr": {
+    "id": "website_ctr",
+    "type": "list<AdsActionStats>",
+    "description": "The number of link clicks a product received divided by the number of impressions of the product, only applicable for multi-product ads."
+  }
+}
