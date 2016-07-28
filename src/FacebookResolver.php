@@ -9,6 +9,20 @@ use Facebook\Facebook;
 
 class FacebookResolver extends Facebook implements Resolver
 {
+    public static $breakdowns = [
+        'age',
+        'country',
+        'gender',
+        'frequency_value',
+        'hourly_stats_aggregated_by_advertiser_time_zone',
+        'hourly_stats_aggregated_by_audience_time_zone',
+        'impression_device',
+        'place_page_id',
+        'placement',
+        'product_id',
+        'region'
+    ];
+
     function __construct(string $tetrisAccount, stdClass $accessToken)
     {
         parent::__construct([
@@ -23,7 +37,6 @@ class FacebookResolver extends Facebook implements Resolver
             getenv('FB_APP_SECRET'),
             $accessToken->access_token
         );
-
     }
 
     function resolve(Query $query): array
@@ -38,31 +51,41 @@ class FacebookResolver extends Facebook implements Resolver
                 ? $query->filters['id']
                 : [$query->filters['id']];
 
-            if ($query->entity === 'Campaign') {
-                foreach ($ids as $id) {
-                    $campaign = new Campaign($id);
-                    $results[] = $campaign->getInsights(array_keys($config['fields']), [
-                        'level' => 'campaign',
-                        'time_range' => [
-                            'since' => $query->since->format('Y-m-d'),
-                            'until' => $query->until->format('Y-m-d')
-                        ]
-                    ]);
-                }
+            $requestFields = $config['fields'];
+            $params = [
+                'breakdowns' => [],
+                'time_range' => [
+                    'since' => $query->since->format('Y-m-d'),
+                    'until' => $query->until->format('Y-m-d')
+                ]
+            ];
 
-            } else if ($query->entity === 'Account') {
-                foreach ($ids as $id) {
-                    $account = new AdAccount($id);
-                    $results[] = $account->getInsights(array_keys($config['fields']), [
-                        'level' => 'account',
-                        'time_range' => [
-                            'since' => $query->since->format('Y-m-d'),
-                            'until' => $query->until->format('Y-m-d')
-                        ]
-                    ]);
+            foreach ($requestFields as $field => $name) {
+                if (in_array($field, self::$breakdowns)) {
+                    unset($requestFields[$field]);
+                    $params['breakdowns'][] = $field;
                 }
-            } else {
-                throw new \Exception("Entity {$query->entity} not implemented, etc", 501);
+            }
+
+            switch ($query->entity) {
+                case 'Campaign':
+                    $className = Campaign::class;
+                    $params['level'] = 'campaign';
+                    break;
+                case 'Account':
+                    $className = AdAccount::class;
+                    $params['level'] = 'account';
+                    break;
+                default:
+                    throw new \Exception("Entity {$query->entity} not implemented, etc", 501);
+            }
+
+            foreach ($ids as $id) {
+                /**
+                 * @var Campaign|AdAccount $instance
+                 */
+                $instance = new $className($id);
+                $results[] = $instance->getInsights(array_keys($requestFields), $params);
             }
 
             foreach ($results as $result) {
