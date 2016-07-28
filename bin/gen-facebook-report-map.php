@@ -5,9 +5,19 @@ namespace Tetris\Numbers;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$names = require(__DIR__ . '/../src/fields.php');
+
 $fields = json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'), true);
 
 $filterable = ['id'];
+
+$excluded = [
+    'date_stop'
+];
+
+$alternative = [
+    'date_start' => 'date'
+];
 
 $output = [
     'entities' => ['Campaign', 'Account'],
@@ -60,23 +70,24 @@ foreach ($output['entities'] as $entity) {
 
     foreach ($fields as $originalAttributeName => $field) {
         if (!in_array($field['type'], $validTypes)) continue;
+        if (in_array($originalAttributeName, $excluded)) continue;
+        if (!isset($names['en']['facebook'][$originalAttributeName])) continue;
 
-        $userFriendlyName = ucwords(str_replace('_', ' ', $originalAttributeName));
-
-        // name looks like campaign_field_name
+        // name looks like <campaign>_field_name
         $nameStartsWithEntity = stripos($originalAttributeName, "{$entity}_") === 0;
+        $attributeName = $originalAttributeName;
 
-        if ($nameStartsWithEntity) {
+        if (isset($alternative[$originalAttributeName])) {
+            $attributeName = $alternative[$originalAttributeName];
+        } else if ($nameStartsWithEntity) {
             $attributeName = substr($originalAttributeName, strlen($entity) + 1);
-        } else {
-            $attributeName = $originalAttributeName;
         }
 
         $attribute = [
             'property' => $originalAttributeName,
             'names' => [
-                'en' => $userFriendlyName,
-                'pt-BR' => $userFriendlyName
+                'en' => $names['en']['facebook'][$originalAttributeName],
+                'pt-BR' => $names['pt-BR']['facebook'][$originalAttributeName],
             ],
             'is_metric' => false,
             'is_dimension' => true,

@@ -46,11 +46,6 @@ class FacebookResolver extends Facebook implements Resolver
         $reports = $query->getReports();
 
         foreach ($reports as $reportName => $config) {
-            $results = [];
-            $ids = is_array($query->filters['id'])
-                ? $query->filters['id']
-                : [$query->filters['id']];
-
             $requestFields = $config['fields'];
             $params = [
                 'breakdowns' => [],
@@ -59,6 +54,10 @@ class FacebookResolver extends Facebook implements Resolver
                     'until' => $query->until->format('Y-m-d')
                 ]
             ];
+
+            if (isset($config['fields']['date_start'])) {
+                $params['time_increment'] = 1;
+            }
 
             foreach ($requestFields as $field => $name) {
                 if (in_array($field, self::$breakdowns)) {
@@ -80,16 +79,18 @@ class FacebookResolver extends Facebook implements Resolver
                     throw new \Exception("Entity {$query->entity} not implemented, etc", 501);
             }
 
+            $ids = is_array($query->filters['id'])
+                ? $query->filters['id']
+                : [$query->filters['id']];
+
             foreach ($ids as $id) {
                 /**
                  * @var Campaign|AdAccount $instance
                  */
                 $instance = new $className($id);
-                $results[] = $instance->getInsights(array_keys($requestFields), $params);
-            }
+                $results = $instance->getInsights(array_keys($requestFields), $params);
 
-            foreach ($results as $result) {
-                foreach ($result as $insights) {
+                foreach ($results as $insights) {
                     $translatedInsights = new stdClass();
 
                     foreach ($config['fields'] as $sourceField => $targetField) {

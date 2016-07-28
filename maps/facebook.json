@@ -579,21 +579,11 @@
                     "is_dimension": false,
                     "is_filter": false
                 },
-                "date_start": {
+                "date": {
                     "property": "date_start",
                     "names": {
                         "en": "Date Start",
                         "pt-BR": "Date Start"
-                    },
-                    "is_metric": false,
-                    "is_dimension": true,
-                    "is_filter": false
-                },
-                "date_stop": {
-                    "property": "date_stop",
-                    "names": {
-                        "en": "Date Stop",
-                        "pt-BR": "Date Stop"
                     },
                     "is_metric": false,
                     "is_dimension": true,
@@ -1234,21 +1224,11 @@
                     "is_dimension": false,
                     "is_filter": false
                 },
-                "date_start": {
+                "date": {
                     "property": "date_start",
                     "names": {
                         "en": "Date Start",
                         "pt-BR": "Date Start"
-                    },
-                    "is_metric": false,
-                    "is_dimension": true,
-                    "is_filter": false
-                },
-                "date_stop": {
-                    "property": "date_stop",
-                    "names": {
-                        "en": "Date Stop",
-                        "pt-BR": "Date Stop"
                     },
                     "is_metric": false,
                     "is_dimension": true,

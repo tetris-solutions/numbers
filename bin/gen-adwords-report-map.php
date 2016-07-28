@@ -5,11 +5,11 @@ namespace Tetris\Numbers;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$names = require(__DIR__ . '/../src/fields.php');
+
 $mappings = json_decode(file_get_contents(__DIR__ . '/../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
 
-$alternativeName = [
-    'campaignid' => 'id'
-];
+$alternative = [];
 
 $output = [
     'entities' => [],
@@ -43,24 +43,23 @@ foreach ($mappings as $reportName => $fields) {
     $output['entities'][$entity] = $entity;
 
     foreach ($fields as $originalAttributeName => $field) {
-        $attributeName = strtolower($originalAttributeName);
+        if (!isset($names['en']['adwords'][$originalAttributeName])) continue;
 
         // name looks like <Campaign>FieldName
         $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0;
+        $attributeName = strtolower($originalAttributeName);
 
-        if ($nameStartsWithEntity) {
+        if (isset($alternative[$originalAttributeName])) {
+            $attributeName = $alternative[$originalAttributeName];
+        } else if ($nameStartsWithEntity) {
             $attributeName = substr($attributeName, strlen($entity));
-        }
-
-        if (isset($alternativeName[$attributeName])) {
-            $attributeName = $alternativeName[$attributeName];
         }
 
         $attribute = [
             'property' => $originalAttributeName,
             'names' => [
-                'en' => $field['DisplayName'],
-                'pt-BR' => $field['DisplayName']
+                'en' => $names['en']['adwords'][$originalAttributeName],
+                'pt-BR' => $names['pt-BR']['adwords'][$originalAttributeName]
             ]
         ];
 
