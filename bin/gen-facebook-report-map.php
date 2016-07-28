@@ -127,4 +127,7 @@ foreach ($output['entities'] as $entity) {
 
 $output['entities'] = array_values($output['entities']);
 
-echo json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+file_put_contents(
+    __DIR__ . '/../maps/facebook.json',
+    json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+);

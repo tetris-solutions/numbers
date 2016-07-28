@@ -4,8 +4,8 @@
 $root = __DIR__ . '/..';
 chdir($root);
 
-
-passthru('bin/gen-adwords-report-map.php > maps/adwords.json');
-passthru('bin/gen-facebook-report-map.php > maps/facebook.json');
+passthru('bin/gen-locales.php');
+passthru('bin/gen-adwords-report-map.php');
+passthru('bin/gen-facebook-report-map.php');
 passthru('vendor/bin/phinx migrate -e production');
 passthru('vendor/bin/phinx seed:run');
