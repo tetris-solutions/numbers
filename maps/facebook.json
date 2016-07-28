@@ -326,10 +326,6 @@
         }
     },
     "reports": {
-        "FB_GENERIC": {
-            "id": "FB_GENERIC",
-            "attributes": []
-        },
         "FB_CAMPAIGN": {
             "id": "FB_CAMPAIGN",
             "attributes": {

@@ -7,19 +7,12 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $fields = json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'), true);
 
-$reportName = 'FB_GENERIC';
-
 $filterable = ['id'];
 
 $output = [
     'entities' => ['Campaign', 'Account'],
     'metrics' => [],
-    'reports' => [
-        $reportName => [
-            'id' => $reportName,
-            'attributes' => []
-        ]
-    ],
+    'reports' => [],
     'sources' => []
 ];
 

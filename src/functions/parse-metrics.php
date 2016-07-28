@@ -54,7 +54,5 @@ function parseMetrics($receivedObject, array $requestedReport): stdClass
         $row->{$metric['id']} = $fn($receivedObject);
     }
 
-//        $row->__source = $result;
-
     return $row;
 }
