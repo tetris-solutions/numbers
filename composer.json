@@ -15,7 +15,7 @@
     "tetris/monostash": "dev-master#v0.0.5",
     "pugx/shortid-php": "^0.1.0",
     "facebook/php-sdk-v4": "^5.2",
-    "facebook/php-ads-sdk": "^2.6",
+    "facebook/php-ads-sdk": "^2.7.1",
     "aura/sql": "^2.5",
     "aura/sqlquery": "^2.6",
     "vlucas/phpdotenv": "^2.3",

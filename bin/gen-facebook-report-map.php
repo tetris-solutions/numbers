@@ -9,6 +9,8 @@ $fields = json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'
 
 $reportName = 'FB_GENERIC';
 
+$filterable = ['id'];
+
 $output = [
     'entities' => ['Campaign', 'Account'],
     'metrics' => [],
@@ -54,46 +56,70 @@ function isCurrency(array $field): bool
     return false;
 }
 
-foreach ($fields as $property => $field) {
-    if (!in_array($field['type'], $validTypes)) continue;
 
-    $name = ucwords(str_replace('_', ' ', $property));
+foreach ($output['entities'] as $entity) {
+    $reportName = 'FB_' . strtoupper($entity);
 
-    $metaData = [
-        'property' => $property,
-        'names' => [
-            'en' => $name,
-            'pt-BR' => $name
-        ],
-        'is_metric' => false,
-        'is_dimension' => true,
-        'is_filter' => false
+    $output['reports'][$reportName] = [
+        'id' => $reportName,
+        'attributes' => []
     ];
 
-    $metaData['is_metric'] = $field['type'] === 'float' ||
-        ($field['type'] === 'numeric string' && strpos($property, '_id') === FALSE);
+    foreach ($fields as $originalAttributeName => $field) {
+        if (!in_array($field['type'], $validTypes)) continue;
 
-    if ($metaData['is_metric']) {
-        $output['metrics'][$property] = $metric = [
-            'id' => $property,
-            'type' => isCurrency($field) ? 'currency' : 'quantity',
-            'names' => $metaData['names']
+        $userFriendlyName = ucwords(str_replace('_', ' ', $originalAttributeName));
+
+        // name looks like campaign_field_name
+        $nameStartsWithEntity = stripos($originalAttributeName, "{$entity}_") === 0;
+
+        if ($nameStartsWithEntity) {
+            $attributeName = substr($originalAttributeName, strlen($entity) + 1);
+        } else {
+            $attributeName = $originalAttributeName;
+        }
+
+        $attribute = [
+            'property' => $originalAttributeName,
+            'names' => [
+                'en' => $userFriendlyName,
+                'pt-BR' => $userFriendlyName
+            ],
+            'is_metric' => false,
+            'is_dimension' => true,
+            'is_filter' => in_array($attributeName, $filterable)
         ];
 
-        foreach ($output['entities'] as $entity) {
+        $attribute['is_metric'] = $field['type'] === 'float' ||
+            ($field['type'] === 'numeric string' && strpos($originalAttributeName, '_id') === FALSE);
+
+        if ($attribute['is_metric']) {
+            $attribute['is_dimension'] = false;
+
+            if (empty($output['metircs'][$attributeName])) {
+                $output['metrics'][$attributeName] = $metric = [
+                    'id' => $attributeName,
+                    'type' => isCurrency($field) ? 'currency' : 'quantity',
+                    'names' => $attribute['names']
+                ];
+            } else {
+                $metric = $output['metrics'][$attributeName];
+            }
+
             $output['sources'][] = [
-                'metric' => $property,
+                'metric' => $attributeName,
                 'entity' => $entity,
                 'platform' => 'facebook',
                 'report' => $reportName,
-                'fields' => [$property],
-                'eval' => $eval[$metric['type']]($property)
+                'fields' => [$originalAttributeName],
+                'eval' => $eval[$metric['type']]($originalAttributeName)
             ];
         }
-    }
 
-    $output['reports'][$reportName]['attributes'][$property] = $metaData;
+        $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
+    }
 }
+
 
 $output['entities'] = array_values($output['entities']);
 

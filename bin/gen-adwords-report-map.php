@@ -33,7 +33,7 @@ $eval = [
     }
 ];
 
-foreach ($mappings as $reportName => $properties) {
+foreach ($mappings as $reportName => $fields) {
     $output['reports'][$reportName] = [
         'id' => $reportName,
         'attributes' => []
@@ -42,68 +42,69 @@ foreach ($mappings as $reportName => $properties) {
     $entity = ucfirst(strtolower(explode('_', $reportName)[0]));
     $output['entities'][$entity] = $entity;
 
-    foreach ($properties as $name => $metadata) {
-        $id = strtolower($name);
+    foreach ($fields as $originalAttributeName => $field) {
+        $attributeName = strtolower($originalAttributeName);
 
         // name looks like <Campaign>FieldName
-        $nameStartsWithEntity = strpos($name, $entity) === 0;
+        $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0;
 
         if ($nameStartsWithEntity) {
-            $id = substr($id, strlen($entity));
+            $attributeName = substr($attributeName, strlen($entity));
         }
 
-        if (isset($alternativeName[$id])) {
-            $id = $alternativeName[$id];
+        if (isset($alternativeName[$attributeName])) {
+            $attributeName = $alternativeName[$attributeName];
         }
 
-        $field = [
-            'property' => $name,
+        $attribute = [
+            'property' => $originalAttributeName,
             'names' => [
-                'en' => $metadata['DisplayName'],
-                'pt-BR' => $metadata['DisplayName']
+                'en' => $field['DisplayName'],
+                'pt-BR' => $field['DisplayName']
             ]
         ];
 
-        $field['is_metric'] = $isMetric = strtolower($metadata['Behavior']) === 'metric';
-        $field['is_filter'] = $metadata['Filterable'];
-        $field['is_dimension'] = !$isMetric;
+        $attribute['is_metric'] = $isMetric = strtolower($field['Behavior']) === 'metric';
+        $attribute['is_filter'] = $field['Filterable'];
+        $attribute['is_dimension'] = !$isMetric;
 
         if ($isMetric) {
-            if (empty($output['metrics'][$id])) {
+            if (empty($output['metrics'][$attributeName])) {
                 $metric = [
-                    'id' => $id,
+                    'id' => $attributeName,
                     'type' => 'quantity',
-                    'names' => $field['names']
+                    'names' => $attribute['names']
                 ];
 
-                if ($metadata['SpecialValue']) {
+                if ($field['SpecialValue']) {
                     $metric['type'] = 'raw';
-                } else if ($metadata['Percentage']) {
+                } else if ($field['Percentage']) {
                     $metric['type'] = 'percentage';
-                } else if ($metadata['Type'] === 'Money') {
+                } else if ($field['Type'] === 'Money') {
                     $metric['type'] = 'currency';
                 }
 
-                $output['metrics'][$id] = $metric;
+                $output['metrics'][$attributeName] = $metric;
+            } else {
+                $metric = $output['metrics'][$attributeName];
             }
 
-            $metric = $output['metrics'][$id];
             $output['sources'][] = [
-                'metric' => $id,
+                'metric' => $attributeName,
                 'entity' => $entity,
                 'platform' => 'adwords',
                 'report' => $reportName,
-                'fields' => [$name],
-                'eval' => $eval[$metric['type']]($name)
+                'fields' => [$originalAttributeName],
+                'eval' => $eval[$metric['type']]($originalAttributeName)
             ];
-            $output['metrics'][$id] = $metric;
+            $output['metrics'][$attributeName] = $metric;
         }
 
-        if (isset($output['reports'][$reportName]['attributes'][$id])) {
-            echo "replaced: {$id}\n";
+        if (isset($output['reports'][$reportName]['attributes'][$attributeName])) {
+            echo "replaced: {$attributeName}\n";
         }
 
-        $output['reports'][$reportName]['attributes'][$id] = $field;
+        $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
     }
 }
 

@@ -328,6 +328,10 @@
     "reports": {
         "FB_GENERIC": {
             "id": "FB_GENERIC",
+            "attributes": []
+        },
+        "FB_CAMPAIGN": {
+            "id": "FB_CAMPAIGN",
             "attributes": {
                 "account_id": {
                     "property": "account_id",
@@ -406,7 +410,7 @@
                         "pt-BR": "App Store Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "buying_type": {
@@ -426,10 +430,10 @@
                         "pt-BR": "Call To Action Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
-                "campaign_id": {
+                "id": {
                     "property": "campaign_id",
                     "names": {
                         "en": "Campaign Id",
@@ -437,9 +441,9 @@
                     },
                     "is_metric": false,
                     "is_dimension": true,
-                    "is_filter": false
+                    "is_filter": true
                 },
-                "campaign_name": {
+                "name": {
                     "property": "campaign_name",
                     "names": {
                         "en": "Campaign Name",
@@ -456,7 +460,7 @@
                         "pt-BR": "Canvas Avg View Percent"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "canvas_avg_view_time": {
@@ -466,7 +470,7 @@
                         "pt-BR": "Canvas Avg View Time"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "clicks": {
@@ -476,7 +480,7 @@
                         "pt-BR": "Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "cost_per_inline_link_click": {
@@ -486,7 +490,7 @@
                         "pt-BR": "Cost Per Inline Link Click"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "cost_per_inline_post_engagement": {
@@ -496,7 +500,7 @@
                         "pt-BR": "Cost Per Inline Post Engagement"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "cost_per_total_action": {
@@ -506,7 +510,7 @@
                         "pt-BR": "Cost Per Total Action"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "cost_per_unique_click": {
@@ -516,7 +520,7 @@
                         "pt-BR": "Cost Per Unique Click"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "cost_per_unique_inline_link_click": {
@@ -526,7 +530,7 @@
                         "pt-BR": "Cost Per Unique Inline Link Click"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "country": {
@@ -546,7 +550,7 @@
                         "pt-BR": "Cpc"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "cpm": {
@@ -556,7 +560,7 @@
                         "pt-BR": "Cpm"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "cpp": {
@@ -566,7 +570,7 @@
                         "pt-BR": "Cpp"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "ctr": {
@@ -576,7 +580,7 @@
                         "pt-BR": "Ctr"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "date_start": {
@@ -606,7 +610,7 @@
                         "pt-BR": "Deeplink Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "frequency": {
@@ -616,7 +620,7 @@
                         "pt-BR": "Frequency"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "frequency_value": {
@@ -686,7 +690,7 @@
                         "pt-BR": "Inline Link Click Ctr"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "inline_link_clicks": {
@@ -696,7 +700,7 @@
                         "pt-BR": "Inline Link Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "inline_post_engagement": {
@@ -706,7 +710,7 @@
                         "pt-BR": "Inline Post Engagement"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "newsfeed_avg_position": {
@@ -716,7 +720,7 @@
                         "pt-BR": "Newsfeed Avg Position"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "newsfeed_clicks": {
@@ -726,7 +730,7 @@
                         "pt-BR": "Newsfeed Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "newsfeed_impressions": {
@@ -736,7 +740,7 @@
                         "pt-BR": "Newsfeed Impressions"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "objective": {
@@ -796,7 +800,7 @@
                         "pt-BR": "Reach"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "region": {
@@ -816,7 +820,7 @@
                         "pt-BR": "Social Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "social_impressions": {
@@ -826,7 +830,7 @@
                         "pt-BR": "Social Impressions"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "social_reach": {
@@ -836,7 +840,7 @@
                         "pt-BR": "Social Reach"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "social_spend": {
@@ -846,7 +850,7 @@
                         "pt-BR": "Social Spend"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "spend": {
@@ -856,7 +860,7 @@
                         "pt-BR": "Spend"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "total_action_value": {
@@ -866,7 +870,7 @@
                         "pt-BR": "Total Action Value"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "total_actions": {
@@ -876,7 +880,7 @@
                         "pt-BR": "Total Actions"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "total_unique_actions": {
@@ -886,7 +890,7 @@
                         "pt-BR": "Total Unique Actions"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "unique_clicks": {
@@ -896,7 +900,7 @@
                         "pt-BR": "Unique Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "unique_ctr": {
@@ -906,7 +910,7 @@
                         "pt-BR": "Unique Ctr"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "unique_impressions": {
@@ -916,7 +920,7 @@
                         "pt-BR": "Unique Impressions"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "unique_inline_link_click_ctr": {
@@ -926,7 +930,7 @@
                         "pt-BR": "Unique Inline Link Click Ctr"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "unique_inline_link_clicks": {
@@ -936,7 +940,7 @@
                         "pt-BR": "Unique Inline Link Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "unique_link_clicks_ctr": {
@@ -946,7 +950,7 @@
                         "pt-BR": "Unique Link Clicks Ctr"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "unique_social_clicks": {
@@ -956,7 +960,7 @@
                         "pt-BR": "Unique Social Clicks"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "unique_social_impressions": {
@@ -966,7 +970,7 @@
                         "pt-BR": "Unique Social Impressions"
                     },
                     "is_metric": true,
-                    "is_dimension": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "website_clicks": {
@@ -976,7 +980,662 @@
                         "pt-BR": "Website Clicks"
                     },
                     "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                }
+            }
+        },
+        "FB_ACCOUNT": {
+            "id": "FB_ACCOUNT",
+            "attributes": {
+                "id": {
+                    "property": "account_id",
+                    "names": {
+                        "en": "Account Id",
+                        "pt-BR": "Account Id"
+                    },
+                    "is_metric": false,
                     "is_dimension": true,
+                    "is_filter": true
+                },
+                "name": {
+                    "property": "account_name",
+                    "names": {
+                        "en": "Account Name",
+                        "pt-BR": "Account Name"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "ad_id": {
+                    "property": "ad_id",
+                    "names": {
+                        "en": "Ad Id",
+                        "pt-BR": "Ad Id"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "ad_name": {
+                    "property": "ad_name",
+                    "names": {
+                        "en": "Ad Name",
+                        "pt-BR": "Ad Name"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "adset_id": {
+                    "property": "adset_id",
+                    "names": {
+                        "en": "Adset Id",
+                        "pt-BR": "Adset Id"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "adset_name": {
+                    "property": "adset_name",
+                    "names": {
+                        "en": "Adset Name",
+                        "pt-BR": "Adset Name"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "age": {
+                    "property": "age",
+                    "names": {
+                        "en": "Age",
+                        "pt-BR": "Age"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "app_store_clicks": {
+                    "property": "app_store_clicks",
+                    "names": {
+                        "en": "App Store Clicks",
+                        "pt-BR": "App Store Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "buying_type": {
+                    "property": "buying_type",
+                    "names": {
+                        "en": "Buying Type",
+                        "pt-BR": "Buying Type"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "call_to_action_clicks": {
+                    "property": "call_to_action_clicks",
+                    "names": {
+                        "en": "Call To Action Clicks",
+                        "pt-BR": "Call To Action Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "campaign_id": {
+                    "property": "campaign_id",
+                    "names": {
+                        "en": "Campaign Id",
+                        "pt-BR": "Campaign Id"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "campaign_name": {
+                    "property": "campaign_name",
+                    "names": {
+                        "en": "Campaign Name",
+                        "pt-BR": "Campaign Name"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "canvas_avg_view_percent": {
+                    "property": "canvas_avg_view_percent",
+                    "names": {
+                        "en": "Canvas Avg View Percent",
+                        "pt-BR": "Canvas Avg View Percent"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "canvas_avg_view_time": {
+                    "property": "canvas_avg_view_time",
+                    "names": {
+                        "en": "Canvas Avg View Time",
+                        "pt-BR": "Canvas Avg View Time"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "clicks": {
+                    "property": "clicks",
+                    "names": {
+                        "en": "Clicks",
+                        "pt-BR": "Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "cost_per_inline_link_click": {
+                    "property": "cost_per_inline_link_click",
+                    "names": {
+                        "en": "Cost Per Inline Link Click",
+                        "pt-BR": "Cost Per Inline Link Click"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "cost_per_inline_post_engagement": {
+                    "property": "cost_per_inline_post_engagement",
+                    "names": {
+                        "en": "Cost Per Inline Post Engagement",
+                        "pt-BR": "Cost Per Inline Post Engagement"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "cost_per_total_action": {
+                    "property": "cost_per_total_action",
+                    "names": {
+                        "en": "Cost Per Total Action",
+                        "pt-BR": "Cost Per Total Action"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "cost_per_unique_click": {
+                    "property": "cost_per_unique_click",
+                    "names": {
+                        "en": "Cost Per Unique Click",
+                        "pt-BR": "Cost Per Unique Click"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "cost_per_unique_inline_link_click": {
+                    "property": "cost_per_unique_inline_link_click",
+                    "names": {
+                        "en": "Cost Per Unique Inline Link Click",
+                        "pt-BR": "Cost Per Unique Inline Link Click"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "country": {
+                    "property": "country",
+                    "names": {
+                        "en": "Country",
+                        "pt-BR": "Country"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "cpc": {
+                    "property": "cpc",
+                    "names": {
+                        "en": "Cpc",
+                        "pt-BR": "Cpc"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "cpm": {
+                    "property": "cpm",
+                    "names": {
+                        "en": "Cpm",
+                        "pt-BR": "Cpm"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "cpp": {
+                    "property": "cpp",
+                    "names": {
+                        "en": "Cpp",
+                        "pt-BR": "Cpp"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "ctr": {
+                    "property": "ctr",
+                    "names": {
+                        "en": "Ctr",
+                        "pt-BR": "Ctr"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "date_start": {
+                    "property": "date_start",
+                    "names": {
+                        "en": "Date Start",
+                        "pt-BR": "Date Start"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "date_stop": {
+                    "property": "date_stop",
+                    "names": {
+                        "en": "Date Stop",
+                        "pt-BR": "Date Stop"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "deeplink_clicks": {
+                    "property": "deeplink_clicks",
+                    "names": {
+                        "en": "Deeplink Clicks",
+                        "pt-BR": "Deeplink Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "frequency": {
+                    "property": "frequency",
+                    "names": {
+                        "en": "Frequency",
+                        "pt-BR": "Frequency"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "frequency_value": {
+                    "property": "frequency_value",
+                    "names": {
+                        "en": "Frequency Value",
+                        "pt-BR": "Frequency Value"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "gender": {
+                    "property": "gender",
+                    "names": {
+                        "en": "Gender",
+                        "pt-BR": "Gender"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "hourly_stats_aggregated_by_advertiser_time_zone": {
+                    "property": "hourly_stats_aggregated_by_advertiser_time_zone",
+                    "names": {
+                        "en": "Hourly Stats Aggregated By Advertiser Time Zone",
+                        "pt-BR": "Hourly Stats Aggregated By Advertiser Time Zone"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "hourly_stats_aggregated_by_audience_time_zone": {
+                    "property": "hourly_stats_aggregated_by_audience_time_zone",
+                    "names": {
+                        "en": "Hourly Stats Aggregated By Audience Time Zone",
+                        "pt-BR": "Hourly Stats Aggregated By Audience Time Zone"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "impression_device": {
+                    "property": "impression_device",
+                    "names": {
+                        "en": "Impression Device",
+                        "pt-BR": "Impression Device"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "impressions": {
+                    "property": "impressions",
+                    "names": {
+                        "en": "Impressions",
+                        "pt-BR": "Impressions"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "inline_link_click_ctr": {
+                    "property": "inline_link_click_ctr",
+                    "names": {
+                        "en": "Inline Link Click Ctr",
+                        "pt-BR": "Inline Link Click Ctr"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "inline_link_clicks": {
+                    "property": "inline_link_clicks",
+                    "names": {
+                        "en": "Inline Link Clicks",
+                        "pt-BR": "Inline Link Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "inline_post_engagement": {
+                    "property": "inline_post_engagement",
+                    "names": {
+                        "en": "Inline Post Engagement",
+                        "pt-BR": "Inline Post Engagement"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "newsfeed_avg_position": {
+                    "property": "newsfeed_avg_position",
+                    "names": {
+                        "en": "Newsfeed Avg Position",
+                        "pt-BR": "Newsfeed Avg Position"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "newsfeed_clicks": {
+                    "property": "newsfeed_clicks",
+                    "names": {
+                        "en": "Newsfeed Clicks",
+                        "pt-BR": "Newsfeed Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "newsfeed_impressions": {
+                    "property": "newsfeed_impressions",
+                    "names": {
+                        "en": "Newsfeed Impressions",
+                        "pt-BR": "Newsfeed Impressions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "objective": {
+                    "property": "objective",
+                    "names": {
+                        "en": "Objective",
+                        "pt-BR": "Objective"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "place_page_id": {
+                    "property": "place_page_id",
+                    "names": {
+                        "en": "Place Page Id",
+                        "pt-BR": "Place Page Id"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "place_page_name": {
+                    "property": "place_page_name",
+                    "names": {
+                        "en": "Place Page Name",
+                        "pt-BR": "Place Page Name"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "placement": {
+                    "property": "placement",
+                    "names": {
+                        "en": "Placement",
+                        "pt-BR": "Placement"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "product_id": {
+                    "property": "product_id",
+                    "names": {
+                        "en": "Product Id",
+                        "pt-BR": "Product Id"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "reach": {
+                    "property": "reach",
+                    "names": {
+                        "en": "Reach",
+                        "pt-BR": "Reach"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "region": {
+                    "property": "region",
+                    "names": {
+                        "en": "Region",
+                        "pt-BR": "Region"
+                    },
+                    "is_metric": false,
+                    "is_dimension": true,
+                    "is_filter": false
+                },
+                "social_clicks": {
+                    "property": "social_clicks",
+                    "names": {
+                        "en": "Social Clicks",
+                        "pt-BR": "Social Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "social_impressions": {
+                    "property": "social_impressions",
+                    "names": {
+                        "en": "Social Impressions",
+                        "pt-BR": "Social Impressions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "social_reach": {
+                    "property": "social_reach",
+                    "names": {
+                        "en": "Social Reach",
+                        "pt-BR": "Social Reach"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "social_spend": {
+                    "property": "social_spend",
+                    "names": {
+                        "en": "Social Spend",
+                        "pt-BR": "Social Spend"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "spend": {
+                    "property": "spend",
+                    "names": {
+                        "en": "Spend",
+                        "pt-BR": "Spend"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "total_action_value": {
+                    "property": "total_action_value",
+                    "names": {
+                        "en": "Total Action Value",
+                        "pt-BR": "Total Action Value"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "total_actions": {
+                    "property": "total_actions",
+                    "names": {
+                        "en": "Total Actions",
+                        "pt-BR": "Total Actions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "total_unique_actions": {
+                    "property": "total_unique_actions",
+                    "names": {
+                        "en": "Total Unique Actions",
+                        "pt-BR": "Total Unique Actions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "unique_clicks": {
+                    "property": "unique_clicks",
+                    "names": {
+                        "en": "Unique Clicks",
+                        "pt-BR": "Unique Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "unique_ctr": {
+                    "property": "unique_ctr",
+                    "names": {
+                        "en": "Unique Ctr",
+                        "pt-BR": "Unique Ctr"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "unique_impressions": {
+                    "property": "unique_impressions",
+                    "names": {
+                        "en": "Unique Impressions",
+                        "pt-BR": "Unique Impressions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "unique_inline_link_click_ctr": {
+                    "property": "unique_inline_link_click_ctr",
+                    "names": {
+                        "en": "Unique Inline Link Click Ctr",
+                        "pt-BR": "Unique Inline Link Click Ctr"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "unique_inline_link_clicks": {
+                    "property": "unique_inline_link_clicks",
+                    "names": {
+                        "en": "Unique Inline Link Clicks",
+                        "pt-BR": "Unique Inline Link Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "unique_link_clicks_ctr": {
+                    "property": "unique_link_clicks_ctr",
+                    "names": {
+                        "en": "Unique Link Clicks Ctr",
+                        "pt-BR": "Unique Link Clicks Ctr"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "unique_social_clicks": {
+                    "property": "unique_social_clicks",
+                    "names": {
+                        "en": "Unique Social Clicks",
+                        "pt-BR": "Unique Social Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "unique_social_impressions": {
+                    "property": "unique_social_impressions",
+                    "names": {
+                        "en": "Unique Social Impressions",
+                        "pt-BR": "Unique Social Impressions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "website_clicks": {
+                    "property": "website_clicks",
+                    "names": {
+                        "en": "Website Clicks",
+                        "pt-BR": "Website Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
                     "is_filter": false
                 }
             }
@@ -987,17 +1646,7 @@
             "metric": "app_store_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "app_store_clicks"
-            ],
-            "eval": "(float)$data->app_store_clicks"
-        },
-        {
-            "metric": "app_store_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "app_store_clicks"
             ],
@@ -1007,17 +1656,7 @@
             "metric": "call_to_action_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "call_to_action_clicks"
-            ],
-            "eval": "(float)$data->call_to_action_clicks"
-        },
-        {
-            "metric": "call_to_action_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "call_to_action_clicks"
             ],
@@ -1027,17 +1666,7 @@
             "metric": "canvas_avg_view_percent",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "canvas_avg_view_percent"
-            ],
-            "eval": "(float)$data->canvas_avg_view_percent"
-        },
-        {
-            "metric": "canvas_avg_view_percent",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "canvas_avg_view_percent"
             ],
@@ -1047,17 +1676,7 @@
             "metric": "canvas_avg_view_time",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "canvas_avg_view_time"
-            ],
-            "eval": "(float)$data->canvas_avg_view_time"
-        },
-        {
-            "metric": "canvas_avg_view_time",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "canvas_avg_view_time"
             ],
@@ -1067,17 +1686,7 @@
             "metric": "clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "clicks"
-            ],
-            "eval": "(float)$data->clicks"
-        },
-        {
-            "metric": "clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "clicks"
             ],
@@ -1087,17 +1696,7 @@
             "metric": "cost_per_inline_link_click",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "cost_per_inline_link_click"
-            ],
-            "eval": "intval($data->cost_per_inline_link_click) / 100"
-        },
-        {
-            "metric": "cost_per_inline_link_click",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "cost_per_inline_link_click"
             ],
@@ -1107,17 +1706,7 @@
             "metric": "cost_per_inline_post_engagement",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "cost_per_inline_post_engagement"
-            ],
-            "eval": "intval($data->cost_per_inline_post_engagement) / 100"
-        },
-        {
-            "metric": "cost_per_inline_post_engagement",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "cost_per_inline_post_engagement"
             ],
@@ -1127,17 +1716,7 @@
             "metric": "cost_per_total_action",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "cost_per_total_action"
-            ],
-            "eval": "intval($data->cost_per_total_action) / 100"
-        },
-        {
-            "metric": "cost_per_total_action",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "cost_per_total_action"
             ],
@@ -1147,17 +1726,7 @@
             "metric": "cost_per_unique_click",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "cost_per_unique_click"
-            ],
-            "eval": "intval($data->cost_per_unique_click) / 100"
-        },
-        {
-            "metric": "cost_per_unique_click",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "cost_per_unique_click"
             ],
@@ -1167,17 +1736,7 @@
             "metric": "cost_per_unique_inline_link_click",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "cost_per_unique_inline_link_click"
-            ],
-            "eval": "intval($data->cost_per_unique_inline_link_click) / 100"
-        },
-        {
-            "metric": "cost_per_unique_inline_link_click",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "cost_per_unique_inline_link_click"
             ],
@@ -1187,17 +1746,7 @@
             "metric": "cpc",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "cpc"
-            ],
-            "eval": "intval($data->cpc) / 100"
-        },
-        {
-            "metric": "cpc",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "cpc"
             ],
@@ -1207,17 +1756,7 @@
             "metric": "cpm",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "cpm"
-            ],
-            "eval": "intval($data->cpm) / 100"
-        },
-        {
-            "metric": "cpm",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "cpm"
             ],
@@ -1227,17 +1766,7 @@
             "metric": "cpp",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "cpp"
-            ],
-            "eval": "intval($data->cpp) / 100"
-        },
-        {
-            "metric": "cpp",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "cpp"
             ],
@@ -1247,17 +1776,7 @@
             "metric": "ctr",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "ctr"
-            ],
-            "eval": "(float)$data->ctr"
-        },
-        {
-            "metric": "ctr",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "ctr"
             ],
@@ -1267,17 +1786,7 @@
             "metric": "deeplink_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "deeplink_clicks"
-            ],
-            "eval": "(float)$data->deeplink_clicks"
-        },
-        {
-            "metric": "deeplink_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "deeplink_clicks"
             ],
@@ -1287,17 +1796,7 @@
             "metric": "frequency",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "frequency"
-            ],
-            "eval": "(float)$data->frequency"
-        },
-        {
-            "metric": "frequency",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "frequency"
             ],
@@ -1307,17 +1806,7 @@
             "metric": "inline_link_click_ctr",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "inline_link_click_ctr"
-            ],
-            "eval": "(float)$data->inline_link_click_ctr"
-        },
-        {
-            "metric": "inline_link_click_ctr",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "inline_link_click_ctr"
             ],
@@ -1327,17 +1816,7 @@
             "metric": "inline_link_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "inline_link_clicks"
-            ],
-            "eval": "(float)$data->inline_link_clicks"
-        },
-        {
-            "metric": "inline_link_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "inline_link_clicks"
             ],
@@ -1347,17 +1826,7 @@
             "metric": "inline_post_engagement",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "inline_post_engagement"
-            ],
-            "eval": "(float)$data->inline_post_engagement"
-        },
-        {
-            "metric": "inline_post_engagement",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "inline_post_engagement"
             ],
@@ -1367,17 +1836,7 @@
             "metric": "newsfeed_avg_position",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "newsfeed_avg_position"
-            ],
-            "eval": "(float)$data->newsfeed_avg_position"
-        },
-        {
-            "metric": "newsfeed_avg_position",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "newsfeed_avg_position"
             ],
@@ -1387,17 +1846,7 @@
             "metric": "newsfeed_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "newsfeed_clicks"
-            ],
-            "eval": "(float)$data->newsfeed_clicks"
-        },
-        {
-            "metric": "newsfeed_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "newsfeed_clicks"
             ],
@@ -1407,17 +1856,7 @@
             "metric": "newsfeed_impressions",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "newsfeed_impressions"
-            ],
-            "eval": "(float)$data->newsfeed_impressions"
-        },
-        {
-            "metric": "newsfeed_impressions",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "newsfeed_impressions"
             ],
@@ -1427,17 +1866,7 @@
             "metric": "reach",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "reach"
-            ],
-            "eval": "(float)$data->reach"
-        },
-        {
-            "metric": "reach",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "reach"
             ],
@@ -1447,17 +1876,7 @@
             "metric": "social_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "social_clicks"
-            ],
-            "eval": "(float)$data->social_clicks"
-        },
-        {
-            "metric": "social_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "social_clicks"
             ],
@@ -1467,17 +1886,7 @@
             "metric": "social_impressions",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "social_impressions"
-            ],
-            "eval": "(float)$data->social_impressions"
-        },
-        {
-            "metric": "social_impressions",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "social_impressions"
             ],
@@ -1487,17 +1896,7 @@
             "metric": "social_reach",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "social_reach"
-            ],
-            "eval": "(float)$data->social_reach"
-        },
-        {
-            "metric": "social_reach",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "social_reach"
             ],
@@ -1507,17 +1906,7 @@
             "metric": "social_spend",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "social_spend"
-            ],
-            "eval": "intval($data->social_spend) / 100"
-        },
-        {
-            "metric": "social_spend",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "social_spend"
             ],
@@ -1527,17 +1916,7 @@
             "metric": "spend",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "spend"
-            ],
-            "eval": "intval($data->spend) / 100"
-        },
-        {
-            "metric": "spend",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "spend"
             ],
@@ -1547,17 +1926,7 @@
             "metric": "total_action_value",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "total_action_value"
-            ],
-            "eval": "intval($data->total_action_value) / 100"
-        },
-        {
-            "metric": "total_action_value",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "total_action_value"
             ],
@@ -1567,17 +1936,7 @@
             "metric": "total_actions",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "total_actions"
-            ],
-            "eval": "(float)$data->total_actions"
-        },
-        {
-            "metric": "total_actions",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "total_actions"
             ],
@@ -1587,17 +1946,7 @@
             "metric": "total_unique_actions",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "total_unique_actions"
-            ],
-            "eval": "(float)$data->total_unique_actions"
-        },
-        {
-            "metric": "total_unique_actions",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "total_unique_actions"
             ],
@@ -1607,17 +1956,7 @@
             "metric": "unique_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "unique_clicks"
-            ],
-            "eval": "(float)$data->unique_clicks"
-        },
-        {
-            "metric": "unique_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "unique_clicks"
             ],
@@ -1627,17 +1966,7 @@
             "metric": "unique_ctr",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "unique_ctr"
-            ],
-            "eval": "(float)$data->unique_ctr"
-        },
-        {
-            "metric": "unique_ctr",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "unique_ctr"
             ],
@@ -1647,17 +1976,7 @@
             "metric": "unique_impressions",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "unique_impressions"
-            ],
-            "eval": "(float)$data->unique_impressions"
-        },
-        {
-            "metric": "unique_impressions",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "unique_impressions"
             ],
@@ -1667,17 +1986,7 @@
             "metric": "unique_inline_link_click_ctr",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "unique_inline_link_click_ctr"
-            ],
-            "eval": "(float)$data->unique_inline_link_click_ctr"
-        },
-        {
-            "metric": "unique_inline_link_click_ctr",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "unique_inline_link_click_ctr"
             ],
@@ -1687,17 +1996,7 @@
             "metric": "unique_inline_link_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "unique_inline_link_clicks"
-            ],
-            "eval": "(float)$data->unique_inline_link_clicks"
-        },
-        {
-            "metric": "unique_inline_link_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "unique_inline_link_clicks"
             ],
@@ -1707,17 +2006,7 @@
             "metric": "unique_link_clicks_ctr",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "unique_link_clicks_ctr"
-            ],
-            "eval": "(float)$data->unique_link_clicks_ctr"
-        },
-        {
-            "metric": "unique_link_clicks_ctr",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "unique_link_clicks_ctr"
             ],
@@ -1727,17 +2016,7 @@
             "metric": "unique_social_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "unique_social_clicks"
-            ],
-            "eval": "(float)$data->unique_social_clicks"
-        },
-        {
-            "metric": "unique_social_clicks",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "unique_social_clicks"
             ],
@@ -1747,17 +2026,7 @@
             "metric": "unique_social_impressions",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
-            "fields": [
-                "unique_social_impressions"
-            ],
-            "eval": "(float)$data->unique_social_impressions"
-        },
-        {
-            "metric": "unique_social_impressions",
-            "entity": "Account",
-            "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "unique_social_impressions"
             ],
@@ -1767,17 +2036,407 @@
             "metric": "website_clicks",
             "entity": "Campaign",
             "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_CAMPAIGN",
             "fields": [
                 "website_clicks"
             ],
             "eval": "(float)$data->website_clicks"
         },
         {
+            "metric": "app_store_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "app_store_clicks"
+            ],
+            "eval": "(float)$data->app_store_clicks"
+        },
+        {
+            "metric": "call_to_action_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "call_to_action_clicks"
+            ],
+            "eval": "(float)$data->call_to_action_clicks"
+        },
+        {
+            "metric": "canvas_avg_view_percent",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "canvas_avg_view_percent"
+            ],
+            "eval": "(float)$data->canvas_avg_view_percent"
+        },
+        {
+            "metric": "canvas_avg_view_time",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "canvas_avg_view_time"
+            ],
+            "eval": "(float)$data->canvas_avg_view_time"
+        },
+        {
+            "metric": "clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "clicks"
+            ],
+            "eval": "(float)$data->clicks"
+        },
+        {
+            "metric": "cost_per_inline_link_click",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "cost_per_inline_link_click"
+            ],
+            "eval": "intval($data->cost_per_inline_link_click) / 100"
+        },
+        {
+            "metric": "cost_per_inline_post_engagement",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "cost_per_inline_post_engagement"
+            ],
+            "eval": "intval($data->cost_per_inline_post_engagement) / 100"
+        },
+        {
+            "metric": "cost_per_total_action",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "cost_per_total_action"
+            ],
+            "eval": "intval($data->cost_per_total_action) / 100"
+        },
+        {
+            "metric": "cost_per_unique_click",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "cost_per_unique_click"
+            ],
+            "eval": "intval($data->cost_per_unique_click) / 100"
+        },
+        {
+            "metric": "cost_per_unique_inline_link_click",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "cost_per_unique_inline_link_click"
+            ],
+            "eval": "intval($data->cost_per_unique_inline_link_click) / 100"
+        },
+        {
+            "metric": "cpc",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "cpc"
+            ],
+            "eval": "intval($data->cpc) / 100"
+        },
+        {
+            "metric": "cpm",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "cpm"
+            ],
+            "eval": "intval($data->cpm) / 100"
+        },
+        {
+            "metric": "cpp",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "cpp"
+            ],
+            "eval": "intval($data->cpp) / 100"
+        },
+        {
+            "metric": "ctr",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "ctr"
+            ],
+            "eval": "(float)$data->ctr"
+        },
+        {
+            "metric": "deeplink_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "deeplink_clicks"
+            ],
+            "eval": "(float)$data->deeplink_clicks"
+        },
+        {
+            "metric": "frequency",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "frequency"
+            ],
+            "eval": "(float)$data->frequency"
+        },
+        {
+            "metric": "inline_link_click_ctr",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "inline_link_click_ctr"
+            ],
+            "eval": "(float)$data->inline_link_click_ctr"
+        },
+        {
+            "metric": "inline_link_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "inline_link_clicks"
+            ],
+            "eval": "(float)$data->inline_link_clicks"
+        },
+        {
+            "metric": "inline_post_engagement",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "inline_post_engagement"
+            ],
+            "eval": "(float)$data->inline_post_engagement"
+        },
+        {
+            "metric": "newsfeed_avg_position",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "newsfeed_avg_position"
+            ],
+            "eval": "(float)$data->newsfeed_avg_position"
+        },
+        {
+            "metric": "newsfeed_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "newsfeed_clicks"
+            ],
+            "eval": "(float)$data->newsfeed_clicks"
+        },
+        {
+            "metric": "newsfeed_impressions",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "newsfeed_impressions"
+            ],
+            "eval": "(float)$data->newsfeed_impressions"
+        },
+        {
+            "metric": "reach",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "reach"
+            ],
+            "eval": "(float)$data->reach"
+        },
+        {
+            "metric": "social_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "social_clicks"
+            ],
+            "eval": "(float)$data->social_clicks"
+        },
+        {
+            "metric": "social_impressions",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "social_impressions"
+            ],
+            "eval": "(float)$data->social_impressions"
+        },
+        {
+            "metric": "social_reach",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "social_reach"
+            ],
+            "eval": "(float)$data->social_reach"
+        },
+        {
+            "metric": "social_spend",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "social_spend"
+            ],
+            "eval": "intval($data->social_spend) / 100"
+        },
+        {
+            "metric": "spend",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "spend"
+            ],
+            "eval": "intval($data->spend) / 100"
+        },
+        {
+            "metric": "total_action_value",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "total_action_value"
+            ],
+            "eval": "intval($data->total_action_value) / 100"
+        },
+        {
+            "metric": "total_actions",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "total_actions"
+            ],
+            "eval": "(float)$data->total_actions"
+        },
+        {
+            "metric": "total_unique_actions",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "total_unique_actions"
+            ],
+            "eval": "(float)$data->total_unique_actions"
+        },
+        {
+            "metric": "unique_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "unique_clicks"
+            ],
+            "eval": "(float)$data->unique_clicks"
+        },
+        {
+            "metric": "unique_ctr",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "unique_ctr"
+            ],
+            "eval": "(float)$data->unique_ctr"
+        },
+        {
+            "metric": "unique_impressions",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "unique_impressions"
+            ],
+            "eval": "(float)$data->unique_impressions"
+        },
+        {
+            "metric": "unique_inline_link_click_ctr",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "unique_inline_link_click_ctr"
+            ],
+            "eval": "(float)$data->unique_inline_link_click_ctr"
+        },
+        {
+            "metric": "unique_inline_link_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "unique_inline_link_clicks"
+            ],
+            "eval": "(float)$data->unique_inline_link_clicks"
+        },
+        {
+            "metric": "unique_link_clicks_ctr",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "unique_link_clicks_ctr"
+            ],
+            "eval": "(float)$data->unique_link_clicks_ctr"
+        },
+        {
+            "metric": "unique_social_clicks",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "unique_social_clicks"
+            ],
+            "eval": "(float)$data->unique_social_clicks"
+        },
+        {
+            "metric": "unique_social_impressions",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "unique_social_impressions"
+            ],
+            "eval": "(float)$data->unique_social_impressions"
+        },
+        {
             "metric": "website_clicks",
             "entity": "Account",
             "platform": "facebook",
-            "report": "FB_GENERIC",
+            "report": "FB_ACCOUNT",
             "fields": [
                 "website_clicks"
             ],
