@@ -54,7 +54,7 @@ class FacebookResolver extends Facebook implements Resolver
                 foreach ($ids as $id) {
                     $account = new AdAccount($id);
                     $results[] = $account->getInsights(array_keys($config['fields']), [
-                        'level' => 'campaign',
+                        'level' => 'account',
                         'time_range' => [
                             'since' => $query->since->format('Y-m-d'),
                             'until' => $query->until->format('Y-m-d')
