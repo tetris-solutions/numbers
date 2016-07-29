@@ -25,7 +25,7 @@ function setBreakdownPermutation(&$config)
             $config['requires'] = $config['pairs_with'] = ['placement'];
             break;
         case 'placement':
-            $config['pairs_with'] = 'impression_device';
+            $config['required_by'] = $config['pairs_with'] = ['impression_device'];
             break;
         default:
             $config['pairs_with'] = [];
