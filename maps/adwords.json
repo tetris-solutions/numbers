@@ -1386,8 +1386,8 @@
                 "date": {
                     "property": "Date",
                     "names": {
-                        "en": "Day",
-                        "pt-BR": "Day"
+                        "en": "Date",
+                        "pt-BR": "Date"
                     },
                     "is_metric": false,
                     "is_filter": true,
@@ -2411,8 +2411,8 @@
                 "date": {
                     "property": "Date",
                     "names": {
-                        "en": "Day",
-                        "pt-BR": "Day"
+                        "en": "Date",
+                        "pt-BR": "Date"
                     },
                     "is_metric": false,
                     "is_filter": true,

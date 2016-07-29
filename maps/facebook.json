@@ -982,8 +982,8 @@
                 "date": {
                     "property": "date_start",
                     "names": {
-                        "en": "Date Start",
-                        "pt-BR": "Date Start"
+                        "en": "Date",
+                        "pt-BR": "Date"
                     },
                     "is_metric": false,
                     "is_dimension": true,
@@ -2117,8 +2117,8 @@
                 "date": {
                     "property": "date_start",
                     "names": {
-                        "en": "Date Start",
-                        "pt-BR": "Date Start"
+                        "en": "Date",
+                        "pt-BR": "Date"
                     },
                     "is_metric": false,
                     "is_dimension": true,
