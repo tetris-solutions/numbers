@@ -92,6 +92,8 @@ class Query
         $parsedMetrics = [];
 
         foreach ($metricsFromDatabase as $metric) {
+            $metric['names'] = json_decode($metric['names'], true);
+
             $source = sql::run(sql::select([
                 'metric_source.id',
                 'metric_source.metric',
