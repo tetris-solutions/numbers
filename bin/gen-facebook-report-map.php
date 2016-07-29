@@ -12,10 +12,6 @@ $actionTypes = json_decode(file_get_contents(__DIR__ . '/../maps/facebook-action
 
 $filterable = ['id'];
 
-$excluded = [
-    'date_stop'
-];
-
 $alternative = [
     'date_start' => 'date'
 ];
@@ -90,7 +86,6 @@ foreach ($output['entities'] as $entity) {
 
     foreach ($fields as $originalAttributeName => $field) {
         if (!in_array($field['type'], $validTypes)) continue;
-        if (in_array($originalAttributeName, $excluded)) continue;
         if (!isset($names['en']['facebook'][$originalAttributeName])) continue;
 
         // name looks like <campaign>_field_name

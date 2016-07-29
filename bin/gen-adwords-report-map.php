@@ -9,8 +9,6 @@ $names = require(__DIR__ . '/../src/fields.php');
 
 $mappings = json_decode(file_get_contents(__DIR__ . '/../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
 
-$alternative = [];
-
 $output = [
     'entities' => [],
     'metrics' => [],
@@ -49,9 +47,7 @@ foreach ($mappings as $reportName => $fields) {
         $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0;
         $attributeName = strtolower($originalAttributeName);
 
-        if (isset($alternative[$originalAttributeName])) {
-            $attributeName = $alternative[$originalAttributeName];
-        } else if ($nameStartsWithEntity) {
+        if ($nameStartsWithEntity) {
             $attributeName = substr($attributeName, strlen($entity));
         }
 
