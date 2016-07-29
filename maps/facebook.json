@@ -132,6 +132,14 @@
                 "pt-BR": "Frequency"
             }
         },
+        "impressions": {
+            "id": "impressions",
+            "type": "quantity",
+            "names": {
+                "en": "Impressions",
+                "pt-BR": "Impressions"
+            }
+        },
         "inline_link_click_ctr": {
             "id": "inline_link_click_ctr",
             "type": "quantity",
@@ -665,8 +673,8 @@
                         "en": "Impressions",
                         "pt-BR": "Impressions"
                     },
-                    "is_metric": false,
-                    "is_dimension": true,
+                    "is_metric": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "inline_link_click_ctr": {
@@ -1310,8 +1318,8 @@
                         "en": "Impressions",
                         "pt-BR": "Impressions"
                     },
-                    "is_metric": false,
-                    "is_dimension": true,
+                    "is_metric": true,
+                    "is_dimension": false,
                     "is_filter": false
                 },
                 "inline_link_click_ctr": {
@@ -1779,6 +1787,16 @@
             "eval": "(float)$data->frequency"
         },
         {
+            "metric": "impressions",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "impressions"
+            ],
+            "eval": "(float)$data->impressions"
+        },
+        {
             "metric": "inline_link_click_ctr",
             "entity": "Campaign",
             "platform": "facebook",
@@ -2177,6 +2195,16 @@
                 "frequency"
             ],
             "eval": "(float)$data->frequency"
+        },
+        {
+            "metric": "impressions",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "impressions"
+            ],
+            "eval": "(float)$data->impressions"
         },
         {
             "metric": "inline_link_click_ctr",

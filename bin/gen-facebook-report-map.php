@@ -19,6 +19,10 @@ $alternative = [
     'date_start' => 'date'
 ];
 
+$overrideType = [
+    'impressions' => 'numeric string'
+];
+
 $output = [
     'entities' => ['Campaign', 'Account'],
     'metrics' => [],
@@ -81,6 +85,10 @@ foreach ($output['entities'] as $entity) {
             $attributeName = $alternative[$originalAttributeName];
         } else if ($nameStartsWithEntity) {
             $attributeName = substr($originalAttributeName, strlen($entity) + 1);
+        }
+
+        if (isset($overrideType[$attributeName])) {
+            $field['type'] = $overrideType[$attributeName];
         }
 
         $attribute = [
