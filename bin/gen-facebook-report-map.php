@@ -8,6 +8,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $names = require(__DIR__ . '/../src/fields.php');
 
 $fields = json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'), true);
+$actionTypes = json_decode(file_get_contents(__DIR__ . '/../maps/facebook-action-types.json'), true);
 
 $filterable = ['id'];
 
@@ -47,6 +48,21 @@ $validTypes = [
     'string',
     'float'
 ];
+
+$evalActionType = function ($type) {
+    $eval = <<<PHP
+foreach (\$data->actions as \$action) {
+    if (\$action['action_type'] === "$type") {
+        return (float)\$action['value'];        
+    }
+}
+
+return NULL;
+PHP;
+
+    return $eval;
+};
+
 
 function isCurrency(array $field): bool
 {
@@ -108,7 +124,7 @@ foreach ($output['entities'] as $entity) {
         if ($attribute['is_metric']) {
             $attribute['is_dimension'] = false;
 
-            if (empty($output['metircs'][$attributeName])) {
+            if (empty($output['metrics'][$attributeName])) {
                 $output['metrics'][$attributeName] = $metric = [
                     'id' => $attributeName,
                     'type' => isCurrency($field) ? 'currency' : 'quantity',
@@ -129,6 +145,38 @@ foreach ($output['entities'] as $entity) {
         }
 
         $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
+    }
+
+    foreach ($actionTypes as $type => $name) {
+        $attribute = [
+            'property' => $type,
+            'names' => [
+                'en' => $names['en']['facebook'][$type],
+                'pt-BR' => $names['pt-BR']['facebook'][$type],
+            ],
+            'is_metric' => true,
+            'is_dimension' => false,
+            'is_filter' => false
+        ];
+
+        if (empty($output['metrics'][$type])) {
+            $output['metrics'][$type] = [
+                'id' => $type,
+                'type' => 'quantity',
+                'names' => $attribute['names']
+            ];
+        }
+
+        $output['sources'][] = [
+            'metric' => $type,
+            'entity' => $entity,
+            'platform' => 'facebook',
+            'report' => $reportName,
+            'fields' => ['actions'],
+            'eval' => $evalActionType($type)
+        ];
+
+        $output['reports'][$reportName]['attributes'][$type] = $attribute;
     }
 }
 

@@ -88,32 +88,32 @@
             "id": "cpc",
             "type": "currency",
             "names": {
-                "en": "CPC",
-                "pt-BR": "CPC"
+                "en": "Cpc",
+                "pt-BR": "Cpc"
             }
         },
         "cpm": {
             "id": "cpm",
             "type": "currency",
             "names": {
-                "en": "CPM",
-                "pt-BR": "CPM"
+                "en": "Cpm",
+                "pt-BR": "Cpm"
             }
         },
         "cpp": {
             "id": "cpp",
             "type": "currency",
             "names": {
-                "en": "CPP",
-                "pt-BR": "CPP"
+                "en": "Cpp",
+                "pt-BR": "Cpp"
             }
         },
         "ctr": {
             "id": "ctr",
             "type": "quantity",
             "names": {
-                "en": "CTR",
-                "pt-BR": "CTR"
+                "en": "Ctr",
+                "pt-BR": "Ctr"
             }
         },
         "deeplink_clicks": {
@@ -330,6 +330,398 @@
             "names": {
                 "en": "Website Clicks",
                 "pt-BR": "Website Clicks"
+            }
+        },
+        "app_custom_event.fb_mobile_achievement_unlocked": {
+            "id": "app_custom_event.fb_mobile_achievement_unlocked",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Feature Unlocks",
+                "pt-BR": "Mobile App Feature Unlocks"
+            }
+        },
+        "app_custom_event.fb_mobile_activate_app": {
+            "id": "app_custom_event.fb_mobile_activate_app",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Starts",
+                "pt-BR": "Mobile App Starts"
+            }
+        },
+        "app_custom_event.fb_mobile_add_payment_info": {
+            "id": "app_custom_event.fb_mobile_add_payment_info",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Payment Details",
+                "pt-BR": "Mobile App Payment Details"
+            }
+        },
+        "app_custom_event.fb_mobile_add_to_cart": {
+            "id": "app_custom_event.fb_mobile_add_to_cart",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Adds To Cart",
+                "pt-BR": "Mobile App Adds To Cart"
+            }
+        },
+        "app_custom_event.fb_mobile_add_to_wishlist": {
+            "id": "app_custom_event.fb_mobile_add_to_wishlist",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Adds to Wishlist",
+                "pt-BR": "Mobile App Adds to Wishlist"
+            }
+        },
+        "app_custom_event.fb_mobile_complete_registration": {
+            "id": "app_custom_event.fb_mobile_complete_registration",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Registrations",
+                "pt-BR": "Mobile App Registrations"
+            }
+        },
+        "app_custom_event.fb_mobile_content_view": {
+            "id": "app_custom_event.fb_mobile_content_view",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Content Views",
+                "pt-BR": "Mobile App Content Views"
+            }
+        },
+        "app_custom_event.fb_mobile_initiated_checkout": {
+            "id": "app_custom_event.fb_mobile_initiated_checkout",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Checkouts",
+                "pt-BR": "Mobile App Checkouts"
+            }
+        },
+        "app_custom_event.fb_mobile_level_achieved": {
+            "id": "app_custom_event.fb_mobile_level_achieved",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Achievements",
+                "pt-BR": "Mobile App Achievements"
+            }
+        },
+        "app_custom_event.fb_mobile_purchase": {
+            "id": "app_custom_event.fb_mobile_purchase",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Purchases",
+                "pt-BR": "Mobile App Purchases"
+            }
+        },
+        "app_custom_event.fb_mobile_rate": {
+            "id": "app_custom_event.fb_mobile_rate",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Ratings",
+                "pt-BR": "Mobile App Ratings"
+            }
+        },
+        "app_custom_event.fb_mobile_search": {
+            "id": "app_custom_event.fb_mobile_search",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Searchs",
+                "pt-BR": "Mobile App Searchs"
+            }
+        },
+        "app_custom_event.fb_mobile_spent_credits": {
+            "id": "app_custom_event.fb_mobile_spent_credits",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Credit Spends",
+                "pt-BR": "Mobile App Credit Spends"
+            }
+        },
+        "app_custom_event.fb_mobile_tutorial_completion": {
+            "id": "app_custom_event.fb_mobile_tutorial_completion",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Tutorial Completions",
+                "pt-BR": "Mobile App Tutorial Completions"
+            }
+        },
+        "app_custom_event.other": {
+            "id": "app_custom_event.other",
+            "type": "quantity",
+            "names": {
+                "en": "Other Mobile App Actions",
+                "pt-BR": "Other Mobile App Actions"
+            }
+        },
+        "app_install": {
+            "id": "app_install",
+            "type": "quantity",
+            "names": {
+                "en": "App Installs",
+                "pt-BR": "App Installs"
+            }
+        },
+        "app_use": {
+            "id": "app_use",
+            "type": "quantity",
+            "names": {
+                "en": "App Uses",
+                "pt-BR": "App Uses"
+            }
+        },
+        "checkin": {
+            "id": "checkin",
+            "type": "quantity",
+            "names": {
+                "en": "Check-ins",
+                "pt-BR": "Check-ins"
+            }
+        },
+        "comment": {
+            "id": "comment",
+            "type": "quantity",
+            "names": {
+                "en": "Post Comments",
+                "pt-BR": "Post Comments"
+            }
+        },
+        "commerce_event.add_to_cart": {
+            "id": "commerce_event.add_to_cart",
+            "type": "quantity",
+            "names": {
+                "en": "Commerce Adds to Cart",
+                "pt-BR": "Commerce Adds to Cart"
+            }
+        },
+        "commerce_event.message_to_buy": {
+            "id": "commerce_event.message_to_buy",
+            "type": "quantity",
+            "names": {
+                "en": "Commerce Messages to Buy",
+                "pt-BR": "Commerce Messages to Buy"
+            }
+        },
+        "commerce_event.purchase": {
+            "id": "commerce_event.purchase",
+            "type": "quantity",
+            "names": {
+                "en": "Commerce Purchases",
+                "pt-BR": "Commerce Purchases"
+            }
+        },
+        "commerce_event.view_content": {
+            "id": "commerce_event.view_content",
+            "type": "quantity",
+            "names": {
+                "en": "Commerce Product Views",
+                "pt-BR": "Commerce Product Views"
+            }
+        },
+        "credit_spent": {
+            "id": "credit_spent",
+            "type": "quantity",
+            "names": {
+                "en": "Credit Spends",
+                "pt-BR": "Credit Spends"
+            }
+        },
+        "follow": {
+            "id": "follow",
+            "type": "quantity",
+            "names": {
+                "en": "Question Follows",
+                "pt-BR": "Question Follows"
+            }
+        },
+        "full_view": {
+            "id": "full_view",
+            "type": "quantity",
+            "names": {
+                "en": "Post Full Views",
+                "pt-BR": "Post Full Views"
+            }
+        },
+        "games.plays": {
+            "id": "games.plays",
+            "type": "quantity",
+            "names": {
+                "en": "Game Plays",
+                "pt-BR": "Game Plays"
+            }
+        },
+        "gift_sale": {
+            "id": "gift_sale",
+            "type": "quantity",
+            "names": {
+                "en": "Facebook Gifts Sale",
+                "pt-BR": "Facebook Gifts Sale"
+            }
+        },
+        "leadgen.other": {
+            "id": "leadgen.other",
+            "type": "quantity",
+            "names": {
+                "en": "Leads (Form)",
+                "pt-BR": "Leads (Form)"
+            }
+        },
+        "like": {
+            "id": "like",
+            "type": "quantity",
+            "names": {
+                "en": "Page Likes",
+                "pt-BR": "Page Likes"
+            }
+        },
+        "link_click": {
+            "id": "link_click",
+            "type": "quantity",
+            "names": {
+                "en": "Website Clicks",
+                "pt-BR": "Website Clicks"
+            }
+        },
+        "mention": {
+            "id": "mention",
+            "type": "quantity",
+            "names": {
+                "en": "Page Mentions",
+                "pt-BR": "Page Mentions"
+            }
+        },
+        "mobile_app_install": {
+            "id": "mobile_app_install",
+            "type": "quantity",
+            "names": {
+                "en": "Mobile App Installs",
+                "pt-BR": "Mobile App Installs"
+            }
+        },
+        "new_mobile": {
+            "id": "new_mobile",
+            "type": "quantity",
+            "names": {
+                "en": "Newly Purchased Mobile Devices",
+                "pt-BR": "Newly Purchased Mobile Devices"
+            }
+        },
+        "offsite_conversion.add_to_cart": {
+            "id": "offsite_conversion.add_to_cart",
+            "type": "quantity",
+            "names": {
+                "en": "Adds to Cart",
+                "pt-BR": "Adds to Cart"
+            }
+        },
+        "offsite_conversion.checkout": {
+            "id": "offsite_conversion.checkout",
+            "type": "quantity",
+            "names": {
+                "en": "Checkouts",
+                "pt-BR": "Checkouts"
+            }
+        },
+        "offsite_conversion.key_page_view": {
+            "id": "offsite_conversion.key_page_view",
+            "type": "quantity",
+            "names": {
+                "en": "Key Page Views",
+                "pt-BR": "Key Page Views"
+            }
+        },
+        "offsite_conversion.lead": {
+            "id": "offsite_conversion.lead",
+            "type": "quantity",
+            "names": {
+                "en": "Leads",
+                "pt-BR": "Leads"
+            }
+        },
+        "offsite_conversion.other": {
+            "id": "offsite_conversion.other",
+            "type": "quantity",
+            "names": {
+                "en": "Other Website Conversions",
+                "pt-BR": "Other Website Conversions"
+            }
+        },
+        "offsite_conversion.registration": {
+            "id": "offsite_conversion.registration",
+            "type": "quantity",
+            "names": {
+                "en": "Registrations",
+                "pt-BR": "Registrations"
+            }
+        },
+        "photo_view": {
+            "id": "photo_view",
+            "type": "quantity",
+            "names": {
+                "en": "Page Photo Views",
+                "pt-BR": "Page Photo Views"
+            }
+        },
+        "post": {
+            "id": "post",
+            "type": "quantity",
+            "names": {
+                "en": "Post Shares",
+                "pt-BR": "Post Shares"
+            }
+        },
+        "post_like": {
+            "id": "post_like",
+            "type": "quantity",
+            "names": {
+                "en": "Post Likes",
+                "pt-BR": "Post Likes"
+            }
+        },
+        "receive_offer": {
+            "id": "receive_offer",
+            "type": "quantity",
+            "names": {
+                "en": "Offer Claims",
+                "pt-BR": "Offer Claims"
+            }
+        },
+        "rsvp": {
+            "id": "rsvp",
+            "type": "quantity",
+            "names": {
+                "en": "Event Responses",
+                "pt-BR": "Event Responses"
+            }
+        },
+        "tab_view": {
+            "id": "tab_view",
+            "type": "quantity",
+            "names": {
+                "en": "Page Tab Views",
+                "pt-BR": "Page Tab Views"
+            }
+        },
+        "video_play": {
+            "id": "video_play",
+            "type": "quantity",
+            "names": {
+                "en": "Clicks to Play Video",
+                "pt-BR": "Clicks to Play Video"
+            }
+        },
+        "video_view": {
+            "id": "video_view",
+            "type": "quantity",
+            "names": {
+                "en": "Video Views",
+                "pt-BR": "Video Views"
+            }
+        },
+        "vote": {
+            "id": "vote",
+            "type": "quantity",
+            "names": {
+                "en": "Question Answers",
+                "pt-BR": "Question Answers"
             }
         }
     },
@@ -550,8 +942,8 @@
                 "cpc": {
                     "property": "cpc",
                     "names": {
-                        "en": "CPC",
-                        "pt-BR": "CPC"
+                        "en": "Cpc",
+                        "pt-BR": "Cpc"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -560,8 +952,8 @@
                 "cpm": {
                     "property": "cpm",
                     "names": {
-                        "en": "CPM",
-                        "pt-BR": "CPM"
+                        "en": "Cpm",
+                        "pt-BR": "Cpm"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -570,8 +962,8 @@
                 "cpp": {
                     "property": "cpp",
                     "names": {
-                        "en": "CPP",
-                        "pt-BR": "CPP"
+                        "en": "Cpp",
+                        "pt-BR": "Cpp"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -580,8 +972,8 @@
                 "ctr": {
                     "property": "ctr",
                     "names": {
-                        "en": "CTR",
-                        "pt-BR": "CTR"
+                        "en": "Ctr",
+                        "pt-BR": "Ctr"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -590,8 +982,8 @@
                 "date": {
                     "property": "date_start",
                     "names": {
-                        "en": "Date",
-                        "pt-BR": "Date"
+                        "en": "Date Start",
+                        "pt-BR": "Date Start"
                     },
                     "is_metric": false,
                     "is_dimension": true,
@@ -972,6 +1364,496 @@
                     "names": {
                         "en": "Website Clicks",
                         "pt-BR": "Website Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_achievement_unlocked": {
+                    "property": "app_custom_event.fb_mobile_achievement_unlocked",
+                    "names": {
+                        "en": "Mobile App Feature Unlocks",
+                        "pt-BR": "Mobile App Feature Unlocks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_activate_app": {
+                    "property": "app_custom_event.fb_mobile_activate_app",
+                    "names": {
+                        "en": "Mobile App Starts",
+                        "pt-BR": "Mobile App Starts"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_add_payment_info": {
+                    "property": "app_custom_event.fb_mobile_add_payment_info",
+                    "names": {
+                        "en": "Mobile App Payment Details",
+                        "pt-BR": "Mobile App Payment Details"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_add_to_cart": {
+                    "property": "app_custom_event.fb_mobile_add_to_cart",
+                    "names": {
+                        "en": "Mobile App Adds To Cart",
+                        "pt-BR": "Mobile App Adds To Cart"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_add_to_wishlist": {
+                    "property": "app_custom_event.fb_mobile_add_to_wishlist",
+                    "names": {
+                        "en": "Mobile App Adds to Wishlist",
+                        "pt-BR": "Mobile App Adds to Wishlist"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_complete_registration": {
+                    "property": "app_custom_event.fb_mobile_complete_registration",
+                    "names": {
+                        "en": "Mobile App Registrations",
+                        "pt-BR": "Mobile App Registrations"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_content_view": {
+                    "property": "app_custom_event.fb_mobile_content_view",
+                    "names": {
+                        "en": "Mobile App Content Views",
+                        "pt-BR": "Mobile App Content Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_initiated_checkout": {
+                    "property": "app_custom_event.fb_mobile_initiated_checkout",
+                    "names": {
+                        "en": "Mobile App Checkouts",
+                        "pt-BR": "Mobile App Checkouts"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_level_achieved": {
+                    "property": "app_custom_event.fb_mobile_level_achieved",
+                    "names": {
+                        "en": "Mobile App Achievements",
+                        "pt-BR": "Mobile App Achievements"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_purchase": {
+                    "property": "app_custom_event.fb_mobile_purchase",
+                    "names": {
+                        "en": "Mobile App Purchases",
+                        "pt-BR": "Mobile App Purchases"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_rate": {
+                    "property": "app_custom_event.fb_mobile_rate",
+                    "names": {
+                        "en": "Mobile App Ratings",
+                        "pt-BR": "Mobile App Ratings"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_search": {
+                    "property": "app_custom_event.fb_mobile_search",
+                    "names": {
+                        "en": "Mobile App Searchs",
+                        "pt-BR": "Mobile App Searchs"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_spent_credits": {
+                    "property": "app_custom_event.fb_mobile_spent_credits",
+                    "names": {
+                        "en": "Mobile App Credit Spends",
+                        "pt-BR": "Mobile App Credit Spends"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_tutorial_completion": {
+                    "property": "app_custom_event.fb_mobile_tutorial_completion",
+                    "names": {
+                        "en": "Mobile App Tutorial Completions",
+                        "pt-BR": "Mobile App Tutorial Completions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.other": {
+                    "property": "app_custom_event.other",
+                    "names": {
+                        "en": "Other Mobile App Actions",
+                        "pt-BR": "Other Mobile App Actions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_install": {
+                    "property": "app_install",
+                    "names": {
+                        "en": "App Installs",
+                        "pt-BR": "App Installs"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_use": {
+                    "property": "app_use",
+                    "names": {
+                        "en": "App Uses",
+                        "pt-BR": "App Uses"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "checkin": {
+                    "property": "checkin",
+                    "names": {
+                        "en": "Check-ins",
+                        "pt-BR": "Check-ins"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "comment": {
+                    "property": "comment",
+                    "names": {
+                        "en": "Post Comments",
+                        "pt-BR": "Post Comments"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "commerce_event.add_to_cart": {
+                    "property": "commerce_event.add_to_cart",
+                    "names": {
+                        "en": "Commerce Adds to Cart",
+                        "pt-BR": "Commerce Adds to Cart"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "commerce_event.message_to_buy": {
+                    "property": "commerce_event.message_to_buy",
+                    "names": {
+                        "en": "Commerce Messages to Buy",
+                        "pt-BR": "Commerce Messages to Buy"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "commerce_event.purchase": {
+                    "property": "commerce_event.purchase",
+                    "names": {
+                        "en": "Commerce Purchases",
+                        "pt-BR": "Commerce Purchases"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "commerce_event.view_content": {
+                    "property": "commerce_event.view_content",
+                    "names": {
+                        "en": "Commerce Product Views",
+                        "pt-BR": "Commerce Product Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "credit_spent": {
+                    "property": "credit_spent",
+                    "names": {
+                        "en": "Credit Spends",
+                        "pt-BR": "Credit Spends"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "follow": {
+                    "property": "follow",
+                    "names": {
+                        "en": "Question Follows",
+                        "pt-BR": "Question Follows"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "full_view": {
+                    "property": "full_view",
+                    "names": {
+                        "en": "Post Full Views",
+                        "pt-BR": "Post Full Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "games.plays": {
+                    "property": "games.plays",
+                    "names": {
+                        "en": "Game Plays",
+                        "pt-BR": "Game Plays"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "gift_sale": {
+                    "property": "gift_sale",
+                    "names": {
+                        "en": "Facebook Gifts Sale",
+                        "pt-BR": "Facebook Gifts Sale"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "leadgen.other": {
+                    "property": "leadgen.other",
+                    "names": {
+                        "en": "Leads (Form)",
+                        "pt-BR": "Leads (Form)"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "like": {
+                    "property": "like",
+                    "names": {
+                        "en": "Page Likes",
+                        "pt-BR": "Page Likes"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "link_click": {
+                    "property": "link_click",
+                    "names": {
+                        "en": "Website Clicks",
+                        "pt-BR": "Website Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "mention": {
+                    "property": "mention",
+                    "names": {
+                        "en": "Page Mentions",
+                        "pt-BR": "Page Mentions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "mobile_app_install": {
+                    "property": "mobile_app_install",
+                    "names": {
+                        "en": "Mobile App Installs",
+                        "pt-BR": "Mobile App Installs"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "new_mobile": {
+                    "property": "new_mobile",
+                    "names": {
+                        "en": "Newly Purchased Mobile Devices",
+                        "pt-BR": "Newly Purchased Mobile Devices"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.add_to_cart": {
+                    "property": "offsite_conversion.add_to_cart",
+                    "names": {
+                        "en": "Adds to Cart",
+                        "pt-BR": "Adds to Cart"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.checkout": {
+                    "property": "offsite_conversion.checkout",
+                    "names": {
+                        "en": "Checkouts",
+                        "pt-BR": "Checkouts"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.key_page_view": {
+                    "property": "offsite_conversion.key_page_view",
+                    "names": {
+                        "en": "Key Page Views",
+                        "pt-BR": "Key Page Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.lead": {
+                    "property": "offsite_conversion.lead",
+                    "names": {
+                        "en": "Leads",
+                        "pt-BR": "Leads"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.other": {
+                    "property": "offsite_conversion.other",
+                    "names": {
+                        "en": "Other Website Conversions",
+                        "pt-BR": "Other Website Conversions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.registration": {
+                    "property": "offsite_conversion.registration",
+                    "names": {
+                        "en": "Registrations",
+                        "pt-BR": "Registrations"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "photo_view": {
+                    "property": "photo_view",
+                    "names": {
+                        "en": "Page Photo Views",
+                        "pt-BR": "Page Photo Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "post": {
+                    "property": "post",
+                    "names": {
+                        "en": "Post Shares",
+                        "pt-BR": "Post Shares"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "post_like": {
+                    "property": "post_like",
+                    "names": {
+                        "en": "Post Likes",
+                        "pt-BR": "Post Likes"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "receive_offer": {
+                    "property": "receive_offer",
+                    "names": {
+                        "en": "Offer Claims",
+                        "pt-BR": "Offer Claims"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "rsvp": {
+                    "property": "rsvp",
+                    "names": {
+                        "en": "Event Responses",
+                        "pt-BR": "Event Responses"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "tab_view": {
+                    "property": "tab_view",
+                    "names": {
+                        "en": "Page Tab Views",
+                        "pt-BR": "Page Tab Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "video_play": {
+                    "property": "video_play",
+                    "names": {
+                        "en": "Clicks to Play Video",
+                        "pt-BR": "Clicks to Play Video"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "video_view": {
+                    "property": "video_view",
+                    "names": {
+                        "en": "Video Views",
+                        "pt-BR": "Video Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "vote": {
+                    "property": "vote",
+                    "names": {
+                        "en": "Question Answers",
+                        "pt-BR": "Question Answers"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1195,8 +2077,8 @@
                 "cpc": {
                     "property": "cpc",
                     "names": {
-                        "en": "CPC",
-                        "pt-BR": "CPC"
+                        "en": "Cpc",
+                        "pt-BR": "Cpc"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1205,8 +2087,8 @@
                 "cpm": {
                     "property": "cpm",
                     "names": {
-                        "en": "CPM",
-                        "pt-BR": "CPM"
+                        "en": "Cpm",
+                        "pt-BR": "Cpm"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1215,8 +2097,8 @@
                 "cpp": {
                     "property": "cpp",
                     "names": {
-                        "en": "CPP",
-                        "pt-BR": "CPP"
+                        "en": "Cpp",
+                        "pt-BR": "Cpp"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1225,8 +2107,8 @@
                 "ctr": {
                     "property": "ctr",
                     "names": {
-                        "en": "CTR",
-                        "pt-BR": "CTR"
+                        "en": "Ctr",
+                        "pt-BR": "Ctr"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -1235,8 +2117,8 @@
                 "date": {
                     "property": "date_start",
                     "names": {
-                        "en": "Date",
-                        "pt-BR": "Date"
+                        "en": "Date Start",
+                        "pt-BR": "Date Start"
                     },
                     "is_metric": false,
                     "is_dimension": true,
@@ -1617,6 +2499,496 @@
                     "names": {
                         "en": "Website Clicks",
                         "pt-BR": "Website Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_achievement_unlocked": {
+                    "property": "app_custom_event.fb_mobile_achievement_unlocked",
+                    "names": {
+                        "en": "Mobile App Feature Unlocks",
+                        "pt-BR": "Mobile App Feature Unlocks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_activate_app": {
+                    "property": "app_custom_event.fb_mobile_activate_app",
+                    "names": {
+                        "en": "Mobile App Starts",
+                        "pt-BR": "Mobile App Starts"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_add_payment_info": {
+                    "property": "app_custom_event.fb_mobile_add_payment_info",
+                    "names": {
+                        "en": "Mobile App Payment Details",
+                        "pt-BR": "Mobile App Payment Details"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_add_to_cart": {
+                    "property": "app_custom_event.fb_mobile_add_to_cart",
+                    "names": {
+                        "en": "Mobile App Adds To Cart",
+                        "pt-BR": "Mobile App Adds To Cart"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_add_to_wishlist": {
+                    "property": "app_custom_event.fb_mobile_add_to_wishlist",
+                    "names": {
+                        "en": "Mobile App Adds to Wishlist",
+                        "pt-BR": "Mobile App Adds to Wishlist"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_complete_registration": {
+                    "property": "app_custom_event.fb_mobile_complete_registration",
+                    "names": {
+                        "en": "Mobile App Registrations",
+                        "pt-BR": "Mobile App Registrations"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_content_view": {
+                    "property": "app_custom_event.fb_mobile_content_view",
+                    "names": {
+                        "en": "Mobile App Content Views",
+                        "pt-BR": "Mobile App Content Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_initiated_checkout": {
+                    "property": "app_custom_event.fb_mobile_initiated_checkout",
+                    "names": {
+                        "en": "Mobile App Checkouts",
+                        "pt-BR": "Mobile App Checkouts"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_level_achieved": {
+                    "property": "app_custom_event.fb_mobile_level_achieved",
+                    "names": {
+                        "en": "Mobile App Achievements",
+                        "pt-BR": "Mobile App Achievements"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_purchase": {
+                    "property": "app_custom_event.fb_mobile_purchase",
+                    "names": {
+                        "en": "Mobile App Purchases",
+                        "pt-BR": "Mobile App Purchases"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_rate": {
+                    "property": "app_custom_event.fb_mobile_rate",
+                    "names": {
+                        "en": "Mobile App Ratings",
+                        "pt-BR": "Mobile App Ratings"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_search": {
+                    "property": "app_custom_event.fb_mobile_search",
+                    "names": {
+                        "en": "Mobile App Searchs",
+                        "pt-BR": "Mobile App Searchs"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_spent_credits": {
+                    "property": "app_custom_event.fb_mobile_spent_credits",
+                    "names": {
+                        "en": "Mobile App Credit Spends",
+                        "pt-BR": "Mobile App Credit Spends"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.fb_mobile_tutorial_completion": {
+                    "property": "app_custom_event.fb_mobile_tutorial_completion",
+                    "names": {
+                        "en": "Mobile App Tutorial Completions",
+                        "pt-BR": "Mobile App Tutorial Completions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_custom_event.other": {
+                    "property": "app_custom_event.other",
+                    "names": {
+                        "en": "Other Mobile App Actions",
+                        "pt-BR": "Other Mobile App Actions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_install": {
+                    "property": "app_install",
+                    "names": {
+                        "en": "App Installs",
+                        "pt-BR": "App Installs"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "app_use": {
+                    "property": "app_use",
+                    "names": {
+                        "en": "App Uses",
+                        "pt-BR": "App Uses"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "checkin": {
+                    "property": "checkin",
+                    "names": {
+                        "en": "Check-ins",
+                        "pt-BR": "Check-ins"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "comment": {
+                    "property": "comment",
+                    "names": {
+                        "en": "Post Comments",
+                        "pt-BR": "Post Comments"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "commerce_event.add_to_cart": {
+                    "property": "commerce_event.add_to_cart",
+                    "names": {
+                        "en": "Commerce Adds to Cart",
+                        "pt-BR": "Commerce Adds to Cart"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "commerce_event.message_to_buy": {
+                    "property": "commerce_event.message_to_buy",
+                    "names": {
+                        "en": "Commerce Messages to Buy",
+                        "pt-BR": "Commerce Messages to Buy"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "commerce_event.purchase": {
+                    "property": "commerce_event.purchase",
+                    "names": {
+                        "en": "Commerce Purchases",
+                        "pt-BR": "Commerce Purchases"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "commerce_event.view_content": {
+                    "property": "commerce_event.view_content",
+                    "names": {
+                        "en": "Commerce Product Views",
+                        "pt-BR": "Commerce Product Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "credit_spent": {
+                    "property": "credit_spent",
+                    "names": {
+                        "en": "Credit Spends",
+                        "pt-BR": "Credit Spends"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "follow": {
+                    "property": "follow",
+                    "names": {
+                        "en": "Question Follows",
+                        "pt-BR": "Question Follows"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "full_view": {
+                    "property": "full_view",
+                    "names": {
+                        "en": "Post Full Views",
+                        "pt-BR": "Post Full Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "games.plays": {
+                    "property": "games.plays",
+                    "names": {
+                        "en": "Game Plays",
+                        "pt-BR": "Game Plays"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "gift_sale": {
+                    "property": "gift_sale",
+                    "names": {
+                        "en": "Facebook Gifts Sale",
+                        "pt-BR": "Facebook Gifts Sale"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "leadgen.other": {
+                    "property": "leadgen.other",
+                    "names": {
+                        "en": "Leads (Form)",
+                        "pt-BR": "Leads (Form)"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "like": {
+                    "property": "like",
+                    "names": {
+                        "en": "Page Likes",
+                        "pt-BR": "Page Likes"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "link_click": {
+                    "property": "link_click",
+                    "names": {
+                        "en": "Website Clicks",
+                        "pt-BR": "Website Clicks"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "mention": {
+                    "property": "mention",
+                    "names": {
+                        "en": "Page Mentions",
+                        "pt-BR": "Page Mentions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "mobile_app_install": {
+                    "property": "mobile_app_install",
+                    "names": {
+                        "en": "Mobile App Installs",
+                        "pt-BR": "Mobile App Installs"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "new_mobile": {
+                    "property": "new_mobile",
+                    "names": {
+                        "en": "Newly Purchased Mobile Devices",
+                        "pt-BR": "Newly Purchased Mobile Devices"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.add_to_cart": {
+                    "property": "offsite_conversion.add_to_cart",
+                    "names": {
+                        "en": "Adds to Cart",
+                        "pt-BR": "Adds to Cart"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.checkout": {
+                    "property": "offsite_conversion.checkout",
+                    "names": {
+                        "en": "Checkouts",
+                        "pt-BR": "Checkouts"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.key_page_view": {
+                    "property": "offsite_conversion.key_page_view",
+                    "names": {
+                        "en": "Key Page Views",
+                        "pt-BR": "Key Page Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.lead": {
+                    "property": "offsite_conversion.lead",
+                    "names": {
+                        "en": "Leads",
+                        "pt-BR": "Leads"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.other": {
+                    "property": "offsite_conversion.other",
+                    "names": {
+                        "en": "Other Website Conversions",
+                        "pt-BR": "Other Website Conversions"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "offsite_conversion.registration": {
+                    "property": "offsite_conversion.registration",
+                    "names": {
+                        "en": "Registrations",
+                        "pt-BR": "Registrations"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "photo_view": {
+                    "property": "photo_view",
+                    "names": {
+                        "en": "Page Photo Views",
+                        "pt-BR": "Page Photo Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "post": {
+                    "property": "post",
+                    "names": {
+                        "en": "Post Shares",
+                        "pt-BR": "Post Shares"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "post_like": {
+                    "property": "post_like",
+                    "names": {
+                        "en": "Post Likes",
+                        "pt-BR": "Post Likes"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "receive_offer": {
+                    "property": "receive_offer",
+                    "names": {
+                        "en": "Offer Claims",
+                        "pt-BR": "Offer Claims"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "rsvp": {
+                    "property": "rsvp",
+                    "names": {
+                        "en": "Event Responses",
+                        "pt-BR": "Event Responses"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "tab_view": {
+                    "property": "tab_view",
+                    "names": {
+                        "en": "Page Tab Views",
+                        "pt-BR": "Page Tab Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "video_play": {
+                    "property": "video_play",
+                    "names": {
+                        "en": "Clicks to Play Video",
+                        "pt-BR": "Clicks to Play Video"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "video_view": {
+                    "property": "video_view",
+                    "names": {
+                        "en": "Video Views",
+                        "pt-BR": "Video Views"
+                    },
+                    "is_metric": true,
+                    "is_dimension": false,
+                    "is_filter": false
+                },
+                "vote": {
+                    "property": "vote",
+                    "names": {
+                        "en": "Question Answers",
+                        "pt-BR": "Question Answers"
                     },
                     "is_metric": true,
                     "is_dimension": false,
@@ -2037,6 +3409,496 @@
             "eval": "(float)$data->website_clicks"
         },
         {
+            "metric": "app_custom_event.fb_mobile_achievement_unlocked",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_achievement_unlocked\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_activate_app",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_activate_app\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_add_payment_info",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_add_payment_info\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_add_to_cart",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_add_to_cart\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_add_to_wishlist",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_add_to_wishlist\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_complete_registration",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_complete_registration\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_content_view",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_content_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_initiated_checkout",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_initiated_checkout\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_level_achieved",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_level_achieved\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_purchase",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_purchase\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_rate",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_rate\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_search",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_search\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_spent_credits",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_spent_credits\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_tutorial_completion",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_tutorial_completion\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.other",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.other\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_install",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_install\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_use",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_use\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "checkin",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"checkin\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "comment",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"comment\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "commerce_event.add_to_cart",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"commerce_event.add_to_cart\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "commerce_event.message_to_buy",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"commerce_event.message_to_buy\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "commerce_event.purchase",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"commerce_event.purchase\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "commerce_event.view_content",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"commerce_event.view_content\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "credit_spent",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"credit_spent\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "follow",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"follow\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "full_view",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"full_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "games.plays",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"games.plays\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "gift_sale",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"gift_sale\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "leadgen.other",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"leadgen.other\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "like",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"like\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "link_click",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"link_click\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "mention",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"mention\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "mobile_app_install",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"mobile_app_install\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "new_mobile",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"new_mobile\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.add_to_cart",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.add_to_cart\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.checkout",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.checkout\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.key_page_view",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.key_page_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.lead",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.lead\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.other",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.other\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.registration",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.registration\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "photo_view",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"photo_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "post",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"post\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "post_like",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"post_like\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "receive_offer",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"receive_offer\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "rsvp",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"rsvp\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "tab_view",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"tab_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "video_play",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"video_play\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "video_view",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"video_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "vote",
+            "entity": "Campaign",
+            "platform": "facebook",
+            "report": "FB_CAMPAIGN",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"vote\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
             "metric": "app_store_clicks",
             "entity": "Account",
             "platform": "facebook",
@@ -2445,6 +4307,496 @@
                 "website_clicks"
             ],
             "eval": "(float)$data->website_clicks"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_achievement_unlocked",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_achievement_unlocked\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_activate_app",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_activate_app\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_add_payment_info",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_add_payment_info\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_add_to_cart",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_add_to_cart\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_add_to_wishlist",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_add_to_wishlist\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_complete_registration",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_complete_registration\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_content_view",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_content_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_initiated_checkout",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_initiated_checkout\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_level_achieved",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_level_achieved\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_purchase",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_purchase\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_rate",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_rate\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_search",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_search\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_spent_credits",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_spent_credits\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.fb_mobile_tutorial_completion",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.fb_mobile_tutorial_completion\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_custom_event.other",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_custom_event.other\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_install",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_install\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "app_use",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"app_use\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "checkin",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"checkin\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "comment",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"comment\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "commerce_event.add_to_cart",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"commerce_event.add_to_cart\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "commerce_event.message_to_buy",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"commerce_event.message_to_buy\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "commerce_event.purchase",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"commerce_event.purchase\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "commerce_event.view_content",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"commerce_event.view_content\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "credit_spent",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"credit_spent\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "follow",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"follow\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "full_view",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"full_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "games.plays",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"games.plays\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "gift_sale",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"gift_sale\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "leadgen.other",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"leadgen.other\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "like",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"like\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "link_click",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"link_click\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "mention",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"mention\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "mobile_app_install",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"mobile_app_install\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "new_mobile",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"new_mobile\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.add_to_cart",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.add_to_cart\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.checkout",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.checkout\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.key_page_view",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.key_page_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.lead",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.lead\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.other",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.other\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "offsite_conversion.registration",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"offsite_conversion.registration\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "photo_view",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"photo_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "post",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"post\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "post_like",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"post_like\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "receive_offer",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"receive_offer\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "rsvp",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"rsvp\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "tab_view",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"tab_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "video_play",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"video_play\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "video_view",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"video_view\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
+        },
+        {
+            "metric": "vote",
+            "entity": "Account",
+            "platform": "facebook",
+            "report": "FB_ACCOUNT",
+            "fields": [
+                "actions"
+            ],
+            "eval": "foreach ($data->actions as $action) {\n    if ($action['action_type'] === \"vote\") {\n        return (float)$action['value'];        \n    }\n}\n\nreturn NULL;"
         }
     ]
 }

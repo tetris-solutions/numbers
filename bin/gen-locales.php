@@ -7,12 +7,13 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $adwords = json_decode(file_get_contents(__DIR__ . '/../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
 $facebook = json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'), true);
+$actionTypes = json_decode(file_get_contents(__DIR__ . '/../maps/facebook-action-types.json'), true);
 
 $adwords = array_merge($adwords['CAMPAIGN_PERFORMANCE_REPORT'], $adwords['ACCOUNT_PERFORMANCE_REPORT']);
 
 $fields = [
     'adwords' => [],
-    'facebook' => []
+    'facebook' => $actionTypes
 ];
 
 foreach ($adwords as $name => $metadata) {
