@@ -47,6 +47,7 @@ $app->get('/meta',
         $ls = sql::run(sql::select([
             'metric_source.metric',
             'metric.names',
+            'metric.type',
             'report.attributes'])
             ->from('metric_source')
             ->join('inner', 'report', 'report.id = metric_source.report')
@@ -69,10 +70,11 @@ $app->get('/meta',
                     'name' => $attribute['names'][$locale],
                     'is_metric' => $attribute['is_metric'],
                     'is_dimension' => $attribute['is_dimension'],
-                    'is_filter' => $attribute['is_filter']
+                    'is_filter' => $attribute['is_filter'],
+                    'is_breakdown' => $platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)
                 ];
 
-                if ($platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)) {
+                if ($config['is_breakdown']) {
                     setBreakdownPermutation($config);
                 }
 
@@ -95,9 +97,11 @@ $app->get('/meta',
             $attributes[$metric] = [
                 'id' => $metric,
                 'name' => $metricNames[$locale],
+                'metric_type' => $row['type'],
                 'is_metric' => true,
                 'is_dimension' => false,
-                'is_filter' => false
+                'is_filter' => false,
+                'is_breakdown' => false
             ];
         }
 
