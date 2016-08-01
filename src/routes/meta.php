@@ -22,10 +22,12 @@ function setBreakdownPermutation(&$config)
             $config['pairs_with'] = ['age'];
             break;
         case 'impression_device';
-            /* $config['requires'] = */$config['pairs_with'] = ['placement'];
+            /* $config['requires'] = */
+            $config['pairs_with'] = ['placement'];
             break;
         case 'placement':
-            /*$config['required_by'] = */$config['pairs_with'] = ['impression_device'];
+            /*$config['required_by'] = */
+            $config['pairs_with'] = ['impression_device'];
             break;
         default:
             $config['pairs_with'] = [];
@@ -56,6 +58,10 @@ $app->get('/meta',
             ->where('metric_source.platform = ?', $platform))
             ->fetchAll();
 
+        $campaignLevelOnly = $entity === 'Campaign' && $platform === 'adwords'
+            ? json_decode(file_get_contents(__DIR__ . '/../../maps/adwords-campaign-only.json'), TRUE)
+            : [];
+
         $attributes = [];
         $dimensions = [];
         $filters = [];
@@ -68,6 +74,7 @@ $app->get('/meta',
                 $config = [
                     'id' => $id,
                     'name' => $attribute['names'][$locale],
+                    'requires_id' => in_array($id, $campaignLevelOnly),
                     'is_metric' => $attribute['is_metric'],
                     'is_dimension' => $attribute['is_dimension'],
                     'is_filter' => $attribute['is_filter'],
@@ -98,6 +105,7 @@ $app->get('/meta',
                 'id' => $metric,
                 'name' => $metricNames[$locale],
                 'metric_type' => $row['type'],
+                'requires_id' => in_array($metric, $campaignLevelOnly),
                 'is_metric' => true,
                 'is_dimension' => false,
                 'is_filter' => false,
