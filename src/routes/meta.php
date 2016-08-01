@@ -22,10 +22,10 @@ function setBreakdownPermutation(&$config)
             $config['pairs_with'] = ['age'];
             break;
         case 'impression_device';
-            $config['requires'] = $config['pairs_with'] = ['placement'];
+            /* $config['requires'] = */$config['pairs_with'] = ['placement'];
             break;
         case 'placement':
-            $config['required_by'] = $config['pairs_with'] = ['impression_device'];
+            /*$config['required_by'] = */$config['pairs_with'] = ['impression_device'];
             break;
         default:
             $config['pairs_with'] = [];
