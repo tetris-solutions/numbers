@@ -12,6 +12,13 @@ class AdwordsResolver extends Client implements Resolver
         $reports = $query->getReports();
 
         foreach ($reports as $reportName => $config) {
+//            $useAccountPerformanceInstead = $reportName === 'CAMPAIGN_PERFORMANCE_REPORT' &&
+//                !isset($config['fields']['CampaignId']);
+//
+//            if ($useAccountPerformanceInstead) {
+//                $reportName = 'ACCOUNT_PERFORMANCE_REPORT';
+//            }
+
             $select = $this->select($config['fields'])
                 ->from($reportName)
                 ->during($query->since, $query->until);
