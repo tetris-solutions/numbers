@@ -66,10 +66,25 @@ class FacebookResolver extends Facebook implements Resolver
                 }
             }
 
+            $ids = is_array($query->filters['id'])
+                ? $query->filters['id']
+                : [$query->filters['id']];
+
             switch ($query->entity) {
                 case 'Campaign':
-                    $className = Campaign::class;
-                    $params['level'] = 'campaign';
+                    if (isset($config['fields']['campaign_id'])) {
+                        $className = Campaign::class;
+                        $params['level'] = 'campaign';
+                    } else {
+                        $className = AdAccount::class;
+                        $params['level'] = 'account';
+                        $params['filtering'] = [[
+                            'field' => 'campaign.id',
+                            'operator' => 'IN',
+                            'value' => $ids
+                        ]];
+                        $ids = [$query->adAccountId];
+                    }
                     break;
                 case 'Account':
                     $className = AdAccount::class;
@@ -78,10 +93,6 @@ class FacebookResolver extends Facebook implements Resolver
                 default:
                     throw new \Exception("Entity {$query->entity} not implemented, etc", 501);
             }
-
-            $ids = is_array($query->filters['id'])
-                ? $query->filters['id']
-                : [$query->filters['id']];
 
             foreach ($ids as $id) {
                 /**
