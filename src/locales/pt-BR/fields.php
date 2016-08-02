@@ -115,7 +115,7 @@ return [
         'RelativeCtr' => 'CTR Relativo',
         'SearchBudgetLostImpressionShare' => 'Parcela de Impressões Perdidas(Orçameto)',
         'SearchExactMatchImpressionShare' => 'Parcela de Impressões em Exata',
-        'SearchImpressionShare' => 'PArcela de Impressão(Pesquisa)',
+        'SearchImpressionShare' => 'Parcela de Impressão(Pesquisa)',
         'SearchRankLostImpressionShare' => 'Parcela de Impressões Perdidas(Classificação)',
         'ServingStatus' => 'Status de Serviço da Campanha',
         'Slot' => 'Topo vs. Outros',
