@@ -94,8 +94,6 @@ $app->get('/meta',
                 if ($attribute['is_filter']) {
                     $filters[] = $id;
                 }
-
-
             }
 
             $metrics[] = $metric = $row['metric'];
