@@ -30,14 +30,14 @@ ksort($fields['facebook']);
 $content = "<?php\nreturn [\n";
 
 foreach ($fields as $platform => $list) {
-    $content .= "\t'{$platform}' => [\n";
+    $content .= "  '{$platform}' => [\n";
 
     foreach ($list as $id => $name) {
         $name = addslashes($name);
-        $content .= "\t\t'{$id}' => '{$name}',\n";
+        $content .= "    '{$id}' => '{$name}',\n";
     }
 
-    $content .= "\t],\n";
+    $content .= "  ],\n";
 }
 
 $content .= "];";
