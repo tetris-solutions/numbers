@@ -39,23 +39,7 @@ function parseMetrics($receivedObject, array $requestedReport): stdClass
     }
 
     foreach ($requestedReport['metrics'] as $metric) {
-        if (isset($metric['parse'])) {
-            $row->{$metric['id']} = $metric['parse']($receivedObject);
-        } else {
-            $fnBody = $metric['eval'];
-
-            if (substr($fnBody, -1) !== ';') {
-                $fnBody .= ';';
-            }
-
-            if (strpos($fnBody, 'return ') === false) {
-                $fnBody = 'return ' . $fnBody;
-            }
-
-            eval('$fn = function ($data) { ' . "\n{$fnBody}\n" . ' };');
-
-            $row->{$metric['id']} = $fn($receivedObject);
-        }
+        $row->{$metric['id']} = $metric['parse']($receivedObject);
     }
 
     return $row;
