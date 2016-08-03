@@ -46,18 +46,6 @@ $app->get('/meta',
         $entity = $request->getQueryParam('entity');
         $platform = $request->getQueryParam('platform');
 
-        $ls = sql::run(sql::select([
-            'metric_source.metric',
-            'metric.names',
-            'metric.type',
-            'report.attributes'])
-            ->from('metric_source')
-            ->join('inner', 'report', 'report.id = metric_source.report')
-            ->join('inner', 'metric', 'metric_source.metric = metric.id')
-            ->where('metric_source.entity = ?', $entity)
-            ->where('metric_source.platform = ?', $platform))
-            ->fetchAll();
-
 //        $campaignLevelOnly = $entity === 'Campaign' && $platform === 'adwords'
 //            ? json_decode(file_get_contents(__DIR__ . '/../../maps/adwords-campaign-only.json'), TRUE)
 //            : [];
@@ -66,14 +54,15 @@ $app->get('/meta',
         $dimensions = [];
         $filters = [];
         $metrics = [];
+        $sources = MetaData::getSources($platform, $entity);
 
-        foreach ($ls as $row) {
-            $fields = json_decode($row['attributes'], true);
+        foreach ($sources as $source) {
+            $reportAttributes = MetaData::getReport($platform, $source['report']);
 
-            foreach ($fields as $id => $attribute) {
+            foreach ($reportAttributes as $id => $attribute) {
                 $config = [
                     'id' => $id,
-                    'name' => $attribute['names'][$locale],
+                    'name' => $attribute['name'],
 //                    'requires_id' => in_array($id, $campaignLevelOnly),
                     'is_metric' => $attribute['is_metric'],
                     'is_dimension' => $attribute['is_dimension'],
@@ -96,13 +85,15 @@ $app->get('/meta',
                 }
             }
 
-            $metrics[] = $metric = $row['metric'];
-            $metricNames = json_decode($row['names'], true);
+            $metrics[] = $metric = $source['metric'];
+            $metricConfig = MetaData::getMetric($metric);
 
             $attributes[$metric] = [
                 'id' => $metric,
-                'name' => $metricNames[$locale],
-                'metric_type' => $row['type'],
+                'name' => isset($metricConfig['names'][$locale])
+                    ? $metricConfig['names'][$locale]
+                    : $attributes[$metric]['name'],
+                'metric_type' => $metricConfig['type'],
 //                'requires_id' => in_array($metric, $campaignLevelOnly),
                 'is_metric' => true,
                 'is_dimension' => false,

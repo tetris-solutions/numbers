@@ -27,7 +27,7 @@ function var_export54($var, $level = 0)
             $rows = [];
 
             foreach ($var as $key => $value) {
-                $sanitizedValue = is_callable($value)
+                $sanitizedValue = $value instanceof \Closure
                     ? $value($nextIndent)
                     : var_export54($value, $indent + 4);
 

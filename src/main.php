@@ -10,6 +10,7 @@ require 'Resolver.php';
 require 'functions/parse-metrics.php';
 require 'FacebookResolver.php';
 require 'AdwordsResolver.php';
+require 'MetaData.php';
 require_once 'logger.php';
 
 global $app;

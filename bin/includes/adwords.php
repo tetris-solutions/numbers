@@ -12,7 +12,7 @@ $output = [
     'sources' => []
 ];
 
-$eval = [
+$parsers = [
     'percentage' => function ($property) {
         return function (string $indent) use ($property): string {
             return join(PHP_EOL . $indent, [
@@ -66,6 +66,10 @@ foreach ($mappings as $reportName => $fields) {
         $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0;
         $attributeName = strtolower($originalAttributeName);
 
+        if (empty($attributeName)) {
+            throw new \Exception($originalAttributeName . ' === {' . $attributeName . '}');
+        }
+
         if ($nameStartsWithEntity) {
             $attributeName = substr($attributeName, strlen($entity));
         }
@@ -106,7 +110,7 @@ foreach ($mappings as $reportName => $fields) {
                 'platform' => 'adwords',
                 'report' => $reportName,
                 'fields' => [$originalAttributeName],
-                'eval' => $eval[$metric['type']]($originalAttributeName)
+                'parse' => $parsers[$metric['type']]($originalAttributeName)
             ];
             $output['metrics'][$attributeName] = $metric;
         }

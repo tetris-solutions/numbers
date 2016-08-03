@@ -24,7 +24,7 @@ $output = [
     'sources' => []
 ];
 
-$eval = [
+$parsers = [
     'currency' => function ($property) {
         return function (string $indent) use ($property): string {
             return join(PHP_EOL . $indent, [
@@ -60,7 +60,7 @@ $validTypes = [
     'float'
 ];
 
-$evalActionType = function ($type) {
+$parseActionType = function ($type) {
     return function (string $indent) use ($type): string {
         $lines = [
             'function ($data) {',
@@ -148,7 +148,7 @@ foreach ($output['entities'] as $entity) {
                 'platform' => 'facebook',
                 'report' => $reportName,
                 'fields' => [$originalAttributeName],
-                'eval' => $eval[$metric['type']]($originalAttributeName)
+                'parse' => $parsers[$metric['type']]($originalAttributeName)
             ];
         }
 
@@ -176,7 +176,7 @@ foreach ($output['entities'] as $entity) {
             'platform' => 'facebook',
             'report' => $reportName,
             'fields' => ['actions'],
-            'eval' => $evalActionType($type)
+            'parse' => $parseActionType($type)
         ];
 
         $output['reports'][$reportName]['attributes'][$type] = $attribute;
