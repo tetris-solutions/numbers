@@ -2,7 +2,6 @@
 
 namespace Tetris\Numbers;
 
-require 'database.php';
 require 'TKMApi.php';
 require 'constants.php';
 require 'Query.php';

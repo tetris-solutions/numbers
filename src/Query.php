@@ -74,70 +74,30 @@ class Query
         }
     }
 
-    private function parseMetrics(array $requestedMetrics, string $entity, string $platform): array
+    private function parseMetrics(array $metrics, string $entity, string $platform): array
     {
-        $query = sql::select([
-            'metric.id',
-            'metric.names',
-            'metric.type'])
-            ->from('metric')
-            ->where('metric.id = ?', $requestedMetrics[0]);
+        return array_map(function ($id) use ($entity, $platform):array {
+            $metric = MetaData::getMetric($id);
+            $source = MetaData::getMetricSource($platform, $entity, $id);
 
-        for ($i = 1; $i < count($requestedMetrics); $i++) {
-            $query->orWhere('metric.id = ?', $requestedMetrics[$i]);
-        }
-
-        $metricsFromDatabase = sql::run($query)->fetchAll();
-        $foundMetrics = [];
-        $parsedMetrics = [];
-
-        foreach ($metricsFromDatabase as $metric) {
-            $metric['names'] = json_decode($metric['names'], true);
-
-            $source = sql::run(sql::select([
-                'metric_source.id',
-                'metric_source.metric',
-                'metric_source.entity',
-                'metric_source.platform',
-                'metric_source.fields',
-                'metric_source.eval',
-                'metric_source.report'])
-                ->from('metric_source')
-                ->where('metric_source.metric = ?', $metric['id'])
-                ->where('metric_source.entity = ?', $entity)
-                ->where('metric_source.platform = ?', $platform))
-                ->fetchObject();
-
-            $metric['name'] = $metric['names'][$this->locale];
-
-            if (empty($source)) {
-                throw new \Exception("Metric '{$metric['name']}' can not be used with {$entity}@{$platform}", 400);
+            if (isset($metric['names'][$this->locale])) {
+                $metric['name'] = $metric['names'][$this->locale];
+            } else {
+                $metric['name'] = MetaData::getFieldName($this->locale, $platform, $id);
             }
 
-            $foundMetrics[] = $metric['id'];
-            $fields = json_decode($source->fields);
-            $parsedMetrics[] = [
+            return [
                 'id' => $metric['id'],
                 'name' => $metric['name'],
                 'type' => $metric['type'],
-                'metric' => $source->metric,
-                'eval' => $source->eval,
+                'metric' => $source['metric'],
+                'parse' => $source['parse'],
                 'entity' => $entity,
                 'platform' => $platform,
-                'fields' => array_combine($fields, $fields),
-                'report' => $source->report
+                'fields' => array_combine($source['fields'], $source['fields']),
+                'report' => $source['report']
             ];
-        }
-
-        sort($foundMetrics);
-        sort($requestedMetrics);
-        $notFound = array_diff($requestedMetrics, $foundMetrics);
-
-        if (!empty($notFound)) {
-            throw new \Exception("Invalid metrics: " . implode(', ', $notFound));
-        }
-
-        return $parsedMetrics;
+        }, $metrics);
     }
 
     /**
@@ -227,20 +187,14 @@ class Query
                 'dimensions' => []
             ];
 
-            $report = sql::run(sql::select(['report.attributes'])
-                ->from('report')
-                ->where('report.id = ?', $reportId))
-                ->fetchObject();
+            $attributes = MetaData::getReport($this->platform, $reportId);
 
-            if (!empty($report->attributes)) {
-                $attributes = json_decode($report->attributes, true);
-                foreach ($attributes as $id => $attribute) {
-                    if ($attribute['is_dimension']) {
-                        $attributeNameMap['dimensions'][$id] = $attribute['property'];
-                    }
-                    if ($attribute['is_filter']) {
-                        $attributeNameMap['filters'][$id] = $attribute['property'];
-                    }
+            foreach ($attributes as $id => $attribute) {
+                if ($attribute['is_dimension']) {
+                    $attributeNameMap['dimensions'][$id] = $attribute['property'];
+                }
+                if ($attribute['is_filter']) {
+                    $attributeNameMap['filters'][$id] = $attribute['property'];
                 }
             }
 

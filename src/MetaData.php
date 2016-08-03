@@ -7,6 +7,7 @@ abstract class MetaData
 {
     private static $names = [];
     private static $metrics = [];
+    private static $sourceCache = [];
     private static $sources = [
         'adwords' => [],
         'facebook' => []
@@ -77,6 +78,18 @@ abstract class MetaData
         return self::$sources[$platform][$entity];
     }
 
+    static function getMetricSource(string $platform, string $entity, string $metric): array
+    {
+        $key = "{$platform}:{$entity}:{$metric}";
+        $path = __DIR__ . "/config/{$platform}/sources/" . strtolower($entity) . "/{$metric}.php";
+
+        if (!isset(self::$sourceCache[$key]) && file_exists($path)) {
+            self::$sourceCache[$key] = require($path);
+        }
+
+        return self::$sourceCache[$key];
+    }
+
     static function getReport(string $platform, string $reportName): array
     {
         if (!isset(self::$reports[$platform][$reportName])) {
@@ -103,9 +116,9 @@ abstract class MetaData
     static function getMetric(string $id): array
     {
         if (!isset(self::$metrics[$id])) {
-            $path = __DIR__ . "/config/metrics/{$id}";
+            $path = __DIR__ . "/config/metrics/{$id}.php";
 
-            self::$metrics[$id] = self::readDirFiles($path);
+            self::$metrics[$id] = require($path);
         }
 
         return self::$metrics[$id];

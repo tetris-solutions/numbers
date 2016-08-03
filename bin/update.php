@@ -13,7 +13,7 @@ $platforms = [
 
 $metrics = [];
 
-function var_export54($var, $level = 0)
+function prettyVarExport($var, $level = 0)
 {
     $padString = ' ';
     $indent = str_pad('', $level, $padString, STR_PAD_LEFT);
@@ -29,11 +29,11 @@ function var_export54($var, $level = 0)
             foreach ($var as $key => $value) {
                 $sanitizedValue = $value instanceof \Closure
                     ? $value($nextIndent)
-                    : var_export54($value, $indent + 4);
+                    : prettyVarExport($value, $indent + 4);
 
                 $rows[] = $nextIndent . ($indexed
                         ? ""
-                        : var_export54($key) . " => "
+                        : prettyVarExport($key) . " => "
                     ) . $sanitizedValue;
             }
 
@@ -55,7 +55,7 @@ foreach ($platforms as $platform => $config) {
 
         file_put_contents(
             __DIR__ . "/../src/config/metrics/{$metric['id']}.php",
-            "<?php\nreturn " . var_export54($metric) . ";\n"
+            "<?php\nreturn " . prettyVarExport($metric) . ";\n"
         );
     }
 
@@ -64,7 +64,7 @@ foreach ($platforms as $platform => $config) {
 
         file_put_contents(
             __DIR__ . "/../src/config/{$platform}/sources/{$entity}/{$source['metric']}.php",
-            "<?php\nreturn " . var_export54($source) . ";\n"
+            "<?php\nreturn " . prettyVarExport($source) . ";\n"
         );
     }
 
@@ -72,7 +72,7 @@ foreach ($platforms as $platform => $config) {
         foreach ($report['attributes'] as $id => $attribute) {
             file_put_contents(
                 __DIR__ . "/../src/config/{$platform}/reports/{$reportName}/{$id}.php",
-                "<?php\nreturn " . var_export54($attribute) . ";\n"
+                "<?php\nreturn " . prettyVarExport($attribute) . ";\n"
             );
         }
     }

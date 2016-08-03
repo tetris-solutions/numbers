@@ -9,7 +9,6 @@
     }
   ],
   "require": {
-    "robmorgan/phinx": "^0.6.2",
     "tetris/slim-kit": "^0.0.15",
     "tetris/adwords": "dev-master#v0.0.24",
     "tetris/monostash": "dev-master#v0.0.5",
