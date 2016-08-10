@@ -8,6 +8,17 @@ return [
         "CostPerAllConversion"
     ],
     "parse" => function ($data): float {
-      return (float)$data->CostPerAllConversion;
+        return (float)$data->CostPerAllConversion;
+    },
+    "sum" => function (array $rows): float {
+        // actual code goes here, ex:
+        // return array_reduce(
+        //     $rows,
+        //     function (float $carry, \stdClass $row): float {
+        //         return $carry + $row->costperallconversion;
+        //     },
+        //     0.0
+        // );
+        return NULL;
     }
 ];

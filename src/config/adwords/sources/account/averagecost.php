@@ -8,6 +8,17 @@ return [
         "AverageCost"
     ],
     "parse" => function ($data): float {
-      return (float)$data->AverageCost;
+        return (float)$data->AverageCost;
+    },
+    "sum" => function (array $rows): float {
+        // actual code goes here, ex:
+        // return array_reduce(
+        //     $rows,
+        //     function (float $carry, \stdClass $row): float {
+        //         return $carry + $row->averagecost;
+        //     },
+        //     0.0
+        // );
+        return NULL;
     }
 ];

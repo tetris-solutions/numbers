@@ -36,12 +36,12 @@ function aggregateResult(array $rows, array $reportConfig): array
         }
 
         foreach ($reportConfig['metrics'] as $metric) {
-            if ($metric['type'] === 'quantity') {
-                $row->{$metric['id']} = 0;
+            $source = MetaData::getMetricSource('adwords', 'Campaign', $metric['id']);
 
-                foreach ($groupOfRows as $resultRow) {
-                    $row->{$metric['id']} += $resultRow->{$metric['id']};
-                }
+            if (isset($source['sum'])) {
+                $row->{$metric['id']} = $source['sum']($groupOfRows);
+            } else {
+                $row->{$metric['id']} = NULL;
             }
         }
 

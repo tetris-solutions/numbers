@@ -8,6 +8,15 @@ return [
         "NumOfflineInteractions"
     ],
     "parse" => function ($data): int {
-      return (int)$data->NumOfflineInteractions;
+        return (int)$data->NumOfflineInteractions;
+    },
+    "sum" => function (array $rows): float {
+        return array_reduce(
+            $rows,
+            function (float $carry, \stdClass $row): float {
+                return $carry + $row->numofflineinteractions;
+            },
+            0.0
+        );
     }
 ];

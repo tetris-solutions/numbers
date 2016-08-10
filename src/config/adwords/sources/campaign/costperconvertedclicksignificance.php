@@ -8,6 +8,15 @@ return [
         "CostPerConvertedClickSignificance"
     ],
     "parse" => function ($data): int {
-      return (int)$data->CostPerConvertedClickSignificance;
+        return (int)$data->CostPerConvertedClickSignificance;
+    },
+    "sum" => function (array $rows): float {
+        return array_reduce(
+            $rows,
+            function (float $carry, \stdClass $row): float {
+                return $carry + $row->costperconvertedclicksignificance;
+            },
+            0.0
+        );
     }
 ];

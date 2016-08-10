@@ -63,7 +63,6 @@ $app->get('/meta',
                 $config = [
                     'id' => $id,
                     'name' => $attribute['name'],
-//                    'requires_id' => in_array($id, $campaignLevelOnly),
                     'is_metric' => $attribute['is_metric'],
                     'is_dimension' => $attribute['is_dimension'],
                     'is_filter' => $attribute['is_filter'],
@@ -88,13 +87,15 @@ $app->get('/meta',
             $metrics[] = $metric = $source['metric'];
             $metricConfig = MetaData::getMetric($metric);
 
+            $cannotAggregate = $metricConfig['type'] !== 'quantity' && !isset($source['aggregate']);
+
             $attributes[$metric] = [
                 'id' => $metric,
                 'name' => isset($metricConfig['names'][$locale])
                     ? $metricConfig['names'][$locale]
                     : $attributes[$metric]['name'],
                 'metric_type' => $metricConfig['type'],
-//                'requires_id' => in_array($metric, $campaignLevelOnly),
+                'requires_id' => $cannotAggregate,
                 'is_metric' => true,
                 'is_dimension' => false,
                 'is_filter' => false,

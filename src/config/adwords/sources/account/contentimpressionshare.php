@@ -8,6 +8,17 @@ return [
         "ContentImpressionShare"
     ],
     "parse" => function ($data) {
-      return $data->ContentImpressionShare;
+        return $data->ContentImpressionShare;
+    },
+    "sum" => function (array $rows): float {
+        // actual code goes here, ex:
+        // return array_reduce(
+        //     $rows,
+        //     function (float $carry, \stdClass $row): float {
+        //         return $carry + $row->contentimpressionshare;
+        //     },
+        //     0.0
+        // );
+        return NULL;
     }
 ];

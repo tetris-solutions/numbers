@@ -20,3 +20,4 @@ $container['tkm'] = new TKMApi($app);
 
 require 'routes/index.php';
 require 'routes/meta.php';
+require 'routes/metrics.php';

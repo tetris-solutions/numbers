@@ -12,12 +12,53 @@ $output = [
     'sources' => []
 ];
 
+
+$getSourceAggregator = function (array $metric) {
+    $notQuantityButIsSimpleSum = [
+        'cost'
+    ];
+
+    $isSimpleSum = $metric['type'] === 'quantity' || in_array($metric['id'], $notQuantityButIsSimpleSum);
+
+    if ($isSimpleSum) {
+        return function (string $indent) use ($metric): string {
+            return join(PHP_EOL . $indent, [
+                'function (array $rows): float {',
+                '    return array_reduce(',
+                '        $rows,',
+                '        function (float $carry, \stdClass $row): float {',
+                "            return \$carry + \$row->{$metric['id']};",
+                '        },',
+                '        0.0',
+                '    );',
+                '}'
+            ]);
+        };
+    } else {
+        return function (string $indent) use ($metric): string {
+            return join(PHP_EOL . $indent, [
+                'function (array $rows) {',
+                '    // actual code goes here, ex:',
+                '    // return array_reduce(',
+                '    //     $rows,',
+                '    //     function (float $carry, \stdClass $row): float {',
+                "    //         return \$carry + \$row->{$metric['id']};",
+                '    //     },',
+                '    //     0.0',
+                '    // );',
+                '    return NULL;',
+                '}'
+            ]);
+        };
+    }
+};
+
 $parsers = [
     'percentage' => function ($property) {
         return function (string $indent) use ($property): string {
             return join(PHP_EOL . $indent, [
                 'function ($data): float {',
-                "  return floatval(str_replace('%', '', \$data->$property)) / 100;",
+                "    return floatval(str_replace('%', '', \$data->$property)) / 100;",
                 '}'
             ]);
         };
@@ -26,7 +67,7 @@ $parsers = [
         return function (string $indent) use ($property): string {
             return join(PHP_EOL . $indent, [
                 'function ($data): float {',
-                "  return (float)\$data->$property;",
+                "    return (float)\$data->$property;",
                 '}'
             ]);
         };
@@ -35,7 +76,7 @@ $parsers = [
         return function (string $indent) use ($property): string {
             return join(PHP_EOL . $indent, [
                 'function ($data): int {',
-                "  return (int)\$data->$property;",
+                "    return (int)\$data->$property;",
                 '}'
             ]);
         };
@@ -45,7 +86,7 @@ $parsers = [
         return function (string $indent) use ($property): string {
             return join(PHP_EOL . $indent, [
                 'function ($data) {',
-                "  return \$data->$property;",
+                "    return \$data->$property;",
                 '}'
             ]);
         };
@@ -110,7 +151,8 @@ foreach ($mappings as $reportName => $fields) {
                 'platform' => 'adwords',
                 'report' => $reportName,
                 'fields' => [$originalAttributeName],
-                'parse' => $parsers[$metric['type']]($originalAttributeName)
+                'parse' => $parsers[$metric['type']]($originalAttributeName),
+                'sum' => $getSourceAggregator($metric)
             ];
             $output['metrics'][$attributeName] = $metric;
         }
