@@ -66,9 +66,7 @@ class FacebookResolver extends Facebook implements Resolver
                 }
             }
 
-            $ids = is_array($query->filters['id'])
-                ? $query->filters['id']
-                : [$query->filters['id']];
+            $ids = $query->filters['id'];
 
             switch ($query->entity) {
                 case 'Campaign':

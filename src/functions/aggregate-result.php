@@ -6,6 +6,7 @@ use stdClass;
 function aggregateResult(array $rows, array $reportConfig): array
 {
     $groupedByKey = [];
+    $result = [];
 
     $getKeyForGrouping = function (stdClass $row) use ($reportConfig): string {
         $dimensionValues = array_map(function ($dimension) use ($row) {
@@ -25,6 +26,27 @@ function aggregateResult(array $rows, array $reportConfig): array
         $groupedByKey[$key][] = $row;
     }
 
-    http_response_code(500);
-    exit(json_encode($groupedByKey, JSON_PRETTY_PRINT));
+    foreach ($groupedByKey as $groupOfRows) {
+        $row = new stdClass();
+
+        foreach ($reportConfig['dimensions'] as $dimensionName) {
+            $row->{$dimensionName} = isset($groupOfRows[0]->{$dimensionName})
+                ? $groupOfRows[0]->{$dimensionName}
+                : NULL;
+        }
+
+        foreach ($reportConfig['metrics'] as $metric) {
+            if ($metric['type'] === 'quantity') {
+                $row->{$metric['id']} = 0;
+
+                foreach ($groupOfRows as $resultRow) {
+                    $row->{$metric['id']} += $resultRow->{$metric['id']};
+                }
+            }
+        }
+
+        $result[] = $row;
+    }
+
+    return $result;
 }

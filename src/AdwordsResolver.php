@@ -12,22 +12,15 @@ class AdwordsResolver extends Client implements Resolver
         $reports = $query->getReports();
 
         foreach ($reports as $reportName => $config) {
-//            $useAccountPerformanceInstead = $reportName === 'CAMPAIGN_PERFORMANCE_REPORT' &&
-//                !isset($config['fields']['CampaignId']);
-//
-//            if ($useAccountPerformanceInstead) {
-//                $reportName = 'ACCOUNT_PERFORMANCE_REPORT';
-//            }
-
             $select = $this->select($config['fields'])
                 ->from($reportName)
                 ->during($query->since, $query->until);
 
-            foreach ($config['filters'] as $filter => $value) {
-                if (is_array($value)) {
-                    $select->where($filter, $value, 'IN');
+            foreach ($config['filters'] as $filter => $values) {
+                if (count($values) > 1) {
+                    $select->where($filter, $values, 'IN');
                 } else {
-                    $select->where($filter, $value);
+                    $select->where($filter, $values[0]);
                 }
             }
 
@@ -37,7 +30,9 @@ class AdwordsResolver extends Client implements Resolver
                 $reportRows[$index] = parseMetrics($row, $config);
             }
 
-            $shouldAggregateResult = $reportName === 'CAMPAIGN_PERFORMANCE_REPORT' && !isset($config['fields']['CampaignId']);
+            $shouldAggregateResult = $reportName === 'CAMPAIGN_PERFORMANCE_REPORT' &&
+                count($query->filters['id']) > 1 &&
+                !isset($config['fields']['CampaignId']);
 
             if ($shouldAggregateResult) {
                 $reportRows = aggregateResult($reportRows, $config);

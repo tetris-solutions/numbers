@@ -28,9 +28,9 @@ function parseMetrics($receivedObject, array $requestedReport): stdClass
 
     $row = new stdClass();
 
-    foreach ($requestedReport['dimensions'] as $dimension) {
-        $row->{$dimension} = isset($receivedObject->{$dimension})
-            ? $receivedObject->{$dimension}
+    foreach ($requestedReport['dimensions'] as $dimensionName) {
+        $row->{$dimensionName} = isset($receivedObject->{$dimensionName})
+            ? $receivedObject->{$dimensionName}
             : NULL;
     }
 

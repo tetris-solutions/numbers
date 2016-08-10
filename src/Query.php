@@ -121,7 +121,7 @@ class Query
 
                 if (empty($values)) continue;
 
-                $filters[$key] = count($values) === 1 ? $values[0] : $values;
+                $filters[$key] = $values;
             }
         }
 
