@@ -7,10 +7,6 @@ use Exception;
 
 function parseMetrics($receivedObject, array $requestedReport): stdClass
 {
-    $fn = function () {
-        return null;
-    };
-
     $receivedObject = is_array($receivedObject)
         ? (object)$receivedObject
         : $receivedObject;

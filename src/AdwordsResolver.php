@@ -31,11 +31,19 @@ class AdwordsResolver extends Client implements Resolver
                 }
             }
 
-            $ls = $select->fetchAll();
+            $reportRows = $select->fetchAll();
 
-            foreach ($ls as $line) {
-                $rows[] = parseMetrics($line, $config);
+            foreach ($reportRows as $index => $row) {
+                $reportRows[$index] = parseMetrics($row, $config);
             }
+
+            $shouldAggregateResult = $reportName === 'CAMPAIGN_PERFORMANCE_REPORT' && !isset($config['fields']['CampaignId']);
+
+            if ($shouldAggregateResult) {
+                $reportRows = aggregateResult($reportRows, $config);
+            }
+
+            $rows = array_merge($rows, $reportRows);
         }
 
         return $rows;
