@@ -12,7 +12,13 @@ class AdwordsResolver extends Client implements Resolver
         $reports = $query->getReports();
 
         foreach ($reports as $reportName => $config) {
-            $select = $this->select($config['fields'])
+            $requestFields = array_merge([
+                // @see https://trello.com/c/7eQ1IsVm/103-suspeita-de-bug-report-api
+                // @todo remove this ugly workaround
+                'Impressions' => 'Impressions'
+            ], $config['fields']);
+
+            $select = $this->select($requestFields)
                 ->from($reportName)
                 ->during($query->since, $query->until);
 
