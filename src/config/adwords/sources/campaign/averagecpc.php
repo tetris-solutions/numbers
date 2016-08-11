@@ -20,8 +20,8 @@ return [
             $sumCost += $row->cost;
         }
 
-        return $sumCost !== 0
-            ? $sumClicks / $sumCost
+        return $sumClicks !== 0
+            ? $sumCost / $sumClicks
             : 0;
     }
 ];
