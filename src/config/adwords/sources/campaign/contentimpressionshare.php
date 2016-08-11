@@ -10,7 +10,7 @@ return [
     "parse" => function ($data) {
         return $data->ContentImpressionShare;
     },
-    "sum" => function (array $rows): float {
+    "sum" => function (array $rows) {
         // actual code goes here, ex:
         // return array_reduce(
         //     $rows,

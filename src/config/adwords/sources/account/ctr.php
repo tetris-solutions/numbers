@@ -10,7 +10,7 @@ return [
     "parse" => function ($data): float {
         return floatval(str_replace('%', '', $data->Ctr)) / 100;
     },
-    "sum" => function (array $rows): float {
+    "sum" => function (array $rows) {
         // actual code goes here, ex:
         // return array_reduce(
         //     $rows,
