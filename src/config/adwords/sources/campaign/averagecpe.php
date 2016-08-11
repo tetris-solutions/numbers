@@ -4,19 +4,24 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "inferred_from" => ["engagements", "cost"],
     "fields" => [
         "AverageCpe"
     ],
     "parse" => function ($data): int {
         return (int)$data->AverageCpe;
     },
-    "sum" => function (array $rows): float {
-        return array_reduce(
-            $rows,
-            function (float $carry, \stdClass $row): float {
-                return $carry + $row->averagecpe;
-            },
-            0.0
-        );
+    "sum" => function (array $rows) {
+        $sumEngagements = 0;
+        $sumCost = 0;
+
+        foreach ($rows as $row) {
+            $sumEngagements += $row->engagements;
+            $sumCost += $row->cost;
+        }
+
+        return $sumEngagements !== 0
+            ? $sumCost / $sumEngagements
+            : 0;
     }
 ];
