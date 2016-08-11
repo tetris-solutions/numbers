@@ -15,6 +15,10 @@ class Query
     ];
 
     /**
+     * @var array
+     */
+    public $reports = [];
+    /**
      * @var string
      */
     private $locale;
@@ -74,30 +78,31 @@ class Query
         }
     }
 
-    private function parseMetrics(array $metrics, string $entity, string $platform): array
+    private function getMetric(string $id): array
     {
-        return array_map(function ($id) use ($entity, $platform):array {
-            $metric = MetaData::getMetric($id);
-            $source = MetaData::getMetricSource($platform, $entity, $id);
+        $metric = MetaData::getMetric($id);
+        $source = MetaData::getMetricSource($this->platform, $this->entity, $id);
 
-            if (isset($metric['names'][$this->locale])) {
-                $metric['name'] = $metric['names'][$this->locale];
-            } else {
-                $metric['name'] = MetaData::getFieldName($this->locale, $platform, $id);
-            }
+        if (isset($metric['names'][$this->locale])) {
+            $metric['name'] = $metric['names'][$this->locale];
+        } else {
+            $metric['name'] = MetaData::getFieldName($this->locale, $this->platform, $id);
+        }
 
-            return [
-                'id' => $metric['id'],
-                'name' => $metric['name'],
-                'type' => $metric['type'],
-                'metric' => $source['metric'],
-                'parse' => $source['parse'],
-                'entity' => $entity,
-                'platform' => $platform,
-                'fields' => array_combine($source['fields'], $source['fields']),
-                'report' => $source['report']
-            ];
-        }, $metrics);
+        return [
+            'id' => $metric['id'],
+            'name' => $metric['name'],
+            'type' => $metric['type'],
+            'metric' => $source['metric'],
+            'parse' => $source['parse'],
+            'inferred_from' => isset($source['inferred_from'])
+                ? $source['inferred_from']
+                : [],
+            'entity' => $this->entity,
+            'platform' => $this->platform,
+            'fields' => array_combine($source['fields'], $source['fields']),
+            'report' => $source['report']
+        ];
     }
 
     /**
@@ -148,7 +153,7 @@ class Query
 
         $this->metrics = empty($query['metrics'])
             ? []
-            : $this->parseMetrics(explode(',', $query['metrics']), $this->entity, $this->platform);
+            : array_map([$this, 'getMetric'], explode(',', $query['metrics']));
 
         $this->filters = empty($query['filters'])
             ? []
@@ -157,95 +162,82 @@ class Query
         $this->dimensions = empty($query['dimensions'])
             ? []
             : explode(',', $query['dimensions']);
-    }
-
-    /**
-     * group metrics by report,
-     * for calculating operations
-     *
-     * @return array
-     */
-    function getReports()
-    {
-        $reports = [];
 
         foreach ($this->metrics as $metric) {
-            $reportId = $metric['report'];
+            $this->createReportConfigFromMetric($metric, false);
+        }
+    }
 
-            $metric['filters'] = [];
-            $metric['dimensions'] = [];
+    private function createReportConfigFromMetric(array $metric, bool $isAuxiliary)
+    {
+        $reportId = $metric['report'];
+        $metricId = $metric['id'];
+        $currentReport = isset($this->reports[$reportId]) ? $this->reports[$reportId] : [
+            'fields' => [],
+            'metrics' => [],
+            'filters' => [],
+            'dimensions' => []
+        ];
 
-            $currentReport = isset($reports[$reportId]) ? $reports[$reportId] : [
-                'fields' => [],
-                'metrics' => [],
-                'filters' => [],
-                'dimensions' => []
-            ];
+        if (isset($currentReport['metrics'][$metricId])) return;
 
-            $attributeNameMap = [
-                'filters' => [],
-                'dimensions' => []
-            ];
+        // dynamic attributes
+        $metric['is_auxiliary'] = $isAuxiliary;
+        $metric['filters'] = [];
+        $metric['dimensions'] = [];
 
-            $attributes = MetaData::getReport($this->platform, $reportId);
+        $attributeNameMap = [
+            'filters' => [],
+            'dimensions' => []
+        ];
 
-            foreach ($attributes as $id => $attribute) {
-                if ($attribute['is_dimension']) {
-                    $attributeNameMap['dimensions'][$id] = $attribute['property'];
-                }
-                if ($attribute['is_filter']) {
-                    $attributeNameMap['filters'][$id] = $attribute['property'];
-                }
+        $attributes = MetaData::getReport($this->platform, $reportId);
+
+        foreach ($attributes as $id => $attribute) {
+            if ($attribute['is_dimension']) {
+                $attributeNameMap['dimensions'][$id] = $attribute['property'];
             }
-
-
-            foreach ($this->filters as $sourceAttributeName => $value) {
-                if (isset($attributeNameMap['filters'][$sourceAttributeName])) {
-                    $targetAttributeName = $attributeNameMap['filters'][$sourceAttributeName];
-                    $metric['filters'][$targetAttributeName] = $value;
-                }
+            if ($attribute['is_filter']) {
+                $attributeNameMap['filters'][$id] = $attribute['property'];
             }
-
-            foreach ($this->dimensions as $sourceAttributeName) {
-                if (isset($attributeNameMap['dimensions'][$sourceAttributeName])) {
-                    $targetAttributeName = $attributeNameMap['dimensions'][$sourceAttributeName];
-                    $metric['dimensions'][$targetAttributeName] = $sourceAttributeName;
-
-                    if (empty($metric['fields'][$targetAttributeName])) {
-                        $metric['fields'][$targetAttributeName] = $sourceAttributeName;
-                    }
-                }
-            }
-
-            $currentReport['metrics'][] = $metric;
-
-            foreach (['dimensions', 'filters', 'fields'] as $configKey) {
-                $currentReport[$configKey] = array_unique(
-                    array_merge(
-                        $currentReport[$configKey],
-                        $metric[$configKey]
-                    )
-                );
-            }
-
-            $reports[$reportId] = $currentReport;
         }
 
-        return $reports;
-    }
 
-    function getPlatform(): string
-    {
-        return $this->platform;
-    }
+        foreach ($this->filters as $sourceAttributeName => $value) {
+            if (isset($attributeNameMap['filters'][$sourceAttributeName])) {
+                $targetAttributeName = $attributeNameMap['filters'][$sourceAttributeName];
+                $metric['filters'][$targetAttributeName] = $value;
+            }
+        }
 
-    function getTetrisAccountId() : string
-    {
-        return $this->tetrisAccountId;
-    }
+        foreach ($this->dimensions as $sourceAttributeName) {
+            if (isset($attributeNameMap['dimensions'][$sourceAttributeName])) {
+                $targetAttributeName = $attributeNameMap['dimensions'][$sourceAttributeName];
+                $metric['dimensions'][$targetAttributeName] = $sourceAttributeName;
 
-    function getAdAccountId(): string
-    {
-        return $this->adAccountId;
+                if (empty($metric['fields'][$targetAttributeName])) {
+                    $metric['fields'][$targetAttributeName] = $sourceAttributeName;
+                }
+            }
+        }
+
+        $currentReport['metrics'][$metricId] = $metric;
+
+        foreach (['dimensions', 'filters', 'fields'] as $configKey) {
+            $currentReport[$configKey] = array_unique(
+                array_merge(
+                    $currentReport[$configKey],
+                    $metric[$configKey]
+                )
+            );
+        }
+
+        $this->reports[$reportId] = $currentReport;
+
+        if (!isset($metric['inferred_from'])) return;
+
+        foreach ($metric['inferred_from'] as $subMetric) {
+            $this->createReportConfigFromMetric($this->getMetric($subMetric), true);
+        }
     }
 }

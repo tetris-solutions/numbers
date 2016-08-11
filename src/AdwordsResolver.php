@@ -9,9 +9,12 @@ class AdwordsResolver extends Client implements Resolver
     {
         $rows = [];
         $this->SetClientCustomerId($query->adAccountId);
-        $reports = $query->getReports();
 
-        foreach ($reports as $reportName => $config) {
+        foreach ($query->reports as $reportName => $config) {
+            $shouldAggregateResult = $reportName === 'CAMPAIGN_PERFORMANCE_REPORT' &&
+                count($query->filters['id']) > 1 &&
+                !isset($config['fields']['CampaignId']);
+
             $requestFields = array_merge([
                 // @see https://trello.com/c/7eQ1IsVm/103-suspeita-de-bug-report-api
                 // @todo remove this ugly workaround
@@ -36,13 +39,19 @@ class AdwordsResolver extends Client implements Resolver
                 $reportRows[$index] = parseMetrics($row, $config);
             }
 
-            $shouldAggregateResult = $reportName === 'CAMPAIGN_PERFORMANCE_REPORT' &&
-                count($query->filters['id']) > 1 &&
-                !isset($config['fields']['CampaignId']);
-
             if ($shouldAggregateResult) {
                 $reportRows = aggregateResult($reportRows, $config);
             }
+
+            foreach ($reportRows as $index => $reportRow) {
+                foreach ($config['metrics'] as $metric) {
+                    if ($metric['is_auxiliary']) {
+                        unset($reportRow->{$metric['id']});
+                    }
+                }
+            }
+
+            $reportRows = array_values($reportRows);
 
             $rows = array_merge($rows, $reportRows);
         }

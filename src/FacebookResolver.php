@@ -43,9 +43,7 @@ class FacebookResolver extends Facebook implements Resolver
     {
         $rows = [];
 
-        $reports = $query->getReports();
-
-        foreach ($reports as $reportName => $config) {
+        foreach ($query->reports as $reportName => $config) {
             $requestFields = $config['fields'];
             $params = [
                 'breakdowns' => [],
