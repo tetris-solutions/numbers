@@ -35,21 +35,22 @@ $getSourceAggregator = function (array $metric) {
             ]);
         };
     } else {
-        return function (string $indent) use ($metric): string {
-            return join(PHP_EOL . $indent, [
-                'function (array $rows) {',
-                '    // actual code goes here, ex:',
-                '    // return array_reduce(',
-                '    //     $rows,',
-                '    //     function (float $carry, \stdClass $row): float {',
-                "    //         return \$carry + \$row->{$metric['id']};",
-                '    //     },',
-                '    //     0.0',
-                '    // );',
-                '    return NULL;',
-                '}'
-            ]);
-        };
+        return NULL;
+//        return function (string $indent) use ($metric): string {
+//            return join(PHP_EOL . $indent, [
+//                'function (array $rows) {',
+//                '    // actual code goes here, ex:',
+//                '    // return array_reduce(',
+//                '    //     $rows,',
+//                '    //     function (float $carry, \stdClass $row): float {',
+//                "    //         return \$carry + \$row->{$metric['id']};",
+//                '    //     },',
+//                '    //     0.0',
+//                '    // );',
+//                '    return NULL;',
+//                '}'
+//            ]);
+//        };
     }
 };
 

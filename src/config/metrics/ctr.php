@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "ctr",
-    "type" => "quantity"
+    "type" => "percentage"
 ];

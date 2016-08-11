@@ -10,15 +10,5 @@ return [
     "parse" => function ($data): float {
         return (float)$data->AverageCpc;
     },
-    "sum" => function (array $rows) {
-        // actual code goes here, ex:
-        // return array_reduce(
-        //     $rows,
-        //     function (float $carry, \stdClass $row): float {
-        //         return $carry + $row->averagecpc;
-        //     },
-        //     0.0
-        // );
-        return NULL;
-    }
+    "sum" => NULL
 ];

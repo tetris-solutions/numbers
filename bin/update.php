@@ -7,8 +7,8 @@ define('FILE_PERM', 0644);
 define('FOLDER_PERM', 0755);
 
 $platforms = [
-    'adwords' => require('includes/adwords.php'),
-    'facebook' => require('includes/facebook.php')
+    'facebook' => require('includes/facebook.php'),
+    'adwords' => require('includes/adwords.php')
 ];
 
 $metrics = [];

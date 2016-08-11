@@ -60,6 +60,8 @@ $app->get('/meta',
             $reportAttributes = MetaData::getReport($platform, $source['report']);
 
             foreach ($reportAttributes as $id => $attribute) {
+                if (isset($attributes[$id])) continue;
+
                 $config = [
                     'id' => $id,
                     'name' => $attribute['name'],
