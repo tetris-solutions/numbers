@@ -166,6 +166,12 @@ class Query
         foreach ($this->metrics as $metric) {
             $this->createReportConfigFromMetric($metric, false);
         }
+
+        foreach ($this->metrics as $metric) {
+            foreach ($metric['inferred_from'] as $subMetric) {
+                $this->createReportConfigFromMetric($this->getMetric($subMetric), true);
+            }
+        }
     }
 
     private function createReportConfigFromMetric(array $metric, bool $isAuxiliary)
@@ -233,11 +239,5 @@ class Query
         }
 
         $this->reports[$reportId] = $currentReport;
-
-        if (!isset($metric['inferred_from'])) return;
-
-        foreach ($metric['inferred_from'] as $subMetric) {
-            $this->createReportConfigFromMetric($this->getMetric($subMetric), true);
-        }
     }
 }
