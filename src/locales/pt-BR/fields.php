@@ -59,8 +59,6 @@ return [
         'ConversionTypeName' => 'Nome da Conversão',
         'ConversionValue' => 'Receita total de Conversão',
         'Conversions' => 'Conversões',
-        'ConvertedClicks' => 'Cliques Convertidos',
-        'ConvertedClicksSignificance' => 'Converted clicks ACE indicator',
         'Cost' => 'Custo',
         'CostPerAllConversion' => 'Custo / Todas as Conversões',
         'CostPerConversion' => 'Custo / Conversões',

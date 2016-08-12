@@ -12,6 +12,12 @@ $output = [
     'sources' => []
 ];
 
+$excludedFields = [
+    'ConvertedClicks',
+    'CostPerConvertedClick',
+    'ConvertedClicksSignificance',
+    'CostPerConvertedClickSignificance'
+];
 
 $getSourceAggregator = function (array $metric) {
     $notQuantityButIsSimpleSum = [
@@ -104,6 +110,7 @@ foreach ($mappings as $reportName => $fields) {
     $output['entities'][$entity] = $entity;
 
     foreach ($fields as $originalAttributeName => $field) {
+        if (in_array($originalAttributeName, $excludedFields)) continue;
         // name looks like <Campaign>FieldName
         $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0;
         $attributeName = strtolower($originalAttributeName);

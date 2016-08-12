@@ -59,8 +59,6 @@ return [
         'ConversionTypeName' => 'Conversion name',
         'ConversionValue' => 'Total conv. value',
         'Conversions' => 'Conversions',
-        'ConvertedClicks' => 'Converted clicks',
-        'ConvertedClicksSignificance' => 'Converted clicks ACE indicator',
         'Cost' => 'Cost',
         'CostPerAllConversion' => 'Cost / all conv.',
         'CostPerConversion' => 'Cost / conv.',
