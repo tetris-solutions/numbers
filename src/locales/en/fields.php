@@ -102,7 +102,7 @@ return [
         'MonthOfYear' => 'Month of Year',
         'NumOfflineImpressions' => 'Phone impressions',
         'NumOfflineInteractions' => 'Phone calls',
-        'OfflineInteractionRate' => 'PTR',
+        'OfflineInteractionRate' => 'Phone calls Rate (PTR)',
         'PercentNewVisitors' => '% new sessions',
         'Period' => 'Budget period',
         'PositionSignificance' => 'Position ACE indicator',

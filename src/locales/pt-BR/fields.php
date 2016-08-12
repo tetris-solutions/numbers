@@ -102,7 +102,7 @@ return [
         'MonthOfYear' => 'Mês do Ano',
         'NumOfflineImpressions' => 'Impressões de Telefone',
         'NumOfflineInteractions' => 'Ligações',
-        'OfflineInteractionRate' => 'Taxa de Interação Offline',
+        'OfflineInteractionRate' => 'Taxa de Ligações (PTR)',
         'PercentNewVisitors' => '% novas sessões',
         'Period' => 'Budget period',
         'PositionSignificance' => 'Position ACE indicator',
