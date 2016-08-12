@@ -8,7 +8,15 @@ return [
         "ImpressionReach"
     ],
     "parse" => function ($data) {
-        return $data->ImpressionReach;
+        return floatval(str_replace('<', '', $data->ImpressionReach));
     },
-    "sum" => NULL
+    "sum" => function (array $rows): float {
+        return array_reduce(
+            $rows,
+            function (float $carry, \stdClass $row): float {
+                return $carry + $row->impressionreach;
+            },
+            0.0
+        );
+    }
 ];
