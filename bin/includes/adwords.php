@@ -16,7 +16,8 @@ $excludedFields = [
     'ConvertedClicks',
     'CostPerConvertedClick',
     'ConvertedClicksSignificance',
-    'CostPerConvertedClickSignificance'
+    'CostPerConvertedClickSignificance',
+    'ValuePerConvertedClick'
 ];
 
 $getSourceAggregator = function (array $metric) {
