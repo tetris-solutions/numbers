@@ -4,19 +4,24 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "inferred_from" => ["conversionvalue", "conversions"],
     "fields" => [
         "ValuePerConversion"
     ],
     "parse" => function ($data): int {
         return (int)$data->ValuePerConversion;
     },
-    "sum" => function (array $rows): float {
-        return array_reduce(
-            $rows,
-            function (float $carry, \stdClass $row): float {
-                return $carry + $row->valueperconversion;
-            },
-            0.0
-        );
+    "sum" => function (array $rows) {
+        $sumConversions = 0;
+        $sumConversionsValue = 0;
+
+        foreach ($rows as $row) {
+            $sumConversions += $row->conversions;
+            $sumConversionsValue += $row->conversionvalue;
+        }
+
+        return $sumConversions !== 0
+            ? $sumConversionsValue / $sumConversions
+            : 0;
     }
 ];
