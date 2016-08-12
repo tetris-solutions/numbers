@@ -27,6 +27,7 @@ function parseMetrics($receivedObject, array $requestedReport): stdClass
     }
 
     $row = new stdClass();
+//    $row->_source = $receivedObject;
 
     foreach ($requestedReport['dimensions'] as $dimensionName) {
         $row->{$dimensionName} = isset($receivedObject->{$dimensionName})

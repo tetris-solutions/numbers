@@ -11,5 +11,4 @@ return [
         return (int)$data->ImpressionAssistedConversionsOverLastClickConversions;
     },
     "sum" => NULL
-    }
 ];
