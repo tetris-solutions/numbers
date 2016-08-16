@@ -13,6 +13,11 @@ $platforms = [
 
 $metrics = [];
 
+$cwd = getcwd();
+chdir(__DIR__ . '/../src/config');
+exec('find -type f -exec rm {} \;');
+chdir($cwd);
+
 function prettyVarExport($var, $level = 0)
 {
     $padString = ' ';
