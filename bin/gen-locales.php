@@ -5,43 +5,56 @@ namespace Tetris\Numbers;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$adwords = json_decode(file_get_contents(__DIR__ . '/../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
+$adwordReports = json_decode(file_get_contents(__DIR__ . '/../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
 $facebook = json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'), true);
 $actionTypes = json_decode(file_get_contents(__DIR__ . '/../maps/facebook-action-types.json'), true);
 
-$adwords = array_merge($adwords['CAMPAIGN_PERFORMANCE_REPORT'], $adwords['ACCOUNT_PERFORMANCE_REPORT']);
+$adwords = [];
 
-$fields = [
-    'adwords' => [],
-    'facebook' => $actionTypes
-];
-
-foreach ($adwords as $name => $metadata) {
-    $fields['adwords'][$name] = $metadata['DisplayName'];
+foreach ($adwordReports as $adwordReport) {
+    $adwords = array_merge($adwords, $adwordReport);
 }
 
-foreach ($facebook as $name => $metadata) {
-    $fields['facebook'][$name] = ucwords(str_replace('_', ' ', $name));
-}
+$locales = ['pt-BR', 'en'];
 
-ksort($fields['adwords']);
-ksort($fields['facebook']);
+foreach ($locales as $locale) {
+    $outputPath = __DIR__ . "/../src/locales/{$locale}/fields.php";
+    $oldFields = require($outputPath);
 
-$content = "<?php\nreturn [\n";
+    $fields = [
+        'adwords' => $oldFields['adwords'],
+        'facebook' => array_merge($actionTypes, $oldFields['facebook'])
+    ];
 
-foreach ($fields as $platform => $list) {
-    $content .= "  '{$platform}' => [\n";
-
-    foreach ($list as $id => $name) {
-        $name = addslashes($name);
-        $content .= "    '{$id}' => '{$name}',\n";
+    foreach ($adwords as $name => $metadata) {
+        if (!isset($fields['adwords'][$name])) {
+            $fields['adwords'][$name] = $metadata['DisplayName'];
+        }
     }
 
-    $content .= "  ],\n";
+    foreach ($facebook as $name => $metadata) {
+        if (!isset($fields['facebook'][$name])) {
+            $fields['facebook'][$name] = ucwords(str_replace('_', ' ', $name));
+        }
+    }
+
+    ksort($fields['adwords']);
+    ksort($fields['facebook']);
+
+    $content = "<?php\nreturn [\n";
+
+    foreach ($fields as $platform => $list) {
+        $content .= "    '{$platform}' => [\n";
+
+        foreach ($list as $id => $name) {
+            $name = addslashes($name);
+            $content .= "        '{$id}' => '{$name}',\n";
+        }
+
+        $content .= "    ],\n";
+    }
+
+    $content .= "];";
+
+    file_put_contents($outputPath, $content);
 }
-
-$content .= "];";
-
-file_put_contents(__DIR__ . '/../src/locales/en/fields.php', $content);
-file_put_contents(__DIR__ . '/../src/locales/pt-BR/fields.php', $content);
-
