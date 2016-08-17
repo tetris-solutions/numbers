@@ -3,9 +3,6 @@
 
 namespace Tetris\Numbers;
 
-define('FILE_PERM', 0644);
-define('FOLDER_PERM', 0755);
-
 $platforms = [
     'facebook' => require('includes/facebook.php'),
     'adwords' => require('includes/adwords.php')
