@@ -1,7 +1,7 @@
 <?php
 return [
     "metric" => "gmailsecondaryclicks",
-    "entity" => "Adgroup",
+    "entity" => "AdGroup",
     "platform" => "adwords",
     "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [

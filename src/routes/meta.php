@@ -46,10 +46,6 @@ $app->get('/meta',
         $entity = $request->getQueryParam('entity');
         $platform = $request->getQueryParam('platform');
 
-//        $campaignLevelOnly = $entity === 'Campaign' && $platform === 'adwords'
-//            ? json_decode(file_get_contents(__DIR__ . '/../../maps/adwords-campaign-only.json'), TRUE)
-//            : [];
-
         $attributes = [];
         $dimensions = [];
         $filters = [];

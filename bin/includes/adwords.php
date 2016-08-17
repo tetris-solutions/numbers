@@ -43,21 +43,6 @@ $getSourceAggregator = function (array $metric) {
         };
     } else {
         return NULL;
-//        return function (string $indent) use ($metric): string {
-//            return join(PHP_EOL . $indent, [
-//                'function (array $rows) {',
-//                '    // actual code goes here, ex:',
-//                '    // return array_reduce(',
-//                '    //     $rows,',
-//                '    //     function (float $carry, \stdClass $row): float {',
-//                "    //         return \$carry + \$row->{$metric['id']};",
-//                '    //     },',
-//                '    //     0.0',
-//                '    // );',
-//                '    return NULL;',
-//                '}'
-//            ]);
-//        };
     }
 };
 
@@ -101,19 +86,31 @@ $parsers = [
     }
 ];
 
+$entityNameMap = [
+    'ACCOUNT_PERFORMANCE_REPORT' => 'Account',
+    'ADGROUP_PERFORMANCE_REPORT' => 'AdGroup',
+    'AD_PERFORMANCE_REPORT' => 'Ad',
+    'CAMPAIGN_PERFORMANCE_REPORT' => 'Campaign'
+];
+
 foreach ($mappings as $reportName => $fields) {
     $output['reports'][$reportName] = [
         'id' => $reportName,
         'attributes' => []
     ];
 
-    $entity = ucfirst(strtolower(explode('_', $reportName)[0]));
+    $entity = $entityNameMap[$reportName];
     $output['entities'][$entity] = $entity;
 
     foreach ($fields as $originalAttributeName => $field) {
         if (in_array($originalAttributeName, $excludedFields)) continue;
+
         // name looks like <Campaign>FieldName
-        $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0;
+        $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0 && !(
+                $entity === 'Ad' &&
+                strpos($originalAttributeName, 'AdGroup') === 0
+            );
+
         $attributeName = strtolower($originalAttributeName);
 
         if (empty($attributeName)) {

@@ -1,7 +1,7 @@
 <?php
 return [
     "metric" => "bouncerate",
-    "entity" => "Adgroup",
+    "entity" => "AdGroup",
     "platform" => "adwords",
     "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [

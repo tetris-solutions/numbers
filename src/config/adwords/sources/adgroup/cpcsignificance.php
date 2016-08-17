@@ -1,7 +1,7 @@
 <?php
 return [
     "metric" => "cpcsignificance",
-    "entity" => "Adgroup",
+    "entity" => "AdGroup",
     "platform" => "adwords",
     "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [

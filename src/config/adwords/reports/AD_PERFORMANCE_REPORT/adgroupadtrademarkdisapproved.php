@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "groupadtrademarkdisapproved",
+    "id" => "adgroupadtrademarkdisapproved",
     "property" => "AdGroupAdTrademarkDisapproved",
     "is_filter" => FALSE,
     "is_metric" => FALSE,

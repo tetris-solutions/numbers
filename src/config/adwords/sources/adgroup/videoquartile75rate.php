@@ -1,7 +1,7 @@
 <?php
 return [
     "metric" => "videoquartile75rate",
-    "entity" => "Adgroup",
+    "entity" => "AdGroup",
     "platform" => "adwords",
     "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [

@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "adgroupmobilebidmodifier",
-    "property" => "AdGroupMobileBidModifier",
+    "id" => "id",
+    "property" => "AdGroupId",
     "is_filter" => TRUE,
     "is_metric" => FALSE,
     "is_dimension" => TRUE

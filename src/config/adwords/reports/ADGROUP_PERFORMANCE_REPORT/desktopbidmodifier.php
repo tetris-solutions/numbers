@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "groupstatus",
-    "property" => "AdGroupStatus",
+    "id" => "desktopbidmodifier",
+    "property" => "AdGroupDesktopBidModifier",
     "is_filter" => TRUE,
     "is_metric" => FALSE,
     "is_dimension" => TRUE
