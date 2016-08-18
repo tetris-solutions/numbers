@@ -8,12 +8,12 @@ class AdwordsResolver extends Client implements Resolver
     function resolve(Query $query): array
     {
         $rows = [];
+        $entityIdField = "{$query->entity}Id";
         $this->SetClientCustomerId($query->adAccountId);
 
         foreach ($query->reports as $reportName => $config) {
-            $shouldAggregateResult = $reportName === 'CAMPAIGN_PERFORMANCE_REPORT' &&
-                count($query->filters['id']) > 1 &&
-                !isset($config['fields']['CampaignId']);
+            $shouldAggregateResult = count($query->filters['id']) > 1 &&
+                !isset($config['fields'][$entityIdField]);
 
             $requestFields = array_merge([
                 // @see https://trello.com/c/7eQ1IsVm/103-suspeita-de-bug-report-api
