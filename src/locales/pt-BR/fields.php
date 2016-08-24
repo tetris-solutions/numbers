@@ -114,7 +114,7 @@ return [
         'GmailForwards' => 'Encaminhamentos Gmail',
         'GmailSaves' => 'Salvadas Gmail',
         'GmailSecondaryClicks' => 'Cliques para o Site Gmail',
-        'Headline' => 'Ad',
+        'Headline' => 'Headline',
         'HeadlinePart1' => 'Headline 1',
         'HeadlinePart2' => 'Headline 2',
         'HourOfDay' => 'Hora do Dia',
