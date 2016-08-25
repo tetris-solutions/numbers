@@ -90,7 +90,8 @@ $entityNameMap = [
     'ACCOUNT_PERFORMANCE_REPORT' => 'Account',
     'ADGROUP_PERFORMANCE_REPORT' => 'AdGroup',
     'AD_PERFORMANCE_REPORT' => 'Ad',
-    'CAMPAIGN_PERFORMANCE_REPORT' => 'Campaign'
+    'CAMPAIGN_PERFORMANCE_REPORT' => 'Campaign',
+    'KEYWORDS_PERFORMANCE_REPORT' => 'Keyword'
 ];
 
 foreach ($mappings as $reportName => $fields) {
