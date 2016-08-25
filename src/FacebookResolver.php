@@ -4,6 +4,7 @@ namespace Tetris\Numbers;
 use stdClass;
 use FacebookAds\Object\Campaign;
 use FacebookAds\Object\AdSet;
+use FacebookAds\Object\Ad;
 use FacebookAds\Object\AdAccount;
 use FacebookAds\Api;
 use Facebook\Facebook;
@@ -88,10 +89,25 @@ class FacebookResolver extends Facebook implements Resolver
                         $className = AdSet::class;
                         $params['level'] = 'adset';
                     } else {
-                        $className = Campaign::class;
-                        $params['level'] = 'campaign';
+                        $className = AdAccount::class;
+                        $params['level'] = 'account';
                         $params['filtering'] = [[
                             'field' => 'adset.id',
+                            'operator' => 'IN',
+                            'value' => $ids
+                        ]];
+                        $ids = [$query->adAccountId];
+                    }
+                    break;
+                case 'Ad':
+                    if (isset($config['fields']['ad_id'])) {
+                        $className = Ad::class;
+                        $params['level'] = 'ad';
+                    } else {
+                        $className = AdAccount::class;
+                        $params['level'] = 'account';
+                        $params['filtering'] = [[
+                            'field' => 'ad.id',
                             'operator' => 'IN',
                             'value' => $ids
                         ]];
