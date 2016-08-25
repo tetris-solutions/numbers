@@ -18,7 +18,7 @@ $overrideType = [
 ];
 
 $output = [
-    'entities' => ['Campaign', 'Account'],
+    'entities' => ['Campaign', 'Account', 'AdSet', 'Ad'],
     'metrics' => [],
     'reports' => [],
     'sources' => []
