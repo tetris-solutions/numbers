@@ -18,7 +18,7 @@ global $app;
  *      &filters=id(185416194)
  *      &dimensions=network
  */
-$app->get('/',
+$app->post('/',
     function (Request $request, Response $response, array $params) {
         /**
          * @var FlagsService $flags
@@ -29,7 +29,7 @@ $app->get('/',
             'adwords' => AdwordsResolver::class,
             'facebook' => FacebookResolver::class
         ];
-        $query = new Query($locale, $request->getQueryParams());
+        $query = new Query($locale, $request->getParsedBody());
         /**
          * @var TKMApi $tkm
          */

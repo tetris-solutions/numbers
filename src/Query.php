@@ -105,34 +105,6 @@ class Query
         ];
     }
 
-    /**
-     *
-     * filter syntax
-     *  - id(123)
-     *  - id[123|456]
-     *
-     * @param array $rawFilters
-     * @return array
-     */
-    private static function parseFilters(array $rawFilters)
-    {
-        $filters = [];
-
-        foreach ($rawFilters as $filter) {
-            if (strpos($filter, '(') !== false) {
-                $openParentheses = strpos($filter, '(');
-                $key = substr($filter, 0, $openParentheses);
-                $values = explode('|', substr($filter, $openParentheses + 1, -1));
-
-                if (empty($values)) continue;
-
-                $filters[$key] = $values;
-            }
-        }
-
-        return $filters;
-    }
-
     function __construct(string $locale, array $query)
     {
         self::validateQuery($query);
@@ -151,17 +123,18 @@ class Query
             $this->until = new DateTime($query['to']);
         }
 
-        $this->metrics = empty($query['metrics'])
-            ? []
-            : array_map([$this, 'getMetric'], explode(',', $query['metrics']));
-
-        $this->filters = empty($query['filters'])
-            ? []
-            : self::parseFilters(explode(',', $query['filters']));
-
-        $this->dimensions = empty($query['dimensions'])
-            ? []
-            : explode(',', $query['dimensions']);
+        $this->metrics = is_array($query['metrics'])
+            ? $query['metrics']
+            : [];
+        $this->metrics = array_map([$this, 'getMetric'], $this->metrics);
+        
+        $this->dimensions = is_array($query['dimensions'])
+            ? $query['dimensions']
+            : [];
+        
+        $this->filters = is_array($query['filters'])
+            ? $query['filters']
+            : [];
 
         foreach ($this->metrics as $metric) {
             $this->createReportConfigFromMetric($metric, false);
