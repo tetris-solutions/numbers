@@ -15,7 +15,7 @@
     "pugx/shortid-php": "^0.1.0",
     "facebook/php-ads-sdk": "^2.7.1",
     "aura/sql": "^2.5",
-    "aura/sqlquery": "^2.6",
+    "aura/sqlquery": "^2.7",
     "vlucas/phpdotenv": "^2.3",
     "nategood/httpful": "^0.2.20",
     "facebook/graph-sdk": "^5.3"
