@@ -2,6 +2,7 @@
 namespace Tetris\Numbers;
 
 use Tetris\Adwords\Client;
+use Tetris\Adwords\Exceptions\NullReportException;
 
 class AdwordsResolver extends Client implements Resolver
 {
@@ -15,13 +16,7 @@ class AdwordsResolver extends Client implements Resolver
             $shouldAggregateResult = count($query->filters['id']) > 1 &&
                 !isset($config['fields'][$entityIdField]);
 
-            $requestFields = array_merge([
-                // @see https://trello.com/c/7eQ1IsVm/103-suspeita-de-bug-report-api
-                // @todo remove this ugly workaround
-                'Impressions' => 'Impressions'
-            ], $config['fields']);
-
-            $select = $this->select($requestFields)
+            $select = $this->select($config['fields'])
                 ->from($reportName)
                 ->during($query->since, $query->until);
 
@@ -33,7 +28,11 @@ class AdwordsResolver extends Client implements Resolver
                 }
             }
 
-            $reportRows = $select->fetchAll();
+            try {
+                $reportRows = $select->fetchAll();
+            } catch (NullReportException $e) {
+                $reportRows = [];
+            }
 
             foreach ($reportRows as $index => $row) {
                 $reportRows[$index] = parseMetrics($row, $config);
