@@ -79,6 +79,23 @@ function getFacebookConfig(): array
         };
     };
 
+    $parseVideoPercentAction = function ($field) {
+        return function (string $indent) use ($field): string {
+            $lines = [
+                'function ($data) {',
+                "    foreach (\$data->{$field} as \$action) {",
+                "        if (\$action['action_type'] === 'video_view') {",
+                "            return (float)\$action['value'];",
+                '        }',
+                '    }',
+                '    return NULL;',
+                '}'
+            ];
+
+            return implode(PHP_EOL . $indent, $lines);
+        };
+    };
+
 
     function isCurrency(array $field): bool
     {
@@ -155,6 +172,34 @@ function getFacebookConfig(): array
             }
 
             $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
+        }
+
+        foreach ([25, 50, 75, 100] as $percent) {
+            $videoPercentActionsFieldName = "video_p{$percent}_watched_actions";
+            $attribute = [
+                'property' => $videoPercentActionsFieldName,
+                'is_metric' => true,
+                'is_dimension' => false,
+                'is_filter' => false
+            ];
+
+            if (empty($output['metrics'][$videoPercentActionsFieldName])) {
+                $output['metrics'][$videoPercentActionsFieldName] = [
+                    'id' => $videoPercentActionsFieldName,
+                    'type' => 'quantity'
+                ];
+            }
+
+            $output['sources'][] = [
+                'metric' => $videoPercentActionsFieldName,
+                'entity' => $entity,
+                'platform' => 'facebook',
+                'report' => $reportName,
+                'fields' => ['actions'],
+                'parse' => $parseVideoPercentAction($videoPercentActionsFieldName)
+            ];
+
+            $output['reports'][$reportName]['attributes'][$videoPercentActionsFieldName] = $attribute;
         }
 
         foreach ($actionTypes as $type => $name) {
