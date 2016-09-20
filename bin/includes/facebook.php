@@ -195,7 +195,7 @@ function getFacebookConfig(): array
                 'entity' => $entity,
                 'platform' => 'facebook',
                 'report' => $reportName,
-                'fields' => ['actions'],
+                'fields' => [$videoPercentActionsFieldName],
                 'parse' => $parseVideoPercentAction($videoPercentActionsFieldName)
             ];
 

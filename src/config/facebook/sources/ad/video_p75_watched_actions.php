@@ -5,7 +5,7 @@ return [
     "platform" => "facebook",
     "report" => "FB_AD",
     "fields" => [
-        "actions"
+        "video_p75_watched_actions"
     ],
     "parse" => function ($data) {
         foreach ($data->video_p75_watched_actions as $action) {
