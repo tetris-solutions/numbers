@@ -10,5 +10,18 @@ return [
     "parse" => function ($data): float {
         return floatval(str_replace('%', '', $data->VideoQuartile50Rate)) / 100;
     },
-    "sum" => NULL
+    "inferred_from" => [
+        "videoviews"
+    ],
+    "sum" => function (array $rows) {
+        $totalViews = 0;
+        $partialViews = 0;
+        foreach ($rows as $row) {
+            $totalViews += $row->videoviews;
+            $partialViews += $row->videoviews * $row->videoquartile50rate;
+        }
+        return $totalViews !== 0
+            ? $partialViews / $totalViews
+            : 0;
+    }
 ];

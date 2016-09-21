@@ -10,5 +10,19 @@ return [
     "parse" => function ($data): float {
         return floatval(str_replace('%', '', $data->InvalidClickRate)) / 100;
     },
-    "sum" => NULL
+    "inferred_from" => [
+        "invalidclicks",
+        "clicks"
+    ],
+    "sum" => function (array $rows) {
+        $sumDividend = 0;
+        $sumDivisor = 0;
+        foreach ($rows as $row) {
+            $sumDividend += $row->invalidclicks;
+            $sumDivisor += $row->clicks;
+        }
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
+            : 0;
+    }
 ];

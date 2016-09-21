@@ -4,24 +4,25 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
-    "inferred_from" => ["interactions", "impressions"],
     "fields" => [
         "InteractionRate"
     ],
     "parse" => function ($data): float {
         return floatval(str_replace('%', '', $data->InteractionRate)) / 100;
     },
+    "inferred_from" => [
+        "interactions",
+        "impressions"
+    ],
     "sum" => function (array $rows) {
-        $sumInteractions = 0;
-        $sumImpressions = 0;
-
+        $sumDividend = 0;
+        $sumDivisor = 0;
         foreach ($rows as $row) {
-            $sumInteractions += $row->interactions;
-            $sumImpressions += $row->impressions;
+            $sumDividend += $row->interactions;
+            $sumDivisor += $row->impressions;
         }
-
-        return $sumImpressions !== 0
-            ? $sumInteractions / $sumImpressions
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
             : 0;
     }
 ];

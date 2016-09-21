@@ -4,22 +4,22 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
-    "inferred_from" => ["videoviews"],
     "fields" => [
         "VideoQuartile25Rate"
     ],
     "parse" => function ($data): float {
         return floatval(str_replace('%', '', $data->VideoQuartile25Rate)) / 100;
     },
+    "inferred_from" => [
+        "videoviews"
+    ],
     "sum" => function (array $rows) {
         $totalViews = 0;
         $partialViews = 0;
-
         foreach ($rows as $row) {
             $totalViews += $row->videoviews;
             $partialViews += $row->videoviews * $row->videoquartile25rate;
         }
-
         return $totalViews !== 0
             ? $partialViews / $totalViews
             : 0;

@@ -4,24 +4,25 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
-    "inferred_from" => ["impressions", "impressionreach"],
     "fields" => [
         "AverageFrequency"
     ],
     "parse" => function ($data): int {
         return (int)$data->AverageFrequency;
     },
+    "inferred_from" => [
+        "impressions",
+        "impressionreach"
+    ],
     "sum" => function (array $rows) {
-        $sumImpressions = 0;
-        $sumImpressionsReach = 0;
-
+        $sumDividend = 0;
+        $sumDivisor = 0;
         foreach ($rows as $row) {
-            $sumImpressionsReach += $row->impressionreach;
-            $sumImpressions += $row->impressions;
+            $sumDividend += $row->impressions;
+            $sumDivisor += $row->impressionreach;
         }
-
-        return $sumImpressionsReach !== 0
-            ? $sumImpressions / $sumImpressionsReach
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
             : 0;
     }
 ];

@@ -10,13 +10,19 @@ return [
     "parse" => function ($data): int {
         return (int)$data->ValuePerAllConversion;
     },
-    "sum" => function (array $rows): float {
-        return array_reduce(
-            $rows,
-            function (float $carry, \stdClass $row): float {
-                return $carry + $row->valueperallconversion;
-            },
-            0.0
-        );
+    "inferred_from" => [
+        "allconversionvalue",
+        "allconversions"
+    ],
+    "sum" => function (array $rows) {
+        $sumDividend = 0;
+        $sumDivisor = 0;
+        foreach ($rows as $row) {
+            $sumDividend += $row->allconversionvalue;
+            $sumDivisor += $row->allconversions;
+        }
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
+            : 0;
     }
 ];

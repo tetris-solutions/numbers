@@ -4,24 +4,25 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
-    "inferred_from" => ["interactions", "cost"],
     "fields" => [
         "AverageCost"
     ],
     "parse" => function ($data): float {
         return (float)$data->AverageCost;
     },
+    "inferred_from" => [
+        "cost",
+        "interactions"
+    ],
     "sum" => function (array $rows) {
-        $sumInteractions = 0;
-        $sumCost = 0;
-
+        $sumDividend = 0;
+        $sumDivisor = 0;
         foreach ($rows as $row) {
-            $sumInteractions += $row->interactions;
-            $sumCost += $row->cost;
+            $sumDividend += $row->cost;
+            $sumDivisor += $row->interactions;
         }
-
-        return $sumInteractions !== 0
-            ? $sumCost / $sumInteractions
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
             : 0;
     }
 ];

@@ -20,9 +20,13 @@ function prettyVarExport($var, $level = 0)
             $rows = [];
 
             foreach ($var as $key => $value) {
-                $sanitizedValue = $value instanceof \Closure
-                    ? $value($nextIndent)
-                    : prettyVarExport($value, $indent + 4);
+                if ($value instanceof \Closure) {
+                    $sanitizedValue = $value($nextIndent);
+                } else if (is_array($value)) {
+                    $sanitizedValue = prettyVarExport($value, $level + 4);
+                } else {
+                    $sanitizedValue = prettyVarExport($value, $level);
+                }
 
                 $rows[] = $nextIndent . ($indexed
                         ? ""
@@ -30,9 +34,7 @@ function prettyVarExport($var, $level = 0)
                     ) . $sanitizedValue;
             }
 
-            return "[\n" .
-            implode(",\n{$indent}", $rows) .
-            "\n" . $indent . "]";
+            return "[\n" . implode(",\n", $rows) . "\n" . $indent . "]";
         case "boolean":
             return $var ? "TRUE" : "FALSE";
         default:

@@ -4,24 +4,25 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
-    "inferred_from" => ["numofflineimpressions", "numofflineinteractions"],
     "fields" => [
         "OfflineInteractionRate"
     ],
     "parse" => function ($data): int {
         return (int)$data->OfflineInteractionRate;
     },
+    "inferred_from" => [
+        "numofflineinteractions",
+        "numofflineimpressions"
+    ],
     "sum" => function (array $rows) {
-        $sumNumofflineinteractions = 0;
-        $sumNumofflineimpressions = 0;
-
+        $sumDividend = 0;
+        $sumDivisor = 0;
         foreach ($rows as $row) {
-            $sumNumofflineinteractions += $row->numofflineinteractions;
-            $sumNumofflineimpressions += $row->numofflineimpressions;
+            $sumDividend += $row->numofflineinteractions;
+            $sumDivisor += $row->numofflineimpressions;
         }
-
-        return $sumNumofflineimpressions !== 0
-            ? $sumNumofflineinteractions / $sumNumofflineimpressions
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
             : 0;
     }
 ];

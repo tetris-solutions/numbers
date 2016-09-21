@@ -4,24 +4,25 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
-    "inferred_from" => ["conversions", "clicks"],
     "fields" => [
         "ConversionRate"
     ],
     "parse" => function ($data): float {
         return floatval(str_replace('%', '', $data->ConversionRate)) / 100;
     },
+    "inferred_from" => [
+        "conversions",
+        "clicks"
+    ],
     "sum" => function (array $rows) {
-        $sumConversions = 0;
-        $sumClicks = 0;
-
+        $sumDividend = 0;
+        $sumDivisor = 0;
         foreach ($rows as $row) {
-            $sumConversions += $row->conversions;
-            $sumClicks += $row->clicks;
+            $sumDividend += $row->conversions;
+            $sumDivisor += $row->clicks;
         }
-
-        return $sumClicks !== 0
-            ? $sumConversions / $sumClicks
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
             : 0;
     }
 ];

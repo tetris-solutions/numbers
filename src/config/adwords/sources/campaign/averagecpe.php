@@ -4,24 +4,25 @@ return [
     "entity" => "Campaign",
     "platform" => "adwords",
     "report" => "CAMPAIGN_PERFORMANCE_REPORT",
-    "inferred_from" => ["engagements", "cost"],
     "fields" => [
         "AverageCpe"
     ],
     "parse" => function ($data): int {
         return (int)$data->AverageCpe;
     },
+    "inferred_from" => [
+        "cost",
+        "engagements"
+    ],
     "sum" => function (array $rows) {
-        $sumEngagements = 0;
-        $sumCost = 0;
-
+        $sumDividend = 0;
+        $sumDivisor = 0;
         foreach ($rows as $row) {
-            $sumEngagements += $row->engagements;
-            $sumCost += $row->cost;
+            $sumDividend += $row->cost;
+            $sumDivisor += $row->engagements;
         }
-
-        return $sumEngagements !== 0
-            ? $sumCost / $sumEngagements
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
             : 0;
     }
 ];

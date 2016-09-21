@@ -10,13 +10,19 @@ return [
     "parse" => function ($data): int {
         return (int)$data->AverageCpe;
     },
-    "sum" => function (array $rows): float {
-        return array_reduce(
-            $rows,
-            function (float $carry, \stdClass $row): float {
-                return $carry + $row->averagecpe;
-            },
-            0.0
-        );
+    "inferred_from" => [
+        "cost",
+        "engagements"
+    ],
+    "sum" => function (array $rows) {
+        $sumDividend = 0;
+        $sumDivisor = 0;
+        foreach ($rows as $row) {
+            $sumDividend += $row->cost;
+            $sumDivisor += $row->engagements;
+        }
+        return $sumDivisor !== 0
+            ? $sumDividend / $sumDivisor
+            : 0;
     }
 ];
