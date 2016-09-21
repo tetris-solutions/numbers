@@ -9,6 +9,5 @@ return [
     ],
     "parse" => function ($data): float {
         return (float)$data->ActiveViewCpm;
-    },
-    "sum" => NULL
+    }
 ];

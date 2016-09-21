@@ -9,6 +9,5 @@ return [
     ],
     "parse" => function ($data): float {
         return floatval(str_replace('%', '', $data->PercentNewVisitors)) / 100;
-    },
-    "sum" => NULL
+    }
 ];

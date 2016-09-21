@@ -9,6 +9,5 @@ return [
     ],
     "parse" => function ($data) {
         return $data->SearchExactMatchImpressionShare;
-    },
-    "sum" => NULL
+    }
 ];

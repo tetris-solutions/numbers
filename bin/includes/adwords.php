@@ -230,8 +230,6 @@ function getAdwordsConfig(): array
                     $sourceConfig = array_merge($sourceConfig, $inferredMetricSum[$attributeName]);
                 } else if ($metric['type'] === 'quantity' || in_array($metric['id'], $notQuantityButIsSimpleSum)) {
                     $sourceConfig['sum'] = $getSourceAggregator($metric);
-                } else {
-                    $sourceConfig['sum'] = NULL;
                 }
 
                 $output['sources'][] = $sourceConfig;
