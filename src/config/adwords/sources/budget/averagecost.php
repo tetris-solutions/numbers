@@ -1,25 +1,25 @@
 <?php
 return [
-    "metric" => "averagecpv",
-    "entity" => "Keyword",
+    "metric" => "averagecost",
+    "entity" => "Budget",
     "platform" => "adwords",
-    "report" => "KEYWORDS_PERFORMANCE_REPORT",
+    "report" => "BUDGET_PERFORMANCE_REPORT",
     "fields" => [
-        "AverageCpv"
+        "AverageCost"
     ],
     "parse" => function ($data): float {
-        return (float)$data->AverageCpv;
+        return (float)$data->AverageCost;
     },
     "inferred_from" => [
         "cost",
-        "videoviews"
+        "interactions"
     ],
     "sum" => function (array $rows) {
         $sumDividend = 0;
         $sumDivisor = 0;
         foreach ($rows as $row) {
             $sumDividend += $row->cost;
-            $sumDivisor += $row->videoviews;
+            $sumDivisor += $row->interactions;
         }
         return $sumDivisor !== 0
             ? $sumDividend / $sumDivisor

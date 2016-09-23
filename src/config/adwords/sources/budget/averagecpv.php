@@ -1,9 +1,9 @@
 <?php
 return [
     "metric" => "averagecpv",
-    "entity" => "Keyword",
+    "entity" => "Budget",
     "platform" => "adwords",
-    "report" => "KEYWORDS_PERFORMANCE_REPORT",
+    "report" => "BUDGET_PERFORMANCE_REPORT",
     "fields" => [
         "AverageCpv"
     ],

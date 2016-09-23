@@ -156,6 +156,7 @@ function getAdwordsConfig(): array
     ];
 
     $entityNameMap = [
+        'BUDGET_PERFORMANCE_REPORT' => 'Budget',
         'ACCOUNT_PERFORMANCE_REPORT' => 'Account',
         'ADGROUP_PERFORMANCE_REPORT' => 'AdGroup',
         'AD_PERFORMANCE_REPORT' => 'Ad',
@@ -164,6 +165,8 @@ function getAdwordsConfig(): array
     ];
 
     foreach ($mappings as $reportName => $fields) {
+        if (!isset($entityNameMap[$reportName])) continue;
+
         $output['reports'][$reportName] = [
             'id' => $reportName,
             'attributes' => []

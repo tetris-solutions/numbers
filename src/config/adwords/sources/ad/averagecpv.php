@@ -7,8 +7,8 @@ return [
     "fields" => [
         "AverageCpv"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->AverageCpv;
+    "parse" => function ($data): float {
+        return (float)$data->AverageCpv;
     },
     "inferred_from" => [
         "cost",

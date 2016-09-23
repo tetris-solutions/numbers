@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "averagecpv",
-    "type" => "quantity"
+    "type" => "currency"
 ];
