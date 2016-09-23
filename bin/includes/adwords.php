@@ -51,6 +51,10 @@ function getAdwordsConfig(): array
 {
     $mappings = json_decode(file_get_contents(__DIR__ . '/../../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
 
+    $overrideType = [
+        'averagecpv' => 'currency'
+    ];
+
     $output = [
         'entities' => [],
         'metrics' => [],
@@ -204,7 +208,9 @@ function getAdwordsConfig(): array
                         'type' => 'quantity'
                     ];
 
-                    if ($field['SpecialValue']) {
+                    if (isset($overrideType[$metric['id']])) {
+                        $metric['type'] = $overrideType[$metric['id']];
+                    } else if ($field['SpecialValue']) {
                         $metric['type'] = 'raw';
                     } else if ($field['Percentage']) {
                         $metric['type'] = 'percentage';
