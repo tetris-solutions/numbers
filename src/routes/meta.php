@@ -36,7 +36,7 @@ function setBreakdownPermutation(&$config)
 }
 
 $app->get('/meta',
-    function (Request $request, Response $response, array $params) {
+    secured(function (Request $request, Response $response, array $params) {
         /**
          * @var FlagsService $flags
          */
@@ -109,4 +109,4 @@ $app->get('/meta',
             'filters' => uniq($filters),
             'attributes' => $attributes
         ]);
-    });
+    }));

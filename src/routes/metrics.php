@@ -8,7 +8,7 @@ use Tetris\Services\FlagsService;
 global $app;
 
 $app->get('/metrics/{platform}/{entity}',
-    function (Request $request, Response $response, array $params) {
+    secured(function (Request $request, Response $response, array $params) {
         /**
          * @var FlagsService $flags
          */
@@ -44,4 +44,4 @@ $app->get('/metrics/{platform}/{entity}',
         }
 
         return $response->withJson($result);
-    });
+    }));
