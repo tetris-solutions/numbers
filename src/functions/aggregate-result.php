@@ -28,6 +28,7 @@ function aggregateResult(array $rows, array $reportConfig): array
 
     foreach ($groupedByKey as $groupOfRows) {
         $row = new stdClass();
+//        $row->_source = $groupOfRows;
 
         foreach ($reportConfig['dimensions'] as $dimensionName) {
             $row->{$dimensionName} = isset($groupOfRows[0]->{$dimensionName})

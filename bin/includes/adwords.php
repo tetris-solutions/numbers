@@ -25,6 +25,28 @@ function percentSum(string $dividendMetric, string $divisorMetric): array
     ];
 }
 
+function altWeightedAverage(string $metric, string $weight): array
+{
+    return [
+        "inferred_from" => [$weight],
+        "sum" => function (string $indent) use ($metric, $weight): string {
+            return join(PHP_EOL . $indent, [
+                'function (array $rows) {',
+                '    $sumDividend = 0;',
+                '    $sumDivisor = 0;',
+                '    foreach ($rows as $row) {',
+                "        \$sumDividend += \$row->$metric * \$row->$weight;",
+                "        \$sumDivisor += \$row->$weight;",
+                '    }',
+                '    return (float)$sumDivisor !== 0.0',
+                '        ? $sumDividend / $sumDivisor',
+                '        : 0;',
+                '}'
+            ]);
+        }
+    ];
+}
+
 function videoQuartileSum(string $percent)
 {
     return [
@@ -78,6 +100,7 @@ function getAdwordsConfig(): array
         'averagecpm' => percentSum('cost', 'impressions'),
         'averagecpv' => percentSum('cost', 'videoviews'),
         'averagefrequency' => percentSum('impressions', 'impressionreach'),
+        'averageposition' => altWeightedAverage('averageposition', 'impressions'),
         'conversionrate' => percentSum('conversions', 'clicks'),
         'costperallconversion' => percentSum('cost', 'allconversions'),
         'costperconversion' => percentSum('cost', 'conversions'),
