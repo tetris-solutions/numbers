@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "numofflineinteractions",
-    "type" => "quantity"
+    "type" => "integer"
 ];

@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ValuePerConversion"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->ValuePerConversion;
+    "parse" => function ($data): float {
+        return (float)$data->ValuePerConversion;
     },
     "inferred_from" => [
         "conversionvalue",

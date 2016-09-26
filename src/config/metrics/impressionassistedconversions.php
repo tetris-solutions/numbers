@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "impressionassistedconversions",
-    "type" => "quantity"
+    "type" => "integer"
 ];

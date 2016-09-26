@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "activeviewmeasurability",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

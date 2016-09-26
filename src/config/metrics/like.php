@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "like",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

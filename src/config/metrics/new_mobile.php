@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "new_mobile",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

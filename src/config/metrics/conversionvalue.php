@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "conversionvalue",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

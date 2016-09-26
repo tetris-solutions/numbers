@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "reach",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

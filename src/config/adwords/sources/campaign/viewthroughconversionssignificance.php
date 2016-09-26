@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ViewThroughConversionsSignificance"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->ViewThroughConversionsSignificance;
+    "parse" => function ($data): float {
+        return (float)$data->ViewThroughConversionsSignificance;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

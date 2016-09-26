@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "averagepageviews",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

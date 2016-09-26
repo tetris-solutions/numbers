@@ -7,8 +7,8 @@ return [
     "fields" => [
         "OfflineInteractionRate"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->OfflineInteractionRate;
+    "parse" => function ($data): float {
+        return (float)$data->OfflineInteractionRate;
     },
     "inferred_from" => [
         "numofflineinteractions",

@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "clicksignificance",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

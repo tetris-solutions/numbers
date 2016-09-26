@@ -36,7 +36,7 @@ function getFacebookConfig(): array
                 ]);
             };
         },
-        'quantity' => function ($property) {
+        'decimal' => function ($property) {
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
@@ -155,7 +155,7 @@ function getFacebookConfig(): array
                 if (empty($output['metrics'][$attributeName])) {
                     $output['metrics'][$attributeName] = $metric = [
                         'id' => $attributeName,
-                        'type' => isCurrency($field) ? 'currency' : 'quantity'
+                        'type' => isCurrency($field) ? 'currency' : 'decimal'
                     ];
                 } else {
                     $metric = $output['metrics'][$attributeName];
@@ -186,7 +186,7 @@ function getFacebookConfig(): array
             if (empty($output['metrics'][$videoPercentActionsFieldName])) {
                 $output['metrics'][$videoPercentActionsFieldName] = [
                     'id' => $videoPercentActionsFieldName,
-                    'type' => 'quantity'
+                    'type' => 'decimal'
                 ];
             }
 
@@ -213,7 +213,7 @@ function getFacebookConfig(): array
             if (empty($output['metrics'][$type])) {
                 $output['metrics'][$type] = [
                     'id' => $type,
-                    'type' => 'quantity'
+                    'type' => 'decimal'
                 ];
             }
 

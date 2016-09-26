@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "checkin",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

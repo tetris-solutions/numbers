@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "crossdeviceconversions",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "clicks",
-    "type" => "quantity"
+    "type" => "integer"
 ];

@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "follow",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

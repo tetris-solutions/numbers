@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ClickSignificance"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->ClickSignificance;
+    "parse" => function ($data): float {
+        return (float)$data->ClickSignificance;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

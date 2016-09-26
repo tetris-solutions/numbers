@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "comment",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

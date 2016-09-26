@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "viewthroughconversions",
-    "type" => "quantity"
+    "type" => "integer"
 ];

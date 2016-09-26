@@ -86,7 +86,6 @@ $app->get('/meta',
             $metricConfig = MetaData::getMetric($metric);
 
             $cannotAggregate = $platform === 'adwords' &&
-                $metricConfig['type'] !== 'quantity' &&
                 !isset($source['sum']);
 
             $attributes[$metric] = [

@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "app_install",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

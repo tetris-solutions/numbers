@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "gmailsecondaryclicks",
-    "type" => "quantity"
+    "type" => "integer"
 ];

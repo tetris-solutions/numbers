@@ -7,8 +7,8 @@ return [
     "fields" => [
         "CrossDeviceConversions"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->CrossDeviceConversions;
+    "parse" => function ($data): float {
+        return (float)$data->CrossDeviceConversions;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

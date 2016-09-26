@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "vote",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

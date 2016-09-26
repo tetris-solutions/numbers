@@ -95,7 +95,7 @@ function getAdwordsConfig(): array
         'videoquartile100rate' => videoQuartileSum(100)
     ];
 
-    $notQuantityButIsSimpleSum = [
+    $simpleSumMetrics = [
         'cost'
     ];
 
@@ -125,7 +125,7 @@ function getAdwordsConfig(): array
                 ]);
             };
         },
-        'currency' => function ($property) {
+        'decimal' => function ($property) {
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data): float {',
@@ -134,7 +134,7 @@ function getAdwordsConfig(): array
                 ]);
             };
         },
-        'quantity' => function ($property) {
+        'integer' => function ($property) {
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data): int {',
@@ -154,6 +154,7 @@ function getAdwordsConfig(): array
             };
         }
     ];
+    $parsers['currency'] = $parsers['decimal'];
 
     $entityNameMap = [
         'BUDGET_PERFORMANCE_REPORT' => 'Budget',
@@ -208,7 +209,7 @@ function getAdwordsConfig(): array
                 if (empty($output['metrics'][$attributeName])) {
                     $metric = [
                         'id' => $attributeName,
-                        'type' => 'quantity'
+                        'type' => 'decimal'
                     ];
 
                     if (isset($overrideType[$metric['id']])) {
@@ -219,6 +220,8 @@ function getAdwordsConfig(): array
                         $metric['type'] = 'percentage';
                     } else if ($field['Type'] === 'Money') {
                         $metric['type'] = 'currency';
+                    } else if ($field['Type'] === 'Long') {
+                        $metric['type'] = 'integer';
                     }
 
                     $output['metrics'][$attributeName] = $metric;
@@ -235,9 +238,13 @@ function getAdwordsConfig(): array
                     'parse' => $parsers[$metric['type']]($originalAttributeName)
                 ];
 
+                $canUseSimpleSum = $metric['type'] === 'integer' ||
+                    $metric['type'] === 'decimal' ||
+                    in_array($metric['id'], $simpleSumMetrics);
+
                 if (isset($inferredMetricSum[$attributeName])) {
                     $sourceConfig = array_merge($sourceConfig, $inferredMetricSum[$attributeName]);
-                } else if ($metric['type'] === 'quantity' || in_array($metric['id'], $notQuantityButIsSimpleSum)) {
+                } else if ($canUseSimpleSum) {
                     $sourceConfig['sum'] = $getSourceAggregator($metric);
                 }
 

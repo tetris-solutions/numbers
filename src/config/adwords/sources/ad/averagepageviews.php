@@ -7,8 +7,8 @@ return [
     "fields" => [
         "AveragePageviews"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->AveragePageviews;
+    "parse" => function ($data): float {
+        return (float)$data->AveragePageviews;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

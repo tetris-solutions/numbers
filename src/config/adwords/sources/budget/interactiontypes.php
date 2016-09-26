@@ -7,8 +7,8 @@ return [
     "fields" => [
         "InteractionTypes"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->InteractionTypes;
+    "parse" => function ($data): float {
+        return (float)$data->InteractionTypes;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

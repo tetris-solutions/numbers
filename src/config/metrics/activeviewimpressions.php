@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "activeviewimpressions",
-    "type" => "quantity"
+    "type" => "integer"
 ];

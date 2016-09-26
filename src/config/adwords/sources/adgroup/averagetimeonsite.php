@@ -7,8 +7,8 @@ return [
     "fields" => [
         "AverageTimeOnSite"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->AverageTimeOnSite;
+    "parse" => function ($data): float {
+        return (float)$data->AverageTimeOnSite;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

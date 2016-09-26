@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ActiveViewCtr"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->ActiveViewCtr;
+    "parse" => function ($data): float {
+        return (float)$data->ActiveViewCtr;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

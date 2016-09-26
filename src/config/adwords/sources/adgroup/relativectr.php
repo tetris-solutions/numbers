@@ -7,8 +7,8 @@ return [
     "fields" => [
         "RelativeCtr"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->RelativeCtr;
+    "parse" => function ($data): float {
+        return (float)$data->RelativeCtr;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

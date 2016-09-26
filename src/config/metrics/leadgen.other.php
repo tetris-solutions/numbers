@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "leadgen.other",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

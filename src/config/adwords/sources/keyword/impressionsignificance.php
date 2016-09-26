@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ImpressionSignificance"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->ImpressionSignificance;
+    "parse" => function ($data): float {
+        return (float)$data->ImpressionSignificance;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "mention",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

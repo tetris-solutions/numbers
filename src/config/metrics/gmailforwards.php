@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "gmailforwards",
-    "type" => "quantity"
+    "type" => "integer"
 ];

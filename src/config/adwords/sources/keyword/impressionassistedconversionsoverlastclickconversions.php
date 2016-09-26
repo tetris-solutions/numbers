@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ImpressionAssistedConversionsOverLastClickConversions"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->ImpressionAssistedConversionsOverLastClickConversions;
+    "parse" => function ($data): float {
+        return (float)$data->ImpressionAssistedConversionsOverLastClickConversions;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

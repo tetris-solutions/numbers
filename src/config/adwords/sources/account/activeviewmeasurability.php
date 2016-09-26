@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ActiveViewMeasurability"
     ],
-    "parse" => function ($data): int {
-        return (int)$data->ActiveViewMeasurability;
+    "parse" => function ($data): float {
+        return (float)$data->ActiveViewMeasurability;
     },
     "sum" => function (array $rows): float {
         return array_reduce(

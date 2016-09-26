@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "videoviews",
-    "type" => "quantity"
+    "type" => "integer"
 ];

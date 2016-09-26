@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "frequency",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

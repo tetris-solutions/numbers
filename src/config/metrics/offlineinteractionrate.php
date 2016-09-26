@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "offlineinteractionrate",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

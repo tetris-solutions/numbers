@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "cpcsignificance",
-    "type" => "quantity"
+    "type" => "decimal"
 ];

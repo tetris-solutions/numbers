@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "post",
-    "type" => "quantity"
+    "type" => "decimal"
 ];
