@@ -20,7 +20,7 @@ return [
             $totalViews += $row->videoviews;
             $partialViews += $row->videoviews * $row->videoquartile75rate;
         }
-        return $totalViews !== 0
+        return (float)$totalViews !== 0.0
             ? $partialViews / $totalViews
             : 0;
     }

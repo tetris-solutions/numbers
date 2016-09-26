@@ -36,7 +36,8 @@ function parseMetrics($receivedObject, array $requestedReport): stdClass
     }
 
     foreach ($requestedReport['metrics'] as $metric) {
-        $row->{$metric['id']} = $metric['parse']($receivedObject);
+        $val = $metric['parse']($receivedObject);
+        $row->{$metric['id']} = $val;
     }
 
     return $row;

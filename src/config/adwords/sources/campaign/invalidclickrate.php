@@ -21,7 +21,7 @@ return [
             $sumDividend += $row->invalidclicks;
             $sumDivisor += $row->clicks;
         }
-        return $sumDivisor !== 0
+        return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
     }

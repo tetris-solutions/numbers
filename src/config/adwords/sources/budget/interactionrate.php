@@ -21,7 +21,7 @@ return [
             $sumDividend += $row->interactions;
             $sumDivisor += $row->impressions;
         }
-        return $sumDivisor !== 0
+        return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
     }

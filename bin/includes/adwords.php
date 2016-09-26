@@ -16,7 +16,7 @@ function percentSum(string $dividendMetric, string $divisorMetric): array
                 "        \$sumDividend += \$row->$dividendMetric;",
                 "        \$sumDivisor += \$row->$divisorMetric;",
                 '    }',
-                '    return $sumDivisor !== 0',
+                '    return (float)$sumDivisor !== 0.0',
                 '        ? $sumDividend / $sumDivisor',
                 '        : 0;',
                 '}'
@@ -38,7 +38,7 @@ function videoQuartileSum(string $percent)
                 '        $totalViews += $row->videoviews;',
                 "        \$partialViews += \$row->videoviews * \$row->videoquartile{$percent}rate;",
                 '    }',
-                '    return $totalViews !== 0',
+                '    return (float)$totalViews !== 0.0',
                 '        ? $partialViews / $totalViews',
                 '        : 0;',
                 '}'

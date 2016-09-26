@@ -21,7 +21,7 @@ return [
             $sumDividend += $row->cost;
             $sumDivisor += $row->engagements;
         }
-        return $sumDivisor !== 0
+        return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
     }
