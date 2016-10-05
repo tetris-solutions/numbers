@@ -62,6 +62,7 @@ $app->get('/meta',
                     'id' => $id,
                     'name' => $attribute['name'],
                     'is_metric' => $attribute['is_metric'],
+                    'type' => $attribute['type'],
                     'is_dimension' => $attribute['is_dimension'],
                     'is_filter' => $attribute['is_filter'],
                     'is_breakdown' => $platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)
