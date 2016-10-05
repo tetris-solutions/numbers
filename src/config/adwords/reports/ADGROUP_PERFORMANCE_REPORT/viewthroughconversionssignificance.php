@@ -5,5 +5,6 @@ return [
     "is_filter" => FALSE,
     "type" => "significancedata",
     "is_metric" => TRUE,
-    "is_dimension" => FALSE
+    "is_dimension" => FALSE,
+    "is_percentage" => FALSE
 ];

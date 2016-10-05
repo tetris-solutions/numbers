@@ -5,5 +5,6 @@ return [
     "is_filter" => FALSE,
     "type" => "list",
     "is_metric" => FALSE,
-    "is_dimension" => TRUE
+    "is_dimension" => TRUE,
+    "is_percentage" => FALSE
 ];

@@ -165,33 +165,22 @@ class Query
         $metric['filters'] = [];
         $metric['dimensions'] = [];
 
-        $attributeNameMap = [
-            'filters' => [],
-            'dimensions' => []
-        ];
-
         $attributes = MetaData::getReport($this->platform, $reportId);
 
-        foreach ($attributes as $id => $attribute) {
-            if ($attribute['is_dimension']) {
-                $attributeNameMap['dimensions'][$id] = $attribute['property'];
-            }
-            if ($attribute['is_filter']) {
-                $attributeNameMap['filters'][$id] = $attribute['property'];
-            }
-        }
+        foreach ($this->filters as $sourceAttributeName => $values) {
+            if (isset($attributes[$sourceAttributeName]) && $attributes[$sourceAttributeName]['is_filter']) {
+                $targetAttributeName = $attributes[$sourceAttributeName]['property'];
 
-
-        foreach ($this->filters as $sourceAttributeName => $value) {
-            if (isset($attributeNameMap['filters'][$sourceAttributeName])) {
-                $targetAttributeName = $attributeNameMap['filters'][$sourceAttributeName];
-                $metric['filters'][$targetAttributeName] = $value;
+                $metric['filters'][$targetAttributeName] = array_merge(
+                    $attributes[$sourceAttributeName],
+                    ['values' => $values]
+                );
             }
         }
 
         foreach ($this->dimensions as $sourceAttributeName) {
-            if (isset($attributeNameMap['dimensions'][$sourceAttributeName])) {
-                $targetAttributeName = $attributeNameMap['dimensions'][$sourceAttributeName];
+            if (isset($attributes[$sourceAttributeName]) && $attributes[$sourceAttributeName]['is_dimension']) {
+                $targetAttributeName = $attributes[$sourceAttributeName]['property'];
                 $metric['dimensions'][$targetAttributeName] = $sourceAttributeName;
 
                 if (empty($metric['fields'][$targetAttributeName])) {

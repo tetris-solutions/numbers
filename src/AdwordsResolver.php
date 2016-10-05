@@ -15,8 +15,9 @@ class AdwordsResolver extends Client implements Resolver
         'between' => 'BETWEEN'
     ];
 
-    private static function parseFilter(ReadInterface $select, string $name, array $values)
+    private static function parseFilter(ReadInterface $select, string $name, array $config)
     {
+        $values = $config['values'];
         $firstValue = $values[0];
         $idFilter = !array_key_exists($firstValue, self::filterOperator);
 
@@ -28,6 +29,15 @@ class AdwordsResolver extends Client implements Resolver
             }
         } else {
             $operator = self::filterOperator[$firstValue];
+            $type = NULL;
+
+            if ($config['type'] === 'money') {
+                $values[1] = empty($values[1]) ? 0 : intval(floatval($values[1]) * (10 ** 6));
+                $values[2] = empty($values[2]) ? 0 : intval(floatval($values[2]) * (10 ** 6));
+            } else if ($config['is_percentage']) {
+                $values[1] = empty($values[1]) ? 0 : floatval($values[1]) / 100;
+                $values[2] = empty($values[2]) ? 0 : floatval($values[2]) / 100;
+            }
 
             if ($operator === 'BETWEEN') {
                 $select->where($name, $values[1], 'GREATER_THAN');

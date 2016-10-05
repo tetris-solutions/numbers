@@ -5,5 +5,6 @@ return [
     "is_filter" => TRUE,
     "type" => "userstatus",
     "is_metric" => FALSE,
-    "is_dimension" => TRUE
+    "is_dimension" => TRUE,
+    "is_percentage" => FALSE
 ];

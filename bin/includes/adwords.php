@@ -226,7 +226,8 @@ function getAdwordsConfig(): array
                 'is_filter' => $field['Filterable'],
                 'type' => strtolower($field['Type']),
                 'is_metric' => $isMetric,
-                'is_dimension' => !$isMetric
+                'is_dimension' => !$isMetric,
+                'is_percentage' => $field['Percentage']
             ];
 
             if ($isMetric) {
