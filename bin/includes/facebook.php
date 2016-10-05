@@ -141,6 +141,7 @@ function getFacebookConfig(): array
             $attribute = [
                 'id' => $attributeName,
                 'property' => $originalAttributeName,
+                'type' => $field['type'],
                 'is_metric' => false,
                 'is_dimension' => true,
                 'is_filter' => in_array($attributeName, $filterable)

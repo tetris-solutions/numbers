@@ -93,7 +93,7 @@ $app->get('/meta',
                 'name' => isset($metricConfig['names'][$locale])
                     ? $metricConfig['names'][$locale]
                     : $attributes[$metric]['name'],
-                'metric_type' => $metricConfig['type'],
+                'type' => $metricConfig['type'],
                 'requires_id' => $cannotAggregate,
                 'is_metric' => true,
                 'is_dimension' => false,
