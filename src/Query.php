@@ -127,11 +127,11 @@ class Query
             ? $query['metrics']
             : [];
         $this->metrics = array_map([$this, 'getMetric'], $this->metrics);
-        
+
         $this->dimensions = is_array($query['dimensions'])
             ? $query['dimensions']
             : [];
-        
+
         $this->filters = is_array($query['filters'])
             ? $query['filters']
             : [];
@@ -202,14 +202,9 @@ class Query
 
         $currentReport['metrics'][$metricId] = $metric;
 
-        foreach (['dimensions', 'filters', 'fields'] as $configKey) {
-            $currentReport[$configKey] = array_unique(
-                array_merge(
-                    $currentReport[$configKey],
-                    $metric[$configKey]
-                )
-            );
-        }
+        $currentReport['dimensions'] = array_merge($currentReport['dimensions'], $metric['dimensions']);
+        $currentReport['filters'] = array_merge($currentReport['filters'], $metric['filters']);
+        $currentReport['fields'] = array_unique(array_merge($currentReport['fields'], $metric['fields']));
 
         $this->reports[$reportId] = $currentReport;
     }
