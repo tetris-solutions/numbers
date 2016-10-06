@@ -48,7 +48,6 @@ $app->get('/meta',
 
         $attributes = [];
         $dimensions = [];
-        $filters = [];
         $metrics = [];
         $sources = MetaData::getSources($platform, $entity);
 
@@ -64,7 +63,6 @@ $app->get('/meta',
                     'is_metric' => $attribute['is_metric'],
                     'type' => $attribute['type'],
                     'is_dimension' => $attribute['is_dimension'],
-                    'is_filter' => $attribute['is_filter'],
                     'is_breakdown' => $platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)
                 ];
 
@@ -76,10 +74,6 @@ $app->get('/meta',
 
                 if ($attribute['is_dimension']) {
                     $dimensions[] = $id;
-                }
-
-                if ($attribute['is_filter']) {
-                    $filters[] = $id;
                 }
             }
 
@@ -98,7 +92,6 @@ $app->get('/meta',
                 'requires_id' => $cannotAggregate,
                 'is_metric' => true,
                 'is_dimension' => false,
-                'is_filter' => false,
                 'is_breakdown' => false
             ];
         }
@@ -106,7 +99,6 @@ $app->get('/meta',
         return $response->withJson([
             'metrics' => uniq($metrics),
             'dimensions' => uniq($dimensions),
-            'filters' => uniq($filters),
             'attributes' => $attributes
         ]);
     }));
