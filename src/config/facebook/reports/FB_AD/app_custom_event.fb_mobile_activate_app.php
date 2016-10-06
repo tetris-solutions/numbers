@@ -3,5 +3,5 @@ return [
     "property" => "app_custom_event.fb_mobile_activate_app",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => FALSE
+    "is_filter" => TRUE
 ];

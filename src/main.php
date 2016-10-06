@@ -11,6 +11,7 @@ require 'Query.php';
 require 'Resolver.php';
 require 'functions/parse-metrics.php';
 require 'functions/aggregate-result.php';
+require 'Filterable.php';
 require 'FacebookResolver.php';
 require 'AdwordsResolver.php';
 require 'MetaData.php';

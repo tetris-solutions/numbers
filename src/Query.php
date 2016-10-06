@@ -168,7 +168,7 @@ class Query
         $attributes = MetaData::getReport($this->platform, $reportId);
 
         foreach ($this->filters as $sourceAttributeName => $values) {
-            if (isset($attributes[$sourceAttributeName]) && $attributes[$sourceAttributeName]['is_filter']) {
+            if (isset($attributes[$sourceAttributeName])) {
                 $targetAttributeName = $attributes[$sourceAttributeName]['property'];
 
                 $metric['filters'][$targetAttributeName] = array_merge(

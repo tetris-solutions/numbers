@@ -11,6 +11,7 @@ use Facebook\Facebook;
 
 class FacebookResolver extends Facebook implements Resolver
 {
+    use Filterable;
     public static $breakdowns = [
         'age',
         'country',
@@ -46,6 +47,7 @@ class FacebookResolver extends Facebook implements Resolver
         $rows = [];
 
         foreach ($query->reports as $reportName => $config) {
+            $partialResult = [];
             $requestFields = $config['fields'];
             $params = [
                 'breakdowns' => [],
@@ -132,9 +134,11 @@ class FacebookResolver extends Facebook implements Resolver
                         $translatedInsights->{$targetField} = $insights->{$sourceField};
                     }
 
-                    $rows[] = parseMetrics($translatedInsights, $config);
+                    $partialResult[] = parseMetrics($translatedInsights, $config);
                 }
             }
+
+            $rows = array_merge($rows, self::filterRows($partialResult, $config['filters']));
         }
 
         return $rows;

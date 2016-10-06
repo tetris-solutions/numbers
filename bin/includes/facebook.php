@@ -144,7 +144,7 @@ function getFacebookConfig(): array
                 'type' => $field['type'],
                 'is_metric' => false,
                 'is_dimension' => true,
-                'is_filter' => in_array($attributeName, $filterable)
+                'is_filter' => true
             ];
 
             $attribute['is_metric'] = $field['type'] === 'float' ||
@@ -181,7 +181,7 @@ function getFacebookConfig(): array
                 'property' => $videoPercentActionsFieldName,
                 'is_metric' => true,
                 'is_dimension' => false,
-                'is_filter' => false
+                'is_filter' => true
             ];
 
             if (empty($output['metrics'][$videoPercentActionsFieldName])) {
@@ -208,7 +208,7 @@ function getFacebookConfig(): array
                 'property' => $type,
                 'is_metric' => true,
                 'is_dimension' => false,
-                'is_filter' => false
+                'is_filter' => true
             ];
 
             if (empty($output['metrics'][$type])) {

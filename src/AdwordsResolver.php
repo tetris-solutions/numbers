@@ -7,6 +7,7 @@ use Tetris\Adwords\Request\Read\ReadInterface;
 
 class AdwordsResolver extends Client implements Resolver
 {
+    use Filterable;
     const filterOperator = [
         'less than' => 'LESS_THAN',
         'greater than' => 'GREATER_THAN',
@@ -15,19 +16,20 @@ class AdwordsResolver extends Client implements Resolver
         'between' => 'BETWEEN'
     ];
 
-    private static function parseFilter(ReadInterface $select, string $name, array $config)
+    private static function applyFilter(ReadInterface $select, string $name, array $config)
     {
         $values = $config['values'];
         $firstValue = $values[0];
-        $idFilter = !array_key_exists($firstValue, self::filterOperator);
 
-        if ($idFilter) {
+        if ($config['id'] === 'id') {
             if (count($values) > 1) {
                 $select->where($name, $values, 'IN');
             } else {
                 $select->where($name, $firstValue);
             }
         } else {
+            if (!$config['is_filter']) return;
+
             $operator = self::filterOperator[$firstValue];
             $type = NULL;
 
@@ -62,8 +64,10 @@ class AdwordsResolver extends Client implements Resolver
                 ->from($reportName)
                 ->during($query->since, $query->until);
 
-            foreach ($config['filters'] as $filter => $values) {
-                self::parseFilter($select, $filter, $values);
+            foreach ($config['filters'] as $filterProperty => $filterConfig) {
+                if ($filterConfig['id'] === 'id' || !$shouldAggregateResult) {
+                    self::applyFilter($select, $filterProperty, $filterConfig);
+                }
             }
 
             try {
@@ -89,6 +93,8 @@ class AdwordsResolver extends Client implements Resolver
             }
 
             $reportRows = array_values($reportRows);
+
+            self::filterRows($reportRows, $config['filters']);
 
             $rows = array_merge($rows, $reportRows);
         }
