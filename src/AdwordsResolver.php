@@ -92,11 +92,7 @@ class AdwordsResolver extends Client implements Resolver
                 }
             }
 
-            $reportRows = array_values($reportRows);
-
-            self::filterRows($reportRows, $config['filters']);
-
-            $rows = array_merge($rows, $reportRows);
+            $rows = array_merge($rows, self::filterRows($reportRows, $config['filters']));
         }
 
         return $rows;

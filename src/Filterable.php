@@ -5,10 +5,11 @@ namespace Tetris\Numbers;
 
 trait Filterable
 {
-    static function filterRows(array $rows, array $filters): array
+    static function filterRows(array $allRows, array $filters): array
     {
-        $matches = [];
-        foreach ($rows as $row) {
+        $matchingRows = [];
+
+        foreach ($allRows as $row) {
             foreach ($filters as $filter) {
                 $field = $filter['id'];
 
@@ -32,29 +33,29 @@ trait Filterable
                 }
 
                 if ($operator === 'equals' && $rowValue != $A) {
-                    break 2;
+                    continue 2;
                 }
 
                 if ($operator === 'greater than' && $rowValue < $A) {
-                    break 2;
+                    continue 2;
                 }
 
                 if ($operator === 'less than' && $rowValue > $A) {
-                    break 2;
+                    continue 2;
                 }
 
                 if ($operator === 'between' && !($rowValue >= $A && $rowValue <= $B)) {
-                    break 2;
+                    continue 2;
                 }
 
                 if ($operator === 'contains' && stripos($rowValue, $A) === FALSE) {
-                    break 2;
+                    continue 2;
                 }
             }
 
-            $matches[] = $row;
+            $matchingRows[] = $row;
         }
 
-        return $matches;
+        return $matchingRows;
     }
 }
