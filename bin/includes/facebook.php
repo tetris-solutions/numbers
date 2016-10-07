@@ -31,7 +31,7 @@ function getFacebookConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
-                    '    return intval($data->' . $property . ') / 100;',
+                    '    return floatval($data->' . $property . ');',
                     '}'
                 ]);
             };

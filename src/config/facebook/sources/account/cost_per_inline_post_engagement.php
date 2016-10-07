@@ -8,6 +8,6 @@ return [
         "cost_per_inline_post_engagement"
     ],
     "parse" => function ($data) {
-        return intval($data->cost_per_inline_post_engagement) / 100;
+        return floatval($data->cost_per_inline_post_engagement);
     }
 ];

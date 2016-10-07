@@ -8,6 +8,6 @@ return [
         "cpm"
     ],
     "parse" => function ($data) {
-        return intval($data->cpm) / 100;
+        return floatval($data->cpm);
     }
 ];

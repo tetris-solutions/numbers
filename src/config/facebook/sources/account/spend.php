@@ -8,6 +8,6 @@ return [
         "spend"
     ],
     "parse" => function ($data) {
-        return intval($data->spend) / 100;
+        return floatval($data->spend);
     }
 ];

@@ -8,6 +8,6 @@ return [
         "cpp"
     ],
     "parse" => function ($data) {
-        return intval($data->cpp) / 100;
+        return floatval($data->cpp);
     }
 ];
