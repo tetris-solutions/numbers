@@ -42,6 +42,15 @@ class FacebookResolver extends Facebook implements Resolver
         );
     }
 
+    private static function postProcessing(string $type, $value)
+    {
+        if ($type === 'percentage') {
+            return floatval($value) / 100;
+        }
+
+        return $value;
+    }
+
     function resolve(Query $query): array
     {
         $rows = [];
@@ -132,6 +141,13 @@ class FacebookResolver extends Facebook implements Resolver
 
                     foreach ($config['fields'] as $sourceField => $targetField) {
                         $translatedInsights->{$targetField} = $insights->{$sourceField};
+                    }
+
+                    foreach ($config['metrics'] as $metric) {
+                        $translatedInsights->{$metric['id']} = self::postProcessing(
+                            $metric['type'],
+                            $translatedInsights->{$metric['id']}
+                        );
                     }
 
                     $partialResult[] = parseMetrics($translatedInsights, $config);
