@@ -16,6 +16,15 @@ class AdwordsResolver extends Client implements Resolver
         'between' => 'BETWEEN'
     ];
 
+    private static function postProcessDimension(array $attribute, $value)
+    {
+        if ($attribute['type'] === 'integer' && is_numeric($value)) {
+            return (int)$value;
+        }
+
+        return $value;
+    }
+
     private static function applyFilter(ReadInterface $select, string $name, array $config)
     {
         $values = $config['values'];
@@ -84,12 +93,24 @@ class AdwordsResolver extends Client implements Resolver
                 $reportRows = aggregateResult($reportRows, $config);
             }
 
+            $dimensions = array_flip($config['dimensions']);
             foreach ($reportRows as $index => $reportRow) {
                 foreach ($config['metrics'] as $metric) {
                     if ($metric['is_auxiliary']) {
                         unset($reportRow->{$metric['id']});
                     }
                 }
+
+                foreach ($dimensions as $dimension => $name) {
+                    if (!isset($config['attributes'][$dimension])) continue;
+
+                    $reportRow->{$dimension} = self::postProcessDimension(
+                        $config['attributes'][$dimension],
+                        $reportRow->{$dimension}
+                    );
+                }
+
+                $reportRows[$index] = $reportRow;
             }
 
             $rows = array_merge($rows, self::filterRows($reportRows, $config['filters']));

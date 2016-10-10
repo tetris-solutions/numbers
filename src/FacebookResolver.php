@@ -44,7 +44,7 @@ class FacebookResolver extends Facebook implements Resolver
 
     private static function postProcessing(string $type, $value)
     {
-        if ($type === 'percentage') {
+        if ($type === 'percentage' && is_numeric($value)) {
             return floatval($value) / 100;
         }
 

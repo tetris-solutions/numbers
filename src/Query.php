@@ -155,7 +155,8 @@ class Query
             'fields' => [],
             'metrics' => [],
             'filters' => [],
-            'dimensions' => []
+            'dimensions' => [],
+            'attributes' => MetaData::getReport($this->platform, $reportId)
         ];
 
         if (isset($currentReport['metrics'][$metricId])) return;
@@ -165,7 +166,7 @@ class Query
         $metric['filters'] = [];
         $metric['dimensions'] = [];
 
-        $attributes = MetaData::getReport($this->platform, $reportId);
+        $attributes = $currentReport['attributes'];
 
         foreach ($this->filters as $sourceAttributeName => $values) {
             if (isset($attributes[$sourceAttributeName])) {
