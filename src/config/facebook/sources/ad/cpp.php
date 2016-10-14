@@ -8,6 +8,6 @@ return [
         "cpp"
     ],
     "parse" => function ($data) {
-        return floatval($data->cpp);
+        return (float)$data->cpp;
     }
 ];

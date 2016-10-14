@@ -8,6 +8,6 @@ return [
         "spend"
     ],
     "parse" => function ($data) {
-        return floatval($data->spend);
+        return (float)$data->spend;
     }
 ];

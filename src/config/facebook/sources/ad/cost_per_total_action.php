@@ -8,6 +8,6 @@ return [
         "cost_per_total_action"
     ],
     "parse" => function ($data) {
-        return floatval($data->cost_per_total_action);
+        return (float)$data->cost_per_total_action;
     }
 ];

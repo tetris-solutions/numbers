@@ -2,7 +2,7 @@
 return [
     "id" => "newsfeed_avg_position",
     "property" => "newsfeed_avg_position",
-    "type" => "float",
+    "type" => "numeric string",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_filter" => TRUE
