@@ -6,10 +6,11 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 function getFacebookConfig(): array
 {
-    $fields = json_decode(file_get_contents(__DIR__ . '/../../maps/insight-fields.json'), true);
+    $fields = array_merge(
+        json_decode(file_get_contents(__DIR__ . '/../../maps/breakdowns.json'), true),
+        json_decode(file_get_contents(__DIR__ . '/../../maps/insight-fields.json'), true)
+    );
     $actionTypes = json_decode(file_get_contents(__DIR__ . '/../../maps/facebook-action-types.json'), true);
-
-    $filterable = ['id'];
 
     $alternative = [
         'date_start' => 'date'
