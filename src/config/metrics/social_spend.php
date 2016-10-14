@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "social_spend",
-    "type" => "decimal"
+    "type" => "currency"
 ];

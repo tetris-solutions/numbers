@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "cpm",
-    "type" => "decimal"
+    "type" => "currency"
 ];

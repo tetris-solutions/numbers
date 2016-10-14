@@ -8,6 +8,6 @@ return [
         "cost_per_estimated_ad_recallers"
     ],
     "parse" => function ($data) {
-        return (float)$data->cost_per_estimated_ad_recallers;
+        return floatval($data->cost_per_estimated_ad_recallers);
     }
 ];

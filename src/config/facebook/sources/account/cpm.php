@@ -8,6 +8,6 @@ return [
         "cpm"
     ],
     "parse" => function ($data) {
-        return (float)$data->cpm;
+        return floatval($data->cpm);
     }
 ];

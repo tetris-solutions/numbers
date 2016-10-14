@@ -8,6 +8,6 @@ return [
         "cpc"
     ],
     "parse" => function ($data) {
-        return (float)$data->cpc;
+        return floatval($data->cpc);
     }
 ];

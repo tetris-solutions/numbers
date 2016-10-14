@@ -8,6 +8,6 @@ return [
         "canvas_avg_view_time"
     ],
     "parse" => function ($data) {
-        return (float)$data->canvas_avg_view_time;
+        return floatval($data->canvas_avg_view_time);
     }
 ];

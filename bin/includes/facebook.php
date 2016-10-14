@@ -100,10 +100,11 @@ function getFacebookConfig(): array
 
     function isCurrency(array $field): bool
     {
-        if ($field['type'] !== 'float') return false;
+        $attributes = ['id', 'description'];
+        $keywords = ['cost', 'spend', 'amount', 'spent'];
 
-        foreach (['id', 'description'] as $attribute) {
-            foreach (['cost', 'spend'] as $keyword) {
+        foreach ($attributes as $attribute) {
+            foreach ($keywords as $keyword) {
                 if (strpos($field[$attribute], $keyword) !== FALSE) {
                     return true;
                 }
@@ -192,13 +193,11 @@ function getFacebookConfig(): array
             'video_p100_watched_actions'
         ];
 
-        foreach ([25, 50, 75, 100] as $n) {
-            $composedVideoMetrics[] = "video_p{$n}_watched_actions";
-        }
-
         foreach ($composedVideoMetrics as $videoMetricName) {
             $attribute = [
+                'id' => $videoMetricName,
                 'property' => $videoMetricName,
+                'type' => 'decimal',
                 'is_metric' => true,
                 'is_dimension' => false,
                 'is_filter' => true

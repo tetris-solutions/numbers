@@ -8,6 +8,6 @@ return [
         "cost_per_unique_click"
     ],
     "parse" => function ($data) {
-        return (float)$data->cost_per_unique_click;
+        return floatval($data->cost_per_unique_click);
     }
 ];

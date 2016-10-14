@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "cost_per_unique_click",
-    "type" => "decimal"
+    "type" => "currency"
 ];
