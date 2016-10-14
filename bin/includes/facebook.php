@@ -101,7 +101,7 @@ function getFacebookConfig(): array
     function isCurrency(array $field): bool
     {
         $attributes = ['id', 'description'];
-        $keywords = ['cost', 'spend', 'amount', 'spent'];
+        $keywords = ['cost', 'spend', 'amount'];
 
         foreach ($attributes as $attribute) {
             foreach ($keywords as $keyword) {
