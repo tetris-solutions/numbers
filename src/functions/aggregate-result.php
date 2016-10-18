@@ -37,7 +37,7 @@ function aggregateResult(array $rows, array $reportConfig): array
         }
 
         foreach ($reportConfig['metrics'] as $metric) {
-            $source = MetaData::getMetricSource('adwords', 'Campaign', $metric['id']);
+            $source = MetaData::getMetricSource('adwords', $metric['entity'], $metric['id']);
 
             if (isset($source['sum'])) {
                 $val = $source['sum']($groupOfRows);

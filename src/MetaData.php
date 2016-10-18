@@ -22,6 +22,9 @@ abstract class MetaData
         $key = sha1($path);
 
         if (!isset(self::$fCache[$key])) {
+            if (!file_exists($path)) {
+                throw new \Exception("file path not found: {$path}", 404);
+            }
             self::$fCache[$key] = require($path);
         }
 
