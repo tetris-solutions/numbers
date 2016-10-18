@@ -1,9 +1,9 @@
 <?php
 return [
-    "id" => "networktype2",
-    "property" => "AdNetworkType2",
+    "id" => "adnetworktype1",
+    "property" => "AdNetworkType1",
     "is_filter" => TRUE,
-    "type" => "adnetworktype2",
+    "type" => "adnetworktype1",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE

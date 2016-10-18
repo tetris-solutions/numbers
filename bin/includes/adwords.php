@@ -211,7 +211,13 @@ function getAdwordsConfig(): array
             // name looks like <Campaign>FieldName
             $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0 && !(
                     $entity === 'Ad' &&
-                    strpos($originalAttributeName, 'AdGroup') === 0
+                    (
+                        strpos($originalAttributeName, 'AdGroup') === 0 ||
+                        strpos($originalAttributeName, 'AdNetwork') === 0 ||
+                        strpos($originalAttributeName, 'Advertiser') === 0 ||
+                        strpos($originalAttributeName, 'Advertising') === 0
+                    )
+
                 );
 
             $attributeName = strtolower($originalAttributeName);

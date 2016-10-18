@@ -189,7 +189,7 @@ return [
         'ShortHeadline' => 'Short headline',
         'Slot' => 'Topo vs. Outros',
         'StartDate' => 'Data de Início',
-        'Status' => 'Ad state',
+        'Status' => 'Status do Anúncio',
         'SystemServingStatus' => 'Criterion serving status',
         'TargetCpa' => 'Target CPA',
         'TargetCpaBidSource' => 'Target CPA source',

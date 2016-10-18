@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "vertiserexperimentsegmentationbin",
+    "id" => "advertiserexperimentsegmentationbin",
     "property" => "AdvertiserExperimentSegmentationBin",
     "is_filter" => TRUE,
     "type" => "advertiserexperimentsegmentationbin",
