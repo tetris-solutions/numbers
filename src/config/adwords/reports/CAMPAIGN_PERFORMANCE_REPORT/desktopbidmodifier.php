@@ -3,7 +3,7 @@ return [
     "id" => "desktopbidmodifier",
     "property" => "CampaignDesktopBidModifier",
     "is_filter" => TRUE,
-    "type" => "double",
+    "type" => "decimal",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE

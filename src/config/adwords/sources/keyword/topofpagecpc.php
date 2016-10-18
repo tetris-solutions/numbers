@@ -1,13 +1,13 @@
 <?php
 return [
-    "metric" => "clicksignificance",
+    "metric" => "topofpagecpc",
     "entity" => "Keyword",
     "platform" => "adwords",
     "report" => "KEYWORDS_PERFORMANCE_REPORT",
     "fields" => [
-        "ClickSignificance"
+        "TopOfPageCpc"
     ],
-    "parse" => function ($data) {
-        return $data->ClickSignificance;
+    "parse" => function ($data): float {
+        return (float)$data->TopOfPageCpc;
     }
 ];

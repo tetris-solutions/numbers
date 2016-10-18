@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "interactiontypes",
-    "type" => "decimal"
+    "type" => "raw"
 ];

@@ -16,7 +16,7 @@
     "aura/sqlquery": "^2.6",
     "vlucas/phpdotenv": "^2.3",
     "nategood/httpful": "^0.2.20",
-    "tetris/adwords": "dev-master#0.0.38",
+    "tetris/adwords": "dev-master#0.0.39",
     "facebook/php-ads-sdk": "^2.8",
     "facebook/graph-sdk": "^5.3"
   },

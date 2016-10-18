@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "costsignificance",
-    "type" => "decimal"
+    "type" => "raw"
 ];

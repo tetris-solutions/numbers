@@ -62,10 +62,10 @@ class AdwordsResolver extends Client implements Resolver
     function resolve(Query $query): array
     {
         $rows = [];
-        $entityIdField = "{$query->entity}Id";
         $this->SetClientCustomerId($query->adAccountId);
 
         foreach ($query->reports as $reportName => $config) {
+            $entityIdField = $config['attributes']['id']['property'];
             $shouldAggregateResult = count($query->filters['id']) > 1 &&
                 !isset($config['fields'][$entityIdField]);
 

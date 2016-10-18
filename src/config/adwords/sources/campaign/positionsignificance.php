@@ -7,16 +7,7 @@ return [
     "fields" => [
         "PositionSignificance"
     ],
-    "parse" => function ($data): float {
-        return (float)$data->PositionSignificance;
-    },
-    "sum" => function (array $rows): float {
-        return array_reduce(
-            $rows,
-            function (float $carry, \stdClass $row): float {
-                return $carry + $row->positionsignificance;
-            },
-            0.0
-        );
+    "parse" => function ($data) {
+        return $data->PositionSignificance;
     }
 ];

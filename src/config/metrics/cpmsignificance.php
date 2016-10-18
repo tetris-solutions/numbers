@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "cpmsignificance",
-    "type" => "decimal"
+    "type" => "raw"
 ];

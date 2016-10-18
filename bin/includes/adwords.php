@@ -87,7 +87,8 @@ function getAdwordsConfig(): array
     $actuallyIsAMetric = [
         'estimatedaddclicksatfirstpositioncpc',
         'estimatedaddcostatfirstpositioncpc',
-        'cpmbid'
+        'cpmbid',
+        'topofpagecpc'
     ];
 
     $excludedFields = [
@@ -187,7 +188,6 @@ function getAdwordsConfig(): array
 
     $entityNameMap = [
         'BUDGET_PERFORMANCE_REPORT' => 'Budget',
-        'ACCOUNT_PERFORMANCE_REPORT' => 'Account',
         'ADGROUP_PERFORMANCE_REPORT' => 'AdGroup',
         'AD_PERFORMANCE_REPORT' => 'Ad',
         'CAMPAIGN_PERFORMANCE_REPORT' => 'Campaign',
@@ -209,16 +209,12 @@ function getAdwordsConfig(): array
             if (in_array($originalAttributeName, $excludedFields)) continue;
 
             // name looks like <Campaign>FieldName
-            $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0 && !(
-                    $entity === 'Ad' &&
-                    (
+            $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0 &&
+                !($entity === 'Ad' && (
                         strpos($originalAttributeName, 'AdGroup') === 0 ||
                         strpos($originalAttributeName, 'AdNetwork') === 0 ||
                         strpos($originalAttributeName, 'Advertiser') === 0 ||
-                        strpos($originalAttributeName, 'Advertising') === 0
-                    )
-
-                );
+                        strpos($originalAttributeName, 'Advertising') === 0));
 
             $attributeName = strtolower($originalAttributeName);
 
@@ -233,11 +229,29 @@ function getAdwordsConfig(): array
             $isMetric = strtolower($field['Behavior']) === 'metric' ||
                 in_array($attributeName, $actuallyIsAMetric);
 
+            $attributeType = $field['Type'];
+
+            if ($attributeName === 'id') {
+                $attributeType = $field['Type'];
+            } else if (isset($overrideType[$attributeName])) {
+                $attributeType = $overrideType[$attributeName];
+            } else if ($field['SpecialValue']) {
+                $attributeType = 'raw';
+            } else if ($field['Percentage']) {
+                $attributeType = 'percentage';
+            } else if ($field['Type'] === 'Money' || $field['Type'] === 'Bid') {
+                $attributeType = 'currency';
+            } else if ($field['Type'] === 'Long') {
+                $attributeType = 'integer';
+            } else if ($field['Type'] === 'Double') {
+                $attributeType = 'decimal';
+            }
+
             $attribute = [
                 'id' => $attributeName,
                 'property' => $originalAttributeName,
                 'is_filter' => $field['Filterable'],
-                'type' => strtolower($field['Type']),
+                'type' => strtolower($attributeType),
                 'is_metric' => $isMetric,
                 'is_dimension' => !$isMetric,
                 'is_percentage' => $field['Percentage']
@@ -247,19 +261,11 @@ function getAdwordsConfig(): array
                 if (empty($output['metrics'][$attributeName])) {
                     $metric = [
                         'id' => $attributeName,
-                        'type' => 'decimal'
+                        'type' => $attributeType
                     ];
 
-                    if (isset($overrideType[$metric['id']])) {
-                        $metric['type'] = $overrideType[$metric['id']];
-                    } else if ($field['SpecialValue']) {
+                    if (!isset($parsers[$metric['type']])) {
                         $metric['type'] = 'raw';
-                    } else if ($field['Percentage']) {
-                        $metric['type'] = 'percentage';
-                    } else if ($field['Type'] === 'Money') {
-                        $metric['type'] = 'currency';
-                    } else if ($field['Type'] === 'Long') {
-                        $metric['type'] = 'integer';
                     }
 
                     $output['metrics'][$attributeName] = $metric;

@@ -3,7 +3,7 @@ return [
     "id" => "averagecpm",
     "property" => "AverageCpm",
     "is_filter" => TRUE,
-    "type" => "money",
+    "type" => "currency",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => FALSE

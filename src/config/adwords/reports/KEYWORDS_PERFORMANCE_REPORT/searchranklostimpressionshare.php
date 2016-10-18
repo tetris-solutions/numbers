@@ -3,7 +3,7 @@ return [
     "id" => "searchranklostimpressionshare",
     "property" => "SearchRankLostImpressionShare",
     "is_filter" => TRUE,
-    "type" => "double",
+    "type" => "raw",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => TRUE

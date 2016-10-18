@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "ctrsignificance",
-    "type" => "decimal"
+    "type" => "raw"
 ];

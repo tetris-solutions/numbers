@@ -3,7 +3,7 @@ return [
     "id" => "amount",
     "property" => "Amount",
     "is_filter" => TRUE,
-    "type" => "money",
+    "type" => "currency",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE

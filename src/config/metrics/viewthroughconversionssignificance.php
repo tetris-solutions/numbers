@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "viewthroughconversionssignificance",
-    "type" => "decimal"
+    "type" => "raw"
 ];
