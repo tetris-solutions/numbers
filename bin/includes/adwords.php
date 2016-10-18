@@ -84,6 +84,12 @@ function getAdwordsConfig(): array
         'sources' => []
     ];
 
+    $actuallyIsAMetric = [
+        'estimatedaddclicksatfirstpositioncpc',
+        'estimatedaddcostatfirstpositioncpc',
+        'cpmbid'
+    ];
+
     $excludedFields = [
         'ConvertedClicks',
         'CostPerConvertedClick',
@@ -218,7 +224,8 @@ function getAdwordsConfig(): array
                 $attributeName = substr($attributeName, strlen($entity));
             }
 
-            $isMetric = strtolower($field['Behavior']) === 'metric';
+            $isMetric = strtolower($field['Behavior']) === 'metric' ||
+                in_array($attributeName, $actuallyIsAMetric);
 
             $attribute = [
                 'id' => $attributeName,

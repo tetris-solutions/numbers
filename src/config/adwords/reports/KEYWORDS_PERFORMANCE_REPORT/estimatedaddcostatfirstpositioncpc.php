@@ -4,7 +4,7 @@ return [
     "property" => "EstimatedAddCostAtFirstPositionCpc",
     "is_filter" => TRUE,
     "type" => "money",
-    "is_metric" => FALSE,
-    "is_dimension" => TRUE,
+    "is_metric" => TRUE,
+    "is_dimension" => FALSE,
     "is_percentage" => FALSE
 ];

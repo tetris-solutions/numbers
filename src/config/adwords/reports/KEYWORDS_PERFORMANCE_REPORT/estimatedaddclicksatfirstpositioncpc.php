@@ -4,7 +4,7 @@ return [
     "property" => "EstimatedAddClicksAtFirstPositionCpc",
     "is_filter" => TRUE,
     "type" => "long",
-    "is_metric" => FALSE,
-    "is_dimension" => TRUE,
+    "is_metric" => TRUE,
+    "is_dimension" => FALSE,
     "is_percentage" => FALSE
 ];
