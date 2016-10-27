@@ -222,31 +222,33 @@ function getFacebookConfig(): array
             $output['reports'][$reportName]['attributes'][$videoMetricName] = $attribute;
         }
 
-        foreach ($actionTypes as $type => $name) {
+        foreach ($actionTypes as $actionType => $name) {
             $attribute = [
-                'property' => $type,
+                'id' => $actionType,
+                'property' => $actionType,
+                'type' => 'decimal',
                 'is_metric' => true,
                 'is_dimension' => false,
                 'is_filter' => true
             ];
 
-            if (empty($output['metrics'][$type])) {
-                $output['metrics'][$type] = [
-                    'id' => $type,
+            if (empty($output['metrics'][$actionType])) {
+                $output['metrics'][$actionType] = [
+                    'id' => $actionType,
                     'type' => 'decimal'
                 ];
             }
 
             $output['sources'][] = [
-                'metric' => $type,
+                'metric' => $actionType,
                 'entity' => $entity,
                 'platform' => 'facebook',
                 'report' => $reportName,
                 'fields' => ['actions'],
-                'parse' => $parseActionType($type)
+                'parse' => $parseActionType($actionType)
             ];
 
-            $output['reports'][$reportName]['attributes'][$type] = $attribute;
+            $output['reports'][$reportName]['attributes'][$actionType] = $attribute;
         }
     }
 

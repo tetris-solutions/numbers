@@ -3,102 +3,13 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Tetris\Services\FlagsService;
 
 global $app;
 
-function uniq(array $s): array
-{
-    return array_values(array_unique($s));
-}
-
-function setBreakdownPermutation(&$config)
-{
-    switch ($config['id']) {
-        case 'age':
-            $config['pairs_with'] = ['gender'];
-            break;
-        case 'gender':
-            $config['pairs_with'] = ['age'];
-            break;
-        case 'impression_device';
-            /* $config['requires'] = */
-            $config['pairs_with'] = ['placement'];
-            break;
-        case 'placement':
-            /*$config['required_by'] = */
-            $config['pairs_with'] = ['impression_device'];
-            break;
-        default:
-            $config['pairs_with'] = [];
-
-    }
-}
-
 $app->get('/meta',
     secured(function (Request $request, Response $response, array $params) {
-        /**
-         * @var FlagsService $flags
-         */
-        $flags = $this->flags;
-        $locale = $flags->getLocale();
-
         $entity = $request->getQueryParam('entity');
         $platform = $request->getQueryParam('platform');
 
-        $attributes = [];
-        $dimensions = [];
-        $metrics = [];
-        $sources = MetaData::getSources($platform, $entity);
-
-        foreach ($sources as $source) {
-            $reportAttributes = MetaData::getReport($platform, $source['report']);
-
-            foreach ($reportAttributes as $id => $attribute) {
-                if (isset($attributes[$id])) continue;
-
-                $config = [
-                    'id' => $id,
-                    'name' => $attribute['name'],
-                    'is_metric' => $attribute['is_metric'],
-                    'type' => $attribute['type'],
-                    'is_dimension' => $attribute['is_dimension'],
-                    'is_breakdown' => $platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)
-                ];
-
-                if ($config['is_breakdown']) {
-                    setBreakdownPermutation($config);
-                }
-
-                $attributes[$id] = $config;
-
-                if ($attribute['is_dimension']) {
-                    $dimensions[] = $id;
-                }
-            }
-
-            $metrics[] = $metric = $source['metric'];
-            $metricConfig = MetaData::getMetric($metric);
-
-            $cannotAggregate = $platform === 'adwords' &&
-                !isset($source['sum']);
-
-            $attributes[$metric] = [
-                'id' => $metric,
-                'name' => isset($metricConfig['names'][$locale])
-                    ? $metricConfig['names'][$locale]
-                    : $attributes[$metric]['name'],
-                'type' => $metricConfig['type'],
-                'requires_id' => $cannotAggregate,
-                'is_metric' => true,
-                'is_dimension' => false,
-                'is_breakdown' => false
-            ];
-        }
-
-        return $response->withJson([
-            'metrics' => uniq($metrics),
-            'dimensions' => uniq($dimensions),
-            'attributes' => $attributes
-        ]);
+        return $response->withJson(MetaData::listAttributes($platform, $entity));
     }));

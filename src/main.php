@@ -22,6 +22,11 @@ global $app;
 $container = $app->getContainer();
 $container['tkm'] = new TKMApi($app);
 
+function uniq(array $s): array
+{
+    return array_values(array_unique($s));
+}
+
 function secured(\Closure $routeHandler) : callable
 {
     return function (Request $request, Response $response, array $params) use ($routeHandler): Response {
@@ -52,4 +57,4 @@ function secured(\Closure $routeHandler) : callable
 
 require 'routes/index.php';
 require 'routes/meta.php';
-require 'routes/metrics.php';
+require 'routes/cross-meta.php';

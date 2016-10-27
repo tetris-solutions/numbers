@@ -132,4 +132,78 @@ abstract class MetaData
 
         return self::$metrics[$id];
     }
+
+    private static function setBreakdownPermutation(&$config)
+    {
+        switch ($config['id']) {
+            case 'age':
+                $config['pairs_with'] = ['gender'];
+                break;
+            case 'gender':
+                $config['pairs_with'] = ['age'];
+                break;
+            case 'impression_device';
+                /* $config['requires'] = */
+                $config['pairs_with'] = ['placement'];
+                break;
+            case 'placement':
+                /*$config['required_by'] = */
+                $config['pairs_with'] = ['impression_device'];
+                break;
+            default:
+                $config['pairs_with'] = [];
+
+        }
+    }
+
+    static function listAttributes(string $platform, string $entity): array
+    {
+        $attributes = [];
+        $dimensions = [];
+        $metrics = [];
+        $sources = MetaData::getSources($platform, $entity);
+
+        foreach ($sources as $source) {
+            $reportAttributes = MetaData::getReport($platform, $source['report']);
+
+            foreach ($reportAttributes as $id => $attribute) {
+                if (isset($attributes[$id])) continue;
+
+                $config = [
+                    'id' => $id,
+                    'name' => $attribute['name'],
+                    'is_metric' => $attribute['is_metric'],
+                    'type' => $attribute['type'],
+                    'is_dimension' => $attribute['is_dimension']
+                ];
+
+                if ($platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)) {
+                    $config['is_breakdown'] = true;
+                    self::setBreakdownPermutation($config);
+                }
+
+                $attributes[$id] = $config;
+
+                if ($attribute['is_dimension']) {
+                    $dimensions[] = $id;
+                }
+            }
+
+            $metrics[] = $metric = $source['metric'];
+            $metricConfig = MetaData::getMetric($metric);
+
+            $cannotAggregate = $platform === 'adwords' &&
+                !isset($source['sum']);
+
+            $attributes[$metric] = array_merge($attributes[$metric], [
+                'type' => $metricConfig['type'],
+                'requires_id' => $cannotAggregate,
+                'is_metric' => true,
+                'is_dimension' => false,
+                'is_breakdown' => false
+            ]);
+        }
+
+        return $attributes;
+    }
 }
