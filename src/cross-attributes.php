@@ -16,7 +16,10 @@ return [
         'hourly_stats_aggregated_by_advertiser_time_zone' => $hourlyFbConvert,
         'hourly_stats_aggregated_by_audience_time_zone' => $hourlyFbConvert,
     ],
-    'adwords' => [],
+    'adwords' => [
+        'averagecpc' => 'cpc',
+        'averagecpm' => 'cpm'
+    ],
     'common' => [
         'id' => ['id', function ($id, $platform) {
             return "{$platform}:{$id}";
