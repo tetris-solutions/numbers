@@ -4,10 +4,10 @@ namespace Tetris\Numbers;
 use Tetris\Adwords\Client;
 use Tetris\Adwords\Exceptions\NullReportException;
 use Tetris\Adwords\Request\Read\ReadInterface;
+use stdClass;
 
 class AdwordsResolver extends Client implements Resolver
 {
-    use Filterable;
     const filterOperator = [
         'less than' => 'LESS_THAN',
         'greater than' => 'GREATER_THAN',
@@ -59,63 +59,29 @@ class AdwordsResolver extends Client implements Resolver
         }
     }
 
-    function resolve(Query $query): array
+
+    function resolve(Query $query, bool $aggregateMode): array
     {
-        $rows = [];
         $this->SetClientCustomerId($query->adAccountId);
 
-        foreach ($query->reports as $reportName => $config) {
-            $entityIdField = $config['attributes']['id']['property'];
-            $shouldAggregateResult = count($query->filters['id']) > 1 &&
-                !isset($config['fields'][$entityIdField]);
+        $report = $query->report;
 
-            $select = $this->select($config['fields'])
-                ->from($reportName)
-                ->during($query->since, $query->until);
+        $select = $this->select($report->fields)
+            ->from($report->name)
+            ->during($query->since, $query->until);
 
-            foreach ($config['filters'] as $filterProperty => $filterConfig) {
-                if ($filterConfig['id'] === 'id' || !$shouldAggregateResult) {
-                    self::applyFilter($select, $filterProperty, $filterConfig);
-                }
+        foreach ($report->filters as $filterProperty => $filterConfig) {
+            $postParsingFilter = $filterConfig['is_metric'] && $aggregateMode;
+
+            if (!$postParsingFilter) {
+                self::applyFilter($select, $filterProperty, $filterConfig);
             }
-
-            try {
-                $reportRows = $select->fetchAll();
-            } catch (NullReportException $e) {
-                $reportRows = [];
-            }
-
-            foreach ($reportRows as $index => $row) {
-                $reportRows[$index] = parseMetrics($row, $config);
-            }
-
-            if ($shouldAggregateResult) {
-                $reportRows = aggregateResult($reportRows, $config);
-            }
-
-            $dimensions = array_flip($config['dimensions']);
-            foreach ($reportRows as $index => $reportRow) {
-                foreach ($config['metrics'] as $metric) {
-                    if ($metric['is_auxiliary']) {
-                        unset($reportRow->{$metric['id']});
-                    }
-                }
-
-                foreach ($dimensions as $dimension => $name) {
-                    if (!isset($config['attributes'][$dimension])) continue;
-
-                    $reportRow->{$dimension} = self::postProcessDimension(
-                        $config['attributes'][$dimension],
-                        $reportRow->{$dimension}
-                    );
-                }
-
-                $reportRows[$index] = $reportRow;
-            }
-
-            $rows = array_merge($rows, self::filterRows($reportRows, $config['filters']));
         }
 
-        return $rows;
+        try {
+            return $select->fetchAll();
+        } catch (NullReportException $e) {
+            return [];
+        }
     }
 }

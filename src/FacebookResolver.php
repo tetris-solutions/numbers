@@ -11,7 +11,6 @@ use Facebook\Facebook;
 
 class FacebookResolver extends Facebook implements Resolver
 {
-    use Filterable;
     public static $breakdowns = [
         'age',
         'country',
@@ -42,119 +41,71 @@ class FacebookResolver extends Facebook implements Resolver
         );
     }
 
-    private static function postProcessing(string $type, $value)
+    function resolve(Query $query, bool $shouldAggregate): array
     {
-        if ($type === 'percentage' && is_numeric($value)) {
-            return floatval($value) / 100;
+        $report = $query->report;
+
+        $rows = [];
+        $requestFields = $report->fields;
+        $params = [
+            'breakdowns' => [],
+            'time_range' => [
+                'since' => $query->since->format('Y-m-d'),
+                'until' => $query->until->format('Y-m-d')
+            ]
+        ];
+
+        if (isset($requestFields['date_start'])) {
+            $params['time_increment'] = 1;
         }
 
-        return $value;
-    }
-
-    function resolve(Query $query): array
-    {
-        $rows = [];
-
-        foreach ($query->reports as $reportName => $config) {
-            $partialResult = [];
-            $requestFields = $config['fields'];
-            $params = [
-                'breakdowns' => [],
-                'time_range' => [
-                    'since' => $query->since->format('Y-m-d'),
-                    'until' => $query->until->format('Y-m-d')
-                ]
-            ];
-
-            if (isset($config['fields']['date_start'])) {
-                $params['time_increment'] = 1;
+        foreach ($requestFields as $field => $name) {
+            if (in_array($field, self::$breakdowns)) {
+                unset($requestFields[$field]);
+                $params['breakdowns'][] = $field;
             }
+        }
 
-            foreach ($requestFields as $field => $name) {
-                if (in_array($field, self::$breakdowns)) {
-                    unset($requestFields[$field]);
-                    $params['breakdowns'][] = $field;
-                }
-            }
+        $classes = [
+            'adset' => AdSet::class,
+            'campaign' => Campaign::class,
+            'ad' => Ad::class
+        ];
 
+        $entityLower = strtolower($query->entity);
+
+        if ($shouldAggregate) {
+            $className = AdAccount::class;
+            $params['level'] = 'account';
+            $params['filtering'] = [[
+                'field' => "{$entityLower}.id",
+                'operator' => 'IN',
+                'value' => $query->filters['id']
+            ]];
+            $ids = [$query->adAccountId];
+        } else {
+            $className = $classes[$entityLower];
+            $params['level'] = $entityLower;
             $ids = $query->filters['id'];
+        }
 
-            switch ($query->entity) {
-                case 'Campaign':
-                    if (isset($config['fields']['campaign_id'])) {
-                        $className = Campaign::class;
-                        $params['level'] = 'campaign';
-                    } else {
-                        $className = AdAccount::class;
-                        $params['level'] = 'account';
-                        $params['filtering'] = [[
-                            'field' => 'campaign.id',
-                            'operator' => 'IN',
-                            'value' => $ids
-                        ]];
-                        $ids = [$query->adAccountId];
-                    }
-                    break;
-                case 'AdSet':
-                    if (isset($config['fields']['adset_id'])) {
-                        $className = AdSet::class;
-                        $params['level'] = 'adset';
-                    } else {
-                        $className = AdAccount::class;
-                        $params['level'] = 'account';
-                        $params['filtering'] = [[
-                            'field' => 'adset.id',
-                            'operator' => 'IN',
-                            'value' => $ids
-                        ]];
-                        $ids = [$query->adAccountId];
-                    }
-                    break;
-                case 'Ad':
-                    if (isset($config['fields']['ad_id'])) {
-                        $className = Ad::class;
-                        $params['level'] = 'ad';
-                    } else {
-                        $className = AdAccount::class;
-                        $params['level'] = 'account';
-                        $params['filtering'] = [[
-                            'field' => 'ad.id',
-                            'operator' => 'IN',
-                            'value' => $ids
-                        ]];
-                        $ids = [$query->adAccountId];
-                    }
-                    break;
-                default:
-                    throw new \Exception("Entity {$query->entity} not implemented, etc", 501);
-            }
 
-            foreach ($ids as $id) {
-                /**
-                 * @var Campaign|AdAccount $instance
-                 */
-                $instance = new $className($id);
-                $results = $instance->getInsights(array_keys($requestFields), $params);
+        foreach ($ids as $id) {
+            /**
+             * @var Campaign|AdAccount $instance
+             */
+            $instance = new $className($id);
+            $results = $instance->getInsights(array_keys($requestFields), $params);
 
-                foreach ($results as $insights) {
-                    $translatedInsights = new stdClass();
+            foreach ($results as $insights) {
+                $row = new stdClass();
 
-                    foreach ($config['fields'] as $sourceField => $targetField) {
-                        $translatedInsights->{$targetField} = $insights->{$sourceField};
-                    }
-
-                    foreach ($config['metrics'] as $metric) {
-                        $translatedInsights->{$metric['id']} = self::postProcessing(
-                            $metric['type'],
-                            $translatedInsights->{$metric['id']}
-                        );
-                    }
-
-                    $partialResult[] = parseMetrics($translatedInsights, $config);
+                foreach ($report->fields as $sourceField => $targetField) {
+                    $row->{$targetField} = $insights->{$sourceField};
                 }
-            }
 
-            $rows = array_merge($rows, self::filterRows($partialResult, $config['filters']));
+                $rows[] = $row;
+            }
         }
 
         return $rows;

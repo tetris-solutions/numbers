@@ -17,7 +17,8 @@ function getFacebookConfig(): array
     ];
 
     $overrideType = [
-        'impressions' => 'numeric string'
+        'impressions' => 'numeric string',
+        'ctr' => 'percentage'
     ];
 
     $output = [
@@ -33,6 +34,15 @@ function getFacebookConfig(): array
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
                     '    return floatval($data->' . $property . ');',
+                    '}'
+                ]);
+            };
+        },
+        'percentage' => function ($property) {
+            return function (string $indent) use ($property): string {
+                return join(PHP_EOL . $indent, [
+                    'function ($data) {',
+                    '    return floatval($data->' . $property . ') / 100;',
                     '}'
                 ]);
             };
@@ -57,6 +67,10 @@ function getFacebookConfig(): array
         }
     ];
 
+    $numericTypes = [
+        'percentage',
+        'float'
+    ];
     $validTypes = [
         'numeric string',
         'string',
@@ -149,8 +163,10 @@ function getFacebookConfig(): array
                 'is_filter' => true
             ];
 
-            $attribute['is_metric'] = $field['type'] === 'float' ||
-                ($field['type'] === 'numeric string' && strpos($originalAttributeName, '_id') === FALSE);
+            $attribute['is_metric'] = in_array($field['type'], $numericTypes) || (
+                    $field['type'] === 'numeric string' &&
+                    strpos($originalAttributeName, '_id') === FALSE
+                );
 
             if ($attribute['is_metric']) {
                 $attribute['is_dimension'] = false;

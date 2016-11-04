@@ -18,7 +18,15 @@ $app->post('/',
             'adwords' => AdwordsResolver::class,
             'facebook' => FacebookResolver::class
         ];
-        $query = new Query($locale, $request->getParsedBody());
+        $body = $request->getParsedBody();
+
+        $shouldAggregate = (
+            !empty($body['filters']['id']) &&
+            count($body['filters']['id']) > 1 &&
+            !in_array('id', $body['dimensions'])
+        );
+
+        $query = new Query($locale, $body);
         /**
          * @var TKMApi $tkm
          */
@@ -26,9 +34,20 @@ $app->post('/',
         $account = $tkm->getAccount($query->tetrisAccountId);
         $resolverClass = $classes[$query->platform];
         /**
-         * @var Resolver $resolver
+         * @var AdwordsResolver|FacebookResolver $resolver
          */
         $resolver = new $resolverClass($query->tetrisAccountId, $account->token);
+        $rows = $resolver->resolve($query, $shouldAggregate);
 
-        return $response->withJson($resolver->resolve($query));
+        foreach ($rows as $index => $row) {
+            $rows[$index] = ResultParser::parse($row, $query->report);
+        }
+
+        if ($query->platform === 'adwords' && $shouldAggregate) {
+            $rows = ResultParser::aggregate($rows, $query->report->dimensions, $query->report->metrics);
+        }
+
+        $rows = ResultParser::filter($rows, $query->report->filters);
+
+        return $response->withJson($rows);
     }));

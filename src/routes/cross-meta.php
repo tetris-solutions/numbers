@@ -50,19 +50,21 @@ $app->get('/x/meta',
         }
 
         foreach ($inventory as $attributeId => $platformsAttributeAppearsIn) {
-            if (count($platformsAttributeAppearsIn) > 1) {
+            if (count($platformsAttributeAppearsIn) === count($platforms)) {
                 $config = [];
 
                 foreach ($platformsAttributeAppearsIn as $platform) {
                     $config = array_merge($config, $byPlatform[$platform][$attributeId]);
                 }
 
+                $config['requires_id'] = false;
                 $attributes[$attributeId] = $config;
             } else {
                 $platform = $platformsAttributeAppearsIn[0];
                 $config = $byPlatform[$platform][$attributeId];
 
                 $config['id'] = "{$platform}:{$config['id']}";
+                $config['requires_id'] = true;
 
                 $attributes[$config['id']] = $config;
             }

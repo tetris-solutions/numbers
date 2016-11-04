@@ -145,7 +145,7 @@ function getAdwordsConfig(): array
         };
     };
 
-    $parsers = [
+    $metricParsers = [
         'percentage' => function ($property) {
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
@@ -184,7 +184,11 @@ function getAdwordsConfig(): array
             };
         }
     ];
-    $parsers['currency'] = $parsers['decimal'];
+
+    $metricParsers['currency'] = $metricParsers['decimal'];
+    $dimensionParsers = [
+        'integer' => $metricParsers['integer']
+    ];
 
     $entityNameMap = [
         'BUDGET_PERFORMANCE_REPORT' => 'Budget',
@@ -257,6 +261,13 @@ function getAdwordsConfig(): array
                 'is_percentage' => $field['Percentage']
             ];
 
+            if (
+                $attribute['is_dimension'] &&
+                isset($dimensionParsers[$attribute['type']])
+            ) {
+                $attribute['parse'] = $dimensionParsers[$attribute['type']]($originalAttributeName);
+            }
+
             if ($isMetric) {
                 if (empty($output['metrics'][$attributeName])) {
                     $metric = [
@@ -264,7 +275,7 @@ function getAdwordsConfig(): array
                         'type' => $attributeType
                     ];
 
-                    if (!isset($parsers[$metric['type']])) {
+                    if (!isset($metricParsers[$metric['type']])) {
                         $metric['type'] = 'raw';
                     }
 
@@ -279,7 +290,7 @@ function getAdwordsConfig(): array
                     'platform' => 'adwords',
                     'report' => $reportName,
                     'fields' => [$originalAttributeName],
-                    'parse' => $parsers[$metric['type']]($originalAttributeName)
+                    'parse' => $metricParsers[$metric['type']]($originalAttributeName)
                 ];
 
                 $canUseSimpleSum = $metric['type'] === 'integer' ||

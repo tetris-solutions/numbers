@@ -15,6 +15,10 @@ class Query
     ];
 
     /**
+     * @var Report
+     */
+    public $report;
+    /**
      * @var array
      */
     public $reports = [];
@@ -145,57 +149,35 @@ class Query
                 $this->createReportConfigFromMetric($this->getMetric($subMetric), true);
             }
         }
+
+        foreach ($this->filters as $name => $values) {
+            $this->report->setFilter($name, $values);
+        }
+
+        foreach ($this->dimensions as $dimension) {
+            $this->report->includeField($dimension, true);
+        }
     }
 
     private function createReportConfigFromMetric(array $metric, bool $isAuxiliary)
     {
         $reportId = $metric['report'];
         $metricId = $metric['id'];
-        $currentReport = isset($this->reports[$reportId]) ? $this->reports[$reportId] : [
-            'fields' => [],
-            'metrics' => [],
-            'filters' => [],
-            'dimensions' => [],
-            'attributes' => MetaData::getReport($this->platform, $reportId)
-        ];
 
-        if (isset($currentReport['metrics'][$metricId])) return;
+        if (empty($this->report)) {
+            $this->report = new Report($this->platform, $reportId);
+        }
 
-        // dynamic attributes
+        if (isset($this->report->metrics[$metricId])) {
+            return;
+        }
+
+        foreach ($metric['fields'] as $name => $property) {
+            $this->report->includeField($name, false, $property);
+        }
+
         $metric['is_auxiliary'] = $isAuxiliary;
-        $metric['filters'] = [];
-        $metric['dimensions'] = [];
 
-        $attributes = $currentReport['attributes'];
-
-        foreach ($this->filters as $sourceAttributeName => $values) {
-            if (isset($attributes[$sourceAttributeName])) {
-                $targetAttributeName = $attributes[$sourceAttributeName]['property'];
-
-                $metric['filters'][$targetAttributeName] = array_merge(
-                    $attributes[$sourceAttributeName],
-                    ['values' => $values]
-                );
-            }
-        }
-
-        foreach ($this->dimensions as $sourceAttributeName) {
-            if (isset($attributes[$sourceAttributeName]) && $attributes[$sourceAttributeName]['is_dimension']) {
-                $targetAttributeName = $attributes[$sourceAttributeName]['property'];
-                $metric['dimensions'][$targetAttributeName] = $sourceAttributeName;
-
-                if (empty($metric['fields'][$targetAttributeName])) {
-                    $metric['fields'][$targetAttributeName] = $sourceAttributeName;
-                }
-            }
-        }
-
-        $currentReport['metrics'][$metricId] = $metric;
-
-        $currentReport['dimensions'] = array_merge($currentReport['dimensions'], $metric['dimensions']);
-        $currentReport['filters'] = array_merge($currentReport['filters'], $metric['filters']);
-        $currentReport['fields'] = array_unique(array_merge($currentReport['fields'], $metric['fields']));
-
-        $this->reports[$reportId] = $currentReport;
+        $this->report->metrics[$metricId] = $metric;
     }
 }
