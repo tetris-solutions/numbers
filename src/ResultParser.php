@@ -83,6 +83,7 @@ trait ResultParser
         }
 
         $row = new stdClass();
+//        $row->_source = $receivedObject;
 
         foreach ($report->dimensions as $dimensionName) {
             $parse = !empty($report->attributes[$dimensionName]['parse'])
@@ -94,7 +95,7 @@ trait ResultParser
                 : NULL;
 
             $row->{$dimensionName} = is_callable($parse)
-                ? $parse($value)
+                ? $parse($receivedObject)
                 : $value;
         }
 
@@ -130,6 +131,7 @@ trait ResultParser
 
         foreach ($groupedByKey as $groupOfRows) {
             $row = new stdClass();
+//            $row->_source = $groupOfRows;
 
             foreach ($dimensionNames as $dimensionName) {
                 $row->{$dimensionName} = isset($groupOfRows[0]->{$dimensionName})
@@ -138,7 +140,13 @@ trait ResultParser
             }
 
             foreach ($metrics as $metric) {
-                $source = MetaData::getMetricSource('adwords', $metric['entity'], $metric['id']);
+                try {
+                    $source = MetaData::getMetricSource('adwords', $metric['entity'], $metric['id']);
+                } catch (\Throwable $e) {
+                    if ($e->getCode() === 404) {
+                        $source = NULL;
+                    }
+                }
 
                 if (isset($source['sum'])) {
                     $val = $source['sum']($groupOfRows);

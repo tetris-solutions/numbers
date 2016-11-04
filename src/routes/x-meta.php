@@ -42,7 +42,7 @@ $app->get('/x/meta',
         }
 
         foreach ($inventory as $attributeId => $platformsAttributeAppearsIn) {
-            if (count($platformsAttributeAppearsIn) === count($platforms)) {
+            if (count($platformsAttributeAppearsIn) >= count($platforms)) {
                 $config = [];
 
                 foreach ($platformsAttributeAppearsIn as $platform) {
