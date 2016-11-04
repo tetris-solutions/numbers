@@ -19,10 +19,6 @@ class Query
      */
     public $report;
     /**
-     * @var array
-     */
-    public $reports = [];
-    /**
      * @var string
      */
     private $locale;
@@ -76,9 +72,9 @@ class Query
             }
         }
 
-        if (empty($query['at']) && (empty($query['from']) || empty($query['to']))) {
+        if (empty($query['from']) || empty($query['to'])) {
             throw new \Exception("Invalid Request: a date filter is required. " .
-                "Either set param 'at' or 'from' and 'to'", 400);
+                "You must set param 'from' and 'to'", 400);
         }
     }
 
@@ -120,12 +116,8 @@ class Query
         $this->tetrisAccountId = $query['tetris_account'];
         $this->adAccountId = $query['ad_account'];
 
-        if (isset($query['at'])) {
-            $this->until = $this->since = new DateTime($query['at']);
-        } else {
-            $this->since = new DateTime($query['from']);
-            $this->until = new DateTime($query['to']);
-        }
+        $this->since = new DateTime($query['from']);
+        $this->until = new DateTime($query['to']);
 
         $this->metrics = is_array($query['metrics'])
             ? $query['metrics']

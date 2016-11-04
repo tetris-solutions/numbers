@@ -12,32 +12,24 @@ $app->get('/x/meta',
         $entity = $req->getQueryParam('entity');
         $platforms = uniq(explode(',', $req->getQueryParam('platforms')));
 
-        $replaceMap = require(__DIR__ . '/../cross-attributes.php');
         $byPlatform = [];
         $attributes = [];
         $inventory = [];
 
-        $translate = function (string $platform, array $input) use ($replaceMap, &$inventory): array {
+        $translate = function (string $platform, array $input) use (&$inventory): array {
             $output = [];
 
             foreach ($input as $id => $config) {
-                $replacement = isset($replaceMap[$platform][$id])
-                    ? $replaceMap[$platform][$id]
-                    : NULL;
+                $replacement = MetaData::getReplacementFor($id, $platform);
+                $alternateId = $replacement['id'];
 
-                if ($replacement) {
-                    $id = is_array($replacement)
-                        ? $replacement[0]
-                        : $replacement;
-                }
+                $config['id'] = $alternateId;
+                $output[$alternateId] = $config;
 
-                $config['id'] = $id;
-                $output[$id] = $config;
-
-                if (empty($inventory[$id])) {
-                    $inventory[$id] = [$platform];
+                if (empty($inventory[$alternateId])) {
+                    $inventory[$alternateId] = [$platform];
                 } else {
-                    $inventory[$id][] = $platform;
+                    $inventory[$alternateId][] = $platform;
                 }
             }
 

@@ -105,37 +105,6 @@ trait ResultParser
         return $row;
     }
 
-    static function join(array $results): array
-    {
-        $config = [
-            'fields' => [],
-            'metrics' => [],
-            'filters' => [],
-            'dimensions' => [],
-            'attributes' => []
-        ];
-
-        $rows = [];
-
-        foreach ($results as $blueprint) {
-            foreach ($blueprint['rows'] as $row) {
-                $rows[] = $row;
-            }
-
-            $resultConfig = $blueprint['config'];
-
-            foreach ($resultConfig as $key => $values) {
-                if (empty($config[$key])) {
-                    $config[$key] = [];
-                }
-
-                $config[$key] = array_merge($config[$key], $resultConfig[$key]);
-            }
-        }
-
-        return [];
-    }
-
     static function aggregate(array $rows, array $dimensionNames, array $metrics): array
     {
         $groupedByKey = [];

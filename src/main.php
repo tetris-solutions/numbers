@@ -56,4 +56,5 @@ function secured(\Closure $routeHandler) : callable
 
 require 'routes/index.php';
 require 'routes/meta.php';
-require 'routes/cross-meta.php';
+require 'routes/x-meta.php';
+require 'routes/x.php';

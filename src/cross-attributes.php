@@ -19,17 +19,5 @@ return [
     'adwords' => [
         'averagecpc' => 'cpc',
         'averagecpm' => 'cpm'
-    ],
-    'common' => [
-        'id' => ['id', function ($id, $platform) {
-            return "{$platform}:{$id}";
-        }],
-        'date',
-
-        // metrics
-        'cost',
-        'clicks',
-        'ctr',
-        'impressions'
     ]
 ];

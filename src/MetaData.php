@@ -5,6 +5,7 @@ use Tetris\Services\FlagsService;
 
 abstract class MetaData
 {
+    static $noop;
     private static $names = [];
     private static $metrics = [];
     private static $fCache = [];
@@ -205,5 +206,61 @@ abstract class MetaData
         }
 
         return $attributes;
+    }
+
+    private static function getReplaceMap()
+    {
+        return self::requireCached(__DIR__ . '/cross-attributes.php');
+    }
+
+    static function getReplacementFor(string $attribute, string $platform): array
+    {
+        $map = self::getReplaceMap();
+
+        $identity = function ($val) {
+            return $val;
+        };
+
+        if (isset($map[$platform][$attribute])) {
+            $config = $map[$platform][$attribute];
+
+            return [
+                'id' => is_array($config) ? $config[0] : $config,
+                'transform' => is_array($config) ? $config[1] : $identity
+            ];
+        } else {
+            return [
+                'id' => $attribute,
+                'transform' => $identity
+            ];
+        }
+    }
+
+    static function getOriginalFor(string $attribute, string $platform): array
+    {
+        $identity = function ($val) {
+            return $val;
+        };
+
+        $found = [
+            'id' => $attribute,
+            'transform' => $identity
+        ];
+
+        $map = self::getReplaceMap();
+
+        foreach ($map[$platform] as $original => $replacement) {
+            $id = is_array($replacement) ? $replacement[0] : $replacement;
+
+            if ($id === $attribute) {
+                $found = [
+                    'id' => $original,
+                    'transform' => is_array($replacement) ? $replacement[1] : $identity
+                ];
+                break;
+            }
+        }
+
+        return $found;
     }
 }
