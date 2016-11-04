@@ -160,7 +160,11 @@ $app->post('/x',
             try {
                 $query = new Query($locale, $accountReport);
             } catch (\Throwable $e) {
-                continue;
+                if ($e->getCode() === Query::BAD_REQUEST_CODE) {
+                    continue;
+                } else {
+                    throw $e;
+                }
             }
 
             foreach ($query->report->metrics as $id => $metric) {

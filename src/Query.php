@@ -6,6 +6,7 @@ use DateTime;
 
 class Query
 {
+    const BAD_REQUEST_CODE = 422;
     static private $requiredParameters = [
         'ad_account',
         'tetris_account',
@@ -68,13 +69,19 @@ class Query
     {
         foreach (self::$requiredParameters as $key) {
             if (empty($query[$key])) {
-                throw new \Exception("Invalid Request: parameter {$key} is required", 400);
+                throw new \Exception(
+                    "Invalid Request: parameter {$key} is required",
+                    self::BAD_REQUEST_CODE
+                );
             }
         }
 
         if (empty($query['from']) || empty($query['to'])) {
-            throw new \Exception("Invalid Request: a date filter is required. " .
-                "You must set param 'from' and 'to'", 400);
+            throw new \Exception(
+                "Invalid Request: a date filter is required. " .
+                "You must set param 'from' and 'to'",
+                self::BAD_REQUEST_CODE
+            );
         }
     }
 
