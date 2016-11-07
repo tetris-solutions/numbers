@@ -4,8 +4,9 @@ namespace Tetris\Numbers;
 
 use Exception;
 use stdClass;
+use Tetris\Services\FlagsService;
 
-trait ResultParser
+abstract class ResultParser
 {
     static function filter(array $allRows, array $filters): array
     {
@@ -21,6 +22,8 @@ trait ResultParser
 
                 $A = $filter['values'][1];
                 $B = $filter['values'][2];
+
+                if (!property_exists($row, $field)) continue;
 
                 $rowValue = $row->{$field};
 
@@ -61,6 +64,20 @@ trait ResultParser
         return $matchingRows;
     }
 
+    private static function isDebugMode()
+    {
+        if (!isset($GLOBALS['app'])) {
+            return false;
+        }
+
+        /**
+         * @var FlagsService $flags
+         */
+        $flags = $GLOBALS['app']->getContainer()->flags;
+
+        return $flags->isDebugMode();
+    }
+
     static function parse($receivedObject, Report $report): stdClass
     {
         $receivedObject = is_array($receivedObject)
@@ -83,7 +100,9 @@ trait ResultParser
         }
 
         $row = new stdClass();
-//        $row->_source = $receivedObject;
+        if (self::isDebugMode()) {
+            $row->_source = $receivedObject;
+        }
 
         foreach ($report->dimensions as $dimensionName) {
             $parse = !empty($report->attributes[$dimensionName]['parse'])
@@ -121,6 +140,7 @@ trait ResultParser
 
         foreach ($rows as $row) {
             $key = $getKeyForGrouping($row);
+            $key = empty($key) ? '_' : $key;
 
             if (!array_key_exists($key, $groupedByKey)) {
                 $groupedByKey[$key] = [];
@@ -129,9 +149,12 @@ trait ResultParser
             $groupedByKey[$key][] = $row;
         }
 
-        foreach ($groupedByKey as $groupOfRows) {
+        foreach ($groupedByKey as $key => $groupOfRows) {
             $row = new stdClass();
-//            $row->_source = $groupOfRows;
+            if (self::isDebugMode()) {
+                $row->_source = $groupOfRows;
+                $row->_key = $key;
+            }
 
             foreach ($dimensionNames as $dimensionName) {
                 $row->{$dimensionName} = isset($groupOfRows[0]->{$dimensionName})
