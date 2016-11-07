@@ -15,15 +15,6 @@ class AdwordsResolver extends Client implements Resolver
         'between' => 'BETWEEN'
     ];
 
-    private static function postProcessDimension(array $attribute, $value)
-    {
-        if ($attribute['type'] === 'integer' && is_numeric($value)) {
-            return (int)$value;
-        }
-
-        return $value;
-    }
-
     private static function applyFilter(ReadInterface $select, string $name, array $config)
     {
         $values = $config['values'];
