@@ -155,8 +155,14 @@ $app->post('/x',
         $dimensions = $body['dimensions'];
         $metrics = [];
         $filters = [];
+        /**
+         * @var TKMApi $tkm
+         */
+        $tkm = $this->tkm;
 
         foreach ($accounts as $accountReport) {
+            if (empty($accountReport['filters']['id'])) continue;
+
             try {
                 $query = new Query($locale, $accountReport);
             } catch (\Throwable $e) {
@@ -177,10 +183,6 @@ $app->post('/x',
                 $filters[$replacement['id']] = $filter;
             }
 
-            /**
-             * @var TKMApi $tkm
-             */
-            $tkm = $this->tkm;
             $account = $tkm->getAccount($query->tetrisAccountId);
             $resolverClass = $classes[$query->platform];
             /**
