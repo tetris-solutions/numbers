@@ -54,7 +54,7 @@ function secured(\Closure $routeHandler) : callable
     };
 }
 
-require 'routes/index.php';
-require 'routes/meta.php';
-require 'routes/x-meta.php';
-require 'routes/x.php';
+require 'routes/report.php';
+require 'routes/meta-data.php';
+require 'routes/cross-platform-meta-data.php';
+require 'routes/cross-platform-report.php';

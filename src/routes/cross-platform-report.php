@@ -8,22 +8,22 @@ use Tetris\Services\FlagsService;
 global $app;
 
 
-function hasPrx(string $str, string $platform):bool
+function hasPlatformPrefix(string $str, string $platform):bool
 {
     return strpos($str, "{$platform}:") === 0;
 }
 
-function noPrx(string $str)
+function notPrefixed(string $str)
 {
     return strpos($str, ':') === FALSE;
 }
 
-function cropPrx(string $str)
+function removePrefix(string $str)
 {
     return substr($str, strpos($str, ':') + 1);
 }
 
-function makeAcc(string $accountId, array $acc, array $body): array
+function makeAccountReportConfig(string $accountId, array $acc, array $body): array
 {
     $identity = function ($val) {
         return $val;
@@ -60,9 +60,9 @@ function makeAcc(string $accountId, array $acc, array $body): array
     }
 
     foreach ($body['dimensions'] as $dimension) {
-        if (hasPrx($dimension, $platform)) {
-            $account['dimensions'][] = cropPrx($dimension);
-            $account['replace'][cropPrx($dimension)] = [
+        if (hasPlatformPrefix($dimension, $platform)) {
+            $account['dimensions'][] = removePrefix($dimension);
+            $account['replace'][removePrefix($dimension)] = [
                 'id' => $dimension,
                 'transform' => $identity
             ];
@@ -72,7 +72,7 @@ function makeAcc(string $accountId, array $acc, array $body): array
                 'id' => $dimension,
                 'transform' => $idTransform
             ];
-        } else if (noPrx($dimension)) {
+        } else if (notPrefixed($dimension)) {
             $replacement = MetaData::getOriginalFor($dimension, $platform);
 
             $account['dimensions'][] = $replacement['id'];
@@ -84,13 +84,13 @@ function makeAcc(string $accountId, array $acc, array $body): array
     }
 
     foreach ($body['metrics'] as $metric) {
-        if (hasPrx($metric, $platform)) {
-            $account['metrics'][] = cropPrx($metric);
-            $account['replace'][cropPrx($metric)] = [
+        if (hasPlatformPrefix($metric, $platform)) {
+            $account['metrics'][] = removePrefix($metric);
+            $account['replace'][removePrefix($metric)] = [
                 'id' => $metric,
                 'transform' => $identity
             ];
-        } else if (noPrx($metric)) {
+        } else if (notPrefixed($metric)) {
             $replacement = MetaData::getOriginalFor($metric, $platform);
 
             $account['metrics'][] = $replacement['id'];
@@ -102,9 +102,9 @@ function makeAcc(string $accountId, array $acc, array $body): array
     }
 
     foreach ($body['filters'] as $filter => $values) {
-        if (hasPrx($filter, $platform)) {
-            $account['filters'][cropPrx($filter)] = $values;
-        } else if ($filter !== 'id' && noPrx($filter)) {
+        if (hasPlatformPrefix($filter, $platform)) {
+            $account['filters'][removePrefix($filter)] = $values;
+        } else if ($filter !== 'id' && notPrefixed($filter)) {
             $replacement = MetaData::getOriginalFor($filter, $platform);
 
             $account['filters'][$replacement['id']] = $values;
@@ -140,7 +140,7 @@ $app->post('/x',
             $id = $acc['tetris_account'] . ':' . $acc['ad_account'];
 
             if (empty($accounts[$id])) {
-                $accounts[$id] = makeAcc($id, $acc, $body);
+                $accounts[$id] = makeAccountReportConfig($id, $acc, $body);
             }
         }
 
@@ -161,7 +161,9 @@ $app->post('/x',
         $tkm = $this->tkm;
 
         foreach ($accounts as $accountReport) {
-            if (empty($accountReport['filters']['id'])) continue;
+            $emptyReport = empty($accountReport['filters']['id']);
+
+            if ($emptyReport) continue;
 
             try {
                 $query = new Query($locale, $accountReport);
