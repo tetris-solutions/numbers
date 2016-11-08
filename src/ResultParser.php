@@ -21,7 +21,9 @@ abstract class ResultParser
                 $operator = $filter['values'][0];
 
                 $A = $filter['values'][1];
-                $B = $filter['values'][2];
+                $B = isset($filter['values'][2])
+                    ? $filter['values'][2]
+                    : NULL;
 
                 if (!property_exists($row, $field)) continue;
 
