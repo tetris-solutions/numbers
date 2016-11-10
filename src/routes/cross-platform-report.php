@@ -151,6 +151,7 @@ $app->post('/x',
             !in_array('id', $body['dimensions'])
         );
 
+        $auxiliary = [];
         $rows = [];
         $dimensions = $body['dimensions'];
         $metrics = [];
@@ -173,6 +174,10 @@ $app->post('/x',
                 } else {
                     throw $e;
                 }
+            }
+
+            foreach ($query->report->auxiliary as $property) {
+                $auxiliary[$property] = $property;
             }
 
             foreach ($query->report->metrics as $id => $metric) {
@@ -216,7 +221,7 @@ $app->post('/x',
             $rows = ResultParser::aggregate($rows, $dimensions, $metrics);
         }
 
-        $rows = ResultParser::filter($rows, $filters);
+        $rows = ResultParser::filter($rows, $filters, $auxiliary);
 
         return $response->withJson($rows);
     }));

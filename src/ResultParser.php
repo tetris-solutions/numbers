@@ -8,7 +8,7 @@ use Tetris\Services\FlagsService;
 
 abstract class ResultParser
 {
-    static function filter(array $allRows, array $filters): array
+    static function filter(array $allRows, array $filters, array $auxiliaryProperties): array
     {
         $matchingRows = [];
 
@@ -58,6 +58,10 @@ abstract class ResultParser
                 if ($operator === 'contains' && stripos($rowValue, $A) === FALSE) {
                     continue 2;
                 }
+            }
+
+            foreach ($auxiliaryProperties as $property) {
+                unset($row->{$property});
             }
 
             $matchingRows[] = $row;

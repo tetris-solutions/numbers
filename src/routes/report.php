@@ -51,7 +51,7 @@ $app->post('/',
             );
         }
 
-        $rows = ResultParser::filter($rows, $query->report->filters);
+        $rows = ResultParser::filter($rows, $query->report->filters, $query->report->auxiliary);
 
         return $response->withJson($rows);
     }));
