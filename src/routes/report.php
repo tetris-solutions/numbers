@@ -44,7 +44,11 @@ $app->post('/',
         }
 
         if ($query->platform === 'adwords' && $shouldAggregate) {
-            $rows = ResultParser::aggregate($rows, $query->report->dimensions, $query->report->metrics);
+            $rows = ResultParser::aggregate(
+                $rows,
+                array_column($query->report->dimensions, 'id'),
+                $query->report->metrics
+            );
         }
 
         $rows = ResultParser::filter($rows, $query->report->filters);

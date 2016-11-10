@@ -82,9 +82,9 @@ abstract class ResultParser
 
     static function parse($receivedObject, Report $report): stdClass
     {
-        $receivedObject = is_array($receivedObject)
-            ? (object)$receivedObject
-            : $receivedObject;
+        if (is_array($receivedObject)) {
+            $receivedObject = (object)$receivedObject;
+        }
 
         // if $result is not a object (eg. a simple float)
         // create a new object to make it so
@@ -102,20 +102,24 @@ abstract class ResultParser
         }
 
         $row = new stdClass();
+
         if (self::isDebugMode()) {
             $row->_source = $receivedObject;
         }
 
-        foreach ($report->dimensions as $dimensionName) {
-            $parse = !empty($report->attributes[$dimensionName]['parse'])
-                ? $report->attributes[$dimensionName]['parse']
+        foreach ($report->dimensions as $attribute) {
+            $dimensionId = $attribute['id'];
+            $dimensionProperty = $attribute['property'];
+
+            $parse = isset($attribute['parse'])
+                ? $attribute['parse']
                 : NULL;
 
-            $value = isset($receivedObject->{$dimensionName})
-                ? $receivedObject->{$dimensionName}
+            $value = isset($receivedObject->{$dimensionProperty})
+                ? $receivedObject->{$dimensionProperty}
                 : NULL;
 
-            $row->{$dimensionName} = is_callable($parse)
+            $row->{$dimensionId} = is_callable($parse)
                 ? $parse($receivedObject)
                 : $value;
         }
@@ -127,15 +131,15 @@ abstract class ResultParser
         return $row;
     }
 
-    static function aggregate(array $rows, array $dimensionNames, array $metrics): array
+    static function aggregate(array $rows, array $dimensionIds, array $metrics): array
     {
         $groupedByKey = [];
         $result = [];
 
-        $getKeyForGrouping = function (stdClass $row) use ($dimensionNames): string {
+        $getKeyForGrouping = function (stdClass $row) use ($dimensionIds): string {
             $dimensionValues = array_map(function ($dimension) use ($row) {
                 return isset($row->{$dimension}) ? $row->{$dimension} : NULL;
-            }, $dimensionNames);
+            }, $dimensionIds);
 
             return implode('::', $dimensionValues);
         };
@@ -158,9 +162,9 @@ abstract class ResultParser
                 $row->_key = $key;
             }
 
-            foreach ($dimensionNames as $dimensionName) {
-                $row->{$dimensionName} = isset($groupOfRows[0]->{$dimensionName})
-                    ? $groupOfRows[0]->{$dimensionName}
+            foreach ($dimensionIds as $dimensionId) {
+                $row->{$dimensionId} = isset($groupOfRows[0]->{$dimensionId})
+                    ? $groupOfRows[0]->{$dimensionId}
                     : NULL;
             }
 

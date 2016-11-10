@@ -188,7 +188,7 @@ $app->post('/x',
             $account = $tkm->getAccount($query->tetrisAccountId);
             $resolverClass = $classes[$query->platform];
             /**
-             * @var AdwordsResolver|FacebookResolver $resolver
+             * @var Resolver $resolver
              */
             $resolver = new $resolverClass($query->tetrisAccountId, $account->token);
             $partial = $resolver->resolve($query, $shouldAggregate);

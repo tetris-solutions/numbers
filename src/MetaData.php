@@ -85,7 +85,7 @@ abstract class MetaData
     static function getSources(string $platform, string $entity): array
     {
         if (!isset(self::$sources[$platform][$entity])) {
-            $path = __DIR__ . "/config/{$platform}/sources/" . strtolower($entity);
+            $path = __DIR__ . "/../config/{$platform}/sources/" . strtolower($entity);
 
             self::$sources[$platform][$entity] = self::readDirFiles($path);
         }
@@ -96,14 +96,14 @@ abstract class MetaData
     static function getMetricSource(string $platform, string $entity, string $metric): array
     {
         return self::requireCached(
-            __DIR__ . "/config/{$platform}/sources/" . strtolower($entity) . "/{$metric}.php"
+            __DIR__ . "/../config/{$platform}/sources/" . strtolower($entity) . "/{$metric}.php"
         );
     }
 
     static function getReport(string $platform, string $reportName): array
     {
         if (!isset(self::$reports[$platform][$reportName])) {
-            $path = __DIR__ . "/config/{$platform}/reports/{$reportName}";
+            $path = __DIR__ . "/../config/{$platform}/reports/{$reportName}";
 
             $attributes = self::readDirFiles($path);
 
@@ -126,7 +126,7 @@ abstract class MetaData
     static function getMetric(string $id): array
     {
         if (!isset(self::$metrics[$id])) {
-            $path = __DIR__ . "/config/metrics/{$id}.php";
+            $path = __DIR__ . "/../config/metrics/{$id}.php";
 
             self::$metrics[$id] = self::requireCached($path);
         }

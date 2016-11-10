@@ -52,7 +52,7 @@ function updateConfig()
     $metrics = [];
 
     $cwd = getcwd();
-    chdir(__DIR__ . '/../src/config');
+    chdir(__DIR__ . '/../config');
     exec('find -type f -exec rm {} \;');
     chdir($cwd);
 
@@ -63,7 +63,7 @@ function updateConfig()
             }
 
             file_put_contents(
-                __DIR__ . "/../src/config/metrics/{$metric['id']}.php",
+                __DIR__ . "/../config/metrics/{$metric['id']}.php",
                 "<?php\nreturn " . prettyVarExport($metric) . ";\n"
             );
         }
@@ -72,7 +72,7 @@ function updateConfig()
             $entity = strtolower($source['entity']);
 
             file_put_contents(
-                __DIR__ . "/../src/config/{$platform}/sources/{$entity}/{$source['metric']}.php",
+                __DIR__ . "/../config/{$platform}/sources/{$entity}/{$source['metric']}.php",
                 "<?php\nreturn " . prettyVarExport($source) . ";\n"
             );
         }
@@ -80,7 +80,7 @@ function updateConfig()
         foreach ($config['reports'] as $reportName => $report) {
             foreach ($report['attributes'] as $id => $attribute) {
                 file_put_contents(
-                    __DIR__ . "/../src/config/{$platform}/reports/{$reportName}/{$id}.php",
+                    __DIR__ . "/../config/{$platform}/reports/{$reportName}/{$id}.php",
                     "<?php\nreturn " . prettyVarExport($attribute) . ";\n"
                 );
             }

@@ -85,7 +85,7 @@ class Query
         }
     }
 
-    private function getMetric(string $id): array
+    private function mountMetric(string $id): array
     {
         $metric = MetaData::getMetric($id);
         $source = MetaData::getMetricSource($this->platform, $this->entity, $id);
@@ -107,7 +107,7 @@ class Query
                 : [],
             'entity' => $this->entity,
             'platform' => $this->platform,
-            'fields' => array_combine($source['fields'], $source['fields']),
+            'fields' => $source['fields'],
             'report' => $source['report']
         ];
     }
@@ -115,8 +115,18 @@ class Query
     function __construct(string $locale, array $query)
     {
         self::validateQuery($query);
-
         $this->locale = $locale;
+        $this->init($query);
+
+        if (empty($this->metrics)) {
+            throw new \Exception('metrics is required', self::BAD_REQUEST_CODE);
+        }
+
+        $this->setupReport();
+    }
+
+    private function init(array $query)
+    {
         $this->metrics = [];
         $this->entity = $query['entity'];
         $this->platform = $query['platform'];
@@ -126,57 +136,39 @@ class Query
         $this->since = new DateTime($query['from']);
         $this->until = new DateTime($query['to']);
 
-        $this->metrics = is_array($query['metrics'])
-            ? $query['metrics']
-            : [];
-        $this->metrics = array_map([$this, 'getMetric'], $this->metrics);
+        $this->metrics = array_map([$this, 'mountMetric'], $query['metrics']);
+        $this->dimensions = $query['dimensions'];
+        $this->filters = $query['filters'];
+    }
 
-        $this->dimensions = is_array($query['dimensions'])
-            ? $query['dimensions']
-            : [];
-
-        $this->filters = is_array($query['filters'])
-            ? $query['filters']
-            : [];
+    private function setupReport()
+    {
+        $this->report = new Report($this->platform, $this->metrics[0]['report']);
 
         foreach ($this->metrics as $metric) {
-            $this->createReportConfigFromMetric($metric, false);
+            $this->report->addMetric($metric, false);
+        }
+
+        foreach ($this->dimensions as $dimension) {
+            $this->report->addDimension($dimension);
         }
 
         foreach ($this->metrics as $metric) {
             foreach ($metric['inferred_from'] as $subMetric) {
-                $this->createReportConfigFromMetric($this->getMetric($subMetric), true);
+                $this->report->addMetric($this->mountMetric($subMetric), true);
             }
         }
 
         foreach ($this->filters as $name => $values) {
-            $this->report->setFilter($name, $values);
+            $attribute = $this->report->addFilter($name, $values);
+
+            if ($attribute['is_dimension']) {
+                $this->report->addDimension($attribute['id'], true);
+            }
+
+            if ($attribute['is_metric']) {
+                $this->report->addMetric($this->mountMetric($attribute['id']), true);
+            }
         }
-
-        foreach ($this->dimensions as $dimension) {
-            $this->report->includeField($dimension, true);
-        }
-    }
-
-    private function createReportConfigFromMetric(array $metric, bool $isAuxiliary)
-    {
-        $reportId = $metric['report'];
-        $metricId = $metric['id'];
-
-        if (empty($this->report)) {
-            $this->report = new Report($this->platform, $reportId);
-        }
-
-        if (isset($this->report->metrics[$metricId])) {
-            return;
-        }
-
-        foreach ($metric['fields'] as $name => $property) {
-            $this->report->includeField($name, false, $property);
-        }
-
-        $metric['is_auxiliary'] = $isAuxiliary;
-
-        $this->report->metrics[$metricId] = $metric;
     }
 }

@@ -20,34 +20,60 @@ class Report
         $this->metrics = [];
         $this->fields = [];
         $this->filters = [];
+        $this->auxiliary = [];
     }
 
-    function setFilter(string $name, $values)
+    function addFilter(string $name, $values)
     {
         if (empty($this->attributes[$name])) {
-            return;
+            return null;
         }
 
         $attribute = $this->attributes[$name];
         $property = $attribute['property'];
 
-        if (empty($this->filters[$property])) {
-            $attribute['values'] = $values;
-            $this->filters[$property] = $attribute;
+        if (isset($this->filters[$property])) {
+            return null;
+        }
+
+        $attribute['values'] = $values;
+        $this->filters[$property] = $attribute;
+
+        return $attribute;
+    }
+
+    function addDimension(string $dimensionId, $isAuxiliary = false)
+    {
+        if (empty($this->attributes[$dimensionId])) return;
+
+        $attribute = $this->attributes[$dimensionId];
+        $property = $attribute['property'];
+
+        $this->fields[$property] = $property;
+
+        if (isset($this->dimensions[$property])) return;
+
+        $this->dimensions[$dimensionId] = $attribute;
+
+        if ($isAuxiliary) {
+            $this->auxiliary[$dimensionId] = $dimensionId;
         }
     }
 
-    function includeField(string $name, bool $isDimension, $property = null)
+    function addMetric(array $metric, $isAuxiliary = false)
     {
-        if (!$property) {
-            $attribute = $this->attributes[$name];
-            $property = $attribute['property'];
+        $metricId = $metric['id'];
+
+        if (isset($this->metrics[$metricId])) return;
+
+        foreach ($metric['fields'] as $property) {
+            $this->fields[$property] = $property;
         }
 
-        if ($isDimension) {
-            $this->dimensions[$property] = $name;
-        }
+        $this->metrics[$metricId] = $metric;
 
-        $this->fields[$property] = $name;
+        if ($isAuxiliary) {
+            $this->auxiliary[$metricId] = $metricId;
+        }
     }
 }
