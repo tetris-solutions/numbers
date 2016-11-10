@@ -44,14 +44,18 @@ class Report
 
     function addDimension(string $dimensionId, $isAuxiliary = false)
     {
-        if (empty($this->attributes[$dimensionId])) return;
+        $unknownDimension = empty($this->attributes[$dimensionId]);
+
+        if ($unknownDimension) return;
 
         $attribute = $this->attributes[$dimensionId];
         $property = $attribute['property'];
 
         $this->fields[$property] = $property;
 
-        if (isset($this->dimensions[$property])) return;
+        $alreadyDefined = isset($this->dimensions[$dimensionId]);
+
+        if ($alreadyDefined) return;
 
         $this->dimensions[$dimensionId] = $attribute;
 
