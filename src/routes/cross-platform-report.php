@@ -101,18 +101,20 @@ function makeAccountReportConfig(string $accountId, array $acc, array $body): ar
         }
     }
 
-    foreach ($body['filters'] as $filter => $values) {
-        if (hasPlatformPrefix($filter, $platform)) {
-            $account['filters'][removePrefix($filter)] = $values;
-        } else if ($filter !== 'id' && notPrefixed($filter)) {
-            $replacement = MetaData::getOriginalFor($filter, $platform);
+    foreach ($body['filters'] as $filterName => $values) {
+        if ($filterName === 'id') continue;
+
+        if (hasPlatformPrefix($filterName, $platform)) {
+            $account['filters'][removePrefix($filterName)] = $values;
+        } else if (notPrefixed($filterName)) {
+            $replacement = MetaData::getOriginalFor($filterName, $platform);
 
             $account['filters'][$replacement['id']] = $values;
 
             if (isset($account['replace'][$replacement['id']])) continue;
 
             $account['replace'][$replacement['id']] = [
-                'id' => $filter,
+                'id' => $filterName,
                 'transform' => $replacement['transform']
             ];
         }
@@ -180,13 +182,17 @@ $app->post('/x',
                 $auxiliary[$property] = $property;
             }
 
-            foreach ($query->report->metrics as $id => $metric) {
-                $replacement = $accountReport['replace'][$id];
+            foreach ($query->report->metrics as $attributeId => $metric) {
+                $replacement = $accountReport['replace'][$attributeId];
                 $metrics[$replacement['id']] = $metric;
             }
 
-            foreach ($query->report->filters as $id => $filter) {
-                $replacement = $accountReport['replace'][$id];
+            foreach ($query->report->filters as $filter) {
+                $attributeId = $filter['id'];
+
+                if ($attributeId === 'id') continue;
+
+                $replacement = $accountReport['replace'][$attributeId];
                 $filters[$replacement['id']] = $filter;
             }
 
