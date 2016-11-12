@@ -8,6 +8,6 @@ return [
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
     "parse" => function ($data): int {
-        return (int)$data->campaignid;
+        return (int)$data->CampaignId;
     }
 ];

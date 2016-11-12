@@ -270,7 +270,7 @@ function getAdwordsConfig(): array
                 $attribute['is_dimension'] &&
                 isset($dimensionParsers[$attribute['type']])
             ) {
-                $attribute['parse'] = $dimensionParsers[$attribute['type']]($attributeName);
+                $attribute['parse'] = $dimensionParsers[$attribute['type']]($originalAttributeName);
             }
 
             if ($isMetric) {
