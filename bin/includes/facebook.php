@@ -172,10 +172,20 @@ function getFacebookConfig(): array
                 $attribute['is_dimension'] = false;
 
                 if (empty($output['metrics'][$attributeName])) {
-                    $output['metrics'][$attributeName] = $metric = [
+                    $metric = [
                         'id' => $attributeName,
                         'type' => isCurrency($field) ? 'currency' : 'decimal'
                     ];
+
+                    if (isCurrency($field)) {
+                        $metric['type'] = 'currency';
+                    } else {
+                        $metric['type'] = $field['type'] === 'percentage'
+                            ? 'percentage'
+                            : 'decimal';
+                    }
+
+                    $output['metrics'][$attributeName] = $metric;
                 } else {
                     $metric = $output['metrics'][$attributeName];
                 }

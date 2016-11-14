@@ -8,6 +8,6 @@ return [
         "ctr"
     ],
     "parse" => function ($data) {
-        return (float)$data->ctr;
+        return floatval($data->ctr) / 100;
     }
 ];
