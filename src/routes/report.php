@@ -43,10 +43,16 @@ $app->post('/',
             $rows[$index] = ResultParser::parse($row, $query->report);
         }
 
+        $notAuxiliary = function (string $dimensionId) use ($query): bool {
+            return !array_key_exists($dimensionId, $query->report->auxiliary);
+        };
+
         if ($query->platform === 'adwords' && $shouldAggregate) {
+            $dimensionIds = array_filter(array_column($query->report->dimensions, 'id'), $notAuxiliary);
+
             $rows = ResultParser::aggregate(
                 $rows,
-                array_column($query->report->dimensions, 'id'),
+                $dimensionIds,
                 $query->report->metrics
             );
         }
