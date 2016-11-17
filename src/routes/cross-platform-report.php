@@ -4,6 +4,7 @@ namespace Tetris\Numbers;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Tetris\Services\FlagsService;
+use Throwable;
 
 global $app;
 
@@ -153,6 +154,7 @@ $app->post('/x',
             !in_array('id', $body['dimensions'])
         );
 
+        $exceptions = [];
         $auxiliary = [];
         $rows = [];
         $dimensions = $body['dimensions'];
@@ -170,7 +172,7 @@ $app->post('/x',
 
             try {
                 $query = new Query($locale, $accountReport);
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 if ($e->getCode() === Query::BAD_REQUEST_CODE) {
                     continue;
                 } else {
@@ -198,11 +200,18 @@ $app->post('/x',
 
             $account = $tkm->getAccount($query->tetrisAccountId);
             $resolverClass = $classes[$query->platform];
+
             /**
              * @var Resolver $resolver
              */
             $resolver = new $resolverClass($query->tetrisAccountId, $account->token);
-            $partial = $resolver->resolve($query, $shouldAggregate);
+
+            try {
+                $partial = $resolver->resolve($query, $shouldAggregate);
+            } catch (Throwable $e) {
+                $exceptions[] = parseReportException($locale, $query, $e);
+                continue;
+            }
 
             foreach ($partial as $index => $row) {
                 $row = ResultParser::parse($row, $query->report);
@@ -223,7 +232,7 @@ $app->post('/x',
 
         $platforms = array_column($accounts, 'platform');
 
-        $notAuxiliary = function (string $dimensionId) use($auxiliary) : bool {
+        $notAuxiliary = function (string $dimensionId) use ($auxiliary) : bool {
             return !array_key_exists($dimensionId, $auxiliary);
         };
         $dimensions = array_filter($dimensions, $notAuxiliary);
@@ -234,5 +243,8 @@ $app->post('/x',
 
         $rows = ResultParser::filter($rows, $filters, $auxiliary);
 
-        return $response->withJson($rows);
+        return $response->withJson([
+            'result' => $rows,
+            'exceptions' => $exceptions
+        ]);
     }));

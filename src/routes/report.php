@@ -37,7 +37,15 @@ $app->post('/',
          * @var AdwordsResolver|FacebookResolver $resolver
          */
         $resolver = new $resolverClass($query->tetrisAccountId, $account->token);
-        $rows = $resolver->resolve($query, $shouldAggregate);
+        $exceptions = [];
+
+        try {
+            $rows = $resolver->resolve($query, $shouldAggregate);
+        } catch (\Throwable $e) {
+            $exceptions[] = parseReportException($locale, $query, $e);
+            $rows = [];
+        }
+
 
         foreach ($rows as $index => $row) {
             $rows[$index] = ResultParser::parse($row, $query->report);
@@ -59,5 +67,8 @@ $app->post('/',
 
         $rows = ResultParser::filter($rows, $query->report->filters, $query->report->auxiliary);
 
-        return $response->withJson($rows);
+        return $response->withJson([
+            'exceptions' => $exceptions,
+            'result' => $rows
+        ]);
     }));

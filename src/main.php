@@ -4,6 +4,7 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Throwable;
 
 require 'TKMApi.php';
 require 'constants.php';
@@ -32,7 +33,7 @@ function secured(\Closure $routeHandler) : callable
         try {
             $routeHandler = $routeHandler->bindTo($this);
             return $routeHandler($request, $response, $params);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             global $logger;
 
             $logger->warning('Report request failed', [
@@ -52,6 +53,45 @@ function secured(\Closure $routeHandler) : callable
             throw $e;
         }
     };
+}
+
+function makeAccountAccessException(string $locale, Query $query, Throwable $e): array
+{
+    return [
+        'code' => 403,
+
+        'message' => $locale === 'pt-BR'
+            ? "O accesso a conta '{$query->adAccountId}' foi perdido! O resultado do relatório provavelmente está imcompleto."
+            : "We have lost access to the account '{$query->adAccountId}'! The report result is probably incomplete.",
+
+        'account' => [
+            'platform' => $query->platform,
+            'tetris_account' => $query->tetrisAccountId,
+            'ad_account' => $query->adAccountId
+        ],
+
+        'parentException' => [
+            'code' => $e->getCode(),
+            'message' => $e->getMessage()
+        ]
+    ];
+}
+
+function parseReportException(string $locale, Query $query, Throwable $e): array
+{
+    $exceptionMessage = $e->getMessage();
+
+    $isAccountException = (
+        stripos($exceptionMessage, 'permission') !== FALSE ||
+        stripos($exceptionMessage, 'authentication') !== FALSE ||
+        stripos($exceptionMessage, 'authorization') !== false
+    );
+
+    if ($isAccountException) {
+        return makeAccountAccessException($locale, $query, $e);
+    } else {
+        throw $e;
+    }
 }
 
 require 'routes/report.php';
