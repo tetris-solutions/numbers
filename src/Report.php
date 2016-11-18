@@ -51,7 +51,9 @@ class Report
         $attribute = $this->attributes[$dimensionId];
         $property = $attribute['property'];
 
-        $this->fields[$property] = $property;
+        if ($property) {
+            $this->fields[$property] = $property;
+        }
 
         $alreadyDefined = isset($this->dimensions[$dimensionId]);
 

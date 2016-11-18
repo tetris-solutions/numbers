@@ -48,7 +48,7 @@ $app->post('/',
 
 
         foreach ($rows as $index => $row) {
-            $rows[$index] = ResultParser::parse($row, $query->report);
+            $rows[$index] = ResultParser::parse($row, $query);
         }
 
         $notAuxiliary = function (string $dimensionId) use ($query): bool {

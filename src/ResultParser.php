@@ -84,8 +84,9 @@ abstract class ResultParser
         return $flags->isDebugMode();
     }
 
-    static function parse($receivedObject, Report $report): stdClass
+    static function parse($receivedObject, Query $query): stdClass
     {
+        $report = $query->report;
         if (is_array($receivedObject)) {
             $receivedObject = (object)$receivedObject;
         }
@@ -113,23 +114,25 @@ abstract class ResultParser
 
         foreach ($report->dimensions as $attribute) {
             $dimensionId = $attribute['id'];
-            $dimensionProperty = $attribute['property'];
 
             $parse = isset($attribute['parse'])
                 ? $attribute['parse']
                 : NULL;
 
-            $value = isset($receivedObject->{$dimensionProperty})
-                ? $receivedObject->{$dimensionProperty}
-                : NULL;
+            if (is_callable($parse)) {
+                $row->{$dimensionId} = $parse($receivedObject, $query);
+            } else {
+                $dimensionProperty = $attribute['property'];
 
-            $row->{$dimensionId} = is_callable($parse)
-                ? $parse($receivedObject)
-                : $value;
+                $row->{$dimensionId} = isset($receivedObject->{$dimensionProperty})
+                    ? $receivedObject->{$dimensionProperty}
+                    : NULL;
+            }
+
         }
 
         foreach ($report->metrics as $metric) {
-            $row->{$metric['id']} = $metric['parse']($receivedObject);
+            $row->{$metric['id']} = $metric['parse']($receivedObject, $query);
         }
 
         return $row;

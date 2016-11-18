@@ -100,12 +100,22 @@ abstract class MetaData
         );
     }
 
+    private static function getArtificialDimensions()
+    {
+        return self::requireCached(
+            __DIR__ . "/../src/artificial/dimensions.php"
+        );
+    }
+
     static function getReport(string $platform, string $reportName): array
     {
         if (!isset(self::$reports[$platform][$reportName])) {
             $path = __DIR__ . "/../config/{$platform}/reports/{$reportName}";
 
-            $attributes = self::readDirFiles($path);
+            $attributes = array_merge(
+                self::readDirFiles($path),
+                self::getArtificialDimensions()
+            );
 
             foreach ($attributes as $id => $attribute) {
                 $names = isset($attribute['names'])
@@ -210,7 +220,7 @@ abstract class MetaData
 
     private static function getReplaceMap()
     {
-        return self::requireCached(__DIR__ . '/cross-attributes.php');
+        return self::requireCached(__DIR__ . '/artificial/merges.php');
     }
 
     static function getReplacementFor(string $attribute, string $platform): array

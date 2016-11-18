@@ -214,7 +214,7 @@ $app->post('/x',
             }
 
             foreach ($partial as $index => $row) {
-                $row = ResultParser::parse($row, $query->report);
+                $row = ResultParser::parse($row, $query);
 
                 foreach ($accountReport['replace'] as $name => $original) {
                     /**
