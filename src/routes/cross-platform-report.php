@@ -221,9 +221,16 @@ $app->post('/x',
                      * @var callable $transform
                      */
                     $transform = $original['transform'];
-                    $row->{$original['id']} = isset($row->{$name})
-                        ? $transform($row->{$name}, $accountReport)
-                        : null;
+
+                    if (isset($row->{$name})) {
+                        $row->{$original['id']} = $transform($row->{$name}, $accountReport);
+
+                        if ($original['id'] !== $name) {
+                            unset($row->{$name});
+                        }
+                    } else {
+                        $row->{$original['id']} = null;
+                    }
                 }
 
                 $rows[] = $row;

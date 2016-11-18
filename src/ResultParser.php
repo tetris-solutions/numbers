@@ -109,7 +109,7 @@ abstract class ResultParser
         $row = new stdClass();
 
         if (self::isDebugMode()) {
-            $row->_source = $receivedObject;
+            $row->__source__ = $receivedObject;
         }
 
         foreach ($report->dimensions as $attribute) {
@@ -165,8 +165,8 @@ abstract class ResultParser
         foreach ($groupedByKey as $key => $groupOfRows) {
             $row = new stdClass();
             if (self::isDebugMode()) {
-                $row->_source = $groupOfRows;
-                $row->_key = $key;
+                $row->__source__ = $groupOfRows;
+                $row->__key__ = $key;
             }
 
             foreach ($dimensionIds as $dimensionId) {

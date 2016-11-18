@@ -1,6 +1,7 @@
 <?php
 namespace Tetris\Numbers;
 
+use FacebookAds\Object\AdsInsights;
 use stdClass;
 use FacebookAds\Object\Campaign;
 use FacebookAds\Object\AdSet;
