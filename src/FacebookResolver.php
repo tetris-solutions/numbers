@@ -1,6 +1,7 @@
 <?php
 namespace Tetris\Numbers;
 
+use FacebookAds\Cursor;
 use FacebookAds\Object\AdsInsights;
 use stdClass;
 use FacebookAds\Object\Campaign;
@@ -49,6 +50,7 @@ class FacebookResolver extends Facebook implements Resolver
         $rows = [];
         $requestFields = $report->fields;
         $params = [
+            'limit' => 5000,
             'breakdowns' => [],
             'time_range' => [
                 'since' => $query->since->format('Y-m-d'),
@@ -96,6 +98,9 @@ class FacebookResolver extends Facebook implements Resolver
              * @var Campaign|AdAccount $instance
              */
             $instance = new $className($id);
+            /**
+             * @var Cursor $results
+             */
             $results = $instance->getInsights(array_keys($requestFields), $params);
 
             foreach ($results as $insights) {
