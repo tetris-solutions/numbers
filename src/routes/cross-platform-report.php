@@ -186,6 +186,15 @@ $app->post('/x',
 
             foreach ($query->report->metrics as $attributeId => $metric) {
                 $replacement = $accountReport['replace'][$attributeId];
+
+                /*
+                $attributeId = 'spend';
+                $replacement = [
+                    'id' => 'cost',
+                    'transform' => function () {}
+                ];
+                */
+
                 $metrics[$replacement['id']] = $metric;
             }
 

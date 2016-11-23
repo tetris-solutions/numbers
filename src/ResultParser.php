@@ -175,9 +175,9 @@ abstract class ResultParser
                     : NULL;
             }
 
-            foreach ($metrics as $metric) {
+            foreach ($metrics as $metricId => $metric) {
                 try {
-                    $source = MetaData::getMetricSource('adwords', $metric['entity'], $metric['id']);
+                    $source = MetaData::getMetricSource('adwords', $metric['entity'], $metricId);
                 } catch (\Throwable $e) {
                     if ($e->getCode() === 404) {
                         $source = NULL;
@@ -186,9 +186,9 @@ abstract class ResultParser
 
                 if (isset($source['sum'])) {
                     $val = $source['sum']($groupOfRows);
-                    $row->{$metric['id']} = $val;
+                    $row->{$metricId} = $val;
                 } else {
-                    $row->{$metric['id']} = NULL;
+                    $row->{$metricId} = NULL;
                 }
             }
 
