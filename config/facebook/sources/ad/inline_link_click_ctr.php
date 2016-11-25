@@ -8,6 +8,6 @@ return [
         "inline_link_click_ctr"
     ],
     "parse" => function ($data) {
-        return (float)$data->inline_link_click_ctr;
+        return (float)str_replace(',', '', $data->inline_link_click_ctr);
     }
 ];

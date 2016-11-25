@@ -8,6 +8,6 @@ return [
         "estimated_ad_recallers"
     ],
     "parse" => function ($data) {
-        return (float)$data->estimated_ad_recallers;
+        return (float)str_replace(',', '', $data->estimated_ad_recallers);
     }
 ];

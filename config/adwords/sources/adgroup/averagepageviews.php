@@ -8,7 +8,7 @@ return [
         "AveragePageviews"
     ],
     "parse" => function ($data): float {
-        return (float)$data->AveragePageviews;
+        return (float)str_replace(',', '', $data->AveragePageviews);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

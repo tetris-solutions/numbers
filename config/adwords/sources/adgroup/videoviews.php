@@ -8,7 +8,7 @@ return [
         "VideoViews"
     ],
     "parse" => function ($data): int {
-        return (int)$data->VideoViews;
+        return (int)str_replace(',', '', $data->VideoViews);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

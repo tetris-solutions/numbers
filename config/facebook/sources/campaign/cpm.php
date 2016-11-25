@@ -8,6 +8,6 @@ return [
         "cpm"
     ],
     "parse" => function ($data) {
-        return floatval($data->cpm);
+        return (float)str_replace(',', '', $data->cpm);
     }
 ];

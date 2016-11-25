@@ -8,6 +8,6 @@ return [
         "unique_inline_link_clicks"
     ],
     "parse" => function ($data) {
-        return (float)$data->unique_inline_link_clicks;
+        return (float)str_replace(',', '', $data->unique_inline_link_clicks);
     }
 ];

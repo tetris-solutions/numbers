@@ -33,7 +33,7 @@ function getFacebookConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
-                    '    return floatval($data->' . $property . ');',
+                    "    return (float)str_replace(',', '', \$data->$property);",
                     '}'
                 ]);
             };
@@ -42,7 +42,7 @@ function getFacebookConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
-                    '    return floatval($data->' . $property . ') / 100;',
+                    "    return floatval(str_replace(',', '', \$data->$property)) / 100;",
                     '}'
                 ]);
             };
@@ -51,7 +51,7 @@ function getFacebookConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
-                    "    return (float)\$data->{$property};",
+                    "    return (float)str_replace(',', '', \$data->$property);",
                     '}'
                 ]);
             };
@@ -83,7 +83,7 @@ function getFacebookConfig(): array
                 'function ($data) {',
                 '    foreach ($data->actions as $action) {',
                 "        if (\$action['action_type'] === '{$type}') {",
-                "            return (float)\$action['value'];",
+                "            return (float)str_replace(',', '', \$action['value']);",
                 '        }',
                 '    }',
                 '    return NULL;',
@@ -100,7 +100,7 @@ function getFacebookConfig(): array
                 'function ($data) {',
                 "    foreach (\$data->{$field} as \$action) {",
                 "        if (\$action['action_type'] === 'video_view') {",
-                "            return (float)\$action['value'];",
+                "            return (float)str_replace(',', '', \$action['value']);",
                 '        }',
                 '    }',
                 '    return NULL;',

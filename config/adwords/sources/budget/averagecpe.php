@@ -8,7 +8,7 @@ return [
         "AverageCpe"
     ],
     "parse" => function ($data): float {
-        return (float)$data->AverageCpe;
+        return (float)str_replace(',', '', $data->AverageCpe);
     },
     "inferred_from" => [
         "cost",

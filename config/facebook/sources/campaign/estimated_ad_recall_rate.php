@@ -8,6 +8,6 @@ return [
         "estimated_ad_recall_rate"
     ],
     "parse" => function ($data) {
-        return (float)$data->estimated_ad_recall_rate;
+        return (float)str_replace(',', '', $data->estimated_ad_recall_rate);
     }
 ];

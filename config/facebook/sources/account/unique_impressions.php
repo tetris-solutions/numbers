@@ -8,6 +8,6 @@ return [
         "unique_impressions"
     ],
     "parse" => function ($data) {
-        return (float)$data->unique_impressions;
+        return (float)str_replace(',', '', $data->unique_impressions);
     }
 ];

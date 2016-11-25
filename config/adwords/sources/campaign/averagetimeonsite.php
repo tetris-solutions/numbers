@@ -8,7 +8,7 @@ return [
         "AverageTimeOnSite"
     ],
     "parse" => function ($data): float {
-        return (float)$data->AverageTimeOnSite;
+        return (float)str_replace(',', '', $data->AverageTimeOnSite);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

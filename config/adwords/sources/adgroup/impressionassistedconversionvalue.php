@@ -8,7 +8,7 @@ return [
         "ImpressionAssistedConversionValue"
     ],
     "parse" => function ($data): float {
-        return (float)$data->ImpressionAssistedConversionValue;
+        return (float)str_replace(',', '', $data->ImpressionAssistedConversionValue);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

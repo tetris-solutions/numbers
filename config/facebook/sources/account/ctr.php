@@ -8,6 +8,6 @@ return [
         "ctr"
     ],
     "parse" => function ($data) {
-        return floatval($data->ctr) / 100;
+        return floatval(str_replace(',', '', $data->ctr)) / 100;
     }
 ];

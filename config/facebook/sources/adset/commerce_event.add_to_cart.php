@@ -10,7 +10,7 @@ return [
     "parse" => function ($data) {
         foreach ($data->actions as $action) {
             if ($action['action_type'] === 'commerce_event.add_to_cart') {
-                return (float)$action['value'];
+                return (float)str_replace(',', '', $action['value']);
             }
         }
         return NULL;

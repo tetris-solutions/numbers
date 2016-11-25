@@ -8,6 +8,6 @@ return [
         "newsfeed_impressions"
     ],
     "parse" => function ($data) {
-        return (float)$data->newsfeed_impressions;
+        return (float)str_replace(',', '', $data->newsfeed_impressions);
     }
 ];

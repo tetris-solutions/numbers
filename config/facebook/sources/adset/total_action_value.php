@@ -8,6 +8,6 @@ return [
         "total_action_value"
     ],
     "parse" => function ($data) {
-        return floatval($data->total_action_value);
+        return (float)str_replace(',', '', $data->total_action_value);
     }
 ];

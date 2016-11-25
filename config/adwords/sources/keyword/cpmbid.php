@@ -8,6 +8,6 @@ return [
         "CpmBid"
     ],
     "parse" => function ($data): float {
-        return (float)$data->CpmBid;
+        return (float)str_replace(',', '', $data->CpmBid);
     }
 ];

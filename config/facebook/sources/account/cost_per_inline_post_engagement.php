@@ -8,6 +8,6 @@ return [
         "cost_per_inline_post_engagement"
     ],
     "parse" => function ($data) {
-        return floatval($data->cost_per_inline_post_engagement);
+        return (float)str_replace(',', '', $data->cost_per_inline_post_engagement);
     }
 ];

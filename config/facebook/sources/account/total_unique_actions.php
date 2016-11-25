@@ -8,6 +8,6 @@ return [
         "total_unique_actions"
     ],
     "parse" => function ($data) {
-        return (float)$data->total_unique_actions;
+        return (float)str_replace(',', '', $data->total_unique_actions);
     }
 ];

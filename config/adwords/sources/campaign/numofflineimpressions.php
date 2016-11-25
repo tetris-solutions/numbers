@@ -8,7 +8,7 @@ return [
         "NumOfflineImpressions"
     ],
     "parse" => function ($data): int {
-        return (int)$data->NumOfflineImpressions;
+        return (int)str_replace(',', '', $data->NumOfflineImpressions);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

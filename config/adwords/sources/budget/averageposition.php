@@ -8,7 +8,7 @@ return [
         "AveragePosition"
     ],
     "parse" => function ($data): float {
-        return (float)$data->AveragePosition;
+        return (float)str_replace(',', '', $data->AveragePosition);
     },
     "inferred_from" => [
         "impressions"

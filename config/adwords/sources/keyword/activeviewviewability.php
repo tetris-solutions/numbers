@@ -8,7 +8,7 @@ return [
         "ActiveViewViewability"
     ],
     "parse" => function ($data): float {
-        return (float)$data->ActiveViewViewability;
+        return (float)str_replace(',', '', $data->ActiveViewViewability);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

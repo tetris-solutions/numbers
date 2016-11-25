@@ -8,6 +8,6 @@ return [
         "deeplink_clicks"
     ],
     "parse" => function ($data) {
-        return (float)$data->deeplink_clicks;
+        return (float)str_replace(',', '', $data->deeplink_clicks);
     }
 ];

@@ -8,6 +8,6 @@ return [
         "ActiveViewCpm"
     ],
     "parse" => function ($data): float {
-        return (float)$data->ActiveViewCpm;
+        return (float)str_replace(',', '', $data->ActiveViewCpm);
     }
 ];

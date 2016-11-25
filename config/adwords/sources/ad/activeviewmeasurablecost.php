@@ -8,6 +8,6 @@ return [
         "ActiveViewMeasurableCost"
     ],
     "parse" => function ($data): float {
-        return (float)$data->ActiveViewMeasurableCost;
+        return (float)str_replace(',', '', $data->ActiveViewMeasurableCost);
     }
 ];

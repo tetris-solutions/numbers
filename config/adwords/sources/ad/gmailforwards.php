@@ -8,7 +8,7 @@ return [
         "GmailForwards"
     ],
     "parse" => function ($data): int {
-        return (int)$data->GmailForwards;
+        return (int)str_replace(',', '', $data->GmailForwards);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

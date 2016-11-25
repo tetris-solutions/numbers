@@ -150,7 +150,7 @@ function getAdwordsConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data): float {',
-                    "    return floatval(str_replace('%', '', \$data->$property)) / 100;",
+                    "    return floatval(str_replace(['%', ','], '', \$data->$property)) / 100;",
                     '}'
                 ]);
             };
@@ -159,7 +159,7 @@ function getAdwordsConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data): float {',
-                    "    return (float)\$data->$property;",
+                    "    return (float)str_replace(',', '', \$data->$property);",
                     '}'
                 ]);
             };
@@ -168,7 +168,7 @@ function getAdwordsConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data): int {',
-                    "    return (int)\$data->$property;",
+                    "    return (int)str_replace(',', '', \$data->$property);",
                     '}'
                 ]);
             };

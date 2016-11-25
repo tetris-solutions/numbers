@@ -8,7 +8,7 @@ return [
         "CrossDeviceConversions"
     ],
     "parse" => function ($data): float {
-        return (float)$data->CrossDeviceConversions;
+        return (float)str_replace(',', '', $data->CrossDeviceConversions);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

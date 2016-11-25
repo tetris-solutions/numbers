@@ -8,7 +8,7 @@ return [
         "OfflineInteractionRate"
     ],
     "parse" => function ($data): float {
-        return (float)$data->OfflineInteractionRate;
+        return (float)str_replace(',', '', $data->OfflineInteractionRate);
     },
     "inferred_from" => [
         "numofflineinteractions",

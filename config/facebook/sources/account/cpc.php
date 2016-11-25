@@ -8,6 +8,6 @@ return [
         "cpc"
     ],
     "parse" => function ($data) {
-        return floatval($data->cpc);
+        return (float)str_replace(',', '', $data->cpc);
     }
 ];

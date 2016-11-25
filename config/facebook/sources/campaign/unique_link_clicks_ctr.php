@@ -8,6 +8,6 @@ return [
         "unique_link_clicks_ctr"
     ],
     "parse" => function ($data) {
-        return (float)$data->unique_link_clicks_ctr;
+        return (float)str_replace(',', '', $data->unique_link_clicks_ctr);
     }
 ];

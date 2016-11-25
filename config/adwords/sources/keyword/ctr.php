@@ -8,7 +8,7 @@ return [
         "Ctr"
     ],
     "parse" => function ($data): float {
-        return floatval(str_replace('%', '', $data->Ctr)) / 100;
+        return floatval(str_replace(['%', ','], '', $data->Ctr)) / 100;
     },
     "inferred_from" => [
         "clicks",

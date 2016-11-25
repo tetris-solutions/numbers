@@ -8,6 +8,6 @@ return [
         "EstimatedAddCostAtFirstPositionCpc"
     ],
     "parse" => function ($data): float {
-        return (float)$data->EstimatedAddCostAtFirstPositionCpc;
+        return (float)str_replace(',', '', $data->EstimatedAddCostAtFirstPositionCpc);
     }
 ];

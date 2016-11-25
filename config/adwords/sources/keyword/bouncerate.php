@@ -8,6 +8,6 @@ return [
         "BounceRate"
     ],
     "parse" => function ($data): float {
-        return floatval(str_replace('%', '', $data->BounceRate)) / 100;
+        return floatval(str_replace(['%', ','], '', $data->BounceRate)) / 100;
     }
 ];

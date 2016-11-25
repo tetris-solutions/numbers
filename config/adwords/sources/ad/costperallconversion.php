@@ -8,7 +8,7 @@ return [
         "CostPerAllConversion"
     ],
     "parse" => function ($data): float {
-        return (float)$data->CostPerAllConversion;
+        return (float)str_replace(',', '', $data->CostPerAllConversion);
     },
     "inferred_from" => [
         "cost",

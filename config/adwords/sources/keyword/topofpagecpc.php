@@ -8,6 +8,6 @@ return [
         "TopOfPageCpc"
     ],
     "parse" => function ($data): float {
-        return (float)$data->TopOfPageCpc;
+        return (float)str_replace(',', '', $data->TopOfPageCpc);
     }
 ];

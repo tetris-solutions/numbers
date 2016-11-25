@@ -8,6 +8,6 @@ return [
         "frequency"
     ],
     "parse" => function ($data) {
-        return (float)$data->frequency;
+        return (float)str_replace(',', '', $data->frequency);
     }
 ];

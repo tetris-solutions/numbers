@@ -8,7 +8,7 @@ return [
         "AllConversionValue"
     ],
     "parse" => function ($data): float {
-        return (float)$data->AllConversionValue;
+        return (float)str_replace(',', '', $data->AllConversionValue);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

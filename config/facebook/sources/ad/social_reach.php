@@ -8,6 +8,6 @@ return [
         "social_reach"
     ],
     "parse" => function ($data) {
-        return (float)$data->social_reach;
+        return (float)str_replace(',', '', $data->social_reach);
     }
 ];

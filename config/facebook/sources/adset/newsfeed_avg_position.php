@@ -8,6 +8,6 @@ return [
         "newsfeed_avg_position"
     ],
     "parse" => function ($data) {
-        return (float)$data->newsfeed_avg_position;
+        return (float)str_replace(',', '', $data->newsfeed_avg_position);
     }
 ];

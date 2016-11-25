@@ -8,7 +8,7 @@ return [
         "ActiveViewCtr"
     ],
     "parse" => function ($data): float {
-        return (float)$data->ActiveViewCtr;
+        return (float)str_replace(',', '', $data->ActiveViewCtr);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

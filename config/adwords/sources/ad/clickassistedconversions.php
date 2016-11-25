@@ -8,7 +8,7 @@ return [
         "ClickAssistedConversions"
     ],
     "parse" => function ($data): int {
-        return (int)$data->ClickAssistedConversions;
+        return (int)str_replace(',', '', $data->ClickAssistedConversions);
     },
     "sum" => function (array $rows): float {
         return array_reduce(

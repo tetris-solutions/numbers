@@ -8,6 +8,6 @@ return [
         "cost_per_inline_link_click"
     ],
     "parse" => function ($data) {
-        return floatval($data->cost_per_inline_link_click);
+        return (float)str_replace(',', '', $data->cost_per_inline_link_click);
     }
 ];

@@ -8,6 +8,6 @@ return [
         "reach"
     ],
     "parse" => function ($data) {
-        return (float)$data->reach;
+        return (float)str_replace(',', '', $data->reach);
     }
 ];
