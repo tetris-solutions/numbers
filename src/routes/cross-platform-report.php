@@ -9,7 +9,7 @@ use Throwable;
 global $app;
 
 
-function hasPlatformPrefix(string $str, string $platform):bool
+function hasPlatformPrefix(string $str, string $platform): bool
 {
     return strpos($str, "{$platform}:") === 0;
 }
@@ -216,7 +216,10 @@ $app->post('/x',
             $resolver = new $resolverClass($query->tetrisAccountId, $account->token);
 
             try {
-                $partial = $resolver->resolve($query, $shouldAggregate);
+                $partial = $resolver->resolve($query,
+                    // don't let facebook call insights on accounts level
+                    $query->platform === 'adwords'
+                );
             } catch (Throwable $e) {
                 $exceptions[] = parseReportException($locale, $query, $e);
                 continue;
