@@ -246,14 +246,12 @@ $app->post('/x',
             }
         }
 
-        $platforms = array_column($accounts, 'platform');
-
         $notAuxiliary = function (string $dimensionId) use ($auxiliary) : bool {
             return !array_key_exists($dimensionId, $auxiliary);
         };
         $dimensions = array_filter($dimensions, $notAuxiliary);
 
-        if (in_array('adwords', $platforms) && $shouldAggregate) {
+        if ($shouldAggregate) {
             $rows = ResultParser::aggregate($rows, $dimensions, $metrics);
         }
 
