@@ -1,6 +1,9 @@
 <?php
 namespace Tetris\Numbers;
 
+use Facebook\GraphNodes\GraphEdge;
+use Facebook\GraphNodes\GraphNode;
+use FacebookAds\ApiRequest;
 use FacebookAds\Cursor;
 use FacebookAds\Object\AdsInsights;
 use stdClass;
@@ -78,40 +81,54 @@ class FacebookResolver extends Facebook implements Resolver
         $entityLower = strtolower($query->entity);
 
         if ($shouldAggregate) {
-            $className = AdAccount::class;
             $params['level'] = 'account';
             $params['filtering'] = [[
                 'field' => "{$entityLower}.id",
                 'operator' => 'IN',
                 'value' => $query->filters['id']
             ]];
-            $ids = [$query->adAccountId];
+
+            $instance = new AdAccount($query->adAccountId);
+            $results = $instance->getInsights(array_keys($requestFields), $params);
         } else {
-            $className = $classes[$entityLower];
-            $params['level'] = $entityLower;
-            $ids = $query->filters['id'];
+//            $params['filtering'] = [[
+//                'field' => "{$entityLower}.id",
+//                'operator' => 'IN',
+//                'value' => $query->filters['id']
+//            ]];
+
+            $params['fields'] = join(',', $requestFields);
+            $idChunks = array_chunk($query->filters['id'], 50);
+            $results = [];
+
+            foreach ($idChunks as $ids) {
+                $params['ids'] = join(',', $ids);
+
+                $insightsReq = $this->sendRequest('GET', "/insights", $params);
+                $edges = $insightsReq->getGraphNode()->all();
+
+                /**
+                 * @type GraphEdge $edge
+                 */
+                foreach ($edges as $id => $edge) {
+                    /**
+                     * @type GraphNode $node
+                     */
+                    foreach ($edge->asArray() as $node) {
+                        $results[] = (object)$node;
+                    }
+                }
+            }
         }
 
+        foreach ($results as $insights) {
+            $row = new stdClass();
 
-        foreach ($ids as $id) {
-            /**
-             * @var Campaign|AdAccount $instance
-             */
-            $instance = new $className($id);
-            /**
-             * @var Cursor $results
-             */
-            $results = $instance->getInsights(array_keys($requestFields), $params);
-
-            foreach ($results as $insights) {
-                $row = new stdClass();
-
-                foreach ($report->fields as $sourceField => $targetField) {
-                    $row->{$targetField} = $insights->{$sourceField};
-                }
-
-                $rows[] = $row;
+            foreach ($report->fields as $sourceField => $targetField) {
+                $row->{$targetField} = $insights->{$sourceField};
             }
+
+            $rows[] = $row;
         }
 
         return $rows;
