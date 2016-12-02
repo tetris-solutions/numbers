@@ -112,7 +112,7 @@ class FacebookResolver extends Facebook implements Resolver
                  */
                 foreach ($edges as $id => $edge) {
                     /**
-                     * @type GraphNode $node
+                     * @type array $node
                      */
                     foreach ($edge->asArray() as $node) {
                         $results[] = (object)$node;
