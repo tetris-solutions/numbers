@@ -72,12 +72,6 @@ class FacebookResolver extends Facebook implements Resolver
             }
         }
 
-        $classes = [
-            'adset' => AdSet::class,
-            'campaign' => Campaign::class,
-            'ad' => Ad::class
-        ];
-
         $entityLower = strtolower($query->entity);
 
         if ($shouldAggregate) {
@@ -89,17 +83,10 @@ class FacebookResolver extends Facebook implements Resolver
             ]];
 
             $instance = new AdAccount($query->adAccountId);
-            $results = $instance->getInsights(array_keys($requestFields), $params);
+            $rows = $instance->getInsights(array_keys($requestFields), $params);
         } else {
-//            $params['filtering'] = [[
-//                'field' => "{$entityLower}.id",
-//                'operator' => 'IN',
-//                'value' => $query->filters['id']
-//            ]];
-
             $params['fields'] = join(',', $requestFields);
             $idChunks = array_chunk($query->filters['id'], 50);
-            $results = [];
 
             foreach ($idChunks as $ids) {
                 $params['ids'] = join(',', $ids);
@@ -115,20 +102,20 @@ class FacebookResolver extends Facebook implements Resolver
                      * @type array $node
                      */
                     foreach ($edge->asArray() as $node) {
-                        $results[] = (object)$node;
+                        $rows[] = (object)$node;
                     }
                 }
             }
         }
 
-        foreach ($results as $insights) {
-            $row = new stdClass();
+        foreach ($rows as $index => $row) {
+            $translatedRow = new stdClass();
 
             foreach ($report->fields as $sourceField => $targetField) {
-                $row->{$targetField} = $insights->{$sourceField};
+                $translatedRow->{$targetField} = $row->{$sourceField};
             }
 
-            $rows[] = $row;
+            $rows[$index] = $translatedRow;
         }
 
         return $rows;
