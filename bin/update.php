@@ -2,9 +2,27 @@
 <?php
 
 namespace Tetris\Numbers;
-
-require 'includes/facebook.php';
-require 'includes/adwords.php';
+function percentSum(string $dividendMetric, string $divisorMetric): array
+{
+    return [
+        "inferred_from" => [$dividendMetric, $divisorMetric],
+        "sum" => function (string $indent) use ($dividendMetric, $divisorMetric): string {
+            return join(PHP_EOL . $indent, [
+                'function (array $rows) {',
+                '    $sumDividend = 0;',
+                '    $sumDivisor = 0;',
+                '    foreach ($rows as $row) {',
+                "        \$sumDividend += \$row->$dividendMetric;",
+                "        \$sumDivisor += \$row->$divisorMetric;",
+                '    }',
+                '    return (float)$sumDivisor !== 0.0',
+                '        ? $sumDividend / $sumDivisor',
+                '        : 0;',
+                '}'
+            ]);
+        }
+    ];
+}
 
 function prettyVarExport($var, $level = 0)
 {
@@ -87,5 +105,8 @@ function updateConfig()
         }
     }
 }
+
+require 'includes/facebook.php';
+require 'includes/adwords.php';
 
 updateConfig();

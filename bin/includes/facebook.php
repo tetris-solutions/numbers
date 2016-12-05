@@ -83,6 +83,12 @@ function getFacebookConfig(): array
         };
     };
 
+    $metricSumFn = [
+        'cpc' => percentSum('spend', 'clicks'),
+        'cpm' => percentSum('spend', 'impressions'),
+        'ctr' => percentSum('clicks', 'impressions'),
+        'frequency' => percentSum('impressions', 'reach'),
+    ];
     $simpleSumMetrics = [
         'app_store_clicks',
         'call_to_action_clicks',
@@ -229,18 +235,25 @@ function getFacebookConfig(): array
                     $metric = $output['metrics'][$attributeName];
                 }
 
-                $output['sources'][] = [
+                $source = [
                     'metric' => $attributeName,
                     'entity' => $entity,
                     'platform' => 'facebook',
                     'report' => $reportName,
                     'fields' => [$originalAttributeName],
                     'parse' => $parsers[$metric['type']]($originalAttributeName),
-                    'sum' => in_array($attributeName, $simpleSumMetrics)
-                        ? $simpleSum($attribute)
-                        : null
-
+                    'sum' => null
                 ];
+
+                if (in_array($attributeName, $simpleSumMetrics)) {
+                    $source['sum'] = $simpleSum($attribute);
+                }
+
+                if (isset($metricSumFn[$attributeName])) {
+                    $source = array_merge($source, $metricSumFn[$attributeName]);
+                }
+
+                $output['sources'][] = $source;
             }
 
             $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;

@@ -187,13 +187,14 @@ $app->post('/x',
             foreach ($query->report->metrics as $attributeId => $metric) {
                 $replacement = $accountReport['replace'][$attributeId];
 
-                /*
-                $attributeId = 'spend';
-                $replacement = [
-                    'id' => 'cost',
-                    'transform' => function () {}
-                ];
-                */
+                if (!$replacement) {
+                    $replacement = $accountReport['replace'][$attributeId] = [
+                        'id' => $attributeId,
+                        'transform' => function ($a) {
+                            return $a;
+                        }
+                    ];
+                }
 
                 $metrics[$replacement['id']] = $metric;
             }
