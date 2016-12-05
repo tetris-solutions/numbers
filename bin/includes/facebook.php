@@ -108,7 +108,11 @@ function getFacebookConfig(): array
         'unique_impressions',
         'unique_social_clicks',
         'unique_social_impressions',
-        'website_clicks'
+        'website_clicks',
+        'inline_link_clicks',
+        'inline_post_engagement',
+        'unique_inline_link_clicks',
+        'estimated_ad_recallers'
     ];
 
     $numericTypes = [
