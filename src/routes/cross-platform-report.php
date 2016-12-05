@@ -126,6 +126,9 @@ function makeAccountReportConfig(string $accountId, array $acc, array $body): ar
 
 $app->post('/x',
     secured(function (Request $request, Response $response, array $params) {
+        $identity = function ($val) {
+            return $val;
+        };
         /**
          * @var FlagsService $flags
          */
@@ -185,17 +188,14 @@ $app->post('/x',
             }
 
             foreach ($query->report->metrics as $attributeId => $metric) {
-                $replacement = $accountReport['replace'][$attributeId];
-
-                if (!$replacement) {
-                    $replacement = $accountReport['replace'][$attributeId] = [
+                if (empty($accountReport['replace'][$attributeId])) {
+                    $accountReport['replace'][$attributeId] = [
                         'id' => $attributeId,
-                        'transform' => function ($a) {
-                            return $a;
-                        }
+                        'transform' => $identity
                     ];
                 }
 
+                $replacement = $accountReport['replace'][$attributeId];
                 $metrics[$replacement['id']] = $metric;
             }
 
