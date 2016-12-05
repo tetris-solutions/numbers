@@ -9,5 +9,6 @@ return [
     ],
     "parse" => function ($data) {
         return floatval(str_replace(',', '', $data->ctr)) / 100;
-    }
+    },
+    "sum" => NULL
 ];

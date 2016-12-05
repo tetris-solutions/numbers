@@ -177,10 +177,12 @@ abstract class ResultParser
 
             foreach ($metrics as $metricId => $metric) {
                 try {
-                    $source = MetaData::getMetricSource('adwords', $metric['entity'], $metricId);
+                    $source = MetaData::getMetricSource($metric['platform'], $metric['entity'], $metricId);
                 } catch (\Throwable $e) {
                     if ($e->getCode() === 404) {
                         $source = NULL;
+                    } else {
+                        throw $e;
                     }
                 }
 

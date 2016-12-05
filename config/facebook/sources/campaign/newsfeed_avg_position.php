@@ -9,5 +9,6 @@ return [
     ],
     "parse" => function ($data) {
         return (float)str_replace(',', '', $data->newsfeed_avg_position);
-    }
+    },
+    "sum" => NULL
 ];

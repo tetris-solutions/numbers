@@ -67,10 +67,49 @@ function getFacebookConfig(): array
         }
     ];
 
+    $simpleSum = function (array $metric) {
+        return function (string $indent) use ($metric): string {
+            return join(PHP_EOL . $indent, [
+                'function (array $rows): float {',
+                '    return array_reduce(',
+                '        $rows,',
+                '        function (float $carry, \stdClass $row): float {',
+                "            return \$carry + \$row->{$metric['id']};",
+                '        },',
+                '        0.0',
+                '    );',
+                '}'
+            ]);
+        };
+    };
+
+    $simpleSumMetrics = [
+        'app_store_clicks',
+        'call_to_action_clicks',
+        'clicks',
+        'deeplink_clicks',
+        'impressions',
+        'newsfeed_clicks',
+        'newsfeed_impressions',
+        'social_clicks',
+        'social_impressions',
+        'social_spend',
+        'spend',
+        'total_actions',
+        'total_action_value',
+        'total_unique_actions',
+        'unique_clicks',
+        'unique_impressions',
+        'unique_social_clicks',
+        'unique_social_impressions',
+        'website_clicks'
+    ];
+
     $numericTypes = [
         'percentage',
         'float'
     ];
+
     $validTypes = [
         'numeric string',
         'string',
@@ -196,7 +235,11 @@ function getFacebookConfig(): array
                     'platform' => 'facebook',
                     'report' => $reportName,
                     'fields' => [$originalAttributeName],
-                    'parse' => $parsers[$metric['type']]($originalAttributeName)
+                    'parse' => $parsers[$metric['type']]($originalAttributeName),
+                    'sum' => in_array($attributeName, $simpleSumMetrics)
+                        ? $simpleSum($attribute)
+                        : null
+
                 ];
             }
 
@@ -207,19 +250,22 @@ function getFacebookConfig(): array
             'video_10_sec_watched_actions',
             'video_15_sec_watched_actions',
             'video_30_sec_watched_actions',
-            'video_avg_time_watched_actions',
-            'video_avg_pct_watched_actions',
             'video_complete_watched_actions',
-            'video_avg_percent_watched_actions',
-            'video_avg_sec_watched_actions',
             'video_p25_watched_actions',
             'video_p50_watched_actions',
             'video_p75_watched_actions',
             'video_p95_watched_actions',
-            'video_p100_watched_actions'
+            'video_p100_watched_actions',
+
+            'video_avg_time_watched_actions',
+            'video_avg_pct_watched_actions',
+            'video_avg_percent_watched_actions',
+            'video_avg_sec_watched_actions',
         ];
 
         foreach ($composedVideoMetrics as $videoMetricName) {
+            $isAverage = strpos($videoMetricName, '_avg_') !== FALSE;
+
             $attribute = [
                 'id' => $videoMetricName,
                 'property' => $videoMetricName,
@@ -242,7 +288,8 @@ function getFacebookConfig(): array
                 'platform' => 'facebook',
                 'report' => $reportName,
                 'fields' => [$videoMetricName],
-                'parse' => $parseVideoPercentAction($videoMetricName)
+                'parse' => $parseVideoPercentAction($videoMetricName),
+                'sum' => $isAverage ? null : $simpleSum($attribute)
             ];
 
             $output['reports'][$reportName]['attributes'][$videoMetricName] = $attribute;
@@ -271,7 +318,8 @@ function getFacebookConfig(): array
                 'platform' => 'facebook',
                 'report' => $reportName,
                 'fields' => ['actions'],
-                'parse' => $parseActionType($actionType)
+                'parse' => $parseActionType($actionType),
+                'sum' => $simpleSum($attribute)
             ];
 
             $output['reports'][$reportName]['attributes'][$actionType] = $attribute;

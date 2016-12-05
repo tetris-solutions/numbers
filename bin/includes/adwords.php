@@ -129,7 +129,7 @@ function getAdwordsConfig(): array
         'cost'
     ];
 
-    $getSourceAggregator = function (array $metric) {
+    $simpleSum = function (array $metric) {
         return function (string $indent) use ($metric): string {
             return join(PHP_EOL . $indent, [
                 'function (array $rows): float {',
@@ -305,7 +305,7 @@ function getAdwordsConfig(): array
                 if (isset($inferredMetricSum[$attributeName])) {
                     $sourceConfig = array_merge($sourceConfig, $inferredMetricSum[$attributeName]);
                 } else if ($canUseSimpleSum) {
-                    $sourceConfig['sum'] = $getSourceAggregator($metric);
+                    $sourceConfig['sum'] = $simpleSum($metric);
                 }
 
                 $output['sources'][] = $sourceConfig;

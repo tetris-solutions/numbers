@@ -14,5 +14,14 @@ return [
             }
         }
         return NULL;
+    },
+    "sum" => function (array $rows): float {
+        return array_reduce(
+            $rows,
+            function (float $carry, \stdClass $row): float {
+                return $carry + $row->onsite_conversion.messaging_reply;
+            },
+            0.0
+        );
     }
 ];

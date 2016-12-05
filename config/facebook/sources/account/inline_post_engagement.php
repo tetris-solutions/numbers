@@ -9,5 +9,6 @@ return [
     ],
     "parse" => function ($data) {
         return (float)str_replace(',', '', $data->inline_post_engagement);
-    }
+    },
+    "sum" => NULL
 ];

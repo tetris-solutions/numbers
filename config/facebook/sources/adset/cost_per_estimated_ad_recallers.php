@@ -9,5 +9,6 @@ return [
     ],
     "parse" => function ($data) {
         return (float)str_replace(',', '', $data->cost_per_estimated_ad_recallers);
-    }
+    },
+    "sum" => NULL
 ];

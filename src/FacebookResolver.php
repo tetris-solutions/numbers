@@ -72,38 +72,24 @@ class FacebookResolver extends Facebook implements Resolver
             }
         }
 
-        $entityLower = strtolower($query->entity);
+        $params['fields'] = join(',', $requestFields);
+        $idChunks = array_chunk($query->filters['id'], 50);
 
-        if ($shouldAggregate) {
-            $params['level'] = 'account';
-            $params['filtering'] = [[
-                'field' => "{$entityLower}.id",
-                'operator' => 'IN',
-                'value' => $query->filters['id']
-            ]];
+        foreach ($idChunks as $ids) {
+            $params['ids'] = join(',', $ids);
 
-            $instance = new AdAccount($query->adAccountId);
-            $rows = $instance->getInsights(array_keys($requestFields), $params);
-        } else {
-            $params['fields'] = join(',', $requestFields);
-            $idChunks = array_chunk($query->filters['id'], 50);
+            $insightsReq = $this->sendRequest('GET', "/insights", $params);
+            $edges = $insightsReq->getGraphNode()->all();
 
-            foreach ($idChunks as $ids) {
-                $params['ids'] = join(',', $ids);
-
-                $insightsReq = $this->sendRequest('GET', "/insights", $params);
-                $edges = $insightsReq->getGraphNode()->all();
-
+            /**
+             * @type GraphEdge $edge
+             */
+            foreach ($edges as $id => $edge) {
                 /**
-                 * @type GraphEdge $edge
+                 * @type array $node
                  */
-                foreach ($edges as $id => $edge) {
-                    /**
-                     * @type array $node
-                     */
-                    foreach ($edge->asArray() as $node) {
-                        $rows[] = (object)$node;
-                    }
+                foreach ($edge->asArray() as $node) {
+                    $rows[] = (object)$node;
                 }
             }
         }

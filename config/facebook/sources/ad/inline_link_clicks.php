@@ -9,5 +9,6 @@ return [
     ],
     "parse" => function ($data) {
         return (float)str_replace(',', '', $data->inline_link_clicks);
-    }
+    },
+    "sum" => NULL
 ];

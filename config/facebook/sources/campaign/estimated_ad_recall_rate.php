@@ -9,5 +9,6 @@ return [
     ],
     "parse" => function ($data) {
         return (float)str_replace(',', '', $data->estimated_ad_recall_rate);
-    }
+    },
+    "sum" => NULL
 ];
