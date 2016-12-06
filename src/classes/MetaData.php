@@ -65,7 +65,7 @@ abstract class MetaData
 
     static function getFieldName(string $locale, string $platform, string $field): string
     {
-        $path = __DIR__ . "/locales/{$locale}/fields.php";
+        $path = __DIR__ . "/../locales/{$locale}/fields.php";
 
         if (!isset(self::$names[$locale][$platform]) && file_exists($path)) {
             self::$names[$locale] = self::requireCached($path);
@@ -85,7 +85,7 @@ abstract class MetaData
     static function getSources(string $platform, string $entity): array
     {
         if (!isset(self::$sources[$platform][$entity])) {
-            $path = __DIR__ . "/../config/{$platform}/sources/" . strtolower($entity);
+            $path = __DIR__ . "/../../config/{$platform}/sources/" . strtolower($entity);
 
             self::$sources[$platform][$entity] = self::readDirFiles($path);
         }
@@ -96,21 +96,21 @@ abstract class MetaData
     static function getMetricSource(string $platform, string $entity, string $metric): array
     {
         return self::requireCached(
-            __DIR__ . "/../config/{$platform}/sources/" . strtolower($entity) . "/{$metric}.php"
+            __DIR__ . "/../../config/{$platform}/sources/" . strtolower($entity) . "/{$metric}.php"
         );
     }
 
     private static function getArtificialDimensions()
     {
         return self::requireCached(
-            __DIR__ . "/../src/artificial/dimensions.php"
+            __DIR__ . "/../../src/artificial/dimensions.php"
         );
     }
 
     static function getReport(string $platform, string $reportName): array
     {
         if (!isset(self::$reports[$platform][$reportName])) {
-            $path = __DIR__ . "/../config/{$platform}/reports/{$reportName}";
+            $path = __DIR__ . "/../../config/{$platform}/reports/{$reportName}";
 
             $attributes = array_merge(
                 self::readDirFiles($path),
@@ -136,7 +136,7 @@ abstract class MetaData
     static function getMetric(string $id): array
     {
         if (!isset(self::$metrics[$id])) {
-            $path = __DIR__ . "/../config/metrics/{$id}.php";
+            $path = __DIR__ . "/../../config/metrics/{$id}.php";
 
             self::$metrics[$id] = self::requireCached($path);
         }
@@ -219,7 +219,7 @@ abstract class MetaData
 
     private static function getReplaceMap()
     {
-        return self::requireCached(__DIR__ . '/artificial/merges.php');
+        return self::requireCached(__DIR__ . '/../artificial/attribute-merges.php');
     }
 
     static function getReplacementFor(string $attribute, string $platform): array

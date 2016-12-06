@@ -6,15 +6,15 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Throwable;
 
-require 'TKMApi.php';
 require 'constants.php';
-require 'Report.php';
-require 'Query.php';
-require 'Resolver.php';
-require 'ResultParser.php';
-require 'FacebookResolver.php';
-require 'AdwordsResolver.php';
-require 'MetaData.php';
+require 'classes/TKMApi.php';
+require 'classes/Report.php';
+require 'classes/Query.php';
+require 'classes/Resolver.php';
+require 'classes/ResultParser.php';
+require 'classes/FacebookResolver.php';
+require 'classes/AdwordsResolver.php';
+require 'classes/MetaData.php';
 require_once 'logger.php';
 
 global $app;

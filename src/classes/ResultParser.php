@@ -186,6 +186,8 @@ abstract class ResultParser
                     }
                 }
 
+                // @todo atualmente a soma funciona no modo cross-platform não funciona pra métricas mergidas no sentido adwords -> facebook, como 'averagecpc' -> 'cpc'
+
                 if (isset($source['sum'])) {
                     $val = $source['sum']($groupOfRows);
                     $row->{$metricId} = $val;
