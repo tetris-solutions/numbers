@@ -18,7 +18,7 @@ return [
     "sum" => function (array $rows): float {
         return array_reduce(
             $rows,
-            function (float $carry, \stdClass $row): float {
+            function (float $carry, $row): float {
                 return $carry + $row->offsite_conversion.key_page_view;
             },
             0.0

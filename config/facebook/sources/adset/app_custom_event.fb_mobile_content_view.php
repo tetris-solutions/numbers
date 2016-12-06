@@ -18,7 +18,7 @@ return [
     "sum" => function (array $rows): float {
         return array_reduce(
             $rows,
-            function (float $carry, \stdClass $row): float {
+            function (float $carry, $row): float {
                 return $carry + $row->app_custom_event.fb_mobile_content_view;
             },
             0.0
