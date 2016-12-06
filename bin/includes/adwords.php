@@ -113,7 +113,7 @@ function getAdwordsConfig(): array
                 'function (array $rows): float {',
                 '    return array_reduce(',
                 '        $rows,',
-                '        function (float $carry, \stdClass $row): float {',
+                '        function (float $carry, $row): float {',
                 "            return \$carry + \$row->{$metric['id']};",
                 '        },',
                 '        0.0',
