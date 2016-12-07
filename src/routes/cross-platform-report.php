@@ -264,7 +264,7 @@ class XQuery extends QueryBlueprint
 class RowFacade
 {
     private $finder;
-    public $__source;
+    public $__source__;
 
     function __construct(callable $findAttribute, \stdClass $source)
     {
