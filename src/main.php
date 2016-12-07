@@ -9,6 +9,7 @@ use Throwable;
 require 'constants.php';
 require 'classes/TKMApi.php';
 require 'classes/QueryBlueprint.php';
+require 'classes/CrossPlatformReport.php';
 require 'classes/Report.php';
 require 'classes/Query.php';
 require 'classes/Resolver.php';
