@@ -14,7 +14,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->total_unique_actions;
+                return $carry + $row->{'total_unique_actions'};
             },
             0.0
         );

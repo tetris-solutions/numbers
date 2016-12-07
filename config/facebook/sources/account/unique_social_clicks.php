@@ -14,7 +14,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->unique_social_clicks;
+                return $carry + $row->{'unique_social_clicks'};
             },
             0.0
         );

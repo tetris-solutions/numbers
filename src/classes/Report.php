@@ -23,13 +23,13 @@ class Report
         $this->auxiliary = [];
     }
 
-    function addFilter(string $name, $values)
+    function addFilter(string $attributeId, $values)
     {
-        if (empty($this->attributes[$name])) {
+        if (empty($this->attributes[$attributeId])) {
             return null;
         }
 
-        $attribute = $this->attributes[$name];
+        $attribute = $this->attributes[$attributeId];
         $property = $attribute['property'];
 
         if (isset($this->filters[$property])) {
@@ -37,7 +37,7 @@ class Report
         }
 
         $attribute['values'] = $values;
-        $this->filters[$property] = $attribute;
+        $this->filters[$attributeId] = $attribute;
 
         return $attribute;
     }

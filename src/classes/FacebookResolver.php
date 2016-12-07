@@ -49,7 +49,6 @@ class FacebookResolver extends Facebook implements Resolver
     function resolve(Query $query, bool $shouldAggregate): array
     {
         $report = $query->report;
-
         $rows = [];
         $requestFields = $report->fields;
         $params = [
@@ -78,8 +77,8 @@ class FacebookResolver extends Facebook implements Resolver
         foreach ($idChunks as $ids) {
             $params['ids'] = join(',', $ids);
 
-            $insightsReq = $this->sendRequest('GET', "/insights", $params);
-            $edges = $insightsReq->getGraphNode()->all();
+            $edges = $this->sendRequest('GET', "/insights", $params)
+                ->getGraphNode()->all();
 
             /**
              * @type GraphEdge $edge
@@ -89,6 +88,7 @@ class FacebookResolver extends Facebook implements Resolver
                  * @type array $node
                  */
                 foreach ($edge->asArray() as $node) {
+                    $node['__source__'] = $node;
                     $rows[] = (object)$node;
                 }
             }
@@ -98,7 +98,9 @@ class FacebookResolver extends Facebook implements Resolver
             $translatedRow = new stdClass();
 
             foreach ($report->fields as $sourceField => $targetField) {
-                $translatedRow->{$targetField} = $row->{$sourceField};
+                $translatedRow->{$targetField} = isset($row->{$sourceField})
+                    ? $row->{$sourceField}
+                    : null;
             }
 
             $rows[$index] = $translatedRow;

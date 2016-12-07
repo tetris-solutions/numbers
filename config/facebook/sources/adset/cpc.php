@@ -14,8 +14,8 @@ return [
         $sumDividend = 0;
         $sumDivisor = 0;
         foreach ($rows as $row) {
-            $sumDividend += $row->spend;
-            $sumDivisor += $row->clicks;
+            $sumDividend += $row->{'spend'};
+            $sumDivisor += $row->{'clicks'};
         }
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor

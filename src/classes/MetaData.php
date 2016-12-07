@@ -222,7 +222,7 @@ abstract class MetaData
         return self::requireCached(__DIR__ . '/../artificial/attribute-merges.php');
     }
 
-    static function getReplacementFor(string $attribute, string $platform): array
+    static function getAttributeMerge(string $attribute, string $platform): array
     {
         $map = self::getReplaceMap();
 
@@ -245,7 +245,7 @@ abstract class MetaData
         }
     }
 
-    static function getOriginalFor(string $attribute, string $platform): array
+    static function getPlatformSpecificAttribute(string $attribute, string $platform): array
     {
         $identity = function ($val) {
             return $val;

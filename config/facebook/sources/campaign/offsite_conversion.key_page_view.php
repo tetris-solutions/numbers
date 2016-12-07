@@ -8,6 +8,8 @@ return [
         "actions"
     ],
     "parse" => function ($data) {
+        if (empty($data->actions)) return NULL;
+    
         foreach ($data->actions as $action) {
             if ($action['action_type'] === 'offsite_conversion.key_page_view') {
                 return (float)str_replace(',', '', $action['value']);
@@ -19,7 +21,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->offsite_conversion.key_page_view;
+                return $carry + $row->{'offsite_conversion.key_page_view'};
             },
             0.0
         );

@@ -8,7 +8,7 @@ return [
         "video_complete_watched_actions"
     ],
     "parse" => function ($data) {
-        foreach ($data->video_complete_watched_actions as $action) {
+        foreach ($data->{'video_complete_watched_actions'} as $action) {
             if ($action['action_type'] === 'video_view') {
                 return (float)str_replace(',', '', $action['value']);
             }
@@ -19,7 +19,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->video_complete_watched_actions;
+                return $carry + $row->{'video_complete_watched_actions'};
             },
             0.0
         );

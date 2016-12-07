@@ -14,7 +14,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->unique_inline_link_clicks;
+                return $carry + $row->{'unique_inline_link_clicks'};
             },
             0.0
         );

@@ -4,10 +4,10 @@ namespace Tetris\Numbers;
 
 use DateTime;
 
-class Query
+class Query extends QueryBlueprint
 {
     const BAD_REQUEST_CODE = 422;
-    static private $requiredParameters = [
+    private static $requiredParameters = [
         'ad_account',
         'tetris_account',
         'entity',
@@ -19,51 +19,6 @@ class Query
      * @var Report
      */
     public $report;
-    /**
-     * @var string
-     */
-    private $locale;
-    /**
-     * @var string $tetrisAccountId
-     */
-    public $tetrisAccountId;
-
-    /**
-     * @var array $dimensions
-     */
-    public $dimensions;
-
-    /**
-     * @var string $entity
-     */
-    public $entity;
-
-    /**
-     * @var array $filters
-     */
-    public $filters;
-    /**
-     * ad account
-     * @var string $adAccountId
-     */
-    public $adAccountId;
-    /**
-     * @var array $metrics
-     */
-    public $metrics;
-    /**
-     * @var DateTime $since
-     */
-    public $since;
-    /**
-     * @var DateTime $until
-     */
-    public $until;
-
-    /**
-     * @var string $platform
-     */
-    public $platform;
 
     private static function validateQuery(array $query)
     {
@@ -108,7 +63,8 @@ class Query
             'entity' => $this->entity,
             'platform' => $this->platform,
             'fields' => $source['fields'],
-            'report' => $source['report']
+            'report' => $source['report'],
+            'sum' => $source['sum']
         ];
     }
 

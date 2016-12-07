@@ -14,7 +14,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->inline_post_engagement;
+                return $carry + $row->{'inline_post_engagement'};
             },
             0.0
         );

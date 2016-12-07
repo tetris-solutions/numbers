@@ -9,6 +9,8 @@ use stdClass;
 
 class TKMApi extends ApiService
 {
+    private $accountCache = [];
+
     public function listAccounts(string $company, $platform = null): array
     {
         $uri = getenv('TKM_URL') . '/company/' . $company . '/accounts';
@@ -23,15 +25,19 @@ class TKMApi extends ApiService
         return $this->parseArrayBody($this->parseResponse($response));
     }
 
-    public function getAccount(string $account): stdClass
+    public function getAccount(string $accountId): stdClass
     {
-        $uri = getenv('TKM_URL') . '/account/' . $account;
+        if (empty($this->accountCache[$accountId])) {
+            $uri = getenv('TKM_URL') . '/account/' . $accountId;
 
-        $response = $this->createRequest()
-            ->method(Http::GET)
-            ->uri($uri)
-            ->send();
+            $response = $this->createRequest()
+                ->method(Http::GET)
+                ->uri($uri)
+                ->send();
 
-        return $this->parseObjectBody($this->parseResponse($response));
+            $this->accountCache[$accountId] = $this->parseObjectBody($this->parseResponse($response));
+        }
+
+        return $this->accountCache[$accountId];
     }
 }

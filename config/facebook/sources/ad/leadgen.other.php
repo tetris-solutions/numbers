@@ -8,6 +8,8 @@ return [
         "actions"
     ],
     "parse" => function ($data) {
+        if (empty($data->actions)) return NULL;
+    
         foreach ($data->actions as $action) {
             if ($action['action_type'] === 'leadgen.other') {
                 return (float)str_replace(',', '', $action['value']);
@@ -19,7 +21,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->leadgen.other;
+                return $carry + $row->{'leadgen.other'};
             },
             0.0
         );

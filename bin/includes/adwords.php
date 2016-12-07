@@ -51,6 +51,27 @@ function getAdwordsConfig(): array
 {
     $mappings = json_decode(file_get_contents(__DIR__ . '/../../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
 
+    $percentSum = function (string $dividendMetric, string $divisorMetric): array {
+        return [
+            "inferred_from" => [$dividendMetric, $divisorMetric],
+            "sum" => function (string $indent) use ($dividendMetric, $divisorMetric): string {
+                return join(PHP_EOL . $indent, [
+                    'function (array $rows) {',
+                    '    $sumDividend = 0;',
+                    '    $sumDivisor = 0;',
+                    '    foreach ($rows as $row) {',
+                    "        \$sumDividend += \$row->$dividendMetric;",
+                    "        \$sumDivisor += \$row->$divisorMetric;",
+                    '    }',
+                    '    return (float)$sumDivisor !== 0.0',
+                    '        ? $sumDividend / $sumDivisor',
+                    '        : 0;',
+                    '}'
+                ]);
+            }
+        ];
+    };
+
     $overrideType = [
         'averagecpv' => 'currency'
     ];
@@ -78,25 +99,25 @@ function getAdwordsConfig(): array
     ];
 
     $inferredMetricSum = [
-        'allconversionrate' => percentSum('allconversions', 'clicks'),
-        'averagecost' => percentSum('cost', 'interactions'),
-        'averagecpc' => percentSum('cost', 'clicks'),
-        'averagecpe' => percentSum('cost', 'engagements'),
-        'averagecpm' => percentSum('cost', 'impressions'),
-        'averagecpv' => percentSum('cost', 'videoviews'),
-        'averagefrequency' => percentSum('impressions', 'impressionreach'),
+        'allconversionrate' => $percentSum('allconversions', 'clicks'),
+        'averagecost' => $percentSum('cost', 'interactions'),
+        'averagecpc' => $percentSum('cost', 'clicks'),
+        'averagecpe' => $percentSum('cost', 'engagements'),
+        'averagecpm' => $percentSum('cost', 'impressions'),
+        'averagecpv' => $percentSum('cost', 'videoviews'),
+        'averagefrequency' => $percentSum('impressions', 'impressionreach'),
         'averageposition' => altWeightedAverage('averageposition', 'impressions'),
-        'conversionrate' => percentSum('conversions', 'clicks'),
-        'costperallconversion' => percentSum('cost', 'allconversions'),
-        'costperconversion' => percentSum('cost', 'conversions'),
-        'ctr' => percentSum('clicks', 'impressions'),
-        'engagementrate' => percentSum('engagements', 'impressions'),
-        'interactionrate' => percentSum('interactions', 'impressions'),
-        'invalidclickrate' => percentSum('invalidclicks', 'clicks'),
-        'offlineinteractionrate' => percentSum('numofflineinteractions', 'numofflineimpressions'),
-        'valueperallconversion' => percentSum('allconversionvalue', 'allconversions'),
-        'valueperconversion' => percentSum('conversionvalue', 'conversions'),
-        'videoviewrate' => percentSum('videoviews', 'impressions'),
+        'conversionrate' => $percentSum('conversions', 'clicks'),
+        'costperallconversion' => $percentSum('cost', 'allconversions'),
+        'costperconversion' => $percentSum('cost', 'conversions'),
+        'ctr' => $percentSum('clicks', 'impressions'),
+        'engagementrate' => $percentSum('engagements', 'impressions'),
+        'interactionrate' => $percentSum('interactions', 'impressions'),
+        'invalidclickrate' => $percentSum('invalidclicks', 'clicks'),
+        'offlineinteractionrate' => $percentSum('numofflineinteractions', 'numofflineimpressions'),
+        'valueperallconversion' => $percentSum('allconversionvalue', 'allconversions'),
+        'valueperconversion' => $percentSum('conversionvalue', 'conversions'),
+        'videoviewrate' => $percentSum('videoviews', 'impressions'),
         'videoquartile25rate' => videoQuartileSum(25),
         'videoquartile50rate' => videoQuartileSum(50),
         'videoquartile75rate' => videoQuartileSum(75),

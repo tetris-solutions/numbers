@@ -14,7 +14,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->newsfeed_clicks;
+                return $carry + $row->{'newsfeed_clicks'};
             },
             0.0
         );

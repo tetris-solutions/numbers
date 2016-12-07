@@ -14,7 +14,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->social_impressions;
+                return $carry + $row->{'social_impressions'};
             },
             0.0
         );

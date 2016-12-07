@@ -14,7 +14,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->call_to_action_clicks;
+                return $carry + $row->{'call_to_action_clicks'};
             },
             0.0
         );

@@ -16,6 +16,27 @@ function getFacebookConfig(): array
         'date_start' => 'date'
     ];
 
+    $percentSum = function (string $dividendMetric, string $divisorMetric): array {
+        return [
+            "inferred_from" => [$dividendMetric, $divisorMetric],
+            "sum" => function (string $indent) use ($dividendMetric, $divisorMetric): string {
+                return join(PHP_EOL . $indent, [
+                    'function (array $rows) {',
+                    '    $sumDividend = 0;',
+                    '    $sumDivisor = 0;',
+                    '    foreach ($rows as $row) {',
+                    "        \$sumDividend += \$row->{'{$dividendMetric}'};",
+                    "        \$sumDivisor += \$row->{'{$divisorMetric}'};",
+                    '    }',
+                    '    return (float)$sumDivisor !== 0.0',
+                    '        ? $sumDividend / $sumDivisor',
+                    '        : 0;',
+                    '}'
+                ]);
+            }
+        ];
+    };
+
     $overrideType = [
         'impressions' => 'numeric string',
         'ctr' => 'percentage'
@@ -60,7 +81,7 @@ function getFacebookConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
-                    "    return \$data->{$property};",
+                    "    return \$data->{'{$property}'};",
                     '}'
                 ]);
             };
@@ -74,7 +95,7 @@ function getFacebookConfig(): array
                 '    return array_reduce(',
                 '        $rows,',
                 '        function (float $carry, $row): float {',
-                "            return \$carry + \$row->{$metric['id']};",
+                "            return \$carry + \$row->{'{$metric['id']}'};",
                 '        },',
                 '        0.0',
                 '    );',
@@ -84,10 +105,10 @@ function getFacebookConfig(): array
     };
 
     $metricSumFn = [
-        'cpc' => percentSum('spend', 'clicks'),
-        'cpm' => percentSum('spend', 'impressions'),
-        'ctr' => percentSum('clicks', 'impressions'),
-        'frequency' => percentSum('impressions', 'reach'),
+        'cpc' => $percentSum('spend', 'clicks'),
+        'cpm' => $percentSum('spend', 'impressions'),
+        'ctr' => $percentSum('clicks', 'impressions'),
+        'frequency' => $percentSum('impressions', 'reach'),
     ];
     $simpleSumMetrics = [
         'app_store_clicks',
@@ -130,6 +151,8 @@ function getFacebookConfig(): array
         return function (string $indent) use ($type): string {
             $lines = [
                 'function ($data) {',
+                '    if (empty($data->actions)) return NULL;',
+                '',
                 '    foreach ($data->actions as $action) {',
                 "        if (\$action['action_type'] === '{$type}') {",
                 "            return (float)str_replace(',', '', \$action['value']);",
@@ -147,7 +170,7 @@ function getFacebookConfig(): array
         return function (string $indent) use ($field): string {
             $lines = [
                 'function ($data) {',
-                "    foreach (\$data->{$field} as \$action) {",
+                "    foreach (\$data->{'{$field}'} as \$action) {",
                 "        if (\$action['action_type'] === 'video_view') {",
                 "            return (float)str_replace(',', '', \$action['value']);",
                 '        }',

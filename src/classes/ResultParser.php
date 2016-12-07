@@ -8,7 +8,7 @@ use Tetris\Services\FlagsService;
 
 abstract class ResultParser
 {
-    static function filter(array $allRows, array $filters, array $auxiliaryProperties): array
+    static function filter(array $allRows, array $filters): array
     {
         $matchingRows = [];
 
@@ -16,7 +16,9 @@ abstract class ResultParser
             foreach ($filters as $filter) {
                 $field = $filter['id'];
 
-                if ($field === 'id') continue;
+                if ($field === 'id') {
+                    continue; // platform level filter
+                }
 
                 $operator = $filter['values'][0];
 
@@ -25,7 +27,7 @@ abstract class ResultParser
                     ? $filter['values'][2]
                     : NULL;
 
-                if (!property_exists($row, $field)) continue;
+                if (!isset($row->{$field})) continue;
 
                 $rowValue = $row->{$field};
 
@@ -58,10 +60,6 @@ abstract class ResultParser
                 if ($operator === 'contains' && stripos($rowValue, $A) === FALSE) {
                     continue 2;
                 }
-            }
-
-            foreach ($auxiliaryProperties as $property) {
-                unset($row->{$property});
             }
 
             $matchingRows[] = $row;
@@ -143,7 +141,7 @@ abstract class ResultParser
         $groupedByKey = [];
         $result = [];
 
-        $getKeyForGrouping = function (stdClass $row) use ($dimensionIds): string {
+        $getKeyForGrouping = function ($row) use ($dimensionIds): string {
             $dimensionValues = array_map(function ($dimension) use ($row) {
                 return isset($row->{$dimension}) ? $row->{$dimension} : NULL;
             }, $dimensionIds);
@@ -176,20 +174,8 @@ abstract class ResultParser
             }
 
             foreach ($metrics as $metricId => $metric) {
-                try {
-                    $source = MetaData::getMetricSource($metric['platform'], $metric['entity'], $metricId);
-                } catch (\Throwable $e) {
-                    if ($e->getCode() === 404) {
-                        $source = NULL;
-                    } else {
-                        throw $e;
-                    }
-                }
-
-                // @todo atualmente a soma funciona no modo cross-platform não funciona pra métricas mergidas no sentido adwords -> facebook, como 'averagecpc' -> 'cpc'
-
-                if (isset($source['sum'])) {
-                    $val = $source['sum']($groupOfRows);
+                if (isset($metric['sum'])) {
+                    $val = $metric['sum']($groupOfRows);
                     $row->{$metricId} = $val;
                 } else {
                     $row->{$metricId} = NULL;

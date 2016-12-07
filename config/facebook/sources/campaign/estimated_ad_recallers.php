@@ -14,7 +14,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->estimated_ad_recallers;
+                return $carry + $row->{'estimated_ad_recallers'};
             },
             0.0
         );

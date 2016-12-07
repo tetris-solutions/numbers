@@ -8,6 +8,8 @@ return [
         "actions"
     ],
     "parse" => function ($data) {
+        if (empty($data->actions)) return NULL;
+    
         foreach ($data->actions as $action) {
             if ($action['action_type'] === 'gift_sale') {
                 return (float)str_replace(',', '', $action['value']);
@@ -19,7 +21,7 @@ return [
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->gift_sale;
+                return $carry + $row->{'gift_sale'};
             },
             0.0
         );

@@ -19,7 +19,7 @@ $crossMetaRouteHandler = secured(function (Request $req, Response $res, array $p
         $output = [];
 
         foreach ($input as $id => $config) {
-            $replacement = MetaData::getReplacementFor($id, $platform);
+            $replacement = MetaData::getAttributeMerge($id, $platform);
             $alternateId = $replacement['id'];
 
             $config['id'] = $alternateId;
