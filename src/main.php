@@ -41,11 +41,11 @@ function secured(\Closure $routeHandler) : callable
             $logger->warning('Report request failed', [
                 'category' => 'event',
                 'event' => 'report-failure',
-                'request' => [
+                'numbers_request' => [
                     'body' => $request->getParsedBody(),
                     'url' => $request->getUri()->getPath()
                 ],
-                'error' => [
+                'report_error' => [
                     'code' => $e->getCode(),
                     'message' => $e->getMessage(),
                     'stack' => $e->getTraceAsString()
