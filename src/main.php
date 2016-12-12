@@ -37,19 +37,20 @@ function secured(\Closure $routeHandler): callable
             return $routeHandler($request, $response, $params);
         } catch (Throwable $e) {
             global $logger;
+            $timestamp = date('YmdHis');
 
             $logger->warning('Report request failed', [
                 'category' => 'event',
                 'event' => 'report-failure',
-                'request_' . time() => [
+                "numbers_query_{$timestamp}" => json_encode([
                     'body' => $request->getParsedBody(),
                     'url' => $request->getUri()->getPath()
-                ],
-                'error_' . time() => [
+                ], JSON_PRETTY_PRINT),
+                "numbers_exception_{$timestamp}" => json_encode([
                     'code' => $e->getCode(),
                     'message' => $e->getMessage(),
                     'stack' => $e->getTraceAsString()
-                ]
+                ], JSON_PRETTY_PRINT)
             ]);
 
             throw $e;
