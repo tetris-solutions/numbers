@@ -29,7 +29,7 @@ function uniq(array $s): array
     return array_values(array_unique($s));
 }
 
-function secured(\Closure $routeHandler) : callable
+function secured(\Closure $routeHandler): callable
 {
     return function (Request $request, Response $response, array $params) use ($routeHandler): Response {
         try {
@@ -41,11 +41,11 @@ function secured(\Closure $routeHandler) : callable
             $logger->warning('Report request failed', [
                 'category' => 'event',
                 'event' => 'report-failure',
-                'numbers_request' => [
+                'request_' . time() => [
                     'body' => $request->getParsedBody(),
                     'url' => $request->getUri()->getPath()
                 ],
-                'report_error' => [
+                'error_' . time() => [
                     'code' => $e->getCode(),
                     'message' => $e->getMessage(),
                     'stack' => $e->getTraceAsString()
