@@ -195,7 +195,8 @@ function getAdwordsConfig(): array
         'AD_PERFORMANCE_REPORT' => 'Ad',
         'CAMPAIGN_PERFORMANCE_REPORT' => 'Campaign',
         'KEYWORDS_PERFORMANCE_REPORT' => 'Keyword',
-        'AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT' => 'Placement'
+        'AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT' => 'Placement',
+        'SEARCH_QUERY_PERFORMANCE_REPORT' => 'Search'
     ];
 
     foreach ($mappings as $reportName => $fields) {
@@ -212,26 +213,30 @@ function getAdwordsConfig(): array
         foreach ($fields as $originalAttributeName => $field) {
             if (in_array($originalAttributeName, $excludedFields)) continue;
 
-            if ($entity === 'Placement' && $originalAttributeName === 'CampaignId') {
-                $attributeName = 'id';
-            } else {
-                // name looks like <Campaign>FieldName
-                $nameStartsWithEntity = strpos($originalAttributeName, $entity) === 0 &&
-                    !($entity === 'Ad' && (
-                            strpos($originalAttributeName, 'AdGroup') === 0 ||
-                            strpos($originalAttributeName, 'AdNetwork') === 0 ||
-                            strpos($originalAttributeName, 'Advertiser') === 0 ||
-                            strpos($originalAttributeName, 'Advertising') === 0));
+            $entityPrefix = $entity;
 
-                $attributeName = strtolower($originalAttributeName);
+            if ($entity === 'Placement') {
+                $entityPrefix = 'Campaign';
+            } else if ($entity === 'Search') {
+                $entityPrefix = 'AdGroup';
+            }
 
-                if (empty($attributeName)) {
-                    throw new \Exception($originalAttributeName . ' === {' . $attributeName . '}');
-                }
+            // name looks like <Campaign>FieldName
+            $nameStartsWithEntity = strpos($originalAttributeName, $entityPrefix) === 0 &&
+                !($entityPrefix === 'Ad' && (
+                        strpos($originalAttributeName, 'AdGroup') === 0 ||
+                        strpos($originalAttributeName, 'AdNetwork') === 0 ||
+                        strpos($originalAttributeName, 'Advertiser') === 0 ||
+                        strpos($originalAttributeName, 'Advertising') === 0));
 
-                if ($nameStartsWithEntity) {
-                    $attributeName = substr($attributeName, strlen($entity));
-                }
+            $attributeName = strtolower($originalAttributeName);
+
+            if (empty($attributeName)) {
+                throw new \Exception($originalAttributeName . ' === {' . $attributeName . '}');
+            }
+
+            if ($nameStartsWithEntity) {
+                $attributeName = substr($attributeName, strlen($entityPrefix));
             }
 
             $isMetric = strtolower($field['Behavior']) === 'metric' ||
