@@ -8,7 +8,7 @@ return [
         "ctr"
     ],
     "parse" => function ($data) {
-        return floatval(str_replace(',', '', $data->ctr)) / 100;
+        return floatval(str_replace(',', '', $data->{'ctr'})) / 100;
     },
     "sum" => function (array $rows) {
         $sumDividend = 0;

@@ -8,7 +8,7 @@ return [
         "inline_post_engagement"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->inline_post_engagement);
+        return (float)str_replace(',', '', $data->{'inline_post_engagement'});
     },
     "sum" => function (array $rows): float {
         return array_reduce(

@@ -8,7 +8,21 @@ return [
         "cost_per_total_action"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->cost_per_total_action);
+        return (float)str_replace(',', '', $data->{'cost_per_total_action'});
     },
-    "sum" => NULL
+    "sum" => function (array $rows) {
+        $sumDividend = 0;
+        $sumDivisor = 0;
+        foreach ($rows as $row) {
+            $sumDividend += $row->{'spend'};
+            $sumDivisor += $row->{'total_actions'};
+        }
+        return (float)$sumDivisor !== 0.0
+            ? $sumDividend / $sumDivisor
+            : 0;
+    },
+    "inferred_from" => [
+        "spend",
+        "total_actions"
+    ]
 ];

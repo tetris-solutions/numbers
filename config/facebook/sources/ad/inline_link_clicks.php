@@ -8,7 +8,7 @@ return [
         "inline_link_clicks"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->inline_link_clicks);
+        return (float)str_replace(',', '', $data->{'inline_link_clicks'});
     },
     "sum" => function (array $rows): float {
         return array_reduce(

@@ -8,7 +8,7 @@ return [
         "cpm"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->cpm);
+        return (float)str_replace(',', '', $data->{'cpm'});
     },
     "sum" => function (array $rows) {
         $sumDividend = 0;

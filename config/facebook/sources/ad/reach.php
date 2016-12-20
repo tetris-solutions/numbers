@@ -8,7 +8,7 @@ return [
         "reach"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->reach);
+        return (float)str_replace(',', '', $data->{'reach'});
     },
     "sum" => NULL
 ];

@@ -8,7 +8,7 @@ return [
         "social_spend"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->social_spend);
+        return (float)str_replace(',', '', $data->{'social_spend'});
     },
     "sum" => function (array $rows): float {
         return array_reduce(

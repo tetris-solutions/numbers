@@ -16,6 +16,27 @@ function getFacebookConfig(): array
         'date_start' => 'date'
     ];
 
+    $weightedAvg = function (string $metric, string $weight): array {
+        return [
+            "inferred_from" => [$weight],
+            "sum" => function (string $indent) use ($metric, $weight): string {
+                return join(PHP_EOL . $indent, [
+                    'function (array $rows) {',
+                    '    $sumDividend = 0;',
+                    '    $sumDivisor = 0;',
+                    '    foreach ($rows as $row) {',
+                    "        \$sumDividend += \$row->{'$metric'} * \$row->{'$weight'};",
+                    "        \$sumDivisor += \$row->{'$weight'};",
+                    '    }',
+                    '    return (float)$sumDivisor !== 0.0',
+                    '        ? $sumDividend / $sumDivisor',
+                    '        : 0;',
+                    '}'
+                ]);
+            }
+        ];
+    };
+
     $percentSum = function (string $dividendMetric, string $divisorMetric): array {
         return [
             "inferred_from" => [$dividendMetric, $divisorMetric],
@@ -54,7 +75,7 @@ function getFacebookConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
-                    "    return (float)str_replace(',', '', \$data->$property);",
+                    "    return (float)str_replace(',', '', \$data->{'$property'});",
                     '}'
                 ]);
             };
@@ -63,7 +84,7 @@ function getFacebookConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
-                    "    return floatval(str_replace(',', '', \$data->$property)) / 100;",
+                    "    return floatval(str_replace(',', '', \$data->{'$property'})) / 100;",
                     '}'
                 ]);
             };
@@ -72,7 +93,7 @@ function getFacebookConfig(): array
             return function (string $indent) use ($property): string {
                 return join(PHP_EOL . $indent, [
                     'function ($data) {',
-                    "    return (float)str_replace(',', '', \$data->$property);",
+                    "    return (float)str_replace(',', '', \$data->{'$property'});",
                     '}'
                 ]);
             };
@@ -109,6 +130,12 @@ function getFacebookConfig(): array
         'cpm' => $percentSum('spend', 'impressions'),
         'ctr' => $percentSum('clicks', 'impressions'),
         'frequency' => $percentSum('impressions', 'reach'),
+        'cost_per_estimated_ad_recallers' => $percentSum('spend', 'estimated_ad_recallers'),
+        'cost_per_inline_link_click' => $percentSum('spend', 'inline_link_click'),
+        'cost_per_inline_post_engagement' => $percentSum('spend', 'inline_post_engagement'),
+        'cost_per_total_action' => $percentSum('spend', 'total_actions'),
+        'inline_link_click_ctr' => $percentSum('inline_link_clicks', 'impressions'),
+        'newsfeed_avg_position' => $weightedAvg('newsfeed_avg_position', 'impressions')
     ];
     $simpleSumMetrics = [
         'app_store_clicks',
@@ -133,7 +160,11 @@ function getFacebookConfig(): array
         'inline_link_clicks',
         'inline_post_engagement',
         'unique_inline_link_clicks',
-        'estimated_ad_recallers'
+        'estimated_ad_recallers',
+        'canvas_avg_view_time',
+        'canvas_avg_view_percent',
+        'video_avg_percent_watched_actions',
+        'video_avg_time_watched_actions'
     ];
 
     $numericTypes = [

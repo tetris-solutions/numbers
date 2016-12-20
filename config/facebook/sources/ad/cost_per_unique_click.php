@@ -8,7 +8,7 @@ return [
         "cost_per_unique_click"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->cost_per_unique_click);
+        return (float)str_replace(',', '', $data->{'cost_per_unique_click'});
     },
     "sum" => NULL
 ];

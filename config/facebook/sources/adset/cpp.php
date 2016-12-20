@@ -8,7 +8,7 @@ return [
         "cpp"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->cpp);
+        return (float)str_replace(',', '', $data->{'cpp'});
     },
     "sum" => NULL
 ];

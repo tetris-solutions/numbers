@@ -8,7 +8,7 @@ return [
         "website_clicks"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->website_clicks);
+        return (float)str_replace(',', '', $data->{'website_clicks'});
     },
     "sum" => function (array $rows): float {
         return array_reduce(

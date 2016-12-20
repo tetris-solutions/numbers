@@ -8,7 +8,7 @@ return [
         "total_action_value"
     ],
     "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->total_action_value);
+        return (float)str_replace(',', '', $data->{'total_action_value'});
     },
     "sum" => function (array $rows): float {
         return array_reduce(
