@@ -318,10 +318,10 @@ function getAdwordsConfig(): array
             }
 
             if (isset($output['reports'][$reportName]['attributes'][$attributeName])) {
-                echo "replaced: {$attributeName}\n";
+                echo "would replace: {$attributeName}\n";
+            } else {
+                $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
             }
-
-            $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
         }
     }
 

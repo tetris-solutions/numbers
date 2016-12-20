@@ -1,0 +1,22 @@
+<?php
+return [
+    "metric" => "activeviewimpressions",
+    "entity" => "Audience",
+    "platform" => "adwords",
+    "report" => "AUDIENCE_PERFORMANCE_REPORT",
+    "fields" => [
+        "ActiveViewImpressions"
+    ],
+    "parse" => function ($data): int {
+        return (int)str_replace(',', '', $data->ActiveViewImpressions);
+    },
+    "sum" => function (array $rows): float {
+        return array_reduce(
+            $rows,
+            function (float $carry, $row): float {
+                return $carry + $row->activeviewimpressions;
+            },
+            0.0
+        );
+    }
+];
