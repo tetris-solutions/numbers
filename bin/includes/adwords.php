@@ -196,7 +196,8 @@ function getAdwordsConfig(): array
         'CAMPAIGN_PERFORMANCE_REPORT' => 'Campaign',
         'KEYWORDS_PERFORMANCE_REPORT' => 'Keyword',
         'AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT' => 'Placement',
-        'SEARCH_QUERY_PERFORMANCE_REPORT' => 'Search'
+        'SEARCH_QUERY_PERFORMANCE_REPORT' => 'Search',
+        'AUDIENCE_PERFORMANCE_REPORT' => 'Audience'
     ];
 
     foreach ($mappings as $reportName => $fields) {
@@ -217,7 +218,7 @@ function getAdwordsConfig(): array
 
             if ($entity === 'Placement') {
                 $entityPrefix = 'Campaign';
-            } else if ($entity === 'Search') {
+            } else if ($entity === 'Search' || $entity === 'Audience') {
                 $entityPrefix = 'AdGroup';
             }
 
