@@ -131,7 +131,7 @@ function getFacebookConfig(): array
         'ctr' => $percentSum('clicks', 'impressions'),
         'frequency' => $percentSum('impressions', 'reach'),
         'cost_per_estimated_ad_recallers' => $percentSum('spend', 'estimated_ad_recallers'),
-        'cost_per_inline_link_click' => $percentSum('spend', 'inline_link_click'),
+        'cost_per_inline_link_click' => $percentSum('spend', 'inline_link_clicks'),
         'cost_per_inline_post_engagement' => $percentSum('spend', 'inline_post_engagement'),
         'cost_per_total_action' => $percentSum('spend', 'total_actions'),
         'inline_link_click_ctr' => $percentSum('inline_link_clicks', 'impressions'),

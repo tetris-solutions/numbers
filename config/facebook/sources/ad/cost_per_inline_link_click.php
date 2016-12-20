@@ -15,7 +15,7 @@ return [
         $sumDivisor = 0;
         foreach ($rows as $row) {
             $sumDividend += $row->{'spend'};
-            $sumDivisor += $row->{'inline_link_click'};
+            $sumDivisor += $row->{'inline_link_clicks'};
         }
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
@@ -23,6 +23,6 @@ return [
     },
     "inferred_from" => [
         "spend",
-        "inline_link_click"
+        "inline_link_clicks"
     ]
 ];
