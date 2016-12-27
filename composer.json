@@ -14,7 +14,7 @@
     "pugx/shortid-php": "^0.1.0",
     "vlucas/phpdotenv": "^2.3",
     "nategood/httpful": "^0.2.20",
-    "tetris/adwords": "dev-master#0.0.45",
+    "tetris/adwords": "dev-master#0.0.46",
     "facebook/php-ads-sdk": "^2.8",
     "facebook/graph-sdk": "^5.3"
   },
