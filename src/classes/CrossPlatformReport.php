@@ -113,7 +113,7 @@ class XQuery extends QueryBlueprint
         return substr($attributeId, strpos($attributeId, ':') + 1);
     }
 
-    function addDimensions(array $dimensions)
+    function addDimensions(array $dimensions, $isAuxiliary = false)
     {
         $same = function ($val) {
             return $val;
@@ -136,20 +136,25 @@ class XQuery extends QueryBlueprint
 
             } else if ($this->notPrefixed($globalAttributeId)) {
 
-                $attr = MetaData::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
-                $platformAttributeId = $attr['id'];
-                $transform = $attr['transform'];
+                if ($isAuxiliary) {
+                    $replacement = MetaData::getAttributeMerge($globalAttributeId, $this->platform);
+                    $platformAttributeId = $globalAttributeId;
+                    $globalAttributeId = $replacement['id'];
+                } else {
+                    $replacement = MetaData::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
+                    $platformAttributeId = $replacement['id'];
+                }
 
-            } else {
-                continue;
-            }
+                $transform = $replacement['transform'];
+
+            } else continue;
 
             $this->dimensions[] = $platformAttributeId;
             $this->translator->addTranslation($platformAttributeId, $globalAttributeId, $transform);
         }
     }
 
-    function addMetrics(array $metrics)
+    function addMetrics(array $metrics, $isAuxiliary = false)
     {
         $same = function ($val) {
             return $val;
@@ -160,12 +165,18 @@ class XQuery extends QueryBlueprint
                 $platformAttributeId = $this->removePrefix($globalAttributeId);
                 $transform = $same;
             } else if ($this->notPrefixed($globalAttributeId)) {
-                $replacement = MetaData::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
-                $platformAttributeId = $replacement['id'];
+                if ($isAuxiliary) {
+                    $replacement = MetaData::getAttributeMerge($globalAttributeId, $this->platform);
+                    $platformAttributeId = $globalAttributeId;
+                    $globalAttributeId = $replacement['id'];
+                } else {
+                    $replacement = MetaData::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
+                    $platformAttributeId = $replacement['id'];
+                }
+
                 $transform = $replacement['transform'];
-            } else {
-                continue;
-            }
+
+            } else continue;
 
             $this->metrics[] = $platformAttributeId;
             $this->translator->addTranslation($platformAttributeId, $globalAttributeId, $transform);
@@ -234,9 +245,9 @@ class XQuery extends QueryBlueprint
             $this->auxiliary[] = $attributeId;
 
             if ($isMetric) {
-                $this->addMetrics([$attributeId]);
+                $this->addMetrics([$attributeId], true);
             } else {
-                $this->addDimensions([$attributeId]);
+                $this->addDimensions([$attributeId], true);
             }
         }
     }
