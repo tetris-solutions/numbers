@@ -87,7 +87,9 @@ function getAdwordsConfig(): array
         'estimatedaddclicksatfirstpositioncpc',
         'estimatedaddcostatfirstpositioncpc',
         'cpmbid',
-        'topofpagecpc'
+        'topofpagecpc',
+        'firstpagecpc',
+        'firstpositioncpc'
     ];
 
     $excludedFields = [
