@@ -23,7 +23,7 @@ return [
             $multiplier = 0.01;
         }
     
-        $clean = preg_replace("/[^0-9,.]/", "", $value);
+        $clean = preg_replace("/[^0-9.]/", "", $value);
     
         return [
             'value' => is_numeric($clean)
