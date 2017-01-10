@@ -170,8 +170,6 @@ abstract class MetaData
     static function listAttributes(string $platform, string $entity): array
     {
         $attributes = [];
-        $dimensions = [];
-        $metrics = [];
         $sources = MetaData::getSources($platform, $entity);
 
         foreach ($sources as $source) {
@@ -185,6 +183,7 @@ abstract class MetaData
                     'name' => $attribute['name'],
                     'is_metric' => $attribute['is_metric'],
                     'type' => $attribute['type'],
+                    'is_percentage' => isset($attribute['is_percentage']) ? $attribute['is_percentage'] : false,
                     'is_dimension' => $attribute['is_dimension']
                 ];
 
@@ -194,13 +193,9 @@ abstract class MetaData
                 }
 
                 $attributes[$id] = $config;
-
-                if ($attribute['is_dimension']) {
-                    $dimensions[] = $id;
-                }
             }
 
-            $metrics[] = $metric = $source['metric'];
+            $metric = $source['metric'];
             $metricConfig = MetaData::getMetric($metric);
 
             $cannotAggregate = !isset($source['sum']);

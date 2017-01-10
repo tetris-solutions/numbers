@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "impressionreach",
-    "type" => "raw"
+    "type" => "special"
 ];

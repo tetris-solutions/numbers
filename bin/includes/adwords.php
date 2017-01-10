@@ -3,6 +3,25 @@ namespace Tetris\Numbers;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
+function makeParserFromSource($fname)
+{
+    return function (...$properties) use ($fname) {
+        $source = file_get_contents(__DIR__ . '/parsers/' . $fname . '.php');
+        $source = trim($source, "; \t\n\r\0\x0B");
+
+        foreach ($properties as $index => $property) {
+            $source = str_replace("PROPERTY{$index}_NAME", "'$property'", $source);
+        }
+
+        $startPos = strpos($source, 'function ');
+        $lines = explode("\n", substr($source, $startPos));
+
+        return function (string $indent) use ($lines): string {
+            return join(PHP_EOL . $indent, $lines);
+        };
+    };
+}
+
 function altWeightedAverage(string $metric, string $weight): array
 {
     return [
@@ -183,7 +202,8 @@ function getAdwordsConfig(): array
                     '}'
                 ]);
             };
-        }
+        },
+        'special' => makeParserFromSource('adwords-special-value')
     ];
 
     $metricParsers['currency'] = $metricParsers['decimal'];
@@ -252,7 +272,7 @@ function getAdwordsConfig(): array
             } else if (isset($overrideType[$attributeName])) {
                 $attributeType = $overrideType[$attributeName];
             } else if ($field['SpecialValue']) {
-                $attributeType = 'raw';
+                $attributeType = 'special';
             } else if ($field['Percentage']) {
                 $attributeType = 'percentage';
             } else if ($field['Type'] === 'Money' || $field['Type'] === 'Bid') {

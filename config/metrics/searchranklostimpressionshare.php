@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "searchranklostimpressionshare",
-    "type" => "raw"
+    "type" => "special"
 ];
