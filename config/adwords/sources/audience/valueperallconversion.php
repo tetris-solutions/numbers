@@ -15,12 +15,17 @@ return [
         "allconversions"
     ],
     "sum" => function (array $rows) {
+        $dividendMetric = 'allconversionvalue';
+        $divisorMetric = 'allconversions';
+    
         $sumDividend = 0;
         $sumDivisor = 0;
+    
         foreach ($rows as $row) {
-            $sumDividend += $row->allconversionvalue;
-            $sumDivisor += $row->allconversions;
+            $sumDividend += $row->{$dividendMetric};
+            $sumDivisor += $row->{$divisorMetric};
         }
+    
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;

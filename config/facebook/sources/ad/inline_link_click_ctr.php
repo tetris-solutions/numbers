@@ -11,12 +11,17 @@ return [
         return (float)str_replace(',', '', $data->{'inline_link_click_ctr'});
     },
     "sum" => function (array $rows) {
+        $dividendMetric = 'inline_link_clicks';
+        $divisorMetric = 'impressions';
+    
         $sumDividend = 0;
         $sumDivisor = 0;
+    
         foreach ($rows as $row) {
-            $sumDividend += $row->{'inline_link_clicks'};
-            $sumDivisor += $row->{'impressions'};
+            $sumDividend += $row->{$dividendMetric};
+            $sumDivisor += $row->{$divisorMetric};
         }
+    
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;

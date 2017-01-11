@@ -3,93 +3,9 @@ namespace Tetris\Numbers;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-function makeParserFromSource($fname)
-{
-    return function (...$properties) use ($fname) {
-        $source = file_get_contents(__DIR__ . '/parsers/' . $fname . '.php');
-        $source = trim($source, "; \t\n\r\0\x0B");
-
-        foreach ($properties as $index => $property) {
-            $source = str_replace("PROPERTY{$index}_NAME", "'$property'", $source);
-        }
-
-        $startPos = strpos($source, 'function ');
-        $lines = explode("\n", substr($source, $startPos));
-
-        return function (string $indent) use ($lines): string {
-            return join(PHP_EOL . $indent, $lines);
-        };
-    };
-}
-
-function altWeightedAverage(string $metric, string $weight): array
-{
-    return [
-        "inferred_from" => [$weight],
-        "sum" => function (string $indent) use ($metric, $weight): string {
-            return join(PHP_EOL . $indent, [
-                'function (array $rows) {',
-                '    $sumDividend = 0;',
-                '    $sumDivisor = 0;',
-                '    foreach ($rows as $row) {',
-                "        \$sumDividend += \$row->$metric * \$row->$weight;",
-                "        \$sumDivisor += \$row->$weight;",
-                '    }',
-                '    return (float)$sumDivisor !== 0.0',
-                '        ? $sumDividend / $sumDivisor',
-                '        : 0;',
-                '}'
-            ]);
-        }
-    ];
-}
-
-function videoQuartileSum(string $percent)
-{
-    return [
-        "inferred_from" => ['videoviews'],
-        "sum" => function (string $indent) use ($percent): string {
-            return join(PHP_EOL . $indent, [
-                'function (array $rows) {',
-                '    $totalViews = 0;',
-                '    $partialViews = 0;',
-                '    foreach ($rows as $row) {',
-                '        $totalViews += $row->videoviews;',
-                "        \$partialViews += \$row->videoviews * \$row->videoquartile{$percent}rate;",
-                '    }',
-                '    return (float)$totalViews !== 0.0',
-                '        ? $partialViews / $totalViews',
-                '        : 0;',
-                '}'
-            ]);
-        }
-    ];
-}
-
 function getAdwordsConfig(): array
 {
     $mappings = json_decode(file_get_contents(__DIR__ . '/../../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
-
-    $percentSum = function (string $dividendMetric, string $divisorMetric): array {
-        return [
-            "inferred_from" => [$dividendMetric, $divisorMetric],
-            "sum" => function (string $indent) use ($dividendMetric, $divisorMetric): string {
-                return join(PHP_EOL . $indent, [
-                    'function (array $rows) {',
-                    '    $sumDividend = 0;',
-                    '    $sumDivisor = 0;',
-                    '    foreach ($rows as $row) {',
-                    "        \$sumDividend += \$row->$dividendMetric;",
-                    "        \$sumDivisor += \$row->$divisorMetric;",
-                    '    }',
-                    '    return (float)$sumDivisor !== 0.0',
-                    '        ? $sumDividend / $sumDivisor',
-                    '        : 0;',
-                    '}'
-                ]);
-            }
-        ];
-    };
 
     $overrideType = [
         'averagecpv' => 'currency'
@@ -120,25 +36,25 @@ function getAdwordsConfig(): array
     ];
 
     $inferredMetricSum = [
-        'allconversionrate' => $percentSum('allconversions', 'clicks'),
-        'averagecost' => $percentSum('cost', 'interactions'),
-        'averagecpc' => $percentSum('cost', 'clicks'),
-        'averagecpe' => $percentSum('cost', 'engagements'),
-        'averagecpm' => $percentSum('cost', 'impressions'),
-        'averagecpv' => $percentSum('cost', 'videoviews'),
-        'averagefrequency' => $percentSum('impressions', 'impressionreach'),
+        'allconversionrate' => percentSum('allconversions', 'clicks'),
+        'averagecost' => percentSum('cost', 'interactions'),
+        'averagecpc' => percentSum('cost', 'clicks'),
+        'averagecpe' => percentSum('cost', 'engagements'),
+        'averagecpm' => percentSum('cost', 'impressions'),
+        'averagecpv' => percentSum('cost', 'videoviews'),
+        'averagefrequency' => percentSum('impressions', 'impressionreach'),
         'averageposition' => altWeightedAverage('averageposition', 'impressions'),
-        'conversionrate' => $percentSum('conversions', 'clicks'),
-        'costperallconversion' => $percentSum('cost', 'allconversions'),
-        'costperconversion' => $percentSum('cost', 'conversions'),
-        'ctr' => $percentSum('clicks', 'impressions'),
-        'engagementrate' => $percentSum('engagements', 'impressions'),
-        'interactionrate' => $percentSum('interactions', 'impressions'),
-        'invalidclickrate' => $percentSum('invalidclicks', 'clicks'),
-        'offlineinteractionrate' => $percentSum('numofflineinteractions', 'numofflineimpressions'),
-        'valueperallconversion' => $percentSum('allconversionvalue', 'allconversions'),
-        'valueperconversion' => $percentSum('conversionvalue', 'conversions'),
-        'videoviewrate' => $percentSum('videoviews', 'impressions'),
+        'conversionrate' => percentSum('conversions', 'clicks'),
+        'costperallconversion' => percentSum('cost', 'allconversions'),
+        'costperconversion' => percentSum('cost', 'conversions'),
+        'ctr' => percentSum('clicks', 'impressions'),
+        'engagementrate' => percentSum('engagements', 'impressions'),
+        'interactionrate' => percentSum('interactions', 'impressions'),
+        'invalidclickrate' => percentSum('invalidclicks', 'clicks'),
+        'offlineinteractionrate' => percentSum('numofflineinteractions', 'numofflineimpressions'),
+        'valueperallconversion' => percentSum('allconversionvalue', 'allconversions'),
+        'valueperconversion' => percentSum('conversionvalue', 'conversions'),
+        'videoviewrate' => percentSum('videoviews', 'impressions'),
         'videoquartile25rate' => videoQuartileSum(25),
         'videoquartile50rate' => videoQuartileSum(50),
         'videoquartile75rate' => videoQuartileSum(75),
@@ -148,22 +64,6 @@ function getAdwordsConfig(): array
     $simpleSumMetrics = [
         'cost'
     ];
-
-    $simpleSum = function (array $metric) {
-        return function (string $indent) use ($metric): string {
-            return join(PHP_EOL . $indent, [
-                'function (array $rows): float {',
-                '    return array_reduce(',
-                '        $rows,',
-                '        function (float $carry, $row): float {',
-                "            return \$carry + \$row->{$metric['id']};",
-                '        },',
-                '        0.0',
-                '    );',
-                '}'
-            ]);
-        };
-    };
 
     $metricParsers = [
         'percentage' => function ($property) {
@@ -332,7 +232,7 @@ function getAdwordsConfig(): array
                 if (isset($inferredMetricSum[$attributeName])) {
                     $sourceConfig = array_merge($sourceConfig, $inferredMetricSum[$attributeName]);
                 } else if ($canUseSimpleSum) {
-                    $sourceConfig['sum'] = $simpleSum($metric);
+                    $sourceConfig['sum'] = simpleSum($metric['id']);
                 }
 
                 $output['sources'][] = $sourceConfig;

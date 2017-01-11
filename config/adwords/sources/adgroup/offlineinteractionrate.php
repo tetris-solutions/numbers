@@ -15,12 +15,17 @@ return [
         "numofflineimpressions"
     ],
     "sum" => function (array $rows) {
+        $dividendMetric = 'numofflineinteractions';
+        $divisorMetric = 'numofflineimpressions';
+    
         $sumDividend = 0;
         $sumDivisor = 0;
+    
         foreach ($rows as $row) {
-            $sumDividend += $row->numofflineinteractions;
-            $sumDivisor += $row->numofflineimpressions;
+            $sumDividend += $row->{$dividendMetric};
+            $sumDivisor += $row->{$divisorMetric};
         }
+    
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;

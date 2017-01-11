@@ -10,11 +10,11 @@ return [
     "parse" => function ($data): int {
         return (int)str_replace(',', '', $data->ActiveViewMeasurableImpressions);
     },
-    "sum" => function (array $rows): float {
+    "sum" => function (array $rows) {
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->activeviewmeasurableimpressions;
+                return $carry + $row->{'activeviewmeasurableimpressions'};
             },
             0.0
         );

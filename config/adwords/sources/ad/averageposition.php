@@ -14,12 +14,17 @@ return [
         "impressions"
     ],
     "sum" => function (array $rows) {
+        $metric = 'averageposition';
+        $weight = 'impressions';
+    
         $sumDividend = 0;
         $sumDivisor = 0;
+    
         foreach ($rows as $row) {
-            $sumDividend += $row->averageposition * $row->impressions;
-            $sumDivisor += $row->impressions;
+            $sumDividend += $row->{$metric} * $row->{$weight};
+            $sumDivisor += $row->{$weight};
         }
+    
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;

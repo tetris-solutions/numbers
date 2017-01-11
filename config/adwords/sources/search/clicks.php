@@ -10,11 +10,11 @@ return [
     "parse" => function ($data): int {
         return (int)str_replace(',', '', $data->Clicks);
     },
-    "sum" => function (array $rows): float {
+    "sum" => function (array $rows) {
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->clicks;
+                return $carry + $row->{'clicks'};
             },
             0.0
         );

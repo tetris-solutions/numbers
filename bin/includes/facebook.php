@@ -37,27 +37,6 @@ function getFacebookConfig(): array
         ];
     };
 
-    $percentSum = function (string $dividendMetric, string $divisorMetric): array {
-        return [
-            "inferred_from" => [$dividendMetric, $divisorMetric],
-            "sum" => function (string $indent) use ($dividendMetric, $divisorMetric): string {
-                return join(PHP_EOL . $indent, [
-                    'function (array $rows) {',
-                    '    $sumDividend = 0;',
-                    '    $sumDivisor = 0;',
-                    '    foreach ($rows as $row) {',
-                    "        \$sumDividend += \$row->{'{$dividendMetric}'};",
-                    "        \$sumDivisor += \$row->{'{$divisorMetric}'};",
-                    '    }',
-                    '    return (float)$sumDivisor !== 0.0',
-                    '        ? $sumDividend / $sumDivisor',
-                    '        : 0;',
-                    '}'
-                ]);
-            }
-        ];
-    };
-
     $overrideType = [
         'impressions' => 'numeric string',
         'ctr' => 'percentage'
@@ -126,15 +105,15 @@ function getFacebookConfig(): array
     };
 
     $metricSumFn = [
-        'cpc' => $percentSum('spend', 'clicks'),
-        'cpm' => $percentSum('spend', 'impressions'),
-        'ctr' => $percentSum('clicks', 'impressions'),
-        'frequency' => $percentSum('impressions', 'reach'),
-        'cost_per_estimated_ad_recallers' => $percentSum('spend', 'estimated_ad_recallers'),
-        'cost_per_inline_link_click' => $percentSum('spend', 'inline_link_clicks'),
-        'cost_per_inline_post_engagement' => $percentSum('spend', 'inline_post_engagement'),
-        'cost_per_total_action' => $percentSum('spend', 'total_actions'),
-        'inline_link_click_ctr' => $percentSum('inline_link_clicks', 'impressions'),
+        'cpc' => percentSum('spend', 'clicks'),
+        'cpm' => percentSum('spend', 'impressions'),
+        'ctr' => percentSum('clicks', 'impressions'),
+        'frequency' => percentSum('impressions', 'reach'),
+        'cost_per_estimated_ad_recallers' => percentSum('spend', 'estimated_ad_recallers'),
+        'cost_per_inline_link_click' => percentSum('spend', 'inline_link_clicks'),
+        'cost_per_inline_post_engagement' => percentSum('spend', 'inline_post_engagement'),
+        'cost_per_total_action' => percentSum('spend', 'total_actions'),
+        'inline_link_click_ctr' => percentSum('inline_link_clicks', 'impressions'),
         'newsfeed_avg_position' => $weightedAvg('newsfeed_avg_position', 'impressions')
     ];
     $simpleSumMetrics = [
