@@ -8,11 +8,17 @@ return [
         "video_p25_watched_actions"
     ],
     "parse" => function ($data) {
-        foreach ($data->{'video_p25_watched_actions'} as $action) {
-            if ($action['action_type'] === 'video_view') {
+        $collection = 'video_p25_watched_actions';
+        $type = 'video_view';
+    
+        if (empty($data->{$collection})) return NULL;
+    
+        foreach ($data->{$collection} as $action) {
+            if ($action['action_type'] === $type) {
                 return (float)str_replace(',', '', $action['value']);
             }
         }
+    
         return NULL;
     },
     "sum" => function (array $rows) {

@@ -8,13 +8,17 @@ return [
         "actions"
     ],
     "parse" => function ($data) {
-        if (empty($data->actions)) return NULL;
+        $collection = 'actions';
+        $type = 'app_custom_event.fb_mobile_add_to_wishlist';
     
-        foreach ($data->actions as $action) {
-            if ($action['action_type'] === 'app_custom_event.fb_mobile_add_to_wishlist') {
+        if (empty($data->{$collection})) return NULL;
+    
+        foreach ($data->{$collection} as $action) {
+            if ($action['action_type'] === $type) {
                 return (float)str_replace(',', '', $action['value']);
             }
         }
+    
         return NULL;
     },
     "sum" => function (array $rows) {

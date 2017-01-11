@@ -1,12 +1,16 @@
 <?php
 
 return function ($data) {
-    if (empty($data->actions)) return NULL;
+    $collection = PROPERTY0_NAME;
+    $type = PROPERTY1_NAME;
 
-    foreach ($data->actions as $action) {
-        if ($action['action_type'] === PROPERTY0_NAME) {
+    if (empty($data->{$collection})) return NULL;
+
+    foreach ($data->{$collection} as $action) {
+        if ($action['action_type'] === $type) {
             return (float)str_replace(',', '', $action['value']);
         }
     }
+
     return NULL;
 };

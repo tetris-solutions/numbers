@@ -90,23 +90,6 @@ function getFacebookConfig(): array
         'float'
     ];
 
-    $parseVideoPercentAction = function ($field) {
-        return function (string $indent) use ($field): string {
-            $lines = [
-                'function ($data) {',
-                "    foreach (\$data->{'{$field}'} as \$action) {",
-                "        if (\$action['action_type'] === 'video_view') {",
-                "            return (float)str_replace(',', '', \$action['value']);",
-                '        }',
-                '    }',
-                '    return NULL;',
-                '}'
-            ];
-
-            return implode(PHP_EOL . $indent, $lines);
-        };
-    };
-
 
     function isCurrency(array $field): bool
     {
@@ -252,7 +235,7 @@ function getFacebookConfig(): array
                 'platform' => 'facebook',
                 'report' => $reportName,
                 'fields' => [$videoMetricName],
-                'parse' => $parseVideoPercentAction($videoMetricName),
+                'parse' => $actionValueParser($videoMetricName, 'video_view'),
                 'sum' => $isAverage ? null : simpleSum($attribute['id'])
             ];
 
@@ -282,7 +265,7 @@ function getFacebookConfig(): array
                 'platform' => 'facebook',
                 'report' => $reportName,
                 'fields' => ['actions'],
-                'parse' => $actionValueParser($actionType),
+                'parse' => $actionValueParser('actions', $actionType),
                 'sum' => simpleSum($attribute['id'])
             ];
 

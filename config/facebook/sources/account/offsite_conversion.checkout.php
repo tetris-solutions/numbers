@@ -8,13 +8,17 @@ return [
         "actions"
     ],
     "parse" => function ($data) {
-        if (empty($data->actions)) return NULL;
+        $collection = 'actions';
+        $type = 'offsite_conversion.checkout';
     
-        foreach ($data->actions as $action) {
-            if ($action['action_type'] === 'offsite_conversion.checkout') {
+        if (empty($data->{$collection})) return NULL;
+    
+        foreach ($data->{$collection} as $action) {
+            if ($action['action_type'] === $type) {
                 return (float)str_replace(',', '', $action['value']);
             }
         }
+    
         return NULL;
     },
     "sum" => function (array $rows) {
