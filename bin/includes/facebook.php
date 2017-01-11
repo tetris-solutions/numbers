@@ -35,6 +35,8 @@ function getFacebookConfig(): array
         'raw' => makeParserFromSource('raw')
     ];
 
+    $actionValueParser = makeParserFromSource('action');
+
     $metricSumFn = [
         'cpc' => percentSum('spend', 'clicks'),
         'cpm' => percentSum('spend', 'impressions'),
@@ -87,25 +89,6 @@ function getFacebookConfig(): array
         'string',
         'float'
     ];
-
-    $parseActionType = function ($type) {
-        return function (string $indent) use ($type): string {
-            $lines = [
-                'function ($data) {',
-                '    if (empty($data->actions)) return NULL;',
-                '',
-                '    foreach ($data->actions as $action) {',
-                "        if (\$action['action_type'] === '{$type}') {",
-                "            return (float)str_replace(',', '', \$action['value']);",
-                '        }',
-                '    }',
-                '    return NULL;',
-                '}'
-            ];
-
-            return implode(PHP_EOL . $indent, $lines);
-        };
-    };
 
     $parseVideoPercentAction = function ($field) {
         return function (string $indent) use ($field): string {
@@ -299,7 +282,7 @@ function getFacebookConfig(): array
                 'platform' => 'facebook',
                 'report' => $reportName,
                 'fields' => ['actions'],
-                'parse' => $parseActionType($actionType),
+                'parse' => $actionValueParser($actionType),
                 'sum' => simpleSum($attribute['id'])
             ];
 
