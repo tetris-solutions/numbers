@@ -8,6 +8,6 @@ return [
         "InteractionTypes"
     ],
     "parse" => function ($data) {
-        return $data->InteractionTypes;
+        return $data->{'InteractionTypes'};
     }
 ];

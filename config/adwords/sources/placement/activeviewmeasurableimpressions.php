@@ -8,7 +8,7 @@ return [
         "ActiveViewMeasurableImpressions"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->ActiveViewMeasurableImpressions);
+        return (int)str_replace(',', '', $data->{'ActiveViewMeasurableImpressions'});
     },
     "sum" => function (array $rows) {
         return array_reduce(

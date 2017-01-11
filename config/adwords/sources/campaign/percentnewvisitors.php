@@ -8,6 +8,8 @@ return [
         "PercentNewVisitors"
     ],
     "parse" => function ($data): float {
-        return floatval(str_replace(['%', ','], '', $data->PercentNewVisitors)) / 100;
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'PercentNewVisitors'});
+    
+        return floatval($valueAsNumericString) / 100;
     }
 ];

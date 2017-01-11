@@ -8,7 +8,7 @@ return [
         "EstimatedAddClicksAtFirstPositionCpc"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->EstimatedAddClicksAtFirstPositionCpc);
+        return (int)str_replace(',', '', $data->{'EstimatedAddClicksAtFirstPositionCpc'});
     },
     "sum" => function (array $rows) {
         return array_reduce(

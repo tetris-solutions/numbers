@@ -7,8 +7,8 @@ return [
     "fields" => [
         "AverageCpe"
     ],
-    "parse" => function ($data): float {
-        return (float)str_replace(',', '', $data->AverageCpe);
+    "parse" => function ($data): int {
+        return (int)str_replace(',', '', $data->{'AverageCpe'});
     },
     "inferred_from" => [
         "cost",

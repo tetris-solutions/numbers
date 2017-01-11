@@ -7,7 +7,7 @@ return [
     "fields" => [
         "ActiveViewCpm"
     ],
-    "parse" => function ($data): float {
-        return (float)str_replace(',', '', $data->ActiveViewCpm);
+    "parse" => function ($data): int {
+        return (int)str_replace(',', '', $data->{'ActiveViewCpm'});
     }
 ];

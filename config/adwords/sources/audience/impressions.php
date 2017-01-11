@@ -8,7 +8,7 @@ return [
         "Impressions"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->Impressions);
+        return (int)str_replace(',', '', $data->{'Impressions'});
     },
     "sum" => function (array $rows) {
         return array_reduce(

@@ -8,6 +8,6 @@ return [
         "CtrSignificance"
     ],
     "parse" => function ($data) {
-        return $data->CtrSignificance;
+        return $data->{'CtrSignificance'};
     }
 ];

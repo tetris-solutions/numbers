@@ -8,7 +8,7 @@ return [
         "GmailSecondaryClicks"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->GmailSecondaryClicks);
+        return (int)str_replace(',', '', $data->{'GmailSecondaryClicks'});
     },
     "sum" => function (array $rows) {
         return array_reduce(

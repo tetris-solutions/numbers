@@ -66,43 +66,10 @@ function getAdwordsConfig(): array
     ];
 
     $metricParsers = [
-        'percentage' => function ($property) {
-            return function (string $indent) use ($property): string {
-                return join(PHP_EOL . $indent, [
-                    'function ($data): float {',
-                    "    return floatval(str_replace(['%', ','], '', \$data->$property)) / 100;",
-                    '}'
-                ]);
-            };
-        },
-        'decimal' => function ($property) {
-            return function (string $indent) use ($property): string {
-                return join(PHP_EOL . $indent, [
-                    'function ($data): float {',
-                    "    return (float)str_replace(',', '', \$data->$property);",
-                    '}'
-                ]);
-            };
-        },
-        'integer' => function ($property) {
-            return function (string $indent) use ($property): string {
-                return join(PHP_EOL . $indent, [
-                    'function ($data): int {',
-                    "    return (int)str_replace(',', '', \$data->$property);",
-                    '}'
-                ]);
-            };
-
-        },
-        'raw' => function ($property) {
-            return function (string $indent) use ($property): string {
-                return join(PHP_EOL . $indent, [
-                    'function ($data) {',
-                    "    return \$data->$property;",
-                    '}'
-                ]);
-            };
-        },
+        'percentage' => makeParserFromSource('adwords-percent'),
+        'decimal' => makeParserFromSource('adwords-integer'),
+        'integer' => makeParserFromSource('adwords-integer'),
+        'raw' => makeParserFromSource('raw'),
         'special' => makeParserFromSource('adwords-special-value')
     ];
 

@@ -8,6 +8,6 @@ return [
         "ViewThroughConversionsSignificance"
     ],
     "parse" => function ($data) {
-        return $data->ViewThroughConversionsSignificance;
+        return $data->{'ViewThroughConversionsSignificance'};
     }
 ];

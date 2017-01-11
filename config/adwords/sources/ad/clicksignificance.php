@@ -8,6 +8,6 @@ return [
         "ClickSignificance"
     ],
     "parse" => function ($data) {
-        return $data->ClickSignificance;
+        return $data->{'ClickSignificance'};
     }
 ];

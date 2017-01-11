@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ClickAssistedConversionsOverLastClickConversions"
     ],
-    "parse" => function ($data): float {
-        return (float)str_replace(',', '', $data->ClickAssistedConversionsOverLastClickConversions);
+    "parse" => function ($data): int {
+        return (int)str_replace(',', '', $data->{'ClickAssistedConversionsOverLastClickConversions'});
     },
     "sum" => function (array $rows) {
         return array_reduce(

@@ -8,7 +8,9 @@ return [
         "VideoQuartile50Rate"
     ],
     "parse" => function ($data): float {
-        return floatval(str_replace(['%', ','], '', $data->VideoQuartile50Rate)) / 100;
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'VideoQuartile50Rate'});
+    
+        return floatval($valueAsNumericString) / 100;
     },
     "inferred_from" => [
         "videoviews"

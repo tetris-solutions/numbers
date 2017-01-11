@@ -8,6 +8,6 @@ return [
         "CpmSignificance"
     ],
     "parse" => function ($data) {
-        return $data->CpmSignificance;
+        return $data->{'CpmSignificance'};
     }
 ];

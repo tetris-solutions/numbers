@@ -7,7 +7,7 @@ return [
     "fields" => [
         "EstimatedAddCostAtFirstPositionCpc"
     ],
-    "parse" => function ($data): float {
-        return (float)str_replace(',', '', $data->EstimatedAddCostAtFirstPositionCpc);
+    "parse" => function ($data): int {
+        return (int)str_replace(',', '', $data->{'EstimatedAddCostAtFirstPositionCpc'});
     }
 ];

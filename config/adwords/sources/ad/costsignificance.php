@@ -8,6 +8,6 @@ return [
         "CostSignificance"
     ],
     "parse" => function ($data) {
-        return $data->CostSignificance;
+        return $data->{'CostSignificance'};
     }
 ];

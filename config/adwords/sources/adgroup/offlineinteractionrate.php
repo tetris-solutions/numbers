@@ -7,8 +7,8 @@ return [
     "fields" => [
         "OfflineInteractionRate"
     ],
-    "parse" => function ($data): float {
-        return (float)str_replace(',', '', $data->OfflineInteractionRate);
+    "parse" => function ($data): int {
+        return (int)str_replace(',', '', $data->{'OfflineInteractionRate'});
     },
     "inferred_from" => [
         "numofflineinteractions",

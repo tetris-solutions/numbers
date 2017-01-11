@@ -8,7 +8,9 @@ return [
         "InvalidClickRate"
     ],
     "parse" => function ($data): float {
-        return floatval(str_replace(['%', ','], '', $data->InvalidClickRate)) / 100;
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'InvalidClickRate'});
+    
+        return floatval($valueAsNumericString) / 100;
     },
     "inferred_from" => [
         "invalidclicks",

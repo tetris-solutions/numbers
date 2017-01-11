@@ -8,7 +8,9 @@ return [
         "EngagementRate"
     ],
     "parse" => function ($data): float {
-        return floatval(str_replace(['%', ','], '', $data->EngagementRate)) / 100;
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'EngagementRate'});
+    
+        return floatval($valueAsNumericString) / 100;
     },
     "inferred_from" => [
         "engagements",
