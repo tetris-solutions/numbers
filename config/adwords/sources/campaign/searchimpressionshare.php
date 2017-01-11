@@ -42,34 +42,32 @@ return [
         $totalPossibleImpressions = 0;
         $totalImpressions = 0;
     
-        $getPossibleImpressions = function ($impressionShare, $impressions) {
-            $invalidImpressionShare = (
-                !isset($impressionShare['raw']) ||
-                !is_float($impressionShare['value']) ||
-                !is_string($impressionShare['raw']) ||
-                strpos($impressionShare['raw'], '<') !== FALSE ||
-                strpos($impressionShare['raw'], '>') !== FALSE
+        $getSpecialValue = function ($specialValue) {
+            $isInvalid = (
+                !isset($specialValue['raw']) ||
+                !is_float($specialValue['value']) ||
+                !is_string($specialValue['raw']) ||
+                strpos($specialValue['raw'], '<') !== FALSE ||
+                strpos($specialValue['raw'], '>') !== FALSE
             );
     
-            if ($invalidImpressionShare) {
-                return null;
-            }
-    
-            return $impressions / $impressionShare['value'];
+            return $isInvalid ? null : $specialValue['value'];
         };
     
         foreach ($rows as $row) {
             $totalImpressions += $row->{$impressionField};
     
-            $possibleImpressions = $getPossibleImpressions($row->{$impressionShareField}, $row->{$impressionField});
+            $impressionShare = $getSpecialValue($row->{$impressionShareField});
     
-            if ($possibleImpressions === null) return null;
+            if (!$impressionShare) return null;
+    
+            $possibleImpressions = $row->{$impressionField} / $impressionShare;
     
             $totalPossibleImpressions += $possibleImpressions;
         }
     
-        return $totalPossibleImpressions === 0.0
-            ? null
+        return !$totalPossibleImpressions
+            ? 0
             : $totalImpressions / $totalPossibleImpressions;
     }
 ];

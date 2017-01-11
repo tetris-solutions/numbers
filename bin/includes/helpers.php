@@ -93,12 +93,22 @@ function simpleSum(string $metric): callable
     return $source($metric);
 }
 
-function impressionShareSum()
+function impressionShareSum(string $metric)
 {
     $source = makeParserFromSource('impression-share-sum');
 
     return [
         'inferred_from' => ['impressions'],
-        'sum' => $source('searchimpressionshare', 'impressions')
+        'sum' => $source($metric, 'impressions')
+    ];
+}
+
+function lostImpressionShareSum(string $metric, string $impressionShare)
+{
+    $source = makeParserFromSource('lost-impression-share-sum');
+
+    return [
+        'inferred_from' => [$impressionShare, 'impressions'],
+        'sum' => $source($metric, $impressionShare, 'impressions')
     ];
 }

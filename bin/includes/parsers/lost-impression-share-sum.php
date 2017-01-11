@@ -1,11 +1,12 @@
 <?php
 
 return function (array $rows) {
-    $impressionShareField = PROPERTY0_NAME;
-    $impressionField = PROPERTY1_NAME;
+    $lostImpressionShareField = PROPERTY0_NAME;
+    $impressionShareField = PROPERTY1_NAME;
+    $impressionField = PROPERTY2_NAME;
 
     $totalPossibleImpressions = 0;
-    $totalImpressions = 0;
+    $totalLostImpressions = 0;
 
     $getSpecialValue = function ($specialValue) {
         $isInvalid = (
@@ -20,18 +21,20 @@ return function (array $rows) {
     };
 
     foreach ($rows as $row) {
-        $totalImpressions += $row->{$impressionField};
-
         $impressionShare = $getSpecialValue($row->{$impressionShareField});
+        $lostShare = $getSpecialValue($row->{$lostImpressionShareField});
 
-        if (!$impressionShare) return null;
+        if (!$impressionShare || $lostShare === null) {
+            return null;
+        }
 
         $possibleImpressions = $row->{$impressionField} / $impressionShare;
 
         $totalPossibleImpressions += $possibleImpressions;
+        $totalLostImpressions += $possibleImpressions * $lostShare;
     }
 
     return !$totalPossibleImpressions
         ? 0
-        : $totalImpressions / $totalPossibleImpressions;
+        : $totalLostImpressions / $totalPossibleImpressions;
 };
