@@ -37,6 +37,7 @@ function getAdwordsConfig(): array
     ];
 
     $inferredMetricSum = [
+        'searchimpressionshare' => impressionShareSum(),
         'allconversionrate' => percentSum('allconversions', 'clicks'),
         'averagecost' => percentSum('cost', 'interactions'),
         'averagecpc' => percentSum('cost', 'clicks'),
