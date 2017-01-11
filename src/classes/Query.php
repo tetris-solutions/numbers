@@ -64,7 +64,7 @@ class Query extends QueryBlueprint
             'platform' => $this->platform,
             'fields' => $source['fields'],
             'report' => $source['report'],
-            'sum' => $source['sum']
+            'sum' => isset($source['sum']) ? $source['sum'] : null
         ];
     }
 
