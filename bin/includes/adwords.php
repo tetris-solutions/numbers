@@ -24,7 +24,8 @@ function getAdwordsConfig(): array
         'cpmbid',
         'topofpagecpc',
         'firstpagecpc',
-        'firstpositioncpc'
+        'firstpositioncpc',
+        'averagequalityscore'
     ];
 
     $excludedFields = [
@@ -43,7 +44,6 @@ function getAdwordsConfig(): array
         'averagecpm' => percentSum('cost', 'impressions'),
         'averagecpv' => percentSum('cost', 'videoviews'),
         'averagefrequency' => percentSum('impressions', 'impressionreach'),
-        'averageposition' => weightedAverage('averageposition', 'impressions'),
         'conversionrate' => percentSum('conversions', 'clicks'),
         'costperallconversion' => percentSum('cost', 'allconversions'),
         'costperconversion' => percentSum('cost', 'conversions'),
@@ -55,10 +55,14 @@ function getAdwordsConfig(): array
         'valueperallconversion' => percentSum('allconversionvalue', 'allconversions'),
         'valueperconversion' => percentSum('conversionvalue', 'conversions'),
         'videoviewrate' => percentSum('videoviews', 'impressions'),
+
         'videoquartile25rate' => videoQuartileSum(25),
         'videoquartile50rate' => videoQuartileSum(50),
         'videoquartile75rate' => videoQuartileSum(75),
-        'videoquartile100rate' => videoQuartileSum(100)
+        'videoquartile100rate' => videoQuartileSum(100),
+
+        'averageposition' => weightedAverage('averageposition', 'impressions'),
+        'averagequalityscore' => weightedAverage('averagequalityscore', 'impressions'),
     ];
 
     $simpleSumMetrics = [
@@ -89,6 +93,13 @@ function getAdwordsConfig(): array
         'SEARCH_QUERY_PERFORMANCE_REPORT' => 'Search',
         'AUDIENCE_PERFORMANCE_REPORT' => 'Audience'
     ];
+
+    $overrideOriginalName = [
+        'AverageQualityScore' => 'QualityScore'
+    ];
+
+    $mappings['KEYWORDS_PERFORMANCE_REPORT']['AverageQualityScore'] =
+        $mappings['KEYWORDS_PERFORMANCE_REPORT']['QualityScore'];
 
     foreach ($mappings as $reportName => $fields) {
         if (!isset($entityNameMap[$reportName])) continue;
@@ -126,6 +137,10 @@ function getAdwordsConfig(): array
                 throw new \Exception($originalAttributeName . ' === {' . $attributeName . '}');
             }
 
+            if (isset($overrideOriginalName[$originalAttributeName])) {
+                $originalAttributeName = $overrideOriginalName[$originalAttributeName];
+            }
+
             if ($nameStartsWithEntity) {
                 $attributeName = substr($attributeName, strlen($entityPrefix));
             }
@@ -133,29 +148,30 @@ function getAdwordsConfig(): array
             $isMetric = strtolower($field['Behavior']) === 'metric' ||
                 in_array($attributeName, $actuallyIsAMetric);
 
-            $attributeType = $field['Type'];
+            $attributeType = strtolower($field['Type']);
 
-            if ($attributeName === 'id') {
-                $attributeType = $field['Type'];
-            } else if (isset($overrideType[$attributeName])) {
-                $attributeType = $overrideType[$attributeName];
-            } else if ($field['SpecialValue']) {
-                $attributeType = 'special';
-            } else if ($field['Percentage']) {
-                $attributeType = 'percentage';
-            } else if ($field['Type'] === 'Money' || $field['Type'] === 'Bid') {
-                $attributeType = 'currency';
-            } else if ($field['Type'] === 'Long') {
-                $attributeType = 'integer';
-            } else if ($field['Type'] === 'Double') {
-                $attributeType = 'decimal';
+            if ($attributeName !== 'id') {
+                if (isset($overrideType[$attributeName])) {
+                    $attributeType = $overrideType[$attributeName];
+                } else if ($field['SpecialValue']) {
+                    $attributeType = 'special';
+                } else if ($field['Percentage']) {
+                    $attributeType = 'percentage';
+                } else if ($field['Type'] === 'Money' || $field['Type'] === 'Bid') {
+                    $attributeType = 'currency';
+                } else if ($field['Type'] === 'Long') {
+                    $attributeType = 'integer';
+                } else if ($field['Type'] === 'Double') {
+                    $attributeType = 'decimal';
+                }
             }
+
 
             $attribute = [
                 'id' => $attributeName,
                 'property' => $originalAttributeName,
                 'is_filter' => $field['Filterable'],
-                'type' => strtolower($attributeType),
+                'type' => $attributeType,
                 'is_metric' => $isMetric,
                 'is_dimension' => !$isMetric,
                 'is_percentage' => $field['Percentage']
