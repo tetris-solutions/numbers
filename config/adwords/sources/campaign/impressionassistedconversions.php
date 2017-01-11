@@ -8,7 +8,7 @@ return [
         "ImpressionAssistedConversions"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'ImpressionAssistedConversions'});
+        return intval(str_replace(',', '', $data->{'ImpressionAssistedConversions'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

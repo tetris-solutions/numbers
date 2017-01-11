@@ -7,8 +7,8 @@ return [
     "fields" => [
         "inline_link_click_ctr"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'inline_link_click_ctr'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'inline_link_click_ctr'}));
     },
     "sum" => function (array $rows) {
         $dividendMetric = 'inline_link_clicks';

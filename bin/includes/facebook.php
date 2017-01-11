@@ -29,59 +29,11 @@ function getFacebookConfig(): array
     ];
 
     $parsers = [
-        'currency' => function ($property) {
-            return function (string $indent) use ($property): string {
-                return join(PHP_EOL . $indent, [
-                    'function ($data) {',
-                    "    return (float)str_replace(',', '', \$data->{'$property'});",
-                    '}'
-                ]);
-            };
-        },
-        'percentage' => function ($property) {
-            return function (string $indent) use ($property): string {
-                return join(PHP_EOL . $indent, [
-                    'function ($data) {',
-                    "    return floatval(str_replace(',', '', \$data->{'$property'})) / 100;",
-                    '}'
-                ]);
-            };
-        },
-        'decimal' => function ($property) {
-            return function (string $indent) use ($property): string {
-                return join(PHP_EOL . $indent, [
-                    'function ($data) {',
-                    "    return (float)str_replace(',', '', \$data->{'$property'});",
-                    '}'
-                ]);
-            };
-        },
-        'raw' => function ($property) {
-            return function (string $indent) use ($property): string {
-                return join(PHP_EOL . $indent, [
-                    'function ($data) {',
-                    "    return \$data->{'{$property}'};",
-                    '}'
-                ]);
-            };
-        }
+        'currency' => makeParserFromSource('decimal'),
+        'percentage' => makeParserFromSource('percent'),
+        'decimal' => makeParserFromSource('decimal'),
+        'raw' => makeParserFromSource('raw')
     ];
-
-    $simpleSum = function (array $metric) {
-        return function (string $indent) use ($metric): string {
-            return join(PHP_EOL . $indent, [
-                'function (array $rows): float {',
-                '    return array_reduce(',
-                '        $rows,',
-                '        function (float $carry, $row): float {',
-                "            return \$carry + \$row->{'{$metric['id']}'};",
-                '        },',
-                '        0.0',
-                '    );',
-                '}'
-            ]);
-        };
-    };
 
     $metricSumFn = [
         'cpc' => percentSum('spend', 'clicks'),
@@ -262,7 +214,7 @@ function getFacebookConfig(): array
                 ];
 
                 if (in_array($attributeName, $simpleSumMetrics)) {
-                    $source['sum'] = $simpleSum($attribute);
+                    $source['sum'] = simpleSum($attribute['id']);
                 }
 
                 if (isset($metricSumFn[$attributeName])) {
@@ -318,7 +270,7 @@ function getFacebookConfig(): array
                 'report' => $reportName,
                 'fields' => [$videoMetricName],
                 'parse' => $parseVideoPercentAction($videoMetricName),
-                'sum' => $isAverage ? null : $simpleSum($attribute)
+                'sum' => $isAverage ? null : simpleSum($attribute['id'])
             ];
 
             $output['reports'][$reportName]['attributes'][$videoMetricName] = $attribute;
@@ -348,7 +300,7 @@ function getFacebookConfig(): array
                 'report' => $reportName,
                 'fields' => ['actions'],
                 'parse' => $parseActionType($actionType),
-                'sum' => $simpleSum($attribute)
+                'sum' => simpleSum($attribute['id'])
             ];
 
             $output['reports'][$reportName]['attributes'][$actionType] = $attribute;

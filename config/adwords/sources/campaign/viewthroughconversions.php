@@ -8,7 +8,7 @@ return [
         "ViewThroughConversions"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'ViewThroughConversions'});
+        return intval(str_replace(',', '', $data->{'ViewThroughConversions'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

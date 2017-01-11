@@ -7,8 +7,8 @@ return [
     "fields" => [
         "unique_ctr"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'unique_ctr'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'unique_ctr'}));
     },
     "sum" => NULL
 ];

@@ -8,7 +8,7 @@ return [
         "Interactions"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'Interactions'});
+        return intval(str_replace(',', '', $data->{'Interactions'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

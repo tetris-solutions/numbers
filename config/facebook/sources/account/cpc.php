@@ -7,8 +7,8 @@ return [
     "fields" => [
         "cpc"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'cpc'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'cpc'}));
     },
     "sum" => function (array $rows) {
         $dividendMetric = 'spend';

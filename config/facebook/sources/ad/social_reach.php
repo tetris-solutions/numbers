@@ -7,8 +7,8 @@ return [
     "fields" => [
         "social_reach"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'social_reach'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'social_reach'}));
     },
     "sum" => NULL
 ];

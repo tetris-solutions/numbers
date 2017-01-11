@@ -7,8 +7,10 @@ return [
     "fields" => [
         "ctr"
     ],
-    "parse" => function ($data) {
-        return floatval(str_replace(',', '', $data->{'ctr'})) / 100;
+    "parse" => function ($data): float {
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'ctr'});
+    
+        return floatval($valueAsNumericString) / 100;
     },
     "sum" => function (array $rows) {
         $dividendMetric = 'clicks';

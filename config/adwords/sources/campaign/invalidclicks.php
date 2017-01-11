@@ -8,7 +8,7 @@ return [
         "InvalidClicks"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'InvalidClicks'});
+        return intval(str_replace(',', '', $data->{'InvalidClicks'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

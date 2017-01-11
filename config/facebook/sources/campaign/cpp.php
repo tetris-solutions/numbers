@@ -7,8 +7,8 @@ return [
     "fields" => [
         "cpp"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'cpp'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'cpp'}));
     },
     "sum" => NULL
 ];

@@ -7,7 +7,7 @@ return [
     "fields" => [
         "ActiveViewMeasurableCost"
     ],
-    "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'ActiveViewMeasurableCost'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'ActiveViewMeasurableCost'}));
     }
 ];

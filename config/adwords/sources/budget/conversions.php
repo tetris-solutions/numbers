@@ -7,8 +7,8 @@ return [
     "fields" => [
         "Conversions"
     ],
-    "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'Conversions'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'Conversions'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

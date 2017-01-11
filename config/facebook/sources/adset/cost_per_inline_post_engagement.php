@@ -7,8 +7,8 @@ return [
     "fields" => [
         "cost_per_inline_post_engagement"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'cost_per_inline_post_engagement'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'cost_per_inline_post_engagement'}));
     },
     "sum" => function (array $rows) {
         $dividendMetric = 'spend';

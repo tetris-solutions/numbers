@@ -7,7 +7,7 @@ return [
     "fields" => [
         "FirstPageCpc"
     ],
-    "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'FirstPageCpc'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'FirstPageCpc'}));
     }
 ];

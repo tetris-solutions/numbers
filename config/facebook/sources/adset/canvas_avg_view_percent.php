@@ -7,10 +7,10 @@ return [
     "fields" => [
         "canvas_avg_view_percent"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'canvas_avg_view_percent'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'canvas_avg_view_percent'}));
     },
-    "sum" => function (array $rows): float {
+    "sum" => function (array $rows) {
         return array_reduce(
             $rows,
             function (float $carry, $row): float {

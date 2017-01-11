@@ -7,8 +7,8 @@ return [
     "fields" => [
         "cost_per_estimated_ad_recallers"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'cost_per_estimated_ad_recallers'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'cost_per_estimated_ad_recallers'}));
     },
     "sum" => function (array $rows) {
         $dividendMetric = 'spend';

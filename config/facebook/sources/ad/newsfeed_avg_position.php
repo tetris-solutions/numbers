@@ -7,8 +7,8 @@ return [
     "fields" => [
         "newsfeed_avg_position"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'newsfeed_avg_position'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'newsfeed_avg_position'}));
     },
     "sum" => function (array $rows) {
         $metric = 'newsfeed_avg_position';

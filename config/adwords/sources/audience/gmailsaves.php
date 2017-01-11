@@ -8,7 +8,7 @@ return [
         "GmailSaves"
     ],
     "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'GmailSaves'});
+        return intval(str_replace(',', '', $data->{'GmailSaves'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

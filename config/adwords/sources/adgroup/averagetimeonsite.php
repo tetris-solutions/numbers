@@ -7,8 +7,8 @@ return [
     "fields" => [
         "AverageTimeOnSite"
     ],
-    "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'AverageTimeOnSite'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'AverageTimeOnSite'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

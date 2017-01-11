@@ -66,14 +66,15 @@ function getAdwordsConfig(): array
     ];
 
     $metricParsers = [
-        'percentage' => makeParserFromSource('adwords-percent'),
-        'decimal' => makeParserFromSource('adwords-integer'),
-        'integer' => makeParserFromSource('adwords-integer'),
+        'percentage' => makeParserFromSource('percent'),
+        'decimal' => makeParserFromSource('decimal'),
+        'integer' => makeParserFromSource('integer'),
         'raw' => makeParserFromSource('raw'),
         'special' => makeParserFromSource('adwords-special-value')
     ];
 
     $metricParsers['currency'] = $metricParsers['decimal'];
+
     $dimensionParsers = [
         'integer' => $metricParsers['integer']
     ];

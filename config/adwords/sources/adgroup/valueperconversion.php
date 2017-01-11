@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ValuePerConversion"
     ],
-    "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'ValuePerConversion'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'ValuePerConversion'}));
     },
     "inferred_from" => [
         "conversionvalue",

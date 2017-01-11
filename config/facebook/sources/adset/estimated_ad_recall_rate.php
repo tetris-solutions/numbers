@@ -7,8 +7,8 @@ return [
     "fields" => [
         "estimated_ad_recall_rate"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'estimated_ad_recall_rate'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'estimated_ad_recall_rate'}));
     },
     "sum" => NULL
 ];

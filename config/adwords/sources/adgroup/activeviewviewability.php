@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ActiveViewViewability"
     ],
-    "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'ActiveViewViewability'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'ActiveViewViewability'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

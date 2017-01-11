@@ -7,8 +7,8 @@ return [
     "fields" => [
         "frequency"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'frequency'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'frequency'}));
     },
     "sum" => function (array $rows) {
         $dividendMetric = 'impressions';

@@ -7,8 +7,8 @@ return [
     "fields" => [
         "ActiveViewCtr"
     ],
-    "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'ActiveViewCtr'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'ActiveViewCtr'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(

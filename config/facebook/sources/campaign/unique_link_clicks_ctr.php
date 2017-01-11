@@ -7,8 +7,8 @@ return [
     "fields" => [
         "unique_link_clicks_ctr"
     ],
-    "parse" => function ($data) {
-        return (float)str_replace(',', '', $data->{'unique_link_clicks_ctr'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'unique_link_clicks_ctr'}));
     },
     "sum" => NULL
 ];

@@ -7,7 +7,7 @@ return [
     "fields" => [
         "CpmBid"
     ],
-    "parse" => function ($data): int {
-        return (int)str_replace(',', '', $data->{'CpmBid'});
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'CpmBid'}));
     }
 ];
