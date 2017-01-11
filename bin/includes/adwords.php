@@ -43,7 +43,7 @@ function getAdwordsConfig(): array
         'averagecpm' => percentSum('cost', 'impressions'),
         'averagecpv' => percentSum('cost', 'videoviews'),
         'averagefrequency' => percentSum('impressions', 'impressionreach'),
-        'averageposition' => altWeightedAverage('averageposition', 'impressions'),
+        'averageposition' => weightedAverage('averageposition', 'impressions'),
         'conversionrate' => percentSum('conversions', 'clicks'),
         'costperallconversion' => percentSum('cost', 'allconversions'),
         'costperconversion' => percentSum('cost', 'conversions'),

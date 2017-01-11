@@ -66,9 +66,9 @@ function percentSum(string $dividendMetric, string $divisorMetric): array
     ];
 }
 
-function altWeightedAverage(string $metric, string $weight): array
+function weightedAverage(string $metric, string $weight): array
 {
-    $source = makeParserFromSource('alt-weighted-average');
+    $source = makeParserFromSource('weighted-average');
 
     return [
         "inferred_from" => [$weight],

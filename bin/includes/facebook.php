@@ -16,27 +16,6 @@ function getFacebookConfig(): array
         'date_start' => 'date'
     ];
 
-    $weightedAvg = function (string $metric, string $weight): array {
-        return [
-            "inferred_from" => [$weight],
-            "sum" => function (string $indent) use ($metric, $weight): string {
-                return join(PHP_EOL . $indent, [
-                    'function (array $rows) {',
-                    '    $sumDividend = 0;',
-                    '    $sumDivisor = 0;',
-                    '    foreach ($rows as $row) {',
-                    "        \$sumDividend += \$row->{'$metric'} * \$row->{'$weight'};",
-                    "        \$sumDivisor += \$row->{'$weight'};",
-                    '    }',
-                    '    return (float)$sumDivisor !== 0.0',
-                    '        ? $sumDividend / $sumDivisor',
-                    '        : 0;',
-                    '}'
-                ]);
-            }
-        ];
-    };
-
     $overrideType = [
         'impressions' => 'numeric string',
         'ctr' => 'percentage'
@@ -114,7 +93,7 @@ function getFacebookConfig(): array
         'cost_per_inline_post_engagement' => percentSum('spend', 'inline_post_engagement'),
         'cost_per_total_action' => percentSum('spend', 'total_actions'),
         'inline_link_click_ctr' => percentSum('inline_link_clicks', 'impressions'),
-        'newsfeed_avg_position' => $weightedAvg('newsfeed_avg_position', 'impressions')
+        'newsfeed_avg_position' => weightedAverage('newsfeed_avg_position', 'impressions')
     ];
     $simpleSumMetrics = [
         'app_store_clicks',
