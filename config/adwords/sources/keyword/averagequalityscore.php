@@ -7,8 +7,8 @@ return [
     "fields" => [
         "QualityScore"
     ],
-    "parse" => function ($data): int {
-        return intval(str_replace(',', '', $data->{'QualityScore'}));
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'QualityScore'}));
     },
     "inferred_from" => [
         "impressions"

@@ -3,7 +3,7 @@ return [
     "id" => "averagequalityscore",
     "property" => "QualityScore",
     "is_filter" => TRUE,
-    "type" => "integer",
+    "type" => "decimal",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => FALSE

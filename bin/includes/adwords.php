@@ -8,7 +8,8 @@ function getAdwordsConfig(): array
     $mappings = json_decode(file_get_contents(__DIR__ . '/../../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
 
     $overrideType = [
-        'averagecpv' => 'currency'
+        'averagecpv' => 'currency',
+        'averagequalityscore' => 'decimal'
     ];
 
     $output = [
