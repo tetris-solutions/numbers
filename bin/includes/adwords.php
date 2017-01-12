@@ -41,6 +41,11 @@ function getAdwordsConfig(): array
         'searchbudgetlostimpressionshare' => lostImpressionShareSum('searchbudgetlostimpressionshare', 'searchimpressionshare'),
         'searchranklostimpressionshare' => lostImpressionShareSum('searchranklostimpressionshare', 'searchimpressionshare'),
         'searchimpressionshare' => impressionShareSum('searchimpressionshare'),
+
+        'contentbudgetlostimpressionshare' => lostImpressionShareSum('contentbudgetlostimpressionshare', 'contentimpressionshare'),
+        'contentranklostimpressionshare' => lostImpressionShareSum('contentranklostimpressionshare', 'contentimpressionshare'),
+        'contentimpressionshare' => impressionShareSum('contentimpressionshare'),
+
         'allconversionrate' => percentSum('allconversions', 'clicks'),
         'averagecost' => percentSum('cost', 'interactions'),
         'averagecpc' => percentSum('cost', 'clicks'),
