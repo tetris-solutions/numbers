@@ -3,6 +3,36 @@ namespace Tetris\Numbers;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
+function impressionShareSum(string $metric)
+{
+    $source = makeParserFromSource('impression-share-sum');
+
+    return [
+        'inferred_from' => ['impressions'],
+        'sum' => $source($metric, 'impressions')
+    ];
+}
+
+function lostImpressionShareSum(string $metric, string $impressionShare)
+{
+    $source = makeParserFromSource('lost-impression-share-sum');
+
+    return [
+        'inferred_from' => [$impressionShare, 'impressions'],
+        'sum' => $source($metric, $impressionShare, 'impressions')
+    ];
+}
+
+function specialValueTriangulation(string $metric, string $auxMetric1, string $auxMetric2)
+{
+    $source = makeParserFromSource('special-value-triangulation');
+
+    return [
+        'fields' => [$metric, $auxMetric1, $auxMetric2],
+        'parse' => $source($metric, $auxMetric1, $auxMetric2)
+    ];
+}
+
 function getAdwordsConfig(): array
 {
     $mappings = json_decode(file_get_contents(__DIR__ . '/../../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
@@ -83,13 +113,49 @@ function getAdwordsConfig(): array
         'decimal' => makeParserFromSource('decimal'),
         'integer' => makeParserFromSource('integer'),
         'raw' => makeParserFromSource('raw'),
-        'special' => makeParserFromSource('adwords-special-value')
+        'special' => makeParserFromSource('special-value')
     ];
 
     $metricParsers['currency'] = $metricParsers['decimal'];
 
     $dimensionParsers = [
         'integer' => $metricParsers['integer']
+    ];
+
+    $specialMetrics = [
+        'searchimpressionshare' => specialValueTriangulation(
+            'SearchImpressionShare',
+            'SearchBudgetLostImpressionShare',
+            'SearchRankLostImpressionShare'
+        ),
+
+        'searchbudgetlostimpressionshare' => specialValueTriangulation(
+            'SearchBudgetLostImpressionShare',
+            'SearchRankLostImpressionShare',
+            'SearchImpressionShare'
+        ),
+
+        'searchranklostimpressionshare' => specialValueTriangulation(
+            'SearchRankLostImpressionShare',
+            'SearchBudgetLostImpressionShare',
+            'SearchImpressionShare'
+        ),
+
+        'contentimpressionshare' => specialValueTriangulation(
+            'ContentImpressionShare',
+            'ContentBudgetLostImpressionShare',
+            'ContentRankLostImpressionShare'
+        ),
+        'contentbudgetlostimpressionshare' => specialValueTriangulation(
+            'ContentBudgetLostImpressionShare',
+            'ContentRankLostImpressionShare',
+            'ContentImpressionShare'
+        ),
+        'contentranklostimpressionshare' => specialValueTriangulation(
+            'ContentRankLostImpressionShare',
+            'ContentBudgetLostImpressionShare',
+            'ContentImpressionShare'
+        )
     ];
 
     $entityNameMap = [
@@ -217,6 +283,10 @@ function getAdwordsConfig(): array
                     'fields' => [$originalAttributeName],
                     'parse' => $metricParsers[$metric['type']]($originalAttributeName)
                 ];
+
+                if (isset($specialMetrics[$attributeName])) {
+                    $sourceConfig = array_merge($sourceConfig, $specialMetrics[$attributeName]);
+                }
 
                 $canUseSimpleSum = $metric['type'] === 'integer' ||
                     $metric['type'] === 'decimal' ||

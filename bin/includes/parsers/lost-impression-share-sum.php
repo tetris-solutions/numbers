@@ -8,23 +8,11 @@ return function (array $rows) {
     $totalPossibleImpressions = 0;
     $totalLostImpressions = 0;
 
-    $getSpecialValue = function ($specialValue) {
-        $isInvalid = (
-            !isset($specialValue['raw']) ||
-            !is_float($specialValue['value']) ||
-            !is_string($specialValue['raw']) ||
-            strpos($specialValue['raw'], '<') !== FALSE ||
-            strpos($specialValue['raw'], '>') !== FALSE
-        );
-
-        return $isInvalid ? null : $specialValue['value'];
-    };
-
     foreach ($rows as $row) {
-        $impressionShare = $getSpecialValue($row->{$impressionShareField});
-        $lostShare = $getSpecialValue($row->{$lostImpressionShareField});
+        $impressionShare = $row->{$impressionShareField};
+        $lostShare = $row->{$lostImpressionShareField};
 
-        if (!$impressionShare || $lostShare === null) {
+        if (!is_numeric($impressionShare) || !is_numeric($lostShare)) {
             return null;
         }
 

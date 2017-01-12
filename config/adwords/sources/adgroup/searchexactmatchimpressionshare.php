@@ -7,29 +7,33 @@ return [
     "fields" => [
         "SearchExactMatchImpressionShare"
     ],
-    "parse" => function ($data): array {
-        $value = $data->{'SearchExactMatchImpressionShare'};
+    "parse" => function ($data) {
+        $parseValue = function ($str) {
+            if (!is_string($str)) {
+                return null;
+            }
     
-        if (!is_string($value)) {
-            return [
-                'value' => null,
-                'raw' => $value
-            ];
-        }
+            $multiplier = 1;
     
-        $multiplier = 1;
+            if (strpos($str, '%') !== FALSE) {
+                $multiplier = 0.01;
+            }
     
-        if (strpos($value, '%') !== FALSE) {
-            $multiplier = 0.01;
-        }
+            $isSpecial = strpos($str, '>') !== FALSE || strpos($str, '<') !== FALSE;
     
-        $clean = preg_replace("/[^0-9,.]/", "", $value);
+            $clean = preg_replace("/[^0-9,.]/", "", $str);
     
-        return [
-            'value' => is_numeric($clean)
-                ? floatval($clean) * $multiplier
-                : null,
-            'raw' => $value
-        ];
+            if (!is_numeric($clean)) {
+                return ['value' => null, 'raw' => $str];
+            }
+    
+            $estimate = floatval($clean) * $multiplier;
+    
+            return $isSpecial
+                ? ['value' => $estimate, 'raw' => $str]
+                : $estimate;
+        };
+    
+        return $parseValue($data->{'SearchExactMatchImpressionShare'});
     }
 ];

@@ -78,7 +78,7 @@ function weightedAverage(string $metric, string $weight): array
 
 function videoQuartileSum(string $percent): array
 {
-    $source = makeParserFromSource('adwords-video-quartile-sum');
+    $source = makeParserFromSource('video-quartile-sum');
 
     return [
         "inferred_from" => ['videoviews'],
@@ -91,24 +91,4 @@ function simpleSum(string $metric): callable
     $source = makeParserFromSource('simple-sum');
 
     return $source($metric);
-}
-
-function impressionShareSum(string $metric)
-{
-    $source = makeParserFromSource('impression-share-sum');
-
-    return [
-        'inferred_from' => ['impressions'],
-        'sum' => $source($metric, 'impressions')
-    ];
-}
-
-function lostImpressionShareSum(string $metric, string $impressionShare)
-{
-    $source = makeParserFromSource('lost-impression-share-sum');
-
-    return [
-        'inferred_from' => [$impressionShare, 'impressions'],
-        'sum' => $source($metric, $impressionShare, 'impressions')
-    ];
 }

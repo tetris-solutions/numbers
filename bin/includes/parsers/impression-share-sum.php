@@ -7,24 +7,12 @@ return function (array $rows) {
     $totalPossibleImpressions = 0;
     $totalImpressions = 0;
 
-    $getSpecialValue = function ($specialValue) {
-        $isInvalid = (
-            !isset($specialValue['raw']) ||
-            !is_float($specialValue['value']) ||
-            !is_string($specialValue['raw']) ||
-            strpos($specialValue['raw'], '<') !== FALSE ||
-            strpos($specialValue['raw'], '>') !== FALSE
-        );
-
-        return $isInvalid ? null : $specialValue['value'];
-    };
-
     foreach ($rows as $row) {
         $totalImpressions += $row->{$impressionField};
 
-        $impressionShare = $getSpecialValue($row->{$impressionShareField});
+        $impressionShare = $row->{$impressionShareField};
 
-        if (!$impressionShare) return null;
+        if (!is_numeric($impressionShare)) return null;
 
         $possibleImpressions = $row->{$impressionField} / $impressionShare;
 
