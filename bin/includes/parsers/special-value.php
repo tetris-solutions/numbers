@@ -14,7 +14,7 @@ return function ($data) {
 
         $isSpecial = strpos($str, '>') !== FALSE || strpos($str, '<') !== FALSE;
 
-        $clean = preg_replace("/[^0-9,.]/", "", $str);
+        $clean = preg_replace("/[^0-9.-]/", "", $str);
 
         if (!is_numeric($clean)) {
             return ['value' => null, 'raw' => $str];
