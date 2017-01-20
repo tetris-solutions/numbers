@@ -40,7 +40,8 @@ function getFacebookConfig(): array
     $overrideType = [
         'impressions' => 'numeric string',
         'ctr' => 'percentage',
-        'view_rate' => 'percentage'
+        'view_rate' => 'percentage',
+        'cost_per_10_sec_video_view' => 'currency'
     ];
 
     $output = [
@@ -142,7 +143,7 @@ function getFacebookConfig(): array
 
         foreach ($attributes as $attribute) {
             foreach ($keywords as $keyword) {
-                if (strpos($field[$attribute], $keyword) !== FALSE) {
+                if (isset($field[$attribute]) && strpos($field[$attribute], $keyword) !== FALSE) {
                     return true;
                 }
             }
@@ -256,6 +257,8 @@ function getFacebookConfig(): array
             'video_avg_pct_watched_actions',
             'video_avg_percent_watched_actions',
             'video_avg_sec_watched_actions',
+
+            'cost_per_10_sec_video_view'
         ];
 
         foreach ($composedVideoMetrics as $videoMetricName) {
@@ -273,9 +276,11 @@ function getFacebookConfig(): array
             if (empty($output['metrics'][$videoMetricName])) {
                 $output['metrics'][$videoMetricName] = [
                     'id' => $videoMetricName,
-                    'type' => 'decimal'
+                    'type' => isCurrency($attribute) ? 'currency' : 'decimal'
                 ];
             }
+
+            $attribute['type'] = $output['metrics'][$videoMetricName]['type'];
 
             $output['sources'][] = [
                 'metric' => $videoMetricName,
