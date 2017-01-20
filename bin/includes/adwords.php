@@ -33,6 +33,26 @@ function specialValueTriangulation(string $metric, string $auxMetric1, string $a
     ];
 }
 
+function cpv100Adwords(string $cost, string $views100Percentile, string $views)
+{
+    $source = makeParserFromSource('cpv100-adwords');
+
+    return [
+        'fields' => [$cost, $views100Percentile, $views],
+        'parse' => $source($cost, $views100Percentile, $views)
+    ];
+}
+
+function cpv100AdwordsSum(string $cost, string $views100Percentile, string $views)
+{
+    $source = makeParserFromSource('cpv100-adwords-sum');
+
+    return [
+        'inferred_from' => [$cost, $views100Percentile, $views],
+        'sum' => $source($cost, $views100Percentile, $views)
+    ];
+}
+
 function getAdwordsConfig(): array
 {
     $mappings = json_decode(file_get_contents(__DIR__ . '/../../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
@@ -76,24 +96,24 @@ function getAdwordsConfig(): array
         'contentranklostimpressionshare' => lostImpressionShareSum('contentranklostimpressionshare', 'contentimpressionshare'),
         'contentimpressionshare' => impressionShareSum('contentimpressionshare'),
 
-        'allconversionrate' => percentSum('allconversions', 'clicks'),
-        'averagecost' => percentSum('cost', 'interactions'),
-        'averagecpc' => percentSum('cost', 'clicks'),
-        'averagecpe' => percentSum('cost', 'engagements'),
-        'averagecpm' => percentSum('cost', 'impressions'),
-        'averagecpv' => percentSum('cost', 'videoviews'),
-        'averagefrequency' => percentSum('impressions', 'impressionreach'),
-        'conversionrate' => percentSum('conversions', 'clicks'),
-        'costperallconversion' => percentSum('cost', 'allconversions'),
-        'costperconversion' => percentSum('cost', 'conversions'),
-        'ctr' => percentSum('clicks', 'impressions'),
-        'engagementrate' => percentSum('engagements', 'impressions'),
-        'interactionrate' => percentSum('interactions', 'impressions'),
-        'invalidclickrate' => percentSum('invalidclicks', 'clicks'),
-        'offlineinteractionrate' => percentSum('numofflineinteractions', 'numofflineimpressions'),
-        'valueperallconversion' => percentSum('allconversionvalue', 'allconversions'),
-        'valueperconversion' => percentSum('conversionvalue', 'conversions'),
-        'videoviewrate' => percentSum('videoviews', 'impressions'),
+        'allconversionrate' => ratioSum('allconversions', 'clicks'),
+        'averagecost' => ratioSum('cost', 'interactions'),
+        'averagecpc' => ratioSum('cost', 'clicks'),
+        'averagecpe' => ratioSum('cost', 'engagements'),
+        'averagecpm' => ratioSum('cost', 'impressions'),
+        'averagecpv' => ratioSum('cost', 'videoviews'),
+        'averagefrequency' => ratioSum('impressions', 'impressionreach'),
+        'conversionrate' => ratioSum('conversions', 'clicks'),
+        'costperallconversion' => ratioSum('cost', 'allconversions'),
+        'costperconversion' => ratioSum('cost', 'conversions'),
+        'ctr' => ratioSum('clicks', 'impressions'),
+        'engagementrate' => ratioSum('engagements', 'impressions'),
+        'interactionrate' => ratioSum('interactions', 'impressions'),
+        'invalidclickrate' => ratioSum('invalidclicks', 'clicks'),
+        'offlineinteractionrate' => ratioSum('numofflineinteractions', 'numofflineimpressions'),
+        'valueperallconversion' => ratioSum('allconversionvalue', 'allconversions'),
+        'valueperconversion' => ratioSum('conversionvalue', 'conversions'),
+        'videoviewrate' => ratioSum('videoviews', 'impressions'),
 
         'videoquartile25rate' => videoQuartileSum(25),
         'videoquartile50rate' => videoQuartileSum(50),
@@ -102,6 +122,8 @@ function getAdwordsConfig(): array
 
         'averageposition' => weightedAverage('averageposition', 'impressions'),
         'averagequalityscore' => weightedAverage('averagequalityscore', 'impressions'),
+        'roas' => ratioSum('conversionvalue', 'cost'),
+        'cpv100' => cpv100AdwordsSum('cost', 'videoquartile100rate', 'videoviews')
     ];
 
     $simpleSumMetrics = [
@@ -155,7 +177,9 @@ function getAdwordsConfig(): array
             'ContentRankLostImpressionShare',
             'ContentBudgetLostImpressionShare',
             'ContentImpressionShare'
-        )
+        ),
+        'roas' => roas('ConversionValue', 'Cost'),
+        'cpv100' => cpv100Adwords('Cost', 'VideoQuartile100Rate', 'VideoViews')
     ];
 
     $entityNameMap = [
@@ -178,6 +202,21 @@ function getAdwordsConfig(): array
 
     foreach ($mappings as $reportName => $fields) {
         if (!isset($entityNameMap[$reportName])) continue;
+
+        if (isset($fields['ConversionValue']) && isset($fields['Cost'])) {
+            $fields['Roas'] = $fields['ConversionValue'];
+            $fields['Roas']['Filterable'] = false;
+        }
+
+        if (
+            isset($fields['AverageCpv']) &&
+            isset($fields['Cost']) &&
+            isset($fields['VideoQuartile100Rate']) &&
+            isset($fields['VideoViews'])
+        ) {
+            $fields['Cpv100'] = $fields['AverageCpv'];
+            $fields['Cpv100']['Filterable'] = false;
+        }
 
         $output['reports'][$reportName] = [
             'id' => $reportName,

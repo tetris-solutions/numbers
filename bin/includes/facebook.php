@@ -38,17 +38,18 @@ function getFacebookConfig(): array
     $actionValueParser = makeParserFromSource('action');
 
     $metricSumFn = [
-        'cpc' => percentSum('spend', 'clicks'),
-        'cpm' => percentSum('spend', 'impressions'),
-        'ctr' => percentSum('clicks', 'impressions'),
-        'frequency' => percentSum('impressions', 'reach'),
-        'cost_per_estimated_ad_recallers' => percentSum('spend', 'estimated_ad_recallers'),
-        'cost_per_inline_link_click' => percentSum('spend', 'inline_link_clicks'),
-        'cost_per_inline_post_engagement' => percentSum('spend', 'inline_post_engagement'),
-        'cost_per_total_action' => percentSum('spend', 'total_actions'),
-        'inline_link_click_ctr' => percentSum('inline_link_clicks', 'impressions'),
+        'cpc' => ratioSum('spend', 'clicks'),
+        'cpm' => ratioSum('spend', 'impressions'),
+        'ctr' => ratioSum('clicks', 'impressions'),
+        'frequency' => ratioSum('impressions', 'reach'),
+        'cost_per_estimated_ad_recallers' => ratioSum('spend', 'estimated_ad_recallers'),
+        'cost_per_inline_link_click' => ratioSum('spend', 'inline_link_clicks'),
+        'cost_per_inline_post_engagement' => ratioSum('spend', 'inline_post_engagement'),
+        'cost_per_total_action' => ratioSum('spend', 'total_actions'),
+        'inline_link_click_ctr' => ratioSum('inline_link_clicks', 'impressions'),
         'newsfeed_avg_position' => weightedAverage('newsfeed_avg_position', 'impressions')
     ];
+
     $simpleSumMetrics = [
         'app_store_clicks',
         'call_to_action_clicks',
