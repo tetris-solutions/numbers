@@ -353,6 +353,7 @@ return [
         'receive_offer' => 'Reinvindicações de Ofertas',
         'region' => 'Região',
         'relevance_score' => 'Pontuação de Relevância',
+        'roas' => 'Return Over Average Spent',
         'rsvp' => 'Respostas de Eventos',
         'social_clicks' => 'Cliques Sociais',
         'social_impressions' => 'Impressões Sociais',

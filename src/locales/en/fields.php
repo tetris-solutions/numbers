@@ -353,6 +353,7 @@ return [
         'receive_offer' => 'Offer Claims',
         'region' => 'Region',
         'relevance_score' => 'Relevance Score',
+        'roas' => 'Return Over Average Spent',
         'rsvp' => 'Event Responses',
         'social_clicks' => 'Social Clicks',
         'social_impressions' => 'Social Impressions',

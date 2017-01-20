@@ -37,7 +37,7 @@ function getFacebookConfig(): array
 
     $actionValueParser = makeParserFromSource('action');
 
-    $metricSumFn = [
+    $inferredMetricSumConfig = [
         'cpc' => ratioSum('spend', 'clicks'),
         'cpm' => ratioSum('spend', 'impressions'),
         'ctr' => ratioSum('clicks', 'impressions'),
@@ -47,7 +47,8 @@ function getFacebookConfig(): array
         'cost_per_inline_post_engagement' => ratioSum('spend', 'inline_post_engagement'),
         'cost_per_total_action' => ratioSum('spend', 'total_actions'),
         'inline_link_click_ctr' => ratioSum('inline_link_clicks', 'impressions'),
-        'newsfeed_avg_position' => weightedAverage('newsfeed_avg_position', 'impressions')
+        'newsfeed_avg_position' => weightedAverage('newsfeed_avg_position', 'impressions'),
+        'roas' => ratioSum('total_action_value', 'spend')
     ];
 
     $simpleSumMetrics = [
@@ -79,6 +80,12 @@ function getFacebookConfig(): array
         'video_avg_percent_watched_actions',
         'video_avg_time_watched_actions'
     ];
+
+    $specialMetricConfig = [
+        'roas' => roas('total_action_value', 'spend')
+    ];
+
+    $fields['roas'] = $fields['total_action_value'];
 
     $numericTypes = [
         'percentage',
@@ -184,8 +191,12 @@ function getFacebookConfig(): array
                     $source['sum'] = simpleSum($attribute['id']);
                 }
 
-                if (isset($metricSumFn[$attributeName])) {
-                    $source = array_merge($source, $metricSumFn[$attributeName]);
+                if (isset($specialMetricConfig[$attributeName])) {
+                    $source = array_merge($source, $specialMetricConfig[$attributeName]);
+                }
+
+                if (isset($inferredMetricSumConfig[$attributeName])) {
+                    $source = array_merge($source, $inferredMetricSumConfig[$attributeName]);
                 }
 
                 $output['sources'][] = $source;

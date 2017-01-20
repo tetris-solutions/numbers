@@ -87,7 +87,7 @@ function getAdwordsConfig(): array
         'ValuePerConvertedClick'
     ];
 
-    $inferredMetricSum = [
+    $inferredMetricSumConfig = [
         'searchbudgetlostimpressionshare' => lostImpressionShareSum('searchbudgetlostimpressionshare', 'searchimpressionshare'),
         'searchranklostimpressionshare' => lostImpressionShareSum('searchranklostimpressionshare', 'searchimpressionshare'),
         'searchimpressionshare' => impressionShareSum('searchimpressionshare'),
@@ -144,7 +144,7 @@ function getAdwordsConfig(): array
         'integer' => $metricParsers['integer']
     ];
 
-    $specialMetrics = [
+    $specialMetricConfig = [
         'searchimpressionshare' => specialValueTriangulation(
             'SearchImpressionShare',
             'SearchBudgetLostImpressionShare',
@@ -323,16 +323,16 @@ function getAdwordsConfig(): array
                     'parse' => $metricParsers[$metric['type']]($originalAttributeName)
                 ];
 
-                if (isset($specialMetrics[$attributeName])) {
-                    $sourceConfig = array_merge($sourceConfig, $specialMetrics[$attributeName]);
+                if (isset($specialMetricConfig[$attributeName])) {
+                    $sourceConfig = array_merge($sourceConfig, $specialMetricConfig[$attributeName]);
                 }
 
                 $canUseSimpleSum = $metric['type'] === 'integer' ||
                     $metric['type'] === 'decimal' ||
                     in_array($metric['id'], $simpleSumMetrics);
 
-                if (isset($inferredMetricSum[$attributeName])) {
-                    $sourceConfig = array_merge($sourceConfig, $inferredMetricSum[$attributeName]);
+                if (isset($inferredMetricSumConfig[$attributeName])) {
+                    $sourceConfig = array_merge($sourceConfig, $inferredMetricSumConfig[$attributeName]);
                 } else if ($canUseSimpleSum) {
                     $sourceConfig['sum'] = simpleSum($metric['id']);
                 }
