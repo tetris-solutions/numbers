@@ -17,7 +17,7 @@ function cpv100Facebook(string $spend, string $video100p)
 
 function viewRateFacebook(string $videoViewAction, string $impressions)
 {
-    $source = makeParserFromSource('cpv100-facebook');
+    $source = makeParserFromSource('view-rate-facebook');
 
     return [
         'fields' => [$impressions, $videoViewAction],
@@ -39,7 +39,8 @@ function getFacebookConfig(): array
 
     $overrideType = [
         'impressions' => 'numeric string',
-        'ctr' => 'percentage'
+        'ctr' => 'percentage',
+        'view_rate' => 'percentage'
     ];
 
     $output = [
@@ -72,8 +73,8 @@ function getFacebookConfig(): array
         'roas' => customRatioSum('total_action_value', 'spend'),
         'cpa' => customRatioSum('total_actions', 'total_action_value'),
         'cpr' => customRatioSum('spend', 'reach'),
-        'cpv100' => customRatioParser('spend', 'video_p100_watched_actions'),
-        'view_rate' => customRatioParser('video_view', 'impressions')
+        'cpv100' => customRatioSum('spend', 'video_p100_watched_actions'),
+        'view_rate' => customRatioSum('video_view', 'impressions')
     ];
 
     $simpleSumMetrics = [
@@ -111,7 +112,7 @@ function getFacebookConfig(): array
         'cpa' => customRatioParser('total_actions', 'total_action_value'),
         'cpr' => customRatioParser('spend', 'reach'),
         'cpv100' => cpv100Facebook('spend', 'video_p100_watched_actions'),
-        'view_rate' => viewRateFacebook('video_view', 'impressions')
+        'view_rate' => viewRateFacebook('actions', 'impressions')
     ];
 
     $fields['roas'] = $fields['total_action_value'];

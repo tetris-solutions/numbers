@@ -5,14 +5,46 @@ return [
     "platform" => "facebook",
     "report" => "FB_ADSET",
     "fields" => [
-        "video_view",
-        "impressions"
+        "impressions",
+        "actions"
     ],
     "parse" => function ($data) {
-        $conv = floatval(str_replace(',', '', $data->{'video_view'}));
-        $cost = floatval(str_replace(',', '', $data->{'impressions'}));
+        $collection = 'actions';
+        $type = 'video_view';
     
-        return $cost === 0.0 ? 0.0 : $conv / $cost;
+        $impressions = floatval(str_replace(',', '', $data->{'impressions'}));
+    
+        $actionValue = null;
+    
+        if (empty($data->{$collection})) return NULL;
+    
+        foreach ($data->{$collection} as $action) {
+            if ($action['action_type'] === $type) {
+                $actionValue = (float)str_replace(',', '', $action['value']);
+                break;
+            }
+        }
+    
+        return !$impressions ? 0 : $actionValue / $impressions;
     },
-    "sum" => NULL
+    "sum" => function (array $rows) {
+        $dividendMetric = 'video_view';
+        $divisorMetric = 'impressions';
+    
+        $sumDividend = 0;
+        $sumDivisor = 0;
+    
+        foreach ($rows as $row) {
+            $sumDividend += $row->{$dividendMetric};
+            $sumDivisor += $row->{$divisorMetric};
+        }
+    
+        return (float)$sumDivisor !== 0.0
+            ? $sumDividend / $sumDivisor
+            : 0;
+    },
+    "inferred_from" => [
+        "video_view",
+        "impressions"
+    ]
 ];
