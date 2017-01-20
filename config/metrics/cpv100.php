@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "cpv100",
-    "type" => "decimal"
+    "type" => "currency"
 ];

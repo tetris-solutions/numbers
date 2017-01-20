@@ -214,7 +214,7 @@ function getAdwordsConfig(): array
             isset($fields['VideoQuartile100Rate']) &&
             isset($fields['VideoViews'])
         ) {
-            $fields['Cpv100'] = $fields['AverageCpv'];
+            $fields['Cpv100'] = $fields['AverageCpc'];
             $fields['Cpv100']['Filterable'] = false;
         }
 
