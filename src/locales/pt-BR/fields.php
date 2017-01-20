@@ -285,6 +285,7 @@ return [
         'cost_per_unique_click' => 'Custo Por Clique Único',
         'cost_per_unique_inline_link_click' => 'Custo Por Clique Único no Link',
         'country' => 'País',
+        'cpa' => 'Custo Por Conversão',
         'cpc' => 'CPC',
         'cpm' => 'CPM',
         'cpp' => 'CPP',

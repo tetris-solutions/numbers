@@ -4,6 +4,7 @@ namespace Tetris\Numbers;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
+
 function getFacebookConfig(): array
 {
     $fields = array_merge(
@@ -38,17 +39,18 @@ function getFacebookConfig(): array
     $actionValueParser = makeParserFromSource('action');
 
     $inferredMetricSumConfig = [
-        'cpc' => ratioSum('spend', 'clicks'),
-        'cpm' => ratioSum('spend', 'impressions'),
-        'ctr' => ratioSum('clicks', 'impressions'),
-        'frequency' => ratioSum('impressions', 'reach'),
-        'cost_per_estimated_ad_recallers' => ratioSum('spend', 'estimated_ad_recallers'),
-        'cost_per_inline_link_click' => ratioSum('spend', 'inline_link_clicks'),
-        'cost_per_inline_post_engagement' => ratioSum('spend', 'inline_post_engagement'),
-        'cost_per_total_action' => ratioSum('spend', 'total_actions'),
-        'inline_link_click_ctr' => ratioSum('inline_link_clicks', 'impressions'),
+        'cpc' => customRatioSum('spend', 'clicks'),
+        'cpm' => customRatioSum('spend', 'impressions'),
+        'ctr' => customRatioSum('clicks', 'impressions'),
+        'frequency' => customRatioSum('impressions', 'reach'),
+        'cost_per_estimated_ad_recallers' => customRatioSum('spend', 'estimated_ad_recallers'),
+        'cost_per_inline_link_click' => customRatioSum('spend', 'inline_link_clicks'),
+        'cost_per_inline_post_engagement' => customRatioSum('spend', 'inline_post_engagement'),
+        'cost_per_total_action' => customRatioSum('spend', 'total_actions'),
+        'inline_link_click_ctr' => customRatioSum('inline_link_clicks', 'impressions'),
         'newsfeed_avg_position' => weightedAverage('newsfeed_avg_position', 'impressions'),
-        'roas' => ratioSum('total_action_value', 'spend')
+        'roas' => customRatioSum('total_action_value', 'spend'),
+        'cpa' => customRatioSum('total_actions', 'total_action_value')
     ];
 
     $simpleSumMetrics = [
@@ -82,10 +84,12 @@ function getFacebookConfig(): array
     ];
 
     $specialMetricConfig = [
-        'roas' => roas('total_action_value', 'spend')
+        'roas' => customRatioParser('total_action_value', 'spend'),
+        'cpa' => customRatioParser('total_actions', 'total_action_value')
     ];
 
     $fields['roas'] = $fields['total_action_value'];
+    $fields['cpa'] = $fields['total_action_value'];
 
     $numericTypes = [
         'percentage',

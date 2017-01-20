@@ -96,24 +96,24 @@ function getAdwordsConfig(): array
         'contentranklostimpressionshare' => lostImpressionShareSum('contentranklostimpressionshare', 'contentimpressionshare'),
         'contentimpressionshare' => impressionShareSum('contentimpressionshare'),
 
-        'allconversionrate' => ratioSum('allconversions', 'clicks'),
-        'averagecost' => ratioSum('cost', 'interactions'),
-        'averagecpc' => ratioSum('cost', 'clicks'),
-        'averagecpe' => ratioSum('cost', 'engagements'),
-        'averagecpm' => ratioSum('cost', 'impressions'),
-        'averagecpv' => ratioSum('cost', 'videoviews'),
-        'averagefrequency' => ratioSum('impressions', 'impressionreach'),
-        'conversionrate' => ratioSum('conversions', 'clicks'),
-        'costperallconversion' => ratioSum('cost', 'allconversions'),
-        'costperconversion' => ratioSum('cost', 'conversions'),
-        'ctr' => ratioSum('clicks', 'impressions'),
-        'engagementrate' => ratioSum('engagements', 'impressions'),
-        'interactionrate' => ratioSum('interactions', 'impressions'),
-        'invalidclickrate' => ratioSum('invalidclicks', 'clicks'),
-        'offlineinteractionrate' => ratioSum('numofflineinteractions', 'numofflineimpressions'),
-        'valueperallconversion' => ratioSum('allconversionvalue', 'allconversions'),
-        'valueperconversion' => ratioSum('conversionvalue', 'conversions'),
-        'videoviewrate' => ratioSum('videoviews', 'impressions'),
+        'allconversionrate' => customRatioSum('allconversions', 'clicks'),
+        'averagecost' => customRatioSum('cost', 'interactions'),
+        'averagecpc' => customRatioSum('cost', 'clicks'),
+        'averagecpe' => customRatioSum('cost', 'engagements'),
+        'averagecpm' => customRatioSum('cost', 'impressions'),
+        'averagecpv' => customRatioSum('cost', 'videoviews'),
+        'averagefrequency' => customRatioSum('impressions', 'impressionreach'),
+        'conversionrate' => customRatioSum('conversions', 'clicks'),
+        'costperallconversion' => customRatioSum('cost', 'allconversions'),
+        'costperconversion' => customRatioSum('cost', 'conversions'),
+        'ctr' => customRatioSum('clicks', 'impressions'),
+        'engagementrate' => customRatioSum('engagements', 'impressions'),
+        'interactionrate' => customRatioSum('interactions', 'impressions'),
+        'invalidclickrate' => customRatioSum('invalidclicks', 'clicks'),
+        'offlineinteractionrate' => customRatioSum('numofflineinteractions', 'numofflineimpressions'),
+        'valueperallconversion' => customRatioSum('allconversionvalue', 'allconversions'),
+        'valueperconversion' => customRatioSum('conversionvalue', 'conversions'),
+        'videoviewrate' => customRatioSum('videoviews', 'impressions'),
 
         'videoquartile25rate' => videoQuartileSum(25),
         'videoquartile50rate' => videoQuartileSum(50),
@@ -122,7 +122,7 @@ function getAdwordsConfig(): array
 
         'averageposition' => weightedAverage('averageposition', 'impressions'),
         'averagequalityscore' => weightedAverage('averagequalityscore', 'impressions'),
-        'roas' => ratioSum('conversionvalue', 'cost'),
+        'roas' => customRatioSum('conversionvalue', 'cost'),
         'cpv100' => cpv100AdwordsSum('cost', 'videoquartile100rate', 'videoviews')
     ];
 
@@ -178,7 +178,7 @@ function getAdwordsConfig(): array
             'ContentBudgetLostImpressionShare',
             'ContentImpressionShare'
         ),
-        'roas' => roas('ConversionValue', 'Cost'),
+        'roas' => customRatioParser('ConversionValue', 'Cost'),
         'cpv100' => cpv100Adwords('Cost', 'VideoQuartile100Rate', 'VideoViews')
     ];
 

@@ -56,7 +56,7 @@ function prettyVarExport($var, $level = 0)
     }
 }
 
-function ratioSum(string $dividendMetric, string $divisorMetric): array
+function customRatioSum(string $dividendMetric, string $divisorMetric): array
 {
     $source = makeParserFromSource('percent-sum');
 
@@ -93,13 +93,13 @@ function simpleSum(string $metric): callable
     return $source($metric);
 }
 
-function roas(string $conversionValue, string $cost)
+function customRatioParser(string $dividend, string $divisor)
 {
-    $both = [$conversionValue, $cost];
-    $source = makeParserFromSource('roas');
+    $both = [$dividend, $divisor];
+    $source = makeParserFromSource('ratio');
 
     return [
         'fields' => $both,
-        'parse' => $source($conversionValue, $cost)
+        'parse' => $source($dividend, $divisor)
     ];
 }
