@@ -1,5 +1,5 @@
 <?php
 return [
-    "id" => "tdv",
+    "id" => "view_rate",
     "type" => "decimal"
 ];

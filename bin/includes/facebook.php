@@ -119,7 +119,7 @@ function getFacebookConfig(): array
     $fields['cpa'] = $fields['cpc'];
     $fields['cpr'] = $fields['cpc'];
     $fields['cpv100'] = $fields['cpc'];
-    $fields['tdv'] = $fields['ctr'];
+    $fields['view_rate'] = $fields['ctr'];
 
 
     $numericTypes = [

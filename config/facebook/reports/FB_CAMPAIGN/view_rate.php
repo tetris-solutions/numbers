@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "tdv",
-    "property" => "tdv",
+    "id" => "view_rate",
+    "property" => "view_rate",
     "type" => "numeric string",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
