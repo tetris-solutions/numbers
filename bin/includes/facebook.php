@@ -115,7 +115,7 @@ function getFacebookConfig(): array
         'view_rate' => viewRateFacebook('actions', 'impressions')
     ];
 
-    $fields['roas'] = $fields['total_action_value'];
+    $fields['roas'] = $fields['spend'];
 
     $fields['cpa'] = $fields['cpc'];
     $fields['cpr'] = $fields['cpc'];

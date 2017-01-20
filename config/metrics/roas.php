@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "roas",
-    "type" => "decimal"
+    "type" => "currency"
 ];

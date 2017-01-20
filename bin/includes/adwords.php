@@ -204,7 +204,7 @@ function getAdwordsConfig(): array
         if (!isset($entityNameMap[$reportName])) continue;
 
         if (isset($fields['ConversionValue']) && isset($fields['Cost'])) {
-            $fields['Roas'] = $fields['ConversionValue'];
+            $fields['Roas'] = $fields['Cost'];
             $fields['Roas']['Filterable'] = false;
         }
 
