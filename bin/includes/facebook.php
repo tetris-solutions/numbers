@@ -5,6 +5,26 @@ namespace Tetris\Numbers;
 require __DIR__ . '/../../vendor/autoload.php';
 
 
+function cpv100Facebook(string $spend, string $video100p)
+{
+    $source = makeParserFromSource('cpv100-facebook');
+
+    return [
+        'fields' => [$spend, $video100p],
+        'parse' => $source($spend, $video100p, 'video_view')
+    ];
+}
+
+function viewRateFacebook(string $videoViewAction, string $impressions)
+{
+    $source = makeParserFromSource('cpv100-facebook');
+
+    return [
+        'fields' => [$impressions, $videoViewAction],
+        'parse' => $source($videoViewAction, 'video_view', $impressions)
+    ];
+}
+
 function getFacebookConfig(): array
 {
     $fields = array_merge(
@@ -50,7 +70,10 @@ function getFacebookConfig(): array
         'inline_link_click_ctr' => customRatioSum('inline_link_clicks', 'impressions'),
         'newsfeed_avg_position' => weightedAverage('newsfeed_avg_position', 'impressions'),
         'roas' => customRatioSum('total_action_value', 'spend'),
-        'cpa' => customRatioSum('total_actions', 'total_action_value')
+        'cpa' => customRatioSum('total_actions', 'total_action_value'),
+        'cpr' => customRatioSum('spend', 'reach'),
+        'cpv100' => customRatioParser('spend', 'video_p100_watched_actions'),
+        'view_rate' => customRatioParser('video_view', 'impressions')
     ];
 
     $simpleSumMetrics = [
@@ -85,11 +108,19 @@ function getFacebookConfig(): array
 
     $specialMetricConfig = [
         'roas' => customRatioParser('total_action_value', 'spend'),
-        'cpa' => customRatioParser('total_actions', 'total_action_value')
+        'cpa' => customRatioParser('total_actions', 'total_action_value'),
+        'cpr' => customRatioParser('spend', 'reach'),
+        'cpv100' => cpv100Facebook('spend', 'video_p100_watched_actions'),
+        'view_rate' => viewRateFacebook('video_view', 'impressions')
     ];
 
     $fields['roas'] = $fields['total_action_value'];
-    $fields['cpa'] = $fields['total_action_value'];
+
+    $fields['cpa'] = $fields['cpc'];
+    $fields['cpr'] = $fields['cpc'];
+    $fields['cpv100'] = $fields['cpc'];
+    $fields['tdv'] = $fields['ctr'];
+
 
     $numericTypes = [
         'percentage',
