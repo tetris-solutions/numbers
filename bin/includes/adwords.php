@@ -1,6 +1,8 @@
 <?php
 namespace Tetris\Numbers;
 
+use Tetris\Adwords\ReportMap;
+
 require __DIR__ . '/../../vendor/autoload.php';
 
 function impressionShareSum(string $metric)
@@ -55,12 +57,19 @@ function cpv100AdwordsSum(string $cost, string $views100Percentile, string $view
 
 function getAdwordsConfig(): array
 {
-    $mappings = json_decode(file_get_contents(__DIR__ . '/../../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
-
     $overrideType = [
         'averagecpv' => 'currency',
         'averagecpe' => 'currency',
         'averagequalityscore' => 'decimal'
+    ];
+
+    $doNotShorten = [
+        'VideoQuartile100Rate',
+        'VideoQuartile75Rate',
+        'VideoQuartile50Rate',
+        'VideoQuartile25Rate',
+        'VideoViews',
+        'VideoViewRate'
     ];
 
     $output = [
@@ -191,12 +200,19 @@ function getAdwordsConfig(): array
         'KEYWORDS_PERFORMANCE_REPORT' => 'Keyword',
         'AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT' => 'Placement',
         'SEARCH_QUERY_PERFORMANCE_REPORT' => 'Search',
-        'AUDIENCE_PERFORMANCE_REPORT' => 'Audience'
+        'AUDIENCE_PERFORMANCE_REPORT' => 'Audience',
+        'VIDEO_PERFORMANCE_REPORT' => 'Video'
     ];
 
     $overrideOriginalName = [
         'AverageQualityScore' => 'QualityScore'
     ];
+
+    $mappings = [];
+
+    foreach ($entityNameMap as $reportName => $entityName) {
+        $mappings[$reportName] = ReportMap::get($reportName);
+    }
 
     $mappings['KEYWORDS_PERFORMANCE_REPORT']['AverageQualityScore'] =
         $mappings['KEYWORDS_PERFORMANCE_REPORT']['QualityScore'];
@@ -210,7 +226,7 @@ function getAdwordsConfig(): array
         }
 
         if (
-            isset($fields['AverageCpv']) &&
+            isset($fields['AverageCpc']) &&
             isset($fields['Cost']) &&
             isset($fields['VideoQuartile100Rate']) &&
             isset($fields['VideoViews'])
@@ -240,6 +256,7 @@ function getAdwordsConfig(): array
 
             // name looks like <Campaign>FieldName
             $nameStartsWithEntity = strpos($originalAttributeName, $entityPrefix) === 0 &&
+                !in_array($originalAttributeName, $doNotShorten) &&
                 !($entityPrefix === 'Ad' && (
                         strpos($originalAttributeName, 'AdGroup') === 0 ||
                         strpos($originalAttributeName, 'AdNetwork') === 0 ||

@@ -3,11 +3,13 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Adwords\ReportMap;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 function genLocales()
 {
-    $adwordReports = json_decode(file_get_contents(__DIR__ . '/../vendor/tetris/adwords/src/Tetris/Adwords/report-mappings.json'), true);
+    $adwordReports = ReportMap::list();
     $facebook = array_merge(
         json_decode(file_get_contents(__DIR__ . '/../maps/breakdowns.json'), true),
         json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'), true)
@@ -16,8 +18,8 @@ function genLocales()
 
     $adwords = [];
 
-    foreach ($adwordReports as $adwordReport) {
-        $adwords = array_merge($adwords, $adwordReport);
+    foreach ($adwordReports as $reportName) {
+        $adwords = array_merge($adwords, ReportMap::get($reportName));
     }
 
     $locales = ['pt-BR', 'en'];
