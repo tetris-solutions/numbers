@@ -219,7 +219,7 @@ return [
         'UserListName' => 'User list name',
         'ValuePerAllConversion' => 'Ticket Médio (Todas as Conversões)',
         'ValuePerConversion' => 'Ticket Médio (Conversões)',
-        'VideoChannelId' => 'Video Channel Id',
+        'VideoChannelId' => 'Canal do YouTube',
         'VideoDuration' => 'Duração do Vídeo',
         'VideoId' => 'Video Id',
         'VideoQuartile100Rate' => 'Video visto 100%',

@@ -219,7 +219,7 @@ return [
         'UserListName' => 'User list name',
         'ValuePerAllConversion' => 'Value / all conv.',
         'ValuePerConversion' => 'Value / conv.',
-        'VideoChannelId' => 'Video Channel Id',
+        'VideoChannelId' => 'YouTube Channel',
         'VideoDuration' => 'Video Duration',
         'VideoId' => 'Video Id',
         'VideoQuartile100Rate' => 'Video played to 100%',
