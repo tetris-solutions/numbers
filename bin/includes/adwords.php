@@ -60,6 +60,7 @@ function getAdwordsConfig(): array
     $overrideType = [
         'averagecpv' => 'currency',
         'averagecpe' => 'currency',
+        'averagecpm' => 'currency',
         'averagequalityscore' => 'decimal'
     ];
 
