@@ -187,6 +187,10 @@ abstract class MetaData
                     'is_dimension' => $attribute['is_dimension']
                 ];
 
+                if (isset($attribute['values'])) {
+                    $config['values'] = $attribute['values'];
+                }
+
                 if ($platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)) {
                     $config['is_breakdown'] = true;
                     self::setBreakdownPermutation($config);
