@@ -45,6 +45,10 @@ abstract class ResultParser
                     continue 2;
                 }
 
+                if ($operator === 'not equals' && $rowValue == $A) {
+                    continue 2;
+                }
+
                 if ($operator === 'greater than' && $rowValue < $A) {
                     continue 2;
                 }

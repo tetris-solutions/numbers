@@ -11,6 +11,7 @@ class AdwordsResolver extends Client implements Resolver
         'less than' => 'LESS_THAN',
         'greater than' => 'GREATER_THAN',
         'equals' => 'EQUALS',
+        'not equals' => 'NOT_EQUALS',
         'contains' => 'CONTAINS',
         'between' => 'BETWEEN'
     ];
