@@ -6,5 +6,9 @@ return [
     "type" => "systemservingstatus",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "values" => [
+        "ELIGIBLE" => "eligible",
+        "RARELY_SERVED" => "low search volume"
+    ]
 ];

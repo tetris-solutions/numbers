@@ -6,5 +6,11 @@ return [
     "type" => "campaigntrialtype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "values" => [
+        "UNKNOWN" => "unknown",
+        "BASE" => "base campaign",
+        "DRAFT" => "draft campaign",
+        "TRIAL" => "trial campaign"
+    ]
 ];

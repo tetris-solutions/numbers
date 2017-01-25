@@ -6,5 +6,12 @@ return [
     "type" => "adnetworktype1",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "values" => [
+        "UNKNOWN" => "unknown",
+        "SEARCH" => "Search Network",
+        "CONTENT" => "Display Network",
+        "YOUTUBE_SEARCH" => "YouTube Search",
+        "YOUTUBE_WATCH" => "YouTube Videos"
+    ]
 ];

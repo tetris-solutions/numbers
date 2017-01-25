@@ -310,6 +310,10 @@ function getAdwordsConfig(): array
                 'is_percentage' => $field['Percentage']
             ];
 
+            if (isset($field['PredicateValues'])) {
+                $attribute['values'] = $field['PredicateValues'];
+            }
+
             if (
                 $attribute['is_dimension'] &&
                 isset($dimensionParsers[$attribute['type']])

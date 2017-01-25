@@ -6,5 +6,8 @@ return [
     "type" => "bidtype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "values" => [
+        "TARGET_CPA" => "target cpa"
+    ]
 ];

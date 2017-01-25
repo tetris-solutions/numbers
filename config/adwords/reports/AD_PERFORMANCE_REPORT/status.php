@@ -6,5 +6,10 @@ return [
     "type" => "status",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "values" => [
+        "ENABLED" => "enabled",
+        "PAUSED" => "paused",
+        "DISABLED" => "disabled"
+    ]
 ];

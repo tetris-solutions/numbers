@@ -6,5 +6,9 @@ return [
     "type" => "enum",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "values" => [
+        "TRUE" => "Auto-optimized",
+        "FALSE" => "Standard"
+    ]
 ];

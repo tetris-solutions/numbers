@@ -6,5 +6,10 @@ return [
     "type" => "biddingstrategysource",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "values" => [
+        "CAMPAIGN" => "campaign",
+        "ADGROUP" => "ad group",
+        "CRITERION" => "ad group criterion"
+    ]
 ];
