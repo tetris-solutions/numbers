@@ -1,10 +1,6 @@
 <?php
 
 return function ($data) {
-    $value = $data->{PROPERTY0_NAME};
-    $part1 = $data->{PROPERTY1_NAME};
-    $part2 = $data->{PROPERTY2_NAME};
-
     $parseValue = function ($str) {
         if (!is_string($str)) {
             return null;
@@ -31,18 +27,22 @@ return function ($data) {
             : $estimate;
     };
 
-    $a = $parseValue($value);
+    $value = $data->{PROPERTY0_NAME};
+    $parsedValue = $parseValue($value);
 
-    if (!is_array($a)) {
-        return $a;
+    if (!is_array($parsedValue)) return $parsedValue;
+
+    $props = explode(',', PROPERTY1_NAME);
+
+    $remaining = 1;
+
+    foreach ($props as $prop) {
+        $aux = $parseValue($data->{$prop});
+
+        if (!is_numeric($aux)) return $parsedValue;
+
+        $remaining -= $aux;
     }
 
-    $b = $parseValue($part1);
-    $c = $parseValue($part2);
-
-    if (is_array($b) || is_array($c)) {
-        return $a;
-    }
-
-    return 1 - ($b + $c);
+    return $remaining;
 };

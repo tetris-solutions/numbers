@@ -25,13 +25,13 @@ function lostImpressionShareSum(string $metric, string $impressionShare)
     ];
 }
 
-function specialValueTriangulation(string $metric, string $auxMetric1, string $auxMetric2)
+function specialValueTriangulation(string $metric, array $auxMetrics)
 {
     $source = makeParserFromSource('special-value-triangulation');
 
     return [
-        'fields' => [$metric, $auxMetric1, $auxMetric2],
-        'parse' => $source($metric, $auxMetric1, $auxMetric2)
+        'fields' => array_merge([$metric], $auxMetrics),
+        'parse' => $source($metric, join(',', $auxMetrics))
     ];
 }
 
@@ -156,39 +156,6 @@ function getAdwordsConfig(): array
     ];
 
     $specialMetricConfig = [
-        'searchimpressionshare' => specialValueTriangulation(
-            'SearchImpressionShare',
-            'SearchBudgetLostImpressionShare',
-            'SearchRankLostImpressionShare'
-        ),
-
-        'searchbudgetlostimpressionshare' => specialValueTriangulation(
-            'SearchBudgetLostImpressionShare',
-            'SearchRankLostImpressionShare',
-            'SearchImpressionShare'
-        ),
-
-        'searchranklostimpressionshare' => specialValueTriangulation(
-            'SearchRankLostImpressionShare',
-            'SearchBudgetLostImpressionShare',
-            'SearchImpressionShare'
-        ),
-
-        'contentimpressionshare' => specialValueTriangulation(
-            'ContentImpressionShare',
-            'ContentBudgetLostImpressionShare',
-            'ContentRankLostImpressionShare'
-        ),
-        'contentbudgetlostimpressionshare' => specialValueTriangulation(
-            'ContentBudgetLostImpressionShare',
-            'ContentRankLostImpressionShare',
-            'ContentImpressionShare'
-        ),
-        'contentranklostimpressionshare' => specialValueTriangulation(
-            'ContentRankLostImpressionShare',
-            'ContentBudgetLostImpressionShare',
-            'ContentImpressionShare'
-        ),
         'roas' => customRatioParser('ConversionValue', 'Cost'),
         'cpv100' => cpv100Adwords('Cost', 'VideoQuartile100Rate', 'VideoViews')
     ];
@@ -243,6 +210,57 @@ function getAdwordsConfig(): array
 
         $entity = $entityNameMap[$reportName];
         $output['entities'][$entity] = $entity;
+
+        $buildSpecialMetrics = function ($list) use ($fields): array {
+            $config = [];
+
+            foreach ($list as $name => $parts) {
+                if (!isset($fields[$name])) continue;
+
+                $auxMetrics = [];
+
+                foreach ($parts as $part) {
+                    if (!isset($fields[$part])) continue;
+
+                    $auxMetrics[] = $part;
+                }
+
+                $config[strtolower($name)] = specialValueTriangulation($name, $auxMetrics);
+            }
+
+            return $config;
+        };
+
+        $reportSpecialMetrics = array_merge($specialMetricConfig, $buildSpecialMetrics([
+            'SearchImpressionShare' => [
+                'SearchBudgetLostImpressionShare',
+                'SearchRankLostImpressionShare'
+            ],
+
+            'SearchBudgetLostImpressionShare' => [
+                'SearchRankLostImpressionShare',
+                'SearchImpressionShare'
+            ],
+
+            'SearchRankLostImpressionShare' => [
+                'SearchBudgetLostImpressionShare',
+                'SearchImpressionShare'
+            ],
+
+            'ContentImpressionShare' => [
+                'ContentBudgetLostImpressionShare',
+                'ContentRankLostImpressionShare'
+            ],
+
+            'ContentBudgetLostImpressionShare' => [
+                'ContentRankLostImpressionShare',
+                'ContentImpressionShare'
+            ],
+            'ContentRankLostImpressionShare' => [
+                'ContentBudgetLostImpressionShare',
+                'ContentImpressionShare'
+            ]
+        ]));
 
         foreach ($fields as $originalAttributeName => $field) {
             if (in_array($originalAttributeName, $excludedFields)) continue;
@@ -346,8 +364,8 @@ function getAdwordsConfig(): array
                     'parse' => $metricParsers[$metric['type']]($originalAttributeName)
                 ];
 
-                if (isset($specialMetricConfig[$attributeName])) {
-                    $sourceConfig = array_merge($sourceConfig, $specialMetricConfig[$attributeName]);
+                if (isset($reportSpecialMetrics[$attributeName])) {
+                    $sourceConfig = array_merge($sourceConfig, $reportSpecialMetrics[$attributeName]);
                 }
 
                 $canUseSimpleSum = $metric['type'] === 'integer' ||

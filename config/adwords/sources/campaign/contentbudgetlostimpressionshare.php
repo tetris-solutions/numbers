@@ -10,10 +10,6 @@ return [
         "ContentImpressionShare"
     ],
     "parse" => function ($data) {
-        $value = $data->{'ContentBudgetLostImpressionShare'};
-        $part1 = $data->{'ContentRankLostImpressionShare'};
-        $part2 = $data->{'ContentImpressionShare'};
-    
         $parseValue = function ($str) {
             if (!is_string($str)) {
                 return null;
@@ -40,20 +36,24 @@ return [
                 : $estimate;
         };
     
-        $a = $parseValue($value);
+        $value = $data->{'ContentBudgetLostImpressionShare'};
+        $parsedValue = $parseValue($value);
     
-        if (!is_array($a)) {
-            return $a;
+        if (!is_array($parsedValue)) return $parsedValue;
+    
+        $props = explode(',', 'ContentRankLostImpressionShare,ContentImpressionShare');
+    
+        $remaining = 1;
+    
+        foreach ($props as $prop) {
+            $aux = $parseValue($data->{$prop});
+    
+            if (!is_numeric($aux)) return $parsedValue;
+    
+            $remaining -= $aux;
         }
     
-        $b = $parseValue($part1);
-        $c = $parseValue($part2);
-    
-        if (is_array($b) || is_array($c)) {
-            return $a;
-        }
-    
-        return 1 - ($b + $c);
+        return $remaining;
     },
     "inferred_from" => [
         "contentimpressionshare",
