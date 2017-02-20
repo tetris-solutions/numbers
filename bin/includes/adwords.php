@@ -169,7 +169,8 @@ function getAdwordsConfig(): array
         'AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT' => 'Placement',
         'SEARCH_QUERY_PERFORMANCE_REPORT' => 'Search',
         'AUDIENCE_PERFORMANCE_REPORT' => 'Audience',
-        'VIDEO_PERFORMANCE_REPORT' => 'Video'
+        'VIDEO_PERFORMANCE_REPORT' => 'Video',
+        'GEO_PERFORMANCE_REPORT' => 'Location'
     ];
 
     $overrideOriginalName = [
@@ -265,12 +266,18 @@ function getAdwordsConfig(): array
         foreach ($fields as $originalAttributeName => $field) {
             if (in_array($originalAttributeName, $excludedFields)) continue;
 
-            $entityPrefix = $entity;
-
-            if ($entity === 'Placement') {
-                $entityPrefix = 'Campaign';
-            } else if ($entity === 'Search' || $entity === 'Audience') {
-                $entityPrefix = 'AdGroup';
+            switch ($entity) {
+                case 'Placement':
+                    $entityPrefix = 'Campaign';
+                    break;
+                case 'Search':
+                case 'Audience':
+                case 'Location':
+                    $entityPrefix = 'AdGroup';
+                    break;
+                default:
+                    $entityPrefix = $entity;
+                    break;
             }
 
             // name looks like <Campaign>FieldName
