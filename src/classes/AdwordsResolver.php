@@ -16,6 +16,10 @@ class AdwordsResolver extends Client implements Resolver
         'between' => 'BETWEEN'
     ];
 
+    const requiredFields = [
+        'GEO_PERFORMANCE_REPORT' => ['CountryCriteriaId']
+    ];
+
     private static function applyFilter(ReadInterface $select, array $config)
     {
         $adwordsProperty = $config['property'];
@@ -52,6 +56,18 @@ class AdwordsResolver extends Client implements Resolver
         }
     }
 
+    private function addRequired(string $reportName, array $fields): array
+    {
+        if (empty(self::requiredFields[$reportName])) return $fields;
+
+        foreach (self::requiredFields[$reportName] as $index => $field) {
+            if (isset($fields[$field])) continue;
+
+            $fields[$field] = "_required{$index}_";
+        }
+
+        return $fields;
+    }
 
     function resolve(Query $query, bool $aggregateMode): array
     {
@@ -59,7 +75,7 @@ class AdwordsResolver extends Client implements Resolver
 
         $report = $query->report;
 
-        $select = $this->select($report->fields)
+        $select = $this->select($this->addRequired($report->name, $report->fields))
             ->from($report->name)
             ->during($query->since, $query->until);
 
