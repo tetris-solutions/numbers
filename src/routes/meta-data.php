@@ -6,16 +6,18 @@ use Slim\Http\Response;
 
 global $app;
 
-$metaDataRouteHandler = secured(function (Request $request, Response $response, array $params) {
-    $entity = $request->getQueryParam('entity');
-    $platform = $request->getQueryParam('platform');
-    $attributes = MetaData::listAttributes($platform, $entity);
+$metaDataRouteHandler = function (string $action): callable {
+    return secured($action, function (Request $request, Response $response, array $params) {
+        $entity = $request->getQueryParam('entity');
+        $platform = $request->getQueryParam('platform');
+        $attributes = MetaData::listAttributes($platform, $entity);
 
-    return $response->withJson(isset($params['attribute'])
-        ? $attributes[$params['attribute']]
-        : $attributes);
-});
+        return $response->withJson(isset($params['attribute'])
+            ? $attributes[$params['attribute']]
+            : $attributes);
+    });
+};
 
-$app->get('/meta', $metaDataRouteHandler);
-$app->get('/meta-data', $metaDataRouteHandler);
-$app->get('/meta-data/{attribute}', $metaDataRouteHandler);
+$app->get('/meta', $metaDataRouteHandler('get-meta-data'));
+$app->get('/meta-data', $metaDataRouteHandler('get-meta-data'));
+$app->get('/meta-data/{attribute}', $metaDataRouteHandler('get-attribute-meta-data'));

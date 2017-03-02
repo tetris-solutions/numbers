@@ -8,7 +8,7 @@ use Tetris\Services\FlagsService;
 global $app;
 
 $app->post('/',
-    secured(function (Request $request, Response $response, array $params) {
+    secured('get-report', function (Request $request, Response $response, array $params) {
         /**
          * @var FlagsService $flags
          */

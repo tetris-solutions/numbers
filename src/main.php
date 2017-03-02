@@ -29,29 +29,78 @@ function uniq(array $s): array
     return array_values(array_unique($s));
 }
 
-function secured(\Closure $routeHandler): callable
+function omit(array $array, ...$keys): array
 {
-    return function (Request $request, Response $response, array $params) use ($routeHandler): Response {
+    foreach ($keys as $key) {
+        if (array_key_exists($key, $array)) {
+            unset($array[$key]);
+        }
+    }
+
+    return $array;
+}
+
+function flatten(array $array): array
+{
+    $parsed = [];
+
+    foreach ($array as $key => $value) {
+        if (is_array($value) || is_object($value)) {
+            $value = (array)$value;
+            $size = count($value);
+
+            if ($size > 20) {
+                $parsed[$key] = "[ {$size} values ]";
+                continue;
+            }
+
+            $subArray = flatten($value);
+
+            foreach ($subArray as $subKey => $subValue) {
+                $parsed["{$key}_{$subKey}"] = $subValue;
+            }
+        } else {
+            $parsed[$key] = is_string($value) ? $value : (string)$value;
+        }
+    }
+
+    return $parsed;
+}
+
+function secured(string $action, \Closure $routeHandler): callable
+{
+    return function (Request $request, Response $response, array $params) use ($action, $routeHandler): Response {
+        global $logger;
+
+        $req = [
+            'body' => $request->getParsedBody(),
+            'url' => $request->getUri()->getPath(),
+            'search' => $request->getQueryParams(),
+            'params' => $params
+        ];
+
         try {
             $routeHandler = $routeHandler->bindTo($this);
-            return $routeHandler($request, $response, $params);
-        } catch (Throwable $e) {
-            global $logger;
-            $timestamp = date('YmdHis');
+            $result = $routeHandler($request, $response, $params);
 
-            $logger->warning('Report request failed', [
+            $logger->debug("request {$action}", flatten([
+                'category' => 'action',
+                'action' => $action,
+                'request' => $req
+            ]));
+
+            return $result;
+        } catch (Throwable $e) {
+            $logger->warning("{$action} failure", flatten([
                 'category' => 'event',
                 'event' => 'report-failure',
-                "numbers_query_{$timestamp}" => json_encode([
-                    'body' => $request->getParsedBody(),
-                    'url' => $request->getUri()->getPath()
-                ], JSON_PRETTY_PRINT),
-                "numbers_exception_{$timestamp}" => json_encode([
+                'request' => $req,
+                'error' => [
                     'code' => $e->getCode(),
                     'message' => $e->getMessage(),
                     'stack' => $e->getTraceAsString()
-                ], JSON_PRETTY_PRINT)
-            ]);
+                ]
+            ]));
 
             throw $e;
         }

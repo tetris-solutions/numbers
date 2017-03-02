@@ -9,7 +9,7 @@ use Throwable;
 global $app;
 
 $app->post('/x',
-    secured(function (Request $request, Response $response, array $params) {
+    secured('get-cross-platform-report', function (Request $request, Response $response, array $params) {
         /**
          * @var FlagsService $flags
          */
