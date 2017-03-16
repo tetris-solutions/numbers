@@ -191,6 +191,10 @@ abstract class MetaData
                     $config['values'] = $attribute['values'];
                 }
 
+                if (isset($attribute['incompatible'])) {
+                    $config['incompatible'] = $attribute['incompatible'];
+                }
+
                 if ($platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)) {
                     $config['is_breakdown'] = true;
                     self::setBreakdownPermutation($config);
