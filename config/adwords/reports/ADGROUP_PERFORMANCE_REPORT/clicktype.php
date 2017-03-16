@@ -39,5 +39,24 @@ return [
         "BROADBAND_PLAN" => "Broadband Plan",
         "WIRELESS_PLAN" => "Wireless Plan",
         "UNKNOWN" => "unknown"
+    ],
+    "incompatible" => [
+        "averagepageviews",
+        "averagetimeonsite",
+        "bouncerate",
+        "clickassistedconversionvalue",
+        "clickassistedconversions",
+        "clickassistedconversionsoverlastclickconversions",
+        "contentimpressionshare",
+        "contentranklostimpressionshare",
+        "engagements",
+        "impressionassistedconversionvalue",
+        "impressionassistedconversions",
+        "impressionassistedconversionsoverlastclickconversions",
+        "percentnewvisitors",
+        "relativectr",
+        "searchexactmatchimpressionshare",
+        "searchimpressionshare",
+        "searchranklostimpressionshare"
     ]
 ];

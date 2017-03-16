@@ -12,5 +12,21 @@ return [
         "DESKTOP" => "Computers",
         "HIGH_END_MOBILE" => "Mobile devices with full browsers",
         "TABLET" => "Tablets with full browsers"
+    ],
+    "incompatible" => [
+        "averagepageviews",
+        "averagetimeonsite",
+        "bouncerate",
+        "clickassistedconversionvalue",
+        "clickassistedconversions",
+        "clickassistedconversionsoverlastclickconversions",
+        "impressionassistedconversionvalue",
+        "impressionassistedconversions",
+        "impressionassistedconversionsoverlastclickconversions",
+        "numofflineimpressions",
+        "numofflineinteractions",
+        "offlineinteractionrate",
+        "percentnewvisitors",
+        "relativectr"
     ]
 ];

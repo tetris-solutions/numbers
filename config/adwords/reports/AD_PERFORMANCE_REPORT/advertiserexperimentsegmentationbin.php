@@ -11,5 +11,24 @@ return [
         "OUTSIDE_OF_EXPERIMENT" => "outside experiment",
         "CONTROL" => "control",
         "EXPERIMENT" => "experiment"
+    ],
+    "incompatible" => [
+        "allconversionrate",
+        "allconversionvalue",
+        "allconversions",
+        "averagepageviews",
+        "averagetimeonsite",
+        "bouncerate",
+        "clickassistedconversionvalue",
+        "clickassistedconversions",
+        "clickassistedconversionsoverlastclickconversions",
+        "clicktype",
+        "costperallconversion",
+        "crossdeviceconversions",
+        "impressionassistedconversionvalue",
+        "impressionassistedconversions",
+        "impressionassistedconversionsoverlastclickconversions",
+        "percentnewvisitors",
+        "valueperallconversion"
     ]
 ];

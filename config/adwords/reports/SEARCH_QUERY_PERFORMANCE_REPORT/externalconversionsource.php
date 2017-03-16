@@ -30,5 +30,30 @@ return [
         "STORE_SALES_CRM" => "Store sales (data partner)",
         "STORE_SALES_PAYMENT_NETWORK" => "Store sales (payment network)",
         "GOOGLE_PLAY" => "Google Play"
+    ],
+    "incompatible" => [
+        "averagecost",
+        "averagecpc",
+        "averagecpe",
+        "averagecpm",
+        "averagecpv",
+        "averageposition",
+        "clicks",
+        "cost",
+        "costperconversion",
+        "ctr",
+        "engagementrate",
+        "engagements",
+        "impressions",
+        "interactionrate",
+        "interactiontypes",
+        "interactions",
+        "valueperconversion",
+        "videoquartile100rate",
+        "videoquartile25rate",
+        "videoquartile50rate",
+        "videoquartile75rate",
+        "videoviewrate",
+        "videoviews"
     ]
 ];

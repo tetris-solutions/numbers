@@ -6,5 +6,9 @@ return [
     "type" => "decimal",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "incompatible" => [
+        "hourofday",
+        "slot"
+    ]
 ];

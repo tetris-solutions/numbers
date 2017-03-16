@@ -39,5 +39,8 @@ return [
         "BROADBAND_PLAN" => "Broadband Plan",
         "WIRELESS_PLAN" => "Wireless Plan",
         "UNKNOWN" => "unknown"
+    ],
+    "incompatible" => [
+        "engagements"
     ]
 ];

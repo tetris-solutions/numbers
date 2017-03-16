@@ -15,5 +15,13 @@ return [
         "AfsTop" => "Search partners: Top",
         "AfsOther" => "Search partners: Other",
         "Unknown" => ""
+    ],
+    "incompatible" => [
+        "allconversionrate",
+        "allconversionvalue",
+        "allconversions",
+        "costperallconversion",
+        "crossdeviceconversions",
+        "valueperallconversion"
     ]
 ];

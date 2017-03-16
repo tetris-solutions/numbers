@@ -15,5 +15,26 @@ return [
         "AfsTop" => "Search partners: Top",
         "AfsOther" => "Search partners: Other",
         "Unknown" => ""
+    ],
+    "incompatible" => [
+        "allconversionrate",
+        "allconversionvalue",
+        "allconversions",
+        "averagepageviews",
+        "averagetimeonsite",
+        "bouncerate",
+        "clickassistedconversionvalue",
+        "clickassistedconversions",
+        "clickassistedconversionsoverlastclickconversions",
+        "costperallconversion",
+        "crossdeviceconversions",
+        "impressionassistedconversionvalue",
+        "impressionassistedconversions",
+        "impressionassistedconversionsoverlastclickconversions",
+        "percentnewvisitors",
+        "searchexactmatchimpressionshare",
+        "searchimpressionshare",
+        "searchranklostimpressionshare",
+        "valueperallconversion"
     ]
 ];

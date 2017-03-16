@@ -40,5 +40,17 @@ return [
         "WIRELESS_PLAN" => "Wireless Plan",
         "VISUAL_SITELINKS" => "Visual Sitelinks",
         "UNKNOWN" => "unknown"
+    ],
+    "incompatible" => [
+        "averagecpe",
+        "averagecpv",
+        "engagementrate",
+        "engagements",
+        "videoquartile100rate",
+        "videoquartile25rate",
+        "videoquartile50rate",
+        "videoquartile75rate",
+        "videoviewrate",
+        "videoviews"
     ]
 ];

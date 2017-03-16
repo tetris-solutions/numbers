@@ -295,6 +295,8 @@ function getAdwordsConfig(): array
                 throw new \Exception($originalAttributeName . ' === {' . $attributeName . '}');
             }
 
+            $rawAttributeName = $originalAttributeName;
+
             if (isset($overrideOriginalName[$originalAttributeName])) {
                 $originalAttributeName = $overrideOriginalName[$originalAttributeName];
             }
@@ -328,6 +330,7 @@ function getAdwordsConfig(): array
             $attribute = [
                 'id' => $attributeName,
                 'property' => $originalAttributeName,
+                'raw_property' => $rawAttributeName,
                 'is_filter' => $field['Filterable'],
                 'type' => $attributeType,
                 'is_metric' => $isMetric,
@@ -337,6 +340,10 @@ function getAdwordsConfig(): array
 
             if (isset($field['PredicateValues'])) {
                 $attribute['values'] = $field['PredicateValues'];
+            }
+
+            if (isset($field['IncompatibleFields'])) {
+                $attribute['incompatible'] = $field['IncompatibleFields'];
             }
 
             if (
@@ -394,6 +401,28 @@ function getAdwordsConfig(): array
             } else {
                 $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
             }
+        }
+
+        // post processing
+        $attributes = $output['reports'][$reportName]['attributes'];
+
+        foreach ($attributes as $index => $attr) {
+            if (!empty($attr['incompatible'])) {
+                $incompatibleFields = [];
+
+                foreach ($attr['incompatible'] as $property) {
+                    foreach ($attributes as $other) {
+                        if ($other['raw_property'] === $property) {
+                            $incompatibleFields[] = $other['id'];
+                        }
+                    }
+                }
+
+                $attr['incompatible'] = $incompatibleFields;
+            }
+
+            unset($attr['raw_property']);
+            $output['reports'][$reportName]['attributes'][$index] = $attr;
         }
     }
 

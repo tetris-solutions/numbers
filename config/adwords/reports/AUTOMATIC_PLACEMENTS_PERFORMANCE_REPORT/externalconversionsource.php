@@ -30,5 +30,32 @@ return [
         "STORE_SALES_CRM" => "Store sales (data partner)",
         "STORE_SALES_PAYMENT_NETWORK" => "Store sales (payment network)",
         "GOOGLE_PLAY" => "Google Play"
+    ],
+    "incompatible" => [
+        "activeviewcpm",
+        "activeviewctr",
+        "activeviewimpressions",
+        "activeviewmeasurability",
+        "activeviewmeasurablecost",
+        "activeviewmeasurableimpressions",
+        "activeviewviewability",
+        "averagecost",
+        "averagecpc",
+        "averagecpe",
+        "averagecpm",
+        "averagecpv",
+        "clicks",
+        "cost",
+        "costperconversion",
+        "ctr",
+        "engagementrate",
+        "engagements",
+        "impressions",
+        "interactionrate",
+        "interactiontypes",
+        "interactions",
+        "valueperconversion",
+        "videoviewrate",
+        "videoviews"
     ]
 ];

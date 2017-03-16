@@ -6,5 +6,30 @@ return [
     "type" => "string",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "incompatible" => [
+        "activeviewcpm",
+        "activeviewctr",
+        "activeviewimpressions",
+        "activeviewmeasurability",
+        "activeviewmeasurablecost",
+        "activeviewmeasurableimpressions",
+        "activeviewviewability",
+        "averagecost",
+        "averagecpc",
+        "averagecpe",
+        "averagecpm",
+        "averagecpv",
+        "clicks",
+        "cost",
+        "ctr",
+        "engagementrate",
+        "engagements",
+        "impressions",
+        "interactionrate",
+        "interactiontypes",
+        "interactions",
+        "videoviewrate",
+        "videoviews"
+    ]
 ];
