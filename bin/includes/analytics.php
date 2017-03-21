@@ -32,7 +32,7 @@ function getAnalyticsConfig(): array
         'ga:source',
         'ga:medium',
         'ga:deviceCategory',
-        'ga:adcontent',
+        'ga:adContent',
         'ga:region',
         'ga:newUsers',
         'ga:users',
@@ -61,7 +61,7 @@ function getAnalyticsConfig(): array
     foreach ($fieldList as $originalAttributeName) {
         $config = $fieldsConfig[$originalAttributeName];
 
-        $attributeName = substr($originalAttributeName, 3);
+        $attributeName = strtolower(substr($originalAttributeName, 3));
         $isMetric = $config['group'] !== 'Dimensions';
 
         $attribute = [
@@ -84,7 +84,7 @@ function getAnalyticsConfig(): array
             $source = [
                 'metric' => $attributeName,
                 'entity' => 'Campaign',
-                'platform' => 'facebook',
+                'platform' => 'analytics',
                 'report' => 'GA_DEFAULT',
                 'fields' => [$originalAttributeName],
                 'parse' => null,
@@ -93,6 +93,8 @@ function getAnalyticsConfig(): array
 
             $output['sources'][] = $source;
         }
+
+        $output['reports']['GA_DEFAULT']['attributes'][$attributeName] = $attribute;
     }
 
     return $output;

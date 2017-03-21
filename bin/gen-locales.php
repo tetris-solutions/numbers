@@ -14,6 +14,7 @@ function genLocales()
         json_decode(file_get_contents(__DIR__ . '/../maps/breakdowns.json'), true),
         json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'), true)
     );
+    $analytics = json_decode(file_get_contents(__DIR__ . '/../maps/analytics-fields.json'), true);
     $actionTypes = json_decode(file_get_contents(__DIR__ . '/../maps/facebook-action-types.json'), true);
 
     $adwords = [];
@@ -29,9 +30,18 @@ function genLocales()
         $oldFields = require($outputPath);
 
         $fields = [
+            'analytics' => isset($oldFields['analytics'])
+                ? $oldFields['analytics']
+                : [],
             'adwords' => $oldFields['adwords'],
             'facebook' => array_merge($actionTypes, $oldFields['facebook'])
         ];
+
+        foreach ($analytics as $name => $metadata) {
+            if (!isset($fields['analytics'][$name])) {
+                $fields['analytics'][$name] = $metadata['name'];
+            }
+        }
 
         foreach ($adwords as $name => $metadata) {
             if (!isset($fields['adwords'][$name])) {
