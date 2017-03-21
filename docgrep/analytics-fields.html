@@ -3597,5 +3597,840 @@
         </tbody>
     </table>
 </div>
+
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=adwordsdimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adgroup">ga:adGroup</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adslot">ga:adSlot</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adslotposition" class="deprecated">ga:adSlotPosition</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_addistributionnetwork">ga:adDistributionNetwork</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_admatchtype">ga:adMatchType</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adkeywordmatchtype">ga:adKeywordMatchType</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_admatchedquery">ga:adMatchedQuery</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adplacementdomain">ga:adPlacementDomain</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adplacementurl">ga:adPlacementUrl</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adformat">ga:adFormat</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adtargetingtype">ga:adTargetingType</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adtargetingoption">ga:adTargetingOption</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_addisplayurl">ga:adDisplayUrl</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_addestinationurl">ga:adDestinationUrl</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordscustomerid">ga:adwordsCustomerID</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordscampaignid">ga:adwordsCampaignID</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordsadgroupid">ga:adwordsAdGroupID</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordscreativeid">ga:adwordsCreativeID</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordscriteriaid">ga:adwordsCriteriaID</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adquerywordcount">ga:adQueryWordCount</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_istrueviewvideoad">ga:isTrueViewVideoAd</a><br>
+        </td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=adwordsmetrics">Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_impressions">ga:impressions</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adclicks">ga:adClicks</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adcost">ga:adCost</a><br></td>
+        <td><strong><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=adwordscalculated_metrics">Calculated
+            Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_cpm">ga:CPM</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_cpc">ga:CPC</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_ctr">ga:CTR</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_costpertransaction">ga:costPerTransaction</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_costpergoalconversion">ga:costPerGoalConversion</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_costperconversion">ga:costPerConversion</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_rpc">ga:RPC</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_roi" class="deprecated">ga:ROI</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_margin"
+                class="deprecated">ga:margin</a><br><a
+                href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_roas">ga:ROAS</a><br></td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<p>These values are only available if you link your AdWords and Google Analytics accounts and enable
+    autotagging.</p>
+<h2 id="adwordsdimensions">Dimensions</h2>
+<h3 id="ga_adgroup"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adgroup">ga:adGroup</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Ad Group</code></div>
+    <p></p>
+    <p>The name of the AdWords ad group.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adslot"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adslot">ga:adSlot</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Ad Slot</code></div>
+    <p></p>
+    <p>The location (Top, RHS, or not set) of the advertisement on the hosting page.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adslotposition" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adslotposition">ga:adSlotPosition</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>This column should not be used.</p></div>
+<hr>
+<h3 id="ga_addistributionnetwork"><a
+        href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_addistributionnetwork">ga:adDistributionNetwork</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Ad Distribution Network</code></div>
+    <p></p>
+    <p>The network (Content, Search, Search partners, etc.) used to deliver the ads.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_admatchtype"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_admatchtype">ga:adMatchType</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Query Match Type</code></div>
+    <p></p>
+    <p>The match type (Phrase, Exact, Broad, etc.) applied for users' search term. Ads on the content network are
+        identified as "Content network". For details, see <a target="_blank"
+                                                             href="https://support.google.com/adwords/answer/2472708?hl=en">https://support.google.com/adwords/answer/2472708?hl=en</a>.
+    </p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adkeywordmatchtype"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adkeywordmatchtype">ga:adKeywordMatchType</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Keyword Match Type</code></div>
+    <p></p>
+    <p>The match type (Phrase, Exact, or Broad) applied to the keywords. For details, see <a target="_blank"
+                                                                                             href="https://support.google.com/adwords/answer/2472708">https://support.google.com/adwords/answer/2472708</a>.
+    </p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_admatchedquery"><a
+        href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_admatchedquery">ga:adMatchedQuery</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Search Query</code></div>
+    <p></p>
+    <p>The search query that triggered impressions.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adplacementdomain"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adplacementdomain">ga:adPlacementDomain</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Placement Domain</code></div>
+    <p></p>
+    <p>The domain where the ads on the content network were placed.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adplacementurl"><a
+        href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adplacementurl">ga:adPlacementUrl</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Placement URL</code></div>
+    <p></p>
+    <p>The URL where the ads were placed on the content network.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adformat"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adformat">ga:adFormat</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Ad Format</code></div>
+    <p></p>
+    <p>The AdWords ad format (Text, Image, Flash, Video, etc.).</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adtargetingtype"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adtargetingtype">ga:adTargetingType</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Targeting Type</code></div>
+    <p></p>
+    <p>This (keyword, placement, or vertical targeting) indicates how the AdWords ads were targeted.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adtargetingoption"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adtargetingoption">ga:adTargetingOption</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Placement Type</code></div>
+    <p></p>
+    <p>It is Automatic placements or Managed placements, indicating how the ads were managed on the content
+        network.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_addisplayurl"><a
+        href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_addisplayurl">ga:adDisplayUrl</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Display URL</code></div>
+    <p></p>
+    <p>The URL the AdWords ads displayed.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_addestinationurl"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_addestinationurl">ga:adDestinationUrl</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Destination URL</code></div>
+    <p></p>
+    <p>The URL to which the AdWords ads referred traffic.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adwordscustomerid"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordscustomerid">ga:adwordsCustomerID</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>AdWords Customer ID</code></div>
+    <p></p>
+    <p>Customer's AdWords ID, corresponding to AdWords API AccountInfo.customerId.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adwordscampaignid"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordscampaignid">ga:adwordsCampaignID</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>AdWords Campaign ID</code></div>
+    <p></p>
+    <p>AdWords API Campaign.id.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adwordsadgroupid"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordsadgroupid">ga:adwordsAdGroupID</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>AdWords Ad Group ID</code></div>
+    <p></p>
+    <p>AdWords API AdGroup.id.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adwordscreativeid"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordscreativeid">ga:adwordsCreativeID</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>AdWords Creative ID</code></div>
+    <p></p>
+    <p>AdWords API Ad.id.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adwordscriteriaid"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adwordscriteriaid">ga:adwordsCriteriaID</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>AdWords Criteria ID</code></div>
+    <p></p>
+    <p>AdWords API Criterion.id. The geographical targeting Criteria IDs are listed at <a target="_blank"
+                                                                                          href="https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid">https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid</a>.
+    </p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adquerywordcount"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adquerywordcount">ga:adQueryWordCount</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Query Word Count</code></div>
+    <p></p>
+    <p>The number of words in the search query.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_istrueviewvideoad"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_istrueviewvideoad">ga:isTrueViewVideoAd</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>TrueView Video Ad</code></div>
+    <p></p>
+    <p>A boolean, Yes or No, indicating whether the ad is an AdWords TrueView video ad.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="adwordsmetrics">Metrics</h2>
+<h3 id="ga_impressions"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_impressions">ga:impressions</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Impressions</code></div>
+    <p></p>
+    <p>Total number of campaign impressions.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adclicks"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adclicks">ga:adClicks</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Clicks</code></div>
+    <p></p>
+    <p>Total number of times users have clicked on an ad to reach the property.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adcost"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_adcost">ga:adCost</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Cost</code></div>
+    <p></p>
+    <p>Derived cost for the advertising campaign. Its currency is the one you set in the AdWords account.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="adwordscalculated_metrics">Calculated Metrics</h2>
+<h3 id="ga_cpm"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_cpm">ga:CPM</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>CPM</code></div>
+    <p></p>
+    <p>Cost per thousand impressions.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:adCost / (ga:impressions / 1000)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_cpc"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_cpc">ga:CPC</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>CPC</code></div>
+    <p></p>
+    <p>Cost to advertiser per click.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:adCost / ga:adClicks</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_ctr"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_ctr">ga:CTR</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>CTR</code></div>
+    <p></p>
+    <p>Click-through-rate for the ad. This is equal to the number of clicks divided by the number of impressions for
+        the ad (e.g., how many times users clicked on one of the ads where that ad appeared).</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:adClicks / ga:impressions</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_costpertransaction"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_costpertransaction">ga:costPerTransaction</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Cost per Transaction</code></div>
+    <p></p>
+    <p>The cost per transaction for the property.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">(ga:adCost) / (ga:transactions)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_costpergoalconversion"><a
+        href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_costpergoalconversion">ga:costPerGoalConversion</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Cost per Goal Conversion</code></div>
+    <p></p>
+    <p>The cost per goal conversion for the property.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">(ga:adCost) / (ga:goalCompletionsAll)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_costperconversion"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_costperconversion">ga:costPerConversion</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Cost per Conversion</code></div>
+    <p></p>
+    <p>The cost per conversion (including ecommerce and goal conversions) for the property.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">(ga:adCost) / (ga:transactions  +  ga:goalCompletionsAll)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_rpc"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_rpc">ga:RPC</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>RPC</code></div>
+    <p></p>
+    <p>RPC or revenue-per-click, the average revenue (from ecommerce sales and/or goal value) you received for each
+        click on one of the search ads.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">(ga:transactionRevenue + ga:goalValueAll) / ga:adClicks</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_roi" class="deprecated"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_roi">ga:ROI</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>This column should not be used.</p></div>
+<hr>
+<h3 id="ga_margin" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_margin">ga:margin</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>This column should not be used.</p></div>
+<hr>
+<h3 id="ga_roas"><a href="dimsmets#view=detail&amp;group=adwords&amp;jump=ga_roas">ga:ROAS</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>ROAS</code></div>
+    <p></p>
+    <p>Return On Ad Spend (ROAS) is the total transaction revenue and goal value divided by derived advertising
+        cost.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">(ga:transactionRevenue + ga:goalValueAll) / ga:adCost</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

@@ -908,5 +908,222 @@
     "description": "Users' sub-continent code in UN M.49 format, derived from their IP addresses or Geographical IDs. For example, 061 for Polynesia, 154 for Northern Europe.",
     "type": "STRING",
     "group": "Dimensions"
+  },
+  "ga:adGroup": {
+    "id": "ga:adGroup",
+    "name": "Ad Group",
+    "description": "The name of the AdWords ad group.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adSlot": {
+    "id": "ga:adSlot",
+    "name": "Ad Slot",
+    "description": "The location (Top, RHS, or not set) of the advertisement on the hosting page.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adDistributionNetwork": {
+    "id": "ga:adDistributionNetwork",
+    "name": "Ad Distribution Network",
+    "description": "The network (Content, Search, Search partners, etc.) used to deliver the ads.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adMatchType": {
+    "id": "ga:adMatchType",
+    "name": "Query Match Type",
+    "description": "The match type (Phrase, Exact, Broad, etc.) applied for users' search term. Ads on the content network are identified as \"Content network\". For details, see https://support.google.com/adwords/answer/2472708?hl=en.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adKeywordMatchType": {
+    "id": "ga:adKeywordMatchType",
+    "name": "Keyword Match Type",
+    "description": "The match type (Phrase, Exact, or Broad) applied to the keywords. For details, see https://support.google.com/adwords/answer/2472708.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adMatchedQuery": {
+    "id": "ga:adMatchedQuery",
+    "name": "Search Query",
+    "description": "The search query that triggered impressions.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adPlacementDomain": {
+    "id": "ga:adPlacementDomain",
+    "name": "Placement Domain",
+    "description": "The domain where the ads on the content network were placed.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adPlacementUrl": {
+    "id": "ga:adPlacementUrl",
+    "name": "Placement URL",
+    "description": "The URL where the ads were placed on the content network.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adFormat": {
+    "id": "ga:adFormat",
+    "name": "Ad Format",
+    "description": "The AdWords ad format (Text, Image, Flash, Video, etc.).",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adTargetingType": {
+    "id": "ga:adTargetingType",
+    "name": "Targeting Type",
+    "description": "This (keyword, placement, or vertical targeting) indicates how the AdWords ads were targeted.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adTargetingOption": {
+    "id": "ga:adTargetingOption",
+    "name": "Placement Type",
+    "description": "It is Automatic placements or Managed placements, indicating how the ads were managed on the content network.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adDisplayUrl": {
+    "id": "ga:adDisplayUrl",
+    "name": "Display URL",
+    "description": "The URL the AdWords ads displayed.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adDestinationUrl": {
+    "id": "ga:adDestinationUrl",
+    "name": "Destination URL",
+    "description": "The URL to which the AdWords ads referred traffic.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adwordsCustomerID": {
+    "id": "ga:adwordsCustomerID",
+    "name": "AdWords Customer ID",
+    "description": "Customer's AdWords ID, corresponding to AdWords API AccountInfo.customerId.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adwordsCampaignID": {
+    "id": "ga:adwordsCampaignID",
+    "name": "AdWords Campaign ID",
+    "description": "AdWords API Campaign.id.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adwordsAdGroupID": {
+    "id": "ga:adwordsAdGroupID",
+    "name": "AdWords Ad Group ID",
+    "description": "AdWords API AdGroup.id.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adwordsCreativeID": {
+    "id": "ga:adwordsCreativeID",
+    "name": "AdWords Creative ID",
+    "description": "AdWords API Ad.id.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adwordsCriteriaID": {
+    "id": "ga:adwordsCriteriaID",
+    "name": "AdWords Criteria ID",
+    "description": "AdWords API Criterion.id. The geographical targeting Criteria IDs are listed at https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:adQueryWordCount": {
+    "id": "ga:adQueryWordCount",
+    "name": "Query Word Count",
+    "description": "The number of words in the search query.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:isTrueViewVideoAd": {
+    "id": "ga:isTrueViewVideoAd",
+    "name": "TrueView Video Ad",
+    "description": "A boolean, Yes or No, indicating whether the ad is an AdWords TrueView video ad.",
+    "type": "STRING",
+    "group": "Dimensions"
+  },
+  "ga:impressions": {
+    "id": "ga:impressions",
+    "name": "Impressions",
+    "description": "Total number of campaign impressions.",
+    "type": "INTEGER",
+    "group": "Metrics"
+  },
+  "ga:adClicks": {
+    "id": "ga:adClicks",
+    "name": "Clicks",
+    "description": "Total number of times users have clicked on an ad to reach the property.",
+    "type": "INTEGER",
+    "group": "Metrics"
+  },
+  "ga:adCost": {
+    "id": "ga:adCost",
+    "name": "Cost",
+    "description": "Derived cost for the advertising campaign. Its currency is the one you set in the AdWords account.",
+    "type": "CURRENCY",
+    "group": "Metrics"
+  },
+  "ga:CPM": {
+    "id": "ga:CPM",
+    "name": "CPM",
+    "description": "Cost per thousand impressions.",
+    "type": "CURRENCY",
+    "group": "Calculated Metrics"
+  },
+  "ga:CPC": {
+    "id": "ga:CPC",
+    "name": "CPC",
+    "description": "Cost to advertiser per click.",
+    "type": "CURRENCY",
+    "group": "Calculated Metrics"
+  },
+  "ga:CTR": {
+    "id": "ga:CTR",
+    "name": "CTR",
+    "description": "Click-through-rate for the ad. This is equal to the number of clicks divided by the number of impressions for the ad (e.g., how many times users clicked on one of the ads where that ad appeared).",
+    "type": "PERCENT",
+    "group": "Calculated Metrics"
+  },
+  "ga:costPerTransaction": {
+    "id": "ga:costPerTransaction",
+    "name": "Cost per Transaction",
+    "description": "The cost per transaction for the property.",
+    "type": "CURRENCY",
+    "group": "Calculated Metrics"
+  },
+  "ga:costPerGoalConversion": {
+    "id": "ga:costPerGoalConversion",
+    "name": "Cost per Goal Conversion",
+    "description": "The cost per goal conversion for the property.",
+    "type": "CURRENCY",
+    "group": "Calculated Metrics"
+  },
+  "ga:costPerConversion": {
+    "id": "ga:costPerConversion",
+    "name": "Cost per Conversion",
+    "description": "The cost per conversion (including ecommerce and goal conversions) for the property.",
+    "type": "CURRENCY",
+    "group": "Calculated Metrics"
+  },
+  "ga:RPC": {
+    "id": "ga:RPC",
+    "name": "RPC",
+    "description": "RPC or revenue-per-click, the average revenue (from ecommerce sales and/or goal value) you received for each click on one of the search ads.",
+    "type": "CURRENCY",
+    "group": "Calculated Metrics"
+  },
+  "ga:ROAS": {
+    "id": "ga:ROAS",
+    "name": "ROAS",
+    "description": "Return On Ad Spend (ROAS) is the total transaction revenue and goal value divided by derived advertising cost.",
+    "type": "PERCENT",
+    "group": "Calculated Metrics"
   }
 }
