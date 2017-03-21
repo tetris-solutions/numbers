@@ -135,7 +135,6 @@ function getFacebookConfig(): array
         'float'
     ];
 
-
     function isCurrency(array $field): bool
     {
         $attributes = ['id', 'description'];

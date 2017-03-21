@@ -1,44 +1,97 @@
 <?php
 
+function normalizeGAType(string $type): string
+{
+    $type = strtolower($type);
+
+    switch ($type) {
+        case 'integer':
+        case 'float':
+            return 'decimal';
+        case 'percent':
+            return 'percentage';
+        default:
+            return $type;
+    }
+}
+
 function getAnalyticsConfig(): array
 {
+
+    $types = ['STRING', 'INTEGER', 'FLOAT', 'PERCENT', 'TIME', 'CURRENCY'];
     $output = [
-        'entities' => [],
+        'entities' => ['Campaign'],
         'metrics' => [],
-        'reports' => [],
+        'reports' => ['GA_DEFAULT' => ['id' => 'GA_DEFAULT', 'attributes' => []]],
         'sources' => []
     ];
 
-    $dimensions = [
-        ['name' => 'ga:date'],
-        ['name' => 'ga:campaign'],
-        ['name' => 'ga:source'],
-        ['name' => 'ga:medium'],
-        ['name' => 'ga:deviceCategory'],
-        ['name' => 'ga:adcontent'],
-        ['name' => 'ga:region']
+    $fieldList = [
+        'ga:date',
+        'ga:campaign',
+        'ga:source',
+        'ga:medium',
+        'ga:deviceCategory',
+        'ga:adcontent',
+        'ga:region',
+        'ga:newUsers',
+        'ga:users',
+        'ga:percentNewSessions',
+        'ga:sessions',
+        'ga:bounces',
+        'ga:sessionDuration',
+        'ga:goalCompletionsAll',
+        'ga:goalConversionRateAll',
+        'ga:goalStartsAll',
+        'ga:pageviews',
+        'ga:pageviewsPerSession',
+        'ga:timeOnPage',
+        'ga:totalEvents',
+        'ga:uniqueEvents'
     ];
 
-    $metrics = [
-        ['expression' => 'ga:newUsers'],
-        ['expression' => 'ga:users'],
-        ['expression' => 'ga:percentNewSessions'],
-        ['expression' => 'ga:sessions'],
-        ['expression' => 'ga:bounces'],
-        ['expression' => 'ga:sessionDuration'],
-        ['expression' => 'ga:goalCompletionsAll'],
-        ['expression' => 'ga:goalConversionRateAll'],
-        ['expression' => 'ga:goalStartsAll'],
-        ['expression' => 'ga:pageviews'],
-        ['expression' => 'ga:pageviewsPerSession'],
-        ['expression' => 'ga:timeOnPage'],
-        ['expression' => 'ga:totalEvents'],
-        ['expression' => 'ga:uniqueEvents']
-    ];
+//    foreach (['Completions', 'ConversionRate', 'Starts'] as $subGoal) {
+//        for ($i = 1; $i <= 10; $i++) {
+//            $fieldList[] = ["ga:goal{$i}{$subGoal}"];
+//        }
+//    }
 
-    foreach (['Completions', 'ConversionRate', 'Starts'] as $subGoal) {
-        for ($i = 1; $i <= 10; $i++) {
-            $metrics[] = ['expression' => "ga:goal{$i}{$subGoal}"];
+    $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/analytics-fields.json'), true);
+
+    foreach ($fieldList as $originalAttributeName) {
+        $config = $fieldsConfig[$originalAttributeName];
+
+        $attributeName = substr($originalAttributeName, 3);
+        $isMetric = $config['group'] !== 'Dimensions';
+
+        $attribute = [
+            'id' => $attributeName,
+            'property' => $originalAttributeName,
+            'type' => normalizeGAType($config['type']),
+            'is_metric' => $isMetric,
+            'is_dimension' => !$isMetric,
+            'is_filter' => false
+        ];
+
+        if ($isMetric) {
+            if (empty($output['metrics'][$attributeName])) {
+                $output['metrics'][$attributeName] = [
+                    'id' => $attributeName,
+                    'type' => $attribute['type']
+                ];
+            }
+
+            $source = [
+                'metric' => $attributeName,
+                'entity' => 'Campaign',
+                'platform' => 'facebook',
+                'report' => 'GA_DEFAULT',
+                'fields' => [$originalAttributeName],
+                'parse' => null,
+                'sum' => null
+            ];
+
+            $output['sources'][] = $source;
         }
     }
 
