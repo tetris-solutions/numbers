@@ -1,5 +1,5 @@
 <?php
 return [
-    "id" => "impressions",
+    "id" => "adclicks",
     "type" => "decimal"
 ];

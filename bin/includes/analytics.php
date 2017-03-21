@@ -47,7 +47,12 @@ function getAnalyticsConfig(): array
         'ga:pageviewsPerSession',
         'ga:timeOnPage',
         'ga:totalEvents',
-        'ga:uniqueEvents'
+        'ga:uniqueEvents',
+        'ga:ROAS',
+        'ga:CTR',
+        'ga:CPC',
+        'ga:impressions',
+        'ga:adClicks'
     ];
 
 //    foreach (['Completions', 'ConversionRate', 'Starts'] as $subGoal) {
