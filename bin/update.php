@@ -6,12 +6,14 @@ namespace Tetris\Numbers;
 require 'includes/shared.php';
 require 'includes/facebook.php';
 require 'includes/adwords.php';
+require 'includes/analytics.php';
 
 function updateConfig()
 {
     $platforms = [
         'facebook' => getFacebookConfig(),
-        'adwords' => getAdwordsConfig()
+        'adwords' => getAdwordsConfig(),
+        'analytics' => getAnalyticsConfig()
     ];
 
     $metrics = [];
