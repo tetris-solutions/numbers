@@ -28,16 +28,31 @@ window.onload = function () {
   function parseField (fieldAnchor) {
     const id = contentOf(fieldAnchor)
     /**
+     * @type {HTMLHeadingElement} title
+     */
+    const title = fieldAnchor.parentElement
+    /**
      *
      * @type {HTMLDivElement} detailsDiv
      */
-    const detailsDiv = fieldAnchor.parentElement.nextElementSibling
+    const detailsDiv = title.nextElementSibling
 
     const name = contentOf(detailsDiv.querySelector('code'))
     const description = contentOf(detailsDiv.querySelectorAll('p')[2])
     const type = contentOf(detailsDiv.querySelector('td > code'))
+    let el = title
+    let group
 
-    fields[id] = {id, name, description, type}
+    do {
+      if (el.tagName.toLocaleLowerCase() === 'h2') {
+        group = contentOf(el)
+        break
+      }
+
+      el = el.previousElementSibling
+    } while (el)
+
+    fields[id] = {id, name, description, type, group}
   }
 
   toArray(document.querySelectorAll('h3 > a'))
