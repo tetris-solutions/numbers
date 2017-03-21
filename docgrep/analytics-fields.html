@@ -1,0 +1,3600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics fields</title>
+</head>
+<body>
+
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a>
+</aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=userdimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_usertype">ga:userType</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_visitortype" class="deprecated">ga:visitorType</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_sessioncount">ga:sessionCount</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_visitcount"
+                class="deprecated">ga:visitCount</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_dayssincelastsession">ga:daysSinceLastSession</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_dayssincelastvisit" class="deprecated">ga:daysSinceLastVisit</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_userdefinedvalue">ga:userDefinedValue</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_userbucket">ga:userBucket</a><br></td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=usermetrics">Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_users">ga:users</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_visitors"
+                class="deprecated">ga:visitors</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_newusers">ga:newUsers</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_newvisits"
+                class="deprecated">ga:newVisits</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_1dayusers">ga:1dayUsers</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_7dayusers">ga:7dayUsers</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_14dayusers">ga:14dayUsers</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_30dayusers">ga:30dayUsers</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_sessionsperuser">ga:sessionsPerUser</a><br>
+        </td>
+        <td><strong><a href="dimsmets#view=detail&amp;group=user&amp;jump=usercalculated_metrics">Calculated
+            Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_percentnewsessions">ga:percentNewSessions</a><br><a
+                href="dimsmets#view=detail&amp;group=user&amp;jump=ga_percentnewvisits" class="deprecated">ga:percentNewVisits</a><br>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="userdimensions">Dimensions</h2>
+<h3 id="ga_usertype"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_usertype">ga:userType</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>User Type</code></div>
+    <p></p>
+    <p>A boolean, either New Visitor or Returning Visitor, indicating if the users are new or returning.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_visitortype" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=user&amp;jump=ga_visitortype">ga:visitorType</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:userType</code> instead.</p></div>
+<hr>
+<h3 id="ga_sessioncount"><a
+        href="dimsmets#view=detail&amp;group=user&amp;jump=ga_sessioncount">ga:sessionCount</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Count of Sessions</code></div>
+    <p></p>
+    <p>The session index for a user. Each session from a unique user will get its own incremental index starting
+        from 1 for the first session. Subsequent sessions do not change previous session indices. For example,
+        if a user has 4 sessions to the website, sessionCount for that user will have 4 distinct values of '1'
+        through '4'.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_visitcount" class="deprecated"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_visitcount">ga:visitCount</a>
+</h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:sessionCount</code> instead.</p></div>
+<hr>
+<h3 id="ga_dayssincelastsession"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_dayssincelastsession">ga:daysSinceLastSession</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Days Since Last Session</code></div>
+    <p></p>
+    <p>The number of days elapsed since users last visited the property, used to calculate user loyalty.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_dayssincelastvisit" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=user&amp;jump=ga_dayssincelastvisit">ga:daysSinceLastVisit</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:daysSinceLastSession</code> instead.</p></div>
+<hr>
+<h3 id="ga_userdefinedvalue"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_userdefinedvalue">ga:userDefinedValue</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>User Defined Value</code></div>
+    <p></p>
+    <p>The value provided when defining custom user segments for the property.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_userbucket"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_userbucket">ga:userBucket</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>User Bucket</code></div>
+    <p></p>
+    <p>Randomly assigned users tag to allow A/B testing and splitting of remarketing lists. Ranges from
+        1-100.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="usermetrics">Metrics</h2>
+<h3 id="ga_users"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_users">ga:users</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Users</code></div>
+    <p></p>
+    <p>The total number of users for the requested time period.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_visitors" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=user&amp;jump=ga_visitors">ga:visitors</a>
+</h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:users</code> instead.</p></div>
+<hr>
+<h3 id="ga_newusers"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_newusers">ga:newUsers</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>New Users</code></div>
+    <p></p>
+    <p>The number of sessions marked as a user's first sessions.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_newvisits" class="deprecated"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_newvisits">ga:newVisits</a>
+</h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:newUsers</code> instead.</p></div>
+<hr>
+<h3 id="ga_1dayusers"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_1dayusers">ga:1dayUsers</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>1 Day Active Users</code></div>
+    <p></p>
+    <p>Total number of 1-day active users for each day in the requested time period. At least one of ga:nthDay,
+        ga:date, or ga:day must be specified as a dimension to query this metric. For a given date, the returned
+        value will be the total number of unique users for the 1-day period ending on the given date.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_7dayusers"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_7dayusers">ga:7dayUsers</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>7 Day Active Users</code></div>
+    <p></p>
+    <p>Total number of 7-day active users for each day in the requested time period. At least one of ga:nthDay,
+        ga:date, or ga:day must be specified as a dimension to query this metric. For a given date, the returned
+        value will be the total number of unique users for the 7-day period ending on the given date.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_14dayusers"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_14dayusers">ga:14dayUsers</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>14 Day Active Users</code></div>
+    <p></p>
+    <p>Total number of 14-day active users for each day in the requested time period. At least one of ga:nthDay,
+        ga:date, or ga:day must be specified as a dimension to query this metric. For a given date, the returned
+        value will be the total number of unique users for the 14-day period ending on the given date.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_30dayusers"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_30dayusers">ga:30dayUsers</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>30 Day Active Users</code></div>
+    <p></p>
+    <p>Total number of 30-day active users for each day in the requested time period. At least one of ga:nthDay,
+        ga:date, or ga:day must be specified as a dimension to query this metric. For a given date, the returned
+        value will be the total number of unique users for the 30-day period ending on the given date.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_sessionsperuser"><a
+        href="dimsmets#view=detail&amp;group=user&amp;jump=ga_sessionsperuser">ga:sessionsPerUser</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Number of Sessions per User</code></div>
+    <p></p>
+    <p>The total number of sessions divided by the total number of users.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>FLOAT</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="usercalculated_metrics">Calculated Metrics</h2>
+<h3 id="ga_percentnewsessions"><a href="dimsmets#view=detail&amp;group=user&amp;jump=ga_percentnewsessions">ga:percentNewSessions</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>% New Sessions</code></div>
+    <p></p>
+    <p>The percentage of sessions by users who had never visited the property before.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:newUsers / ga:sessions</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_percentnewvisits" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=user&amp;jump=ga_percentnewvisits">ga:percentNewVisits</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:percentNewSessions</code> instead.</p></div>
+
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=sessiondimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_sessiondurationbucket">ga:sessionDurationBucket</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_visitlength"
+                class="deprecated">ga:visitLength</a><br>
+        </td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=sessionmetrics">Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_sessions">ga:sessions</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_visits"
+                class="deprecated">ga:visits</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_bounces">ga:bounces</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_sessionduration">ga:sessionDuration</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_timeonsite"
+                class="deprecated">ga:timeOnSite</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_uniquedimensioncombinations">ga:uniqueDimensionCombinations</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_hits">ga:hits</a><br></td>
+        <td><strong><a href="dimsmets#view=detail&amp;group=session&amp;jump=sessioncalculated_metrics">Calculated
+            Metrics</a></strong><br><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_entrancebouncerate"
+                                       class="deprecated">ga:entranceBounceRate</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_bouncerate">ga:bounceRate</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_visitbouncerate" class="deprecated">ga:visitBounceRate</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_avgsessionduration">ga:avgSessionDuration</a><br><a
+                href="dimsmets#view=detail&amp;group=session&amp;jump=ga_avgtimeonsite" class="deprecated">ga:avgTimeOnSite</a><br>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="sessiondimensions">Dimensions</h2>
+<h3 id="ga_sessiondurationbucket"><a
+        href="dimsmets#view=detail&amp;group=session&amp;jump=ga_sessiondurationbucket">ga:sessionDurationBucket</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Session Duration</code></div>
+    <p></p>
+    <p>The length (returned as a string) of a session measured in seconds and reported in second increments.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_visitlength" class="deprecated"><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_visitlength">ga:visitLength</a>
+</h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:sessionDurationBucket</code> instead.</p></div>
+<h2 id="sessionmetrics">Metrics</h2>
+<h3 id="ga_sessions"><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_sessions">ga:sessions</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Sessions</code></div>
+    <p></p>
+    <p>The total number of sessions.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_visits" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=session&amp;jump=ga_visits">ga:visits</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:sessions</code> instead.</p></div>
+<hr>
+<h3 id="ga_bounces"><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_bounces">ga:bounces</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Bounces</code></div>
+    <p></p>
+    <p>The total number of single page (or single interaction hit) sessions for the property.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_sessionduration"><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_sessionduration">ga:sessionDuration</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Session Duration</code></div>
+    <p></p>
+    <p>Total duration (in seconds) of users' sessions.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>TIME</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_timeonsite" class="deprecated"><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_timeonsite">ga:timeOnSite</a>
+</h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:sessionDuration</code> instead.</p></div>
+<hr>
+<h3 id="ga_uniquedimensioncombinations"><a
+        href="dimsmets#view=detail&amp;group=session&amp;jump=ga_uniquedimensioncombinations">ga:uniqueDimensionCombinations</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Unique Dimension Combinations</code></div>
+    <p></p>
+    <p>Unique Dimension Combinations counts the number of unique dimension-value combinations for each dimension in
+        a report. This lets you build combined (concatenated) dimensions post-processing, which allows for more
+        flexible reporting without having to update your tracking implementation or use additional custom-dimension
+        slots. For more information, see <a target="_blank"
+                                            href="https://support.google.com/analytics/answer/7084499">https://support.google.com/analytics/answer/7084499</a>.
+    </p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_hits"><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_hits">ga:hits</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Hits</code></div>
+    <p></p>
+    <p>Total number of hits for the view (profile). This metric sums all hit types, including pageview, custom
+        event, ecommerce, and other types. Because this metric is based on the view (profile), not on the property,
+        it is not the same as the property's hit volume.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="sessioncalculated_metrics">Calculated Metrics</h2>
+<h3 id="ga_entrancebouncerate" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=session&amp;jump=ga_entrancebouncerate">ga:entranceBounceRate</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:bounceRate</code> instead.</p></div>
+<hr>
+<h3 id="ga_bouncerate"><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_bouncerate">ga:bounceRate</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Bounce Rate</code></div>
+    <p></p>
+    <p>The percentage of single-page session (i.e., session in which the person left the property from the first
+        page).</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:bounces / ga:sessions</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_visitbouncerate" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=session&amp;jump=ga_visitbouncerate">ga:visitBounceRate</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:bounceRate</code> instead.</p></div>
+<hr>
+<h3 id="ga_avgsessionduration"><a href="dimsmets#view=detail&amp;group=session&amp;jump=ga_avgsessionduration">ga:avgSessionDuration</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Avg. Session Duration</code></div>
+    <p></p>
+    <p>The average duration (in seconds) of users' sessions.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:sessionDuration / ga:sessions</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>TIME</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_avgtimeonsite" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=session&amp;jump=ga_avgtimeonsite">ga:avgTimeOnSite</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:avgSessionDuration</code> instead.</p></div>
+
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=page_trackingdimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_hostname">ga:hostname</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepath">ga:pagePath</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepathlevel1">ga:pagePathLevel1</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepathlevel2">ga:pagePathLevel2</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepathlevel3">ga:pagePathLevel3</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepathlevel4">ga:pagePathLevel4</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagetitle">ga:pageTitle</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_landingpagepath">ga:landingPagePath</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_secondpagepath">ga:secondPagePath</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_exitpagepath">ga:exitPagePath</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_previouspagepath">ga:previousPagePath</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_nextpagepath" class="deprecated">ga:nextPagePath</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagedepth">ga:pageDepth</a><br></td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=page_trackingmetrics">Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagevalue">ga:pageValue</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_entrances">ga:entrances</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pageviews">ga:pageviews</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_uniquepageviews">ga:uniquePageviews</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_timeonpage">ga:timeOnPage</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_exits">ga:exits</a><br></td>
+        <td><strong><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=page_trackingcalculated_metrics">Calculated
+            Metrics</a></strong><br><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_entrancerate">ga:entranceRate</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pageviewspersession">ga:pageviewsPerSession</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pageviewspervisit"
+                class="deprecated">ga:pageviewsPerVisit</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_avgtimeonpage">ga:avgTimeOnPage</a><br><a
+                href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_exitrate">ga:exitRate</a><br></td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="page_trackingdimensions">Dimensions</h2>
+<h3 id="ga_hostname"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_hostname">ga:hostname</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Hostname</code></div>
+    <p></p>
+    <p>The hostname from which the tracking request was made.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pagepath"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepath">ga:pagePath</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Page</code></div>
+    <p></p>
+    <p>A page on the website specified by path and/or query parameters. Use this with hostname to get the page's
+        full URL.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pagepathlevel1"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepathlevel1">ga:pagePathLevel1</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Page path level 1</code></div>
+    <p></p>
+    <p>This dimension rolls up all the page paths in the first hierarchical level in pagePath.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pagepathlevel2"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepathlevel2">ga:pagePathLevel2</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Page path level 2</code></div>
+    <p></p>
+    <p>This dimension rolls up all the page paths in the second hierarchical level in pagePath.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pagepathlevel3"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepathlevel3">ga:pagePathLevel3</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Page path level 3</code></div>
+    <p></p>
+    <p>This dimension rolls up all the page paths in the third hierarchical level in pagePath.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pagepathlevel4"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagepathlevel4">ga:pagePathLevel4</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Page path level 4</code></div>
+    <p></p>
+    <p>This dimension rolls up all the page paths into hierarchical levels. Up to 4 pagePath levels maybe specified.
+        All additional levels in the pagePath hierarchy are also rolled up in this dimension.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pagetitle"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagetitle">ga:pageTitle</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Page Title</code></div>
+    <p></p>
+    <p>The page's title. Multiple pages might have the same page title.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_landingpagepath"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_landingpagepath">ga:landingPagePath</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Landing Page</code></div>
+    <p></p>
+    <p>The first page in users' sessions, or the landing page.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_secondpagepath"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_secondpagepath">ga:secondPagePath</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Second Page</code></div>
+    <p></p>
+    <p>The second page in users' sessions.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_exitpagepath"><a
+        href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_exitpagepath">ga:exitPagePath</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Exit Page</code></div>
+    <p></p>
+    <p>The last page or exit page in users' sessions.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_previouspagepath"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_previouspagepath">ga:previousPagePath</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Previous Page Path</code></div>
+    <p></p>
+    <p>A page visited before another page on the same property, typically used with the pagePath dimension.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_nextpagepath" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_nextpagepath">ga:nextPagePath</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>This column should not be used.</p></div>
+<hr>
+<h3 id="ga_pagedepth"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagedepth">ga:pageDepth</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Page Depth</code></div>
+    <p></p>
+    <p>The number of pages visited by users during a session. The value is a histogram that counts pageviews across
+        a range of possible values. In this calculation, all sessions will have at least one pageview, and some
+        percentage of sessions will have more.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="page_trackingmetrics">Metrics</h2>
+<h3 id="ga_pagevalue"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pagevalue">ga:pageValue</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Page Value</code></div>
+    <p></p>
+    <p>The average value of this page or set of pages, which is equal to (ga:transactionRevenue + ga:goalValueAll) /
+        ga:uniquePageviews.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_entrances"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_entrances">ga:entrances</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Entrances</code></div>
+    <p></p>
+    <p>The number of entrances to the property measured as the first pageview in a session, typically used with
+        landingPagePath.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pageviews"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pageviews">ga:pageviews</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Pageviews</code></div>
+    <p></p>
+    <p>The total number of pageviews for the property.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_uniquepageviews"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_uniquepageviews">ga:uniquePageviews</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Unique Pageviews</code></div>
+    <p></p>
+    <p>Unique Pageviews is the number of sessions during which the specified page was viewed at least once. A unique
+        pageview is counted for each page URL + page title combination.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_timeonpage"><a
+        href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_timeonpage">ga:timeOnPage</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Time on Page</code></div>
+    <p></p>
+    <p>Time (in seconds) users spent on a particular page, calculated by subtracting the initial view time for a
+        particular page from the initial view time for a subsequent page. This metric does not apply to exit pages
+        of the property.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>TIME</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_exits"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_exits">ga:exits</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Exits</code></div>
+    <p></p>
+    <p>The number of exits from the property.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="page_trackingcalculated_metrics">Calculated Metrics</h2>
+<h3 id="ga_entrancerate"><a
+        href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_entrancerate">ga:entranceRate</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Entrances / Pageviews</code></div>
+    <p></p>
+    <p>The percentage of pageviews in which this page was the entrance.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:entrances / ga:pageviews</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pageviewspersession"><a
+        href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pageviewspersession">ga:pageviewsPerSession</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Pages / Session</code></div>
+    <p></p>
+    <p>The average number of pages viewed during a session, including repeated views of a single page.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:pageviews / ga:sessions</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>FLOAT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_pageviewspervisit" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_pageviewspervisit">ga:pageviewsPerVisit</a>
+</h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:pageviewsPerSession</code> instead.</p></div>
+<hr>
+<h3 id="ga_avgtimeonpage"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_avgtimeonpage">ga:avgTimeOnPage</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Avg. Time on Page</code></div>
+    <p></p>
+    <p>The average time users spent viewing this page or a set of pages.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:timeOnPage / (ga:pageviews - ga:exits)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>TIME</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_exitrate"><a href="dimsmets#view=detail&amp;group=page_tracking&amp;jump=ga_exitrate">ga:exitRate</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>% Exit</code></div>
+    <p></p>
+    <p>The percentage of exits from the property that occurred out of the total pageviews.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:exits / (ga:pageviews + ga:screenviews)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=event_trackingdimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventcategory">ga:eventCategory</a><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventaction">ga:eventAction</a><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventlabel">ga:eventLabel</a><br>
+        </td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=event_trackingmetrics">Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_totalevents">ga:totalEvents</a><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_uniqueevents">ga:uniqueEvents</a><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventvalue">ga:eventValue</a><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_sessionswithevent">ga:sessionsWithEvent</a><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_visitswithevent" class="deprecated">ga:visitsWithEvent</a><br>
+        </td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=event_trackingcalculated_metrics">Calculated
+            Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_avgeventvalue">ga:avgEventValue</a><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventspersessionwithevent">ga:eventsPerSessionWithEvent</a><br><a
+                href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventspervisitwithevent"
+                class="deprecated">ga:eventsPerVisitWithEvent</a><br></td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="event_trackingdimensions">Dimensions</h2>
+<h3 id="ga_eventcategory"><a href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventcategory">ga:eventCategory</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Event Category</code></div>
+    <p></p>
+    <p>The event category.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_eventaction"><a
+        href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventaction">ga:eventAction</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Event Action</code></div>
+    <p></p>
+    <p>Event action.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_eventlabel"><a
+        href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventlabel">ga:eventLabel</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Event Label</code></div>
+    <p></p>
+    <p>Event label.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="event_trackingmetrics">Metrics</h2>
+<h3 id="ga_totalevents"><a
+        href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_totalevents">ga:totalEvents</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Total Events</code></div>
+    <p></p>
+    <p>The total number of events for the profile, across all categories.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_uniqueevents"><a href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_uniqueevents">ga:uniqueEvents</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Unique Dimension Combinations</code></div>
+    <p></p>
+    <p>The definition of `ga:uniqueEvents` will change soon to more accurately reflect the number of unique events.
+        Please use `ga:uniqueDimensionCombinations` instead if you want to retain the existing definition. For more
+        information, see <a target="_blank" href="https://support.google.com/analytics/answer/7084499">https://support.google.com/analytics/answer/7084499</a>.
+    </p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_eventvalue"><a
+        href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventvalue">ga:eventValue</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Event Value</code></div>
+    <p></p>
+    <p>Total value of events for the profile.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_sessionswithevent"><a href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_sessionswithevent">ga:sessionsWithEvent</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Sessions with Event</code></div>
+    <p></p>
+    <p>The total number of sessions with events.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_visitswithevent" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_visitswithevent">ga:visitsWithEvent</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:sessionsWithEvent</code> instead.</p></div>
+<h2 id="event_trackingcalculated_metrics">Calculated Metrics</h2>
+<h3 id="ga_avgeventvalue"><a href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_avgeventvalue">ga:avgEventValue</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Avg. Value</code></div>
+    <p></p>
+    <p>The average value of an event.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:eventValue / ga:totalEvents</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>FLOAT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_eventspersessionwithevent"><a
+        href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventspersessionwithevent">ga:eventsPerSessionWithEvent</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Events / Session with Event</code></div>
+    <p></p>
+    <p>The average number of events per session with event.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:totalEvents / ga:sessionsWithEvent</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>FLOAT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_eventspervisitwithevent" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=event_tracking&amp;jump=ga_eventspervisitwithevent">ga:eventsPerVisitWithEvent</a>
+</h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:eventsPerSessionWithEvent</code> instead.</p></div>
+
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=goal_conversionsdimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalcompletionlocation">ga:goalCompletionLocation</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalpreviousstep1">ga:goalPreviousStep1</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalpreviousstep2">ga:goalPreviousStep2</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalpreviousstep3">ga:goalPreviousStep3</a><br>
+        </td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=goal_conversionsmetrics">Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxstarts">ga:goalXXStarts</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalstartsall">ga:goalStartsAll</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxcompletions">ga:goalXXCompletions</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalcompletionsall">ga:goalCompletionsAll</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxvalue">ga:goalXXValue</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalvalueall">ga:goalValueAll</a><br>
+        </td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=goal_conversionscalculated_metrics">Calculated
+            Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalvaluepersession">ga:goalValuePerSession</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalvaluepervisit"
+                class="deprecated">ga:goalValuePerVisit</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxconversionrate">ga:goalXXConversionRate</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalconversionrateall">ga:goalConversionRateAll</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxabandons">ga:goalXXAbandons</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalabandonsall">ga:goalAbandonsAll</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxabandonrate">ga:goalXXAbandonRate</a><br><a
+                href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalabandonrateall">ga:goalAbandonRateAll</a><br>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="goal_conversionsdimensions">Dimensions</h2>
+<h3 id="ga_goalcompletionlocation"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalcompletionlocation">ga:goalCompletionLocation</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal Completion Location</code></div>
+    <p></p>
+    <p>The page path or screen name that matched any destination type goal completion.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalpreviousstep1"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalpreviousstep1">ga:goalPreviousStep1</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal Previous Step - 1</code></div>
+    <p></p>
+    <p>The page path or screen name that matched any destination type goal, one step prior to the goal completion
+        location.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalpreviousstep2"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalpreviousstep2">ga:goalPreviousStep2</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal Previous Step - 2</code></div>
+    <p></p>
+    <p>The page path or screen name that matched any destination type goal, two steps prior to the goal completion
+        location.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalpreviousstep3"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalpreviousstep3">ga:goalPreviousStep3</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal Previous Step - 3</code></div>
+    <p></p>
+    <p>The page path or screen name that matched any destination type goal, three steps prior to the goal completion
+        location.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="goal_conversionsmetrics">Metrics</h2>
+<p>There are 20 goals available in the API. You can request a goal value by using its corresponding number (from
+    1-20). For example, if you want the number of goal starts for goal 3, you would use <code>ga:goal3Starts</code>.
+</p>
+<hr>
+<h3 id="ga_goalxxstarts"><a href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxstarts">ga:goalXXStarts</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal XX Starts</code></div>
+    <p></p>
+    <p>The total number of starts for the requested goal number.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-3">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+            <th>Index Range</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+            <td>1 to 20</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalstartsall"><a href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalstartsall">ga:goalStartsAll</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal Starts</code></div>
+    <p></p>
+    <p>Total number of starts for all goals defined in the profile.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalxxcompletions"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxcompletions">ga:goalXXCompletions</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal XX Completions</code></div>
+    <p></p>
+    <p>The total number of completions for the requested goal number.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-3">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+            <th>Index Range</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+            <td>1 to 20</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalcompletionsall"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalcompletionsall">ga:goalCompletionsAll</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal Completions</code></div>
+    <p></p>
+    <p>Total number of completions for all goals defined in the profile.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalxxvalue"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxvalue">ga:goalXXValue</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal XX Value</code></div>
+    <p></p>
+    <p>The total numeric value for the requested goal number.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-3">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+            <th>Index Range</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+            <td>1 to 20</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalvalueall"><a href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalvalueall">ga:goalValueAll</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal Value</code></div>
+    <p></p>
+    <p>Total numeric value for all goals defined in the profile.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="goal_conversionscalculated_metrics">Calculated Metrics</h2>
+<h3 id="ga_goalvaluepersession"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalvaluepersession">ga:goalValuePerSession</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Per Session Goal Value</code></div>
+    <p></p>
+    <p>The average goal value of a session.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:goalValueAll / ga:sessions</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>CURRENCY</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalvaluepervisit" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalvaluepervisit">ga:goalValuePerVisit</a>
+</h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>Use <code>ga:goalValuePerSession</code> instead.</p></div>
+<hr>
+<h3 id="ga_goalxxconversionrate"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxconversionrate">ga:goalXXConversionRate</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal XX Conversion Rate</code></div>
+    <p></p>
+    <p>Percentage of sessions resulting in a conversion to the requested goal number.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:goalXXCompletions / ga:sessions</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-3">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+            <th>Index Range</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+            <td>1 to 20</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalconversionrateall"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalconversionrateall">ga:goalConversionRateAll</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal Conversion Rate</code></div>
+    <p></p>
+    <p>The percentage of sessions which resulted in a conversion to at least one of the goals.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">ga:goalCompletionsAll / ga:sessions</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalxxabandons"><a href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxabandons">ga:goalXXAbandons</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal XX Abandoned Funnels</code></div>
+    <p></p>
+    <p>The number of times users started conversion activity on the requested goal number without actually
+        completing it.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">(ga:goalXXStarts - ga:goalXXCompletions)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-3">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+            <th>Index Range</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+            <td>1 to 20</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalabandonsall"><a href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalabandonsall">ga:goalAbandonsAll</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Abandoned Funnels</code></div>
+    <p></p>
+    <p>The overall number of times users started goals without actually completing them.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">(ga:goalStartsAll - ga:goalCompletionsAll)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalxxabandonrate"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalxxabandonrate">ga:goalXXAbandonRate</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Goal XX Abandonment Rate</code></div>
+    <p></p>
+    <p>The rate at which the requested goal number was abandoned.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">((ga:goalXXStarts - ga:goalXXCompletions)) / (ga:goalXXStarts)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-3">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+            <th>Index Range</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+            <td>1 to 20</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_goalabandonrateall"><a
+        href="dimsmets#view=detail&amp;group=goal_conversions&amp;jump=ga_goalabandonrateall">ga:goalAbandonRateAll</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Total Abandonment Rate</code></div>
+    <p></p>
+    <p>Goal abandonment rate.</p>
+    <div class="tog-box"><p class="tog-header"><strong>Calculation</strong>:</p>
+        <div class="tog-content">
+            <pre class="prettyprint">((ga:goalStartsAll - ga:goalCompletionsAll)) / (ga:goalStartsAll)</pre>
+        </div>
+    </div>
+    <br>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>PERCENT</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=timedimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_date">ga:date</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_year">ga:year</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_month">ga:month</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_week">ga:week</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_day">ga:day</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_hour">ga:hour</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_minute">ga:minute</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthmonth">ga:nthMonth</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthweek">ga:nthWeek</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthday">ga:nthDay</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthminute">ga:nthMinute</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_dayofweek">ga:dayOfWeek</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_dayofweekname">ga:dayOfWeekName</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_datehour">ga:dateHour</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_yearmonth">ga:yearMonth</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_yearweek">ga:yearWeek</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_isoweek">ga:isoWeek</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_isoyear">ga:isoYear</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_isoyearisoweek">ga:isoYearIsoWeek</a><br><a
+                href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthhour">ga:nthHour</a><br></td>
+        <td><span class="gray"><strong>Metrics</strong><br><em>None</em></span></td>
+        <td><span class="gray"><strong>Calculated Metrics</strong><br><em>None</em></span></td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="timedimensions">Dimensions</h2>
+<h3 id="ga_date"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_date">ga:date</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Date</code></div>
+    <p></p>
+    <p>The date of the session formatted as YYYYMMDD.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_year"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_year">ga:year</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Year</code></div>
+    <p></p>
+    <p>The year of the session, a four-digit year from 2005 to the current year.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_month"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_month">ga:month</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Month of the year</code></div>
+    <p></p>
+    <p>Month of the session, a two digit integer from 01 to 12.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_week"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_week">ga:week</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Week of the Year</code></div>
+    <p></p>
+    <p>The week of the session, a two-digit number from 01 to 53. Each week starts on Sunday.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_day"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_day">ga:day</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Day of the month</code></div>
+    <p></p>
+    <p>The day of the month, a two-digit number from 01 to 31.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_hour"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_hour">ga:hour</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Hour</code></div>
+    <p></p>
+    <p>A two-digit hour of the day ranging from 00-23 in the timezone configured for the account. This value is also
+        corrected for daylight savings time. If the timezone follows daylight savings time, there will be an
+        apparent bump in the number of sessions during the changeover hour (e.g., between 1:00 and 2:00) for the day
+        per year when that hour repeats. A corresponding hour with zero sessions will occur at the opposite
+        changeover. (Google Analytics does not track user time more precisely than hours.)</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_minute"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_minute">ga:minute</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Minute</code></div>
+    <p></p>
+    <p>Returns the minutes, between 00 and 59, in the hour.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_nthmonth"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthmonth">ga:nthMonth</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Month Index</code></div>
+    <p></p>
+    <p>The index for a month in the specified date range. In the date range, the index for the first month is 0, for
+        the second month 1, and so on.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_nthweek"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthweek">ga:nthWeek</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Week Index</code></div>
+    <p></p>
+    <p>The index for each week in the specified date range. The index for the first week in the date range is 0, for
+        the second week 1, and so on. The index corresponds to week entries.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_nthday"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthday">ga:nthDay</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Day Index</code></div>
+    <p></p>
+    <p>The index for each day in the specified date range. The index for the first day (i.e., start-date) in the
+        date range is 0, for the second day 1, and so on.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_nthminute"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthminute">ga:nthMinute</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Minute Index</code></div>
+    <p></p>
+    <p>The index for each minute in the specified date range. The index for the first minute of the first day (i.e.,
+        start-date) in the date range is 0, for the next minute 1, and so on.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_dayofweek"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_dayofweek">ga:dayOfWeek</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Day of Week</code></div>
+    <p></p>
+    <p>Day of the week, a one-digit number from 0 (Sunday) to 6 (Saturday).</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_dayofweekname"><a
+        href="dimsmets#view=detail&amp;group=time&amp;jump=ga_dayofweekname">ga:dayOfWeekName</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Day of Week Name</code></div>
+    <p></p>
+    <p>Name (in English) of the day of the week.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_datehour"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_datehour">ga:dateHour</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Hour of Day</code></div>
+    <p></p>
+    <p>Combined values of ga:date and ga:hour.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_yearmonth"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_yearmonth">ga:yearMonth</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Month of Year</code></div>
+    <p></p>
+    <p>Combined values of ga:year and ga:month.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_yearweek"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_yearweek">ga:yearWeek</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Week of Year</code></div>
+    <p></p>
+    <p>Combined values of ga:year and ga:week.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_isoweek"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_isoweek">ga:isoWeek</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>ISO Week of the Year</code></div>
+    <p></p>
+    <p>ISO week number, where each week starts on Monday. For details, see <a target="_blank"
+                                                                              href="http://en.wikipedia.org/wiki/ISO_week_date">http://en.wikipedia.org/wiki/ISO_week_date</a>.
+        ga:isoWeek should only be used with ga:isoYear because ga:year represents Gregorian calendar.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_isoyear"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_isoyear">ga:isoYear</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>ISO Year</code></div>
+    <p></p>
+    <p>The ISO year of the session. For details, see <a target="_blank"
+                                                        href="http://en.wikipedia.org/wiki/ISO_week_date">http://en.wikipedia.org/wiki/ISO_week_date</a>.
+        ga:isoYear should only be used with ga:isoWeek because ga:week represents Gregorian calendar.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_isoyearisoweek"><a
+        href="dimsmets#view=detail&amp;group=time&amp;jump=ga_isoyearisoweek">ga:isoYearIsoWeek</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>ISO Week of ISO Year</code></div>
+    <p></p>
+    <p>Combined values of ga:isoYear and ga:isoWeek.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_nthhour"><a href="dimsmets#view=detail&amp;group=time&amp;jump=ga_nthhour">ga:nthHour</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Hour Index</code></div>
+    <p></p>
+    <p>The index for each hour in the specified date range. The index for the first hour of the first day (i.e.,
+        start-date) in the date range is 0, for the next hour 1, and so on.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=traffic_sourcesdimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_referralpath">ga:referralPath</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_fullreferrer">ga:fullReferrer</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_campaign">ga:campaign</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_source">ga:source</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_medium">ga:medium</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_sourcemedium">ga:sourceMedium</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_keyword">ga:keyword</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_adcontent">ga:adContent</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_socialnetwork">ga:socialNetwork</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_hassocialsourcereferral">ga:hasSocialSourceReferral</a><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_campaigncode">ga:campaignCode</a><br>
+        </td>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=traffic_sourcesmetrics">Metrics</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_organicsearches">ga:organicSearches</a><br>
+        </td>
+        <td><span class="gray"><strong>Calculated Metrics</strong><br><em>None</em></span></td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="traffic_sourcesdimensions">Dimensions</h2>
+<h3 id="ga_referralpath"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_referralpath">ga:referralPath</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Referral Path</code></div>
+    <p></p>
+    <p>The path of the referring URL (e.g., document.referrer). If someone places on their webpage a link to the
+        property, this is the path of the page containing the referring link.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_fullreferrer"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_fullreferrer">ga:fullReferrer</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Full Referrer</code></div>
+    <p></p>
+    <p>The full referring URL including the hostname and path.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_campaign"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_campaign">ga:campaign</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Campaign</code></div>
+    <p></p>
+    <p>For manual campaign tracking, it is the value of the utm_campaign campaign tracking parameter. For AdWords
+        autotagging, it is the name(s) of the online ad campaign(s) you use for the property. If you use neither,
+        its value is (not set).</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_source"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_source">ga:source</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Source</code></div>
+    <p></p>
+    <p>The source of referrals. For manual campaign tracking, it is the value of the utm_source campaign tracking
+        parameter. For AdWords autotagging, it is google. If you use neither, it is the domain of the source (e.g.,
+        document.referrer) referring the users. It may also contain a port address. If users arrived without a
+        referrer, its value is (direct).</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_medium"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_medium">ga:medium</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Medium</code></div>
+    <p></p>
+    <p>The type of referrals. For manual campaign tracking, it is the value of the utm_medium campaign tracking
+        parameter. For AdWords autotagging, it is cpc. If users came from a search engine detected by Google
+        Analytics, it is organic. If the referrer is not a search engine, it is referral. If users came directly to
+        the property and document.referrer is empty, its value is (none).</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_sourcemedium"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_sourcemedium">ga:sourceMedium</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Source / Medium</code></div>
+    <p></p>
+    <p>Combined values of ga:source and ga:medium.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_keyword"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_keyword">ga:keyword</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Keyword</code></div>
+    <p></p>
+    <p>For manual campaign tracking, it is the value of the utm_term campaign tracking parameter. For AdWords
+        traffic, it contains the best matching targeting criteria. For the display network, where multiple targeting
+        criteria could have caused the ad to show up, it returns the best matching targeting criteria as selected by
+        Ads. This could be display_keyword, site placement, boomuserlist, user_interest, age, or gender. Otherwise
+        its value is (not set).</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_adcontent"><a
+        href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_adcontent">ga:adContent</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Ad Content</code></div>
+    <p></p>
+    <p>For manual campaign tracking, it is the value of the utm_content campaign tracking parameter. For AdWords
+        autotagging, it is the first line of the text for the online Ad campaign. If you use mad libs for the
+        AdWords content, it contains the keywords you provided for the mad libs keyword match. If you use none of
+        the above, its value is (not set).</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_socialnetwork"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_socialnetwork">ga:socialNetwork</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Social Network</code></div>
+    <p></p>
+    <p>The social network name. This is related to the referring social network for traffic sources; e.g., Google+,
+        Blogger.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_hassocialsourcereferral"><a
+        href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_hassocialsourcereferral">ga:hasSocialSourceReferral</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Social Source Referral</code></div>
+    <p></p>
+    <p>A boolean, either Yes or No, indicates whether sessions to the property are from a social source.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_campaigncode"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_campaigncode">ga:campaignCode</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Campaign Code</code></div>
+    <p></p>
+    <p>For manual campaign tracking, it is the value of the utm_id campaign tracking parameter.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2 id="traffic_sourcesmetrics">Metrics</h2>
+<h3 id="ga_organicsearches"><a href="dimsmets#view=detail&amp;group=traffic_sources&amp;jump=ga_organicsearches">ga:organicSearches</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Organic Searches</code></div>
+    <p></p>
+    <p>The number of organic searches happened in a session. This metric is search engine agnostic.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=platform_or_devicedimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_browser">ga:browser</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_browserversion">ga:browserVersion</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_operatingsystem">ga:operatingSystem</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_operatingsystemversion">ga:operatingSystemVersion</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_ismobile" class="deprecated">ga:isMobile</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_istablet" class="deprecated">ga:isTablet</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobiledevicebranding">ga:mobileDeviceBranding</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobiledevicemodel">ga:mobileDeviceModel</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobileinputselector">ga:mobileInputSelector</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobiledeviceinfo">ga:mobileDeviceInfo</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobiledevicemarketingname">ga:mobileDeviceMarketingName</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_devicecategory">ga:deviceCategory</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_browsersize">ga:browserSize</a><br><a
+                href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_datasource">ga:dataSource</a><br>
+        </td>
+        <td><span class="gray"><strong>Metrics</strong><br><em>None</em></span></td>
+        <td><span class="gray"><strong>Calculated Metrics</strong><br><em>None</em></span></td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="platform_or_devicedimensions">Dimensions</h2>
+<p>All dimensions in this group are derived from the HTTP User-Agent string collection by each HTTP tracking
+    request.</p>
+<hr>
+<h3 id="ga_browser"><a href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_browser">ga:browser</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Browser</code></div>
+    <p></p>
+    <p>The name of users' browsers, for example, Internet Explorer or Firefox.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_browserversion"><a href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_browserversion">ga:browserVersion</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Browser Version</code></div>
+    <p></p>
+    <p>The version of users' browsers, for example, 2.0.0.14.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_operatingsystem"><a href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_operatingsystem">ga:operatingSystem</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Operating System</code></div>
+    <p></p>
+    <p>Users' operating system, for example, Windows, Linux, Macintosh, or iOS.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_operatingsystemversion"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_operatingsystemversion">ga:operatingSystemVersion</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Operating System Version</code></div>
+    <p></p>
+    <p>The version of users' operating system, i.e., XP for Windows, PPC for Macintosh.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_ismobile" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_ismobile">ga:isMobile</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>This column should not be used.</p></div>
+<hr>
+<h3 id="ga_istablet" class="deprecated"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_istablet">ga:isTablet</a></h3>
+<div class="ind"><p><strong>Status</strong>: Deprecated</p>
+    <p>This column should not be used.</p></div>
+<hr>
+<h3 id="ga_mobiledevicebranding"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobiledevicebranding">ga:mobileDeviceBranding</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Mobile Device Branding</code></div>
+    <p></p>
+    <p>Mobile manufacturer or branded name.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_mobiledevicemodel"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobiledevicemodel">ga:mobileDeviceModel</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Mobile Device Model</code></div>
+    <p></p>
+    <p>Mobile device model.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_mobileinputselector"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobileinputselector">ga:mobileInputSelector</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Mobile Input Selector</code></div>
+    <p></p>
+    <p>Selector (e.g., touchscreen, joystick, clickwheel, stylus) used on the mobile device.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_mobiledeviceinfo"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobiledeviceinfo">ga:mobileDeviceInfo</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Mobile Device Info</code></div>
+    <p></p>
+    <p>The branding, model, and marketing name used to identify the mobile device.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_mobiledevicemarketingname"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_mobiledevicemarketingname">ga:mobileDeviceMarketingName</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Mobile Device Marketing Name</code></div>
+    <p></p>
+    <p>The marketing name used for the mobile device.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_devicecategory"><a href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_devicecategory">ga:deviceCategory</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Device Category</code></div>
+    <p></p>
+    <p>The type of device: desktop, tablet, or mobile.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_browsersize"><a href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_browsersize">ga:browserSize</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Browser Size</code></div>
+    <p></p>
+    <p>The viewport size of users' browsers. A session-scoped dimension, browser size captures the initial
+        dimensions of the viewport in pixels and is formatted as width x height, for example, 1920x960.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_datasource"><a
+        href="dimsmets#view=detail&amp;group=platform_or_device&amp;jump=ga_datasource">ga:dataSource</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Data Source</code></div>
+    <p></p>
+    <p>The data source of a hit. By default, hits sent from analytics.js are reported as "web" and hits sent from
+        the mobile SDKs are reported as "app". These values can be overridden in the Measurement Protocol.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<aside class="special"><a class="showalways" href="dimsmets#view=list">View all dimensions and metrics</a></aside>
+<p>This reference document lists and describes all the dimensions and metrics available through the <a
+        href="/analytics/devguides/reporting/core/v3">Core Reporting API</a>.</p>
+<table class="columns detail-toc">
+    <tbody>
+    <tr>
+        <td><strong><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=geo_networkdimensions">Dimensions</a></strong><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_continent">ga:continent</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_subcontinent">ga:subContinent</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_country">ga:country</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_region">ga:region</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_metro">ga:metro</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_city">ga:city</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_latitude">ga:latitude</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_longitude">ga:longitude</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_networkdomain">ga:networkDomain</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_networklocation">ga:networkLocation</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_cityid">ga:cityId</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_continentid">ga:continentId</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_countryisocode">ga:countryIsoCode</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_metroid">ga:metroId</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_regionid">ga:regionId</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_regionisocode">ga:regionIsoCode</a><br><a
+                href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_subcontinentcode">ga:subContinentCode</a><br>
+        </td>
+        <td><span class="gray"><strong>Metrics</strong><br><em>None</em></span></td>
+        <td><span class="gray"><strong>Calculated Metrics</strong><br><em>None</em></span></td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="geo_networkdimensions">Dimensions</h2>
+<p>All dimensions in this group are derived from the IP address collected by HTTP tracking requests sent to Google
+    Analytics.</p>
+<hr>
+<h3 id="ga_continent"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_continent">ga:continent</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Continent</code></div>
+    <p></p>
+    <p>Users' continent, derived from users' IP addresses or Geographical IDs.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_subcontinent"><a
+        href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_subcontinent">ga:subContinent</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Sub Continent</code></div>
+    <p></p>
+    <p>Users' sub-continent, derived from their IP addresses or Geographical IDs. For example, Polynesia or Northern
+        Europe.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_country"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_country">ga:country</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Country</code></div>
+    <p></p>
+    <p>Users' country, derived from their IP addresses or Geographical IDs.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_region"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_region">ga:region</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Region</code></div>
+    <p></p>
+    <p>Users' region, derived from their IP addresses or Geographical IDs. In U.S., a region is a state, New York,
+        for example.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_metro"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_metro">ga:metro</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Metro</code></div>
+    <p></p>
+    <p>The Designated Market Area (DMA) from where traffic arrived.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_city"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_city">ga:city</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>City</code></div>
+    <p></p>
+    <p>Users' city, derived from their IP addresses or Geographical IDs.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_latitude"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_latitude">ga:latitude</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Latitude</code></div>
+    <p></p>
+    <p>The approximate latitude of users' city, derived from their IP addresses or Geographical IDs. Locations north
+        of the equator have positive latitudes and locations south of the equator have negative latitudes.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_longitude"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_longitude">ga:longitude</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Longitude</code></div>
+    <p></p>
+    <p>The approximate longitude of users' city, derived from their IP addresses or Geographical IDs. Locations east
+        of the prime meridian have positive longitudes and locations west of the prime meridian have negative
+        longitudes.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_networkdomain"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_networkdomain">ga:networkDomain</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Network Domain</code></div>
+    <p></p>
+    <p>The domain name of users' ISP, derived from the domain name registered to the ISP's IP address.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_networklocation"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_networklocation">ga:networkLocation</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Service Provider</code></div>
+    <p></p>
+    <p>The names of the service providers used to reach the property. For example, if most users of the website come
+        via the major cable internet service providers, its value will be these service providers' names.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_cityid"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_cityid">ga:cityId</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>City ID</code></div>
+    <p></p>
+    <p>Users' city ID, derived from their IP addresses or Geographical IDs. The city IDs are the same as the
+        Criteria IDs found at <a target="_blank"
+                                 href="https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid">https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid</a>.
+    </p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_continentid"><a
+        href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_continentid">ga:continentId</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Continent ID</code></div>
+    <p></p>
+    <p>Users' continent ID, derived from users' IP addresses or Geographical IDs.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_countryisocode"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_countryisocode">ga:countryIsoCode</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Country ISO Code</code></div>
+    <p></p>
+    <p>Users' country's ISO code (in ISO-3166-1 alpha-2 format), derived from their IP addresses or Geographical
+        IDs. For example, BR for Brazil, CA for Canada.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_metroid"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_metroid">ga:metroId</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Metro Id</code></div>
+    <p></p>
+    <p>The three digit Designated Market Area (DMA) code from where traffic arrived, derived from users' IP
+        addresses or Geographical IDs.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_regionid"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_regionid">ga:regionId</a></h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Region ID</code></div>
+    <p></p>
+    <p>Users' region ID, derived from their IP addresses or Geographical IDs. In U.S., a region is a state, New
+        York, for example. The region IDs are the same as the Criteria IDs listed at <a target="_blank"
+                                                                                        href="https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid">https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid</a>.
+    </p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_regionisocode"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_regionisocode">ga:regionIsoCode</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Region ISO Code</code></div>
+    <p></p>
+    <p>Users' region ISO code in ISO-3166-2 format, derived from their IP addresses or Geographical IDs.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>Yes</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3 id="ga_subcontinentcode"><a href="dimsmets#view=detail&amp;group=geo_network&amp;jump=ga_subcontinentcode">ga:subContinentCode</a>
+</h3>
+<div class="ind"><p></p>
+    <div>UI Name: <code>Sub Continent Code</code></div>
+    <p></p>
+    <p>Users' sub-continent code in UN M.49 format, derived from their IP addresses or Geographical IDs. For
+        example, 061 for Polynesia, 154 for Northern Europe.</p>
+    <p><strong>Attributes</strong>:</p>
+    <table class="attributes attributes-2">
+        <tbody>
+        <tr>
+            <th>Data Type</th>
+            <th>Allowed In Segments</th>
+            <th>Added in API version</th>
+        </tr>
+        <tr>
+            <td><code>STRING</code></td>
+            <td>No</td>
+            <td><code>3</code></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
