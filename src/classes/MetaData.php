@@ -206,7 +206,7 @@ abstract class MetaData
             $metric = $source['metric'];
             $metricConfig = MetaData::getMetric($metric);
 
-            $cannotAggregate = !isset($source['sum']);
+            $cannotAggregate = $platform !== 'analytics' && !isset($source['sum']);
 
             $attributes[$metric] = array_merge($attributes[$metric], [
                 'type' => $metricConfig['type'],
