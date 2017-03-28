@@ -16,6 +16,7 @@ require 'classes/Resolver.php';
 require 'classes/ResultParser.php';
 require 'classes/FacebookResolver.php';
 require 'classes/AdwordsResolver.php';
+require 'classes/AnalyticsResolver.php';
 require 'classes/MetaData.php';
 require_once 'logger.php';
 

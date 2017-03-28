@@ -1,4 +1,5 @@
 <?php
+
 namespace Tetris\Numbers;
 
 use Slim\Http\Request;
@@ -18,7 +19,8 @@ $app->post('/x',
         $debugMode = $flags->isDebugMode();
         $classes = [
             'adwords' => AdwordsResolver::class,
-            'facebook' => FacebookResolver::class
+            'facebook' => FacebookResolver::class,
+            'analytics' => AnalyticsResolver::class
         ];
         $body = $request->getParsedBody();
 

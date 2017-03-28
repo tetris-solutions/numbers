@@ -1,6 +1,8 @@
 <?php
+
 namespace Tetris\Numbers;
 
+use Throwable;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Tetris\Services\FlagsService;
@@ -16,7 +18,8 @@ $app->post('/',
         $locale = $flags->getLocale();
         $classes = [
             'adwords' => AdwordsResolver::class,
-            'facebook' => FacebookResolver::class
+            'facebook' => FacebookResolver::class,
+            'analytics' => AnalyticsResolver::class
         ];
         $body = $request->getParsedBody();
 
@@ -41,7 +44,7 @@ $app->post('/',
 
         try {
             $rows = $resolver->resolve($query, $shouldAggregate);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             $exceptions[] = parseReportException($locale, $query, $e);
             $rows = [];
         }

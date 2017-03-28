@@ -5,6 +5,7 @@ pipeline {
     production_env = credentials('production.env')
     homolog_env = credentials('homolog.env')
     ssh_key = credentials('tetris.pem')
+    analytics_google_client = credentials('analytics-google-client.json')
   }
   stages {
     stage('Provision') {
@@ -17,6 +18,7 @@ pipeline {
           }
         }
 
+        sh "cp ${env.analytics_google_client} analytics-google-client.json"
         sh 'chmod 644 .env'
       }
     }
@@ -32,7 +34,7 @@ pipeline {
     }
     stage ('Archive') {
       steps {
-        sh "tar -zcf build.${env.BUILD_NUMBER}.tar.gz .env composer.json composer.lock bin config public src vendor"
+        sh "tar -zcf build.${env.BUILD_NUMBER}.tar.gz .env *-google-client.json composer.json composer.lock bin config public src vendor"
         archive "build.${env.BUILD_NUMBER}.tar.gz"
       }
     }
