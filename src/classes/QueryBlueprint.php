@@ -51,4 +51,14 @@ class QueryBlueprint
      * @var string $platform
      */
     public $platform;
+
+    /**
+     * @var string|null $gaPropertyId
+     */
+    public $gaPropertyId;
+
+    /**
+     * @var string|null $gaViewId
+     */
+    public $gaViewId;
 }

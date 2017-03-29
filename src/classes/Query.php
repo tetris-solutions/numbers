@@ -89,6 +89,11 @@ class Query extends QueryBlueprint
         $this->tetrisAccountId = $query['tetris_account'];
         $this->adAccountId = $query['ad_account'];
 
+        if ($this->platform === 'analytics') {
+            $this->gaViewId = $query['ga_view_id'];
+            $this->gaPropertyId = $query['ga_property_id'];
+        }
+
         $this->since = new DateTime($query['from']);
         $this->until = new DateTime($query['to']);
 

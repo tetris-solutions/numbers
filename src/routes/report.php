@@ -37,9 +37,10 @@ $app->post('/',
         $account = $tkm->getAccount($query->tetrisAccountId);
         $resolverClass = $classes[$query->platform];
         /**
-         * @var AdwordsResolver|FacebookResolver $resolver
+         * @var AdwordsResolver|FacebookResolver|AnalyticsResolver $resolver
          */
         $resolver = new $resolverClass($query->tetrisAccountId, $account->token);
+
         $exceptions = [];
 
         try {
@@ -48,7 +49,6 @@ $app->post('/',
             $exceptions[] = parseReportException($locale, $query, $e);
             $rows = [];
         }
-
 
         foreach ($rows as $index => $row) {
             $rows[$index] = ResultParser::parse($row, $query);
