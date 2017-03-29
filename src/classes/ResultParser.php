@@ -150,7 +150,9 @@ abstract class ResultParser
                 return isset($row->{$dimension}) ? $row->{$dimension} : NULL;
             }, $dimensionIds);
 
-            return implode('::', $dimensionValues);
+            $key = implode('::', $dimensionValues);
+
+            return $key ? $key : '__default__';
         };
 
         foreach ($rows as $row) {
