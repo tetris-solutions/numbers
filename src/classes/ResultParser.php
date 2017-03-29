@@ -165,7 +165,15 @@ abstract class ResultParser
         }
 
         foreach ($groupedByKey as $key => $groupOfRows) {
+            if (count($groupOfRows) === 1) {
+                $row = $groupOfRows[0];
+                $result[] = $row;
+
+                continue;
+            }
+
             $row = new stdClass();
+
             if (self::isDebugMode()) {
                 $row->__source__ = $groupOfRows;
                 $row->__key__ = $key;
