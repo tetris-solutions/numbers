@@ -7,6 +7,8 @@ return [
     "fields" => [
         "ga:timeOnPage"
     ],
-    "parse" => NULL,
+    "parse" => function ($data) {
+        return $data->{'ga:timeOnPage'};
+    },
     "sum" => NULL
 ];

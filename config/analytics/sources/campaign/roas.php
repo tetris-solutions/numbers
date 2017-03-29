@@ -7,6 +7,10 @@ return [
     "fields" => [
         "ga:ROAS"
     ],
-    "parse" => NULL,
+    "parse" => function ($data): float {
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'ga:ROAS'});
+    
+        return floatval($valueAsNumericString) / 100;
+    },
     "sum" => NULL
 ];

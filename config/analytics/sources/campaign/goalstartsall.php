@@ -7,6 +7,8 @@ return [
     "fields" => [
         "ga:goalStartsAll"
     ],
-    "parse" => NULL,
+    "parse" => function ($data): int {
+        return intval(str_replace(',', '', $data->{'ga:goalStartsAll'}));
+    },
     "sum" => NULL
 ];

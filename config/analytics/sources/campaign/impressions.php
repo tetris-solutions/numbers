@@ -7,6 +7,8 @@ return [
     "fields" => [
         "ga:impressions"
     ],
-    "parse" => NULL,
+    "parse" => function ($data): int {
+        return intval(str_replace(',', '', $data->{'ga:impressions'}));
+    },
     "sum" => NULL
 ];

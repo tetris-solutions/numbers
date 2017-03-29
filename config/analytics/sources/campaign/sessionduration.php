@@ -7,6 +7,8 @@ return [
     "fields" => [
         "ga:sessionDuration"
     ],
-    "parse" => NULL,
+    "parse" => function ($data) {
+        return $data->{'ga:sessionDuration'};
+    },
     "sum" => NULL
 ];

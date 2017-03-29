@@ -7,6 +7,8 @@ return [
     "fields" => [
         "ga:CPC"
     ],
-    "parse" => NULL,
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'ga:CPC'}));
+    },
     "sum" => NULL
 ];

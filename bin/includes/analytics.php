@@ -1,5 +1,7 @@
 <?php
 
+namespace Tetris\Numbers;
+
 function normalizeGAType(string $type): string
 {
     $type = strtolower($type);
@@ -17,8 +19,15 @@ function normalizeGAType(string $type): string
 
 function getAnalyticsConfig(): array
 {
+    $parsersPerType = [
+        'STRING' => makeParserFromSource('raw'),
+        'INTEGER' => makeParserFromSource('integer'),
+        'FLOAT' => makeParserFromSource('decimal'),
+        'PERCENT' => makeParserFromSource('percent'),
+        'TIME' => makeParserFromSource('raw'),
+        'CURRENCY' => makeParserFromSource('decimal')
+    ];
 
-    $types = ['STRING', 'INTEGER', 'FLOAT', 'PERCENT', 'TIME', 'CURRENCY'];
     $output = [
         'entities' => ['Campaign'],
         'metrics' => [],
@@ -92,7 +101,7 @@ function getAnalyticsConfig(): array
                 'platform' => 'analytics',
                 'report' => 'GA_DEFAULT',
                 'fields' => [$originalAttributeName],
-                'parse' => null,
+                'parse' => $parsersPerType[$config['type']]($originalAttributeName),
                 'sum' => null
             ];
 

@@ -7,6 +7,10 @@ return [
     "fields" => [
         "ga:goalConversionRateAll"
     ],
-    "parse" => NULL,
+    "parse" => function ($data): float {
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'ga:goalConversionRateAll'});
+    
+        return floatval($valueAsNumericString) / 100;
+    },
     "sum" => NULL
 ];

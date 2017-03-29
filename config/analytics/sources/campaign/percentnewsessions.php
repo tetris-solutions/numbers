@@ -7,6 +7,10 @@ return [
     "fields" => [
         "ga:percentNewSessions"
     ],
-    "parse" => NULL,
+    "parse" => function ($data): float {
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'ga:percentNewSessions'});
+    
+        return floatval($valueAsNumericString) / 100;
+    },
     "sum" => NULL
 ];

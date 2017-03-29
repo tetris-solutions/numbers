@@ -7,6 +7,8 @@ return [
     "fields" => [
         "ga:pageviewsPerSession"
     ],
-    "parse" => NULL,
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'ga:pageviewsPerSession'}));
+    },
     "sum" => NULL
 ];
