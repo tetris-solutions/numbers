@@ -196,7 +196,6 @@ abstract class ResultParser
 
             $result[] = $row;
         }
-
         return $result;
     }
 }
