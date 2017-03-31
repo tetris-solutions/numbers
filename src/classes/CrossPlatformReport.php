@@ -2,6 +2,7 @@
 
 namespace Tetris\Numbers;
 
+use stdClass;
 
 class Translation
 {
@@ -272,7 +273,7 @@ class RowFacade
     private $finder;
     public $__source__;
 
-    function __construct(callable $findAttribute, \stdClass $source)
+    function __construct(callable $findAttribute, stdClass $source)
     {
         $this->__source__ = $source;
         $this->finder = $findAttribute;
@@ -325,9 +326,9 @@ class CrossPlatformReport
         $this->queries[$id] = $query;
     }
 
-    function obfuscate(XQuery $xQuery, \stdClass $row): RowFacade
+    function obfuscate(XQuery $xQuery, stdClass $row): RowFacade
     {
-        $data = new \stdClass();
+        $data = new stdClass();
 
         foreach ($row as $platformAttribute => $value) {
             $translation = $xQuery->translator->getTranslation($platformAttribute);
@@ -391,7 +392,12 @@ class CrossPlatformReport
                 if (!$xQuery->isAuxiliary($platformAttributeId)) {
                     $metricConfig = $xQuery->toRegularQuery()->report->metrics[$platformAttributeId];
                     $translation = $xQuery->translator->getTranslation($platformAttributeId);
-                    $metrics[$translation->globalAttribute] = $metricConfig;
+
+                    $isCanonicalMetric = $translation->globalAttribute === $platformAttributeId;
+
+                    if ($isCanonicalMetric) {
+                        $metrics[$translation->globalAttribute] = $metricConfig;
+                    }
                 }
             }
         }
