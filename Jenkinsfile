@@ -19,7 +19,7 @@ pipeline {
         }
 
         sh "cp ${env.analytics_google_client} analytics-google-client.json"
-        sh 'chmod 644 .env'
+        sh 'chmod 644 .env *-google-client.json'
       }
     }
     stage('Install') {
