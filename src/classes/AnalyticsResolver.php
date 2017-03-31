@@ -2,6 +2,8 @@
 
 namespace Tetris\Numbers;
 
+use Throwable;
+use Exception;
 use Google_Client;
 use Google_Service_Analytics;
 use Google_Service_AnalyticsReporting;
@@ -60,9 +62,16 @@ class AnalyticsResolver implements Resolver
         /**
          * @type Google_Service_AnalyticsReporting_Report $report
          */
-        $report = $this->reporting->reports->batchGet($getRequest)[0];
+        try {
+            $report = $this->reporting->reports->batchGet($getRequest)[0];
+        } catch (Throwable $e) {
+            $errorInfo = json_decode($e->getMessage());
+
+            throw new Exception($errorInfo->error->message, $e->getCode(), $e);
+        }
+
         /**
-         * @type
+         * @type stdClass $reportResponse
          */
         $reportResponse = $report->toSimpleObject();
         $rows = [];
@@ -85,8 +94,6 @@ class AnalyticsResolver implements Resolver
 
             $rows[] = $row;
         }
-
-//        exit(json_encode($rows));
 
         return $rows;
     }
