@@ -2,6 +2,7 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Exceptions\SafeException;
 use Throwable;
 use Exception;
 use Google_Client;
@@ -67,7 +68,11 @@ class AnalyticsResolver implements Resolver
         } catch (Throwable $e) {
             $errorInfo = json_decode($e->getMessage());
 
-            throw new Exception($errorInfo->error->message, $e->getCode(), $e);
+            $response = new stdClass();
+            $response->code = $e->getCode();
+            $response->body = $errorInfo->error;
+
+            throw new SafeException($response, null, null, $e);
         }
 
         /**
