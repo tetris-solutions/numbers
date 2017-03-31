@@ -31,15 +31,28 @@ class AnalyticsResolver implements Resolver
     function resolve(Query $query, bool $aggregateMode): array
     {
         $reportRequest = new Google_Service_AnalyticsReporting_ReportRequest();
+        $reportRequest->setSamplingLevel('LARGE');
         $reportRequest->setViewId($query->gaViewId);
         $reportRequest->setDateRanges([
             'startDate' => $query->since->format('Y-m-d'),
             'endDate' => $query->until->format('Y-m-d')
         ]);
 
-        $reportRequest->setMetrics([['expression' => 'ga:users']]);
+        $metrics = [];
+        $dimensions = [];
 
-        $reportRequest->setDimensions([['name' => 'ga:date']]);
+        foreach ($query->metrics as $metric) {
+            foreach ($metric['fields'] as $field) {
+                $metrics[] = ['expression' => $field];
+            }
+        }
+
+        foreach ($query->report->dimensions as $dimension) {
+            $dimensions[] = ['name' => $dimension['property']];
+        }
+
+        $reportRequest->setDimensions($dimensions);
+        $reportRequest->setMetrics($metrics);
 
         $getRequest = new Google_Service_AnalyticsReporting_GetReportsRequest();
         $getRequest->setReportRequests([$reportRequest]);
