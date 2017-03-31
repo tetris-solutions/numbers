@@ -9,7 +9,8 @@ global $app;
 
 $crossMetaRouteHandler = secured('get-cross-platform-meta-data', function (Request $req, Response $res, array $params): Response {
     $entity = $req->getQueryParam('entity');
-    $platforms = uniq(explode(',', $req->getQueryParam('platforms')));
+//    $platforms = uniq(explode(',', $req->getQueryParam('platforms')));
+    $platforms = ['facebook', 'adwords'];
 
     $byPlatform = [];
     $attributes = [];
