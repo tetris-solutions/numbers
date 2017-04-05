@@ -166,7 +166,7 @@ return [
     'adwords' => [
         'AccountCurrencyCode' => 'Moeda',
         'AccountDescriptiveName' => 'Conta',
-        'AccountTimeZone' => 'Time zone',
+        'AccountTimeZone' => 'Fuso Horário',
         'AccountTimeZoneId' => 'Fuso Horário',
         'ActiveViewCpm' => 'CPM do Active View',
         'ActiveViewCtr' => 'CTR do Active View',
