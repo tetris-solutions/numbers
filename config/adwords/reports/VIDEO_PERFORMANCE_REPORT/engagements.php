@@ -10,6 +10,7 @@ return [
     "incompatible" => [
         "clicktype",
         "conversioncategoryname",
-        "conversiontypename"
+        "conversiontypename",
+        "externalconversionsource"
     ]
 ];

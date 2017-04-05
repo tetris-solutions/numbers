@@ -15,5 +15,9 @@ return [
         "FRIDAY" => "Friday",
         "SATURDAY" => "Saturday",
         "SUNDAY" => "Sunday"
+    ],
+    "incompatible" => [
+        "averagefrequency",
+        "impressionreach"
     ]
 ];

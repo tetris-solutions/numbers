@@ -8,8 +8,10 @@ return [
     "is_dimension" => FALSE,
     "is_percentage" => FALSE,
     "incompatible" => [
+        "clicktype",
         "conversioncategoryname",
         "conversiontrackerid",
-        "conversiontypename"
+        "conversiontypename",
+        "externalconversionsource"
     ]
 ];

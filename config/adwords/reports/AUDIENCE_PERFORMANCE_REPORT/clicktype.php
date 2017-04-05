@@ -39,6 +39,7 @@ return [
         "BROADBAND_PLAN" => "Broadband Plan",
         "WIRELESS_PLAN" => "Wireless Plan",
         "VISUAL_SITELINKS" => "Visual Sitelinks",
+        "PROMOTION_EXTENSION" => "Promotion Extension",
         "UNKNOWN" => "unknown"
     ],
     "incompatible" => [
@@ -51,6 +52,7 @@ return [
         "videoquartile50rate",
         "videoquartile75rate",
         "videoviewrate",
-        "videoviews"
+        "videoviews",
+        "viewthroughconversions"
     ]
 ];

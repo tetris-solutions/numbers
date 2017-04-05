@@ -12,6 +12,7 @@ return [
         "conversiontrackerid",
         "conversiontypename",
         "device",
+        "externalconversionsource",
         "slot"
     ]
 ];

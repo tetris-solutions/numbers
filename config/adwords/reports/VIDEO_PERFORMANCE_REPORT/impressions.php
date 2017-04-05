@@ -9,6 +9,7 @@ return [
     "is_percentage" => FALSE,
     "incompatible" => [
         "conversioncategoryname",
-        "conversiontypename"
+        "conversiontypename",
+        "externalconversionsource"
     ]
 ];

@@ -6,5 +6,13 @@ return [
     "type" => "integer",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "incompatible" => [
+        "conversioncategoryname",
+        "conversiontrackerid",
+        "conversiontypename",
+        "externalconversionsource",
+        "hourofday",
+        "slot"
+    ]
 ];

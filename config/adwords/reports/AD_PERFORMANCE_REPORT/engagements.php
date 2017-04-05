@@ -11,6 +11,7 @@ return [
         "clicktype",
         "conversioncategoryname",
         "conversiontrackerid",
-        "conversiontypename"
+        "conversiontypename",
+        "externalconversionsource"
     ]
 ];

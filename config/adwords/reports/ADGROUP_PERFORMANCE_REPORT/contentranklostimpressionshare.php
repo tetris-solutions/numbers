@@ -12,6 +12,7 @@ return [
         "conversioncategoryname",
         "conversiontrackerid",
         "conversiontypename",
+        "externalconversionsource",
         "slot"
     ]
 ];

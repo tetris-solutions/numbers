@@ -38,9 +38,13 @@ return [
         "LOCATION_FORMAT_IMAGE" => "Image(s)",
         "BROADBAND_PLAN" => "Broadband Plan",
         "WIRELESS_PLAN" => "Wireless Plan",
+        "VISUAL_SITELINKS" => "Visual Sitelinks",
+        "PROMOTION_EXTENSION" => "Promotion Extension",
         "UNKNOWN" => "unknown"
     ],
     "incompatible" => [
+        "averagecpe",
+        "averagecpv",
         "averagepageviews",
         "averagetimeonsite",
         "bouncerate",
@@ -49,6 +53,7 @@ return [
         "clickassistedconversionsoverlastclickconversions",
         "contentimpressionshare",
         "contentranklostimpressionshare",
+        "engagementrate",
         "engagements",
         "impressionassistedconversionvalue",
         "impressionassistedconversions",
@@ -57,6 +62,13 @@ return [
         "relativectr",
         "searchexactmatchimpressionshare",
         "searchimpressionshare",
-        "searchranklostimpressionshare"
+        "searchranklostimpressionshare",
+        "videoquartile100rate",
+        "videoquartile25rate",
+        "videoquartile50rate",
+        "videoquartile75rate",
+        "videoviewrate",
+        "videoviews",
+        "viewthroughconversions"
     ]
 ];

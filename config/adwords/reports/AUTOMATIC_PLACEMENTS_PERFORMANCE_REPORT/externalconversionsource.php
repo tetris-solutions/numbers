@@ -29,7 +29,8 @@ return [
         "SALESFORCE" => "Salesforce.com",
         "STORE_SALES_CRM" => "Store sales (data partner)",
         "STORE_SALES_PAYMENT_NETWORK" => "Store sales (payment network)",
-        "GOOGLE_PLAY" => "Google Play"
+        "GOOGLE_PLAY" => "Google Play",
+        "THIRD_PARTY_APP_ANALYTICS" => "Third-party app analytics"
     ],
     "incompatible" => [
         "activeviewcpm",
@@ -46,7 +47,6 @@ return [
         "averagecpv",
         "clicks",
         "cost",
-        "costperconversion",
         "ctr",
         "engagementrate",
         "engagements",
@@ -54,7 +54,6 @@ return [
         "interactionrate",
         "interactiontypes",
         "interactions",
-        "valueperconversion",
         "videoviewrate",
         "videoviews"
     ]

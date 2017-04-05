@@ -17,7 +17,8 @@ return [
         "DYNAMIC_SEARCH_AD" => "Dynamic search ad",
         "CALL_ONLY_AD" => "Call only ad",
         "EXPANDED_TEXT_AD" => "Expanded text ad",
-        "RESPONSIVE_DISPLAY_AD" => "Responsive display ad",
+        "RESPONSIVE_DISPLAY_AD" => "Responsive ad",
+        "SHOWCASE_AD" => "Showcase ad",
         "UNKNOWN" => "unknown"
     ]
 ];

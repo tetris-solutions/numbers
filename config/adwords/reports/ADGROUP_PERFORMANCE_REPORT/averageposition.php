@@ -10,6 +10,7 @@ return [
     "incompatible" => [
         "conversioncategoryname",
         "conversiontrackerid",
-        "conversiontypename"
+        "conversiontypename",
+        "externalconversionsource"
     ]
 ];

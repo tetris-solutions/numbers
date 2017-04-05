@@ -37,6 +37,7 @@ return [
         "VERTICAL" => "Vertical",
         "WEBPAGE" => "Webpage",
         "YOUTUBE_CHANNEL" => "YouTube Channel",
-        "YOUTUBE_VIDEO" => "YouTube Video"
+        "YOUTUBE_VIDEO" => "YouTube Video",
+        "CUSTOM_IN_MARKET" => "Custom In-Market"
     ]
 ];

@@ -13,6 +13,7 @@ return [
         "conversiontrackerid",
         "conversiontypename",
         "device",
+        "externalconversionsource",
         "hourofday",
         "slot"
     ]
