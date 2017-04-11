@@ -12,5 +12,5 @@ Adwords::setup([
     'DEVELOPER_TOKEN' => ADWORDS_DEVELOPER_TOKEN,
     'CLIENT_ID' => ADWORDS_CLIENT_ID,
     'CLIENT_SECRET' => ADWORDS_CLIENT_SECRET,
-    'GOOGLEADS_LIB_UTILS_DIR' => __DIR__ . '/../vendor/googleads/googleads-php-lib/src/Google/Api/Ads/AdWords/Util/v201609'
+    'GOOGLEADS_LIB_UTILS_DIR' => __DIR__ . '/../vendor/googleads/googleads-php-lib/src/Google/Api/Ads/AdWords/Util/v201702'
 ]);
