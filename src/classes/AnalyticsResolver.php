@@ -92,9 +92,11 @@ class AnalyticsResolver implements Resolver
                 $row[$dimensionName] = $dimensioResult;
             }
 
-            foreach ($reportRow['metrics'] as $index => $metricResult) {
+            $values = !empty($reportRow['metrics'][0]['values']) ? $reportRow['metrics'][0]['values'] : [];
+
+            foreach ($values as $index => $metricResult) {
                 $metricMetaData = $reportResponse->columnHeader['metricHeader']['metricHeaderEntries'][$index];
-                $row[$metricMetaData['name']] = $metricResult['values'][0];
+                $row[$metricMetaData['name']] = $metricResult;
             }
 
             $rows[] = $row;
