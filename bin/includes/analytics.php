@@ -64,6 +64,8 @@ function getAnalyticsConfig(): array
         'ga:adClicks'
     ];
 
+    $overrideName = ['campaign' => 'id'];
+
 //    foreach (['Completions', 'ConversionRate', 'Starts'] as $subGoal) {
 //        for ($i = 1; $i <= 10; $i++) {
 //            $fieldList[] = ["ga:goal{$i}{$subGoal}"];
@@ -77,6 +79,11 @@ function getAnalyticsConfig(): array
 
         $attributeName = strtolower(substr($originalAttributeName, 3));
         $isMetric = $config['group'] !== 'Dimensions';
+
+
+        if (isset($overrideName[$attributeName])) {
+            $attributeName = $overrideName[$attributeName];
+        }
 
         $attribute = [
             'id' => $attributeName,

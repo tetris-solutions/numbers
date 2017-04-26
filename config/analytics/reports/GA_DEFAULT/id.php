@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "campaign",
+    "id" => "id",
     "property" => "ga:campaign",
     "type" => "string",
     "is_metric" => FALSE,
