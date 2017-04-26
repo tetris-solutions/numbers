@@ -106,7 +106,11 @@ class XQuery extends QueryBlueprint
 
     private function notPrefixed(string $attributeId)
     {
-        return strpos($attributeId, ':') === FALSE;
+        return (
+            strpos($attributeId, 'adwords:') !== 0 &&
+            strpos($attributeId, 'facebook:') !== 0 &&
+            strpos($attributeId, 'analytics:') !== 0
+        );
     }
 
     private function removePrefix(string $attributeId)

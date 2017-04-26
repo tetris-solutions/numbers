@@ -9,8 +9,7 @@ global $app;
 
 $crossMetaRouteHandler = secured('get-cross-platform-meta-data', function (Request $req, Response $res, array $params): Response {
     $entity = $req->getQueryParam('entity');
-//    $platforms = uniq(explode(',', $req->getQueryParam('platforms')));
-    $platforms = ['facebook', 'adwords'];
+    $platforms = uniq(explode(',', $req->getQueryParam('platforms')));
 
     $byPlatform = [];
     $attributes = [];
@@ -56,7 +55,9 @@ $crossMetaRouteHandler = secured('get-cross-platform-meta-data', function (Reque
             $config = $byPlatform[$platform][$attributeId];
 
             $config['id'] = "{$platform}:{$config['id']}";
-            $config['requires_id'] = true;
+            $config['requires_id'] = $platformsAttributeAppearsIn === ['analytics']
+                ? false
+                : true;
 
             $attributes[$config['id']] = $config;
         }
