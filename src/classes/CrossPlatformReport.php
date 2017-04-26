@@ -76,6 +76,8 @@ class XQuery extends QueryBlueprint
         string $since,
         string $until,
         string $entity,
+        $gaViewId,
+        $gaPropertyId,
         string $locale)
     {
         $this->id = self::id($tetrisAccount, $adAccount);
@@ -90,6 +92,8 @@ class XQuery extends QueryBlueprint
         $this->filters = ['id' => []];
         $this->entity = $entity;
         $this->locale = $locale;
+        $this->gaViewId = $gaViewId;
+        $this->gaPropertyId = $gaPropertyId;
 
         $this->translator = new Translator();
     }
@@ -241,7 +245,9 @@ class XQuery extends QueryBlueprint
             'to' => $this->until,
             'metrics' => $this->metrics,
             'dimensions' => $this->dimensions,
-            'filters' => $this->filters
+            'filters' => $this->filters,
+            'ga_view_id' => $this->gaViewId,
+            'ga_property_id' => $this->gaPropertyId
         ]);
 
         foreach ($this->query->report->auxiliary as $attributeId) {
@@ -318,6 +324,8 @@ class CrossPlatformReport
             $body['from'],
             $body['to'],
             $body['entity'],
+            isset($account['ga_view_id']) ? $account['ga_view_id'] : null,
+            isset($account['ga_property_id']) ? $account['ga_property_id'] : null,
             $locale
         );
 
