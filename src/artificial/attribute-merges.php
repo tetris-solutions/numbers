@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'analytics' => [],
     'facebook' => [
         'spend' => 'cost',
         'hourly_stats_aggregated_by_audience_time_zone' => ['hourofday', function ($val) {
