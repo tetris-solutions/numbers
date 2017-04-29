@@ -34,7 +34,7 @@ abstract class MetaData
 
     private static function readDirFiles(string $path): array
     {
-        $files = scandir($path);
+        $files = file_exists($path) ? scandir($path) : [];
         $ls = [];
 
         foreach ($files as $file) {
