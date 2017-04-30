@@ -61,10 +61,11 @@ function getAnalyticsConfig(): array
         'ga:CTR',
         'ga:CPC',
         'ga:impressions',
-        'ga:adClicks'
+        'ga:adClicks',
+        'ga:adCost'
     ];
 
-    $overrideName = ['campaign' => 'id'];
+    $overrideName = ['campaign' => 'id', 'adcost' => 'cost'];
 
 //    foreach (['Completions', 'ConversionRate', 'Starts'] as $subGoal) {
 //        for ($i = 1; $i <= 10; $i++) {
