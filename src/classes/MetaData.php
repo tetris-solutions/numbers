@@ -118,11 +118,15 @@ abstract class MetaData
             );
 
             foreach ($attributes as $id => $attribute) {
+                $propName = isset($attribute['property_name'])
+                  ? $attribute['property_name']
+                  : $attribute['property'];
+
                 $names = isset($attribute['names'])
                     ? $attribute['names']
                     : [
-                        'en' => self::getFieldName('en', $platform, $attribute['property']),
-                        'pt-BR' => self::getFieldName('pt-BR', $platform, $attribute['property'])
+                        'en' => self::getFieldName('en', $platform, $propName),
+                        'pt-BR' => self::getFieldName('pt-BR', $platform, $propName)
                     ];
                 $attributes[$id]['name'] = $names[self::readUserLocale()];
             }

@@ -139,6 +139,7 @@ function getFacebookConfig(): array
 
       return [
           'property' => 'date_start',
+          'property_name' => $part,
           'parse' => makeParserFromSource("fb-{$part}")('date_start')
       ];
     };
