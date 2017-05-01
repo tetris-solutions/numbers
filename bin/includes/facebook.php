@@ -123,7 +123,6 @@ function getFacebookConfig(): array
     $fields['cpv100'] = $fields['cpc'];
     $fields['view_rate'] = $fields['ctr'];
 
-
     $numericTypes = [
         'percentage',
         'float'
@@ -133,6 +132,20 @@ function getFacebookConfig(): array
         'numeric string',
         'string',
         'float'
+    ];
+
+    $fbDatePart = function (string $part) use (&$fields) {
+      $fields[$part] = $fields['date_start'];
+
+      return [
+          'property' => 'date_start',
+          'parse' => makeParserFromSource("fb-{$part}")('date_start')
+      ];
+    };
+
+    $inferredDimensions = [
+        'month' => $fbDatePart('month'),
+        'year' => $fbDatePart('year')
     ];
 
     function isCurrency(array $field): bool
@@ -236,6 +249,8 @@ function getFacebookConfig(): array
                 }
 
                 $output['sources'][] = $source;
+            } else if (isset($inferredDimensions[$attributeName])) {
+              $attribute = array_merge($attribute, $inferredDimensions[$attributeName]);
             }
 
             $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
