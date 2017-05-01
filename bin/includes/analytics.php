@@ -66,11 +66,7 @@ function getAnalyticsConfig(): array
         'ga:yearMonth'
     ];
 
-    $overrideName = [
-      'campaign' => 'id',
-      'adcost' => 'cost',
-      'yearmonth' => 'month'
-    ];
+    $overrideName = ['campaign' => 'id'];
 
     $dimensionParsers = [
       'date' => makeParserFromSource('ga-date'),
@@ -84,7 +80,6 @@ function getAnalyticsConfig(): array
 
         $attributeName = strtolower(substr($originalAttributeName, 3));
         $isMetric = $config['group'] !== 'Dimensions';
-
 
         if (isset($overrideName[$attributeName])) {
             $attributeName = $overrideName[$attributeName];

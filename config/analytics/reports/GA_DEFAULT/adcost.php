@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "cost",
+    "id" => "adcost",
     "property" => "ga:adCost",
     "type" => "currency",
     "is_metric" => TRUE,

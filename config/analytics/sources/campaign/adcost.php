@@ -1,6 +1,6 @@
 <?php
 return [
-    "metric" => "cost",
+    "metric" => "adcost",
     "entity" => "Campaign",
     "platform" => "analytics",
     "report" => "GA_DEFAULT",
