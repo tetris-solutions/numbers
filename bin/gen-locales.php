@@ -29,7 +29,8 @@ function genLocales()
         'month',
         'year',
         'week',
-        'day_of_week'
+        'day_of_week',
+        'month_of_year'
     ];
 
     foreach ($fbInferredDateParts as $part) {

@@ -503,6 +503,7 @@ return [
         'messenger.reply' => 'Message Replys',
         'mobile_app_install' => 'Instalação de Aplicativos Móveis',
         'month' => 'Mês',
+        'month_of_year' => 'Month Of Year',
         'new_mobile' => 'Celulares Recêm Comprados',
         'newsfeed_avg_position' => 'Posição Média da Newsfeed',
         'newsfeed_clicks' => 'Cliques na Newsfeed',
