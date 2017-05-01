@@ -62,16 +62,20 @@ function getAnalyticsConfig(): array
         'ga:CPC',
         'ga:impressions',
         'ga:adClicks',
-        'ga:adCost'
+        'ga:adCost',
+        'ga:yearMonth'
     ];
 
-    $overrideName = ['campaign' => 'id', 'adcost' => 'cost'];
+    $overrideName = [
+      'campaign' => 'id',
+      'adcost' => 'cost',
+      'yearmonth' => 'month'
+    ];
 
-//    foreach (['Completions', 'ConversionRate', 'Starts'] as $subGoal) {
-//        for ($i = 1; $i <= 10; $i++) {
-//            $fieldList[] = ["ga:goal{$i}{$subGoal}"];
-//        }
-//    }
+    $dimensionParsers = [
+      'date' => makeParserFromSource('ga-date'),
+      'month' => makeParserFromSource('ga-month')
+    ];
 
     $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/analytics-fields.json'), true);
 
@@ -114,6 +118,8 @@ function getAnalyticsConfig(): array
             ];
 
             $output['sources'][] = $source;
+        } else if (isset($dimensionParsers[$attributeName])) {
+          $attribute['parse'] = $dimensionParsers[$attributeName]($originalAttributeName);
         }
 
         $output['reports']['GA_DEFAULT']['attributes'][$attributeName] = $attribute;

@@ -84,7 +84,7 @@ return [
         'ga:dayOfWeek' => 'Day of Week',
         'ga:dayOfWeekName' => 'Day of Week Name',
         'ga:dateHour' => 'Hour of Day',
-        'ga:yearMonth' => 'Month of Year',
+        'ga:yearMonth' => 'Mês',
         'ga:yearWeek' => 'Week of Year',
         'ga:isoWeek' => 'ISO Week of the Year',
         'ga:isoYear' => 'ISO Year',
