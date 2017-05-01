@@ -501,6 +501,7 @@ return [
         'messenger.block' => 'Message Blocks',
         'messenger.reply' => 'Message Replys',
         'mobile_app_install' => 'Mobile App Installs',
+        'month' => 'Month',
         'new_mobile' => 'Newly Purchased Mobile Devices',
         'newsfeed_avg_position' => 'Newsfeed Avg Position',
         'newsfeed_clicks' => 'Newsfeed Clicks',
@@ -577,5 +578,6 @@ return [
         'vote' => 'Question Answers',
         'website_clicks' => 'Website Clicks',
         'website_ctr' => 'Website Ctr',
+        'year' => 'Year',
     ],
 ];
