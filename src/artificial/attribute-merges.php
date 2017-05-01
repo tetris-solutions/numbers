@@ -6,10 +6,12 @@ return [
       'adcost' => 'cost',
       'adclicks' => 'clicks',
       'hour' => 'hourofday',
-      'isoyearisoweek' => 'week'
+      'isoyearisoweek' => 'week',
+      'dayofweekname' => 'dayofweek'
     ],
     'facebook' => [
         'day_of_week' => 'dayofweek',
+        'month_of_year' => 'monthofyear',
         'spend' => 'cost',
         'hourly_stats_aggregated_by_audience_time_zone' => ['hourofday', function ($val) {
             if (empty($val)) return null;

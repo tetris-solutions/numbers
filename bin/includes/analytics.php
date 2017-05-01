@@ -66,7 +66,8 @@ function getAnalyticsConfig(): array
         'ga:yearMonth',
         'ga:hour',
         'ga:year',
-        'ga:isoYearIsoWeek'
+        'ga:isoYearIsoWeek',
+        'ga:dayOfWeekName'
     ];
 
     $overrideName = ['campaign' => 'id'];
