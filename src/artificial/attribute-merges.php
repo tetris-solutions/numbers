@@ -5,7 +5,8 @@ return [
       'yearmonth' => 'month',
       'adcost' => 'cost',
       'adclicks' => 'clicks',
-      'hour' => 'hourofday'
+      'hour' => 'hourofday',
+      'isoyearisoweek' => 'week'
     ],
     'facebook' => [
         'spend' => 'cost',

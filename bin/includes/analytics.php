@@ -65,14 +65,16 @@ function getAnalyticsConfig(): array
         'ga:adCost',
         'ga:yearMonth',
         'ga:hour',
-        'ga:year'
+        'ga:year',
+        'ga:isoYearIsoWeek'
     ];
 
     $overrideName = ['campaign' => 'id'];
 
     $dimensionParsers = [
       'date' => makeParserFromSource('ga-date'),
-      'yearmonth' => makeParserFromSource('ga-month')
+      'yearmonth' => makeParserFromSource('ga-month'),
+      'isoyearisoweek' => makeParserFromSource('ga-week')
     ];
 
     $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/analytics-fields.json'), true);
