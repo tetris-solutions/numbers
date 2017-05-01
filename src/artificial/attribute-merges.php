@@ -4,7 +4,8 @@ return [
     'analytics' => [
       'yearmonth' => 'month',
       'adcost' => 'cost',
-      'adclicks' => 'clicks'
+      'adclicks' => 'clicks',
+      'hour' => 'hourofday'
     ],
     'facebook' => [
         'spend' => 'cost',

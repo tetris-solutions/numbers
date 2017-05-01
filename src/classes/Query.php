@@ -123,7 +123,7 @@ class Query extends QueryBlueprint
         foreach ($this->filters as $name => $values) {
             $attribute = $this->report->addFilter($name, $values);
 
-            if ($attribute['is_dimension']) {
+            if ($attribute['is_dimension'] && $name !== 'id') {
                 $this->report->addDimension($attribute['id'], true);
             }
 
