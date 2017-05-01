@@ -537,6 +537,7 @@ return [
         'post_like' => 'Curtida de Posts',
         'post_reaction' => 'Post Reactions',
         'product_id' => 'Product Id',
+        'quarter' => 'Quarter',
         'reach' => 'Alcance',
         'receive_offer' => 'Reinvindicações de Ofertas',
         'region' => 'Região',

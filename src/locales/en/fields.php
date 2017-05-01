@@ -537,6 +537,7 @@ return [
         'post_like' => 'Post Likes',
         'post_reaction' => 'Post Reactions',
         'product_id' => 'Product Id',
+        'quarter' => 'Quarter',
         'reach' => 'Reach',
         'receive_offer' => 'Offer Claims',
         'region' => 'Region',

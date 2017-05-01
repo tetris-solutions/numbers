@@ -149,7 +149,8 @@ function getFacebookConfig(): array
         'year' => $fbDatePart('year'),
         'week' => $fbDatePart('week'),
         'day_of_week' => $fbDatePart('day_of_week'),
-        'month_of_year' => $fbDatePart('month_of_year')
+        'month_of_year' => $fbDatePart('month_of_year'),
+        'quarter' => $fbDatePart('quarter')
     ];
 
     function isCurrency(array $field): bool
