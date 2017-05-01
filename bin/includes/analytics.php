@@ -64,7 +64,8 @@ function getAnalyticsConfig(): array
         'ga:adClicks',
         'ga:adCost',
         'ga:yearMonth',
-        'ga:hour'
+        'ga:hour',
+        'ga:year'
     ];
 
     $overrideName = ['campaign' => 'id'];

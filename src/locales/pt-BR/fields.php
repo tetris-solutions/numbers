@@ -374,7 +374,7 @@ return [
         'PostClickQualityScore' => 'Índ. De Qual. Pós Clique',
         'PrimaryCompanyName' => 'Company name',
         'QualityScore' => 'Índice de Qualidade',
-        'Quarter' => 'Bimestre',
+        'Quarter' => 'Trimestre',
         'Query' => 'Search term',
         'QueryMatchTypeWithVariant' => 'Match type',
         'RegionCriteriaId' => 'Region',
