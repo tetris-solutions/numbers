@@ -9,6 +9,7 @@ return [
       'isoyearisoweek' => 'week'
     ],
     'facebook' => [
+        'day_of_week' => 'dayofweek',
         'spend' => 'cost',
         'hourly_stats_aggregated_by_audience_time_zone' => ['hourofday', function ($val) {
             if (empty($val)) return null;

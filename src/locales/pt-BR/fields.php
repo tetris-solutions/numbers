@@ -477,6 +477,7 @@ return [
         'ctr' => 'CTR',
         'date_start' => 'Data',
         'date_stop' => 'Date Stop',
+        'day_of_week' => 'Dia da Semana',
         'deeplink_clicks' => 'Cliques em Deeplink',
         'estimated_ad_recall_rate' => 'Estimated Ad Recall Rate',
         'estimated_ad_recallers' => 'Estimated Ad Recallers',

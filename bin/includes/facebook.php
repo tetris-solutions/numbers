@@ -147,7 +147,8 @@ function getFacebookConfig(): array
     $inferredDimensions = [
         'month' => $fbDatePart('month'),
         'year' => $fbDatePart('year'),
-        'week' => $fbDatePart('week')
+        'week' => $fbDatePart('week'),
+        'day_of_week' => $fbDatePart('day_of_week')
     ];
 
     function isCurrency(array $field): bool
