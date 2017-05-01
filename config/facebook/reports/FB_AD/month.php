@@ -8,8 +8,6 @@ return [
     "is_filter" => TRUE,
     "property_name" => "month",
     "parse" => function ($data) {
-        return isset($data->{'date_start'})
-          ? date('Y-m', strtotime($data->{'date_start'})) . '-01'
-          : null;
+        return date('Y-m', strtotime($data->{'date_start'})) . '-01';
     }
 ];

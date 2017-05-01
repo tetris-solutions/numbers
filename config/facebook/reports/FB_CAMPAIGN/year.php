@@ -8,8 +8,6 @@ return [
     "is_filter" => TRUE,
     "property_name" => "year",
     "parse" => function ($data) {
-      return isset($data->{'date_start'})
-        ? date('Y', strtotime($data->{'date_start'}))
-        : null;
+        return date('Y', strtotime($data->{'date_start'}));
     }
 ];

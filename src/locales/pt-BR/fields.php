@@ -578,6 +578,7 @@ return [
         'vote' => 'Votos',
         'website_clicks' => 'Cliques no Website',
         'website_ctr' => 'CTR no Website',
+        'week' => 'Semana',
         'year' => 'Ano',
     ],
 ];

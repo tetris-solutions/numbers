@@ -25,8 +25,15 @@ function genLocales()
 
     $locales = ['pt-BR', 'en'];
 
-    $facebook['month'] = $facebook['date_start'];
-    $facebook['year'] = $facebook['date_start'];
+    $fbInferredDateParts = [
+        'month',
+        'year',
+        'week'
+    ];
+
+    foreach ($fbInferredDateParts as $part) {
+        $facebook[$part] = $facebook['date_start'];
+    }
 
     foreach ($locales as $locale) {
         $outputPath = __DIR__ . "/../src/locales/{$locale}/fields.php";

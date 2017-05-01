@@ -578,6 +578,7 @@ return [
         'vote' => 'Question Answers',
         'website_clicks' => 'Website Clicks',
         'website_ctr' => 'Website Ctr',
+        'week' => 'Week',
         'year' => 'Year',
     ],
 ];
