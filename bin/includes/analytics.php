@@ -48,6 +48,7 @@ function getAnalyticsConfig(): array
         'ga:percentNewSessions',
         'ga:sessions',
         'ga:bounces',
+        'ga:bounceRate',
         'ga:sessionDuration',
         'ga:goalCompletionsAll',
         'ga:goalConversionRateAll',
