@@ -1,57 +1,58 @@
 {
   "age": {
     "id": "age",
-    "type": "string",
-    "description": "The age range of the people you've reached."
+    "type": "string"
   },
   "country": {
     "id": "country",
-    "type": "string",
-    "description": "The countries where the people you've reached are located. This is based on information such as a person's hometown, their current city and the geographical location where they tend to be when they visit Facebook."
+    "type": "string"
+  },
+  "dma": {
+    "id": "dma",
+    "type": "string"
   },
   "gender": {
     "id": "gender",
-    "type": "string",
-    "description": "Gender of people you've reached. People who don't list their gender are shown as 'not specified'."
+    "type": "string"
   },
   "frequency_value": {
     "id": "frequency_value",
-    "type": "string",
-    "description": "The number of times an ad in your Reach and Frequency campaign was served to each person."
+    "type": "string"
   },
   "hourly_stats_aggregated_by_advertiser_time_zone": {
     "id": "hourly_stats_aggregated_by_advertiser_time_zone",
-    "type": "string",
-    "description": "Hourly breakdown aggregated by the time ads were delivered in the advertiser's time zone. For example, if your ads are scheduled to run from 9 AM to 11 AM, but they reach audiences in multiple time zones, they may deliver from 9 AM to 1 PM in the advertiser's time zone. Stats will be aggregated into four groups 9 AM - 10 AM, 10 AM - 11 AM, 11 AM - 12 PM, and 12 PM - 1 PM."
+    "type": "string"
   },
   "hourly_stats_aggregated_by_audience_time_zone": {
     "id": "hourly_stats_aggregated_by_audience_time_zone",
-    "type": "string",
-    "description": "Hourly breakdown aggregated by the time ads were delivered in the audiences' time zone. For example, if your ads are scheduled to run from 9 AM to 11 AM but they reach audiences in multiple time zones, they may deliver from 9 AM to 1 PM in the advertiser's time zone. Stats will be aggregated into two groups 9 AM - 10 AM and 10 AM - 11 AM."
+    "type": "string"
   },
   "impression_device": {
     "id": "impression_device",
-    "type": "string",
-    "description": "The device where your last ad was served to someone on Facebook. For example \"iPhone\" if someone viewed your ad on an iPhone."
+    "type": "string"
   },
   "place_page_id": {
     "id": "place_page_id",
-    "type": "string",
-    "description": "The id of the place page involved in impression, click or action."
+    "type": "string"
   },
-  "placement": {
-    "id": "placement",
-    "type": "string",
-    "description": "Where your ad was served on Facebook, for example on Newsfeed on a mobile device."
+  "publisher_platform": {
+    "id": "publisher_platform",
+    "type": "string"
+  },
+  "platform_position": {
+    "id": "platform_position",
+    "type": "string"
+  },
+  "device_platform": {
+    "id": "device_platform",
+    "type": "string"
   },
   "product_id": {
     "id": "product_id",
-    "type": "string",
-    "description": "The id and name of the product involved in impression, click or action."
+    "type": "string"
   },
   "region": {
     "id": "region",
-    "type": "string",
-    "description": "The regions where the people you've reached are located. This is based on information such as a person's hometown, their current city and the geographical location where they tend to be when they visit Facebook."
+    "type": "string"
   }
 }

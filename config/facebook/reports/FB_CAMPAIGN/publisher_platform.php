@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "placement",
-    "property" => "placement",
+    "id" => "publisher_platform",
+    "property" => "publisher_platform",
     "type" => "string",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,

@@ -26,7 +26,7 @@ window.onload = function () {
      */
     const td = code.closest('td')
     const type = contentOf(td.querySelector('div:last-child'))
-    const description = contentOf(td.nextElementSibling.querySelector('p:nth-child(2)'))
+    const description = contentOf(td.nextElementSibling.querySelector('p:not(:empty)'))
     const id = contentOf(code)
 
     fields[id] = {
