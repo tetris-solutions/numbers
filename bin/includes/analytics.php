@@ -75,10 +75,10 @@ function getAnalyticsConfig(): array
     $overrideName = ['campaign' => 'id', 'month' => 'monthofyear'];
 
     $dimensionParsers = [
-      'date' => makeParserFromSource('ga-date'),
-      'yearmonth' => makeParserFromSource('ga-month'),
-      'isoyearisoweek' => makeParserFromSource('ga-week'),
-      'monthofyear' => makeParserFromSource('ga-month-of-year')
+        'date' => makeParserFromSource('ga-date'),
+        'yearmonth' => makeParserFromSource('ga-month'),
+        'isoyearisoweek' => makeParserFromSource('ga-week'),
+        'monthofyear' => makeParserFromSource('ga-month-of-year')
     ];
 
     $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/analytics-fields.json'), true);
@@ -120,9 +120,13 @@ function getAnalyticsConfig(): array
                 'sum' => null
             ];
 
+            if ($config['type'] === 'INTEGER') {
+                $source['sum'] = simpleSum($attributeName);
+            }
+
             $output['sources'][] = $source;
         } else if (isset($dimensionParsers[$attributeName])) {
-          $attribute['parse'] = $dimensionParsers[$attributeName]($originalAttributeName);
+            $attribute['parse'] = $dimensionParsers[$attributeName]($originalAttributeName);
         }
 
         $output['reports']['GA_DEFAULT']['attributes'][$attributeName] = $attribute;

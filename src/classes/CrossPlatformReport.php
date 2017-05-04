@@ -406,7 +406,8 @@ class CrossPlatformReport
                     $translation = $xQuery->translator->getTranslation($platformAttributeId);
 
 //                    $isCanonicalMetric = $translation->globalAttribute === $platformAttributeId;
-                    $isCanonicalMetric = $xQuery->platform === 'adwords';
+                    $isCanonicalMetric = $xQuery->platform === 'adwords' ||
+                        strpos($translation->globalAttribute, 'analytics:') === 0;
 
                     if ($isCanonicalMetric) {
                         $metrics[$translation->globalAttribute] = $metricConfig;
