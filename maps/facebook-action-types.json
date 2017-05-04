@@ -23,10 +23,8 @@
   "commerce_event.purchase": "Commerce Purchases",
   "commerce_event.view_content": "Commerce Product Views",
   "credit_spent": "Credit Spends",
-  "follow": "Question Follows",
   "full_view": "Post Full Views",
   "games.plays": "Game Plays",
-  "gift_sale": "Facebook Gifts Sale",
   "leadgen.other": "Leads (Form)",
   "like": "Page Likes",
   "link_click": "Link Clicks",
@@ -61,7 +59,5 @@
   "receive_offer": "Offer Claims",
   "rsvp": "Event Responses",
   "tab_view": "Page Tab Views",
-  "video_play": "Clicks to Play Video",
-  "video_view": "Video Views",
-  "vote": "Question Answers"
+  "video_view": "3-Second Video Views"
 }
