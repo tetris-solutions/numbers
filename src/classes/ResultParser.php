@@ -61,7 +61,15 @@ abstract class ResultParser
                     continue 2;
                 }
 
-                if ($operator === 'contains' && stripos($rowValue, $A) === FALSE) {
+                if (
+                    $operator === 'contains' &&
+
+                    !(is_string($rowValue) &&
+                        stripos($rowValue, $A) !== FALSE) &&
+
+                    !(is_array($rowValue) &&
+                        in_array($A, $rowValue))
+                ) {
                     continue 2;
                 }
             }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tetris\Numbers;
 
 use Tetris\Adwords\Client;
@@ -33,7 +34,12 @@ class AdwordsResolver extends Client implements Resolver
                 $select->where($adwordsProperty, $firstValue);
             }
         } else {
-            if (!$config['is_filter']) return;
+            if (
+                !$config['is_filter'] ||
+                $config['type'] === 'list' // filtering on Lists is buggy (even using CONTAINS_ALL)
+            ) {
+                return;
+            }
 
             $operator = self::filterOperator[$firstValue];
             $type = NULL;
