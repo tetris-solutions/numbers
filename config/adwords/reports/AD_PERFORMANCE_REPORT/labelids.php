@@ -6,5 +6,8 @@ return [
     "type" => "list",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "parse" => function ($data) {
+        return json_decode($data->{'LabelIds'});
+    }
 ];

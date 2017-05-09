@@ -1,4 +1,5 @@
 <?php
+
 namespace Tetris\Numbers;
 
 use Tetris\Adwords\ReportMap;
@@ -152,7 +153,8 @@ function getAdwordsConfig(): array
     $metricParsers['currency'] = $metricParsers['decimal'];
 
     $dimensionParsers = [
-        'integer' => $metricParsers['integer']
+        'integer' => $metricParsers['integer'],
+        'list' => makeParserFromSource('json')
     ];
 
     $specialMetricConfig = [
@@ -394,6 +396,8 @@ function getAdwordsConfig(): array
 
                 $output['sources'][] = $sourceConfig;
                 $output['metrics'][$attributeName] = $metric;
+            } else if (isset($dimensionParsers[$attribute['type']])) {
+                $attribute['parse'] = $dimensionParsers[$attribute['type']]($originalAttributeName);
             }
 
             if (isset($output['reports'][$reportName]['attributes'][$attributeName])) {
