@@ -1,4 +1,5 @@
 <?php
+
 namespace Tetris\Numbers;
 
 use Facebook\GraphNodes\GraphEdge;
@@ -16,19 +17,7 @@ use Facebook\Facebook;
 
 class FacebookResolver extends Facebook implements Resolver
 {
-    public static $breakdowns = [
-        'age',
-        'country',
-        'gender',
-        'frequency_value',
-        'hourly_stats_aggregated_by_advertiser_time_zone',
-        'hourly_stats_aggregated_by_audience_time_zone',
-        'impression_device',
-        'place_page_id',
-        'placement',
-        'product_id',
-        'region'
-    ];
+    private static $_breakdowns = null;
 
     function __construct(string $tetrisAccount, stdClass $accessToken)
     {
@@ -44,6 +33,20 @@ class FacebookResolver extends Facebook implements Resolver
             getenv('FB_APP_SECRET'),
             $accessToken->access_token
         );
+    }
+
+    static function getBreakdowns(): array
+    {
+        if (!self::$_breakdowns) {
+            self::$_breakdowns = array_keys(json_decode(file_get_contents(__DIR__ . '/../../maps/breakdowns.json'), true));
+        }
+
+        return self::$_breakdowns;
+    }
+
+    static function isBreakdown(string $dimension)
+    {
+        return in_array($dimension, self::getBreakdowns());
     }
 
     function resolve(Query $query, bool $shouldAggregate): array
@@ -65,7 +68,7 @@ class FacebookResolver extends Facebook implements Resolver
         }
 
         foreach ($requestFields as $field => $name) {
-            if (in_array($field, self::$breakdowns)) {
+            if (self::isBreakdown($field)) {
                 unset($requestFields[$field]);
                 $params['breakdowns'][] = $field;
             }
@@ -83,7 +86,7 @@ class FacebookResolver extends Facebook implements Resolver
             /**
              * @type GraphEdge $edge
              */
-            foreach ($edges as $id => $edge) {
+            foreach ($edges as $edge) {
                 /**
                  * @type array $node
                  */

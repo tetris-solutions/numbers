@@ -1,4 +1,5 @@
 <?php
+
 namespace Tetris\Numbers;
 
 use Tetris\Services\FlagsService;
@@ -119,8 +120,8 @@ abstract class MetaData
 
             foreach ($attributes as $id => $attribute) {
                 $propName = isset($attribute['property_name'])
-                  ? $attribute['property_name']
-                  : $attribute['property'];
+                    ? $attribute['property_name']
+                    : $attribute['property'];
 
                 $names = isset($attribute['names'])
                     ? $attribute['names']
@@ -199,7 +200,7 @@ abstract class MetaData
                     $config['incompatible'] = $attribute['incompatible'];
                 }
 
-                if ($platform === 'facebook' && in_array($id, FacebookResolver::$breakdowns)) {
+                if ($platform === 'facebook' && FacebookResolver::isBreakdown($id)) {
                     $config['is_breakdown'] = true;
                     self::setBreakdownPermutation($config);
                 }
