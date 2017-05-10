@@ -34,7 +34,7 @@ pipeline {
     }
     stage ('Archive') {
       steps {
-        sh "tar -zcf build.${env.BUILD_NUMBER}.tar.gz .env *-google-client.json composer.json composer.lock bin config public src vendor"
+        sh "tar -zcf build.${env.BUILD_NUMBER}.tar.gz .env *-google-client.json composer.json composer.lock bin config public src maps vendor"
         archive "build.${env.BUILD_NUMBER}.tar.gz"
       }
     }
