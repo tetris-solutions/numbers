@@ -30,7 +30,8 @@ return [
         "STORE_SALES_CRM" => "Store sales (data partner)",
         "STORE_SALES_PAYMENT_NETWORK" => "Store sales (payment network)",
         "GOOGLE_PLAY" => "Google Play",
-        "THIRD_PARTY_APP_ANALYTICS" => "Third-party app analytics"
+        "THIRD_PARTY_APP_ANALYTICS" => "Third-party app analytics",
+        "GOOGLE_ATTRIBUTION" => "Google Attribution"
     ],
     "incompatible" => [
         "averagecpm",

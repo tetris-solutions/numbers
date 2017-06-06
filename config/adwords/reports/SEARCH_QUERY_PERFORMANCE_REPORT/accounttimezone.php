@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "accounttimezoneid",
-    "property" => "AccountTimeZoneId",
+    "id" => "accounttimezone",
+    "property" => "AccountTimeZone",
     "is_filter" => TRUE,
     "type" => "string",
     "is_metric" => FALSE,

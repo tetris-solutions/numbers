@@ -14,5 +14,11 @@ return [
         "CONTENT" => "Display Network",
         "YOUTUBE_SEARCH" => "YouTube Search",
         "YOUTUBE_WATCH" => "YouTube Videos"
+    ],
+    "incompatible" => [
+        "historicalcreativequalityscore",
+        "historicallandingpagequalityscore",
+        "historicalqualityscore",
+        "historicalsearchpredictedctr"
     ]
 ];

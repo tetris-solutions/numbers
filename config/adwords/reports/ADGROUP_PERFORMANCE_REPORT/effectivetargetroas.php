@@ -1,9 +1,9 @@
 <?php
 return [
-    "id" => "primarycompanyname",
-    "property" => "PrimaryCompanyName",
+    "id" => "effectivetargetroas",
+    "property" => "EffectiveTargetRoas",
     "is_filter" => TRUE,
-    "type" => "string",
+    "type" => "decimal",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE

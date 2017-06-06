@@ -8,8 +8,6 @@ return [
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
     "values" => [
-        "BUDGET_OPTIMIZER" => "auto",
-        "CONVERSION_OPTIMIZER" => "max/target cpa",
         "MANUAL_CPC" => "cpc",
         "MANUAL_CPV" => "cpv",
         "MANUAL_CPM" => "cpm",
