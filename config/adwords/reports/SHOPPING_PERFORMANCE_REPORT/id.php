@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "typel1",
-    "property" => "ProductTypeL1",
+    "id" => "id",
+    "property" => "OfferId",
     "is_filter" => TRUE,
     "type" => "string",
     "is_metric" => FALSE,

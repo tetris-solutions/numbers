@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "condition",
+    "id" => "productcondition",
     "property" => "ProductCondition",
     "is_filter" => TRUE,
     "type" => "shoppingproductcondition",

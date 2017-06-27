@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "typel3",
+    "id" => "producttypel3",
     "property" => "ProductTypeL3",
     "is_filter" => TRUE,
     "type" => "string",

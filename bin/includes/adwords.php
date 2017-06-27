@@ -274,6 +274,9 @@ function getAdwordsConfig(): array
             if (in_array($originalAttributeName, $excludedFields)) continue;
 
             switch ($entity) {
+                case 'Product':
+                    $entityPrefix = 'Offer';
+                    break;
                 case 'Placement':
                     $entityPrefix = 'Campaign';
                     break;
