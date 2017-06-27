@@ -3,7 +3,7 @@ return [
     "metric" => "roas",
     "entity" => "AdGroup",
     "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "report" => "KEYWORDLESS_QUERY_REPORT",
     "fields" => [
         "ConversionValue",
         "Cost"

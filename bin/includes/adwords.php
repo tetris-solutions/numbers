@@ -172,7 +172,9 @@ function getAdwordsConfig(): array
         'SEARCH_QUERY_PERFORMANCE_REPORT' => 'Search',
         'AUDIENCE_PERFORMANCE_REPORT' => 'Audience',
         'VIDEO_PERFORMANCE_REPORT' => 'Video',
-        'GEO_PERFORMANCE_REPORT' => 'Location'
+        'GEO_PERFORMANCE_REPORT' => 'Location',
+        'KEYWORDLESS_CATEGORY_REPORT' => 'AdGroup',
+        'KEYWORDLESS_QUERY_REPORT' => 'AdGroup'
     ];
 
     $overrideOriginalName = [
