@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "1",
-    "property" => "Category1",
+    "id" => "category2",
+    "property" => "Category2",
     "is_filter" => TRUE,
     "type" => "string",
     "is_metric" => FALSE,

@@ -277,6 +277,8 @@ function getAdwordsConfig(): array
                 case 'Search':
                 case 'Audience':
                 case 'Location':
+                case 'Category':
+                case 'Query':
                     $entityPrefix = 'AdGroup';
                     break;
                 default:
