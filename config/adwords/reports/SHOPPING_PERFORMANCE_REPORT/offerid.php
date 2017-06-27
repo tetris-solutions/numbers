@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "adgroupname",
-    "property" => "AdGroupName",
+    "id" => "offerid",
+    "property" => "OfferId",
     "is_filter" => TRUE,
     "type" => "string",
     "is_metric" => FALSE,
