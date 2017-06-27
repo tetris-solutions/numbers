@@ -174,7 +174,8 @@ function getAdwordsConfig(): array
         'VIDEO_PERFORMANCE_REPORT' => 'Video',
         'GEO_PERFORMANCE_REPORT' => 'Location',
         'KEYWORDLESS_CATEGORY_REPORT' => 'Category',
-        'KEYWORDLESS_QUERY_REPORT' => 'Query'
+        'KEYWORDLESS_QUERY_REPORT' => 'Query',
+        'BID_GOAL_PERFORMANCE_REPORT' => 'Strategy'
     ];
 
     $overrideOriginalName = [
