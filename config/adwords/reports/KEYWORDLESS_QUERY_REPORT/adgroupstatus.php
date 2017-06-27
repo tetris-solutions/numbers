@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "status",
+    "id" => "adgroupstatus",
     "property" => "AdGroupStatus",
     "is_filter" => TRUE,
     "type" => "adgroupstatus",

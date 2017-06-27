@@ -1,9 +1,9 @@
 <?php
 return [
     "metric" => "ctr",
-    "entity" => "AdGroup",
+    "entity" => "Query",
     "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "report" => "KEYWORDLESS_QUERY_REPORT",
     "fields" => [
         "Ctr"
     ],

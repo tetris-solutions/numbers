@@ -1,9 +1,9 @@
 <?php
 return [
-    "id" => "id",
-    "property" => "AdGroupId",
+    "id" => "adgroupname",
+    "property" => "AdGroupName",
     "is_filter" => TRUE,
-    "type" => "long",
+    "type" => "string",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE

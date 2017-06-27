@@ -1,9 +1,9 @@
 <?php
 return [
     "metric" => "impressions",
-    "entity" => "AdGroup",
+    "entity" => "Category",
     "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "report" => "KEYWORDLESS_CATEGORY_REPORT",
     "fields" => [
         "Impressions"
     ],

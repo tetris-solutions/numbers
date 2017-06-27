@@ -1,24 +1,24 @@
 <?php
 return [
-    "metric" => "ctr",
-    "entity" => "AdGroup",
+    "metric" => "conversionrate",
+    "entity" => "Query",
     "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "report" => "KEYWORDLESS_QUERY_REPORT",
     "fields" => [
-        "Ctr"
+        "ConversionRate"
     ],
     "parse" => function ($data): float {
-        $valueAsNumericString = str_replace(['%', ','], '', $data->{'Ctr'});
+        $valueAsNumericString = str_replace(['%', ','], '', $data->{'ConversionRate'});
     
         return floatval($valueAsNumericString) / 100;
     },
     "inferred_from" => [
-        "clicks",
-        "impressions"
+        "conversions",
+        "clicks"
     ],
     "sum" => function (array $rows) {
-        $dividendMetric = 'clicks';
-        $divisorMetric = 'impressions';
+        $dividendMetric = 'conversions';
+        $divisorMetric = 'clicks';
     
         $sumDividend = 0;
         $sumDivisor = 0;

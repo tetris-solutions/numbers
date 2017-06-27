@@ -1,22 +1,26 @@
 <?php
 return [
-    "metric" => "valueperconversion",
-    "entity" => "AdGroup",
+    "metric" => "roas",
+    "entity" => "Category",
     "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "report" => "KEYWORDLESS_CATEGORY_REPORT",
     "fields" => [
-        "ValuePerConversion"
+        "ConversionValue",
+        "Cost"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'ValuePerConversion'}));
+    "parse" => function ($data) {
+        $conv = floatval(str_replace(',', '', $data->{'ConversionValue'}));
+        $cost = floatval(str_replace(',', '', $data->{'Cost'}));
+    
+        return $cost === 0.0 ? 0.0 : $conv / $cost;
     },
     "inferred_from" => [
         "conversionvalue",
-        "conversions"
+        "cost"
     ],
     "sum" => function (array $rows) {
         $dividendMetric = 'conversionvalue';
-        $divisorMetric = 'conversions';
+        $divisorMetric = 'cost';
     
         $sumDividend = 0;
         $sumDivisor = 0;

@@ -1,20 +1,20 @@
 <?php
 return [
-    "metric" => "conversionvalue",
-    "entity" => "AdGroup",
+    "metric" => "allconversionvalue",
+    "entity" => "Query",
     "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "report" => "KEYWORDLESS_QUERY_REPORT",
     "fields" => [
-        "ConversionValue"
+        "AllConversionValue"
     ],
     "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'ConversionValue'}));
+        return floatval(str_replace(',', '', $data->{'AllConversionValue'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->{'conversionvalue'};
+                return $carry + $row->{'allconversionvalue'};
             },
             0.0
         );

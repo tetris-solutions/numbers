@@ -1,20 +1,20 @@
 <?php
 return [
-    "metric" => "impressions",
-    "entity" => "AdGroup",
+    "metric" => "clicks",
+    "entity" => "Category",
     "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "report" => "KEYWORDLESS_CATEGORY_REPORT",
     "fields" => [
-        "Impressions"
+        "Clicks"
     ],
     "parse" => function ($data): int {
-        return intval(str_replace(',', '', $data->{'Impressions'}));
+        return intval(str_replace(',', '', $data->{'Clicks'}));
     },
     "sum" => function (array $rows) {
         return array_reduce(
             $rows,
             function (float $carry, $row): float {
-                return $carry + $row->{'impressions'};
+                return $carry + $row->{'clicks'};
             },
             0.0
         );

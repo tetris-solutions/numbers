@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "query",
+    "id" => "",
     "property" => "Query",
     "is_filter" => TRUE,
     "type" => "string",

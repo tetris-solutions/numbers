@@ -3,7 +3,7 @@ return [
     "metric" => "conversionrate",
     "entity" => "AdGroup",
     "platform" => "adwords",
-    "report" => "KEYWORDLESS_QUERY_REPORT",
+    "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [
         "ConversionRate"
     ],
