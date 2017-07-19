@@ -1,6 +1,6 @@
 <?php
 return [
-    "id" => "descriptivename",
+    "id" => "name",
     "property" => "AccountDescriptiveName",
     "is_filter" => TRUE,
     "type" => "string",

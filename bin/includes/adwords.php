@@ -56,31 +56,246 @@ function cpv100AdwordsSum(string $cost, string $views100Percentile, string $view
     ];
 }
 
-function getAdwordsConfig(): array
+function makeReplaceFunction(string $matchEntity, array $dictionary, $prefix = null): callable
 {
-    $overrideType = [
-        'averagecpv' => 'currency',
-        'averagecpe' => 'currency',
-        'averagecpm' => 'currency',
-        'averagequalityscore' => 'decimal'
+    $prefix = $prefix ? $prefix : $matchEntity;
+
+    return function (string $entity, string $property) use ($prefix, $matchEntity, $dictionary) {
+        if ($entity !== $matchEntity) {
+            return null;
+        }
+
+        foreach ($dictionary as $key => $value) {
+            if (is_numeric($key)) {
+                $original = $value;
+                $replacement = substr($original, strlen($prefix));
+            } else {
+                $original = $key;
+                $replacement = $value;
+            }
+
+            if ($original === $property) {
+                return $replacement;
+            }
+        }
+
+        return null;
+    };
+}
+
+function makeAttributeIdGenerator(): callable
+{
+    $fns = [
+        makeReplaceFunction('Account', [
+            'ExternalCustomerId' => 'Id',
+            'AccountCurrencyCode',
+            'AccountDescriptiveName' => 'Name',
+            'AccountTimeZone'
+        ]),
+
+        makeReplaceFunction('Ad', [
+            'AdType'
+        ]),
+
+        makeReplaceFunction('AdGroup', [
+            'AdGroupDesktopBidModifier',
+            'AdGroupId',
+            'AdGroupMobileBidModifier',
+            'AdGroupName',
+            'AdGroupStatus',
+            'AdGroupTabletBidModifier',
+            'AdGroupType'
+        ]),
+
+        makeReplaceFunction('Budget', [
+            'BudgetId',
+            'BudgetName',
+            'BudgetReferenceCount',
+            'BudgetStatus',
+            'BudgetCampaignAssociationStatus'
+        ]),
+
+        makeReplaceFunction('Campaign', [
+            'CampaignDesktopBidModifier',
+            'CampaignGroupId',
+            'CampaignId',
+            'CampaignMobileBidModifier',
+            'CampaignName',
+            'CampaignStatus',
+            'CampaignTabletBidModifier',
+            'CampaignTrialType'
+        ]),
+
+        makeReplaceFunction('Keyword', [
+            'KeywordMatchType'
+        ]),
+
+        makeReplaceFunction('Placement', [
+            'CampaignId',
+            'CampaignName',
+            'CampaignStatus'
+        ], 'Campaign'),
+
+        makeReplaceFunction('Video', [
+            'VideoChannelId',
+            'VideoDuration',
+            'VideoId',
+            'VideoTitle'
+        ]),
+
+        makeReplaceFunction('Partition', [
+            'PartitionType'
+        ])
     ];
 
-    $doNotShorten = [
-        'VideoQuartile100Rate',
-        'VideoQuartile75Rate',
-        'VideoQuartile50Rate',
-        'VideoQuartile25Rate',
-        'VideoViews',
-        'VideoViewRate'
+    $adGroupLevel = [
+        'Product',
+        'Search',
+        'Audience',
+        'Location',
+        'Category',
+        'Query'
     ];
 
-    $output = [
-        'entities' => [],
-        'metrics' => [],
-        'reports' => [],
-        'sources' => []
+    foreach ($adGroupLevel as $entity) {
+        $fns[] = makeReplaceFunction($entity, [
+            'AdGroupId',
+            'AdGroupName',
+            'AdGroupStatus'
+        ], 'AdGroup');
+    }
+
+    return function (string $entity, string $attributeName) use ($fns): string {
+        foreach ($fns as $match) {
+            $translation = $match($entity, $attributeName);
+
+            if ($translation) {
+                return strtolower($translation);
+            }
+        }
+
+        return strtolower($attributeName);
+    };
+}
+
+function makeMetricExtensions(array $fields): callable
+{
+    $fixed = [
+        'roas' => customRatioParser('ConversionValue', 'Cost'),
+        'cpv100' => cpv100Adwords('Cost', 'VideoQuartile100Rate', 'VideoViews')
     ];
 
+    $dynamic = [
+        'SearchImpressionShare' => [
+            'SearchBudgetLostImpressionShare',
+            'SearchRankLostImpressionShare'
+        ],
+
+        'SearchBudgetLostImpressionShare' => [
+            'SearchRankLostImpressionShare',
+            'SearchImpressionShare'
+        ],
+
+        'SearchRankLostImpressionShare' => [
+            'SearchBudgetLostImpressionShare',
+            'SearchImpressionShare'
+        ],
+
+        'ContentImpressionShare' => [
+            'ContentBudgetLostImpressionShare',
+            'ContentRankLostImpressionShare'
+        ],
+
+        'ContentBudgetLostImpressionShare' => [
+            'ContentRankLostImpressionShare',
+            'ContentImpressionShare'
+        ],
+        'ContentRankLostImpressionShare' => [
+            'ContentBudgetLostImpressionShare',
+            'ContentImpressionShare'
+        ]
+    ];
+
+    $build = function ($list) use ($fields): array {
+        $config = [];
+
+        foreach ($list as $name => $parts) {
+            if (!isset($fields[$name])) continue;
+
+            $auxMetrics = [];
+
+            foreach ($parts as $part) {
+                if (!isset($fields[$part])) continue;
+
+                $auxMetrics[] = $part;
+            }
+
+            $config[strtolower($name)] = specialValueTriangulation($name, $auxMetrics);
+        }
+
+        return $config;
+    };
+
+    $map = array_merge($fixed, $build($dynamic));
+
+    return function (string $metric) use ($map): array {
+        return isset($map[$metric])
+            ? $map[$metric]
+            : [];
+    };
+}
+
+function adWordsFieldsBlacklist(): callable
+{
+    $blacklist = [
+        'ConvertedClicks',
+        'CostPerConvertedClick',
+        'ConvertedClicksSignificance',
+        'CostPerConvertedClickSignificance',
+        'ValuePerConvertedClick'
+    ];
+
+    return function (string $name) use ($blacklist) {
+        return in_array($name, $blacklist);
+    };
+}
+
+function extendFields(string $entity, $fields): array
+{
+    if ($entity === 'Keyword') {
+        $fields['AverageQualityScore'] = $fields['QualityScore'];
+    }
+
+    if (isset($fields['ConversionValue']) && isset($fields['Cost'])) {
+        $fields['Roas'] = $fields['Cost'];
+        $fields['Roas']['Filterable'] = false;
+    }
+
+    if (
+        isset($fields['AverageCpc']) &&
+        isset($fields['Cost']) &&
+        isset($fields['VideoQuartile100Rate']) &&
+        isset($fields['VideoViews'])
+    ) {
+        $fields['Cpv100'] = $fields['AverageCpc'];
+        $fields['Cpv100']['Filterable'] = false;
+    }
+
+    return $fields;
+}
+
+function normalizeProperty(string $property): string
+{
+    switch ($property) {
+        case 'AverageQualityScore':
+            return 'QualityScore';
+        default:
+            return $property;
+    }
+}
+
+function isAdWordsMetric(string $id, array $adWordsField): bool
+{
     $actuallyIsAMetric = [
         'estimatedaddclicksatfirstpositioncpc',
         'estimatedaddcostatfirstpositioncpc',
@@ -91,13 +306,29 @@ function getAdwordsConfig(): array
         'averagequalityscore'
     ];
 
-    $excludedFields = [
-        'ConvertedClicks',
-        'CostPerConvertedClick',
-        'ConvertedClicksSignificance',
-        'CostPerConvertedClickSignificance',
-        'ValuePerConvertedClick'
+    return (
+        strtolower($adWordsField['Behavior']) === 'metric' ||
+        in_array($id, $actuallyIsAMetric)
+    );
+}
+
+function getAdwordsConfig(): array
+{
+    $overrideType = [
+        'averagecpv' => 'currency',
+        'averagecpe' => 'currency',
+        'averagecpm' => 'currency',
+        'averagequalityscore' => 'decimal'
     ];
+
+    $output = [
+        'entities' => [],
+        'metrics' => [],
+        'reports' => [],
+        'sources' => []
+    ];
+
+    $isBlacklisted = adWordsFieldsBlacklist();
 
     $inferredMetricSumConfig = [
         'searchbudgetlostimpressionshare' => lostImpressionShareSum('searchbudgetlostimpressionshare', 'searchimpressionshare'),
@@ -157,11 +388,6 @@ function getAdwordsConfig(): array
         'list' => makeParserFromSource('json')
     ];
 
-    $specialMetricConfig = [
-        'roas' => customRatioParser('ConversionValue', 'Cost'),
-        'cpv100' => cpv100Adwords('Cost', 'VideoQuartile100Rate', 'VideoViews')
-    ];
-
     $entityNameMap = [
         'ACCOUNT_PERFORMANCE_REPORT' => 'Account',
         'BUDGET_PERFORMANCE_REPORT' => 'Budget',
@@ -181,38 +407,12 @@ function getAdwordsConfig(): array
         'SHOPPING_PERFORMANCE_REPORT' => 'Product'
     ];
 
-    $overrideOriginalName = [
-        'AverageQualityScore' => 'QualityScore'
-    ];
+    $createId = makeAttributeIdGenerator();
 
-    $mappings = [];
+    foreach ($entityNameMap as $reportName => $entity) {
+        $fields = extendFields($entity, ReportMap::get($reportName));
 
-    foreach ($entityNameMap as $reportName => $entityName) {
-        $mappings[$reportName] = ReportMap::get($reportName);
-    }
-
-    $mappings['KEYWORDS_PERFORMANCE_REPORT']['AverageQualityScore'] =
-        $mappings['KEYWORDS_PERFORMANCE_REPORT']['QualityScore'];
-
-    foreach ($mappings as $reportName => $fields) {
-        if (!isset($entityNameMap[$reportName])) continue;
-
-        if (isset($fields['ConversionValue']) && isset($fields['Cost'])) {
-            $fields['Roas'] = $fields['Cost'];
-            $fields['Roas']['Filterable'] = false;
-        }
-
-        if (
-            isset($fields['AverageCpc']) &&
-            isset($fields['Cost']) &&
-            isset($fields['VideoQuartile100Rate']) &&
-            isset($fields['VideoViews'])
-        ) {
-            $fields['Cpv100'] = $fields['AverageCpc'];
-            $fields['Cpv100']['Filterable'] = false;
-        }
-
-        $output['reports'][$reportName] = [
+        $reportConfig = [
             'id' => $reportName,
             'attributes' => []
         ];
@@ -220,163 +420,63 @@ function getAdwordsConfig(): array
         $entity = $entityNameMap[$reportName];
         $output['entities'][$entity] = $entity;
 
-        $buildSpecialMetrics = function ($list) use ($fields): array {
-            $config = [];
+        $metricExtensions = makeMetricExtensions($fields);
 
-            foreach ($list as $name => $parts) {
-                if (!isset($fields[$name])) continue;
+        foreach ($fields as $originalProperty => $adWordsField) {
+            if ($isBlacklisted($originalProperty)) continue;
 
-                $auxMetrics = [];
+            $id = $createId($entity, $originalProperty);
+            $property = normalizeProperty($originalProperty);
+            $isMetric = isAdWordsMetric($id, $adWordsField);
 
-                foreach ($parts as $part) {
-                    if (!isset($fields[$part])) continue;
+            $attributeType = strtolower($adWordsField['Type']);
 
-                    $auxMetrics[] = $part;
-                }
-
-                $config[strtolower($name)] = specialValueTriangulation($name, $auxMetrics);
-            }
-
-            return $config;
-        };
-
-        $reportSpecialMetrics = array_merge($specialMetricConfig, $buildSpecialMetrics([
-            'SearchImpressionShare' => [
-                'SearchBudgetLostImpressionShare',
-                'SearchRankLostImpressionShare'
-            ],
-
-            'SearchBudgetLostImpressionShare' => [
-                'SearchRankLostImpressionShare',
-                'SearchImpressionShare'
-            ],
-
-            'SearchRankLostImpressionShare' => [
-                'SearchBudgetLostImpressionShare',
-                'SearchImpressionShare'
-            ],
-
-            'ContentImpressionShare' => [
-                'ContentBudgetLostImpressionShare',
-                'ContentRankLostImpressionShare'
-            ],
-
-            'ContentBudgetLostImpressionShare' => [
-                'ContentRankLostImpressionShare',
-                'ContentImpressionShare'
-            ],
-            'ContentRankLostImpressionShare' => [
-                'ContentBudgetLostImpressionShare',
-                'ContentImpressionShare'
-            ]
-        ]));
-
-        foreach ($fields as $originalAttributeName => $field) {
-            if (in_array($originalAttributeName, $excludedFields)) continue;
-
-            switch ($entity) {
-                case 'Placement':
-                    $entityPrefix = 'Campaign';
-                    break;
-                case 'Product':
-                case 'Search':
-                case 'Audience':
-                case 'Location':
-                case 'Category':
-                case 'Query':
-                    $entityPrefix = 'AdGroup';
-                    break;
-                default:
-                    $entityPrefix = $entity;
-                    break;
-            }
-
-
-            $looksLikeAMatch = strpos($originalAttributeName, $entityPrefix) === 0;
-            $blacklisted = in_array($originalAttributeName, $doNotShorten);
-
-            $wrongMatch = (
-                $entityPrefix === 'Ad' && (
-                    strpos($originalAttributeName, 'AdGroup') === 0 ||
-                    strpos($originalAttributeName, 'AdNetwork') === 0 ||
-                    strpos($originalAttributeName, 'Advertiser') === 0 ||
-                    strpos($originalAttributeName, 'Advertising') === 0
-                )
-            );
-
-            // name looks like <Campaign>FieldName
-            $nameStartsWithEntity = $looksLikeAMatch && !$blacklisted && !$wrongMatch;
-
-            $attributeName = strtolower($originalAttributeName);
-
-            if (empty($attributeName)) {
-                throw new \Exception($originalAttributeName . ' === {' . $attributeName . '}');
-            }
-
-            $rawAttributeName = $originalAttributeName;
-
-            if (isset($overrideOriginalName[$originalAttributeName])) {
-                $originalAttributeName = $overrideOriginalName[$originalAttributeName];
-            }
-
-            if ($nameStartsWithEntity) {
-                $attributeName = substr($attributeName, strlen($entityPrefix));
-            } else if ($attributeName === 'externalcustomerid' && $entityPrefix === 'Account') {
-                $attributeName = 'id';
-            }
-
-            $isMetric = strtolower($field['Behavior']) === 'metric' ||
-                in_array($attributeName, $actuallyIsAMetric);
-
-            $attributeType = strtolower($field['Type']);
-
-            if ($attributeName !== 'id') {
-                if (isset($overrideType[$attributeName])) {
-                    $attributeType = $overrideType[$attributeName];
-                } else if ($field['SpecialValue']) {
+            if ($id !== 'id') {
+                if (isset($overrideType[$id])) {
+                    $attributeType = $overrideType[$id];
+                } else if ($adWordsField['SpecialValue']) {
                     $attributeType = 'special';
-                } else if ($field['Percentage']) {
+                } else if ($adWordsField['Percentage']) {
                     $attributeType = 'percentage';
-                } else if ($field['Type'] === 'Money' || $field['Type'] === 'Bid') {
+                } else if ($adWordsField['Type'] === 'Money' || $adWordsField['Type'] === 'Bid') {
                     $attributeType = 'currency';
-                } else if ($field['Type'] === 'Long') {
+                } else if ($adWordsField['Type'] === 'Long') {
                     $attributeType = 'integer';
-                } else if ($field['Type'] === 'Double') {
+                } else if ($adWordsField['Type'] === 'Double') {
                     $attributeType = 'decimal';
                 }
             }
 
-
             $attribute = [
-                'id' => $attributeName,
-                'property' => $originalAttributeName,
-                'raw_property' => $rawAttributeName,
-                'is_filter' => $field['Filterable'],
+                'id' => $id,
+                'property' => $property,
+                'raw_property' => $originalProperty,
+                'is_filter' => $adWordsField['Filterable'],
                 'type' => $attributeType,
                 'is_metric' => $isMetric,
                 'is_dimension' => !$isMetric,
-                'is_percentage' => $field['Percentage']
+                'is_percentage' => $adWordsField['Percentage']
             ];
 
-            if (isset($field['PredicateValues'])) {
-                $attribute['values'] = $field['PredicateValues'];
+            if (isset($adWordsField['PredicateValues'])) {
+                $attribute['values'] = $adWordsField['PredicateValues'];
             }
 
-            if (isset($field['IncompatibleFields'])) {
-                $attribute['incompatible'] = $field['IncompatibleFields'];
+            if (isset($adWordsField['IncompatibleFields'])) {
+                $attribute['incompatible'] = $adWordsField['IncompatibleFields'];
             }
 
             if (
                 $attribute['is_dimension'] &&
                 isset($dimensionParsers[$attribute['type']])
             ) {
-                $attribute['parse'] = $dimensionParsers[$attribute['type']]($originalAttributeName);
+                $attribute['parse'] = $dimensionParsers[$attribute['type']]($property);
             }
 
             if ($isMetric) {
-                if (empty($output['metrics'][$attributeName])) {
+                if (empty($output['metrics'][$id])) {
                     $metric = [
-                        'id' => $attributeName,
+                        'id' => $id,
                         'type' => $attributeType
                     ];
 
@@ -384,49 +484,45 @@ function getAdwordsConfig(): array
                         $metric['type'] = 'raw';
                     }
 
-                    $output['metrics'][$attributeName] = $metric;
+                    $output['metrics'][$id] = $metric;
                 } else {
-                    $metric = $output['metrics'][$attributeName];
+                    $metric = $output['metrics'][$id];
                 }
 
-                $sourceConfig = [
-                    'metric' => $attributeName,
+                $sourceConfig = array_merge([
+                    'metric' => $id,
                     'entity' => $entity,
                     'platform' => 'adwords',
                     'report' => $reportName,
-                    'fields' => [$originalAttributeName],
-                    'parse' => $metricParsers[$metric['type']]($originalAttributeName)
-                ];
-
-                if (isset($reportSpecialMetrics[$attributeName])) {
-                    $sourceConfig = array_merge($sourceConfig, $reportSpecialMetrics[$attributeName]);
-                }
+                    'fields' => [$property],
+                    'parse' => $metricParsers[$metric['type']]($property)
+                ], $metricExtensions($id));
 
                 $canUseSimpleSum = $metric['type'] === 'integer' ||
                     $metric['type'] === 'decimal' ||
                     in_array($metric['id'], $simpleSumMetrics);
 
-                if (isset($inferredMetricSumConfig[$attributeName])) {
-                    $sourceConfig = array_merge($sourceConfig, $inferredMetricSumConfig[$attributeName]);
+                if (isset($inferredMetricSumConfig[$id])) {
+                    $sourceConfig = array_merge($sourceConfig, $inferredMetricSumConfig[$id]);
                 } else if ($canUseSimpleSum) {
                     $sourceConfig['sum'] = simpleSum($metric['id']);
                 }
 
                 $output['sources'][] = $sourceConfig;
-                $output['metrics'][$attributeName] = $metric;
+                $output['metrics'][$id] = $metric;
             } else if (isset($dimensionParsers[$attribute['type']])) {
-                $attribute['parse'] = $dimensionParsers[$attribute['type']]($originalAttributeName);
+                $attribute['parse'] = $dimensionParsers[$attribute['type']]($property);
             }
 
-            if (isset($output['reports'][$reportName]['attributes'][$attributeName])) {
-                echo "would replace: {$attributeName}\n";
+            if (isset($reportConfig['attributes'][$id])) {
+                echo "would replace: {$id}\n";
             } else {
-                $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
+                $reportConfig['attributes'][$id] = $attribute;
             }
         }
 
         // post processing
-        $attributes = $output['reports'][$reportName]['attributes'];
+        $attributes = $reportConfig['attributes'];
 
         foreach ($attributes as $index => $attr) {
             if (!empty($attr['incompatible'])) {
@@ -444,8 +540,10 @@ function getAdwordsConfig(): array
             }
 
             unset($attr['raw_property']);
-            $output['reports'][$reportName]['attributes'][$index] = $attr;
+            $reportConfig['attributes'][$index] = $attr;
         }
+
+        $output['reports'][$reportName] = $reportConfig;
     }
 
     $output['entities'] = array_values($output['entities']);
