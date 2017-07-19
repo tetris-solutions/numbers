@@ -5,6 +5,13 @@ namespace Tetris\Numbers;
 use Tetris\Adwords\ReportMap;
 
 require __DIR__ . '/../../vendor/autoload.php';
+require 'extensions/ExtensionApply.php';
+require 'extensions/Extension.php';
+require 'extensions/AdWordsSpecialMetric.php';
+require 'extensions/AdWordsInferredSum.php';
+require 'extensions/AdWordsTrivialSum.php';
+require 'AdWordsTypeParser.php';
+require 'AdWordsSourceFactory.php';
 
 function impressionShareSum(string $metric)
 {
@@ -178,7 +185,7 @@ function makeAttributeIdGenerator(): callable
     };
 }
 
-function makeMetricExtensions(array $fields): callable
+function specialMetricExtension(array $fields): callable
 {
     $fixed = [
         'roas' => customRatioParser('ConversionValue', 'Cost'),
@@ -238,11 +245,29 @@ function makeMetricExtensions(array $fields): callable
 
     $map = array_merge($fixed, $build($dynamic));
 
-    return function (string $metric) use ($map): array {
-        return isset($map[$metric])
-            ? $map[$metric]
+    return function (array $config) use ($map): array {
+        return isset($map[$config['metric']])
+            ? $map[$config['metric']]
             : [];
     };
+}
+
+function createParser(string $type, string $property)
+{
+    $map = [
+        'list' => makeParserFromSource('json'),
+        'percentage' => makeParserFromSource('percent'),
+        'decimal' => makeParserFromSource('decimal'),
+        'integer' => makeParserFromSource('integer'),
+        'raw' => makeParserFromSource('raw'),
+        'special' => makeParserFromSource('special-value')
+    ];
+
+    $map['currency'] = $map['decimal'];
+
+    return isset($map[$type])
+        ? $map[$type]($property)
+        : null;
 }
 
 function adWordsFieldsBlacklist(): callable
@@ -365,64 +390,6 @@ function getAdwordsConfig(): array
 
     $isBlacklisted = adWordsFieldsBlacklist();
 
-    $inferredMetricSumConfig = [
-        'searchbudgetlostimpressionshare' => lostImpressionShareSum('searchbudgetlostimpressionshare', 'searchimpressionshare'),
-        'searchranklostimpressionshare' => lostImpressionShareSum('searchranklostimpressionshare', 'searchimpressionshare'),
-        'searchimpressionshare' => impressionShareSum('searchimpressionshare'),
-
-        'contentbudgetlostimpressionshare' => lostImpressionShareSum('contentbudgetlostimpressionshare', 'contentimpressionshare'),
-        'contentranklostimpressionshare' => lostImpressionShareSum('contentranklostimpressionshare', 'contentimpressionshare'),
-        'contentimpressionshare' => impressionShareSum('contentimpressionshare'),
-
-        'allconversionrate' => customRatioSum('allconversions', 'clicks'),
-        'averagecost' => customRatioSum('cost', 'interactions'),
-        'averagecpc' => customRatioSum('cost', 'clicks'),
-        'averagecpe' => customRatioSum('cost', 'engagements'),
-        'averagecpm' => customRatioSum('cost', 'impressions'),
-        'averagecpv' => customRatioSum('cost', 'videoviews'),
-        'averagefrequency' => customRatioSum('impressions', 'impressionreach'),
-        'conversionrate' => customRatioSum('conversions', 'clicks'),
-        'costperallconversion' => customRatioSum('cost', 'allconversions'),
-        'costperconversion' => customRatioSum('cost', 'conversions'),
-        'ctr' => customRatioSum('clicks', 'impressions'),
-        'engagementrate' => customRatioSum('engagements', 'impressions'),
-        'interactionrate' => customRatioSum('interactions', 'impressions'),
-        'invalidclickrate' => customRatioSum('invalidclicks', 'clicks'),
-        'offlineinteractionrate' => customRatioSum('numofflineinteractions', 'numofflineimpressions'),
-        'valueperallconversion' => customRatioSum('allconversionvalue', 'allconversions'),
-        'valueperconversion' => customRatioSum('conversionvalue', 'conversions'),
-        'videoviewrate' => customRatioSum('videoviews', 'impressions'),
-
-        'videoquartile25rate' => videoQuartileSum(25),
-        'videoquartile50rate' => videoQuartileSum(50),
-        'videoquartile75rate' => videoQuartileSum(75),
-        'videoquartile100rate' => videoQuartileSum(100),
-
-        'averageposition' => weightedAverage('averageposition', 'impressions'),
-        'averagequalityscore' => weightedAverage('averagequalityscore', 'impressions'),
-        'roas' => customRatioSum('conversionvalue', 'cost'),
-        'cpv100' => cpv100AdwordsSum('cost', 'videoquartile100rate', 'videoviews')
-    ];
-
-    $simpleSumMetrics = [
-        'cost'
-    ];
-
-    $metricParsers = [
-        'percentage' => makeParserFromSource('percent'),
-        'decimal' => makeParserFromSource('decimal'),
-        'integer' => makeParserFromSource('integer'),
-        'raw' => makeParserFromSource('raw'),
-        'special' => makeParserFromSource('special-value')
-    ];
-
-    $metricParsers['currency'] = $metricParsers['decimal'];
-
-    $dimensionParsers = [
-        'integer' => $metricParsers['integer'],
-        'list' => makeParserFromSource('json')
-    ];
-
     $entityNameMap = [
         'ACCOUNT_PERFORMANCE_REPORT' => 'Account',
         'BUDGET_PERFORMANCE_REPORT' => 'Budget',
@@ -443,6 +410,7 @@ function getAdwordsConfig(): array
     ];
 
     $createId = makeAttributeIdGenerator();
+    $parser = new AdWordsTypeParser();
 
     foreach ($entityNameMap as $reportName => $entity) {
         $fields = extendFields($entity, ReportMap::get($reportName));
@@ -455,7 +423,7 @@ function getAdwordsConfig(): array
         $entity = $entityNameMap[$reportName];
         $output['entities'][$entity] = $entity;
 
-        $metricExtensions = makeMetricExtensions($fields);
+        $createMetricSource = new AdWordsSourceFactory($fields);
 
         foreach ($fields as $originalProperty => $adWordsField) {
             if ($isBlacklisted($originalProperty)) continue;
@@ -483,52 +451,24 @@ function getAdwordsConfig(): array
                 $attribute['incompatible'] = $adWordsField['IncompatibleFields'];
             }
 
-            if (
-                $attribute['is_dimension'] &&
-                isset($dimensionParsers[$attribute['type']])
-            ) {
-                $attribute['parse'] = $dimensionParsers[$attribute['type']]($property);
-            }
-
             if ($isMetric) {
-                if (empty($output['metrics'][$id])) {
-                    $metric = [
-                        'id' => $id,
-                        'type' => $attribute['type']
-                    ];
+                $metric = isset($output['metrics'][$id]) ? $output['metrics'][$id] : [
+                    'id' => $id,
+                    'type' => $parser->validate($attribute['type'])
+                ];
 
-                    if (!isset($metricParsers[$metric['type']])) {
-                        $metric['type'] = 'raw';
-                    }
-
-                    $output['metrics'][$id] = $metric;
-                } else {
-                    $metric = $output['metrics'][$id];
-                }
-
-                $sourceConfig = array_merge([
-                    'metric' => $id,
-                    'entity' => $entity,
-                    'platform' => 'adwords',
-                    'report' => $reportName,
-                    'fields' => [$property],
-                    'parse' => $metricParsers[$metric['type']]($property)
-                ], $metricExtensions($id));
-
-                $canUseSimpleSum = $metric['type'] === 'integer' ||
-                    $metric['type'] === 'decimal' ||
-                    in_array($metric['id'], $simpleSumMetrics);
-
-                if (isset($inferredMetricSumConfig[$id])) {
-                    $sourceConfig = array_merge($sourceConfig, $inferredMetricSumConfig[$id]);
-                } else if ($canUseSimpleSum) {
-                    $sourceConfig['sum'] = simpleSum($metric['id']);
-                }
+                $sourceConfig = $createMetricSource->create(
+                    $id,
+                    $property,
+                    $metric['type'],
+                    $entity,
+                    $reportName
+                );
 
                 $output['sources'][] = $sourceConfig;
                 $output['metrics'][$id] = $metric;
-            } else if (isset($dimensionParsers[$attribute['type']])) {
-                $attribute['parse'] = $dimensionParsers[$attribute['type']]($property);
+            } else {
+                $attribute = $parser->dimension($attribute);
             }
 
             if (isset($reportConfig['attributes'][$id])) {
