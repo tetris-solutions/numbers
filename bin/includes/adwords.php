@@ -312,7 +312,7 @@ function isAdWordsMetric(string $id, array $adWordsField): bool
     );
 }
 
-function getAdwordsConfig(): array
+function getAdWordsAttributeType(string $id, array $adWordsField): string
 {
     $overrideType = [
         'averagecpv' => 'currency',
@@ -321,6 +321,41 @@ function getAdwordsConfig(): array
         'averagequalityscore' => 'decimal'
     ];
 
+    $default = strtolower($adWordsField['Type']);
+
+    if ($id === 'id') {
+        return $default;
+    }
+
+    if (isset($overrideType[$id])) {
+        return $overrideType[$id];
+    }
+
+    if ($adWordsField['SpecialValue']) {
+        return 'special';
+    }
+
+    if ($adWordsField['Percentage']) {
+        return 'percentage';
+    }
+
+    if ($adWordsField['Type'] === 'Money' || $adWordsField['Type'] === 'Bid') {
+        return 'currency';
+    }
+
+    if ($adWordsField['Type'] === 'Long') {
+        return 'integer';
+    }
+
+    if ($adWordsField['Type'] === 'Double') {
+        return 'decimal';
+    }
+
+    return $default;
+}
+
+function getAdwordsConfig(): array
+{
     $output = [
         'entities' => [],
         'metrics' => [],
@@ -429,30 +464,12 @@ function getAdwordsConfig(): array
             $property = normalizeProperty($originalProperty);
             $isMetric = isAdWordsMetric($id, $adWordsField);
 
-            $attributeType = strtolower($adWordsField['Type']);
-
-            if ($id !== 'id') {
-                if (isset($overrideType[$id])) {
-                    $attributeType = $overrideType[$id];
-                } else if ($adWordsField['SpecialValue']) {
-                    $attributeType = 'special';
-                } else if ($adWordsField['Percentage']) {
-                    $attributeType = 'percentage';
-                } else if ($adWordsField['Type'] === 'Money' || $adWordsField['Type'] === 'Bid') {
-                    $attributeType = 'currency';
-                } else if ($adWordsField['Type'] === 'Long') {
-                    $attributeType = 'integer';
-                } else if ($adWordsField['Type'] === 'Double') {
-                    $attributeType = 'decimal';
-                }
-            }
-
             $attribute = [
                 'id' => $id,
                 'property' => $property,
                 'raw_property' => $originalProperty,
                 'is_filter' => $adWordsField['Filterable'],
-                'type' => $attributeType,
+                'type' => getAdWordsAttributeType($id, $adWordsField),
                 'is_metric' => $isMetric,
                 'is_dimension' => !$isMetric,
                 'is_percentage' => $adWordsField['Percentage']
@@ -477,7 +494,7 @@ function getAdwordsConfig(): array
                 if (empty($output['metrics'][$id])) {
                     $metric = [
                         'id' => $id,
-                        'type' => $attributeType
+                        'type' => $attribute['type']
                     ];
 
                     if (!isset($metricParsers[$metric['type']])) {
