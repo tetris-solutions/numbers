@@ -1,0 +1,48 @@
+<?php
+return [
+    "id" => "conversiontrackerid",
+    "property" => "ConversionTrackerId",
+    "is_filter" => TRUE,
+    "type" => "integer",
+    "is_metric" => FALSE,
+    "is_dimension" => TRUE,
+    "is_percentage" => FALSE,
+    "incompatible" => [
+        "activeviewcpm",
+        "activeviewctr",
+        "activeviewimpressions",
+        "activeviewmeasurability",
+        "activeviewmeasurablecost",
+        "activeviewmeasurableimpressions",
+        "activeviewviewability",
+        "averagecost",
+        "averagecpc",
+        "averagecpe",
+        "averagecpm",
+        "averagecpv",
+        "averageposition",
+        "clicks",
+        "contentbudgetlostimpressionshare",
+        "contentimpressionshare",
+        "contentranklostimpressionshare",
+        "cost",
+        "ctr",
+        "engagementrate",
+        "engagements",
+        "impressions",
+        "interactionrate",
+        "interactiontypes",
+        "interactions",
+        "invalidclickrate",
+        "invalidclicks",
+        "searchbudgetlostimpressionshare",
+        "searchexactmatchimpressionshare",
+        "searchimpressionshare",
+        "searchranklostimpressionshare",
+        "videoviewrate",
+        "videoviews"
+    ],
+    "parse" => function ($data): int {
+        return intval(str_replace(',', '', $data->{'ConversionTrackerId'}));
+    }
+];

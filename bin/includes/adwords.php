@@ -163,6 +163,7 @@ function getAdwordsConfig(): array
     ];
 
     $entityNameMap = [
+        'ACCOUNT_PERFORMANCE_REPORT' => 'Account',
         'BUDGET_PERFORMANCE_REPORT' => 'Budget',
         'ADGROUP_PERFORMANCE_REPORT' => 'AdGroup',
         'AD_PERFORMANCE_REPORT' => 'Ad',
@@ -290,14 +291,21 @@ function getAdwordsConfig(): array
                     break;
             }
 
+
+            $looksLikeAMatch = strpos($originalAttributeName, $entityPrefix) === 0;
+            $blacklisted = in_array($originalAttributeName, $doNotShorten);
+
+            $wrongMatch = (
+                $entityPrefix === 'Ad' && (
+                    strpos($originalAttributeName, 'AdGroup') === 0 ||
+                    strpos($originalAttributeName, 'AdNetwork') === 0 ||
+                    strpos($originalAttributeName, 'Advertiser') === 0 ||
+                    strpos($originalAttributeName, 'Advertising') === 0
+                )
+            );
+
             // name looks like <Campaign>FieldName
-            $nameStartsWithEntity = strpos($originalAttributeName, $entityPrefix) === 0 &&
-                !in_array($originalAttributeName, $doNotShorten) &&
-                !($entityPrefix === 'Ad' && (
-                        strpos($originalAttributeName, 'AdGroup') === 0 ||
-                        strpos($originalAttributeName, 'AdNetwork') === 0 ||
-                        strpos($originalAttributeName, 'Advertiser') === 0 ||
-                        strpos($originalAttributeName, 'Advertising') === 0));
+            $nameStartsWithEntity = $looksLikeAMatch && !$blacklisted && !$wrongMatch;
 
             $attributeName = strtolower($originalAttributeName);
 
@@ -313,6 +321,8 @@ function getAdwordsConfig(): array
 
             if ($nameStartsWithEntity) {
                 $attributeName = substr($attributeName, strlen($entityPrefix));
+            } else if ($attributeName === 'externalcustomerid' && $entityPrefix === 'Account') {
+                $attributeName = 'id';
             }
 
             $isMetric = strtolower($field['Behavior']) === 'metric' ||
