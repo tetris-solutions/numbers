@@ -47,7 +47,7 @@ class AdWordsSourceFactory
                 'platform' => 'adwords',
                 'report' => $report,
                 'fields' => [$property],
-                'parse' => $this->parser->getFactory($type, $property),
+                'parse' => $this->parser->getMetricParser($type, $property),
                 // temp
                 'property' => $property,
                 'type' => $type,

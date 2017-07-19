@@ -252,24 +252,6 @@ function specialMetricExtension(array $fields): callable
     };
 }
 
-function createParser(string $type, string $property)
-{
-    $map = [
-        'list' => makeParserFromSource('json'),
-        'percentage' => makeParserFromSource('percent'),
-        'decimal' => makeParserFromSource('decimal'),
-        'integer' => makeParserFromSource('integer'),
-        'raw' => makeParserFromSource('raw'),
-        'special' => makeParserFromSource('special-value')
-    ];
-
-    $map['currency'] = $map['decimal'];
-
-    return isset($map[$type])
-        ? $map[$type]($property)
-        : null;
-}
-
 function adWordsFieldsBlacklist(): callable
 {
     $blacklist = [
@@ -467,8 +449,8 @@ function getAdwordsConfig(): array
 
                 $output['sources'][] = $sourceConfig;
                 $output['metrics'][$id] = $metric;
-            } else {
-                $attribute = $parser->dimension($attribute);
+            } else if ($parser->getDimensionParser($attribute)) {
+                $attribute['parse'] = $parser->getDimensionParser($attribute);
             }
 
             if (isset($reportConfig['attributes'][$id])) {

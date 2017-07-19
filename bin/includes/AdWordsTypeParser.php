@@ -30,22 +30,22 @@ class AdWordsTypeParser
      * @param string $property
      * @return callable|null
      */
-    function getFactory(string $type, string $property)
+    private function getFactory(string $type, string $property)
     {
         return isset($this->map[$type])
             ? $this->map[$type]($property)
             : null;
     }
 
-    function dimension(array $dimension): array
+    function getMetricParser(string $type, string $property)
     {
-        if ($dimension['type'] === 'integer' || $dimension['type'] === 'list') {
-            $dimension['parse'] = $this->getFactory(
-                $dimension['type'],
-                $dimension['property']
-            );
-        }
+        return $this->getFactory($type, $property);
+    }
 
-        return $dimension;
+    function getDimensionParser(array $dimension)
+    {
+        return $dimension['type'] === 'integer' || $dimension['type'] === 'list'
+            ? $this->getFactory($dimension['type'], $dimension['property'])
+            : null;
     }
 }
