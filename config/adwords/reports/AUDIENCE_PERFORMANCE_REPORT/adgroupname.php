@@ -1,7 +1,7 @@
 <?php
 return [
-    "id" => "userlistname",
-    "property" => "UserListName",
+    "id" => "adgroupname",
+    "property" => "AdGroupName",
     "is_filter" => TRUE,
     "type" => "string",
     "is_metric" => FALSE,

@@ -1,16 +1,15 @@
 <?php
 return [
     "id" => "status",
-    "property" => "AdGroupStatus",
+    "property" => "Status",
     "is_filter" => TRUE,
-    "type" => "adgroupstatus",
+    "type" => "userstatus",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
     "values" => [
-        "UNKNOWN" => "unknown",
         "ENABLED" => "enabled",
-        "PAUSED" => "paused",
-        "REMOVED" => "removed"
+        "REMOVED" => "removed",
+        "PAUSED" => "paused"
     ]
 ];

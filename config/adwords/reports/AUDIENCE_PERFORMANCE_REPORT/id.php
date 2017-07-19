@@ -1,7 +1,7 @@
 <?php
 return [
     "id" => "id",
-    "property" => "AdGroupId",
+    "property" => "Id",
     "is_filter" => TRUE,
     "type" => "long",
     "is_metric" => FALSE,

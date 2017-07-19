@@ -152,13 +152,16 @@ function makeAttributeIdGenerator(): callable
 
         makeReplaceFunction('Partition', [
             'PartitionType'
+        ]),
+
+        makeReplaceFunction('Audience', [
+            'UserListName' => 'Name'
         ])
     ];
 
     $adGroupLevel = [
         'Product',
         'Search',
-        'Audience',
         'Location',
         'Category',
         'Query'
@@ -405,7 +408,7 @@ function getAdwordsConfig(): array
         $entity = $entityNameMap[$reportName];
         $output['entities'][$entity] = $entity;
 
-        $createMetricSource = new AdWordsSourceFactory($fields);
+        $sourceFactory = new AdWordsSourceFactory($fields);
 
         foreach ($fields as $originalProperty => $adWordsField) {
             if ($isBlacklisted($originalProperty)) continue;
@@ -439,22 +442,24 @@ function getAdwordsConfig(): array
                     'type' => $parser->validate($attribute['type'])
                 ];
 
-                $sourceConfig = $createMetricSource->create(
+                $output['sources'][] = $sourceFactory->create(
                     $id,
                     $property,
                     $metric['type'],
                     $entity,
                     $reportName
                 );
-
-                $output['sources'][] = $sourceConfig;
                 $output['metrics'][$id] = $metric;
             } else if ($parser->getDimensionParser($attribute)) {
                 $attribute['parse'] = $parser->getDimensionParser($attribute);
             }
 
             if (isset($reportConfig['attributes'][$id])) {
-                echo "would replace: {$id}\n";
+                echo "################### {$reportName} ####################\n";
+                echo json_encode($reportConfig['attributes'][$id], JSON_PRETTY_PRINT);
+                echo ' === ';
+                echo json_encode($attribute, JSON_PRETTY_PRINT);
+                echo "\n###########################################################\n";
             } else {
                 $reportConfig['attributes'][$id] = $attribute;
             }
