@@ -2,10 +2,7 @@
 
 namespace Tetris\Numbers;
 
-
-use ArrayAccess;
-
-class AdWordsAttribute implements ArrayAccess
+class AdWordsAttribute
 {
     /**
      * @var string
@@ -51,26 +48,6 @@ class AdWordsAttribute implements ArrayAccess
      * @var callable|null
      */
     public $parse;
-
-    function offsetExists($offset)
-    {
-        return isset($this->{$offset});
-    }
-
-    function offsetGet($offset)
-    {
-        return $this->{$offset};
-    }
-
-    function offsetSet($offset, $value)
-    {
-        $this->{$offset} = $value;
-    }
-
-    function offsetUnset($offset)
-    {
-        $this->{$offset} = null;
-    }
 
     function asArray(): array
     {
