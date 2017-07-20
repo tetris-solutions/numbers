@@ -3,6 +3,10 @@
 namespace Tetris\Numbers\Generator;
 
 use gossi\codegen\generator\CodeFileGenerator;
+use gossi\codegen\generator\CodeGenerator;
+use gossi\codegen\model\PhpFunction;
+use gossi\codegen\model\PhpParameter;
+use function Tetris\Numbers\prettyVarExport;
 
 abstract class Generator
 {
@@ -15,6 +19,21 @@ abstract class Generator
     protected static function add(array $config)
     {
         self::$inventory[] = $config;
+    }
+
+    protected static function clearConfig(array $config): array
+    {
+        unset($config['id']);
+        unset($config['property']);
+        unset($config['path']);
+        unset($config['type']);
+        unset($config['traits']);
+        unset($config['interfaces']);
+        unset($config['parent']);
+
+        $config['platform'] = strtolower($config['platform']);
+
+        return $config;
     }
 
     private static function rrmdir($src)
@@ -49,11 +68,13 @@ abstract class Generator
 
     private static function writeConfig(string $dir, $filename, $data)
     {
+        $dir = self::configRoot . "/$dir";
+
         if (!file_exists($dir)) {
             mkdir($dir, 0755, true);
         }
 
-        file_put_contents(self::configRoot . "/{$dir}/{$filename}.php", $data);
+        file_put_contents("{$dir}/{$filename}.php", $data);
     }
 
     private static function writeClass(ClassWrapper $class, $data)
@@ -65,6 +86,28 @@ abstract class Generator
         }
 
         file_put_contents(self::classRoot . '/' . self::unslash($class->getQualifiedName()) . '.php', $data);
+    }
+
+    private function genConfig(array $config, ClassWrapper $class)
+    {
+        $name = str_replace('/', '', $config['path']) . uniqid();
+
+        $file = "<?php\n";
+        $file .= "namespace Tetris\\Numbers\\Config;\n\n";
+        $file .= "use {$class->getQualifiedName()};\n\n";
+
+        $file .= "return new class extends {$class->getName()} {\n";
+
+        foreach (self::clearConfig($config) as $key => $value) {
+            if (is_scalar($value) || is_array($value)) {
+                $file .= "\tpublic \${$key} = " . json_encode($value) . ";\n";
+            }
+        }
+
+
+        $file .= "};\n";
+
+        self::writeConfig($config['path'], $config['id'], $file);
     }
 
     static function dump()
@@ -96,8 +139,7 @@ abstract class Generator
                 $classes[] = $myClass;
             }
 
-            $config['class'] = $myClass;
-
+            self::genConfig($config, $myClass);
             self::$inventory[$index] = $config;
         }
 

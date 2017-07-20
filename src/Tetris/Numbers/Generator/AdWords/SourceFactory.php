@@ -36,17 +36,7 @@ class SourceFactory extends Generator
     private function normalize(array $config): array
     {
         self::add($config);
-
-        unset($config['id']);
-        unset($config['property']);
-        unset($config['type']);
-        unset($config['traits']);
-        unset($config['interfaces']);
-        unset($config['parent']);
-
-        $config['platform'] = strtolower($config['platform']);
-
-        return $config;
+        return self::clearConfig($config);
     }
 
     private function apply(array $config, Extension $extension)
@@ -54,17 +44,20 @@ class SourceFactory extends Generator
         return $extension->extend($config);
     }
 
+
     function create(string $id, string $property, string $type, string $entity, string $report): array
     {
+        $platform = 'AdWords';
         return $this->normalize(
             array_reduce($this->extensions, [$this, 'apply'], [
                 'id' => $id,
+                'path' => "$platform/Sources/$entity",
                 'parent' => Source::class,
                 'metric' => $id,
                 'entity' => $entity,
                 'traits' => [],
                 'interfaces' => [],
-                'platform' => 'AdWords',
+                'platform' => $platform,
                 'report' => $report,
                 'fields' => [$property],
                 'parse' => $this->parser->getMetricParser($type, $property),
