@@ -63,9 +63,6 @@ function updateConfig()
         }
     }
 
-    chdir(__DIR__ . '/../src/Tetris/Numbers/Generated');
-    exec('find -type f -exec rm {} \;');
-    chdir($cwd);
     Generator::dump();
 }
 
