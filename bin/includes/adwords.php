@@ -3,18 +3,10 @@
 namespace Tetris\Numbers;
 
 use Tetris\Adwords\ReportMap;
-
-require __DIR__ . '/../../vendor/autoload.php';
-require 'extensions/ExtensionApply.php';
-require 'extensions/Extension.php';
-require 'extensions/AdWordsSpecialMetric.php';
-require 'extensions/AdWordsInferredSum.php';
-require 'extensions/AdWordsTrivialSum.php';
-require 'classes/AdWordsTypeParser.php';
-require 'classes/AdWordsSourceFactory.php';
-require 'classes/AttributeTranslator.php';
-require 'classes/AdWordsAttribute.php';
-require 'classes/AdWordsAttributeFactory.php';
+use Tetris\Numbers\Generator\AdWords\Attribute;
+use Tetris\Numbers\Generator\AdWords\AttributeFactory;
+use Tetris\Numbers\Generator\AdWords\SourceFactory;
+use Tetris\Numbers\Generator\AdWords\TypeParser;
 
 function impressionShareSum(string $metric)
 {
@@ -135,8 +127,8 @@ function getAdwordsConfig(): array
         'SHOPPING_PERFORMANCE_REPORT' => 'Product'
     ];
 
-    $attributeFactory = new AdWordsAttributeFactory();
-    $parser = new AdWordsTypeParser();
+    $attributeFactory = new AttributeFactory();
+    $parser = new TypeParser();
 
     foreach ($entityNameMap as $reportName => $entity) {
         $fields = extendFields($entity, ReportMap::get($reportName));
@@ -149,7 +141,7 @@ function getAdwordsConfig(): array
         $entity = $entityNameMap[$reportName];
         $output['entities'][$entity] = $entity;
 
-        $sourceFactory = new AdWordsSourceFactory($fields);
+        $sourceFactory = new SourceFactory($fields);
 
         foreach ($fields as $originalProperty => $adWordsField) {
             if ($isBlacklisted($originalProperty)) continue;
@@ -189,7 +181,7 @@ function getAdwordsConfig(): array
         $attributes = $reportConfig['attributes'];
 
         /**
-         * @var AdWordsAttribute $attr
+         * @var Attribute $attr
          */
         foreach ($attributes as $index => $attr) {
             if (!empty($attr->incompatible)) {
@@ -197,7 +189,7 @@ function getAdwordsConfig(): array
 
                 foreach ($attr->incompatible as $property) {
                     /**
-                     * @var AdWordsAttribute $other
+                     * @var Attribute $other
                      */
                     foreach ($attributes as $other) {
                         if ($other->raw_property === $property) {

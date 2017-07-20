@@ -2,9 +2,6 @@
 
 namespace Tetris\Numbers;
 
-require __DIR__ . '/../../vendor/autoload.php';
-
-
 function cpv100Facebook(string $spend, string $video100p)
 {
     $source = makeParserFromSource('cpv100-facebook');

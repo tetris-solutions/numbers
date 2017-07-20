@@ -8,6 +8,11 @@
       "email": "darthcas@gmail.com"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Tetris\\Numbers\\": "src/Tetris/Numbers"
+    }
+  },
   "require": {
     "tetris/slim-kit": "dev-master#0.0.18",
     "tetris/monostash": "dev-master#v0.0.5",

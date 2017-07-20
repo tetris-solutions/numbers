@@ -8,7 +8,6 @@ use Throwable;
 
 require 'constants.php';
 require 'classes/index.php';
-require 'Base/index.php';
 require_once 'logger.php';
 
 global $app;
