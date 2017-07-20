@@ -24,12 +24,26 @@ class AdWordsSourceFactory
         ];
     }
 
+    private function generateClass(array $config)
+    {
+        $platform = strtoupper($config['platform']);
+
+        $dir = __DIR__ . "/../../../src/Sources/{$platform}/{$config['entity']}";
+
+        if (!file_exists($dir)) {
+            mkdir($dir, 0755, true);
+        }
+    }
+
     private function normalize(array $config): array
     {
+        $this->generateClass($config);
+
         unset($config['id']);
         unset($config['property']);
         unset($config['type']);
         unset($config['traits']);
+
         return $config;
     }
 
