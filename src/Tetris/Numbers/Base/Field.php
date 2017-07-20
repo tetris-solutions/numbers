@@ -13,6 +13,11 @@ trait Field
      */
     public $property;
 
+    /**
+     * @var string
+     */
+    public $type;
+
     function getValue($source)
     {
         return $source->{$property} ?? null;

@@ -3,6 +3,7 @@
 namespace Tetris\Numbers;
 
 use Tetris\Adwords\ReportMap;
+use Tetris\Numbers\Base\Sum\ImpressionShareSum;
 use Tetris\Numbers\Generator\AdWords\Attribute;
 use Tetris\Numbers\Generator\AdWords\AttributeFactory;
 use Tetris\Numbers\Generator\AdWords\SourceFactory;
@@ -11,10 +12,15 @@ use Tetris\Numbers\Generator\AdWords\TypeParser;
 function impressionShareSum(string $metric)
 {
     $source = makeParserFromSource('impression-share-sum');
+    $impressions = 'impressions';
 
     return [
-        'inferred_from' => ['impressions'],
-        'sum' => $source($metric, 'impressions')
+        'traits' => [
+            ImpressionShareSum::class
+        ],
+        'impressionsMetric' => $impressions,
+        'inferred_from' => [$impressions],
+        'sum' => $source($metric, $impressions)
     ];
 }
 

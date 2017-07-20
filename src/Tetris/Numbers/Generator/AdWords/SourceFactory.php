@@ -36,7 +36,18 @@ class SourceFactory extends Generator
     private function normalize(array $config): array
     {
         self::add($config);
-        return self::clearConfig($config);
+
+        return self::clearConfig($config, [
+            // @todo unmaintainable code
+            'id',
+            'property',
+            'path',
+            'type',
+            'traits',
+            'interfaces',
+            'parent',
+            'impressionsMetric'
+        ]);
     }
 
     private function apply(array $config, Extension $extension)

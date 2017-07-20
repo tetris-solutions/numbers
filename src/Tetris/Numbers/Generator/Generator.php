@@ -3,10 +3,6 @@
 namespace Tetris\Numbers\Generator;
 
 use gossi\codegen\generator\CodeFileGenerator;
-use gossi\codegen\generator\CodeGenerator;
-use gossi\codegen\model\PhpFunction;
-use gossi\codegen\model\PhpParameter;
-use function Tetris\Numbers\prettyVarExport;
 
 abstract class Generator
 {
@@ -21,15 +17,11 @@ abstract class Generator
         self::$inventory[] = $config;
     }
 
-    protected static function clearConfig(array $config): array
+    protected static function clearConfig(array $config, array $omit): array
     {
-        unset($config['id']);
-        unset($config['property']);
-        unset($config['path']);
-        unset($config['type']);
-        unset($config['traits']);
-        unset($config['interfaces']);
-        unset($config['parent']);
+        foreach ($omit as $key) {
+            unset($config[$key]);
+        }
 
         $config['platform'] = strtolower($config['platform']);
 
@@ -90,15 +82,20 @@ abstract class Generator
 
     private function genConfig(array $config, ClassWrapper $class)
     {
-        $name = str_replace('/', '', $config['path']) . uniqid();
-
         $file = "<?php\n";
         $file .= "namespace Tetris\\Numbers\\Config;\n\n";
         $file .= "use {$class->getQualifiedName()};\n\n";
 
         $file .= "return new class extends {$class->getName()} {\n";
 
-        foreach (self::clearConfig($config) as $key => $value) {
+        $props = self::clearConfig($config, [
+            'path',
+            'traits',
+            'interfaces',
+            'parent'
+        ]);
+
+        foreach ($props as $key => $value) {
             if (is_scalar($value) || is_array($value)) {
                 $file .= "\tpublic \${$key} = " . json_encode($value) . ";\n";
             }
