@@ -23,9 +23,7 @@ abstract class ResultParser
                 $operator = $filter['values'][0];
 
                 $A = $filter['values'][1];
-                $B = isset($filter['values'][2])
-                    ? $filter['values'][2]
-                    : NULL;
+                $B = $filter['values'][2] ?? NULL;
 
                 if (!isset($row->{$field})) continue;
 
@@ -125,18 +123,14 @@ abstract class ResultParser
         foreach ($report->dimensions as $attribute) {
             $dimensionId = $attribute['id'];
 
-            $parse = isset($attribute['parse'])
-                ? $attribute['parse']
-                : NULL;
+            $parse = $attribute['parse'] ?? NULL;
 
             if (is_callable($parse)) {
                 $row->{$dimensionId} = $parse($receivedObject, $query);
             } else {
                 $dimensionProperty = $attribute['property'];
 
-                $row->{$dimensionId} = isset($receivedObject->{$dimensionProperty})
-                    ? $receivedObject->{$dimensionProperty}
-                    : NULL;
+                $row->{$dimensionId} = $receivedObject->{$dimensionProperty} ?? NULL;
             }
 
         }
@@ -155,7 +149,7 @@ abstract class ResultParser
 
         $getKeyForGrouping = function ($row) use ($dimensionIds): string {
             $dimensionValues = array_map(function ($dimension) use ($row) {
-                return isset($row->{$dimension}) ? $row->{$dimension} : NULL;
+                return $row->{$dimension} ?? NULL;
             }, $dimensionIds);
 
             return implode('::', $dimensionValues);
@@ -188,9 +182,7 @@ abstract class ResultParser
             }
 
             foreach ($dimensionIds as $dimensionId) {
-                $row->{$dimensionId} = isset($groupOfRows[0]->{$dimensionId})
-                    ? $groupOfRows[0]->{$dimensionId}
-                    : NULL;
+                $row->{$dimensionId} = $groupOfRows[0]->{$dimensionId} ?? NULL;
             }
 
             foreach ($metrics as $metricId => $metric) {

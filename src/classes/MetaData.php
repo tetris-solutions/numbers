@@ -119,13 +119,9 @@ abstract class MetaData
             );
 
             foreach ($attributes as $id => $attribute) {
-                $propName = isset($attribute['property_name'])
-                    ? $attribute['property_name']
-                    : $attribute['property'];
+                $propName = $attribute['property_name'] ?? $attribute['property'];
 
-                $names = isset($attribute['names'])
-                    ? $attribute['names']
-                    : [
+                $names = $attribute['names'] ?? [
                         'en' => self::getFieldName('en', $platform, $propName),
                         'pt-BR' => self::getFieldName('pt-BR', $platform, $propName)
                     ];
@@ -188,7 +184,7 @@ abstract class MetaData
                     'name' => $attribute['name'],
                     'is_metric' => $attribute['is_metric'],
                     'type' => $attribute['type'],
-                    'is_percentage' => isset($attribute['is_percentage']) ? $attribute['is_percentage'] : false,
+                    'is_percentage' => $attribute['is_percentage'] ?? false,
                     'is_dimension' => $attribute['is_dimension']
                 ];
 

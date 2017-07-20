@@ -42,9 +42,7 @@ class Translator
      */
     function getTranslation(string $platformAttribute)
     {
-        return isset($this->vocabulary[$platformAttribute])
-            ? $this->vocabulary[$platformAttribute]
-            : null;
+        return $this->vocabulary[$platformAttribute] ?? null;
     }
 
     function getPlatformAttributeName(string $globalAttribute)
@@ -324,8 +322,8 @@ class CrossPlatformReport
             $body['from'],
             $body['to'],
             $body['entity'],
-            isset($account['ga_view_id']) ? $account['ga_view_id'] : null,
-            isset($account['ga_property_id']) ? $account['ga_property_id'] : null,
+            $account['ga_view_id'] ?? null,
+            $account['ga_property_id'] ?? null,
             $locale
         );
 
@@ -358,9 +356,7 @@ class CrossPlatformReport
                 return $data->{$name};
             }
 
-            $alias = isset($this->aliases[$name])
-                ? $this->aliases[$name]
-                : null;
+            $alias = $this->aliases[$name] ?? null;
 
             if ($alias && isset($data->{$alias})) {
                 return $data->{$alias};

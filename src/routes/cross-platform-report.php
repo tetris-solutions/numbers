@@ -96,9 +96,7 @@ $app->post('/x',
 
             foreach (['dimensions', 'metrics'] as $attr) {
                 foreach ($body[$attr] as $name) {
-                    $row[$name] = isset($o->{$name})
-                        ? $o->{$name}
-                        : null;
+                    $row[$name] = $o->{$name} ?? null;
                 }
             }
 

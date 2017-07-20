@@ -101,9 +101,7 @@ class FacebookResolver extends Facebook implements Resolver
             $translatedRow = new stdClass();
 
             foreach ($report->fields as $sourceField => $targetField) {
-                $translatedRow->{$targetField} = isset($row->{$sourceField})
-                    ? $row->{$sourceField}
-                    : null;
+                $translatedRow->{$targetField} = $row->{$sourceField} ?? null;
             }
 
             $rows[$index] = $translatedRow;

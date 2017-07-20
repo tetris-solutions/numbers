@@ -57,14 +57,12 @@ class Query extends QueryBlueprint
             'type' => $metric['type'],
             'metric' => $source['metric'],
             'parse' => $source['parse'],
-            'inferred_from' => isset($source['inferred_from'])
-                ? $source['inferred_from']
-                : [],
+            'inferred_from' => $source['inferred_from'] ?? [],
             'entity' => $this->entity,
             'platform' => $this->platform,
             'fields' => $source['fields'],
             'report' => $source['report'],
-            'sum' => isset($source['sum']) ? $source['sum'] : null
+            'sum' => $source['sum'] ?? null
         ];
     }
 
