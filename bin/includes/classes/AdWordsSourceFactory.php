@@ -29,6 +29,7 @@ class AdWordsSourceFactory
         unset($config['id']);
         unset($config['property']);
         unset($config['type']);
+        unset($config['traits']);
         return $config;
     }
 

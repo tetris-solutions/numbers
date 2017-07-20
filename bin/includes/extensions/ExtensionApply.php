@@ -17,7 +17,9 @@ trait ExtensionApply
     function extend(array $config): array
     {
         foreach ($this->patch($config) as $key => $value) {
-            if (isset($config[$key])) {
+            if ($key === 'traits') {
+                $value = array_merge($config[$key] ?? [], $value);
+            } else if (isset($config[$key])) {
                 unset($config[$key]);
             }
 

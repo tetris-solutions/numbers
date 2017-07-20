@@ -3,6 +3,8 @@
 namespace Tetris\Numbers;
 
 
+use tetris\Numbers\Base\Sum\TrivialSum;
+
 class AdWordsTrivialSum implements Extension
 {
     use ExtensionApply;
@@ -16,7 +18,11 @@ class AdWordsTrivialSum implements Extension
         );
 
         return $trivial
-            ? ['sum' => simpleSum($config['id'])]
+            ? [
+                'sum' => simpleSum($config['id']),
+                'traits' => [
+                    TrivialSum::class
+                ]]
             : [];
     }
 }
