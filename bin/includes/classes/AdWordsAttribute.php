@@ -70,11 +70,11 @@ class AdWordsAttribute
         return $array;
     }
 
-    static function __set_state($an_array): self
+    static function __set_state(array $data): self
     {
         $instance = new self();
 
-        foreach ($an_array as $key => $value) {
+        foreach ($data as $key => $value) {
             if (property_exists(self::class, $key)) {
                 $instance->{$key} = $value;
             }

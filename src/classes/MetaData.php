@@ -104,7 +104,7 @@ abstract class MetaData
     private static function getArtificialDimensions()
     {
         return self::requireCached(
-            __DIR__ . "/../../src/artificial/dimensions.php"
+            __DIR__ . "/../../src/config/dimensions.php"
         );
     }
 
@@ -223,7 +223,7 @@ abstract class MetaData
 
     private static function getReplaceMap()
     {
-        return self::requireCached(__DIR__ . '/../artificial/attribute-merges.php');
+        return self::requireCached(__DIR__ . '/../config/attribute-merges.php');
     }
 
     static function getAttributeMerge(string $attribute, string $platform): array
