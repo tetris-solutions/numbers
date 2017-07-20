@@ -46,6 +46,10 @@ function updateConfig()
 
         foreach ($config['reports'] as $reportName => $report) {
             foreach ($report['attributes'] as $id => $attribute) {
+                if ($attribute instanceof AdWordsAttribute) {
+                    $attribute = $attribute->asArray();
+                }
+
                 file_put_contents(
                     __DIR__ . "/../config/{$platform}/reports/{$reportName}/{$id}.php",
                     "<?php\nreturn " . prettyVarExport($attribute) . ";\n"

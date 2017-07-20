@@ -30,7 +30,7 @@ class AdWordsTypeParser
      * @param string $property
      * @return callable|null
      */
-    private function getFactory(string $type, string $property)
+    function getFactory(string $type, string $property)
     {
         return isset($this->map[$type])
             ? $this->map[$type]($property)
