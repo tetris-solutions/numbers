@@ -1,6 +1,6 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Base;
 
 trait Field
 {

@@ -7,17 +7,8 @@ use Slim\Http\Response;
 use Throwable;
 
 require 'constants.php';
-require 'classes/TKMApi.php';
-require 'classes/QueryBlueprint.php';
-require 'classes/CrossPlatformReport.php';
-require 'classes/Report.php';
-require 'classes/Query.php';
-require 'classes/Resolver.php';
-require 'classes/ResultParser.php';
-require 'classes/FacebookResolver.php';
-require 'classes/AdwordsResolver.php';
-require 'classes/AnalyticsResolver.php';
-require 'classes/MetaData.php';
+require 'classes/index.php';
+require 'Base/index.php';
 require_once 'logger.php';
 
 global $app;

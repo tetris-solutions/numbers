@@ -1,17 +1,16 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace tetris\Numbers\Base\Sum;
 
-trait RatioSum
+use Tetris\Numbers\Base\Field;
+
+trait WeightedSum
 {
+    use Field;
     /**
      * @var string
      */
-    public $dividendMetric;
-    /**
-     * @var string
-     */
-    public $divisorMetric;
+    public $weightMetric;
 
     function sum(array $rows)
     {
@@ -19,8 +18,8 @@ trait RatioSum
         $sumDivisor = 0;
 
         foreach ($rows as $row) {
-            $sumDividend += $row->{$this->dividendMetric};
-            $sumDivisor += $row->{$this->divisorMetric};
+            $sumDividend += $row->{$this->id} * $row->{$this->weightMetric};
+            $sumDivisor += $row->{$this->weightMetric};
         }
 
         return (float)$sumDivisor !== 0.0

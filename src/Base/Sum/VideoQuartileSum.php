@@ -1,7 +1,6 @@
 <?php
 
-namespace Tetris\Numbers;
-
+namespace tetris\Numbers\Base\Sum;
 
 trait VideoQuartileSum
 {

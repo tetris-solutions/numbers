@@ -1,7 +1,10 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace tetris\Numbers\Base\Parser;
 
+use Tetris\Numbers\Base\Field;
+use Tetris\Numbers\Base\ComplexValue;
+use Tetris\Numbers\Query;
 
 trait ComplexValueParser
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace tetris\Numbers\Base\Sum;
+
+use Tetris\Numbers\Base\Field;
 
 trait TrivialSum
 {
