@@ -5,10 +5,10 @@ use Tetris\Numbers\Base\Parsable;
 use Tetris\Numbers\Base\Parser\FloatParser;
 use Tetris\Numbers\Base\Source;
 use Tetris\Numbers\Base\Summable;
-use Tetris\Numbers\Base\Sum\TrivialSum;
+use Tetris\Numbers\Base\Sum\RatioSum;
 
-class AdWordsSourceFloatParserTrivialSumParsableSummable extends Source implements Parsable, Summable {
+class FloatParser_RatioSum_Parsable_Summable extends Source implements Parsable, Summable {
 
 	use FloatParser;
-	use TrivialSum;
+	use RatioSum;
 }

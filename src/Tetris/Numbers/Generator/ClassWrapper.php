@@ -3,6 +3,8 @@
 namespace Tetris\Numbers\Generator;
 
 use gossi\codegen\model\PhpClass;
+use Tetris\Numbers\Base\Parsable;
+use Tetris\Numbers\Base\Summable;
 
 class ClassWrapper extends PhpClass
 {
@@ -16,17 +18,28 @@ class ClassWrapper extends PhpClass
     {
         parent::__construct(null);
 
-        sort($config['interfaces']);
-        sort($config['traits']);
+        $traits = $config['traits'];
+        $interfaces = [];
+
+        if (isset($traits['parser'])) {
+            $interfaces[] = Parsable::class;
+        }
+
+        if (isset($traits['sum'])) {
+            $interfaces[] = Summable::class;
+        }
+
+        $traits = array_values($traits);
+
+        sort($traits);
 
         $parentName = $this->qualified($config['parent']);
         $platform = ucfirst($config['platform']);
 
-        $name = implode("",
+        $name = implode("_",
             array_merge(
-                [$platform, $parentName],
-                array_map([$this, 'qualified'], $config['traits']),
-                array_map([$this, 'qualified'], $config['interfaces'])
+                array_map([$this, 'qualified'], $traits),
+                array_map([$this, 'qualified'], $interfaces)
             )
         );
 
@@ -39,18 +52,18 @@ class ClassWrapper extends PhpClass
             [
                 $config['parent']
             ],
-            $config['interfaces'],
-            $config['traits']
+            $interfaces,
+            $traits
         ));
 
         $this->setInterfaces(array_map(
             [$this, 'qualified'],
-            $config['interfaces']
+            $interfaces
         ));
 
         $this->setTraits(array_map(
             [$this, 'qualified'],
-            $config['traits']
+            $traits
         ));
 
         $this->setParentClassName($parentName);

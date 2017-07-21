@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\AdWordsSourceComplexValueParserParsable;
+use Tetris\Numbers\Generated\AdWords\Source\ComplexValueParser_Parsable;
 
-return new class extends AdWordsSourceComplexValueParserParsable {
+return new class extends ComplexValueParser_Parsable {
 	public $id = "searchclickshare";
 	public $metric = "searchclickshare";
 	public $entity = "Product";

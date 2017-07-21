@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\AdWordsSourceFloatParserTrivialSumParsableSummable;
+use Tetris\Numbers\Generated\AdWords\Source\FloatParser_RatioSum_Parsable_Summable;
 
-return new class extends AdWordsSourceFloatParserTrivialSumParsableSummable {
+return new class extends FloatParser_RatioSum_Parsable_Summable {
 	public $id = "valueperallconversion";
 	public $metric = "valueperallconversion";
 	public $entity = "Strategy";
@@ -12,5 +12,7 @@ return new class extends AdWordsSourceFloatParserTrivialSumParsableSummable {
 	public $fields = ["ValuePerAllConversion"];
 	public $property = "ValuePerAllConversion";
 	public $type = "decimal";
+	public $dividendMetric = "allconversionvalue";
+	public $divisorMetric = "allconversions";
 	public $inferred_from = ["allconversionvalue","allconversions"];
 };

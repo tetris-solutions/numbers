@@ -26,17 +26,16 @@ class SourceFactory extends Generator
     {
         $this->parser = new TypeParser();
         $this->extensions = [
+            new AdWordsParser(),
             new AdWordsTrivialSum(),
             new AdWordsSpecialMetric($fields),
             new AdWordsInferredSum(),
-            new AdWordsParser()
+
         ];
     }
 
-    private function normalize(array $config): array
+    public static function clear(array $config)
     {
-        self::add($config);
-
         return self::clearConfig($config, [
             // @todo unmaintainable code
             'id',
@@ -46,8 +45,29 @@ class SourceFactory extends Generator
             'traits',
             'interfaces',
             'parent',
-            'impressionsMetric'
+            'impressionsMetric',
+            'impressionShareMetric',
+            'auxiliaryMetrics',
+            'costProperty',
+            'views100PercentileProperty',
+            'viewsProperty',
+            'costMetric',
+            'views100PercentileMetric',
+            'viewsMetric',
+            'weightMetric',
+            'dividendMetric',
+            'divisorMetric',
+            'dividendProperty',
+            'divisorProperty',
+            'videoQuartileMetric',
+            'videoViewsMetric'
         ]);
+    }
+
+    private function normalize(array $config): array
+    {
+        self::add($config);
+        return self::clear($config);
     }
 
     private function apply(array $config, Extension $extension)
@@ -67,7 +87,6 @@ class SourceFactory extends Generator
                 'metric' => $id,
                 'entity' => $entity,
                 'traits' => [],
-                'interfaces' => [],
                 'platform' => $platform,
                 'report' => $report,
                 'fields' => [$property],

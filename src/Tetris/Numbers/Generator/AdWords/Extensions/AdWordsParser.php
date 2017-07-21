@@ -33,14 +33,10 @@ class AdWordsParser implements Extension
 
     function patch(array $config): array
     {
-        return isset($this->map[$config['type']])
-            ? [
-                'interfaces' => [
-                    Parsable::class
-                ],
-                'traits' => [
-                    $this->map[$config['type']]
-                ]]
-            : [];
+        return isset($this->map[$config['type']]) ? [
+            'traits' => [
+                'parser' => $this->map[$config['type']]
+            ]
+        ] : [];
     }
 }

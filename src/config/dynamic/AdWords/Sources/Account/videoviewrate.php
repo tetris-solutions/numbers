@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\AdWordsSourcePercentParserParsable;
+use Tetris\Numbers\Generated\AdWords\Source\PercentParser_RatioSum_Parsable_Summable;
 
-return new class extends AdWordsSourcePercentParserParsable {
+return new class extends PercentParser_RatioSum_Parsable_Summable {
 	public $id = "videoviewrate";
 	public $metric = "videoviewrate";
 	public $entity = "Account";
@@ -12,5 +12,7 @@ return new class extends AdWordsSourcePercentParserParsable {
 	public $fields = ["VideoViewRate"];
 	public $property = "VideoViewRate";
 	public $type = "percentage";
+	public $dividendMetric = "videoviews";
+	public $divisorMetric = "impressions";
 	public $inferred_from = ["videoviews","impressions"];
 };

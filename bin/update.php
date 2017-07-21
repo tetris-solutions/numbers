@@ -4,6 +4,7 @@
 namespace Tetris\Numbers;
 
 use Tetris\Numbers\Generator\AdWords\Attribute;
+use Tetris\Numbers\Generator\AdWords\SourceFactory;
 use Tetris\Numbers\Generator\Generator;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -45,7 +46,7 @@ function updateConfig()
 
             file_put_contents(
                 __DIR__ . "/../config/{$platform}/sources/{$entity}/{$source['metric']}.php",
-                "<?php\nreturn " . prettyVarExport($source) . ";\n"
+                "<?php\nreturn " . prettyVarExport(SourceFactory::clear($source)) . ";\n"
             );
         }
 

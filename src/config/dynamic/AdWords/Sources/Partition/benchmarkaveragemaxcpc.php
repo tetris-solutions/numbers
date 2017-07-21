@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\AdWordsSourceFloatParserParsable;
+use Tetris\Numbers\Generated\AdWords\Source\FloatParser_Parsable;
 
-return new class extends AdWordsSourceFloatParserParsable {
+return new class extends FloatParser_Parsable {
 	public $id = "benchmarkaveragemaxcpc";
 	public $metric = "benchmarkaveragemaxcpc";
 	public $entity = "Partition";

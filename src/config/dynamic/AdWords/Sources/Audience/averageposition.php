@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\AdWordsSourceFloatParserTrivialSumParsableSummable;
+use Tetris\Numbers\Generated\AdWords\Source\FloatParser_WeightedSum_Parsable_Summable;
 
-return new class extends AdWordsSourceFloatParserTrivialSumParsableSummable {
+return new class extends FloatParser_WeightedSum_Parsable_Summable {
 	public $id = "averageposition";
 	public $metric = "averageposition";
 	public $entity = "Audience";
@@ -12,5 +12,6 @@ return new class extends AdWordsSourceFloatParserTrivialSumParsableSummable {
 	public $fields = ["AveragePosition"];
 	public $property = "AveragePosition";
 	public $type = "decimal";
+	public $weightMetric = "impressions";
 	public $inferred_from = ["impressions"];
 };

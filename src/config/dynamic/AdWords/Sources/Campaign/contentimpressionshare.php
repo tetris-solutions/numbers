@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\AdWordsSourceComplexValueParserImpressionShareSumParsable;
+use Tetris\Numbers\Generated\AdWords\Source\TriangulationParser_ImpressionShareSum_Parsable_Summable;
 
-return new class extends AdWordsSourceComplexValueParserImpressionShareSumParsable {
+return new class extends TriangulationParser_ImpressionShareSum_Parsable_Summable {
 	public $id = "contentimpressionshare";
 	public $metric = "contentimpressionshare";
 	public $entity = "Campaign";
@@ -11,6 +11,7 @@ return new class extends AdWordsSourceComplexValueParserImpressionShareSumParsab
 	public $report = "CAMPAIGN_PERFORMANCE_REPORT";
 	public $property = "ContentImpressionShare";
 	public $type = "special";
+	public $auxiliaryMetrics = ["ContentBudgetLostImpressionShare","ContentRankLostImpressionShare"];
 	public $fields = ["ContentImpressionShare","ContentBudgetLostImpressionShare","ContentRankLostImpressionShare"];
 	public $impressionsMetric = "impressions";
 	public $inferred_from = ["impressions"];

@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\AdWordsSourcePercentParserParsable;
+use Tetris\Numbers\Generated\AdWords\Source\PercentParser_Parsable;
 
-return new class extends AdWordsSourcePercentParserParsable {
+return new class extends PercentParser_Parsable {
 	public $id = "bouncerate";
 	public $metric = "bouncerate";
 	public $entity = "Keyword";

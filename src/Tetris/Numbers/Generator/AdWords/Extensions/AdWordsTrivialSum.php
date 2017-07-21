@@ -23,11 +23,8 @@ class AdWordsTrivialSum implements Extension
         return $trivial
             ? [
                 'sum' => \Tetris\Numbers\simpleSum($config['id']),
-                'interfaces' => [
-                    Summable::class
-                ],
                 'traits' => [
-                    TrivialSum::class
+                    'sum' => TrivialSum::class
                 ]]
             : [];
     }

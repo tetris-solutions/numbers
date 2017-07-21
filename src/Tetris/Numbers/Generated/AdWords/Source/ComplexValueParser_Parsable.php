@@ -5,7 +5,7 @@ use Tetris\Numbers\Base\Parsable;
 use Tetris\Numbers\Base\Parser\ComplexValueParser;
 use Tetris\Numbers\Base\Source;
 
-class AdWordsSourceComplexValueParserParsable extends Source implements Parsable {
+class ComplexValueParser_Parsable extends Source implements Parsable {
 
 	use ComplexValueParser;
 }

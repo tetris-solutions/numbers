@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\AdWordsSourceRawParserParsable;
+use Tetris\Numbers\Generated\AdWords\Source\RawParser_Parsable;
 
-return new class extends AdWordsSourceRawParserParsable {
+return new class extends RawParser_Parsable {
 	public $id = "historicallandingpagequalityscore";
 	public $metric = "historicallandingpagequalityscore";
 	public $entity = "Keyword";

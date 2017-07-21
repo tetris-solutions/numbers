@@ -11,7 +11,7 @@ trait TriangulationParser
     /**
      * @var array
      */
-    public $auxiliarMetrics;
+    public $auxiliaryMetrics;
 
     function parse($source, Query $query)
     {
@@ -21,7 +21,7 @@ trait TriangulationParser
 
         $remaining = 1;
 
-        foreach ($this->auxiliarMetrics as $property) {
+        foreach ($this->auxiliaryMetrics as $property) {
             $aux = $this->transform($source->{$property});
 
             if (!is_numeric($aux)) return $parsedValue;

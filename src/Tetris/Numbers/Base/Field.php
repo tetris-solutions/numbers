@@ -20,7 +20,7 @@ trait Field
 
     function getValue($source)
     {
-        return $source->{$property} ?? null;
+        return $source->{$this->property} ?? null;
     }
 
     function getNumericValue($source): string

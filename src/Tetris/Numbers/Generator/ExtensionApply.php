@@ -5,6 +5,9 @@ namespace Tetris\Numbers\Generator;
 
 trait ExtensionApply
 {
+    /**
+     * @var array|null
+     */
     public $map;
 
     function patch(array $config): array

@@ -7,7 +7,7 @@ use Tetris\Numbers\Base\Source;
 use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 
-class AdWordsSourceIntegerParserTrivialSumParsableSummable extends Source implements Parsable, Summable {
+class IntegerParser_TrivialSum_Parsable_Summable extends Source implements Parsable, Summable {
 
 	use IntegerParser;
 	use TrivialSum;
