@@ -23,9 +23,14 @@ class QueryV2 extends QueryBase
 
     protected function setupReport()
     {
-        $this->report = new Report($this->platform, $this->metrics[0]['report']);
-
+        /**
+         * @var SourceMetaData $metric
+         */
         foreach ($this->metrics as $metric) {
+            if (!$this->report) {
+                $this->report = new Report($this->platform, $metric->report);
+            }
+
             $this->report->addMetric($metric, false);
         }
 
@@ -33,8 +38,11 @@ class QueryV2 extends QueryBase
             $this->report->addDimension($dimension);
         }
 
+        /**
+         * @var SourceMetaData $metric
+         */
         foreach ($this->metrics as $metric) {
-            foreach ($metric['inferred_from'] as $subMetric) {
+            foreach ($metric->inferred_from as $subMetric) {
                 $this->report->addMetric($this->mountMetric($subMetric), true);
             }
         }

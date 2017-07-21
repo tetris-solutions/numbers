@@ -41,11 +41,10 @@ abstract class ReportBlueprint
 
     function addDimension(string $dimensionId, $isAuxiliary = false)
     {
-        $unknownDimension = empty($this->attributes[$dimensionId]);
+        $attribute = $this->attributes[$dimensionId] ?? null;
 
-        if ($unknownDimension) return;
+        if (!$attribute) return;
 
-        $attribute = $this->attributes[$dimensionId];
         $property = $attribute['property'];
 
         if ($property) {

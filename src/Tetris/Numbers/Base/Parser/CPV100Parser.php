@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\QueryBase;
 
 trait CPV100Parser
 {
@@ -10,7 +10,7 @@ trait CPV100Parser
     public $views100PercentileProperty;
     public $viewsProperty;
 
-    function parse($source, Query $query)
+    function parse($source, QueryBase $query)
     {
         $cost = floatval(str_replace(',', '', $source->{$this->costProperty}));
         $fullViewPercent = str_replace(['%', ','], '', $source->{$this->views100PercentileProperty});

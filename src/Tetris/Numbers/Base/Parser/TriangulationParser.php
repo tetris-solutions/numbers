@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\QueryBase;
 
 trait TriangulationParser
 {
@@ -13,7 +13,7 @@ trait TriangulationParser
      */
     public $auxiliaryMetrics;
 
-    function parse($source, Query $query)
+    function parse($source, QueryBase $query)
     {
         $parsedValue = $this->transform($this->getValue($source));
 

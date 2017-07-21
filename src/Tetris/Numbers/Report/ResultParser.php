@@ -4,6 +4,10 @@ namespace Tetris\Numbers\Report;
 
 use Exception;
 use stdClass;
+use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\Parsable;
+use Tetris\Numbers\Base\SourceMetaData;
+use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Services\FlagsService;
@@ -122,23 +126,34 @@ abstract class ResultParser
             $row->__source__ = $receivedObject;
         }
 
+        /**
+         * @var AttributeMetaData|array $attribute
+         */
         foreach ($report->dimensions as $attribute) {
             $dimensionId = $attribute['id'];
 
-            $parse = $attribute['parse'] ?? NULL;
-
-            if (is_callable($parse)) {
-                $row->{$dimensionId} = $parse($receivedObject, $query);
+            if ($attribute instanceof Parsable) {
+                $row->{$dimensionId} = $attribute->parse($receivedObject, $query);
             } else {
-                $dimensionProperty = $attribute['property'];
+                $parse = $attribute['parse'] ?? NULL;
 
-                $row->{$dimensionId} = $receivedObject->{$dimensionProperty} ?? NULL;
+                if (is_callable($parse)) {
+                    $row->{$dimensionId} = $parse($receivedObject, $query);
+                } else {
+                    $dimensionProperty = $attribute['property'];
+
+                    $row->{$dimensionId} = $receivedObject->{$dimensionProperty} ?? NULL;
+                }
             }
-
         }
 
+        /**
+         * @var SourceMetaData|array $metric
+         */
         foreach ($report->metrics as $metric) {
-            $row->{$metric['id']} = $metric['parse']($receivedObject, $query);
+            $row->{$metric['id']} = $metric instanceof Parsable
+                ? $metric->parse($receivedObject, $query)
+                : $metric['parse']($receivedObject, $query);
         }
 
         return $row;
@@ -188,7 +203,9 @@ abstract class ResultParser
             }
 
             foreach ($metrics as $metricId => $metric) {
-                if (isset($metric['sum'])) {
+                if ($metric instanceof Summable) {
+                    $row->{$metricId} = $metric->sum($groupOfRows);
+                } else if (isset($metric['sum'])) {
                     $val = $metric['sum']($groupOfRows);
                     $row->{$metricId} = $val;
                 } else {

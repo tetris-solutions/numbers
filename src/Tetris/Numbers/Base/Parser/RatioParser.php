@@ -3,7 +3,7 @@
 namespace Tetris\Numbers\Base\Parser;
 
 
-use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\QueryBase;
 
 trait RatioParser
 {
@@ -16,7 +16,7 @@ trait RatioParser
      */
     public $divisorProperty;
 
-    function parse($source, Query $query)
+    function parse($source, QueryBase $query)
     {
         $conv = floatval(str_replace(',', '', $source->{$this->dividendProperty}));
         $cost = floatval(str_replace(',', '', $source->{$this->divisorProperty}));
