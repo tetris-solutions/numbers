@@ -1,12 +1,14 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Report\MetaData\V2;
 
 
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\AttributeMetaData;
 use Tetris\Numbers\Base\Source;
 use Tetris\Numbers\Base\Summable;
+use Tetris\Numbers\Report\MetaData\Meta;
+use Tetris\Numbers\Report\MetaData\MetaDataReader;
 use Tetris\Numbers\Resolver\FacebookResolver;
 use Tetris\Numbers\Utils\ObjectUtils;
 
@@ -14,7 +16,7 @@ class MetaDataV2 implements MetaDataReader
 {
     use Meta;
 
-    const config = __DIR__ . '/../../config/dynamic';
+    const configDir = __DIR__ . '/../../../../../config/dynamic';
 
     static function listAttributes(string $platform, string $entity): array
     {
@@ -46,6 +48,7 @@ class MetaDataV2 implements MetaDataReader
                     FacebookResolver::isBreakdown($attribute->id)
                 ) {
                     $metaData->is_breakdown = true;
+                    self::setBreakdownPermutation($metaData);
                 }
 
                 $attributes[$attribute->id] = $metaData;
@@ -71,7 +74,7 @@ class MetaDataV2 implements MetaDataReader
     {
         $capitalizedPlatform = self::capitalized($platform);
 
-        return self::readDirFiles(realpath(self::config . "/{$capitalizedPlatform}/Sources/{$entity}"));
+        return self::readDirFiles(realpath(self::configDir . "/{$capitalizedPlatform}/Sources/{$entity}"));
     }
 
     static function getReport(string $platform, string $reportName): array
@@ -79,7 +82,7 @@ class MetaDataV2 implements MetaDataReader
         $capitalizedPlatform = self::capitalized($platform);
 
         $attributes = array_merge(
-            self::readDirFiles(realpath(self::config . "/{$capitalizedPlatform}/Attributes/{$reportName}"))/*,
+            self::readDirFiles(realpath(self::configDir . "/{$capitalizedPlatform}/Attributes/{$reportName}"))/*,
             self::getArtificialDimensions()*/
         );
 

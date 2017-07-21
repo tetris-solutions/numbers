@@ -4,6 +4,7 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Tetris\Numbers\API\TokenManager;
 use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\Utils\ArrayUtils;
 use Throwable;
@@ -14,7 +15,7 @@ require_once 'logger.php';
 global $app;
 
 $container = $app->getContainer();
-$container['tkm'] = new TKMApi($app);
+$container['tkm'] = new TokenManager($app);
 
 function secured(string $action, \Closure $routeHandler): callable
 {

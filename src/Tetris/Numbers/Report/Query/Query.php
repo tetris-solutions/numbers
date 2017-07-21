@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Report\Query;
 
-use Tetris\Numbers\MetaData;
+use Tetris\Numbers\Report\MetaData\MetaData;
 use Tetris\Numbers\Report\Report;
 
 class Query extends Base

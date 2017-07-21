@@ -1,8 +1,9 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Report\MetaData;
 
 
+use Tetris\Numbers\Base\AttributeMetaData;
 use Tetris\Services\FlagsService;
 
 trait Meta
@@ -91,7 +92,7 @@ trait Meta
 
     protected static function getReplaceMap()
     {
-        return self::requireCached(realpath(__DIR__ . '/../../config/attribute-merges.php'));
+        return self::requireCached(realpath(__DIR__ . '/../../../../config/attribute-merges.php'));
     }
 
     static function getAttributeMerge(string $attribute, string $platform): array
@@ -120,10 +121,13 @@ trait Meta
     protected static function getArtificialDimensions()
     {
         return self::requireCached(
-            realpath(__DIR__ . "/../../config/dimensions.php")
+            realpath(__DIR__ . "/../../../../config/dimensions.php")
         );
     }
 
+    /**
+     * @param array|AttributeMetaData $config
+     */
     protected static function setBreakdownPermutation(&$config)
     {
         switch ($config['id']) {

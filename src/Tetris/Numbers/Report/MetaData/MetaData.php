@@ -1,12 +1,16 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Report\MetaData;
 
+use Tetris\Numbers\Report\MetaData\Meta;
+use Tetris\Numbers\Report\MetaData\MetaDataReader;
 use Tetris\Numbers\Resolver\FacebookResolver;
 
 abstract class MetaData implements MetaDataReader
 {
     use Meta;
+    const configDir = __DIR__ . '/../../../../../config';
+
     private static $metrics = [];
 
     private static $sources = [
@@ -24,7 +28,7 @@ abstract class MetaData implements MetaDataReader
     static function getSources(string $platform, string $entity): array
     {
         if (!isset(self::$sources[$platform][$entity])) {
-            $path = realpath(__DIR__ . "/../../../config/{$platform}/sources/" . strtolower($entity));
+            $path = realpath(self::configDir . "/{$platform}/sources/" . strtolower($entity));
 
             self::$sources[$platform][$entity] = self::readDirFiles($path);
         }
@@ -35,14 +39,14 @@ abstract class MetaData implements MetaDataReader
     static function getMetricSource(string $platform, string $entity, string $metric): array
     {
         return self::requireCached(
-            realpath(__DIR__ . "/../../../config/{$platform}/sources/" . strtolower($entity) . "/{$metric}.php")
+            realpath(self::configDir . "/{$platform}/sources/" . strtolower($entity) . "/{$metric}.php")
         );
     }
 
     static function getReport(string $platform, string $reportName): array
     {
         if (!isset(self::$reports[$platform][$reportName])) {
-            $path = realpath(__DIR__ . "/../../../config/{$platform}/reports/{$reportName}");
+            $path = realpath(self::configDir . "/{$platform}/reports/{$reportName}");
 
             $attributes = array_merge(
                 self::readDirFiles($path),
@@ -68,7 +72,7 @@ abstract class MetaData implements MetaDataReader
     static function getMetric(string $id): array
     {
         if (!isset(self::$metrics[$id])) {
-            $path = realpath(__DIR__ . "/../../../config/metrics/{$id}.php");
+            $path = realpath(self::configDir . "/metrics/{$id}.php");
 
             self::$metrics[$id] = self::requireCached($path);
         }

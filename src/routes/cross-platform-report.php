@@ -4,9 +4,11 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Tetris\Numbers\API\TokenManager;
 use Tetris\Numbers\Report\CrossPlatform\CrossPlatformReport;
 use Tetris\Numbers\Report\CrossPlatform\XQuery;
 use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\ResultParser;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;
 use Tetris\Numbers\Resolver\FacebookResolver;
@@ -46,7 +48,7 @@ $app->post('/x',
         $exceptions = [];
         $rows = [];
         /**
-         * @var TKMApi $tkm
+         * @var TokenManager $tkm
          */
         $tkm = $this->tkm;
 

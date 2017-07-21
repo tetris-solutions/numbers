@@ -2,7 +2,9 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Numbers\API\TokenManager;
 use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\ResultParser;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;
 use Tetris\Numbers\Resolver\FacebookResolver;
@@ -35,7 +37,7 @@ $app->post('/',
 
         $query = new Query($locale, $body);
         /**
-         * @var TKMApi $tkm
+         * @var TokenManager $tkm
          */
         $tkm = $this->tkm;
         $account = $tkm->getAccount($query->tetrisAccountId);

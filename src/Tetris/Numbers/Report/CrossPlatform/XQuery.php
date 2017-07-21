@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Report\CrossPlatform;
 
-use Tetris\Numbers\MetaData;
+use Tetris\Numbers\Report\MetaData\MetaData;
 use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\Report\Query\Blueprint;
 

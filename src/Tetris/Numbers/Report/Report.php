@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Report;
 
-use Tetris\Numbers\MetaData;
+use Tetris\Numbers\Report\MetaData\MetaData;
 
 class Report
 {

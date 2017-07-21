@@ -1,13 +1,13 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\API;
 
 use Httpful\Http;
 use Tetris\Services\ApiService;
 use stdClass;
 
 
-class TKMApi extends ApiService
+class TokenManager extends ApiService
 {
     private $accountCache = [];
 
