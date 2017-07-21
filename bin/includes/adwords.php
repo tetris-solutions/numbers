@@ -235,6 +235,8 @@ function getAdwordsConfig(): array
                 $attr->incompatible = $incompatibleFields;
             }
 
+            Generator::add(get_object_vars($attr));
+
             $reportConfig['attributes'][$index] = $attr;
         }
 

@@ -8,12 +8,12 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'invalidclicks';
 
 	public $incompatible = [
-	    "ConversionCategoryName",
-	    "ConversionTrackerId",
-	    "ConversionTypeName",
-	    "ExternalConversionSource",
-	    "HourOfDay",
-	    "Slot"
+	    "conversioncategoryname",
+	    "conversiontrackerid",
+	    "conversiontypename",
+	    "externalconversionsource",
+	    "hourofday",
+	    "slot"
 	];
 
 	public $is_dimension = false;

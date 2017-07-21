@@ -243,8 +243,6 @@ class AttributeFactory extends Generator
             $attribute->traits['parser'] = $this->parser->getParser('raw');
         }
 
-        self::add(get_object_vars($attribute));
-
         return $attribute;
     }
 }

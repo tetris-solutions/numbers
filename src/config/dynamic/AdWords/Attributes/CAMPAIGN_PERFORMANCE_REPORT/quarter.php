@@ -8,8 +8,8 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'quarter';
 
 	public $incompatible = [
-	    "AverageFrequency",
-	    "ImpressionReach"
+	    "averagefrequency",
+	    "impressionreach"
 	];
 
 	public $is_dimension = true;

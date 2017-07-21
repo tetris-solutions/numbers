@@ -8,12 +8,12 @@ return new class extends Attribute_IntegerParser_Parsable {
 	public $id = 'hourofday';
 
 	public $incompatible = [
-	    "AllConversionRate",
-	    "AllConversionValue",
-	    "AllConversions",
-	    "CostPerAllConversion",
-	    "CrossDeviceConversions",
-	    "ValuePerAllConversion"
+	    "allconversionrate",
+	    "allconversionvalue",
+	    "allconversions",
+	    "costperallconversion",
+	    "crossdeviceconversions",
+	    "valueperallconversion"
 	];
 
 	public $is_dimension = true;

@@ -8,27 +8,27 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'externalconversionsource';
 
 	public $incompatible = [
-	    "AverageCost",
-	    "AverageCpc",
-	    "AverageCpe",
-	    "AverageCpm",
-	    "AverageCpv",
-	    "AveragePosition",
-	    "Clicks",
-	    "Cost",
-	    "Ctr",
-	    "EngagementRate",
-	    "Engagements",
-	    "Impressions",
-	    "InteractionRate",
-	    "InteractionTypes",
-	    "Interactions",
-	    "VideoQuartile100Rate",
-	    "VideoQuartile25Rate",
-	    "VideoQuartile50Rate",
-	    "VideoQuartile75Rate",
-	    "VideoViewRate",
-	    "VideoViews"
+	    "averagecost",
+	    "averagecpc",
+	    "averagecpe",
+	    "averagecpm",
+	    "averagecpv",
+	    "averageposition",
+	    "clicks",
+	    "cost",
+	    "ctr",
+	    "engagementrate",
+	    "engagements",
+	    "impressions",
+	    "interactionrate",
+	    "interactiontypes",
+	    "interactions",
+	    "videoquartile100rate",
+	    "videoquartile25rate",
+	    "videoquartile50rate",
+	    "videoquartile75rate",
+	    "videoviewrate",
+	    "videoviews"
 	];
 
 	public $is_dimension = true;

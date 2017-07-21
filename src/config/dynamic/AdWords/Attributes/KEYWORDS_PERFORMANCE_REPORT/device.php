@@ -8,20 +8,20 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'device';
 
 	public $incompatible = [
-	    "AveragePageviews",
-	    "AverageTimeOnSite",
-	    "BounceRate",
-	    "ClickAssistedConversionValue",
-	    "ClickAssistedConversions",
-	    "ClickAssistedConversionsOverLastClickConversions",
-	    "HistoricalCreativeQualityScore",
-	    "HistoricalLandingPageQualityScore",
-	    "HistoricalQualityScore",
-	    "HistoricalSearchPredictedCtr",
-	    "ImpressionAssistedConversionValue",
-	    "ImpressionAssistedConversions",
-	    "ImpressionAssistedConversionsOverLastClickConversions",
-	    "PercentNewVisitors"
+	    "averagepageviews",
+	    "averagetimeonsite",
+	    "bouncerate",
+	    "clickassistedconversionvalue",
+	    "clickassistedconversions",
+	    "clickassistedconversionsoverlastclickconversions",
+	    "historicalcreativequalityscore",
+	    "historicallandingpagequalityscore",
+	    "historicalqualityscore",
+	    "historicalsearchpredictedctr",
+	    "impressionassistedconversionvalue",
+	    "impressionassistedconversions",
+	    "impressionassistedconversionsoverlastclickconversions",
+	    "percentnewvisitors"
 	];
 
 	public $is_dimension = true;

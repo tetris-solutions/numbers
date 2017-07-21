@@ -8,7 +8,7 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'roas';
 
 	public $incompatible = [
-	    "ExternalConversionSource"
+	    "externalconversionsource"
 	];
 
 	public $is_dimension = false;

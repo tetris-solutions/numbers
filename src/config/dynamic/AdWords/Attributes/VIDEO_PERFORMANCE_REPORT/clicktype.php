@@ -8,16 +8,16 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'clicktype';
 
 	public $incompatible = [
-	    "AverageCpv",
-	    "EngagementRate",
-	    "Engagements",
-	    "VideoQuartile100Rate",
-	    "VideoQuartile25Rate",
-	    "VideoQuartile50Rate",
-	    "VideoQuartile75Rate",
-	    "VideoViewRate",
-	    "VideoViews",
-	    "ViewThroughConversions"
+	    "averagecpv",
+	    "engagementrate",
+	    "engagements",
+	    "videoquartile100rate",
+	    "videoquartile25rate",
+	    "videoquartile50rate",
+	    "videoquartile75rate",
+	    "videoviewrate",
+	    "videoviews",
+	    "viewthroughconversions"
 	];
 
 	public $is_dimension = true;

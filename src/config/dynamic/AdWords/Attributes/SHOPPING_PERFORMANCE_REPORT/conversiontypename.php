@@ -8,13 +8,13 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'conversiontypename';
 
 	public $incompatible = [
-	    "AverageCpc",
-	    "Clicks",
-	    "Cost",
-	    "Ctr",
-	    "Impressions",
-	    "SearchClickShare",
-	    "SearchImpressionShare"
+	    "averagecpc",
+	    "clicks",
+	    "cost",
+	    "ctr",
+	    "impressions",
+	    "searchclickshare",
+	    "searchimpressionshare"
 	];
 
 	public $is_dimension = true;

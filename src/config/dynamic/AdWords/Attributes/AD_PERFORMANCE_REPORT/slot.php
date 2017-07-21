@@ -8,22 +8,22 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'slot';
 
 	public $incompatible = [
-	    "AllConversionRate",
-	    "AllConversionValue",
-	    "AllConversions",
-	    "AveragePageviews",
-	    "AverageTimeOnSite",
-	    "BounceRate",
-	    "ClickAssistedConversionValue",
-	    "ClickAssistedConversions",
-	    "ClickAssistedConversionsOverLastClickConversions",
-	    "CostPerAllConversion",
-	    "CrossDeviceConversions",
-	    "ImpressionAssistedConversionValue",
-	    "ImpressionAssistedConversions",
-	    "ImpressionAssistedConversionsOverLastClickConversions",
-	    "PercentNewVisitors",
-	    "ValuePerAllConversion"
+	    "allconversionrate",
+	    "allconversionvalue",
+	    "allconversions",
+	    "averagepageviews",
+	    "averagetimeonsite",
+	    "bouncerate",
+	    "clickassistedconversionvalue",
+	    "clickassistedconversions",
+	    "clickassistedconversionsoverlastclickconversions",
+	    "costperallconversion",
+	    "crossdeviceconversions",
+	    "impressionassistedconversionvalue",
+	    "impressionassistedconversions",
+	    "impressionassistedconversionsoverlastclickconversions",
+	    "percentnewvisitors",
+	    "valueperallconversion"
 	];
 
 	public $is_dimension = true;

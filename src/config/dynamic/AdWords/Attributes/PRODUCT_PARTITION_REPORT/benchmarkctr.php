@@ -8,8 +8,8 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'benchmarkctr';
 
 	public $incompatible = [
-	    "ClickType",
-	    "Device"
+	    "clicktype",
+	    "device"
 	];
 
 	public $is_dimension = false;

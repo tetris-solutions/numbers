@@ -8,12 +8,12 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'searchimpressionshare';
 
 	public $incompatible = [
-	    "ClickType",
-	    "ConversionCategoryName",
-	    "ConversionTrackerId",
-	    "ConversionTypeName",
-	    "ExternalConversionSource",
-	    "StoreId"
+	    "clicktype",
+	    "conversioncategoryname",
+	    "conversiontrackerid",
+	    "conversiontypename",
+	    "externalconversionsource",
+	    "storeid"
 	];
 
 	public $is_dimension = false;

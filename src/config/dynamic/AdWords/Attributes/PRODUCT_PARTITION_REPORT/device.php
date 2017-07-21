@@ -8,8 +8,8 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'device';
 
 	public $incompatible = [
-	    "BenchmarkAverageMaxCpc",
-	    "BenchmarkCtr"
+	    "benchmarkaveragemaxcpc",
+	    "benchmarkctr"
 	];
 
 	public $is_dimension = true;

@@ -8,7 +8,7 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'viewthroughconversions';
 
 	public $incompatible = [
-	    "ClickType"
+	    "clicktype"
 	];
 
 	public $is_dimension = false;

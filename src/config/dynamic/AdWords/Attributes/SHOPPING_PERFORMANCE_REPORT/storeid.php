@@ -8,7 +8,7 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'storeid';
 
 	public $incompatible = [
-	    "SearchImpressionShare"
+	    "searchimpressionshare"
 	];
 
 	public $is_dimension = true;

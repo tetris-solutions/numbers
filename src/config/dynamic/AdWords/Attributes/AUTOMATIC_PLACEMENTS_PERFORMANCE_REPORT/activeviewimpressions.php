@@ -8,10 +8,10 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'activeviewimpressions';
 
 	public $incompatible = [
-	    "ConversionCategoryName",
-	    "ConversionTrackerId",
-	    "ConversionTypeName",
-	    "ExternalConversionSource"
+	    "conversioncategoryname",
+	    "conversiontrackerid",
+	    "conversiontypename",
+	    "externalconversionsource"
 	];
 
 	public $is_dimension = false;

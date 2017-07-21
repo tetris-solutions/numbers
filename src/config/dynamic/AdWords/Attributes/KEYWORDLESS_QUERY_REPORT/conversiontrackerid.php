@@ -8,16 +8,16 @@ return new class extends Attribute_IntegerParser_Parsable {
 	public $id = 'conversiontrackerid';
 
 	public $incompatible = [
-	    "AverageCpc",
-	    "AverageCpm",
-	    "Clicks",
-	    "ConversionRate",
-	    "Conversions",
-	    "Cost",
-	    "CostPerConversion",
-	    "Ctr",
-	    "Impressions",
-	    "ValuePerConversion"
+	    "averagecpc",
+	    "averagecpm",
+	    "clicks",
+	    "conversionrate",
+	    "conversions",
+	    "cost",
+	    "costperconversion",
+	    "ctr",
+	    "impressions",
+	    "valueperconversion"
 	];
 
 	public $is_dimension = true;

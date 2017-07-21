@@ -8,8 +8,8 @@ return new class extends Attribute_IntegerParser_Parsable {
 	public $id = 'year';
 
 	public $incompatible = [
-	    "AverageFrequency",
-	    "ImpressionReach"
+	    "averagefrequency",
+	    "impressionreach"
 	];
 
 	public $is_dimension = true;

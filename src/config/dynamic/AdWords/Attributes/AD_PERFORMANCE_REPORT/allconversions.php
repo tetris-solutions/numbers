@@ -8,7 +8,7 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'allconversions';
 
 	public $incompatible = [
-	    "Slot"
+	    "slot"
 	];
 
 	public $is_dimension = false;

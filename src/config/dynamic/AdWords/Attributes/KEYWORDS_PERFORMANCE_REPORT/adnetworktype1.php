@@ -8,10 +8,10 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'adnetworktype1';
 
 	public $incompatible = [
-	    "HistoricalCreativeQualityScore",
-	    "HistoricalLandingPageQualityScore",
-	    "HistoricalQualityScore",
-	    "HistoricalSearchPredictedCtr"
+	    "historicalcreativequalityscore",
+	    "historicallandingpagequalityscore",
+	    "historicalqualityscore",
+	    "historicalsearchpredictedctr"
 	];
 
 	public $is_dimension = true;

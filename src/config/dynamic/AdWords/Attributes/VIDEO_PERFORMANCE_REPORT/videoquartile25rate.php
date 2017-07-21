@@ -8,10 +8,10 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'videoquartile25rate';
 
 	public $incompatible = [
-	    "ClickType",
-	    "ConversionCategoryName",
-	    "ConversionTypeName",
-	    "ExternalConversionSource"
+	    "clicktype",
+	    "conversioncategoryname",
+	    "conversiontypename",
+	    "externalconversionsource"
 	];
 
 	public $is_dimension = false;

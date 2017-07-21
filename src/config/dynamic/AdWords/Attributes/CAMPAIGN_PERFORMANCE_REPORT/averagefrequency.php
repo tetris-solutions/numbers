@@ -8,17 +8,17 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'averagefrequency';
 
 	public $incompatible = [
-	    "ClickType",
-	    "ConversionCategoryName",
-	    "ConversionTrackerId",
-	    "ConversionTypeName",
-	    "DayOfWeek",
-	    "Device",
-	    "ExternalConversionSource",
-	    "HourOfDay",
-	    "Quarter",
-	    "Slot",
-	    "Year"
+	    "clicktype",
+	    "conversioncategoryname",
+	    "conversiontrackerid",
+	    "conversiontypename",
+	    "dayofweek",
+	    "device",
+	    "externalconversionsource",
+	    "hourofday",
+	    "quarter",
+	    "slot",
+	    "year"
 	];
 
 	public $is_dimension = false;

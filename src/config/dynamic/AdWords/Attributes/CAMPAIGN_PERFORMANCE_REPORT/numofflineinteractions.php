@@ -8,12 +8,12 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'numofflineinteractions';
 
 	public $incompatible = [
-	    "ConversionCategoryName",
-	    "ConversionTrackerId",
-	    "ConversionTypeName",
-	    "Device",
-	    "ExternalConversionSource",
-	    "Slot"
+	    "conversioncategoryname",
+	    "conversiontrackerid",
+	    "conversiontypename",
+	    "device",
+	    "externalconversionsource",
+	    "slot"
 	];
 
 	public $is_dimension = false;

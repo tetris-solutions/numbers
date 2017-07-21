@@ -8,8 +8,8 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'crossdeviceconversions';
 
 	public $incompatible = [
-	    "HourOfDay",
-	    "Slot"
+	    "hourofday",
+	    "slot"
 	];
 
 	public $is_dimension = false;

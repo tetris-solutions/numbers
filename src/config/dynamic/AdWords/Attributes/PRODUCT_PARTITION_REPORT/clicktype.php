@@ -8,10 +8,10 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'clicktype';
 
 	public $incompatible = [
-	    "BenchmarkAverageMaxCpc",
-	    "BenchmarkCtr",
-	    "SearchClickShare",
-	    "SearchImpressionShare"
+	    "benchmarkaveragemaxcpc",
+	    "benchmarkctr",
+	    "searchclickshare",
+	    "searchimpressionshare"
 	];
 
 	public $is_dimension = true;

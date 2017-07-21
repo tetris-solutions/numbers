@@ -8,11 +8,11 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'averagecpe';
 
 	public $incompatible = [
-	    "ClickType",
-	    "ConversionCategoryName",
-	    "ConversionTrackerId",
-	    "ConversionTypeName",
-	    "ExternalConversionSource"
+	    "clicktype",
+	    "conversioncategoryname",
+	    "conversiontrackerid",
+	    "conversiontypename",
+	    "externalconversionsource"
 	];
 
 	public $is_dimension = false;

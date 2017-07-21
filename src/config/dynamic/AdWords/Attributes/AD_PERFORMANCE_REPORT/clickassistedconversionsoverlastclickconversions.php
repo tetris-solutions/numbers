@@ -8,13 +8,13 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'clickassistedconversionsoverlastclickconversions';
 
 	public $incompatible = [
-	    "ClickType",
-	    "ConversionCategoryName",
-	    "ConversionTrackerId",
-	    "ConversionTypeName",
-	    "Device",
-	    "ExternalConversionSource",
-	    "Slot"
+	    "clicktype",
+	    "conversioncategoryname",
+	    "conversiontrackerid",
+	    "conversiontypename",
+	    "device",
+	    "externalconversionsource",
+	    "slot"
 	];
 
 	public $is_dimension = false;

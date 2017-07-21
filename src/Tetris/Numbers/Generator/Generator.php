@@ -15,7 +15,7 @@ abstract class Generator
     protected static $inventory = [];
 
 
-    protected static function add(array $config)
+    static function add(array $config)
     {
         self::$inventory[] = $config;
     }

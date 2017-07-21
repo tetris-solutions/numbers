@@ -8,15 +8,15 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'historicalqualityscore';
 
 	public $incompatible = [
-	    "AdNetworkType1",
-	    "AdNetworkType2",
-	    "ClickType",
-	    "ConversionCategoryName",
-	    "ConversionTrackerId",
-	    "ConversionTypeName",
-	    "Device",
-	    "ExternalConversionSource",
-	    "Slot"
+	    "adnetworktype1",
+	    "adnetworktype2",
+	    "clicktype",
+	    "conversioncategoryname",
+	    "conversiontrackerid",
+	    "conversiontypename",
+	    "device",
+	    "externalconversionsource",
+	    "slot"
 	];
 
 	public $is_dimension = false;

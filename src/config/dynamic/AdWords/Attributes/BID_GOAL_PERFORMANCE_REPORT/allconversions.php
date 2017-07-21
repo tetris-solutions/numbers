@@ -8,7 +8,7 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'allconversions';
 
 	public $incompatible = [
-	    "HourOfDay"
+	    "hourofday"
 	];
 
 	public $is_dimension = false;

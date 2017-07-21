@@ -8,8 +8,8 @@ return new class extends Attribute_RawParser_Parsable {
 	public $id = 'clicktype';
 
 	public $incompatible = [
-	    "SearchClickShare",
-	    "SearchImpressionShare"
+	    "searchclickshare",
+	    "searchimpressionshare"
 	];
 
 	public $is_dimension = true;
