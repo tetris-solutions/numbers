@@ -74,7 +74,7 @@ $app->post('/',
             );
         }
 
-        $rows = ResultParser::filter($rows, $query->report->filters, $query->report->auxiliary);
+        $rows = ResultParser::filter($rows, $query->report->filters);
 
         return $response->withJson([
             'exceptions' => $exceptions,
