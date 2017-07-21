@@ -2,10 +2,9 @@
 
 namespace Tetris\Numbers\Generator;
 
-use ArrayAccess;
 use Tetris\Numbers\Base\Attribute;
 
-class TransientAttribute extends Attribute implements ArrayAccess
+class TransientAttribute extends Attribute
 {
     use Transient;
     use LegacyTransient;
@@ -16,9 +15,9 @@ class TransientAttribute extends Attribute implements ArrayAccess
 
         foreach (get_object_vars($this) as $key => $value) {
             $isLegacyAttribute = $key !== 'platform' && (
-                property_exists(Attribute::class, $key) ||
-                property_exists(LegacyTransient::class, $key)
-            );
+                    property_exists(Attribute::class, $key) ||
+                    property_exists(LegacyTransient::class, $key)
+                );
 
             if ($isLegacyAttribute && isset($value)) {
                 $array[$key] = $value;
@@ -26,25 +25,5 @@ class TransientAttribute extends Attribute implements ArrayAccess
         }
 
         return $array;
-    }
-
-    function offsetExists($offset)
-    {
-        return isset($this->{$offset});
-    }
-
-    function offsetGet($offset)
-    {
-        return $this->{$offset} ?? null;
-    }
-
-    function offsetSet($offset, $value)
-    {
-        $this->{$offset} = $value;
-    }
-
-    function offsetUnset($offset)
-    {
-        $this->{$offset} = null;
     }
 }
