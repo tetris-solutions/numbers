@@ -2,12 +2,12 @@
 
 namespace Tetris\Numbers\Base;
 
-use Tetris\Numbers\Utils\GenericArray;
+use Tetris\Numbers\Utils\GenericArrayAccess;
 use ArrayAccess;
 
 abstract class Field implements ArrayAccess
 {
-    use GenericArray;
+    use GenericArrayAccess;
 
     /**
      * @var string

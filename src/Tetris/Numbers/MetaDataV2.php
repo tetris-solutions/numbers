@@ -8,6 +8,7 @@ use Tetris\Numbers\Base\AttributeMetaData;
 use Tetris\Numbers\Base\Source;
 use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Resolver\FacebookResolver;
+use Tetris\Numbers\Utils\ObjectUtils;
 
 class MetaDataV2 implements MetaDataReader
 {
@@ -31,21 +32,23 @@ class MetaDataV2 implements MetaDataReader
              * @var Attribute $attribute
              */
             foreach ($reportAttributes as $attribute) {
-                $config = new AttributeMetaData();
-
-                foreach (get_object_vars($attribute) as $key => $value) {
-                    $config->{$key} = $value;
-                }
+                /**
+                 * @var AttributeMetaData $metaData
+                 */
+                $metaData = ObjectUtils::cast(
+                    AttributeMetaData::class,
+                    $attribute
+                );
 
                 if (
                     !$attribute->is_metric &&
                     $platform === 'facebook' &&
                     FacebookResolver::isBreakdown($attribute->id)
                 ) {
-                    $config->is_breakdown = true;
+                    $metaData->is_breakdown = true;
                 }
 
-                $attributes[$attribute->id] = $config;
+                $attributes[$attribute->id] = $metaData;
             }
 
             /**

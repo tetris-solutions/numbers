@@ -35,7 +35,7 @@ class SourceFactory extends Generator
 
     public static function clear(array $config)
     {
-        return self::clearConfig($config, [
+        return self::clearConfig($config,
             // @todo unmaintainable code
             'id',
             'property',
@@ -60,7 +60,7 @@ class SourceFactory extends Generator
             'divisorProperty',
             'videoQuartileMetric',
             'videoViewsMetric'
-        ]);
+        );
     }
 
     private function normalize(array $config): array

@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Utils;
 
-trait GenericArray
+trait GenericArrayAccess
 {
     function offsetExists($offset)
     {

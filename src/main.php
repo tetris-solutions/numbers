@@ -4,6 +4,7 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Tetris\Numbers\Utils\ArrayUtils;
 use Throwable;
 
 require 'constants.php';
@@ -13,49 +14,6 @@ global $app;
 
 $container = $app->getContainer();
 $container['tkm'] = new TKMApi($app);
-
-function uniq(array $s): array
-{
-    return array_values(array_unique($s));
-}
-
-function omit(array $array, ...$keys): array
-{
-    foreach ($keys as $key) {
-        if (array_key_exists($key, $array)) {
-            unset($array[$key]);
-        }
-    }
-
-    return $array;
-}
-
-function flatten(array $array): array
-{
-    $parsed = [];
-
-    foreach ($array as $key => $value) {
-        if (is_array($value) || is_object($value)) {
-            $value = (array)$value;
-            $size = count($value);
-
-            if ($size > 20) {
-                $parsed[$key] = "[ {$size} values ]";
-                continue;
-            }
-
-            $subArray = flatten($value);
-
-            foreach ($subArray as $subKey => $subValue) {
-                $parsed["{$key}_{$subKey}"] = $subValue;
-            }
-        } else {
-            $parsed[$key] = is_string($value) ? $value : (string)$value;
-        }
-    }
-
-    return $parsed;
-}
 
 function secured(string $action, \Closure $routeHandler): callable
 {
@@ -73,15 +31,15 @@ function secured(string $action, \Closure $routeHandler): callable
             $routeHandler = $routeHandler->bindTo($this);
             $result = $routeHandler($request, $response, $params);
 
-            $logger->debug("request {$action}", flatten([
+            $logger->debug("request {$action}", ArrayUtils::flatten([
                 'category' => 'action',
                 'action' => $action,
                 'request' => $req
-            ]));
+            ], 20));
 
             return $result;
         } catch (Throwable $e) {
-            $logger->warning("{$action} failure", flatten([
+            $logger->warning("{$action} failure", ArrayUtils::flatten([
                 'category' => 'event',
                 'event' => 'report-failure',
                 'request' => $req,
@@ -90,7 +48,7 @@ function secured(string $action, \Closure $routeHandler): callable
                     'message' => $e->getMessage(),
                     'stack' => $e->getTraceAsString()
                 ]
-            ]));
+            ], 20));
 
             throw $e;
         }

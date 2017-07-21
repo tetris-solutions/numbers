@@ -3,11 +3,11 @@
 namespace Tetris\Numbers\Base;
 
 use ArrayAccess;
-use Tetris\Numbers\Utils\GenericArray;
+use Tetris\Numbers\Utils\GenericArrayAccess;
 
 class ComplexValue implements ArrayAccess
 {
-    use GenericArray;
+    use GenericArrayAccess;
 
     public $value;
     public $raw;

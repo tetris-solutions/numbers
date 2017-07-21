@@ -24,20 +24,23 @@ function nullLess(array $ls): array
 
 global $app;
 
-$metaDataRouteHandler = function (string $action): callable {
+function metaDataRouteHandler(string $action): callable
+{
     return secured($action, function (Request $request, Response $response, array $params) {
         $entity = $request->getQueryParam('entity');
         $platform = $request->getQueryParam('platform');
-        $attributes = nullLess(MetaData::listAttributes($platform, $entity));
+        $attributes = MetaData::listAttributes($platform, $entity);
 
         return $response->withJson(isset($params['attribute'])
             ? $attributes[$params['attribute']]
             : $attributes);
     });
-};
+}
 
-$app->get('/v2/meta-data', secured('get-meta-data-v2',
-    function (Request $request, Response $response, array $params) {
+;
+function metaDataRouteHandlerV2(string $action)
+{
+    return secured($action, function (Request $request, Response $response, array $params) {
         $entity = $request->getQueryParam('entity');
         $platform = $request->getQueryParam('platform');
         $attributes = nullLess(MetaDataV2::listAttributes($platform, $entity));
@@ -45,8 +48,12 @@ $app->get('/v2/meta-data', secured('get-meta-data-v2',
         return $response->withJson(isset($params['attribute'])
             ? $attributes[$params['attribute']]
             : $attributes);
-    }));
+    });
+}
 
-$app->get('/meta', $metaDataRouteHandler('get-meta-data'));
-$app->get('/meta-data', $metaDataRouteHandler('get-meta-data'));
-$app->get('/meta-data/{attribute}', $metaDataRouteHandler('get-attribute-meta-data'));
+$app->get('/v2/meta-data', metaDataRouteHandlerV2('get-meta-data-v2'));
+$app->get('/v2/meta-data/{attribute}', metaDataRouteHandlerV2('get-attribute-meta-data-v2'));
+
+$app->get('/meta', metaDataRouteHandler('get-meta-data'));
+$app->get('/meta-data', metaDataRouteHandler('get-meta-data'));
+$app->get('/meta-data/{attribute}', metaDataRouteHandler('get-attribute-meta-data'));

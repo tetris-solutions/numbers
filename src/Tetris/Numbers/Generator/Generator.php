@@ -6,6 +6,7 @@ use gossi\codegen\generator\CodeFileGenerator;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpProperty;
 use function Tetris\Numbers\prettyVarExport;
+use Tetris\Numbers\Utils\ArrayUtils;
 
 abstract class Generator
 {
@@ -20,11 +21,9 @@ abstract class Generator
         self::$inventory[] = $config;
     }
 
-    protected static function clearConfig(array $config, array $omit): array
+    protected static function clearConfig(array $config, ...$omit): array
     {
-        foreach ($omit as $key) {
-            unset($config[$key]);
-        }
+        $config = ArrayUtils::omit($config, ...$omit);
 
         $config['platform'] = strtolower($config['platform']);
 
@@ -94,13 +93,13 @@ abstract class Generator
         $configClass->addUseStatement($class->getQualifiedName());
         $configClass->setParentClassName($class->getName());
 
-        $props = self::clearConfig($config, [
+        $props = self::clearConfig($config,
             'path',
             'traits',
             'interfaces',
             'parent',
             'raw_property'
-        ]);
+        );
 
         foreach ($props as $key => $value) {
             if (is_scalar($value)) {
