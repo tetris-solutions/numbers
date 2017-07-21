@@ -238,9 +238,9 @@ class AttributeFactory extends Generator
                 $attribute->type,
                 $attribute->property
             );
-            $attribute->traits['parse'] = $this->parser->getParser($attribute->type);
+            $attribute->traits['parser'] = $this->parser->getParser($attribute->type);
         } else {
-            $attribute->traits['parse'] = $this->parser->getParser('raw');
+            $attribute->traits['parser'] = $this->parser->getParser('raw');
         }
 
         self::add(get_object_vars($attribute));

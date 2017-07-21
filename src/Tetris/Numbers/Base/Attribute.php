@@ -41,4 +41,8 @@ abstract class Attribute
      * @var array|null
      */
     public $incompatible;
+    /**
+     * @var string
+     */
+    public $platform;
 }

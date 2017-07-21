@@ -8,7 +8,9 @@ use Tetris\Numbers\Base\Summable;
 
 class ClassWrapper extends PhpClass
 {
-    private function qualified(string $a): string
+    public $parentClass;
+
+    private function bareClassName(string $a): string
     {
         $parts = explode('\\', $a);
         return array_pop($parts);
@@ -33,14 +35,16 @@ class ClassWrapper extends PhpClass
 
         sort($traits);
 
-        $parentName = $this->qualified($config['parent']);
+        $this->parentClass = $config['parent'];
+
+        $parentName = $this->bareClassName($config['parent']);
         $platform = ucfirst($config['platform']);
 
         $name = implode("_",
             array_merge(
                 [$parentName],
-                array_map([$this, 'qualified'], $traits),
-                array_map([$this, 'qualified'], $interfaces)
+                array_map([$this, 'bareClassName'], $traits),
+                array_map([$this, 'bareClassName'], $interfaces)
             )
         );
 
@@ -58,12 +62,12 @@ class ClassWrapper extends PhpClass
         ));
 
         $this->setInterfaces(array_map(
-            [$this, 'qualified'],
+            [$this, 'bareClassName'],
             $interfaces
         ));
 
         $this->setTraits(array_map(
-            [$this, 'qualified'],
+            [$this, 'bareClassName'],
             $traits
         ));
 

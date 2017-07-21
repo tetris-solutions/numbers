@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_JSONParser;
+use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_JSONParser_Parsable;
 
-return new class extends Attribute_JSONParser {
+return new class extends Attribute_JSONParser_Parsable {
 
 	public $id = 'labelids';
 

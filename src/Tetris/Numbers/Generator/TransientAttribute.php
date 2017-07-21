@@ -15,7 +15,7 @@ class TransientAttribute extends Attribute implements ArrayAccess
         $array = [];
 
         foreach (get_object_vars($this) as $key => $value) {
-            $isLegacyAttribute = (
+            $isLegacyAttribute = $key !== 'platform' && (
                 property_exists(Attribute::class, $key) ||
                 property_exists(LegacyTransient::class, $key)
             );

@@ -2,9 +2,10 @@
 namespace Tetris\Numbers\Generated\AdWords\Attribute;
 
 use Tetris\Numbers\Base\Attribute;
+use Tetris\Numbers\Base\Parsable;
 use Tetris\Numbers\Base\Parser\IntegerParser;
 
-class Attribute_IntegerParser extends Attribute {
+class Attribute_IntegerParser_Parsable extends Attribute implements Parsable {
 
 	use IntegerParser;
 }

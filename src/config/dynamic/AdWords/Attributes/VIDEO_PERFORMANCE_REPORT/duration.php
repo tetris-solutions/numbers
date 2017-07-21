@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_IntegerParser;
+use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_IntegerParser_Parsable;
 
-return new class extends Attribute_IntegerParser {
+return new class extends Attribute_IntegerParser_Parsable {
 
 	public $id = 'duration';
 
