@@ -22,8 +22,6 @@ abstract class MetaData
 
     private static function requireCached(string $path)
     {
-        $e = new \Exception("would open {$path}");
-        trigger_error($e->getMessage() . ":\n" . $e->getTraceAsString());
         $key = sha1($path);
 
         if (!isset(self::$fCache[$key])) {
