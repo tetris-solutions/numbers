@@ -3,7 +3,7 @@
 namespace Tetris\Numbers;
 
 use Tetris\Numbers\API\TokenManager;
-use Tetris\Numbers\Report\Query\V2\Query;
+use Tetris\Numbers\Report\Query\QueryV2;
 use Tetris\Numbers\Report\ResultParser;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;
@@ -35,7 +35,7 @@ $app->post('/v2/report',
             !in_array('id', $body['dimensions'])
         );
 
-        $query = new Query($locale, $body);
+        $query = new QueryV2($locale, $body);
         /**
          * @var TokenManager $tkm
          */

@@ -1,14 +1,13 @@
 <?php
 
-namespace Tetris\Numbers\Report\Query\V2;
+namespace Tetris\Numbers\Report\Query;
 
 use Tetris\Numbers\Base\SourceMetaData;
-use Tetris\Numbers\Report\MetaData\V2\MetaDataV2;
+use Tetris\Numbers\Report\MetaData\MetaDataV2;
 use Tetris\Numbers\Report\Report;
-use Tetris\Numbers\Report\Query\Base;
 use Tetris\Numbers\Utils\ObjectUtils;
 
-class Query extends Base
+class QueryV2 extends Base
 {
     protected function mountMetric(string $id): SourceMetaData
     {

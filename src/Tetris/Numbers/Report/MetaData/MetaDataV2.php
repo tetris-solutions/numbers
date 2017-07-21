@@ -1,14 +1,12 @@
 <?php
 
-namespace Tetris\Numbers\Report\MetaData\V2;
+namespace Tetris\Numbers\Report\MetaData;
 
 
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\AttributeMetaData;
 use Tetris\Numbers\Base\Source;
 use Tetris\Numbers\Base\Summable;
-use Tetris\Numbers\Report\MetaData\Meta;
-use Tetris\Numbers\Report\MetaData\MetaDataReader;
 use Tetris\Numbers\Resolver\FacebookResolver;
 use Tetris\Numbers\Utils\ObjectUtils;
 
@@ -16,7 +14,7 @@ class MetaDataV2 implements MetaDataReader
 {
     use Meta;
 
-    const configDir = __DIR__ . '/../../../../../config/dynamic';
+    const configDir = __DIR__ . '/../../../../config/dynamic';
 
     static function listAttributes(string $platform, string $entity): array
     {

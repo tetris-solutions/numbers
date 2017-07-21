@@ -6,7 +6,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Tetris\Numbers\Base\AttributeMetaData;
 use stdClass;
-use Tetris\Numbers\Report\MetaData\V2\MetaDataV2;
+use Tetris\Numbers\Report\MetaData\MetaDataV2;
 
 function nullLess(array $ls): array
 {
