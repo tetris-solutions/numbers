@@ -80,23 +80,25 @@ class AnalyticsResolver implements Resolver
          */
         $reportResponse = $report->toSimpleObject();
         $rows = [];
+        $data = (object)$reportResponse->data;
+        $header = (object)$reportResponse->columnHeader;
+        $metricHeader = (object)($header->metricHeader ?? []);
 
-        /**
-         * @type array $reportRow
-         */
-        foreach ($reportResponse->data['rows'] as $reportRow) {
+        foreach ($data->rows as $reportRow) {
+            $reportRow = (object)$reportRow;
             $row = [];
 
-            foreach ($reportRow['dimensions'] as $index => $dimensioResult) {
-                $dimensionName = $reportResponse->columnHeader['dimensions'][$index];
-                $row[$dimensionName] = $dimensioResult;
+            foreach ($reportRow->dimensions as $index => $dimensionResult) {
+                $dimensionName = $header->dimensions[$index];
+                $row[$dimensionName] = $dimensionResult;
             }
 
-            $values = !empty($reportRow['metrics'][0]['values']) ? $reportRow['metrics'][0]['values'] : [];
+            $firstMetric = (object)($reportRow->metrics[0] ?? []);
+            $values = !empty($firstMetric->values) ? $firstMetric->values : [];
 
             foreach ($values as $index => $metricResult) {
-                $metricMetaData = $reportResponse->columnHeader['metricHeader']['metricHeaderEntries'][$index];
-                $row[$metricMetaData['name']] = $metricResult;
+                $metricMetaData = (object)$metricHeader->metricHeaderEntries[$index];
+                $row[$metricMetaData->name] = $metricResult;
             }
 
             $rows[] = $row;
