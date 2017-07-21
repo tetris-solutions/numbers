@@ -11,7 +11,7 @@ use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Services\FlagsService;
 
-abstract class ResultParser
+abstract class ResultParserV2
 {
     static function filter(array $allRows, array $filters): array
     {
@@ -126,33 +126,21 @@ abstract class ResultParser
         }
 
         /**
-         * @var AttributeMetaData|array $attribute
+         * @var AttributeMetaData $attribute
          */
         foreach ($report->dimensions as $attribute) {
-            $dimensionId = $attribute['id'];
-
-            if ($attribute instanceof Parsable) {
-                $row->{$dimensionId} = $attribute->parse($receivedObject, $query);
-            } else {
-                $parse = $attribute['parse'] ?? NULL;
-
-                if (is_callable($parse)) {
-                    $row->{$dimensionId} = $parse($receivedObject, $query);
-                } else {
-                    $dimensionProperty = $attribute['property'];
-
-                    $row->{$dimensionId} = $receivedObject->{$dimensionProperty} ?? NULL;
-                }
-            }
+            $row->{$attribute->id} = $attribute instanceof Parsable
+                ? $attribute->parse($receivedObject, $query)
+                : null;
         }
 
         /**
-         * @var SourceMetaData|array $metric
+         * @var SourceMetaData $metric
          */
         foreach ($report->metrics as $metric) {
-            $row->{$metric['id']} = $metric instanceof Parsable
+            $row->{$metric->id} = $metric instanceof Parsable
                 ? $metric->parse($receivedObject, $query)
-                : $metric['parse']($receivedObject, $query);
+                : null;
         }
 
         return $row;
@@ -201,15 +189,13 @@ abstract class ResultParser
                 $row->{$dimensionId} = $groupOfRows[0]->{$dimensionId} ?? NULL;
             }
 
+            /**
+             * @var SourceMetaData $metric
+             */
             foreach ($metrics as $metricId => $metric) {
-                if ($metric instanceof Summable) {
-                    $row->{$metricId} = $metric->sum($groupOfRows);
-                } else if (isset($metric['sum'])) {
-                    $val = $metric['sum']($groupOfRows);
-                    $row->{$metricId} = $val;
-                } else {
-                    $row->{$metricId} = NULL;
-                }
+                $row->{$metricId} = $metric instanceof Summable
+                    ? $metric->sum($groupOfRows)
+                    : NULL;
             }
 
             $result[] = $row;

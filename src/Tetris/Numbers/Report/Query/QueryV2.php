@@ -4,7 +4,7 @@ namespace Tetris\Numbers\Report\Query;
 
 use Tetris\Numbers\Base\SourceMetaData;
 use Tetris\Numbers\Report\MetaData\MetaDataV2;
-use Tetris\Numbers\Report\Report;
+use Tetris\Numbers\Report\ReportV2;
 use Tetris\Numbers\Utils\ObjectUtils;
 
 class QueryV2 extends QueryBase
@@ -28,7 +28,7 @@ class QueryV2 extends QueryBase
          */
         foreach ($this->metrics as $metric) {
             if (!$this->report) {
-                $this->report = new Report($this->platform, $metric->report);
+                $this->report = new ReportV2($this->platform, $metric->report);
             }
 
             $this->report->addMetric($metric, false);
