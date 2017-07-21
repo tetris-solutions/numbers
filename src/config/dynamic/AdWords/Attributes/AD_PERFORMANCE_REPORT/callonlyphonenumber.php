@@ -4,13 +4,20 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "callonlyphonenumber";
-	public $property = "CallOnlyPhoneNumber";
-	public $is_filter = false;
-	public $type = "string";
-	public $is_metric = false;
+
+	public $id = 'callonlyphonenumber';
+
 	public $is_dimension = true;
+
+	public $is_filter = false;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $platform = "adwords";
-	public $raw_property = "CallOnlyPhoneNumber";
+
+	public $platform = 'adwords';
+
+	public $property = 'CallOnlyPhoneNumber';
+
+	public $type = 'string';
 };

@@ -4,12 +4,22 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Source\Source_FloatParser_TrivialSum_Parsable_Summable;
 
 return new class extends Source_FloatParser_TrivialSum_Parsable_Summable {
-	public $id = "allconversionvalue";
-	public $metric = "allconversionvalue";
-	public $entity = "Partition";
-	public $platform = "adwords";
-	public $report = "PRODUCT_PARTITION_REPORT";
-	public $fields = ["AllConversionValue"];
-	public $property = "AllConversionValue";
-	public $type = "decimal";
+
+	public $entity = 'Partition';
+
+	public $fields = [
+	    "AllConversionValue"
+	];
+
+	public $id = 'allconversionvalue';
+
+	public $metric = 'allconversionvalue';
+
+	public $platform = 'adwords';
+
+	public $property = 'AllConversionValue';
+
+	public $report = 'PRODUCT_PARTITION_REPORT';
+
+	public $type = 'decimal';
 };

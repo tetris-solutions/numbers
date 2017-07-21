@@ -4,14 +4,25 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "enhancedcpcenabled";
-	public $property = "EnhancedCpcEnabled";
-	public $is_filter = true;
-	public $type = "enum";
-	public $is_metric = false;
+
+	public $id = 'enhancedcpcenabled';
+
 	public $is_dimension = true;
+
+	public $is_filter = true;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $values = {"TRUE":"true","FALSE":"false"};
-	public $platform = "adwords";
-	public $raw_property = "EnhancedCpcEnabled";
+
+	public $platform = 'adwords';
+
+	public $property = 'EnhancedCpcEnabled';
+
+	public $type = 'enum';
+
+	public $values = [
+	    "TRUE" => "true",
+	    "FALSE" => "false"
+	];
 };

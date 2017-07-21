@@ -4,13 +4,20 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "ispathexcluded";
-	public $property = "IsPathExcluded";
-	public $is_filter = false;
-	public $type = "boolean";
-	public $is_metric = false;
+
+	public $id = 'ispathexcluded';
+
 	public $is_dimension = true;
+
+	public $is_filter = false;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $platform = "adwords";
-	public $raw_property = "IsPathExcluded";
+
+	public $platform = 'adwords';
+
+	public $property = 'IsPathExcluded';
+
+	public $type = 'boolean';
 };

@@ -8,10 +8,10 @@ use Tetris\Numbers\Base\Parser\TriangulationParser;
 use Tetris\Numbers\Base\Sum\CPV100Sum;
 use Tetris\Numbers\Base\Sum\ImpressionShareSum;
 use Tetris\Numbers\Base\Sum\LostImpressionShareSum;
-use Tetris\Numbers\Generator\AdWords\Attribute;
 use Tetris\Numbers\Generator\AdWords\AttributeFactory;
 use Tetris\Numbers\Generator\AdWords\SourceFactory;
 use Tetris\Numbers\Generator\AdWords\TypeParser;
+use Tetris\Numbers\Generator\TransientAttribute;
 
 function impressionShareSum(string $metric)
 {
@@ -213,7 +213,7 @@ function getAdwordsConfig(): array
         $attributes = $reportConfig['attributes'];
 
         /**
-         * @var Attribute $attr
+         * @var TransientAttribute $attr
          */
         foreach ($attributes as $index => $attr) {
             if (!empty($attr->incompatible)) {
@@ -221,7 +221,7 @@ function getAdwordsConfig(): array
 
                 foreach ($attr->incompatible as $property) {
                     /**
-                     * @var Attribute $other
+                     * @var TransientAttribute $other
                      */
                     foreach ($attributes as $other) {
                         if ($other->raw_property === $property) {

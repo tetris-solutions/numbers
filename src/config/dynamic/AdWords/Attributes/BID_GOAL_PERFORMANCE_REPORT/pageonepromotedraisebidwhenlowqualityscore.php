@@ -4,14 +4,25 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "pageonepromotedraisebidwhenlowqualityscore";
-	public $property = "PageOnePromotedRaiseBidWhenLowQualityScore";
-	public $is_filter = true;
-	public $type = "enum";
-	public $is_metric = false;
+
+	public $id = 'pageonepromotedraisebidwhenlowqualityscore';
+
 	public $is_dimension = true;
+
+	public $is_filter = true;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $values = {"TRUE":"true","FALSE":"false"};
-	public $platform = "adwords";
-	public $raw_property = "PageOnePromotedRaiseBidWhenLowQualityScore";
+
+	public $platform = 'adwords';
+
+	public $property = 'PageOnePromotedRaiseBidWhenLowQualityScore';
+
+	public $type = 'enum';
+
+	public $values = [
+	    "TRUE" => "true",
+	    "FALSE" => "false"
+	];
 };

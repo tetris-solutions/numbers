@@ -4,14 +4,44 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_IntegerParser;
 
 return new class extends Attribute_IntegerParser {
-	public $id = "conversiontrackerid";
-	public $property = "ConversionTrackerId";
-	public $is_filter = true;
-	public $type = "integer";
-	public $is_metric = false;
+
+	public $id = 'conversiontrackerid';
+
+	public $incompatible = [
+	    "AverageCost",
+	    "AverageCpc",
+	    "AverageCpe",
+	    "AverageCpm",
+	    "AverageCpv",
+	    "AveragePosition",
+	    "Clicks",
+	    "Cost",
+	    "Ctr",
+	    "EngagementRate",
+	    "Engagements",
+	    "Impressions",
+	    "InteractionRate",
+	    "InteractionTypes",
+	    "Interactions",
+	    "VideoQuartile100Rate",
+	    "VideoQuartile25Rate",
+	    "VideoQuartile50Rate",
+	    "VideoQuartile75Rate",
+	    "VideoViewRate",
+	    "VideoViews"
+	];
+
 	public $is_dimension = true;
+
+	public $is_filter = true;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $incompatible = ["AverageCost","AverageCpc","AverageCpe","AverageCpm","AverageCpv","AveragePosition","Clicks","Cost","Ctr","EngagementRate","Engagements","Impressions","InteractionRate","InteractionTypes","Interactions","VideoQuartile100Rate","VideoQuartile25Rate","VideoQuartile50Rate","VideoQuartile75Rate","VideoViewRate","VideoViews"];
-	public $platform = "adwords";
-	public $raw_property = "ConversionTrackerId";
+
+	public $platform = 'adwords';
+
+	public $property = 'ConversionTrackerId';
+
+	public $type = 'integer';
 };

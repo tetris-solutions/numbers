@@ -4,12 +4,22 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Source\Source_IntegerParser_TrivialSum_Parsable_Summable;
 
 return new class extends Source_IntegerParser_TrivialSum_Parsable_Summable {
-	public $id = "impressions";
-	public $metric = "impressions";
-	public $entity = "Search";
-	public $platform = "adwords";
-	public $report = "SEARCH_QUERY_PERFORMANCE_REPORT";
-	public $fields = ["Impressions"];
-	public $property = "Impressions";
-	public $type = "integer";
+
+	public $entity = 'Search';
+
+	public $fields = [
+	    "Impressions"
+	];
+
+	public $id = 'impressions';
+
+	public $metric = 'impressions';
+
+	public $platform = 'adwords';
+
+	public $property = 'Impressions';
+
+	public $report = 'SEARCH_QUERY_PERFORMANCE_REPORT';
+
+	public $type = 'integer';
 };

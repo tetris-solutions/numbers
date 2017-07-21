@@ -4,15 +4,31 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Source\Source_PercentParser_RatioSum_Parsable_Summable;
 
 return new class extends Source_PercentParser_RatioSum_Parsable_Summable {
-	public $id = "conversionrate";
-	public $metric = "conversionrate";
-	public $entity = "Query";
-	public $platform = "adwords";
-	public $report = "KEYWORDLESS_QUERY_REPORT";
-	public $fields = ["ConversionRate"];
-	public $property = "ConversionRate";
-	public $type = "percentage";
-	public $dividendMetric = "conversions";
-	public $divisorMetric = "clicks";
-	public $inferred_from = ["conversions","clicks"];
+
+	public $dividendMetric = 'conversions';
+
+	public $divisorMetric = 'clicks';
+
+	public $entity = 'Query';
+
+	public $fields = [
+	    "ConversionRate"
+	];
+
+	public $id = 'conversionrate';
+
+	public $inferred_from = [
+	    "conversions",
+	    "clicks"
+	];
+
+	public $metric = 'conversionrate';
+
+	public $platform = 'adwords';
+
+	public $property = 'ConversionRate';
+
+	public $report = 'KEYWORDLESS_QUERY_REPORT';
+
+	public $type = 'percentage';
 };

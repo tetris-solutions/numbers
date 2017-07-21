@@ -4,13 +4,20 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_IntegerParser;
 
 return new class extends Attribute_IntegerParser {
-	public $id = "referencecount";
-	public $property = "BudgetReferenceCount";
-	public $is_filter = true;
-	public $type = "integer";
-	public $is_metric = false;
+
+	public $id = 'referencecount';
+
 	public $is_dimension = true;
+
+	public $is_filter = true;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $platform = "adwords";
-	public $raw_property = "BudgetReferenceCount";
+
+	public $platform = 'adwords';
+
+	public $property = 'BudgetReferenceCount';
+
+	public $type = 'integer';
 };

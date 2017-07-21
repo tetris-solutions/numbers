@@ -4,12 +4,22 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Source\Source_PercentParser_Parsable;
 
 return new class extends Source_PercentParser_Parsable {
-	public $id = "bouncerate";
-	public $metric = "bouncerate";
-	public $entity = "Ad";
-	public $platform = "adwords";
-	public $report = "AD_PERFORMANCE_REPORT";
-	public $fields = ["BounceRate"];
-	public $property = "BounceRate";
-	public $type = "percentage";
+
+	public $entity = 'Ad';
+
+	public $fields = [
+	    "BounceRate"
+	];
+
+	public $id = 'bouncerate';
+
+	public $metric = 'bouncerate';
+
+	public $platform = 'adwords';
+
+	public $property = 'BounceRate';
+
+	public $report = 'AD_PERFORMANCE_REPORT';
+
+	public $type = 'percentage';
 };

@@ -4,15 +4,33 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Source\Source_TriangulationParser_ImpressionShareSum_Parsable_Summable;
 
 return new class extends Source_TriangulationParser_ImpressionShareSum_Parsable_Summable {
-	public $id = "searchimpressionshare";
-	public $metric = "searchimpressionshare";
-	public $entity = "Keyword";
-	public $platform = "adwords";
-	public $report = "KEYWORDS_PERFORMANCE_REPORT";
-	public $property = "SearchImpressionShare";
-	public $type = "special";
-	public $auxiliaryMetrics = ["SearchRankLostImpressionShare"];
-	public $fields = ["SearchImpressionShare","SearchRankLostImpressionShare"];
-	public $impressionsMetric = "impressions";
-	public $inferred_from = ["impressions"];
+
+	public $auxiliaryMetrics = [
+	    "SearchRankLostImpressionShare"
+	];
+
+	public $entity = 'Keyword';
+
+	public $fields = [
+	    "SearchImpressionShare",
+	    "SearchRankLostImpressionShare"
+	];
+
+	public $id = 'searchimpressionshare';
+
+	public $impressionsMetric = 'impressions';
+
+	public $inferred_from = [
+	    "impressions"
+	];
+
+	public $metric = 'searchimpressionshare';
+
+	public $platform = 'adwords';
+
+	public $property = 'SearchImpressionShare';
+
+	public $report = 'KEYWORDS_PERFORMANCE_REPORT';
+
+	public $type = 'special';
 };

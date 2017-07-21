@@ -4,13 +4,20 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "categoryl4";
-	public $property = "CategoryL4";
-	public $is_filter = true;
-	public $type = "string";
-	public $is_metric = false;
+
+	public $id = 'categoryl4';
+
 	public $is_dimension = true;
+
+	public $is_filter = true;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $platform = "adwords";
-	public $raw_property = "CategoryL4";
+
+	public $platform = 'adwords';
+
+	public $property = 'CategoryL4';
+
+	public $type = 'string';
 };

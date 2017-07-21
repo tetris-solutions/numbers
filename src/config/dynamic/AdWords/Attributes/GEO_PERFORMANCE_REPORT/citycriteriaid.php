@@ -4,13 +4,20 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_IntegerParser;
 
 return new class extends Attribute_IntegerParser {
-	public $id = "citycriteriaid";
-	public $property = "CityCriteriaId";
-	public $is_filter = true;
-	public $type = "integer";
-	public $is_metric = false;
+
+	public $id = 'citycriteriaid';
+
 	public $is_dimension = true;
+
+	public $is_filter = true;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $platform = "adwords";
-	public $raw_property = "CityCriteriaId";
+
+	public $platform = 'adwords';
+
+	public $property = 'CityCriteriaId';
+
+	public $type = 'integer';
 };

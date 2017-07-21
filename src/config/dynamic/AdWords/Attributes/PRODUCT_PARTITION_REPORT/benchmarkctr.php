@@ -4,14 +4,25 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "benchmarkctr";
-	public $property = "BenchmarkCtr";
-	public $is_filter = true;
-	public $type = "decimal";
-	public $is_metric = true;
+
+	public $id = 'benchmarkctr';
+
+	public $incompatible = [
+	    "ClickType",
+	    "Device"
+	];
+
 	public $is_dimension = false;
+
+	public $is_filter = true;
+
+	public $is_metric = true;
+
 	public $is_percentage = false;
-	public $incompatible = ["ClickType","Device"];
-	public $platform = "adwords";
-	public $raw_property = "BenchmarkCtr";
+
+	public $platform = 'adwords';
+
+	public $property = 'BenchmarkCtr';
+
+	public $type = 'decimal';
 };

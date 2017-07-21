@@ -4,15 +4,31 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Source\Source_FloatParser_RatioSum_Parsable_Summable;
 
 return new class extends Source_FloatParser_RatioSum_Parsable_Summable {
-	public $id = "averagefrequency";
-	public $metric = "averagefrequency";
-	public $entity = "Campaign";
-	public $platform = "adwords";
-	public $report = "CAMPAIGN_PERFORMANCE_REPORT";
-	public $fields = ["AverageFrequency"];
-	public $property = "AverageFrequency";
-	public $type = "decimal";
-	public $dividendMetric = "impressions";
-	public $divisorMetric = "impressionreach";
-	public $inferred_from = ["impressions","impressionreach"];
+
+	public $dividendMetric = 'impressions';
+
+	public $divisorMetric = 'impressionreach';
+
+	public $entity = 'Campaign';
+
+	public $fields = [
+	    "AverageFrequency"
+	];
+
+	public $id = 'averagefrequency';
+
+	public $inferred_from = [
+	    "impressions",
+	    "impressionreach"
+	];
+
+	public $metric = 'averagefrequency';
+
+	public $platform = 'adwords';
+
+	public $property = 'AverageFrequency';
+
+	public $report = 'CAMPAIGN_PERFORMANCE_REPORT';
+
+	public $type = 'decimal';
 };

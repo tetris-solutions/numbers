@@ -4,13 +4,20 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "tabletbidmodifier";
-	public $property = "CampaignTabletBidModifier";
-	public $is_filter = true;
-	public $type = "decimal";
-	public $is_metric = false;
+
+	public $id = 'tabletbidmodifier';
+
 	public $is_dimension = true;
+
+	public $is_filter = true;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $platform = "adwords";
-	public $raw_property = "CampaignTabletBidModifier";
+
+	public $platform = 'adwords';
+
+	public $property = 'CampaignTabletBidModifier';
+
+	public $type = 'decimal';
 };

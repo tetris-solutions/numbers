@@ -4,14 +4,26 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "creativestatus";
-	public $property = "CreativeStatus";
-	public $is_filter = true;
-	public $type = "status";
-	public $is_metric = false;
+
+	public $id = 'creativestatus';
+
 	public $is_dimension = true;
+
+	public $is_filter = true;
+
+	public $is_metric = false;
+
 	public $is_percentage = false;
-	public $values = {"ENABLED":"enabled","PAUSED":"paused","DISABLED":"disabled"};
-	public $platform = "adwords";
-	public $raw_property = "CreativeStatus";
+
+	public $platform = 'adwords';
+
+	public $property = 'CreativeStatus';
+
+	public $type = 'status';
+
+	public $values = [
+	    "ENABLED" => "enabled",
+	    "PAUSED" => "paused",
+	    "DISABLED" => "disabled"
+	];
 };

@@ -4,15 +4,31 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Source\Source_FloatParser_RatioSum_Parsable_Summable;
 
 return new class extends Source_FloatParser_RatioSum_Parsable_Summable {
-	public $id = "offlineinteractionrate";
-	public $metric = "offlineinteractionrate";
-	public $entity = "Campaign";
-	public $platform = "adwords";
-	public $report = "CAMPAIGN_PERFORMANCE_REPORT";
-	public $fields = ["OfflineInteractionRate"];
-	public $property = "OfflineInteractionRate";
-	public $type = "decimal";
-	public $dividendMetric = "numofflineinteractions";
-	public $divisorMetric = "numofflineimpressions";
-	public $inferred_from = ["numofflineinteractions","numofflineimpressions"];
+
+	public $dividendMetric = 'numofflineinteractions';
+
+	public $divisorMetric = 'numofflineimpressions';
+
+	public $entity = 'Campaign';
+
+	public $fields = [
+	    "OfflineInteractionRate"
+	];
+
+	public $id = 'offlineinteractionrate';
+
+	public $inferred_from = [
+	    "numofflineinteractions",
+	    "numofflineimpressions"
+	];
+
+	public $metric = 'offlineinteractionrate';
+
+	public $platform = 'adwords';
+
+	public $property = 'OfflineInteractionRate';
+
+	public $report = 'CAMPAIGN_PERFORMANCE_REPORT';
+
+	public $type = 'decimal';
 };

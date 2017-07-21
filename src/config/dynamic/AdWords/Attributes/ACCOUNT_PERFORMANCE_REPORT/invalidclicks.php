@@ -4,14 +4,29 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_RawParser;
 
 return new class extends Attribute_RawParser {
-	public $id = "invalidclicks";
-	public $property = "InvalidClicks";
-	public $is_filter = true;
-	public $type = "integer";
-	public $is_metric = true;
+
+	public $id = 'invalidclicks';
+
+	public $incompatible = [
+	    "ConversionCategoryName",
+	    "ConversionTrackerId",
+	    "ConversionTypeName",
+	    "ExternalConversionSource",
+	    "HourOfDay",
+	    "Slot"
+	];
+
 	public $is_dimension = false;
+
+	public $is_filter = true;
+
+	public $is_metric = true;
+
 	public $is_percentage = false;
-	public $incompatible = ["ConversionCategoryName","ConversionTrackerId","ConversionTypeName","ExternalConversionSource","HourOfDay","Slot"];
-	public $platform = "adwords";
-	public $raw_property = "InvalidClicks";
+
+	public $platform = 'adwords';
+
+	public $property = 'InvalidClicks';
+
+	public $type = 'integer';
 };

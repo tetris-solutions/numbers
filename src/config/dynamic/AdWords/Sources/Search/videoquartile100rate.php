@@ -4,15 +4,30 @@ namespace Tetris\Numbers\Config;
 use Tetris\Numbers\Generated\AdWords\Source\Source_PercentParser_VideoQuartileSum_Parsable_Summable;
 
 return new class extends Source_PercentParser_VideoQuartileSum_Parsable_Summable {
-	public $id = "videoquartile100rate";
-	public $metric = "videoquartile100rate";
-	public $entity = "Search";
-	public $platform = "adwords";
-	public $report = "SEARCH_QUERY_PERFORMANCE_REPORT";
-	public $fields = ["VideoQuartile100Rate"];
-	public $property = "VideoQuartile100Rate";
-	public $type = "percentage";
-	public $videoViewsMetric = "videoviews";
-	public $videoQuartileMetric = "videoquartile100rate";
-	public $inferred_from = ["videoviews"];
+
+	public $entity = 'Search';
+
+	public $fields = [
+	    "VideoQuartile100Rate"
+	];
+
+	public $id = 'videoquartile100rate';
+
+	public $inferred_from = [
+	    "videoviews"
+	];
+
+	public $metric = 'videoquartile100rate';
+
+	public $platform = 'adwords';
+
+	public $property = 'VideoQuartile100Rate';
+
+	public $report = 'SEARCH_QUERY_PERFORMANCE_REPORT';
+
+	public $type = 'percentage';
+
+	public $videoQuartileMetric = 'videoquartile100rate';
+
+	public $videoViewsMetric = 'videoviews';
 };

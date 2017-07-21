@@ -3,6 +3,9 @@
 namespace Tetris\Numbers\Generator;
 
 use gossi\codegen\generator\CodeFileGenerator;
+use gossi\codegen\model\PhpClass;
+use gossi\codegen\model\PhpProperty;
+use function Tetris\Numbers\prettyVarExport;
 
 abstract class Generator
 {
@@ -80,29 +83,44 @@ abstract class Generator
         file_put_contents(self::classRoot . '/' . self::unslash($class->getQualifiedName()) . '.php', $data);
     }
 
-    private function genConfig(array $config, ClassWrapper $class)
+    private function genConfig(array $config, ClassWrapper $class, CodeFileGenerator $generator)
     {
-        $file = "<?php\n";
-        $file .= "namespace Tetris\\Numbers\\Config;\n\n";
-        $file .= "use {$class->getQualifiedName()};\n\n";
+        $configClass = new PhpClass();
+        $name = uniqid('Config');
+        $namespace = 'Tetris\\Numbers\\Config';
 
-        $file .= "return new class extends {$class->getName()} {\n";
+        $configClass->setName($name);
+        $configClass->setNamespace($namespace);
+        $configClass->addUseStatement($class->getQualifiedName());
+        $configClass->setParentClassName($class->getName());
 
         $props = self::clearConfig($config, [
             'path',
             'traits',
             'interfaces',
-            'parent'
+            'parent',
+            'raw_property'
         ]);
 
         foreach ($props as $key => $value) {
-            if (is_scalar($value) || is_array($value)) {
-                $file .= "\tpublic \${$key} = " . json_encode($value) . ";\n";
+            if (is_scalar($value)) {
+                $prop = new PhpProperty($key);
+                $prop->setVisibility('public');
+                $prop->setValue($value);
+                $configClass->setProperty($prop);
+            }
+
+            if (is_array($value)) {
+                $prop = new PhpProperty($key);
+                $prop->setVisibility('public');
+                $prop->setExpression(prettyVarExport($value));
+                $configClass->setProperty($prop);
             }
         }
 
-
-        $file .= "};\n";
+        $file = $generator->generate($configClass);
+        $file = str_replace("class {$name}", "return new class", $file);
+        $file = str_replace("}", "};", $file);
 
         self::writeConfig($config['path'], $config['id'], $file);
     }
@@ -136,7 +154,7 @@ abstract class Generator
                 $classes[] = $myClass;
             }
 
-            self::genConfig($config, $myClass);
+            self::genConfig($config, $myClass, $generator);
             self::$inventory[$index] = $config;
         }
 
