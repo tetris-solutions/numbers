@@ -1,4 +1,5 @@
 <?php
+
 namespace Tetris\Numbers;
 
 use Slim\Http\Request;
@@ -17,6 +18,17 @@ $metaDataRouteHandler = function (string $action): callable {
             : $attributes);
     });
 };
+
+$app->get('/v2/meta-data', secured('get-meta-data-v2',
+    function (Request $request, Response $response, array $params) {
+        $entity = $request->getQueryParam('entity');
+        $platform = $request->getQueryParam('platform');
+        $attributes = MetaDataV2::listAttributes($platform, $entity);
+
+        return $response->withJson(isset($params['attribute'])
+            ? $attributes[$params['attribute']]
+            : $attributes);
+    }));
 
 $app->get('/meta', $metaDataRouteHandler('get-meta-data'));
 $app->get('/meta-data', $metaDataRouteHandler('get-meta-data'));

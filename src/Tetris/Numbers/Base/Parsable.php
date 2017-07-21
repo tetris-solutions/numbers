@@ -7,5 +7,5 @@ use Tetris\Numbers\Query;
 
 interface Parsable
 {
-    function parse($source, Query $query): stdClass;
+    function parse($source, Query $query);
 }

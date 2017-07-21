@@ -13,7 +13,7 @@ use Tetris\Numbers\Generator\Extension;
 class SourceFactory extends Generator
 {
     /**
-     * @var TypeParser
+     * @var LegacyTypeParser
      */
     private $parser;
 
@@ -24,7 +24,7 @@ class SourceFactory extends Generator
 
     function __construct(array $fields)
     {
-        $this->parser = new TypeParser();
+        $this->parser = new LegacyTypeParser();
         $this->extensions = [
             new AdWordsParser(),
             new AdWordsTrivialSum(),

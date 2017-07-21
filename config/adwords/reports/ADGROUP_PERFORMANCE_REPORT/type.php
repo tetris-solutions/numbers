@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "type",
-    "property" => "AdGroupType",
     "is_filter" => TRUE,
-    "type" => "adgrouptype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -14,5 +11,8 @@ return [
         "DISPLAY_STANDARD" => "Display",
         "SHOPPING_PRODUCT_ADS" => "Shopping - Product",
         "SHOPPING_SHOWCASE_ADS" => "Shopping - Showcase"
-    ]
+    ],
+    "id" => "type",
+    "property" => "AdGroupType",
+    "type" => "adgrouptype"
 ];

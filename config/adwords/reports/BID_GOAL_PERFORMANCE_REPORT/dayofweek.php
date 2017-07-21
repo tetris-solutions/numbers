@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "dayofweek",
-    "property" => "DayOfWeek",
     "is_filter" => TRUE,
-    "type" => "dayofweek",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -15,5 +12,8 @@ return [
         "FRIDAY" => "Friday",
         "SATURDAY" => "Saturday",
         "SUNDAY" => "Sunday"
-    ]
+    ],
+    "id" => "dayofweek",
+    "property" => "DayOfWeek",
+    "type" => "dayofweek"
 ];

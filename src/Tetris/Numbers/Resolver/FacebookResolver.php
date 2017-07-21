@@ -31,7 +31,7 @@ class FacebookResolver extends Facebook implements Resolver
     static function getBreakdowns(): array
     {
         if (!self::$_breakdowns) {
-            self::$_breakdowns = array_keys(json_decode(file_get_contents(__DIR__ . '/../../maps/breakdowns.json'), true));
+            self::$_breakdowns = array_keys(json_decode(file_get_contents(__DIR__ . '/../../../../maps/breakdowns.json'), true));
         }
 
         return self::$_breakdowns;

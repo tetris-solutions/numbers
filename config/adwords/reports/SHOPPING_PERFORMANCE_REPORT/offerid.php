@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "offerid",
-    "property" => "OfferId",
     "is_filter" => TRUE,
-    "type" => "string",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "offerid",
+    "property" => "OfferId",
+    "type" => "string"
 ];

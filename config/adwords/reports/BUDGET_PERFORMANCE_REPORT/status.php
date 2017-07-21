@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "status",
-    "property" => "BudgetStatus",
     "is_filter" => TRUE,
-    "type" => "budgetstatus",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -11,5 +8,8 @@ return [
         "ENABLED" => "Enabled",
         "REMOVED" => "Removed",
         "UNKNOWN" => "unknown"
-    ]
+    ],
+    "id" => "status",
+    "property" => "BudgetStatus",
+    "type" => "budgetstatus"
 ];

@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "monthofyear",
-    "property" => "MonthOfYear",
     "is_filter" => TRUE,
-    "type" => "monthofyear",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -20,5 +17,8 @@ return [
         "OCTOBER" => "October",
         "NOVEMBER" => "November",
         "DECEMBER" => "December"
-    ]
+    ],
+    "id" => "monthofyear",
+    "property" => "MonthOfYear",
+    "type" => "monthofyear"
 ];

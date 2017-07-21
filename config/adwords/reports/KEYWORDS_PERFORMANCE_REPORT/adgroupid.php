@@ -1,12 +1,12 @@
 <?php
 return [
-    "id" => "adgroupid",
-    "property" => "AdGroupId",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "id" => "adgroupid",
+    "property" => "AdGroupId",
+    "type" => "integer",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'AdGroupId'}));
     }

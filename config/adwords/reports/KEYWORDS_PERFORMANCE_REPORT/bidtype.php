@@ -1,13 +1,13 @@
 <?php
 return [
-    "id" => "bidtype",
-    "property" => "BidType",
     "is_filter" => TRUE,
-    "type" => "bidtype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
     "values" => [
         "TARGET_CPA" => "target cpa"
-    ]
+    ],
+    "id" => "bidtype",
+    "property" => "BidType",
+    "type" => "bidtype"
 ];

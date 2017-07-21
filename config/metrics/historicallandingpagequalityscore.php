@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "historicallandingpagequalityscore",
-    "type" => "raw"
+    "type" => "qualityscorebucket"
 ];

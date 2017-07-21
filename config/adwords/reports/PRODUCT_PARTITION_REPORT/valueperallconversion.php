@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "valueperallconversion",
-    "property" => "ValuePerAllConversion",
     "is_filter" => TRUE,
-    "type" => "decimal",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "valueperallconversion",
+    "property" => "ValuePerAllConversion",
+    "type" => "decimal"
 ];

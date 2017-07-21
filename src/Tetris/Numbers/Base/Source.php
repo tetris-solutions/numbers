@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Base;
 
-abstract class Source
+abstract class Source extends Field
 {
     /**
      * @var string
@@ -12,10 +12,6 @@ abstract class Source
      * @var string
      */
     public $entity;
-    /**
-     * @var string
-     */
-    public $platform;
     /**
      * @var array
      */

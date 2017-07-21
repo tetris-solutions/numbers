@@ -3,11 +3,8 @@
 namespace Tetris\Numbers\Base\Sum;
 
 
-use Tetris\Numbers\Base\Field;
-
 trait ImpressionShareSum
 {
-    use Field;
     public $impressionsMetric;
 
     function sum(array $rows)

@@ -1,12 +1,12 @@
 <?php
 return [
-    "id" => "referencecount",
-    "property" => "BudgetReferenceCount",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "id" => "referencecount",
+    "property" => "BudgetReferenceCount",
+    "type" => "integer",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'BudgetReferenceCount'}));
     }

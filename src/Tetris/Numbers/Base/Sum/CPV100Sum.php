@@ -2,11 +2,8 @@
 
 namespace Tetris\Numbers\Base\Sum;
 
-use Tetris\Numbers\Base\Field;
-
 trait CPV100Sum
 {
-    use Field;
     public $costMetric;
     public $views100PercentileMetric;
     public $viewsMetric;

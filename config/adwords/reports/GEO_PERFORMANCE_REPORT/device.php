@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "device",
-    "property" => "Device",
     "is_filter" => TRUE,
-    "type" => "devicetype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -12,5 +9,8 @@ return [
         "DESKTOP" => "Computers",
         "HIGH_END_MOBILE" => "Mobile devices with full browsers",
         "TABLET" => "Tablets with full browsers"
-    ]
+    ],
+    "id" => "device",
+    "property" => "Device",
+    "type" => "devicetype"
 ];

@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "startdate",
-    "property" => "StartDate",
     "is_filter" => TRUE,
-    "type" => "date",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "startdate",
+    "property" => "StartDate",
+    "type" => "date"
 ];

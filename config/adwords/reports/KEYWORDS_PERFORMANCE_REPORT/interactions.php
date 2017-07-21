@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "interactions",
-    "property" => "Interactions",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => FALSE,
@@ -12,5 +9,8 @@ return [
         "conversiontrackerid",
         "conversiontypename",
         "externalconversionsource"
-    ]
+    ],
+    "id" => "interactions",
+    "property" => "Interactions",
+    "type" => "integer"
 ];

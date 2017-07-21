@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "type",
-    "property" => "AdType",
     "is_filter" => TRUE,
-    "type" => "type",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -20,5 +17,8 @@ return [
         "RESPONSIVE_DISPLAY_AD" => "Responsive ad",
         "SHOWCASE_AD" => "Showcase ad",
         "UNKNOWN" => "unknown"
-    ]
+    ],
+    "id" => "type",
+    "property" => "AdType",
+    "type" => "type"
 ];

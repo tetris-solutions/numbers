@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "invalidclickrate",
-    "property" => "InvalidClickRate",
     "is_filter" => TRUE,
-    "type" => "percentage",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => TRUE,
@@ -14,5 +11,8 @@ return [
         "externalconversionsource",
         "hourofday",
         "slot"
-    ]
+    ],
+    "id" => "invalidclickrate",
+    "property" => "InvalidClickRate",
+    "type" => "percentage"
 ];

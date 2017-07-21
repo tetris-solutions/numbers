@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "historicalqualityscore",
-    "property" => "HistoricalQualityScore",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => FALSE,
@@ -17,5 +14,8 @@ return [
         "device",
         "externalconversionsource",
         "slot"
-    ]
+    ],
+    "id" => "historicalqualityscore",
+    "property" => "HistoricalQualityScore",
+    "type" => "integer"
 ];

@@ -1,12 +1,12 @@
 <?php
 return [
-    "id" => "targetoutrankshare",
-    "property" => "TargetOutrankShare",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "id" => "targetoutrankshare",
+    "property" => "TargetOutrankShare",
+    "type" => "integer",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'TargetOutrankShare'}));
     }

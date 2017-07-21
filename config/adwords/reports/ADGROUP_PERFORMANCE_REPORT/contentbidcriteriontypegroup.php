@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "contentbidcriteriontypegroup",
-    "property" => "ContentBidCriterionTypeGroup",
     "is_filter" => TRUE,
-    "type" => "criteriontypegroup",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -17,5 +14,8 @@ return [
         "PARENT" => "Parental status",
         "NONE" => "None",
         "UNKNOWN" => "unknown"
-    ]
+    ],
+    "id" => "contentbidcriteriontypegroup",
+    "property" => "ContentBidCriterionTypeGroup",
+    "type" => "criteriontypegroup"
 ];

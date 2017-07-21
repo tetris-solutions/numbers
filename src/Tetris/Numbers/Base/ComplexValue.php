@@ -3,9 +3,12 @@
 namespace Tetris\Numbers\Base;
 
 use ArrayAccess;
+use Tetris\Numbers\Utils\GenericArray;
 
 class ComplexValue implements ArrayAccess
 {
+    use GenericArray;
+
     public $value;
     public $raw;
 
@@ -13,25 +16,5 @@ class ComplexValue implements ArrayAccess
     {
         $this->value = $value;
         $this->raw = $raw;
-    }
-
-    public function offsetExists($offset)
-    {
-        return isset($this->{$offset});
-    }
-
-    public function offsetGet($offset)
-    {
-        return $this->{$offset} ?? null;
-    }
-
-    public function offsetSet($offset, $value)
-    {
-        $this->{$offset} = $value;
-    }
-
-    public function offsetUnset($offset)
-    {
-        $this->{$offset} = null;
     }
 }

@@ -2,12 +2,8 @@
 
 namespace Tetris\Numbers\Base\Sum;
 
-use Tetris\Numbers\Base\Field;
-
 trait TrivialSum
 {
-    use Field;
-
     function sum(array $rows)
     {
         return array_reduce(

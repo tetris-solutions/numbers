@@ -2,25 +2,12 @@
 
 namespace Tetris\Numbers\Base;
 
-
-abstract class Attribute
+abstract class Attribute extends Field
 {
-    /**
-     * @var string
-     */
-    public $id;
-    /**
-     * @var string
-     */
-    public $property;
     /**
      * @var bool
      */
     public $is_filter;
-    /**
-     * @var string
-     */
-    public $type;
     /**
      * @var bool
      */
@@ -41,8 +28,4 @@ abstract class Attribute
      * @var array|null
      */
     public $incompatible;
-    /**
-     * @var string
-     */
-    public $platform;
 }

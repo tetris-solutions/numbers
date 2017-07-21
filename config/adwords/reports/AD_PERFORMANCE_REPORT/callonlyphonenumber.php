@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "callonlyphonenumber",
-    "property" => "CallOnlyPhoneNumber",
     "is_filter" => FALSE,
-    "type" => "string",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "callonlyphonenumber",
+    "property" => "CallOnlyPhoneNumber",
+    "type" => "string"
 ];

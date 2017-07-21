@@ -21,13 +21,13 @@ class AttributeFactory extends Generator
     private $parser;
 
     /**
-     * @var TypeParser
+     * @var LegacyTypeParser
      */
     private $legacyParser;
 
     function __construct()
     {
-        $this->legacyParser = new TypeParser();
+        $this->legacyParser = new LegacyTypeParser();
         $this->parser = new AdWordsParser();
         $this->translators = [
             new AttributeTranslator('Account', [
@@ -204,7 +204,7 @@ class AttributeFactory extends Generator
         string $entity,
         string $originalProperty,
         string $behavior,
-        string $type,
+        string $originalType,
         bool $filterable,
         bool $percentage,
         bool $specialValue,
@@ -221,7 +221,7 @@ class AttributeFactory extends Generator
         $attribute->property = $this->normalizeProperty($originalProperty);
         $attribute->raw_property = $originalProperty;
         $attribute->is_filter = $filterable;
-        $attribute->type = $this->getAdWordsAttributeType($attribute->id, $type, $specialValue, $percentage);
+        $attribute->type = $this->getAdWordsAttributeType($attribute->id, $originalType, $specialValue, $percentage);
         $attribute->is_metric = $this->isAdWordsMetric($attribute->id, $behavior);
         $attribute->is_dimension = !$attribute->is_metric;
         $attribute->is_percentage = $percentage;

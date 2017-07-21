@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "slot",
-    "property" => "Slot",
     "is_filter" => TRUE,
-    "type" => "slot",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -49,5 +46,8 @@ return [
         "searchimpressionshare",
         "searchranklostimpressionshare",
         "valueperallconversion"
-    ]
+    ],
+    "id" => "slot",
+    "property" => "Slot",
+    "type" => "slot"
 ];

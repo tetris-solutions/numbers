@@ -2,11 +2,8 @@
 
 namespace Tetris\Numbers\Base\Sum;
 
-use Tetris\Numbers\Base\Field;
-
 trait WeightedSum
 {
-    use Field;
     /**
      * @var string
      */

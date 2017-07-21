@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "period",
-    "property" => "Period",
     "is_filter" => FALSE,
-    "type" => "budgetperiod",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "period",
+    "property" => "Period",
+    "type" => "budgetperiod"
 ];

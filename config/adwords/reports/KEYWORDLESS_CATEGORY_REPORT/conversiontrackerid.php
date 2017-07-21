@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "conversiontrackerid",
-    "property" => "ConversionTrackerId",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -19,6 +16,9 @@ return [
         "impressions",
         "valueperconversion"
     ],
+    "id" => "conversiontrackerid",
+    "property" => "ConversionTrackerId",
+    "type" => "integer",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'ConversionTrackerId'}));
     }

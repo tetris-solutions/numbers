@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "historicalsearchpredictedctr",
-    "type" => "raw"
+    "type" => "qualityscorebucket"
 ];

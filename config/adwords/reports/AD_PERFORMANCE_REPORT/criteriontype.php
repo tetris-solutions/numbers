@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "criteriontype",
-    "property" => "CriterionType",
     "is_filter" => TRUE,
-    "type" => "apicriteriontype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -39,5 +36,8 @@ return [
         "YOUTUBE_CHANNEL" => "YouTube Channel",
         "YOUTUBE_VIDEO" => "YouTube Video",
         "CUSTOM_IN_MARKET" => "Custom In-Market"
-    ]
+    ],
+    "id" => "criteriontype",
+    "property" => "CriterionType",
+    "type" => "apicriteriontype"
 ];

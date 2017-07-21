@@ -3,7 +3,7 @@
 namespace Tetris\Numbers\Generator\AdWords;
 
 
-class TypeParser
+class LegacyTypeParser
 {
     private $map;
 
@@ -20,11 +20,6 @@ class TypeParser
         ];
     }
 
-    function validate(string $type): string
-    {
-        return isset($this->map[$type]) ? $type : 'raw';
-    }
-
     /**
      * @param string $type
      * @param string $property
@@ -39,7 +34,7 @@ class TypeParser
 
     function getMetricParser(string $type, string $property)
     {
-        return $this->getFactory($type, $property);
+        return $this->getFactory($type, $property) ?? $this->getFactory('raw', $property);
     }
 
     function getDimensionParser(array $dimension)

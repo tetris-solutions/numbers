@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "mobilebidmodifier",
-    "property" => "CampaignMobileBidModifier",
     "is_filter" => TRUE,
-    "type" => "percentage",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => TRUE
+    "is_percentage" => TRUE,
+    "id" => "mobilebidmodifier",
+    "property" => "CampaignMobileBidModifier",
+    "type" => "percentage"
 ];

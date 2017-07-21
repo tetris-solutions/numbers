@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "id",
-    "property" => "Id",
     "is_filter" => TRUE,
-    "type" => "long",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "id",
+    "property" => "Id",
+    "type" => "long"
 ];

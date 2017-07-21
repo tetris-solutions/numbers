@@ -24,7 +24,7 @@ class AnalyticsResolver implements Resolver
     {
         $this->client = new Google_Client();
         $this->tetrisAccount = $tetrisAccount;
-        $this->client->setAuthConfig(__DIR__ . '/../../analytics-google-client.json');
+        $this->client->setAuthConfig(__DIR__ . '/../../../../analytics-google-client.json');
         $this->client->setAccessToken((array)$token);
 
         $this->analytics = new Google_Service_Analytics($this->client);

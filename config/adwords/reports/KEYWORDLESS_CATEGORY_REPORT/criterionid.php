@@ -1,12 +1,12 @@
 <?php
 return [
-    "id" => "criterionid",
-    "property" => "CriterionId",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "id" => "criterionid",
+    "property" => "CriterionId",
+    "type" => "integer",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'CriterionId'}));
     }

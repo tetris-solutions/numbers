@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "conversiontypename",
-    "property" => "ConversionTypeName",
     "is_filter" => TRUE,
-    "type" => "string",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -15,5 +12,8 @@ return [
         "impressions",
         "searchclickshare",
         "searchimpressionshare"
-    ]
+    ],
+    "id" => "conversiontypename",
+    "property" => "ConversionTypeName",
+    "type" => "string"
 ];

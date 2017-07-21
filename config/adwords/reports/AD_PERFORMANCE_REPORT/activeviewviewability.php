@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "activeviewviewability",
-    "property" => "ActiveViewViewability",
     "is_filter" => TRUE,
-    "type" => "decimal",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => FALSE,
@@ -12,5 +9,8 @@ return [
         "conversiontrackerid",
         "conversiontypename",
         "externalconversionsource"
-    ]
+    ],
+    "id" => "activeviewviewability",
+    "property" => "ActiveViewViewability",
+    "type" => "decimal"
 ];

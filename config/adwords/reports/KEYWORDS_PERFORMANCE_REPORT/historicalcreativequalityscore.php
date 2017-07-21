@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "historicalcreativequalityscore",
-    "property" => "HistoricalCreativeQualityScore",
     "is_filter" => TRUE,
-    "type" => "qualityscorebucket",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => FALSE,
@@ -23,5 +20,8 @@ return [
         "device",
         "externalconversionsource",
         "slot"
-    ]
+    ],
+    "id" => "historicalcreativequalityscore",
+    "property" => "HistoricalCreativeQualityScore",
+    "type" => "qualityscorebucket"
 ];

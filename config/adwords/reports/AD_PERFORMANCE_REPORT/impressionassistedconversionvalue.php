@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "impressionassistedconversionvalue",
-    "property" => "ImpressionAssistedConversionValue",
     "is_filter" => TRUE,
-    "type" => "decimal",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
     "is_percentage" => FALSE,
@@ -15,5 +12,8 @@ return [
         "device",
         "externalconversionsource",
         "slot"
-    ]
+    ],
+    "id" => "impressionassistedconversionvalue",
+    "property" => "ImpressionAssistedConversionValue",
+    "type" => "decimal"
 ];

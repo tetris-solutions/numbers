@@ -10,7 +10,8 @@ use Tetris\Numbers\Base\Sum\ImpressionShareSum;
 use Tetris\Numbers\Base\Sum\LostImpressionShareSum;
 use Tetris\Numbers\Generator\AdWords\AttributeFactory;
 use Tetris\Numbers\Generator\AdWords\SourceFactory;
-use Tetris\Numbers\Generator\AdWords\TypeParser;
+use Tetris\Numbers\Generator\AdWords\LegacyTypeParser;
+use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\TransientAttribute;
 
 function impressionShareSum(string $metric)
@@ -159,7 +160,6 @@ function getAdwordsConfig(): array
     ];
 
     $attributeFactory = new AttributeFactory();
-    $parser = new TypeParser();
 
     foreach ($entityNameMap as $reportName => $entity) {
         $fields = extendFields($entity, ReportMap::get($reportName));
@@ -193,16 +193,18 @@ function getAdwordsConfig(): array
             if ($attribute->is_metric) {
                 $metric = isset($output['metrics'][$attribute->id]) ? $output['metrics'][$attribute->id] : [
                     'id' => $attribute->id,
-                    'type' => $parser->validate($attribute->type)
+                    'type' => $attribute->type
                 ];
 
-                $output['sources'][] = $sourceFactory->create(
+                $source = $sourceFactory->create(
                     $attribute->id,
                     $attribute->property,
                     $metric['type'],
                     $entity,
                     $reportName
                 );
+
+                $output['sources'][] = $source;
                 $output['metrics'][$attribute->id] = $metric;
             }
 

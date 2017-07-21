@@ -2,14 +2,11 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Base\ComplexValue;
 use Tetris\Numbers\Query;
 
 trait ComplexValueParser
 {
-    use Field;
-
     /**
      * @param $str
      * @return float|null|ComplexValue

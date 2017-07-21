@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "combinedapprovalstatus",
-    "property" => "CombinedApprovalStatus",
     "is_filter" => TRUE,
-    "type" => "policyapprovalstatus",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -15,5 +12,8 @@ return [
         "UNDER_REVIEW" => "Under review",
         "DISAPPROVED" => "Disapproved",
         "SITE_SUSPENDED" => "Site suspended"
-    ]
+    ],
+    "id" => "combinedapprovalstatus",
+    "property" => "CombinedApprovalStatus",
+    "type" => "policyapprovalstatus"
 ];

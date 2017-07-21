@@ -21,5 +21,5 @@ return new class extends Source_RawParser_Parsable {
 
 	public $report = 'KEYWORDS_PERFORMANCE_REPORT';
 
-	public $type = 'raw';
+	public $type = 'qualityscorebucket';
 };

@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "finalmobileurls",
-    "property" => "FinalMobileUrls",
     "is_filter" => TRUE,
-    "type" => "urllist",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "finalmobileurls",
+    "property" => "FinalMobileUrls",
+    "type" => "urllist"
 ];

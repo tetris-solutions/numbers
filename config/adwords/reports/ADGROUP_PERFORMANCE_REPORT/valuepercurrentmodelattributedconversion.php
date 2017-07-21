@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "valuepercurrentmodelattributedconversion",
-    "property" => "ValuePerCurrentModelAttributedConversion",
     "is_filter" => TRUE,
-    "type" => "decimal",
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "valuepercurrentmodelattributedconversion",
+    "property" => "ValuePerCurrentModelAttributedConversion",
+    "type" => "decimal"
 ];

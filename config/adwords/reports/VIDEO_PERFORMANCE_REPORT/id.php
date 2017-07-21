@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "id",
-    "property" => "VideoId",
     "is_filter" => TRUE,
-    "type" => "string",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "id",
+    "property" => "VideoId",
+    "type" => "string"
 ];

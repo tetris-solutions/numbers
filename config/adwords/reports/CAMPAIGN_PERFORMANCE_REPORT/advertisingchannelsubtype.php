@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "advertisingchannelsubtype",
-    "property" => "AdvertisingChannelSubType",
     "is_filter" => TRUE,
-    "type" => "advertisingchannelsubtype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -14,5 +11,8 @@ return [
         "SEARCH_EXPRESS" => "Search Express",
         "DISPLAY_EXPRESS" => "Display Express",
         "UNIVERSAL_APP_CAMPAIGN" => "Universal App Campaign"
-    ]
+    ],
+    "id" => "advertisingchannelsubtype",
+    "property" => "AdvertisingChannelSubType",
+    "type" => "advertisingchannelsubtype"
 ];

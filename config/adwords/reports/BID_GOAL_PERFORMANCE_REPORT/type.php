@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "type",
-    "property" => "Type",
     "is_filter" => TRUE,
-    "type" => "biddingstrategytype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -19,5 +16,8 @@ return [
         "TARGET_OUTRANK_SHARE" => "Target Outranking Share",
         "NONE" => "None",
         "UNKNOWN" => "unknown"
-    ]
+    ],
+    "id" => "type",
+    "property" => "Type",
+    "type" => "biddingstrategytype"
 ];

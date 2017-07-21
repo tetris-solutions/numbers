@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "headline",
-    "property" => "Headline",
     "is_filter" => TRUE,
-    "type" => "string",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "headline",
+    "property" => "Headline",
+    "type" => "string"
 ];

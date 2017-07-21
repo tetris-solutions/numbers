@@ -2,8 +2,13 @@
 
 namespace Tetris\Numbers\Base;
 
-trait Field
+use Tetris\Numbers\Utils\GenericArray;
+use ArrayAccess;
+
+abstract class Field implements ArrayAccess
 {
+    use GenericArray;
+
     /**
      * @var string
      */
@@ -18,12 +23,17 @@ trait Field
      */
     public $type;
 
-    function getValue($source)
+    /**
+     * @var string
+     */
+    public $platform;
+
+    protected function getValue($source)
     {
         return $source->{$this->property} ?? null;
     }
 
-    function getNumericValue($source): string
+    protected function getNumericValue($source): string
     {
         return str_replace(['%', ','], '', $this->getValue($source));
     }

@@ -1,12 +1,12 @@
 <?php
 return [
-    "id" => "aggregatorid",
-    "property" => "AggregatorId",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "id" => "aggregatorid",
+    "property" => "AggregatorId",
+    "type" => "integer",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'AggregatorId'}));
     }

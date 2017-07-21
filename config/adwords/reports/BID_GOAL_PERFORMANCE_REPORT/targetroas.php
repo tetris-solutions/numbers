@@ -1,10 +1,10 @@
 <?php
 return [
-    "id" => "targetroas",
-    "property" => "TargetRoas",
     "is_filter" => FALSE,
-    "type" => "decimal",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_percentage" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "targetroas",
+    "property" => "TargetRoas",
+    "type" => "decimal"
 ];

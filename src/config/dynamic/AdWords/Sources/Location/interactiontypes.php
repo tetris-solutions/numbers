@@ -21,5 +21,5 @@ return new class extends Source_RawParser_Parsable {
 
 	public $report = 'GEO_PERFORMANCE_REPORT';
 
-	public $type = 'raw';
+	public $type = 'enumset';
 };

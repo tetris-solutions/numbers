@@ -1,12 +1,12 @@
 <?php
 return [
-    "id" => "enhanceddisplaycreativemarketingimagemediaid",
-    "property" => "EnhancedDisplayCreativeMarketingImageMediaId",
     "is_filter" => TRUE,
-    "type" => "integer",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "id" => "enhanceddisplaycreativemarketingimagemediaid",
+    "property" => "EnhancedDisplayCreativeMarketingImageMediaId",
+    "type" => "integer",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'EnhancedDisplayCreativeMarketingImageMediaId'}));
     }

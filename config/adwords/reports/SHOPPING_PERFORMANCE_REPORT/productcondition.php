@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "productcondition",
-    "property" => "ProductCondition",
     "is_filter" => TRUE,
-    "type" => "shoppingproductcondition",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -12,5 +9,8 @@ return [
         "NEW" => "New",
         "REFURBISHED" => "Refurbished",
         "USED" => "Used"
-    ]
+    ],
+    "id" => "productcondition",
+    "property" => "ProductCondition",
+    "type" => "shoppingproductcondition"
 ];

@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "matchtype",
-    "property" => "KeywordMatchType",
     "is_filter" => TRUE,
-    "type" => "keywordmatchtype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -11,5 +8,8 @@ return [
         "EXACT" => "Exact",
         "PHRASE" => "Phrase",
         "BROAD" => "Broad"
-    ]
+    ],
+    "id" => "matchtype",
+    "property" => "KeywordMatchType",
+    "type" => "keywordmatchtype"
 ];

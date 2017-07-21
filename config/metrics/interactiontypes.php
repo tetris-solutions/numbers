@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "interactiontypes",
-    "type" => "raw"
+    "type" => "enumset"
 ];

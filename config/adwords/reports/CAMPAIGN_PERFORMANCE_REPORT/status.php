@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "status",
-    "property" => "CampaignStatus",
     "is_filter" => TRUE,
-    "type" => "campaignstatus",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -12,5 +9,8 @@ return [
         "ENABLED" => "enabled",
         "PAUSED" => "paused",
         "REMOVED" => "removed"
-    ]
+    ],
+    "id" => "status",
+    "property" => "CampaignStatus",
+    "type" => "campaignstatus"
 ];

@@ -1,12 +1,12 @@
 <?php
 return [
-    "id" => "creativefinalurls",
-    "property" => "CreativeFinalUrls",
     "is_filter" => TRUE,
-    "type" => "list",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "id" => "creativefinalurls",
+    "property" => "CreativeFinalUrls",
+    "type" => "list",
     "parse" => function ($data) {
         return json_decode($data->{'CreativeFinalUrls'});
     }

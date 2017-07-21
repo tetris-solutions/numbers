@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "trialtype",
-    "property" => "CampaignTrialType",
     "is_filter" => TRUE,
-    "type" => "campaigntrialtype",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -12,5 +9,8 @@ return [
         "BASE" => "base campaign",
         "DRAFT" => "draft campaign",
         "TRIAL" => "trial campaign"
-    ]
+    ],
+    "id" => "trialtype",
+    "property" => "CampaignTrialType",
+    "type" => "campaigntrialtype"
 ];

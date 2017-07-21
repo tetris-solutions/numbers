@@ -2,13 +2,11 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-
 use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Query;
 
 trait RatioParser
 {
-    use Field;
     /**
      * @var string
      */

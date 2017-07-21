@@ -1,9 +1,6 @@
 <?php
 return [
-    "id" => "adformat",
-    "property" => "AdFormat",
     "is_filter" => TRUE,
-    "type" => "adformat",
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
@@ -18,5 +15,8 @@ return [
         "AUDIO" => "audio",
         "COMPOSITE" => "composite",
         "PRINT" => "print"
-    ]
+    ],
+    "id" => "adformat",
+    "property" => "AdFormat",
+    "type" => "adformat"
 ];
