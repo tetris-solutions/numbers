@@ -2,6 +2,9 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Numbers\Resolver\AdWordsResolver;
+use Tetris\Numbers\Resolver\AnalyticsResolver;
+use Tetris\Numbers\Resolver\FacebookResolver;
 use Throwable;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -17,7 +20,7 @@ $app->post('/',
         $flags = $this->flags;
         $locale = $flags->getLocale();
         $classes = [
-            'adwords' => AdwordsResolver::class,
+            'adwords' => AdWordsResolver::class,
             'facebook' => FacebookResolver::class,
             'analytics' => AnalyticsResolver::class
         ];
@@ -37,7 +40,7 @@ $app->post('/',
         $account = $tkm->getAccount($query->tetrisAccountId);
         $resolverClass = $classes[$query->platform];
         /**
-         * @var AdwordsResolver|FacebookResolver|AnalyticsResolver $resolver
+         * @var AdWordsResolver|FacebookResolver|AnalyticsResolver $resolver
          */
         $resolver = new $resolverClass($query->tetrisAccountId, $account->token);
 

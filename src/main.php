@@ -7,7 +7,6 @@ use Slim\Http\Response;
 use Throwable;
 
 require 'constants.php';
-require 'classes/index.php';
 require_once 'logger.php';
 
 global $app;

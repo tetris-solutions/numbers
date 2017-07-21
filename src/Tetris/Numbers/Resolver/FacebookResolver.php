@@ -1,19 +1,12 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Resolver;
 
 use Facebook\GraphNodes\GraphEdge;
-use Facebook\GraphNodes\GraphNode;
-use FacebookAds\ApiRequest;
-use FacebookAds\Cursor;
-use FacebookAds\Object\AdsInsights;
 use stdClass;
-use FacebookAds\Object\Campaign;
-use FacebookAds\Object\AdSet;
-use FacebookAds\Object\Ad;
-use FacebookAds\Object\AdAccount;
 use FacebookAds\Api;
 use Facebook\Facebook;
+use Tetris\Numbers\Query;
 
 class FacebookResolver extends Facebook implements Resolver
 {

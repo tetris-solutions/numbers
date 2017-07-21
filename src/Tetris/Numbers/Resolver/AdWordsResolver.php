@@ -1,12 +1,13 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Resolver;
 
 use Tetris\Adwords\Client;
 use Tetris\Adwords\Exceptions\NullReportException;
 use Tetris\Adwords\Request\Read\ReadInterface;
+use Tetris\Numbers\Query;
 
-class AdwordsResolver extends Client implements Resolver
+class AdWordsResolver extends Client implements Resolver
 {
     const filterOperator = [
         'less than' => 'LESS_THAN',
@@ -23,15 +24,15 @@ class AdwordsResolver extends Client implements Resolver
 
     private static function applyFilter(ReadInterface $select, array $config)
     {
-        $adwordsProperty = $config['property'];
+        $adWordsProperty = $config['property'];
         $values = $config['values'];
         $firstValue = $values[0];
 
         if ($config['id'] === 'id') {
             if (count($values) > 1) {
-                $select->where($adwordsProperty, $values, 'IN');
+                $select->where($adWordsProperty, $values, 'IN');
             } else {
-                $select->where($adwordsProperty, $firstValue);
+                $select->where($adWordsProperty, $firstValue);
             }
         } else {
             if (
@@ -54,10 +55,10 @@ class AdwordsResolver extends Client implements Resolver
             }
 
             if ($operator === 'BETWEEN') {
-                $select->where($adwordsProperty, $values[1], 'GREATER_THAN');
-                $select->where($adwordsProperty, $values[2], 'LESS_THAN');
+                $select->where($adWordsProperty, $values[1], 'GREATER_THAN');
+                $select->where($adWordsProperty, $values[2], 'LESS_THAN');
             } else {
-                $select->where($adwordsProperty, $values[1], $operator);
+                $select->where($adWordsProperty, $values[1], $operator);
             }
         }
     }

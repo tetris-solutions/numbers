@@ -4,7 +4,6 @@ namespace Tetris\Numbers\Generator\AdWords\Extensions;
 
 
 use Tetris\Numbers\Base\Sum\TrivialSum;
-use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Generator\Extension;
 use Tetris\Numbers\Generator\ExtensionApply;
 

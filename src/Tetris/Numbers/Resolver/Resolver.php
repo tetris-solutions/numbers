@@ -1,7 +1,8 @@
 <?php
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Resolver;
 
 use stdClass;
+use Tetris\Numbers\Query;
 
 interface Resolver
 {

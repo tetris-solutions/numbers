@@ -1,10 +1,10 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Resolver;
 
 use Tetris\Exceptions\SafeException;
+use Tetris\Numbers\Query;
 use Throwable;
-use Exception;
 use Google_Client;
 use Google_Service_Analytics;
 use Google_Service_AnalyticsReporting;
