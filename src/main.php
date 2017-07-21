@@ -100,3 +100,5 @@ require 'routes/report.php';
 require 'routes/meta-data.php';
 require 'routes/cross-platform-meta-data.php';
 require 'routes/cross-platform-report.php';
+require 'routes/v2/meta-data.php';
+require 'routes/v2/report.php';
