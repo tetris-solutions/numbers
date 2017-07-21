@@ -3,6 +3,7 @@
 namespace Tetris\Numbers\Resolver;
 
 use Tetris\Exceptions\SafeException;
+use Tetris\Numbers\Report\Query\Base;
 use Tetris\Numbers\Report\Query\Query;
 use Throwable;
 use Google_Client;
@@ -31,7 +32,7 @@ class AnalyticsResolver implements Resolver
         $this->reporting = new Google_Service_AnalyticsReporting($this->client);
     }
 
-    function resolve(Query $query, bool $aggregateMode): array
+    function resolve(Base $query, bool $aggregateMode): array
     {
         $reportRequest = new Google_Service_AnalyticsReporting_ReportRequest();
         $reportRequest->setSamplingLevel('LARGE');
