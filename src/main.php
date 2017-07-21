@@ -6,6 +6,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Tetris\Numbers\API\TokenManager;
 use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Numbers\Utils\ArrayUtils;
 use Throwable;
 
@@ -57,7 +58,7 @@ function secured(string $action, \Closure $routeHandler): callable
     };
 }
 
-function makeAccountAccessException(string $locale, Query $query, Throwable $e): array
+function makeAccountAccessException(string $locale, QueryBase $query, Throwable $e): array
 {
     return [
         'code' => 403,
@@ -79,7 +80,7 @@ function makeAccountAccessException(string $locale, Query $query, Throwable $e):
     ];
 }
 
-function parseReportException(string $locale, Query $query, Throwable $e): array
+function parseReportException(string $locale, QueryBase $query, Throwable $e): array
 {
     $exceptionMessage = $e->getMessage();
 

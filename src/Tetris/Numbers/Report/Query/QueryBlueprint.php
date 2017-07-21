@@ -4,7 +4,7 @@ namespace Tetris\Numbers\Report\Query;
 
 use DateTime;
 
-abstract class Blueprint
+abstract class QueryBlueprint
 {
     const BAD_REQUEST_CODE = 422;
 

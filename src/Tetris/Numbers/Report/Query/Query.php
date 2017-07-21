@@ -5,7 +5,7 @@ namespace Tetris\Numbers\Report\Query;
 use Tetris\Numbers\Report\MetaData\MetaData;
 use Tetris\Numbers\Report\Report;
 
-class Query extends Base
+class Query extends QueryBase
 {
     protected function mountMetric(string $id): array
     {

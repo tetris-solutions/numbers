@@ -7,7 +7,7 @@ use Tetris\Numbers\Report\MetaData\MetaDataV2;
 use Tetris\Numbers\Report\Report;
 use Tetris\Numbers\Utils\ObjectUtils;
 
-class QueryV2 extends Base
+class QueryV2 extends QueryBase
 {
     protected function mountMetric(string $id): SourceMetaData
     {

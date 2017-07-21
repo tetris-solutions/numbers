@@ -5,7 +5,7 @@ namespace Tetris\Numbers\Resolver;
 use Tetris\Adwords\Client;
 use Tetris\Adwords\Exceptions\NullReportException;
 use Tetris\Adwords\Request\Read\ReadInterface;
-use Tetris\Numbers\Report\Query\Base;
+use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Numbers\Report\Query\Query;
 
 class AdWordsResolver extends Client implements Resolver
@@ -77,7 +77,7 @@ class AdWordsResolver extends Client implements Resolver
         return $fields;
     }
 
-    function resolve(Base $query, bool $aggregateMode): array
+    function resolve(QueryBase $query, bool $aggregateMode): array
     {
         $this->SetClientCustomerId($query->adAccountId);
 

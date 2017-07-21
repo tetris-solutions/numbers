@@ -5,6 +5,7 @@ namespace Tetris\Numbers\Report;
 use Exception;
 use stdClass;
 use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Services\FlagsService;
 
 abstract class ResultParser
@@ -93,7 +94,7 @@ abstract class ResultParser
         return $flags->isDebugMode();
     }
 
-    static function parse($receivedObject, Query $query): stdClass
+    static function parse($receivedObject, QueryBase $query): stdClass
     {
         $report = $query->report;
         if (is_array($receivedObject)) {

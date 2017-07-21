@@ -6,7 +6,7 @@ use Exception;
 use Tetris\Numbers\Report\Report;
 use DateTime;
 
-abstract class Base extends Blueprint
+abstract class QueryBase extends QueryBlueprint
 {
     protected static $requiredParameters = [
         'ad_account',
@@ -28,7 +28,7 @@ abstract class Base extends Blueprint
         $this->init($query);
 
         if (empty($this->metrics)) {
-            throw new Exception('metrics is required', Blueprint::BAD_REQUEST_CODE);
+            throw new Exception('metrics is required', QueryBlueprint::BAD_REQUEST_CODE);
         }
 
         $this->setupReport();
