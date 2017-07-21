@@ -1,7 +1,8 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Report;
 
+use Tetris\Numbers\MetaData;
 
 class Report
 {

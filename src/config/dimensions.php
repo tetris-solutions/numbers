@@ -2,6 +2,8 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Numbers\Report\Query\Query;
+
 return [
     'platform' => [
         "id" => "platform",

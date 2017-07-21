@@ -2,6 +2,7 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;
 use Tetris\Numbers\Resolver\FacebookResolver;

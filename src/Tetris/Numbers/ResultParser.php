@@ -4,6 +4,7 @@ namespace Tetris\Numbers;
 
 use Exception;
 use stdClass;
+use Tetris\Numbers\Report\Query\Query;
 use Tetris\Services\FlagsService;
 
 abstract class ResultParser

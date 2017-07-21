@@ -4,6 +4,7 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\Utils\ArrayUtils;
 use Throwable;
 

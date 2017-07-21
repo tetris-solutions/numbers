@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Query;
+use Tetris\Numbers\Report\Query\Query;
 
 trait CPV100Parser
 {

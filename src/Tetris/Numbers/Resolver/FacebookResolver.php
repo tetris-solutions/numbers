@@ -6,7 +6,7 @@ use Facebook\GraphNodes\GraphEdge;
 use stdClass;
 use FacebookAds\Api;
 use Facebook\Facebook;
-use Tetris\Numbers\Query;
+use Tetris\Numbers\Report\Query\Query;
 
 class FacebookResolver extends Facebook implements Resolver
 {

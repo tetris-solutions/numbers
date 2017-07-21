@@ -2,7 +2,7 @@
 namespace Tetris\Numbers\Resolver;
 
 use stdClass;
-use Tetris\Numbers\Query;
+use Tetris\Numbers\Report\Query\Query;
 
 interface Resolver
 {

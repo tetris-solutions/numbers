@@ -5,7 +5,7 @@ namespace Tetris\Numbers\Resolver;
 use Tetris\Adwords\Client;
 use Tetris\Adwords\Exceptions\NullReportException;
 use Tetris\Adwords\Request\Read\ReadInterface;
-use Tetris\Numbers\Query;
+use Tetris\Numbers\Report\Query\Query;
 
 class AdWordsResolver extends Client implements Resolver
 {

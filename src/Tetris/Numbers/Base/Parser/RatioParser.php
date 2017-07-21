@@ -2,8 +2,8 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Base\Field;
-use Tetris\Numbers\Query;
+
+use Tetris\Numbers\Report\Query\Query;
 
 trait RatioParser
 {

@@ -1,11 +1,13 @@
 <?php
 
-namespace Tetris\Numbers;
+namespace Tetris\Numbers\Report\Query;
 
 use DateTime;
 
-class QueryBlueprint
+abstract class Blueprint
 {
+    const BAD_REQUEST_CODE = 422;
+
     /**
      * @var string
      */

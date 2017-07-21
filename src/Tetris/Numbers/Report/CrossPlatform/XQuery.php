@@ -3,10 +3,10 @@
 namespace Tetris\Numbers\Report\CrossPlatform;
 
 use Tetris\Numbers\MetaData;
-use Tetris\Numbers\Query;
-use Tetris\Numbers\QueryBlueprint;
+use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\Blueprint;
 
-class XQuery extends QueryBlueprint
+class XQuery extends Blueprint
 {
     public $id;
     public $translator;

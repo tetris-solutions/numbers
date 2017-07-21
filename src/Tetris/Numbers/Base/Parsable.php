@@ -2,8 +2,8 @@
 
 namespace Tetris\Numbers\Base;
 
-use stdClass;
-use Tetris\Numbers\Query;
+
+use Tetris\Numbers\Report\Query\Query;
 
 interface Parsable
 {
