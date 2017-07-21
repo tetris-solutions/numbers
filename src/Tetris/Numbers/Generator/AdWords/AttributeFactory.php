@@ -2,9 +2,13 @@
 
 namespace Tetris\Numbers\Generator\AdWords;
 
+use Tetris\Numbers\Base\Attribute;
+use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsParser;
 use Tetris\Numbers\Generator\AttributeTranslator;
+use Tetris\Numbers\Generator\Generator;
+use Tetris\Numbers\Generator\TransientAttribute;
 
-class AttributeFactory
+class AttributeFactory extends Generator
 {
 
     /**
@@ -12,13 +16,19 @@ class AttributeFactory
      */
     private $translators;
     /**
-     * @var TypeParser
+     * @var AdWordsParser
      */
     private $parser;
 
+    /**
+     * @var TypeParser
+     */
+    private $legacyParser;
+
     function __construct()
     {
-        $this->parser = new TypeParser();
+        $this->legacyParser = new TypeParser();
+        $this->parser = new AdWordsParser();
         $this->translators = [
             new AttributeTranslator('Account', [
                 'ExternalCustomerId' => 'Id',
@@ -131,7 +141,7 @@ class AttributeFactory
         }
     }
 
-    function getAdWordsAttributeType(string $id, string $type, $specialValue, $percentage): string
+    private function getAdWordsAttributeType(string $id, string $type, $specialValue, $percentage): string
     {
         $overrideType = [
             'averagecpv' => 'currency',
@@ -190,6 +200,7 @@ class AttributeFactory
     }
 
     function create(
+        string $reportName,
         string $entity,
         string $originalProperty,
         string $behavior,
@@ -199,10 +210,13 @@ class AttributeFactory
         bool $specialValue,
         $predicateValues,
         $incompatibleFields
-    ): Attribute
+    ): TransientAttribute
     {
-        $attribute = new Attribute();
+        $attribute = new TransientAttribute();
 
+        $attribute->parent = Attribute::class;
+        $attribute->platform = 'AdWords';
+        $attribute->path = "AdWords/Attributes/{$reportName}";
         $attribute->id = $this->getId($entity, $originalProperty);
         $attribute->property = $this->normalizeProperty($originalProperty);
         $attribute->raw_property = $originalProperty;
@@ -220,11 +234,16 @@ class AttributeFactory
                 $attribute->type === 'list'
             )
         ) {
-            $attribute->parse = $this->parser->getFactory(
+            $attribute->parse = $this->legacyParser->getFactory(
                 $attribute->type,
                 $attribute->property
             );
+            $attribute->traits['parse'] = $this->parser->getParser($attribute->type);
+        } else {
+            $attribute->traits['parse'] = $this->parser->getParser('raw');
         }
+
+        self::add(get_object_vars($attribute));
 
         return $attribute;
     }

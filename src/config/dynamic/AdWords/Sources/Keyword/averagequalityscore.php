@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\FloatParser_WeightedSum_Parsable_Summable;
+use Tetris\Numbers\Generated\AdWords\Source\Source_FloatParser_WeightedSum_Parsable_Summable;
 
-return new class extends FloatParser_WeightedSum_Parsable_Summable {
+return new class extends Source_FloatParser_WeightedSum_Parsable_Summable {
 	public $id = "averagequalityscore";
 	public $metric = "averagequalityscore";
 	public $entity = "Keyword";

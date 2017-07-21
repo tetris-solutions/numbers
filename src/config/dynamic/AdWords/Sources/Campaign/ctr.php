@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\PercentParser_RatioSum_Parsable_Summable;
+use Tetris\Numbers\Generated\AdWords\Source\Source_PercentParser_RatioSum_Parsable_Summable;
 
-return new class extends PercentParser_RatioSum_Parsable_Summable {
+return new class extends Source_PercentParser_RatioSum_Parsable_Summable {
 	public $id = "ctr";
 	public $metric = "ctr";
 	public $entity = "Campaign";

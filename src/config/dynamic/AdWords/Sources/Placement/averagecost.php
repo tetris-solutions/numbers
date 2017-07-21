@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\FloatParser_RatioSum_Parsable_Summable;
+use Tetris\Numbers\Generated\AdWords\Source\Source_FloatParser_RatioSum_Parsable_Summable;
 
-return new class extends FloatParser_RatioSum_Parsable_Summable {
+return new class extends Source_FloatParser_RatioSum_Parsable_Summable {
 	public $id = "averagecost";
 	public $metric = "averagecost";
 	public $entity = "Placement";

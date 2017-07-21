@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\CPV100Parser_CPV100Sum_Parsable_Summable;
+use Tetris\Numbers\Generated\AdWords\Source\Source_CPV100Parser_CPV100Sum_Parsable_Summable;
 
-return new class extends CPV100Parser_CPV100Sum_Parsable_Summable {
+return new class extends Source_CPV100Parser_CPV100Sum_Parsable_Summable {
 	public $id = "cpv100";
 	public $metric = "cpv100";
 	public $entity = "AdGroup";

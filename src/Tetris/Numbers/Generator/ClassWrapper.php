@@ -38,6 +38,7 @@ class ClassWrapper extends PhpClass
 
         $name = implode("_",
             array_merge(
+                [$parentName],
                 array_map([$this, 'qualified'], $traits),
                 array_map([$this, 'qualified'], $interfaces)
             )

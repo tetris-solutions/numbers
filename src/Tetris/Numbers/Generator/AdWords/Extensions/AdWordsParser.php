@@ -2,7 +2,6 @@
 
 namespace Tetris\Numbers\Generator\AdWords\Extensions;
 
-use Tetris\Numbers\Base\Parsable;
 use Tetris\Numbers\Base\Parser\ComplexValueParser;
 use Tetris\Numbers\Base\Parser\FloatParser;
 use Tetris\Numbers\Base\Parser\IntegerParser;
@@ -29,6 +28,11 @@ class AdWordsParser implements Extension
             'raw' => RawParser::class,
             'special' => ComplexValueParser::class
         ];
+    }
+
+    function getParser(string $type)
+    {
+        return $this->map[$type] ?? null;
     }
 
     function patch(array $config): array

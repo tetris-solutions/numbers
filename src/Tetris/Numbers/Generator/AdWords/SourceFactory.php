@@ -29,8 +29,7 @@ class SourceFactory extends Generator
             new AdWordsParser(),
             new AdWordsTrivialSum(),
             new AdWordsSpecialMetric($fields),
-            new AdWordsInferredSum(),
-
+            new AdWordsInferredSum()
         ];
     }
 

@@ -178,6 +178,7 @@ function getAdwordsConfig(): array
             if ($isBlacklisted($originalProperty)) continue;
 
             $attribute = $attributeFactory->create(
+                $reportName,
                 $entity,
                 $originalProperty,
                 $adWordsField['Behavior'],

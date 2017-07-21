@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\TriangulationParser_ImpressionShareSum_Parsable_Summable;
+use Tetris\Numbers\Generated\AdWords\Source\Source_TriangulationParser_ImpressionShareSum_Parsable_Summable;
 
-return new class extends TriangulationParser_ImpressionShareSum_Parsable_Summable {
+return new class extends Source_TriangulationParser_ImpressionShareSum_Parsable_Summable {
 	public $id = "searchimpressionshare";
 	public $metric = "searchimpressionshare";
 	public $entity = "Partition";

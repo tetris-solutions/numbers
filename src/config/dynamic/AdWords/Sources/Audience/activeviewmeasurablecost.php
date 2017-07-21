@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\FloatParser_Parsable;
+use Tetris\Numbers\Generated\AdWords\Source\Source_FloatParser_Parsable;
 
-return new class extends FloatParser_Parsable {
+return new class extends Source_FloatParser_Parsable {
 	public $id = "activeviewmeasurablecost";
 	public $metric = "activeviewmeasurablecost";
 	public $entity = "Audience";

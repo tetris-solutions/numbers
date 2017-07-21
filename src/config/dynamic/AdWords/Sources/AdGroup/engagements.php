@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\IntegerParser_TrivialSum_Parsable_Summable;
+use Tetris\Numbers\Generated\AdWords\Source\Source_IntegerParser_TrivialSum_Parsable_Summable;
 
-return new class extends IntegerParser_TrivialSum_Parsable_Summable {
+return new class extends Source_IntegerParser_TrivialSum_Parsable_Summable {
 	public $id = "engagements";
 	public $metric = "engagements";
 	public $entity = "AdGroup";

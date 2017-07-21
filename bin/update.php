@@ -3,9 +3,9 @@
 
 namespace Tetris\Numbers;
 
-use Tetris\Numbers\Generator\AdWords\Attribute;
 use Tetris\Numbers\Generator\AdWords\SourceFactory;
 use Tetris\Numbers\Generator\Generator;
+use Tetris\Numbers\Generator\TransientAttribute;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -52,7 +52,7 @@ function updateConfig()
 
         foreach ($config['reports'] as $reportName => $report) {
             foreach ($report['attributes'] as $id => $attribute) {
-                if ($attribute instanceof Attribute) {
+                if ($attribute instanceof TransientAttribute) {
                     $attribute = $attribute->asArray();
                 }
 
