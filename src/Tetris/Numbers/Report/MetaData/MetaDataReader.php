@@ -10,4 +10,6 @@ interface MetaDataReader
     static function getSources(string $platform, string $entity): array;
 
     static function getReport(string $platform, string $reportName): array;
+
+    static function getMetricSource(string $platform, string $entity, string $metric);
 }

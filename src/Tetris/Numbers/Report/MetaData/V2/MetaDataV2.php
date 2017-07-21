@@ -101,4 +101,12 @@ class MetaDataV2 implements MetaDataReader
 
         return $attributes;
     }
+
+    static function getMetricSource(string $platform, string $entity, string $metric): Source
+    {
+        $platform = self::capitalized($platform);
+        return self::requireCached(
+            realpath(self::configDir . "/{$platform}/Sources/{$entity}/{$metric}.php")
+        );
+    }
 }

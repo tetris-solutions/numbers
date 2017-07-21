@@ -3,7 +3,7 @@
 namespace Tetris\Numbers;
 
 use Tetris\Numbers\API\TokenManager;
-use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\V2\Query;
 use Tetris\Numbers\Report\ResultParser;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;
