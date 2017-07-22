@@ -2,11 +2,11 @@
 return [
     "metric" => "crossdeviceconversions",
     "entity" => "Product",
-    "platform" => "adwords",
-    "report" => "SHOPPING_PERFORMANCE_REPORT",
     "fields" => [
         "CrossDeviceConversions"
     ],
+    "report" => "SHOPPING_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'CrossDeviceConversions'}));
     },

@@ -2,11 +2,11 @@
 return [
     "metric" => "clicks",
     "entity" => "Category",
-    "platform" => "adwords",
-    "report" => "KEYWORDLESS_CATEGORY_REPORT",
     "fields" => [
         "Clicks"
     ],
+    "report" => "KEYWORDLESS_CATEGORY_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'Clicks'}));
     },

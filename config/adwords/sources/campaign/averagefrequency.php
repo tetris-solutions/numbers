@@ -2,18 +2,18 @@
 return [
     "metric" => "averagefrequency",
     "entity" => "Campaign",
-    "platform" => "adwords",
-    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
     "fields" => [
         "AverageFrequency"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'AverageFrequency'}));
-    },
     "inferred_from" => [
         "impressions",
         "impressionreach"
     ],
+    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'AverageFrequency'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'impressions';
         $divisorMetric = 'impressionreach';

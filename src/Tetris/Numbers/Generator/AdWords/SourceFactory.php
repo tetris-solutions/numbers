@@ -2,20 +2,21 @@
 
 namespace Tetris\Numbers\Generator\AdWords;
 
-use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Base\Source;
 use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsTrivialSum;
 use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsSpecialMetric;
 use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsInferredSum;
 use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsParser;
 use Tetris\Numbers\Generator\Extension;
+use Tetris\Numbers\Generator\TransientSource;
+use Tetris\Numbers\Utils\ArrayUtils;
 
-class SourceFactory extends Generator
+class SourceFactory
 {
     /**
      * @var LegacyTypeParser
      */
-    private $parser;
+    private $legacyTypeParser;
 
     /**
      * @var array
@@ -24,7 +25,7 @@ class SourceFactory extends Generator
 
     function __construct(array $fields)
     {
-        $this->parser = new LegacyTypeParser();
+        $this->legacyTypeParser = new LegacyTypeParser();
         $this->extensions = [
             new AdWordsParser(),
             new AdWordsTrivialSum(),
@@ -33,10 +34,9 @@ class SourceFactory extends Generator
         ];
     }
 
-    public static function clear(array $config)
+    static function clear(array $config): array
     {
-        return self::clearConfig($config,
-            // @todo unmaintainable code
+        $config = ArrayUtils::omit($config,
             'id',
             'property',
             'path',
@@ -59,41 +59,37 @@ class SourceFactory extends Generator
             'dividendProperty',
             'divisorProperty',
             'videoQuartileMetric',
-            'videoViewsMetric'
-        );
+            'videoViewsMetric');
+
+        if (isset($config['platform'])) {
+            $config['platform'] = strtolower($config['platform']);
+        }
+
+        return $config;
     }
 
-    private function normalize(array $config): array
-    {
-        self::add($config);
-        return self::clear($config);
-    }
-
-    private function apply(array $config, Extension $extension)
+    private function apply(TransientSource $config, Extension $extension): TransientSource
     {
         return $extension->extend($config);
     }
 
 
-    function create(string $id, string $property, string $type, string $entity, string $report): array
+    function create(string $id, string $property, string $type, string $entity, string $report): TransientSource
     {
-        $platform = 'AdWords';
-        return $this->normalize(
-            array_reduce($this->extensions, [$this, 'apply'], [
-                'id' => $id,
-                'path' => "$platform/Sources/$entity",
-                'parent' => Source::class,
-                'metric' => $id,
-                'entity' => $entity,
-                'traits' => [],
-                'platform' => $platform,
-                'report' => $report,
-                'fields' => [$property],
-                'parse' => $this->parser->getMetricParser($type, $property),
-                // temp
-                'property' => $property,
-                'type' => $type,
-            ])
-        );
+        $source = new TransientSource();
+
+        $source->id = $id;
+        $source->platform = 'AdWords';
+        $source->path = "{$source->platform}/Sources/$entity";
+        $source->parent = Source::class;
+        $source->metric = $id;
+        $source->entity = $entity;
+        $source->fields = [$property];
+        $source->property = $property;
+        $source->type = $type;
+        $source->report = $report;
+        $source->parse = $this->legacyTypeParser->getMetricParser($type, $property);
+
+        return array_reduce($this->extensions, [$this, 'apply'], $source);
     }
 }

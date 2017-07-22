@@ -2,11 +2,11 @@
 return [
     "metric" => "interactiontypes",
     "entity" => "Placement",
-    "platform" => "adwords",
-    "report" => "AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT",
     "fields" => [
         "InteractionTypes"
     ],
+    "report" => "AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         return $data->{'InteractionTypes'};
     }

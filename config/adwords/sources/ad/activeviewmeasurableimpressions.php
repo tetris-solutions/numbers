@@ -2,11 +2,11 @@
 return [
     "metric" => "activeviewmeasurableimpressions",
     "entity" => "Ad",
-    "platform" => "adwords",
-    "report" => "AD_PERFORMANCE_REPORT",
     "fields" => [
         "ActiveViewMeasurableImpressions"
     ],
+    "report" => "AD_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'ActiveViewMeasurableImpressions'}));
     },

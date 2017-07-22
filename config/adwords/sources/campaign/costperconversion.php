@@ -2,18 +2,18 @@
 return [
     "metric" => "costperconversion",
     "entity" => "Campaign",
-    "platform" => "adwords",
-    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
     "fields" => [
         "CostPerConversion"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'CostPerConversion'}));
-    },
     "inferred_from" => [
         "cost",
         "conversions"
     ],
+    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'CostPerConversion'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'cost';
         $divisorMetric = 'conversions';

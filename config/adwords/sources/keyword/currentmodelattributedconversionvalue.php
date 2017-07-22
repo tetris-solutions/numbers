@@ -2,11 +2,11 @@
 return [
     "metric" => "currentmodelattributedconversionvalue",
     "entity" => "Keyword",
-    "platform" => "adwords",
-    "report" => "KEYWORDS_PERFORMANCE_REPORT",
     "fields" => [
         "CurrentModelAttributedConversionValue"
     ],
+    "report" => "KEYWORDS_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'CurrentModelAttributedConversionValue'}));
     },

@@ -2,11 +2,11 @@
 return [
     "metric" => "searchclickshare",
     "entity" => "Product",
-    "platform" => "adwords",
-    "report" => "SHOPPING_PERFORMANCE_REPORT",
     "fields" => [
         "SearchClickShare"
     ],
+    "report" => "SHOPPING_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         $parseValue = function ($str) {
             if (!is_string($str)) {

@@ -2,12 +2,15 @@
 return [
     "metric" => "contentimpressionshare",
     "entity" => "AdGroup",
-    "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [
         "ContentImpressionShare",
         "ContentRankLostImpressionShare"
     ],
+    "inferred_from" => [
+        "impressions"
+    ],
+    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         $parseValue = function ($str) {
             if (!is_string($str)) {
@@ -54,9 +57,6 @@ return [
     
         return $remaining;
     },
-    "inferred_from" => [
-        "impressions"
-    ],
     "sum" => function (array $rows) {
         $impressionShareField = 'contentimpressionshare';
         $impressionField = 'impressions';

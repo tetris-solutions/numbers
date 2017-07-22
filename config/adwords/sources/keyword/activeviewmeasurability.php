@@ -2,11 +2,11 @@
 return [
     "metric" => "activeviewmeasurability",
     "entity" => "Keyword",
-    "platform" => "adwords",
-    "report" => "KEYWORDS_PERFORMANCE_REPORT",
     "fields" => [
         "ActiveViewMeasurability"
     ],
+    "report" => "KEYWORDS_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'ActiveViewMeasurability'}));
     },

@@ -2,18 +2,18 @@
 return [
     "metric" => "averagecpc",
     "entity" => "Campaign",
-    "platform" => "adwords",
-    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
     "fields" => [
         "AverageCpc"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'AverageCpc'}));
-    },
     "inferred_from" => [
         "cost",
         "clicks"
     ],
+    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'AverageCpc'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'cost';
         $divisorMetric = 'clicks';

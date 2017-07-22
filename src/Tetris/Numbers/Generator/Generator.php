@@ -6,31 +6,15 @@ use gossi\codegen\generator\CodeFileGenerator;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpProperty;
 use function Tetris\Numbers\prettyVarExport;
-use Tetris\Numbers\Utils\ArrayUtils;
 
 abstract class Generator
 {
     const classRoot = __DIR__ . '/../../../../src';
     const configRoot = __DIR__ . '/../../../../src/config/dynamic';
 
-    protected static $inventory = [];
+    private static $inventory = [];
 
-
-    static function add(array $config)
-    {
-        self::$inventory[] = $config;
-    }
-
-    protected static function clearConfig(array $config, ...$omit): array
-    {
-        $config = ArrayUtils::omit($config, ...$omit);
-
-        $config['platform'] = strtolower($config['platform']);
-
-        return $config;
-    }
-
-    private static function rrmdir($src)
+    private static function rmdir($src)
     {
         if (!file_exists($src)) return;
 
@@ -39,7 +23,7 @@ abstract class Generator
             if (($file != '.') && ($file != '..')) {
                 $full = $src . '/' . $file;
                 if (is_dir($full)) {
-                    self::rrmdir($full);
+                    self::rmdir($full);
                 } else {
                     unlink($full);
                 }
@@ -51,8 +35,8 @@ abstract class Generator
 
     private static function clear()
     {
-        self::rrmdir(self::classRoot . '/Tetris/Numbers/Generated');
-        self::rrmdir(self::configRoot);
+        self::rmdir(self::classRoot . '/Tetris/Numbers/Generated');
+        self::rmdir(self::configRoot);
     }
 
     private static function unslash(string $str)
@@ -82,7 +66,12 @@ abstract class Generator
         file_put_contents(self::classRoot . '/' . self::unslash($class->getQualifiedName()) . '.php', $data);
     }
 
-    private function genConfig(array $config, ClassWrapper $class, CodeFileGenerator $generator)
+    /**
+     * @param TransientSource|TransientAttribute $config
+     * @param ClassWrapper $class
+     * @param CodeFileGenerator $generator
+     */
+    private function genConfig($config, ClassWrapper $class, CodeFileGenerator $generator)
     {
         $configClass = new PhpClass();
         $name = uniqid('Config');
@@ -93,15 +82,18 @@ abstract class Generator
         $configClass->addUseStatement($class->getQualifiedName());
         $configClass->setParentClassName($class->getName());
 
-        $props = self::clearConfig($config,
-            'path',
-            'traits',
-            'interfaces',
-            'parent',
-            'raw_property'
-        );
+        foreach (get_object_vars($config) as $key => $value) {
+            $isTransientProp = property_exists(Transient::class, $key);
+            $isFinalProperty = property_exists($config->parent, $key);
 
-        foreach ($props as $key => $value) {
+            if ($isTransientProp && !$isFinalProperty) {
+                continue;
+            }
+
+            if ($key === 'platform') {
+                $value = strtolower($value);
+            }
+
             if (is_scalar($value)) {
                 $prop = new PhpProperty($key);
                 $prop->setVisibility('public');
@@ -135,6 +127,9 @@ abstract class Generator
             'generateReturnTypeHints' => true
         ]);
 
+        /**
+         * @var TransientSource|TransientAttribute $config
+         */
         foreach (self::$inventory as $index => $config) {
             $myClass = new ClassWrapper($config);
             $found = null;
@@ -163,5 +158,13 @@ abstract class Generator
         foreach ($classes as $class) {
             self::writeClass($class, $generator->generate($class));
         }
+    }
+
+    /**
+     * @param TransientSource|TransientAttribute $config
+     */
+    static function add($config)
+    {
+        self::$inventory[] = $config;
     }
 }

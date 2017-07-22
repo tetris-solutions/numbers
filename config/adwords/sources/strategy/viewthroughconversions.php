@@ -2,11 +2,11 @@
 return [
     "metric" => "viewthroughconversions",
     "entity" => "Strategy",
-    "platform" => "adwords",
-    "report" => "BID_GOAL_PERFORMANCE_REPORT",
     "fields" => [
         "ViewThroughConversions"
     ],
+    "report" => "BID_GOAL_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'ViewThroughConversions'}));
     },

@@ -6,25 +6,25 @@ namespace Tetris\Numbers\Generator\AdWords\Extensions;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Extension;
 use Tetris\Numbers\Generator\ExtensionApply;
+use Tetris\Numbers\Generator\TransientSource;
 
 class AdWordsTrivialSum implements Extension
 {
     use ExtensionApply;
 
-    function patch(array $config): array
+    function patch(TransientSource $source): TransientSource
     {
         $trivial = (
-            $config['type'] === 'integer' ||
-            $config['type'] === 'decimal' ||
-            $config['id'] === 'cost'
+            $source->type === 'integer' ||
+            $source->type === 'decimal' ||
+            $source->id === 'cost'
         );
 
-        return $trivial
-            ? [
-                'sum' => \Tetris\Numbers\simpleSum($config['id']),
-                'traits' => [
-                    'sum' => TrivialSum::class
-                ]]
-            : [];
+        if ($trivial) {
+            $source->sum = \Tetris\Numbers\simpleSum($source->id);
+            $source->traits['sum'] = TrivialSum::class;
+        }
+
+        return $source;
     }
 }

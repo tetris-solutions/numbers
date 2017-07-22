@@ -2,13 +2,17 @@
 return [
     "metric" => "searchbudgetlostimpressionshare",
     "entity" => "Account",
-    "platform" => "adwords",
-    "report" => "ACCOUNT_PERFORMANCE_REPORT",
     "fields" => [
         "SearchBudgetLostImpressionShare",
         "SearchRankLostImpressionShare",
         "SearchImpressionShare"
     ],
+    "inferred_from" => [
+        "searchimpressionshare",
+        "impressions"
+    ],
+    "report" => "ACCOUNT_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         $parseValue = function ($str) {
             if (!is_string($str)) {
@@ -55,10 +59,6 @@ return [
     
         return $remaining;
     },
-    "inferred_from" => [
-        "searchimpressionshare",
-        "impressions"
-    ],
     "sum" => function (array $rows) {
         $lostImpressionShareField = 'searchbudgetlostimpressionshare';
         $impressionShareField = 'searchimpressionshare';

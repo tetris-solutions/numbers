@@ -8,7 +8,7 @@ use Tetris\Numbers\Generator\AttributeTranslator;
 use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\TransientAttribute;
 
-class AttributeFactory extends Generator
+class AttributeFactory
 {
 
     /**

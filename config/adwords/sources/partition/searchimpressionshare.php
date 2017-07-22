@@ -2,11 +2,14 @@
 return [
     "metric" => "searchimpressionshare",
     "entity" => "Partition",
-    "platform" => "adwords",
-    "report" => "PRODUCT_PARTITION_REPORT",
     "fields" => [
         "SearchImpressionShare"
     ],
+    "inferred_from" => [
+        "impressions"
+    ],
+    "report" => "PRODUCT_PARTITION_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         $parseValue = function ($str) {
             if (!is_string($str)) {
@@ -53,9 +56,6 @@ return [
     
         return $remaining;
     },
-    "inferred_from" => [
-        "impressions"
-    ],
     "sum" => function (array $rows) {
         $impressionShareField = 'searchimpressionshare';
         $impressionField = 'impressions';

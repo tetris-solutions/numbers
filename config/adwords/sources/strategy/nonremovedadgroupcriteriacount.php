@@ -2,11 +2,11 @@
 return [
     "metric" => "nonremovedadgroupcriteriacount",
     "entity" => "Strategy",
-    "platform" => "adwords",
-    "report" => "BID_GOAL_PERFORMANCE_REPORT",
     "fields" => [
         "NonRemovedAdGroupCriteriaCount"
     ],
+    "report" => "BID_GOAL_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'NonRemovedAdGroupCriteriaCount'}));
     },

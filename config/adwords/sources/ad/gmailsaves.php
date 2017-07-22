@@ -2,11 +2,11 @@
 return [
     "metric" => "gmailsaves",
     "entity" => "Ad",
-    "platform" => "adwords",
-    "report" => "AD_PERFORMANCE_REPORT",
     "fields" => [
         "GmailSaves"
     ],
+    "report" => "AD_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'GmailSaves'}));
     },

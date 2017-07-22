@@ -2,11 +2,11 @@
 return [
     "metric" => "gmailforwards",
     "entity" => "Audience",
-    "platform" => "adwords",
-    "report" => "AUDIENCE_PERFORMANCE_REPORT",
     "fields" => [
         "GmailForwards"
     ],
+    "report" => "AUDIENCE_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'GmailForwards'}));
     },

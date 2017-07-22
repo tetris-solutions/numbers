@@ -2,11 +2,11 @@
 return [
     "metric" => "interactions",
     "entity" => "AdGroup",
-    "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [
         "Interactions"
     ],
+    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'Interactions'}));
     },

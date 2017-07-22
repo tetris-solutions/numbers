@@ -2,11 +2,11 @@
 return [
     "metric" => "allconversions",
     "entity" => "Placement",
-    "platform" => "adwords",
-    "report" => "AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT",
     "fields" => [
         "AllConversions"
     ],
+    "report" => "AUTOMATIC_PLACEMENTS_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'AllConversions'}));
     },

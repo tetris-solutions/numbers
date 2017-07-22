@@ -2,18 +2,18 @@
 return [
     "metric" => "averagecost",
     "entity" => "Budget",
-    "platform" => "adwords",
-    "report" => "BUDGET_PERFORMANCE_REPORT",
     "fields" => [
         "AverageCost"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'AverageCost'}));
-    },
     "inferred_from" => [
         "cost",
         "interactions"
     ],
+    "report" => "BUDGET_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'AverageCost'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'cost';
         $divisorMetric = 'interactions';

@@ -2,19 +2,19 @@
 return [
     "metric" => "videoquartile75rate",
     "entity" => "Search",
-    "platform" => "adwords",
-    "report" => "SEARCH_QUERY_PERFORMANCE_REPORT",
     "fields" => [
         "VideoQuartile75Rate"
     ],
+    "inferred_from" => [
+        "videoviews"
+    ],
+    "report" => "SEARCH_QUERY_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         $valueAsNumericString = str_replace(['%', ','], '', $data->{'VideoQuartile75Rate'});
     
         return floatval($valueAsNumericString) / 100;
     },
-    "inferred_from" => [
-        "videoviews"
-    ],
     "sum" => function (array $rows) {
         $quartileViewMetric = 'videoquartile75rate';
         $totalViewsMetric = 'videoviews';

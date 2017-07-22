@@ -2,20 +2,20 @@
 return [
     "metric" => "videoviewrate",
     "entity" => "Campaign",
-    "platform" => "adwords",
-    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
     "fields" => [
         "VideoViewRate"
     ],
+    "inferred_from" => [
+        "videoviews",
+        "impressions"
+    ],
+    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         $valueAsNumericString = str_replace(['%', ','], '', $data->{'VideoViewRate'});
     
         return floatval($valueAsNumericString) / 100;
     },
-    "inferred_from" => [
-        "videoviews",
-        "impressions"
-    ],
     "sum" => function (array $rows) {
         $dividendMetric = 'videoviews';
         $divisorMetric = 'impressions';

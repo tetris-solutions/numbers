@@ -2,18 +2,18 @@
 return [
     "metric" => "averagecpv",
     "entity" => "AdGroup",
-    "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [
         "AverageCpv"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'AverageCpv'}));
-    },
     "inferred_from" => [
         "cost",
         "videoviews"
     ],
+    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'AverageCpv'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'cost';
         $divisorMetric = 'videoviews';

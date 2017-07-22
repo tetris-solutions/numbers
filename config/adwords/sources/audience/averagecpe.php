@@ -2,18 +2,18 @@
 return [
     "metric" => "averagecpe",
     "entity" => "Audience",
-    "platform" => "adwords",
-    "report" => "AUDIENCE_PERFORMANCE_REPORT",
     "fields" => [
         "AverageCpe"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'AverageCpe'}));
-    },
     "inferred_from" => [
         "cost",
         "engagements"
     ],
+    "report" => "AUDIENCE_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'AverageCpe'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'cost';
         $divisorMetric = 'engagements';

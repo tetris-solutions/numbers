@@ -2,18 +2,18 @@
 return [
     "metric" => "valueperconversion",
     "entity" => "Product",
-    "platform" => "adwords",
-    "report" => "SHOPPING_PERFORMANCE_REPORT",
     "fields" => [
         "ValuePerConversion"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'ValuePerConversion'}));
-    },
     "inferred_from" => [
         "conversionvalue",
         "conversions"
     ],
+    "report" => "SHOPPING_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'ValuePerConversion'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'conversionvalue';
         $divisorMetric = 'conversions';

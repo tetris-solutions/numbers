@@ -2,13 +2,18 @@
 return [
     "metric" => "cpv100",
     "entity" => "Keyword",
-    "platform" => "adwords",
-    "report" => "KEYWORDS_PERFORMANCE_REPORT",
     "fields" => [
         "Cost",
         "VideoQuartile100Rate",
         "VideoViews"
     ],
+    "inferred_from" => [
+        "cost",
+        "videoquartile100rate",
+        "videoviews"
+    ],
+    "report" => "KEYWORDS_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         $cost = floatval(str_replace(',', '', $data->{'Cost'}));
         $fullViewPercent = str_replace(['%', ','], '', $data->{'VideoQuartile100Rate'});
@@ -20,11 +25,6 @@ return [
     
         return $fullViews === 0.0 ? 0.0 : $cost / $fullViews;
     },
-    "inferred_from" => [
-        "cost",
-        "videoquartile100rate",
-        "videoviews"
-    ],
     "sum" => function (array $rows) {
         $costMetric = 'cost';
         $v100Metric = 'videoquartile100rate';

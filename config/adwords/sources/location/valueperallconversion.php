@@ -2,18 +2,18 @@
 return [
     "metric" => "valueperallconversion",
     "entity" => "Location",
-    "platform" => "adwords",
-    "report" => "GEO_PERFORMANCE_REPORT",
     "fields" => [
         "ValuePerAllConversion"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'ValuePerAllConversion'}));
-    },
     "inferred_from" => [
         "allconversionvalue",
         "allconversions"
     ],
+    "report" => "GEO_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'ValuePerAllConversion'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'allconversionvalue';
         $divisorMetric = 'allconversions';

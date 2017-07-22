@@ -2,18 +2,18 @@
 return [
     "metric" => "costperallconversion",
     "entity" => "Query",
-    "platform" => "adwords",
-    "report" => "KEYWORDLESS_QUERY_REPORT",
     "fields" => [
         "CostPerAllConversion"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'CostPerAllConversion'}));
-    },
     "inferred_from" => [
         "cost",
         "allconversions"
     ],
+    "report" => "KEYWORDLESS_QUERY_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'CostPerAllConversion'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'cost';
         $divisorMetric = 'allconversions';

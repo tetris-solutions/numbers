@@ -2,22 +2,22 @@
 return [
     "metric" => "roas",
     "entity" => "Product",
-    "platform" => "adwords",
-    "report" => "SHOPPING_PERFORMANCE_REPORT",
     "fields" => [
         "ConversionValue",
         "Cost"
     ],
+    "inferred_from" => [
+        "conversionvalue",
+        "cost"
+    ],
+    "report" => "SHOPPING_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         $conv = floatval(str_replace(',', '', $data->{'ConversionValue'}));
         $cost = floatval(str_replace(',', '', $data->{'Cost'}));
     
         return $cost === 0.0 ? 0.0 : $conv / $cost;
     },
-    "inferred_from" => [
-        "conversionvalue",
-        "cost"
-    ],
     "sum" => function (array $rows) {
         $dividendMetric = 'conversionvalue';
         $divisorMetric = 'cost';

@@ -2,11 +2,11 @@
 return [
     "metric" => "cost",
     "entity" => "Category",
-    "platform" => "adwords",
-    "report" => "KEYWORDLESS_CATEGORY_REPORT",
     "fields" => [
         "Cost"
     ],
+    "report" => "KEYWORDLESS_CATEGORY_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'Cost'}));
     },

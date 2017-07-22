@@ -2,11 +2,11 @@
 return [
     "metric" => "impressions",
     "entity" => "Location",
-    "platform" => "adwords",
-    "report" => "GEO_PERFORMANCE_REPORT",
     "fields" => [
         "Impressions"
     ],
+    "report" => "GEO_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'Impressions'}));
     },

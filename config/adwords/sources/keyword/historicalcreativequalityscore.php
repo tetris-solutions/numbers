@@ -2,11 +2,11 @@
 return [
     "metric" => "historicalcreativequalityscore",
     "entity" => "Keyword",
-    "platform" => "adwords",
-    "report" => "KEYWORDS_PERFORMANCE_REPORT",
     "fields" => [
         "HistoricalCreativeQualityScore"
     ],
+    "report" => "KEYWORDS_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         return $data->{'HistoricalCreativeQualityScore'};
     }

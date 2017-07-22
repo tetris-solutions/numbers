@@ -2,11 +2,11 @@
 return [
     "metric" => "cost",
     "entity" => "Location",
-    "platform" => "adwords",
-    "report" => "GEO_PERFORMANCE_REPORT",
     "fields" => [
         "Cost"
     ],
+    "report" => "GEO_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'Cost'}));
     },

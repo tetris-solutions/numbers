@@ -2,11 +2,11 @@
 return [
     "metric" => "clickassistedconversionsoverlastclickconversions",
     "entity" => "Campaign",
-    "platform" => "adwords",
-    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
     "fields" => [
         "ClickAssistedConversionsOverLastClickConversions"
     ],
+    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'ClickAssistedConversionsOverLastClickConversions'}));
     },

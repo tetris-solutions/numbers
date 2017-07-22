@@ -2,11 +2,11 @@
 return [
     "metric" => "benchmarkctr",
     "entity" => "Partition",
-    "platform" => "adwords",
-    "report" => "PRODUCT_PARTITION_REPORT",
     "fields" => [
         "BenchmarkCtr"
     ],
+    "report" => "PRODUCT_PARTITION_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'BenchmarkCtr'}));
     },

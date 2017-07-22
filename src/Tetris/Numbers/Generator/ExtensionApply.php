@@ -10,23 +10,21 @@ trait ExtensionApply
      */
     public $map;
 
-    function patch(array $config): array
+    function patch(TransientSource $source): array
     {
-        return isset($this->map[$config['metric']])
-            ? $this->map[$config['metric']]
+        return isset($this->map[$source->metric])
+            ? $this->map[$source->metric]
             : [];
     }
 
-    function extend(array $config): array
+    function extend(TransientSource $config): TransientSource
     {
         foreach ($this->patch($config) as $key => $value) {
             if ($key === 'traits' || $key === 'interfaces') {
-                $value = array_merge($config[$key] ?? [], $value);
-            } else if (isset($config[$key])) {
-                unset($config[$key]);
+                $value = array_merge($config->{$key} ?? [], $value);
             }
 
-            $config[$key] = $value;
+            $config->{$key} = $value;
         }
 
         return $config;

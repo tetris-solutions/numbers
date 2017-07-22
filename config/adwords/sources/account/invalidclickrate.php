@@ -2,20 +2,20 @@
 return [
     "metric" => "invalidclickrate",
     "entity" => "Account",
-    "platform" => "adwords",
-    "report" => "ACCOUNT_PERFORMANCE_REPORT",
     "fields" => [
         "InvalidClickRate"
     ],
+    "inferred_from" => [
+        "invalidclicks",
+        "clicks"
+    ],
+    "report" => "ACCOUNT_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         $valueAsNumericString = str_replace(['%', ','], '', $data->{'InvalidClickRate'});
     
         return floatval($valueAsNumericString) / 100;
     },
-    "inferred_from" => [
-        "invalidclicks",
-        "clicks"
-    ],
     "sum" => function (array $rows) {
         $dividendMetric = 'invalidclicks';
         $divisorMetric = 'clicks';

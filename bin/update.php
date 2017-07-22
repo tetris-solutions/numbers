@@ -6,6 +6,7 @@ namespace Tetris\Numbers;
 use Tetris\Numbers\Generator\AdWords\SourceFactory;
 use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\TransientAttribute;
+use Tetris\Numbers\Generator\TransientSource;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -41,16 +42,26 @@ function updateConfig()
             );
         }
 
+        /**
+         * @var TransientSource|array $source
+         */
         foreach ($config['sources'] as $source) {
             $entity = strtolower($source['entity']);
 
             file_put_contents(
                 __DIR__ . "/../config/{$platform}/sources/{$entity}/{$source['metric']}.php",
-                "<?php\nreturn " . prettyVarExport(SourceFactory::clear($source)) . ";\n"
+                "<?php\nreturn " . prettyVarExport(SourceFactory::clear(
+                    $source instanceof TransientSource
+                        ? $source->asArray()
+                        : $source
+                )) . ";\n"
             );
         }
 
         foreach ($config['reports'] as $reportName => $report) {
+            /**
+             * @var TransientAttribute|array $attribute
+             */
             foreach ($report['attributes'] as $id => $attribute) {
                 if ($attribute instanceof TransientAttribute) {
                     $attribute = $attribute->asArray();

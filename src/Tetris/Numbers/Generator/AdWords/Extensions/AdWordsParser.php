@@ -10,6 +10,7 @@ use Tetris\Numbers\Base\Parser\PercentParser;
 use Tetris\Numbers\Base\Parser\RawParser;
 use Tetris\Numbers\Generator\Extension;
 use Tetris\Numbers\Generator\ExtensionApply;
+use Tetris\Numbers\Generator\TransientSource;
 
 class AdWordsParser implements Extension
 {
@@ -35,12 +36,10 @@ class AdWordsParser implements Extension
         return $this->map[$type] ?? null;
     }
 
-    function patch(array $config): array
+    function patch(TransientSource $source): TransientSource
     {
-        return [
-            'traits' => [
-                'parser' => $this->map[$config['type']] ?? $this->map['raw']
-            ]
-        ];
+        $source->traits['parser'] = $this->map[$source->type] ?? $this->map['raw'];
+
+        return $source;
     }
 }

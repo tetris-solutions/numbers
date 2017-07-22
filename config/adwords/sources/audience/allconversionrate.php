@@ -2,20 +2,20 @@
 return [
     "metric" => "allconversionrate",
     "entity" => "Audience",
-    "platform" => "adwords",
-    "report" => "AUDIENCE_PERFORMANCE_REPORT",
     "fields" => [
         "AllConversionRate"
     ],
+    "inferred_from" => [
+        "allconversions",
+        "clicks"
+    ],
+    "report" => "AUDIENCE_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         $valueAsNumericString = str_replace(['%', ','], '', $data->{'AllConversionRate'});
     
         return floatval($valueAsNumericString) / 100;
     },
-    "inferred_from" => [
-        "allconversions",
-        "clicks"
-    ],
     "sum" => function (array $rows) {
         $dividendMetric = 'allconversions';
         $divisorMetric = 'clicks';

@@ -2,20 +2,20 @@
 return [
     "metric" => "interactionrate",
     "entity" => "Account",
-    "platform" => "adwords",
-    "report" => "ACCOUNT_PERFORMANCE_REPORT",
     "fields" => [
         "InteractionRate"
     ],
+    "inferred_from" => [
+        "interactions",
+        "impressions"
+    ],
+    "report" => "ACCOUNT_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         $valueAsNumericString = str_replace(['%', ','], '', $data->{'InteractionRate'});
     
         return floatval($valueAsNumericString) / 100;
     },
-    "inferred_from" => [
-        "interactions",
-        "impressions"
-    ],
     "sum" => function (array $rows) {
         $dividendMetric = 'interactions';
         $divisorMetric = 'impressions';

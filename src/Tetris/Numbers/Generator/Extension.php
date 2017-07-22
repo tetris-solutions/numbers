@@ -5,5 +5,5 @@ namespace Tetris\Numbers\Generator;
 
 interface Extension
 {
-    function extend(array $config): array;
+    function extend(TransientSource $config): TransientSource;
 }

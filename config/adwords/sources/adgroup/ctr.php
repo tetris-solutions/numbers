@@ -2,20 +2,20 @@
 return [
     "metric" => "ctr",
     "entity" => "AdGroup",
-    "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [
         "Ctr"
     ],
+    "inferred_from" => [
+        "clicks",
+        "impressions"
+    ],
+    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         $valueAsNumericString = str_replace(['%', ','], '', $data->{'Ctr'});
     
         return floatval($valueAsNumericString) / 100;
     },
-    "inferred_from" => [
-        "clicks",
-        "impressions"
-    ],
     "sum" => function (array $rows) {
         $dividendMetric = 'clicks';
         $divisorMetric = 'impressions';

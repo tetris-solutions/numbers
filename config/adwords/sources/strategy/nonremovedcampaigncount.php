@@ -2,11 +2,11 @@
 return [
     "metric" => "nonremovedcampaigncount",
     "entity" => "Strategy",
-    "platform" => "adwords",
-    "report" => "BID_GOAL_PERFORMANCE_REPORT",
     "fields" => [
         "NonRemovedCampaignCount"
     ],
+    "report" => "BID_GOAL_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'NonRemovedCampaignCount'}));
     },

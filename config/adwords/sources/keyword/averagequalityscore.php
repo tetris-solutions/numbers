@@ -2,17 +2,17 @@
 return [
     "metric" => "averagequalityscore",
     "entity" => "Keyword",
-    "platform" => "adwords",
-    "report" => "KEYWORDS_PERFORMANCE_REPORT",
     "fields" => [
         "QualityScore"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'QualityScore'}));
-    },
     "inferred_from" => [
         "impressions"
     ],
+    "report" => "KEYWORDS_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'QualityScore'}));
+    },
     "sum" => function (array $rows) {
         $metric = 'averagequalityscore';
         $weight = 'impressions';

@@ -2,18 +2,18 @@
 return [
     "metric" => "offlineinteractionrate",
     "entity" => "Campaign",
-    "platform" => "adwords",
-    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
     "fields" => [
         "OfflineInteractionRate"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'OfflineInteractionRate'}));
-    },
     "inferred_from" => [
         "numofflineinteractions",
         "numofflineimpressions"
     ],
+    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'OfflineInteractionRate'}));
+    },
     "sum" => function (array $rows) {
         $dividendMetric = 'numofflineinteractions';
         $divisorMetric = 'numofflineimpressions';

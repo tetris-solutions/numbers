@@ -204,6 +204,8 @@ function getAdwordsConfig(): array
                     $reportName
                 );
 
+                Generator::add($source);
+
                 $output['sources'][] = $source;
                 $output['metrics'][$attribute->id] = $metric;
             }
@@ -235,7 +237,7 @@ function getAdwordsConfig(): array
                 $attr->incompatible = $incompatibleFields;
             }
 
-            Generator::add(get_object_vars($attr));
+            Generator::add($attr);
 
             $reportConfig['attributes'][$index] = $attr;
         }

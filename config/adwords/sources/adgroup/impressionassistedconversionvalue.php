@@ -2,11 +2,11 @@
 return [
     "metric" => "impressionassistedconversionvalue",
     "entity" => "AdGroup",
-    "platform" => "adwords",
-    "report" => "ADGROUP_PERFORMANCE_REPORT",
     "fields" => [
         "ImpressionAssistedConversionValue"
     ],
+    "report" => "ADGROUP_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'ImpressionAssistedConversionValue'}));
     },

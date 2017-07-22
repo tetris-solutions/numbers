@@ -16,11 +16,15 @@ class ClassWrapper extends PhpClass
         return array_pop($parts);
     }
 
-    function __construct(array $config)
+    /**
+     * ClassWrapper constructor.
+     * @param TransientSource|TransientAttribute $config
+     */
+    function __construct($config)
     {
         parent::__construct(null);
 
-        $traits = $config['traits'];
+        $traits = $config->traits;
         $interfaces = [];
 
         if (isset($traits['parser'])) {
@@ -35,10 +39,10 @@ class ClassWrapper extends PhpClass
 
         sort($traits);
 
-        $this->parentClass = $config['parent'];
+        $this->parentClass = $config->parent;
 
-        $parentName = $this->bareClassName($config['parent']);
-        $platform = ucfirst($config['platform']);
+        $parentName = $this->bareClassName($config->parent);
+        $platform = ucfirst($config->platform);
 
         $name = implode("_",
             array_merge(
@@ -55,7 +59,7 @@ class ClassWrapper extends PhpClass
 
         $this->setUseStatements(array_merge(
             [
-                $config['parent']
+                $config->parent
             ],
             $interfaces,
             $traits

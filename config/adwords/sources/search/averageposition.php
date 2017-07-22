@@ -2,17 +2,17 @@
 return [
     "metric" => "averageposition",
     "entity" => "Search",
-    "platform" => "adwords",
-    "report" => "SEARCH_QUERY_PERFORMANCE_REPORT",
     "fields" => [
         "AveragePosition"
     ],
-    "parse" => function ($data): float {
-        return floatval(str_replace(',', '', $data->{'AveragePosition'}));
-    },
     "inferred_from" => [
         "impressions"
     ],
+    "report" => "SEARCH_QUERY_PERFORMANCE_REPORT",
+    "platform" => "adwords",
+    "parse" => function ($data): float {
+        return floatval(str_replace(',', '', $data->{'AveragePosition'}));
+    },
     "sum" => function (array $rows) {
         $metric = 'averageposition';
         $weight = 'impressions';

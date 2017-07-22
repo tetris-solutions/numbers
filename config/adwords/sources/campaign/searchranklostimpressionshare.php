@@ -2,13 +2,17 @@
 return [
     "metric" => "searchranklostimpressionshare",
     "entity" => "Campaign",
-    "platform" => "adwords",
-    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
     "fields" => [
         "SearchRankLostImpressionShare",
         "SearchBudgetLostImpressionShare",
         "SearchImpressionShare"
     ],
+    "inferred_from" => [
+        "searchimpressionshare",
+        "impressions"
+    ],
+    "report" => "CAMPAIGN_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         $parseValue = function ($str) {
             if (!is_string($str)) {
@@ -55,10 +59,6 @@ return [
     
         return $remaining;
     },
-    "inferred_from" => [
-        "searchimpressionshare",
-        "impressions"
-    ],
     "sum" => function (array $rows) {
         $lostImpressionShareField = 'searchranklostimpressionshare';
         $impressionShareField = 'searchimpressionshare';

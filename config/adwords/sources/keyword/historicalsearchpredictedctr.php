@@ -2,11 +2,11 @@
 return [
     "metric" => "historicalsearchpredictedctr",
     "entity" => "Keyword",
-    "platform" => "adwords",
-    "report" => "KEYWORDS_PERFORMANCE_REPORT",
     "fields" => [
         "HistoricalSearchPredictedCtr"
     ],
+    "report" => "KEYWORDS_PERFORMANCE_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data) {
         return $data->{'HistoricalSearchPredictedCtr'};
     }

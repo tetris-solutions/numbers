@@ -2,11 +2,11 @@
 return [
     "metric" => "crossdeviceconversions",
     "entity" => "Query",
-    "platform" => "adwords",
-    "report" => "KEYWORDLESS_QUERY_REPORT",
     "fields" => [
         "CrossDeviceConversions"
     ],
+    "report" => "KEYWORDLESS_QUERY_REPORT",
+    "platform" => "adwords",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'CrossDeviceConversions'}));
     },
