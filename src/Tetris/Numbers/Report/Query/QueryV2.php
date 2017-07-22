@@ -2,6 +2,7 @@
 
 namespace Tetris\Numbers\Report\Query;
 
+use Tetris\Numbers\Base\FilterMetaData;
 use Tetris\Numbers\Base\SourceMetaData;
 use Tetris\Numbers\Report\MetaData\MetaDataV2;
 use Tetris\Numbers\Report\ReportV2;
@@ -48,14 +49,17 @@ class QueryV2 extends QueryBase
         }
 
         foreach ($this->filters as $name => $values) {
-            $attribute = $this->report->addFilter($name, $values);
+            /**
+             * @var FilterMetaData $filter
+             */
+            $filter = $this->report->addFilter($name, $values);
 
-            if ($attribute['is_dimension'] && $name !== 'id') {
-                $this->report->addDimension($attribute['id'], true);
+            if ($filter->is_dimension && $filter->id !== 'id') {
+                $this->report->addDimension($filter->id, true);
             }
 
-            if ($attribute['is_metric']) {
-                $this->report->addMetric($this->mountMetric($attribute['id']), true);
+            if ($filter->is_metric) {
+                $this->report->addMetric($this->mountMetric($filter->id), true);
             }
         }
     }

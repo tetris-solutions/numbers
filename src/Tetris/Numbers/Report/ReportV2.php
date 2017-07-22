@@ -2,7 +2,10 @@
 
 namespace Tetris\Numbers\Report;
 
+use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\FilterMetaData;
 use Tetris\Numbers\Report\MetaData\MetaDataV2;
+use Tetris\Numbers\Utils\ObjectUtils;
 
 class ReportV2 extends ReportBlueprint
 {
@@ -10,5 +13,37 @@ class ReportV2 extends ReportBlueprint
     {
         parent::__construct($platform, $name);
         $this->attributes = MetaDataV2::getReport($platform, $name);
+    }
+
+    /**
+     * @param string $attributeId
+     * @param $values
+     * @return null|FilterMetaData
+     */
+    function addFilter(string $attributeId, $values)
+    {
+        if (empty($this->attributes[$attributeId])) {
+            return null;
+        }
+
+        /**
+         * @var AttributeMetaData $attribute
+         */
+        $attribute = $this->attributes[$attributeId];
+
+        if (isset($this->filters[$attribute->property])) {
+            return $this->filters[$attribute->property];
+        }
+
+        /**
+         * @var FilterMetaData $filter
+         */
+        $filter = ObjectUtils::cast(FilterMetaData::class, $attribute);
+
+        $filter->spec = $values;
+
+        $this->filters[$attributeId] = $filter;
+
+        return $filter;
     }
 }

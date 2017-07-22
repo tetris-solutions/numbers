@@ -20,24 +20,7 @@ abstract class ReportBlueprint
         $this->name = $name;
     }
 
-    function addFilter(string $attributeId, $values)
-    {
-        if (empty($this->attributes[$attributeId])) {
-            return null;
-        }
-
-        $attribute = $this->attributes[$attributeId];
-        $property = $attribute['property'];
-
-        if (isset($this->filters[$property])) {
-            return null;
-        }
-
-        $attribute['values'] = $values;
-        $this->filters[$attributeId] = $attribute;
-
-        return $attribute;
-    }
+    abstract function addFilter(string $attributeId, $values);
 
     function addDimension(string $dimensionId, $isAuxiliary = false)
     {

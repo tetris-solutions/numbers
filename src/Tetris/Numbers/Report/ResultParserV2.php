@@ -5,6 +5,7 @@ namespace Tetris\Numbers\Report;
 use Exception;
 use stdClass;
 use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\FilterMetaData;
 use Tetris\Numbers\Base\Parsable;
 use Tetris\Numbers\Base\SourceMetaData;
 use Tetris\Numbers\Base\Summable;
@@ -18,21 +19,22 @@ abstract class ResultParserV2
         $matchingRows = [];
 
         foreach ($allRows as $row) {
+            /**
+             * @var FilterMetaData $filter
+             */
             foreach ($filters as $filter) {
-                $field = $filter['id'];
-
-                if ($field === 'id') {
+                if ($filter->id === 'id') {
                     continue; // platform level filter
                 }
 
-                $operator = $filter['values'][0];
+                $operator = $filter->spec[0];
 
-                $A = $filter['values'][1];
-                $B = $filter['values'][2] ?? NULL;
+                $A = $filter->spec[1];
+                $B = $filter->spec[2] ?? NULL;
 
-                if (!isset($row->{$field})) continue;
+                if (!isset($row->{$filter->id})) continue;
 
-                $rowValue = $row->{$field};
+                $rowValue = $row->{$filter->id};
 
                 if (is_int($rowValue)) {
                     $A = isset($A) ? (int)$A : PHP_INT_MIN;

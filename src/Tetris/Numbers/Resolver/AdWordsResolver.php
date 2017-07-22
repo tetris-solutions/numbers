@@ -6,6 +6,7 @@ use Tetris\Adwords\Client;
 use Tetris\Adwords\Exceptions\NullReportException;
 use Tetris\Adwords\Request\Read\ReadInterface;
 use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\FilterMetaData;
 use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Numbers\Report\Query\Query;
 
@@ -26,12 +27,16 @@ class AdWordsResolver extends Client implements Resolver
 
     /**
      * @param ReadInterface $select
-     * @param array|AttributeMetaData $config
+     * @param array|FilterMetaData $config
      */
     private static function applyFilter(ReadInterface $select, $config)
     {
         $adWordsProperty = $config['property'];
-        $values = $config['values'];
+
+        $values = $config instanceof FilterMetaData
+            ? $config->spec
+            : $config['values'];
+
         $firstValue = $values[0];
 
         if ($config['id'] === 'id') {
