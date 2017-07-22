@@ -22,7 +22,7 @@ class ReportV2 extends ReportBlueprint
      */
     function addFilter(string $attributeId, $values)
     {
-        if (empty($this->attributes[$attributeId])) {
+        if (empty($this->attributes[$attributeId]) || isset($this->filters[$attributeId])) {
             return null;
         }
 
@@ -30,10 +30,6 @@ class ReportV2 extends ReportBlueprint
          * @var AttributeMetaData $attribute
          */
         $attribute = $this->attributes[$attributeId];
-
-        if (isset($this->filters[$attribute->property])) {
-            return $this->filters[$attribute->property];
-        }
 
         /**
          * @var FilterMetaData $filter

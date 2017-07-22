@@ -97,6 +97,9 @@ class AdWordsResolver extends Client implements Resolver
             ->from($report->name)
             ->during($query->since, $query->until);
 
+        /**
+         * @var FilterMetaData|array $filterConfig
+         */
         foreach ($report->filters as $attributeId => $filterConfig) {
             $postParsingFilter = $filterConfig['is_metric'] && $aggregateMode;
 
