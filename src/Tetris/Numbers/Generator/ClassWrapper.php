@@ -18,7 +18,7 @@ class ClassWrapper extends PhpClass
 
     /**
      * ClassWrapper constructor.
-     * @param TransientSource|TransientAttribute $config
+     * @param TransientMetric|TransientAttribute $config
      */
     function __construct($config)
     {

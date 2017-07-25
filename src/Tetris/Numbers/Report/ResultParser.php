@@ -6,7 +6,7 @@ use Exception;
 use stdClass;
 use Tetris\Numbers\Base\AttributeMetaData;
 use Tetris\Numbers\Base\Parsable;
-use Tetris\Numbers\Base\SourceMetaData;
+use Tetris\Numbers\Base\MetricMetaData;
 use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Services\FlagsService;
@@ -147,7 +147,7 @@ abstract class ResultParser
         }
 
         /**
-         * @var SourceMetaData|array $metric
+         * @var MetricMetaData|array $metric
          */
         foreach ($report->metrics as $metric) {
             $row->{$metric['id']} = $metric instanceof Parsable

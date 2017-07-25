@@ -3,20 +3,20 @@
 namespace Tetris\Numbers\Report\Query;
 
 use Tetris\Numbers\Base\FilterMetaData;
-use Tetris\Numbers\Base\SourceMetaData;
+use Tetris\Numbers\Base\MetricMetaData;
 use Tetris\Numbers\Report\MetaData\MetaDataV2;
 use Tetris\Numbers\Report\ReportV2;
 use Tetris\Numbers\Utils\ObjectUtils;
 
 class QueryV2 extends QueryBase
 {
-    protected function mountMetric(string $id): SourceMetaData
+    protected function mountMetric(string $id): MetricMetaData
     {
         $source = MetaDataV2::getMetricSource($this->platform, $this->entity, $id);
         /**
-         * @var SourceMetaData $sourceMetaData
+         * @var MetricMetaData $sourceMetaData
          */
-        $sourceMetaData = ObjectUtils::cast(SourceMetaData::class, $source);
+        $sourceMetaData = ObjectUtils::cast(MetricMetaData::class, $source);
         $sourceMetaData->name = MetaDataV2::getFieldName($this->locale, $this->platform, $id);
 
         return $sourceMetaData;
@@ -25,7 +25,7 @@ class QueryV2 extends QueryBase
     protected function setupReport()
     {
         /**
-         * @var SourceMetaData $metric
+         * @var MetricMetaData $metric
          */
         foreach ($this->metrics as $metric) {
             if (!$this->report) {
@@ -40,7 +40,7 @@ class QueryV2 extends QueryBase
         }
 
         /**
-         * @var SourceMetaData $metric
+         * @var MetricMetaData $metric
          */
         foreach ($this->metrics as $metric) {
             foreach ($metric->inferred_from as $subMetric) {

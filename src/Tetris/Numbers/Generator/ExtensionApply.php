@@ -10,14 +10,14 @@ trait ExtensionApply
      */
     public $map;
 
-    function patch(TransientSource $source): array
+    function patch(TransientMetric $source): array
     {
         return isset($this->map[$source->metric])
             ? $this->map[$source->metric]
             : [];
     }
 
-    function extend(TransientSource $config): TransientSource
+    function extend(TransientMetric $config): TransientMetric
     {
         foreach ($this->patch($config) as $key => $value) {
             if ($key === 'traits' || $key === 'interfaces') {

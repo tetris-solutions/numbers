@@ -3,10 +3,10 @@
 
 namespace Tetris\Numbers;
 
-use Tetris\Numbers\Generator\AdWords\SourceFactory;
+use Tetris\Numbers\Generator\AdWords\MetricFactory;
 use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\TransientAttribute;
-use Tetris\Numbers\Generator\TransientSource;
+use Tetris\Numbers\Generator\TransientMetric;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -43,15 +43,15 @@ function updateConfig()
         }
 
         /**
-         * @var TransientSource|array $source
+         * @var TransientMetric|array $source
          */
         foreach ($config['sources'] as $source) {
             $entity = strtolower($source['entity']);
 
             file_put_contents(
                 __DIR__ . "/../config/{$platform}/sources/{$entity}/{$source['metric']}.php",
-                "<?php\nreturn " . prettyVarExport(SourceFactory::clear(
-                    $source instanceof TransientSource
+                "<?php\nreturn " . prettyVarExport(MetricFactory::clear(
+                    $source instanceof TransientMetric
                         ? $source->asArray()
                         : $source
                 )) . ";\n"

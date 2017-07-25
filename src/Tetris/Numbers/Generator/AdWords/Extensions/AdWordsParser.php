@@ -10,7 +10,7 @@ use Tetris\Numbers\Base\Parser\PercentParser;
 use Tetris\Numbers\Base\Parser\RawParser;
 use Tetris\Numbers\Generator\Extension;
 use Tetris\Numbers\Generator\ExtensionApply;
-use Tetris\Numbers\Generator\TransientSource;
+use Tetris\Numbers\Generator\TransientMetric;
 
 class AdWordsParser implements Extension
 {
@@ -36,7 +36,7 @@ class AdWordsParser implements Extension
         return $this->map[$type] ?? null;
     }
 
-    function patch(TransientSource $source): TransientSource
+    function patch(TransientMetric $source): TransientMetric
     {
         $source->traits['parser'] = $this->map[$source->type] ?? $this->map['raw'];
 

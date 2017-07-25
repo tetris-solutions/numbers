@@ -67,7 +67,7 @@ abstract class Generator
     }
 
     /**
-     * @param TransientSource|TransientAttribute $config
+     * @param TransientMetric|TransientAttribute $config
      * @param ClassWrapper $class
      * @param CodeFileGenerator $generator
      */
@@ -128,7 +128,7 @@ abstract class Generator
         ]);
 
         /**
-         * @var TransientSource|TransientAttribute $config
+         * @var TransientMetric|TransientAttribute $config
          */
         foreach (self::$inventory as $index => $config) {
             $myClass = new ClassWrapper($config);
@@ -161,7 +161,7 @@ abstract class Generator
     }
 
     /**
-     * @param TransientSource|TransientAttribute $config
+     * @param TransientMetric|TransientAttribute $config
      */
     static function add($config)
     {

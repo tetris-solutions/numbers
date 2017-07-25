@@ -6,13 +6,13 @@ namespace Tetris\Numbers\Generator\AdWords\Extensions;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Extension;
 use Tetris\Numbers\Generator\ExtensionApply;
-use Tetris\Numbers\Generator\TransientSource;
+use Tetris\Numbers\Generator\TransientMetric;
 
 class AdWordsTrivialSum implements Extension
 {
     use ExtensionApply;
 
-    function patch(TransientSource $source): TransientSource
+    function patch(TransientMetric $source): TransientMetric
     {
         $trivial = (
             $source->type === 'integer' ||

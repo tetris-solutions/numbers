@@ -5,7 +5,7 @@ namespace Tetris\Numbers\Report\MetaData;
 
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\AttributeMetaData;
-use Tetris\Numbers\Base\Source;
+use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Resolver\FacebookResolver;
 use Tetris\Numbers\Utils\ObjectUtils;
@@ -23,7 +23,7 @@ class MetaDataV2 implements MetaDataReader
         $sources = self::getSources($platform, $entity);
 
         /**
-         * @var Source $source
+         * @var Metric $source
          */
         foreach ($sources as $source) {
             $reportAttributes = self::getReport($platform, $source->report);
@@ -101,7 +101,7 @@ class MetaDataV2 implements MetaDataReader
         return $attributes;
     }
 
-    static function getMetricSource(string $platform, string $entity, string $metric): Source
+    static function getMetricSource(string $platform, string $entity, string $metric): Metric
     {
         $platform = self::capitalized($platform);
         return self::requireCached(

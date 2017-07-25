@@ -9,7 +9,7 @@ use Tetris\Numbers\Base\Sum\CPV100Sum;
 use Tetris\Numbers\Base\Sum\ImpressionShareSum;
 use Tetris\Numbers\Base\Sum\LostImpressionShareSum;
 use Tetris\Numbers\Generator\AdWords\AttributeFactory;
-use Tetris\Numbers\Generator\AdWords\SourceFactory;
+use Tetris\Numbers\Generator\AdWords\MetricFactory;
 use Tetris\Numbers\Generator\AdWords\LegacyTypeParser;
 use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\TransientAttribute;
@@ -172,7 +172,7 @@ function getAdwordsConfig(): array
         $entity = $entityNameMap[$reportName];
         $output['entities'][$entity] = $entity;
 
-        $sourceFactory = new SourceFactory($fields);
+        $sourceFactory = new MetricFactory($fields);
 
         foreach ($fields as $originalProperty => $adWordsField) {
             if ($isBlacklisted($originalProperty)) continue;
