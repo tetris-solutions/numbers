@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
+use Tetris\Numbers\Generated\Attribute\Attribute_FacebookQuarterParser_Parsable;
 
-return new class extends Attribute_RawParser_Parsable {
+return new class extends Attribute_FacebookQuarterParser_Parsable {
 
 	public $id = 'quarter';
 

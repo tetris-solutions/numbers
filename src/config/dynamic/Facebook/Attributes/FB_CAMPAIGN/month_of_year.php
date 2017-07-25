@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
+use Tetris\Numbers\Generated\Attribute\Attribute_FacebookMonthOfYearParser_Parsable;
 
-return new class extends Attribute_RawParser_Parsable {
+return new class extends Attribute_FacebookMonthOfYearParser_Parsable {
 
 	public $id = 'month_of_year';
 

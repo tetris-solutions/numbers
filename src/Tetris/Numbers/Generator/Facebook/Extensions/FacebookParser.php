@@ -2,7 +2,12 @@
 
 namespace Tetris\Numbers\Generator\Facebook\Extensions;
 
+use Tetris\Numbers\Base\Parser\FacebookDayOfWeekParser;
+use Tetris\Numbers\Base\Parser\FacebookMonthOfYearParser;
 use Tetris\Numbers\Base\Parser\FacebookMonthParser;
+use Tetris\Numbers\Base\Parser\FacebookQuarterParser;
+use Tetris\Numbers\Base\Parser\FacebookWeekParser;
+use Tetris\Numbers\Base\Parser\FacebookYearParser;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 
 class FacebookParser extends DefaultParser
@@ -14,7 +19,12 @@ class FacebookParser extends DefaultParser
         parent::__construct();
 
         $parts = [
-            'month' => FacebookMonthParser::class
+            'month' => FacebookMonthParser::class,
+            'year' => FacebookYearParser::class,
+            'week' => FacebookWeekParser::class,
+            'day_of_week' => FacebookDayOfWeekParser::class,
+            'month_of_year' => FacebookMonthOfYearParser::class,
+            'quarter' => FacebookQuarterParser::class
         ];
 
         foreach ($parts as $name => $class) {
