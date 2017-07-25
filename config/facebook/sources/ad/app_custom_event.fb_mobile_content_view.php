@@ -2,11 +2,11 @@
 return [
     "metric" => "app_custom_event.fb_mobile_content_view",
     "entity" => "Ad",
-    "platform" => "facebook",
-    "report" => "FB_AD",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_AD",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'app_custom_event.fb_mobile_content_view';

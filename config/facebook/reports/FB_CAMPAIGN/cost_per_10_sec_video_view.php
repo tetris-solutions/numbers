@@ -1,9 +1,10 @@
 <?php
 return [
+    "is_filter" => TRUE,
+    "is_metric" => FALSE,
+    "is_dimension" => TRUE,
+    "is_percentage" => FALSE,
     "id" => "cost_per_10_sec_video_view",
     "property" => "cost_per_10_sec_video_view",
-    "type" => "currency",
-    "is_metric" => TRUE,
-    "is_dimension" => FALSE,
-    "is_filter" => TRUE
+    "type" => "currency"
 ];

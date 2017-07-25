@@ -2,11 +2,11 @@
 return [
     "metric" => "app_custom_event.fb_mobile_add_payment_info",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'app_custom_event.fb_mobile_add_payment_info';

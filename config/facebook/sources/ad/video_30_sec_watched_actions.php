@@ -2,11 +2,11 @@
 return [
     "metric" => "video_30_sec_watched_actions",
     "entity" => "Ad",
-    "platform" => "facebook",
-    "report" => "FB_AD",
     "fields" => [
         "video_30_sec_watched_actions"
     ],
+    "report" => "FB_AD",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'video_30_sec_watched_actions';
         $type = 'video_view';

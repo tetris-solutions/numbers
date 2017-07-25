@@ -191,11 +191,6 @@ function getAdwordsConfig(): array
             );
 
             if ($attribute->is_metric) {
-                $metric = isset($output['metrics'][$attribute->id]) ? $output['metrics'][$attribute->id] : [
-                    'id' => $attribute->id,
-                    'type' => $attribute->type
-                ];
-
                 $source = $sourceFactory->create(
                     $attribute->id,
                     $attribute->property,
@@ -207,7 +202,10 @@ function getAdwordsConfig(): array
                 Generator::add($source);
 
                 $output['sources'][] = $source;
-                $output['metrics'][$attribute->id] = $metric;
+                $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ?? [
+                        'id' => $attribute->id,
+                        'type' => $attribute->type
+                    ];
             }
 
             $reportConfig['attributes'][$attribute->id] = $attribute;

@@ -4,6 +4,8 @@ namespace Tetris\Numbers;
 
 use Tetris\Numbers\Base\Parser\FacebookCPV100Parser;
 use Tetris\Numbers\Base\Parser\ViewRateParser;
+use Tetris\Numbers\Generator\Facebook\Extensions\ActionsParser;
+use Tetris\Numbers\Generator\Facebook\Extensions\VideoViewParser;
 use Tetris\Numbers\Generator\Facebook\FacebookAttributeFactory;
 use Tetris\Numbers\Generator\Facebook\FacebookMetricFactory;
 use Tetris\Numbers\Generator\Generator;
@@ -47,78 +49,11 @@ function getFacebookConfig(): array
         json_decode(file_get_contents(__DIR__ . '/../../maps/insight-fields.json'), true)
     );
 
-    $actionTypes = json_decode(file_get_contents(__DIR__ . '/../../maps/facebook-action-types.json'), true);
-
     $output = [
         'entities' => ['Campaign', 'Account', 'AdSet', 'Ad'],
         'metrics' => [],
         'reports' => [],
         'sources' => []
-    ];
-
-    $parsers = [
-        'currency' => makeParserFromSource('decimal'),
-        'percentage' => makeParserFromSource('percent'),
-        'decimal' => makeParserFromSource('decimal'),
-        'raw' => makeParserFromSource('raw')
-    ];
-
-    $actionValueParser = makeParserFromSource('action');
-
-    $inferredMetricSumConfig = [
-        'cpc' => customRatioSum('spend', 'clicks'),
-        'cpm' => customRatioSum('spend', 'impressions'),
-        'ctr' => customRatioSum('clicks', 'impressions'),
-        'frequency' => customRatioSum('impressions', 'reach'),
-        'cost_per_estimated_ad_recallers' => customRatioSum('spend', 'estimated_ad_recallers'),
-        'cost_per_inline_link_click' => customRatioSum('spend', 'inline_link_clicks'),
-        'cost_per_inline_post_engagement' => customRatioSum('spend', 'inline_post_engagement'),
-        'cost_per_total_action' => customRatioSum('spend', 'total_actions'),
-        'inline_link_click_ctr' => customRatioSum('inline_link_clicks', 'impressions'),
-        'newsfeed_avg_position' => weightedAverage('newsfeed_avg_position', 'impressions'),
-        'roas' => customRatioSum('total_action_value', 'spend'),
-        'cpa' => customRatioSum('total_actions', 'total_action_value'),
-        'cpr' => customRatioSum('spend', 'reach'),
-        'cpv100' => customRatioSum('spend', 'video_p100_watched_actions'),
-        'view_rate' => customRatioSum('video_view', 'impressions')
-    ];
-
-    $simpleSumMetrics = [
-        'app_store_clicks',
-        'call_to_action_clicks',
-        'clicks',
-        'deeplink_clicks',
-        'impressions',
-        'newsfeed_clicks',
-        'newsfeed_impressions',
-        'social_clicks',
-        'social_impressions',
-        'social_spend',
-        'spend',
-        'total_actions',
-        'total_action_value',
-        'total_unique_actions',
-        'unique_clicks',
-        'unique_impressions',
-        'unique_social_clicks',
-        'unique_social_impressions',
-        'website_clicks',
-        'inline_link_clicks',
-        'inline_post_engagement',
-        'unique_inline_link_clicks',
-        'estimated_ad_recallers',
-        'canvas_avg_view_time',
-        'canvas_avg_view_percent',
-        'video_avg_percent_watched_actions',
-        'video_avg_time_watched_actions'
-    ];
-
-    $specialMetricConfig = [
-        'roas' => customRatioParser('total_action_value', 'spend'),
-        'cpa' => customRatioParser('total_actions', 'total_action_value'),
-        'cpr' => customRatioParser('spend', 'reach'),
-        'cpv100' => cpv100Facebook('spend', 'video_p100_watched_actions'),
-        'view_rate' => viewRateFacebook('actions', 'impressions')
     ];
 
     $fields['roas'] = $fields['spend'];
@@ -195,45 +130,20 @@ function getFacebookConfig(): array
             );
 
             if ($attribute->is_metric) {
-                $metric = isset($output['metrics'][$attribute->id])
-                    ? $output['metrics'][$attribute->id]
-                    : [
-                        'id' => $attribute->id,
-                        'type' => $attribute->type
-                    ];
-
                 $source = $sourceFactory->create(
                     $attribute->id,
                     $attribute->property,
-                    $metric['type'],
+                    $attribute->type,
                     $entity,
                     $reportName
                 );
-//                $source = [
-//                    'metric' => $attribute->id,
-//                    'entity' => $entity,
-//                    'platform' => 'facebook',
-//                    'report' => $reportName,
-//                    'fields' => [$originalAttributeName],
-//                    'parse' => $parsers[$attribute->type]($originalAttributeName),
-//                    'sum' => null
-//                ];
-//
-//                if (in_array($attribute->id, $simpleSumMetrics)) {
-//                    $source['sum'] = simpleSum($attribute['id']);
-//                }
-//
-//                if (isset($specialMetricConfig[$attribute->id])) {
-//                    $source = array_merge($source, $specialMetricConfig[$attribute->id]);
-//                }
-//
-//                if (isset($inferredMetricSumConfig[$attribute->id])) {
-//                    $source = array_merge($source, $inferredMetricSumConfig[$attribute->id]);
-//                }
 
                 Generator::add($source);
                 $output['sources'][] = $source;
-                $output['metrics'][$attribute->id] = $metric;
+                $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ??  [
+                        'id' => $attribute->id,
+                        'type' => $attribute->type
+                    ];
             }
 
             if (isset($inferredDimensions[$attribute->id])) {
@@ -248,85 +158,71 @@ function getFacebookConfig(): array
             $output['reports'][$reportName]['attributes'][$attribute->id] = $attribute;
         }
 
-        $composedVideoMetrics = [
-            'video_10_sec_watched_actions',
-            'video_15_sec_watched_actions',
-            'video_30_sec_watched_actions',
-            'video_complete_watched_actions',
-            'video_p25_watched_actions',
-            'video_p50_watched_actions',
-            'video_p75_watched_actions',
-            'video_p95_watched_actions',
-            'video_p100_watched_actions',
+        foreach (VideoViewParser::videoFields as $videoMetricName) {
+            $attribute = $attributeFactory->create(
+                $reportName,
+                $entity,
+                $videoMetricName,
+                'decimal',
+                true,
+                false,
+                false,
+                null
+            );
 
-            'video_avg_time_watched_actions',
-            'video_avg_pct_watched_actions',
-            'video_avg_percent_watched_actions',
-            'video_avg_sec_watched_actions',
 
-            'cost_per_10_sec_video_view'
-        ];
-
-        foreach ($composedVideoMetrics as $videoMetricName) {
-            $isAverage = strpos($videoMetricName, '_avg_') !== FALSE;
-
-            $attribute = [
-                'id' => $videoMetricName,
-                'property' => $videoMetricName,
-                'type' => 'decimal',
-                'is_metric' => true,
-                'is_dimension' => false,
-                'is_filter' => true
-            ];
-
-            if (empty($output['metrics'][$videoMetricName])) {
-                $output['metrics'][$videoMetricName] = [
-                    'id' => $videoMetricName,
-                    'type' => isFacebookCurrencyMetric($attribute) ? 'currency' : 'decimal'
+            $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ?? [
+                    'id' => $attribute->id,
+                    'type' => $attribute->type
                 ];
-            }
 
-            $attribute['type'] = $output['metrics'][$videoMetricName]['type'];
+            $source = $sourceFactory->create(
+                $attribute->id,
+                $attribute->property,
+                $attribute->type,
+                $entity,
+                $reportName
+            );
 
-            $output['sources'][] = [
-                'metric' => $videoMetricName,
-                'entity' => $entity,
-                'platform' => 'facebook',
-                'report' => $reportName,
-                'fields' => [$videoMetricName],
-                'parse' => $actionValueParser($videoMetricName, 'video_view'),
-                'sum' => $isAverage ? null : simpleSum($attribute['id'])
-            ];
+            $output['sources'][] = $source;
 
-            $output['reports'][$reportName]['attributes'][$videoMetricName] = $attribute;
+            Generator::add($attribute);
+            Generator::add($source);
+
+            $output['reports'][$reportName]['attributes'][$attribute->id] = $attribute;
         }
 
-        foreach ($actionTypes as $actionType => $name) {
-            $attribute = [
-                'id' => $actionType,
-                'property' => $actionType,
-                'type' => 'decimal',
-                'is_metric' => true,
-                'is_dimension' => false,
-                'is_filter' => true
-            ];
+        foreach (ActionsParser::getActionTypes() as $actionType => $name) {
 
-            if (empty($output['metrics'][$actionType])) {
-                $output['metrics'][$actionType] = [
-                    'id' => $actionType,
-                    'type' => 'decimal'
+            $attribute = $attributeFactory->create(
+                $reportName,
+                $entity,
+                $actionType,
+                'decimal',
+                true,
+                false,
+                false,
+                null
+            );
+
+
+            $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ?? [
+                    'id' => $attribute->id,
+                    'type' => $attribute->type
                 ];
-            }
 
-            $output['sources'][] = [
-                'metric' => $actionType,
-                'entity' => $entity,
-                'platform' => 'facebook',
-                'report' => $reportName,
-                'fields' => ['actions'],
-                'parse' => $actionValueParser('actions', $actionType),
-                'sum' => simpleSum($attribute['id'])
-            ];
+            $source = $sourceFactory->create(
+                $attribute->id,
+                $attribute->property,
+                $attribute->type,
+                $entity,
+                $reportName
+            );
+
+            $output['sources'][] = $source;
+
+            Generator::add($attribute);
+            Generator::add($source);
 
             $output['reports'][$reportName]['attributes'][$actionType] = $attribute;
         }

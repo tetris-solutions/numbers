@@ -1,9 +1,10 @@
 <?php
 return [
+    "is_filter" => TRUE,
+    "is_metric" => FALSE,
+    "is_dimension" => TRUE,
+    "is_percentage" => FALSE,
     "id" => "link_click",
     "property" => "link_click",
-    "type" => "decimal",
-    "is_metric" => TRUE,
-    "is_dimension" => FALSE,
-    "is_filter" => TRUE
+    "type" => "decimal"
 ];

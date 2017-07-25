@@ -2,11 +2,11 @@
 return [
     "metric" => "onsite_conversion.messaging_block",
     "entity" => "Campaign",
-    "platform" => "facebook",
-    "report" => "FB_CAMPAIGN",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_CAMPAIGN",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'onsite_conversion.messaging_block';

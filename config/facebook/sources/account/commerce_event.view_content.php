@@ -2,11 +2,11 @@
 return [
     "metric" => "commerce_event.view_content",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'commerce_event.view_content';

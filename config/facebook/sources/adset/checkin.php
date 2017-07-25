@@ -2,11 +2,11 @@
 return [
     "metric" => "checkin",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'checkin';

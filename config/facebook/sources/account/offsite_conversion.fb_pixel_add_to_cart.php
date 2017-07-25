@@ -2,11 +2,11 @@
 return [
     "metric" => "offsite_conversion.fb_pixel_add_to_cart",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'offsite_conversion.fb_pixel_add_to_cart';

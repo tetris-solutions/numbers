@@ -2,9 +2,11 @@
 
 namespace Tetris\Numbers\Generator\Facebook;
 
+use Tetris\Numbers\Generator\Facebook\Extensions\ActionsParser;
 use Tetris\Numbers\Generator\Facebook\Extensions\FacebookInferredSum;
 use Tetris\Numbers\Generator\Facebook\Extensions\FacebookSpecialMetric;
 use Tetris\Numbers\Generator\Facebook\Extensions\FacebookTrivialSum;
+use Tetris\Numbers\Generator\Facebook\Extensions\VideoViewParser;
 use Tetris\Numbers\Generator\Shared\MetricFactory;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 
@@ -20,7 +22,9 @@ class FacebookMetricFactory extends MetricFactory
             new DefaultParser(),
             new FacebookTrivialSum(),
             new FacebookSpecialMetric(),
-            new FacebookInferredSum()
+            new FacebookInferredSum(),
+            new VideoViewParser(),
+            new ActionsParser()
         ];
     }
 }

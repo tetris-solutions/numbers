@@ -2,11 +2,11 @@
 return [
     "metric" => "onsite_conversion.flow_complete",
     "entity" => "Ad",
-    "platform" => "facebook",
-    "report" => "FB_AD",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_AD",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'onsite_conversion.flow_complete';

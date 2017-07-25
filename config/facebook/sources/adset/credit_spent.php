@@ -2,11 +2,11 @@
 return [
     "metric" => "credit_spent",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'credit_spent';

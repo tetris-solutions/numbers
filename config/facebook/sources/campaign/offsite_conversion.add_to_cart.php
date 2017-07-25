@@ -2,11 +2,11 @@
 return [
     "metric" => "offsite_conversion.add_to_cart",
     "entity" => "Campaign",
-    "platform" => "facebook",
-    "report" => "FB_CAMPAIGN",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_CAMPAIGN",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'offsite_conversion.add_to_cart';

@@ -2,11 +2,11 @@
 return [
     "metric" => "offsite_conversion.fb_pixel_purchase",
     "entity" => "Campaign",
-    "platform" => "facebook",
-    "report" => "FB_CAMPAIGN",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_CAMPAIGN",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'offsite_conversion.fb_pixel_purchase';

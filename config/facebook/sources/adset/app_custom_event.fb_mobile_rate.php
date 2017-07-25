@@ -2,11 +2,11 @@
 return [
     "metric" => "app_custom_event.fb_mobile_rate",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'app_custom_event.fb_mobile_rate';

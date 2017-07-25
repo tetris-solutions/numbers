@@ -2,11 +2,11 @@
 return [
     "metric" => "offsite_conversion.fb_pixel_initiate_checkout",
     "entity" => "Ad",
-    "platform" => "facebook",
-    "report" => "FB_AD",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_AD",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'offsite_conversion.fb_pixel_initiate_checkout';

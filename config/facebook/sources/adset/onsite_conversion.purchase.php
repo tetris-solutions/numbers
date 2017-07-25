@@ -2,11 +2,11 @@
 return [
     "metric" => "onsite_conversion.purchase",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'onsite_conversion.purchase';

@@ -2,11 +2,11 @@
 return [
     "metric" => "offsite_conversion.fb_pixel_complete_registration",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'offsite_conversion.fb_pixel_complete_registration';

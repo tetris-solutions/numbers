@@ -1,9 +1,10 @@
 <?php
 return [
+    "is_filter" => TRUE,
+    "is_metric" => FALSE,
+    "is_dimension" => TRUE,
+    "is_percentage" => FALSE,
     "id" => "app_custom_event.fb_mobile_add_to_wishlist",
     "property" => "app_custom_event.fb_mobile_add_to_wishlist",
-    "type" => "decimal",
-    "is_metric" => TRUE,
-    "is_dimension" => FALSE,
-    "is_filter" => TRUE
+    "type" => "decimal"
 ];

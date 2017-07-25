@@ -2,11 +2,11 @@
 return [
     "metric" => "commerce_event.message_to_buy",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "actions"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'commerce_event.message_to_buy';

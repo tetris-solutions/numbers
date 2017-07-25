@@ -2,11 +2,11 @@
 return [
     "metric" => "video_p50_watched_actions",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "video_p50_watched_actions"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'video_p50_watched_actions';
         $type = 'video_view';

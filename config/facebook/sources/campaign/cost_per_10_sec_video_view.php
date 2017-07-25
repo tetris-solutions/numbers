@@ -2,11 +2,11 @@
 return [
     "metric" => "cost_per_10_sec_video_view",
     "entity" => "Campaign",
-    "platform" => "facebook",
-    "report" => "FB_CAMPAIGN",
     "fields" => [
         "cost_per_10_sec_video_view"
     ],
+    "report" => "FB_CAMPAIGN",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'cost_per_10_sec_video_view';
         $type = 'video_view';
