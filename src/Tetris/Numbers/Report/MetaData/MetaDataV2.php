@@ -72,7 +72,7 @@ class MetaDataV2 implements MetaDataReader
     {
         $capitalizedPlatform = self::capitalized($platform);
 
-        return self::readDirFiles(realpath(self::configDir . "/{$capitalizedPlatform}/Sources/{$entity}"));
+        return self::readDirFiles(realpath(self::configDir . "/{$capitalizedPlatform}/Metrics/{$entity}"));
     }
 
     static function getReport(string $platform, string $reportName): array
@@ -105,7 +105,7 @@ class MetaDataV2 implements MetaDataReader
     {
         $platform = self::capitalized($platform);
         return self::requireCached(
-            realpath(self::configDir . "/{$platform}/Sources/{$entity}/{$metric}.php")
+            realpath(self::configDir . "/{$platform}/Metrics/{$entity}/{$metric}.php")
         );
     }
 }

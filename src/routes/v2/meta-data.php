@@ -30,9 +30,9 @@ function metaDataRouteHandlerV2(string $action)
         $platform = $request->getQueryParam('platform');
         $attributes = nullLess(MetaDataV2::listAttributes($platform, $entity));
 
-        return $response->withJson(isset($params['attribute'])
+        return $response->withJson((object)(isset($params['attribute'])
             ? $attributes[$params['attribute']]
-            : $attributes);
+            : $attributes));
     });
 }
 
