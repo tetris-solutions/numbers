@@ -4,11 +4,11 @@ namespace Tetris\Numbers\Generator\Facebook;
 
 use Tetris\Numbers\Generator\Facebook\Extensions\ActionsParser;
 use Tetris\Numbers\Generator\Facebook\Extensions\FacebookInferredSum;
+use Tetris\Numbers\Generator\Facebook\Extensions\FacebookParser;
 use Tetris\Numbers\Generator\Facebook\Extensions\FacebookSpecialMetric;
 use Tetris\Numbers\Generator\Facebook\Extensions\FacebookTrivialSum;
 use Tetris\Numbers\Generator\Facebook\Extensions\VideoViewParser;
 use Tetris\Numbers\Generator\Shared\MetricFactory;
-use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 
 class FacebookMetricFactory extends MetricFactory
 {
@@ -19,7 +19,7 @@ class FacebookMetricFactory extends MetricFactory
         parent::__construct();
 
         $this->extensions = [
-            new DefaultParser(),
+            new FacebookParser(),
             new FacebookTrivialSum(),
             new FacebookSpecialMetric(),
             new FacebookInferredSum(),

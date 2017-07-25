@@ -10,9 +10,6 @@ use Tetris\Numbers\Base\Parser\JSONParser;
 use Tetris\Numbers\Base\Parser\PercentParser;
 use Tetris\Numbers\Base\Parser\RawParser;
 use Tetris\Numbers\Generator\Shared\Extension;
-use Tetris\Numbers\Generator\Shared\TransientAttribute;
-use Tetris\Numbers\Generator\Shared\TransientField;
-use Tetris\Numbers\Generator\Shared\TransientMetric;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
 
 class DefaultParser implements Extension

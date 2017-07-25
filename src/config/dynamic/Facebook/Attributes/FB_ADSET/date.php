@@ -17,7 +17,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $platform = 'facebook';
 
-	public $property = 'date';
+	public $property = 'date_start';
 
 	public $type = 'string';
 };

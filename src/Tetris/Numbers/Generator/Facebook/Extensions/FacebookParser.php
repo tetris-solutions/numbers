@@ -12,22 +12,21 @@ use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 
 class FacebookParser extends DefaultParser
 {
-    private $dateParts = [];
+    public $dateParts = [];
+    const dateParsers = [
+        'month' => FacebookMonthParser::class,
+        'year' => FacebookYearParser::class,
+        'week' => FacebookWeekParser::class,
+        'day_of_week' => FacebookDayOfWeekParser::class,
+        'month_of_year' => FacebookMonthOfYearParser::class,
+        'quarter' => FacebookQuarterParser::class
+    ];
 
     function __construct()
     {
         parent::__construct();
 
-        $parts = [
-            'month' => FacebookMonthParser::class,
-            'year' => FacebookYearParser::class,
-            'week' => FacebookWeekParser::class,
-            'day_of_week' => FacebookDayOfWeekParser::class,
-            'month_of_year' => FacebookMonthOfYearParser::class,
-            'quarter' => FacebookQuarterParser::class
-        ];
-
-        foreach ($parts as $name => $class) {
+        foreach (self::dateParsers as $name => $class) {
             $this->dateParts[$name] = [
                 'property' => 'date_start',
                 'property_name' => $name,

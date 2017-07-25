@@ -106,10 +106,10 @@ function adWordsFieldsBlacklist(): callable
 
 function extendFields(string $entity, $fields): array
 {
-    if ($entity === 'Keyword') {
-        $fields['AverageQualityScore'] = $fields['QualityScore'];
-    }
-
+//    if ($entity === 'Keyword') {
+//        $fields['AverageQualityScore'] = $fields['QualityScore'];
+//    }
+//
     if (isset($fields['ConversionValue']) && isset($fields['Cost'])) {
         $fields['Roas'] = $fields['Cost'];
         $fields['Roas']['Filterable'] = false;

@@ -34,11 +34,6 @@ abstract class AttributeFactory extends FieldFactory
         return strtolower($attributeName);
     }
 
-    protected function normalizeAttributeId(string $id): string
-    {
-        return $id;
-    }
-
     protected function normalizeProperty(string $propertyName): string
     {
         return $propertyName;
@@ -65,14 +60,13 @@ abstract class AttributeFactory extends FieldFactory
     ): TransientAttribute
     {
         $attribute = new TransientAttribute();
-        $id = $this->normalizeAttributeId($originalProperty);
 
         $attribute->description = $description;
         $attribute->parent = self::$parentClass;
         $attribute->platform = $this->platform;
         $attribute->path = "{$attribute->platform}/Attributes/{$reportName}";
-        $attribute->id = $this->getId($entity, $id);
-        $attribute->property = $this->normalizeProperty($id);
+        $attribute->id = $this->getId($entity, $originalProperty);
+        $attribute->property = $this->normalizeProperty($originalProperty);
         $attribute->raw_property = $originalProperty;
         $attribute->is_filter = $isFilterable;
         $attribute->type = $originalType;

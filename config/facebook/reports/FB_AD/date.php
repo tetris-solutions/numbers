@@ -5,6 +5,6 @@ return [
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
     "id" => "date",
-    "property" => "date",
+    "property" => "date_start",
     "type" => "string"
 ];

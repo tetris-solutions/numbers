@@ -19,18 +19,22 @@ class FacebookAttributeFactory extends AttributeFactory
         $this->parser = new FacebookParser();
         $this->translators = [
             new AttributeTranslator('Account', [
+                'date_start' => 'date',
                 'account_id',
                 'account_name'
             ], 'account_'),
             new AttributeTranslator('Ad', [
+                'date_start' => 'date',
                 'ad_id',
                 'ad_name'
             ], 'ad_'),
             new AttributeTranslator('AdSet', [
+                'date_start' => 'date',
                 'adset_id',
                 'adset_name'
             ], 'adset_'),
             new AttributeTranslator('Campaign', [
+                'date_start' => 'date',
                 'campaign_id',
                 'campaign_name'
             ], 'campaign_')
