@@ -28,7 +28,7 @@ trait Meta
 
     static function getFieldName(string $locale, string $platform, string $field): string
     {
-        $path = realpath(__DIR__ . "/../../locales/{$locale}/fields.php");
+        $path = realpath(__DIR__ . "/../../../../locales/{$locale}/fields.php");
 
         if (!isset(self::$names[$locale][$platform]) && file_exists($path)) {
             self::$names[$locale] = self::requireCached($path);
