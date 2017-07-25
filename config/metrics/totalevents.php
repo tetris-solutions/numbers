@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "totalevents",
-    "type" => "decimal"
+    "type" => "integer"
 ];

@@ -2,11 +2,11 @@
 return [
     "metric" => "totalevents",
     "entity" => "Campaign",
-    "platform" => "analytics",
-    "report" => "GA_DEFAULT",
     "fields" => [
         "ga:totalEvents"
     ],
+    "report" => "GA_DEFAULT",
+    "platform" => "analytics",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'ga:totalEvents'}));
     },

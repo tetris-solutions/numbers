@@ -151,7 +151,7 @@ class AdWordsAttributeFactory extends AttributeFactory
         return $default;
     }
 
-    protected function isMetric(TransientAttribute $attribute, $behavior): bool
+    protected function isMetric(TransientAttribute $attribute, $behaviorOrGroup): bool
     {
         $actuallyIsAMetric = [
             'estimatedaddclicksatfirstpositioncpc',
@@ -164,7 +164,7 @@ class AdWordsAttributeFactory extends AttributeFactory
         ];
 
         return (
-            strtolower($behavior) === 'metric' ||
+            strtolower($behaviorOrGroup) === 'metric' ||
             in_array($attribute->id, $actuallyIsAMetric)
         );
     }

@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "sessions",
-    "property" => "ga:sessions",
-    "type" => "decimal",
+    "is_filter" => FALSE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "sessions",
+    "property" => "ga:sessions",
+    "type" => "integer"
 ];

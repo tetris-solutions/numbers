@@ -41,7 +41,7 @@ class FacebookAttributeFactory extends AttributeFactory
         ];
     }
 
-    protected function isMetric(TransientAttribute $attribute, $behavior): bool
+    protected function isMetric(TransientAttribute $attribute, $behaviorOrGroup): bool
     {
         $notId = substr($attribute->property, -3) !== '_id';
 

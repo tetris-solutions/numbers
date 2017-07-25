@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "goalcompletionsall",
-    "property" => "ga:goalCompletionsAll",
-    "type" => "decimal",
+    "is_filter" => FALSE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "goalcompletionsall",
+    "property" => "ga:goalCompletionsAll",
+    "type" => "integer"
 ];

@@ -24,15 +24,16 @@ class AnalyticsAttributeFactory extends AttributeFactory
         ];
     }
 
-    protected function isMetric(TransientAttribute $attribute, $behavior): bool
+    protected function isMetric(TransientAttribute $attribute, $behaviorOrGroup): bool
     {
-        $notId = substr($attribute->property, -3) !== '_id';
+        return $behaviorOrGroup !== 'Dimensions';
+    }
 
-        return $notId && (
-                $attribute->type === 'float' ||
-                $attribute->type === 'percentage' ||
-                $attribute->type === 'numeric string'
-            );
+    protected function getId(string $entity, string $attributeName): string
+    {
+        $attributeName = strtolower(substr($attributeName, 3));
+
+        return parent::getId($entity, $attributeName);
     }
 
     protected function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string

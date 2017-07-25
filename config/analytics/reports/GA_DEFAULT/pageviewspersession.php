@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "pageviewspersession",
-    "property" => "ga:pageviewsPerSession",
-    "type" => "decimal",
+    "is_filter" => FALSE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "pageviewspersession",
+    "property" => "ga:pageviewsPerSession",
+    "type" => "decimal"
 ];

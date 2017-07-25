@@ -41,7 +41,7 @@ abstract class AttributeFactory extends FieldFactory
 
     protected abstract function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string;
 
-    protected abstract function isMetric(TransientAttribute $attribute, $behavior): bool;
+    protected abstract function isMetric(TransientAttribute $attribute, $behaviorOrGroup): bool;
 
     protected abstract function isParsable(TransientAttribute $attribute): bool;
 

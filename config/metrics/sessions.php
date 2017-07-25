@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "sessions",
-    "type" => "decimal"
+    "type" => "integer"
 ];

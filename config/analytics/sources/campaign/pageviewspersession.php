@@ -2,13 +2,12 @@
 return [
     "metric" => "pageviewspersession",
     "entity" => "Campaign",
-    "platform" => "analytics",
-    "report" => "GA_DEFAULT",
     "fields" => [
         "ga:pageviewsPerSession"
     ],
+    "report" => "GA_DEFAULT",
+    "platform" => "analytics",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'ga:pageviewsPerSession'}));
-    },
-    "sum" => NULL
+    }
 ];

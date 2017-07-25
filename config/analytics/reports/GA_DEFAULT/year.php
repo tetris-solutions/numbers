@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "year",
-    "property" => "ga:year",
-    "type" => "string",
+    "is_filter" => FALSE,
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_filter" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "year",
+    "property" => "ga:year",
+    "type" => "string"
 ];

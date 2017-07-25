@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "bounces",
-    "type" => "decimal"
+    "type" => "integer"
 ];

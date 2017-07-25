@@ -2,13 +2,12 @@
 return [
     "metric" => "sessionduration",
     "entity" => "Campaign",
-    "platform" => "analytics",
-    "report" => "GA_DEFAULT",
     "fields" => [
         "ga:sessionDuration"
     ],
+    "report" => "GA_DEFAULT",
+    "platform" => "analytics",
     "parse" => function ($data) {
         return $data->{'ga:sessionDuration'};
-    },
-    "sum" => NULL
+    }
 ];

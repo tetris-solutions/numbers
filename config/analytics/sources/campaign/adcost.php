@@ -2,13 +2,12 @@
 return [
     "metric" => "adcost",
     "entity" => "Campaign",
-    "platform" => "analytics",
-    "report" => "GA_DEFAULT",
     "fields" => [
         "ga:adCost"
     ],
+    "report" => "GA_DEFAULT",
+    "platform" => "analytics",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'ga:adCost'}));
-    },
-    "sum" => NULL
+    }
 ];

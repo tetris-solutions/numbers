@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "uniqueevents",
-    "type" => "decimal"
+    "type" => "integer"
 ];

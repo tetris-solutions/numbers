@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "adclicks",
-    "property" => "ga:adClicks",
-    "type" => "decimal",
+    "is_filter" => FALSE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "adclicks",
+    "property" => "ga:adClicks",
+    "type" => "integer"
 ];

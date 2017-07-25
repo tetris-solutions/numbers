@@ -2,11 +2,11 @@
 return [
     "metric" => "adclicks",
     "entity" => "Campaign",
-    "platform" => "analytics",
-    "report" => "GA_DEFAULT",
     "fields" => [
         "ga:adClicks"
     ],
+    "report" => "GA_DEFAULT",
+    "platform" => "analytics",
     "parse" => function ($data): int {
         return intval(str_replace(',', '', $data->{'ga:adClicks'}));
     },

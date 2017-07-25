@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "goalstartsall",
-    "type" => "decimal"
+    "type" => "integer"
 ];

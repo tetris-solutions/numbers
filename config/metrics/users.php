@@ -1,5 +1,5 @@
 <?php
 return [
     "id" => "users",
-    "type" => "decimal"
+    "type" => "integer"
 ];

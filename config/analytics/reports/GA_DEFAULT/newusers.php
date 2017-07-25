@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "newusers",
-    "property" => "ga:newUsers",
-    "type" => "decimal",
+    "is_filter" => FALSE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => FALSE
+    "is_percentage" => FALSE,
+    "id" => "newusers",
+    "property" => "ga:newUsers",
+    "type" => "integer"
 ];

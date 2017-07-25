@@ -2,6 +2,10 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Numbers\Generator\Analytics\AnalyticsAttributeFactory;
+use Tetris\Numbers\Generator\Analytics\AnalyticsMetricFactory;
+use Tetris\Numbers\Generator\Generator;
+
 function normalizeGAType(string $type): string
 {
     $type = strtolower($type);
@@ -19,19 +23,13 @@ function normalizeGAType(string $type): string
 
 function getAnalyticsConfig(): array
 {
-    $parsersPerType = [
-        'STRING' => makeParserFromSource('raw'),
-        'INTEGER' => makeParserFromSource('integer'),
-        'FLOAT' => makeParserFromSource('decimal'),
-        'PERCENT' => makeParserFromSource('percent'),
-        'TIME' => makeParserFromSource('raw'),
-        'CURRENCY' => makeParserFromSource('decimal')
-    ];
+    $reportName = 'GA_DEFAULT';
+    $entity = 'Campaign';
 
     $output = [
-        'entities' => ['Campaign'],
+        'entities' => [$entity],
         'metrics' => [],
-        'reports' => ['GA_DEFAULT' => ['id' => 'GA_DEFAULT', 'attributes' => []]],
+        'reports' => [$reportName => ['id' => $reportName, 'attributes' => []]],
         'sources' => []
     ];
 
@@ -72,64 +70,47 @@ function getAnalyticsConfig(): array
         'ga:month'
     ];
 
-    $overrideName = ['campaign' => 'id', 'month' => 'monthofyear'];
-
-    $dimensionParsers = [
-        'date' => makeParserFromSource('ga-date'),
-        'yearmonth' => makeParserFromSource('ga-month'),
-        'isoyearisoweek' => makeParserFromSource('ga-week'),
-        'monthofyear' => makeParserFromSource('ga-month-of-year')
-    ];
-
     $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/analytics-fields.json'), true);
+
+    $attributeFactory = new AnalyticsAttributeFactory();
+    $sourceFactory = new AnalyticsMetricFactory();
 
     foreach ($fieldList as $originalAttributeName) {
         $config = $fieldsConfig[$originalAttributeName];
 
-        $attributeName = strtolower(substr($originalAttributeName, 3));
-        $isMetric = $config['group'] !== 'Dimensions';
+        $attribute = $attributeFactory->create(
+            $reportName,
+            $entity,
+            $originalAttributeName,
+            $config['type'],
+            false,
+            $config['type'] === 'PERCENT',
+            false,
+            null,
+            $config['group']
+        );
 
-        if (isset($overrideName[$attributeName])) {
-            $attributeName = $overrideName[$attributeName];
-        }
+        if ($attribute->is_metric) {
+            $source = $sourceFactory->create(
+                $attribute->id,
+                $attribute->property,
+                $attribute->type,
+                $entity,
+                $reportName
+            );
 
-        $attribute = [
-            'id' => $attributeName,
-            'property' => $originalAttributeName,
-            'type' => normalizeGAType($config['type']),
-            'is_metric' => $isMetric,
-            'is_dimension' => !$isMetric,
-            'is_filter' => false
-        ];
-
-        if ($isMetric) {
-            if (empty($output['metrics'][$attributeName])) {
-                $output['metrics'][$attributeName] = [
-                    'id' => $attributeName,
-                    'type' => $attribute['type']
-                ];
-            }
-
-            $source = [
-                'metric' => $attributeName,
-                'entity' => 'Campaign',
-                'platform' => 'analytics',
-                'report' => 'GA_DEFAULT',
-                'fields' => [$originalAttributeName],
-                'parse' => $parsersPerType[$config['type']]($originalAttributeName),
-                'sum' => null
-            ];
-
-            if ($config['type'] === 'INTEGER') {
-                $source['sum'] = simpleSum($attributeName);
-            }
+            Generator::add($source);
 
             $output['sources'][] = $source;
-        } else if (isset($dimensionParsers[$attributeName])) {
-            $attribute['parse'] = $dimensionParsers[$attributeName]($originalAttributeName);
+            $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ??  [
+                    'id' => $attribute->id,
+                    'type' => $attribute->type
+                ];
         }
 
-        $output['reports']['GA_DEFAULT']['attributes'][$attributeName] = $attribute;
+        Generator::add($attribute);
+
+        $output['reports']['GA_DEFAULT']['attributes'][$attribute->id] = $attribute;
     }
 
     return $output;

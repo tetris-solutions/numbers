@@ -1,12 +1,10 @@
 <?php
 return [
-    "id" => "yearmonth",
-    "property" => "ga:yearMonth",
-    "type" => "string",
+    "is_filter" => FALSE,
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_filter" => FALSE,
-    "parse" => function ($data) {
-        return date('Y-m-d', strtotime($data->{'ga:yearMonth'} . '01'));
-    }
+    "is_percentage" => FALSE,
+    "id" => "yearmonth",
+    "property" => "ga:yearMonth",
+    "type" => "string"
 ];
