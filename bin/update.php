@@ -3,7 +3,6 @@
 
 namespace Tetris\Numbers;
 
-use Tetris\Numbers\Generator\AdWords\AdWordsMetricFactory;
 use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\Shared\MetricFactory;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;

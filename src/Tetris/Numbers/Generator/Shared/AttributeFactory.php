@@ -18,11 +18,33 @@ abstract class AttributeFactory extends FieldFactory
      */
     protected $parser;
 
-    protected abstract function getId(string $entity, string $originalPropertyName): string;
+    protected function getId(string $entity, string $attributeName): string
+    {
+        /**
+         * @var AttributeTranslator $translator
+         */
+        foreach ($this->translators as $translator) {
+            $translation = $translator->translate($entity, $attributeName);
 
-    protected abstract function normalizeProperty(string $propertyName): string;
+            if ($translation) {
+                return strtolower($translation);
+            }
+        }
 
-    protected abstract function normalizeType(string $attributeId, string $originalType, $isSpecialValue, $isPercentage): string;
+        return strtolower($attributeName);
+    }
+
+    protected function normalizeAttributeId(string $id): string
+    {
+        return $id;
+    }
+
+    protected function normalizeProperty(string $propertyName): string
+    {
+        return $propertyName;
+    }
+
+    protected abstract function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string;
 
     protected abstract function isMetric(TransientAttribute $attribute, $behavior): bool;
 
@@ -32,28 +54,35 @@ abstract class AttributeFactory extends FieldFactory
         string $reportName,
         string $entity,
         string $originalProperty,
-        string $behavior,
         string $originalType,
-        bool $filterable,
-        bool $percentage,
-        bool $specialValue,
-        $predicateValues,
-        $incompatibleFields
+        bool $isFilterable,
+        bool $isPercentage,
+        bool $isSpecialValue,
+        $description = null,
+        $behavior = null,
+        $predicateValues = null,
+        $incompatibleFields = null
     ): TransientAttribute
     {
         $attribute = new TransientAttribute();
+        $id = $this->normalizeAttributeId($originalProperty);
 
+        $attribute->description = $description;
         $attribute->parent = self::$parentClass;
         $attribute->platform = $this->platform;
         $attribute->path = "{$attribute->platform}/Attributes/{$reportName}";
-        $attribute->id = $this->getId($entity, $originalProperty);
-        $attribute->property = $this->normalizeProperty($originalProperty);
+        $attribute->id = $this->getId($entity, $id);
+        $attribute->property = $this->normalizeProperty($id);
         $attribute->raw_property = $originalProperty;
-        $attribute->is_filter = $filterable;
-        $attribute->type = $this->normalizeType($attribute->id, $originalType, $specialValue, $percentage);
+        $attribute->is_filter = $isFilterable;
+        $attribute->type = $originalType;
         $attribute->is_metric = $this->isMetric($attribute, $behavior);
+
+        // normalize
+        $attribute->type = $this->normalizeType($attribute, $originalType, $isSpecialValue, $isPercentage);
+
         $attribute->is_dimension = !$attribute->is_metric;
-        $attribute->is_percentage = $percentage;
+        $attribute->is_percentage = $isPercentage;
         $attribute->values = $predicateValues;
         $attribute->incompatible = $incompatibleFields;
 

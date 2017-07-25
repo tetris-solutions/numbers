@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "account_name",
-    "property" => "account_name",
-    "type" => "string",
+    "is_filter" => TRUE,
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_filter" => TRUE
+    "is_percentage" => FALSE,
+    "id" => "account_name",
+    "property" => "account_name",
+    "type" => "string"
 ];

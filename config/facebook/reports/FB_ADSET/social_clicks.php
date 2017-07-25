@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "social_clicks",
-    "property" => "social_clicks",
-    "type" => "numeric string",
+    "is_filter" => TRUE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => TRUE
+    "is_percentage" => FALSE,
+    "id" => "social_clicks",
+    "property" => "social_clicks",
+    "type" => "decimal"
 ];

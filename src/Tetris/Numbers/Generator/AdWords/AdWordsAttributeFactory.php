@@ -98,24 +98,6 @@ class AdWordsAttributeFactory extends AttributeFactory
                 'AdGroupStatus'
             ], 'AdGroup');
         }
-
-
-    }
-
-    protected function getId(string $entity, string $attributeName): string
-    {
-        /**
-         * @var \Tetris\Numbers\Generator\Shared\AttributeTranslator $translator
-         */
-        foreach ($this->translators as $translator) {
-            $translation = $translator->translate($entity, $attributeName);
-
-            if ($translation) {
-                return strtolower($translation);
-            }
-        }
-
-        return strtolower($attributeName);
     }
 
     protected function normalizeProperty(string $property): string
@@ -128,7 +110,7 @@ class AdWordsAttributeFactory extends AttributeFactory
         }
     }
 
-    protected function normalizeType(string $id, string $type, $isSpecialValue, $isPercentage): string
+    protected function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string
     {
         $overrideType = [
             'averagecpv' => 'currency',
@@ -137,14 +119,14 @@ class AdWordsAttributeFactory extends AttributeFactory
             'averagequalityscore' => 'decimal'
         ];
 
-        $default = strtolower($type);
+        $default = strtolower($originalType);
 
-        if ($id === 'id') {
+        if ($attribute->id === 'id') {
             return $default;
         }
 
-        if (isset($overrideType[$id])) {
-            return $overrideType[$id];
+        if (isset($overrideType[$attribute->id])) {
+            return $overrideType[$attribute->id];
         }
 
         if ($isSpecialValue) {
@@ -155,7 +137,7 @@ class AdWordsAttributeFactory extends AttributeFactory
             return 'percentage';
         }
 
-        switch ($type) {
+        switch ($originalType) {
             case 'Money':
             case 'Bid':
                 return 'currency';

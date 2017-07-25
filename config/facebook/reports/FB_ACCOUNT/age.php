@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "age",
-    "property" => "age",
-    "type" => "string",
+    "is_filter" => TRUE,
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_filter" => TRUE
+    "is_percentage" => FALSE,
+    "id" => "age",
+    "property" => "age",
+    "type" => "string"
 ];

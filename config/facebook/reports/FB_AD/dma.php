@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "dma",
-    "property" => "dma",
-    "type" => "string",
+    "is_filter" => TRUE,
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
-    "is_filter" => TRUE
+    "is_percentage" => FALSE,
+    "id" => "dma",
+    "property" => "dma",
+    "type" => "string"
 ];

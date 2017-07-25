@@ -2,6 +2,10 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Numbers\Generator\Facebook\FacebookAttributeFactory;
+use Tetris\Numbers\Generator\Facebook\FacebookMetricFactory;
+use Tetris\Numbers\Generator\Generator;
+
 function cpv100Facebook(string $spend, string $video100p)
 {
     $source = makeParserFromSource('cpv100-facebook');
@@ -28,18 +32,8 @@ function getFacebookConfig(): array
         json_decode(file_get_contents(__DIR__ . '/../../maps/breakdowns.json'), true),
         json_decode(file_get_contents(__DIR__ . '/../../maps/insight-fields.json'), true)
     );
+
     $actionTypes = json_decode(file_get_contents(__DIR__ . '/../../maps/facebook-action-types.json'), true);
-
-    $alternative = [
-        'date_start' => 'date'
-    ];
-
-    $overrideType = [
-        'impressions' => 'numeric string',
-        'ctr' => 'percentage',
-        'view_rate' => 'percentage',
-        'cost_per_10_sec_video_view' => 'currency'
-    ];
 
     $output = [
         'entities' => ['Campaign', 'Account', 'AdSet', 'Ad'],
@@ -120,11 +114,6 @@ function getFacebookConfig(): array
     $fields['cpv100'] = $fields['cpc'];
     $fields['view_rate'] = $fields['ctr'];
 
-    $numericTypes = [
-        'percentage',
-        'float'
-    ];
-
     $validTypes = [
         'numeric string',
         'string',
@@ -132,13 +121,13 @@ function getFacebookConfig(): array
     ];
 
     $fbDatePart = function (string $part) use (&$fields) {
-      $fields[$part] = $fields['date_start'];
+        $fields[$part] = $fields['date_start'];
 
-      return [
-          'property' => 'date_start',
-          'property_name' => $part,
-          'parse' => makeParserFromSource("fb-{$part}")('date_start')
-      ];
+        return [
+            'property' => 'date_start',
+            'property_name' => $part,
+            'parse' => makeParserFromSource("fb-{$part}")('date_start')
+        ];
     };
 
     $inferredDimensions = [
@@ -150,7 +139,7 @@ function getFacebookConfig(): array
         'quarter' => $fbDatePart('quarter')
     ];
 
-    function isCurrency(array $field): bool
+    function isFacebookCurrencyMetric(array $field): bool
     {
         $attributes = ['id', 'description'];
         $keywords = ['cost', 'spend', 'amount'];
@@ -166,6 +155,8 @@ function getFacebookConfig(): array
         return false;
     }
 
+    $attributeFactory = new FacebookAttributeFactory();
+    $sourceFactory = new FacebookMetricFactory();
 
     foreach ($output['entities'] as $entity) {
         $reportName = 'FB_' . strtoupper($entity);
@@ -178,84 +169,61 @@ function getFacebookConfig(): array
         foreach ($fields as $originalAttributeName => $field) {
             if (!in_array($field['type'], $validTypes)) continue;
 
-            // name looks like <campaign>_field_name
-            $nameStartsWithEntity = stripos($originalAttributeName, "{$entity}_") === 0;
-            $attributeName = $originalAttributeName;
+            $attribute = $attributeFactory->create(
+                $reportName,
+                $entity,
+                $originalAttributeName,
+                $field['type'],
+                true,
+                $field['type'] === 'percentage',
+                false,
+                $field['description'] ?? null
+            );
 
-            if (isset($alternative[$originalAttributeName])) {
-                $attributeName = $alternative[$originalAttributeName];
-            } else if ($nameStartsWithEntity) {
-                $attributeName = substr($originalAttributeName, strlen($entity) + 1);
-            }
-
-            if (isset($overrideType[$attributeName])) {
-                $field['type'] = $overrideType[$attributeName];
-            }
-
-            $attribute = [
-                'id' => $attributeName,
-                'property' => $originalAttributeName,
-                'type' => $field['type'],
-                'is_metric' => false,
-                'is_dimension' => true,
-                'is_filter' => true
-            ];
-
-            $attribute['is_metric'] = in_array($field['type'], $numericTypes) || (
-                    $field['type'] === 'numeric string' &&
-                    strpos($originalAttributeName, '_id') === FALSE
-                );
-
-            if ($attribute['is_metric']) {
-                $attribute['is_dimension'] = false;
-
-                if (empty($output['metrics'][$attributeName])) {
-                    $metric = [
-                        'id' => $attributeName,
-                        'type' => isCurrency($field) ? 'currency' : 'decimal'
+            if ($attribute->is_metric) {
+                $metric = isset($output['metrics'][$attribute->id])
+                    ? $output['metrics'][$attribute->id]
+                    : [
+                        'id' => $attribute->id,
+                        'type' => $attribute->type
                     ];
 
-                    if (isCurrency($field)) {
-                        $metric['type'] = 'currency';
-                    } else {
-                        $metric['type'] = $field['type'] === 'percentage'
-                            ? 'percentage'
-                            : 'decimal';
-                    }
-
-                    $output['metrics'][$attributeName] = $metric;
-                } else {
-                    $metric = $output['metrics'][$attributeName];
-                }
-
                 $source = [
-                    'metric' => $attributeName,
+                    'metric' => $attribute->id,
                     'entity' => $entity,
                     'platform' => 'facebook',
                     'report' => $reportName,
                     'fields' => [$originalAttributeName],
-                    'parse' => $parsers[$metric['type']]($originalAttributeName),
+                    'parse' => $parsers[$attribute->type]($originalAttributeName),
                     'sum' => null
                 ];
 
-                if (in_array($attributeName, $simpleSumMetrics)) {
+                if (in_array($attribute->id, $simpleSumMetrics)) {
                     $source['sum'] = simpleSum($attribute['id']);
                 }
 
-                if (isset($specialMetricConfig[$attributeName])) {
-                    $source = array_merge($source, $specialMetricConfig[$attributeName]);
+                if (isset($specialMetricConfig[$attribute->id])) {
+                    $source = array_merge($source, $specialMetricConfig[$attribute->id]);
                 }
 
-                if (isset($inferredMetricSumConfig[$attributeName])) {
-                    $source = array_merge($source, $inferredMetricSumConfig[$attributeName]);
+                if (isset($inferredMetricSumConfig[$attribute->id])) {
+                    $source = array_merge($source, $inferredMetricSumConfig[$attribute->id]);
                 }
 
                 $output['sources'][] = $source;
-            } else if (isset($inferredDimensions[$attributeName])) {
-              $attribute = array_merge($attribute, $inferredDimensions[$attributeName]);
+                $output['metrics'][$attribute->id] = $metric;
             }
 
-            $output['reports'][$reportName]['attributes'][$attributeName] = $attribute;
+            if (isset($inferredDimensions[$attribute->id])) {
+                $ls = $inferredDimensions[$attribute->id] ?? [];
+
+                foreach ($ls as $key => $value) {
+                    $attribute->{$key} = $value;
+                }
+            }
+
+            Generator::add($attribute);
+            $output['reports'][$reportName]['attributes'][$attribute->id] = $attribute;
         }
 
         $composedVideoMetrics = [
@@ -292,7 +260,7 @@ function getFacebookConfig(): array
             if (empty($output['metrics'][$videoMetricName])) {
                 $output['metrics'][$videoMetricName] = [
                     'id' => $videoMetricName,
-                    'type' => isCurrency($attribute) ? 'currency' : 'decimal'
+                    'type' => isFacebookCurrencyMetric($attribute) ? 'currency' : 'decimal'
                 ];
             }
 

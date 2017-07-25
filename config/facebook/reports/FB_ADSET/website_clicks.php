@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "website_clicks",
-    "property" => "website_clicks",
-    "type" => "numeric string",
+    "is_filter" => TRUE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => TRUE
+    "is_percentage" => FALSE,
+    "id" => "website_clicks",
+    "property" => "website_clicks",
+    "type" => "decimal"
 ];

@@ -18,63 +18,104 @@ class FacebookAttributeFactory extends AttributeFactory
 
         $this->parser = new DefaultParser();
         $this->translators = [
-
+            new AttributeTranslator('Account', [
+                'account_id',
+                'account_name'
+            ], 'account_'),
+            new AttributeTranslator('Ad', [
+                'ad_id',
+                'ad_name'
+            ], 'ad_'),
+            new AttributeTranslator('AdSet', [
+                'adset_id',
+                'adset_name'
+            ], 'adset_'),
+            new AttributeTranslator('Campaign', [
+                'campaign_id',
+                'campaign_name'
+            ], 'campaign_')
         ];
-
-        $adGroupLevel = [
-            'Product',
-            'Search',
-            'Location',
-            'Category',
-            'Query'
-        ];
-
-        foreach ($adGroupLevel as $entity) {
-            $this->translators[] = new AttributeTranslator($entity, [
-                'AdGroupId',
-                'AdGroupName',
-                'AdGroupStatus'
-            ], 'AdGroup');
-        }
-
-
     }
 
     protected function isMetric(TransientAttribute $attribute, $behavior): bool
     {
-        $actuallyIsAMetric = [
-            'estimatedaddclicksatfirstpositioncpc',
-            'estimatedaddcostatfirstpositioncpc',
-            'cpmbid',
-            'topofpagecpc',
-            'firstpagecpc',
-            'firstpositioncpc',
-            'averagequalityscore'
-        ];
+        $notId = substr($attribute->property, -3) !== '_id';
 
+        return $notId && (
+                $attribute->type === 'float' ||
+                $attribute->type === 'percentage' ||
+                $attribute->type === 'numeric string'
+            );
+    }
+
+    private function containsKeywords($value)
+    {
+        if (!is_string($value)) return false;
+
+        $keywords = ['cost', 'spend', 'amount'];
+
+        foreach ($keywords as $keyword) {
+            if (strpos($value, $keyword) !== FALSE) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function isCurrency(TransientAttribute $attribute): bool
+    {
         return (
-            strtolower($behavior) === 'metric' ||
-            in_array($attribute->id, $actuallyIsAMetric)
+            $this->containsKeywords($attribute->id) ||
+            $this->containsKeywords($attribute->description)
         );
     }
 
-    protected function getId(string $entity, string $originalPropertyName): string
+    private function overrideType(TransientAttribute $attribute, string $originalType)
     {
-        // TODO: Implement getId() method.
+        switch ($attribute->id) {
+            case 'impressions':
+                return 'numeric string';
+            case 'ctr':
+                return 'percentage';
+            case 'view_rate':
+                return 'percentage';
+            case 'cost_per_10_sec_video_view':
+                return 'currency';
+            default:
+                return $originalType;
+        }
     }
 
-    protected function normalizeProperty(string $propertyName): string
+    protected function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string
     {
-        // TODO: Implement normalizeProperty() method.
-    }
+        $type = $this->overrideType($attribute, $originalType);
 
-    protected function normalizeType(string $attributeId, string $originalType, $isSpecialValue, $isPercentage): string
-    {
-        // TODO: Implement normalizeType() method.
+        if ($attribute->is_metric) {
+            if ($this->isCurrency($attribute)) {
+                return 'currency';
+            }
+
+            return $type === 'percentage'
+                ? 'percentage'
+                : 'decimal';
+        }
+
+        return $type;
     }
 
     protected function isParsable(TransientAttribute $attribute): bool
     {
-        // TODO: Implement legacyDimensionIsParsable() method.
+        return false;
+    }
+
+    function normalizeAttributeId(string $id): string
+    {
+        switch ($id) {
+            case 'date_start':
+                return 'date';
+            default:
+                return $id;
+        }
     }
 }

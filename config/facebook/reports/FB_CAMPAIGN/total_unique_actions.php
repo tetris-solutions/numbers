@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "total_unique_actions",
-    "property" => "total_unique_actions",
-    "type" => "numeric string",
+    "is_filter" => TRUE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => TRUE
+    "is_percentage" => FALSE,
+    "id" => "total_unique_actions",
+    "property" => "total_unique_actions",
+    "type" => "decimal"
 ];

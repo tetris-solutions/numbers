@@ -1,12 +1,12 @@
 <?php
 return [
+    "is_filter" => TRUE,
+    "is_metric" => FALSE,
+    "is_dimension" => TRUE,
+    "is_percentage" => FALSE,
     "id" => "quarter",
     "property" => "date_start",
     "type" => "string",
-    "is_metric" => FALSE,
-    "is_dimension" => TRUE,
-    "is_filter" => TRUE,
-    "property_name" => "quarter",
     "parse" => function ($data) {
         $time = strtotime($data->{'date_start'});
         $year = date('Y', $time);

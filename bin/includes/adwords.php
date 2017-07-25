@@ -180,11 +180,12 @@ function getAdwordsConfig(): array
                 $reportName,
                 $entity,
                 $originalProperty,
-                $adWordsField['Behavior'],
                 $adWordsField['Type'],
                 $adWordsField['Filterable'],
                 $adWordsField['Percentage'],
                 $adWordsField['SpecialValue'],
+                null,
+                $adWordsField['Behavior'],
                 $adWordsField['PredicateValues'] ?? null,
                 $adWordsField['IncompatibleFields'] ?? null
             );

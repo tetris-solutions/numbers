@@ -1,9 +1,10 @@
 <?php
 return [
-    "id" => "unique_link_clicks_ctr",
-    "property" => "unique_link_clicks_ctr",
-    "type" => "numeric string",
+    "is_filter" => TRUE,
     "is_metric" => TRUE,
     "is_dimension" => FALSE,
-    "is_filter" => TRUE
+    "is_percentage" => FALSE,
+    "id" => "unique_link_clicks_ctr",
+    "property" => "unique_link_clicks_ctr",
+    "type" => "decimal"
 ];
