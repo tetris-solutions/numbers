@@ -8,9 +8,8 @@ use Tetris\Numbers\Base\Parser\TriangulationParser;
 use Tetris\Numbers\Base\Sum\CPV100Sum;
 use Tetris\Numbers\Base\Sum\ImpressionShareSum;
 use Tetris\Numbers\Base\Sum\LostImpressionShareSum;
-use Tetris\Numbers\Generator\AdWords\AttributeFactory;
-use Tetris\Numbers\Generator\AdWords\MetricFactory;
-use Tetris\Numbers\Generator\Shared\LegacyTypeParser;
+use Tetris\Numbers\Generator\AdWords\AdWordsAttributeFactory;
+use Tetris\Numbers\Generator\AdWords\AdWordsMetricFactory;
 use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
 
@@ -159,7 +158,7 @@ function getAdwordsConfig(): array
         'SHOPPING_PERFORMANCE_REPORT' => 'Product'
     ];
 
-    $attributeFactory = new AttributeFactory();
+    $attributeFactory = new AdWordsAttributeFactory();
 
     foreach ($entityNameMap as $reportName => $entity) {
         $fields = extendFields($entity, ReportMap::get($reportName));
@@ -172,7 +171,7 @@ function getAdwordsConfig(): array
         $entity = $entityNameMap[$reportName];
         $output['entities'][$entity] = $entity;
 
-        $sourceFactory = new MetricFactory($fields);
+        $sourceFactory = new AdwordsMetricFactory($fields);
 
         foreach ($fields as $originalProperty => $adWordsField) {
             if ($isBlacklisted($originalProperty)) continue;

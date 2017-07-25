@@ -2,20 +2,19 @@
 
 namespace Tetris\Numbers\Generator\AdWords;
 
-use Tetris\Numbers\Base\Attribute;
+use Tetris\Numbers\Generator\Shared\AttributeFactory;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 use Tetris\Numbers\Generator\Shared\AttributeTranslator;
-use Tetris\Numbers\Generator\Shared\LegacyTypeParser;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
 
-class AttributeFactory extends \Tetris\Numbers\Generator\Shared\AttributeFactory
+class AdWordsAttributeFactory extends AttributeFactory
 {
-    protected $parentClass = Attribute::class;
     protected $platform = 'AdWords';
 
     function __construct()
     {
-        $this->legacyParser = new LegacyTypeParser();
+        parent::__construct();
+
         $this->parser = new DefaultParser();
         $this->translators = [
             new AttributeTranslator('Account', [
@@ -187,7 +186,7 @@ class AttributeFactory extends \Tetris\Numbers\Generator\Shared\AttributeFactory
         );
     }
 
-    protected function legacyDimensionIsParsable(TransientAttribute $attribute): bool
+    protected function isParsable(TransientAttribute $attribute): bool
     {
         return $attribute->is_dimension && (
                 $attribute->type === 'integer' ||

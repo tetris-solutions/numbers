@@ -3,8 +3,9 @@
 
 namespace Tetris\Numbers;
 
-use Tetris\Numbers\Generator\AdWords\MetricFactory;
+use Tetris\Numbers\Generator\AdWords\AdWordsMetricFactory;
 use Tetris\Numbers\Generator\Generator;
+use Tetris\Numbers\Generator\Shared\MetricFactory;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
 use Tetris\Numbers\Generator\Shared\TransientMetric;
 
@@ -14,6 +15,14 @@ require 'includes/shared.php';
 require 'includes/facebook.php';
 require 'includes/adwords.php';
 require 'includes/analytics.php';
+
+function clearSource($source)
+{
+    return MetricFactory::clear(
+        $source instanceof TransientMetric
+            ? $source->asArray()
+            : $source);
+}
 
 function updateConfig()
 {
@@ -50,11 +59,7 @@ function updateConfig()
 
             file_put_contents(
                 __DIR__ . "/../config/{$platform}/sources/{$entity}/{$source['metric']}.php",
-                "<?php\nreturn " . prettyVarExport(MetricFactory::clear(
-                    $source instanceof TransientMetric
-                        ? $source->asArray()
-                        : $source
-                )) . ";\n"
+                "<?php\nreturn " . prettyVarExport(clearSource($source)) . ";\n"
             );
         }
 

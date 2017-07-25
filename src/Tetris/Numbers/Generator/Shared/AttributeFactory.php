@@ -3,19 +3,12 @@
 namespace Tetris\Numbers\Generator\Shared;
 
 
+use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 
-abstract class AttributeFactory
+abstract class AttributeFactory extends FieldFactory
 {
-    /**
-     * @var string
-     */
-    protected $platform;
-    /**
-     * @var string
-     */
-    protected $parentClass;
-
+    protected static $parentClass = Attribute::class;
     /**
      * @var array
      */
@@ -25,11 +18,6 @@ abstract class AttributeFactory
      */
     protected $parser;
 
-    /**
-     * @var LegacyTypeParser
-     */
-    protected $legacyParser;
-
     protected abstract function getId(string $entity, string $originalPropertyName): string;
 
     protected abstract function normalizeProperty(string $propertyName): string;
@@ -38,7 +26,7 @@ abstract class AttributeFactory
 
     protected abstract function isMetric(TransientAttribute $attribute, $behavior): bool;
 
-    protected abstract function legacyDimensionIsParsable(TransientAttribute $attribute): bool;
+    protected abstract function isParsable(TransientAttribute $attribute): bool;
 
     function create(
         string $reportName,
@@ -55,7 +43,7 @@ abstract class AttributeFactory
     {
         $attribute = new TransientAttribute();
 
-        $attribute->parent = $this->parentClass;
+        $attribute->parent = self::$parentClass;
         $attribute->platform = $this->platform;
         $attribute->path = "{$attribute->platform}/Attributes/{$reportName}";
         $attribute->id = $this->getId($entity, $originalProperty);
@@ -69,9 +57,7 @@ abstract class AttributeFactory
         $attribute->values = $predicateValues;
         $attribute->incompatible = $incompatibleFields;
 
-        if (
-        $this->legacyDimensionIsParsable($attribute)
-        ) {
+        if ($this->isParsable($attribute)) {
             $attribute->parse = $this->legacyParser->getFactory(
                 $attribute->type,
                 $attribute->property
