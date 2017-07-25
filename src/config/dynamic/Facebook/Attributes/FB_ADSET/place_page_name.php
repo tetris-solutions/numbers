@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The name of the place page involved in impression or click. Has to be used together with Business Locations breakdown.';
-
 	public $id = 'place_page_name';
 
 	public $is_dimension = true;

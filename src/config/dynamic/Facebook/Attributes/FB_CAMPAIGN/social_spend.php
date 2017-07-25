@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The total amount you\'ve spent so far for your ads showed with social information. (ex: Jane Doe likes this).';
-
 	public $id = 'social_spend';
 
 	public $is_dimension = false;

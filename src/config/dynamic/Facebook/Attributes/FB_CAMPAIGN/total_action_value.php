@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The total value of all conversions attributed to your ads.';
-
 	public $id = 'total_action_value';
 
 	public $is_dimension = false;

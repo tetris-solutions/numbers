@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The number of clicks on links to your website in your ads.';
-
 	public $id = 'website_clicks';
 
 	public $is_dimension = false;

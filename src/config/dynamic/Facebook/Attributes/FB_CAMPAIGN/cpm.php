@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The average cost for 1,000 impressions.';
-
 	public $id = 'cpm';
 
 	public $is_dimension = false;

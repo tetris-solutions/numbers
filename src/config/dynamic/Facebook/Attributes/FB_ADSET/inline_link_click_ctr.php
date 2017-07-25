@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The percentage of time people saw your ads and performed an inline link click.';
-
 	public $id = 'inline_link_click_ctr';
 
 	public $is_dimension = false;

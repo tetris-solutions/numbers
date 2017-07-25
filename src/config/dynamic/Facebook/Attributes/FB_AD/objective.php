@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The objective you selected for your campaign. Your objective reflects the goal you want to achieve with your advertising.';
-
 	public $id = 'objective';
 
 	public $is_dimension = true;

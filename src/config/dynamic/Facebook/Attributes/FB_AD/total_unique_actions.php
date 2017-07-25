@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The number of people who took an action that was attributed to your ads.';
-
 	public $id = 'total_unique_actions';
 
 	public $is_dimension = false;

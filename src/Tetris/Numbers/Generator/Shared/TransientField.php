@@ -6,6 +6,10 @@ namespace Tetris\Numbers\Generator\Shared;
 trait TransientField
 {
     /**
+     * @var string|null
+     */
+    public $description;
+    /**
      * @var string
      */
     public $platform;

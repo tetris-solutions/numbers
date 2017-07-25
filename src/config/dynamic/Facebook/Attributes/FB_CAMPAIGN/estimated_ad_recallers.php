@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'An estimate of the number of additional people who may remember seeing your ads, if asked, within 2 days. This metric shows results for ads using brand awareness, video views and Page post engagement objectives.';
-
 	public $id = 'estimated_ad_recallers';
 
 	public $is_dimension = false;

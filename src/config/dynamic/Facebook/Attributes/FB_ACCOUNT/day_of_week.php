@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The start date for your data. This is controlled by the date range you\'ve selected for your reporting view.';
-
 	public $id = 'day_of_week';
 
 	public $is_dimension = true;

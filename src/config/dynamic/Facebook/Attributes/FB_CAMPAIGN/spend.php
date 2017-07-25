@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The estimated total amount of money you\'ve spent on your campaign, ad set or ad during its schedule.';
-
 	public $id = 'spend';
 
 	public $is_dimension = false;

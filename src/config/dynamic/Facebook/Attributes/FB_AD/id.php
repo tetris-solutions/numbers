@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The unique ID of the ad you\'re viewing in reporting.';
-
 	public $id = 'id';
 
 	public $is_dimension = true;

@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The number of people who performed an inline link click.';
-
 	public $id = 'unique_inline_link_clicks';
 
 	public $is_dimension = false;

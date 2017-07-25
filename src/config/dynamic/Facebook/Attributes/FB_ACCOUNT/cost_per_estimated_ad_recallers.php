@@ -5,8 +5,6 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $description = 'The average cost for each estimated ad recall lift.';
-
 	public $id = 'cost_per_estimated_ad_recallers';
 
 	public $is_dimension = false;
