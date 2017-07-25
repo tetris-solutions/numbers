@@ -8,6 +8,7 @@ use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsSpecialMetric;
 use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsInferredSum;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 use Tetris\Numbers\Generator\Shared\Extension;
+use Tetris\Numbers\Generator\Shared\LegacyTypeParser;
 use Tetris\Numbers\Generator\Shared\TransientMetric;
 use Tetris\Numbers\Utils\ArrayUtils;
 

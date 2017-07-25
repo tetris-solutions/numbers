@@ -5,24 +5,13 @@ namespace Tetris\Numbers\Generator\AdWords;
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 use Tetris\Numbers\Generator\Shared\AttributeTranslator;
+use Tetris\Numbers\Generator\Shared\LegacyTypeParser;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
 
-class AttributeFactory
+class AttributeFactory extends \Tetris\Numbers\Generator\Shared\AttributeFactory
 {
-
-    /**
-     * @var array
-     */
-    private $translators;
-    /**
-     * @var \Tetris\Numbers\Generator\Shared\Extensions\DefaultParser
-     */
-    private $parser;
-
-    /**
-     * @var LegacyTypeParser
-     */
-    private $legacyParser;
+    protected $parentClass = Attribute::class;
+    protected $platform = 'AdWords';
 
     function __construct()
     {
@@ -114,7 +103,7 @@ class AttributeFactory
 
     }
 
-    private function getId(string $entity, string $attributeName): string
+    protected function getId(string $entity, string $attributeName): string
     {
         /**
          * @var \Tetris\Numbers\Generator\Shared\AttributeTranslator $translator
@@ -130,7 +119,7 @@ class AttributeFactory
         return strtolower($attributeName);
     }
 
-    private function normalizeProperty(string $property): string
+    protected function normalizeProperty(string $property): string
     {
         switch ($property) {
             case 'AverageQualityScore':
@@ -140,7 +129,7 @@ class AttributeFactory
         }
     }
 
-    private function getAdWordsAttributeType(string $id, string $type, $specialValue, $percentage): string
+    protected function normalizeType(string $id, string $type, $isSpecialValue, $isPercentage): string
     {
         $overrideType = [
             'averagecpv' => 'currency',
@@ -159,11 +148,11 @@ class AttributeFactory
             return $overrideType[$id];
         }
 
-        if ($specialValue) {
+        if ($isSpecialValue) {
             return 'special';
         }
 
-        if ($percentage) {
+        if ($isPercentage) {
             return 'percentage';
         }
 
@@ -180,7 +169,7 @@ class AttributeFactory
         return $default;
     }
 
-    private function isAdWordsMetric(string $id, string $behavior): bool
+    protected function isMetric(TransientAttribute $attribute, $behavior): bool
     {
         $actuallyIsAMetric = [
             'estimatedaddclicksatfirstpositioncpc',
@@ -194,54 +183,15 @@ class AttributeFactory
 
         return (
             strtolower($behavior) === 'metric' ||
-            in_array($id, $actuallyIsAMetric)
+            in_array($attribute->id, $actuallyIsAMetric)
         );
     }
 
-    function create(
-        string $reportName,
-        string $entity,
-        string $originalProperty,
-        string $behavior,
-        string $originalType,
-        bool $filterable,
-        bool $percentage,
-        bool $specialValue,
-        $predicateValues,
-        $incompatibleFields
-    ): TransientAttribute
+    protected function legacyDimensionIsParsable(TransientAttribute $attribute): bool
     {
-        $attribute = new TransientAttribute();
-
-        $attribute->parent = Attribute::class;
-        $attribute->platform = 'AdWords';
-        $attribute->path = "AdWords/Attributes/{$reportName}";
-        $attribute->id = $this->getId($entity, $originalProperty);
-        $attribute->property = $this->normalizeProperty($originalProperty);
-        $attribute->raw_property = $originalProperty;
-        $attribute->is_filter = $filterable;
-        $attribute->type = $this->getAdWordsAttributeType($attribute->id, $originalType, $specialValue, $percentage);
-        $attribute->is_metric = $this->isAdWordsMetric($attribute->id, $behavior);
-        $attribute->is_dimension = !$attribute->is_metric;
-        $attribute->is_percentage = $percentage;
-        $attribute->values = $predicateValues;
-        $attribute->incompatible = $incompatibleFields;
-
-        if (
-            $attribute->is_dimension && (
+        return $attribute->is_dimension && (
                 $attribute->type === 'integer' ||
                 $attribute->type === 'list'
-            )
-        ) {
-            $attribute->parse = $this->legacyParser->getFactory(
-                $attribute->type,
-                $attribute->property
             );
-            $attribute->traits['parser'] = $this->parser->getParser($attribute->type);
-        } else {
-            $attribute->traits['parser'] = $this->parser->getParser('raw');
-        }
-
-        return $attribute;
     }
 }

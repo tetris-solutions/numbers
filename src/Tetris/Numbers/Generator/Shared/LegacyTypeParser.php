@@ -1,6 +1,6 @@
 <?php
 
-namespace Tetris\Numbers\Generator\AdWords;
+namespace Tetris\Numbers\Generator\Shared;
 
 
 class LegacyTypeParser

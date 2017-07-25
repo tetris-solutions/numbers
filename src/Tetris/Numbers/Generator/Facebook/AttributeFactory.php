@@ -6,7 +6,7 @@ use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 use Tetris\Numbers\Generator\Shared\AttributeTranslator;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
-use Tetris\Numbers\Generator\AdWords\LegacyTypeParser;
+use Tetris\Numbers\Generator\Shared\LegacyTypeParser;
 
 class AttributeFactory
 {
@@ -16,12 +16,12 @@ class AttributeFactory
      */
     private $translators;
     /**
-     * @var \Tetris\Numbers\Generator\Shared\Extensions\DefaultParser
+     * @var DefaultParser
      */
     private $parser;
 
     /**
-     * @var LegacyTypeParser
+     * @var \Tetris\Numbers\Generator\Shared\LegacyTypeParser
      */
     private $legacyParser;
 
@@ -30,70 +30,7 @@ class AttributeFactory
         $this->legacyParser = new LegacyTypeParser();
         $this->parser = new DefaultParser();
         $this->translators = [
-            new AttributeTranslator('Account', [
-                'ExternalCustomerId' => 'Id',
-                'AccountCurrencyCode',
-                'AccountDescriptiveName' => 'Name',
-                'AccountTimeZone'
-            ]),
 
-            new AttributeTranslator('Ad', [
-                'AdType'
-            ]),
-
-            new AttributeTranslator('AdGroup', [
-                'AdGroupDesktopBidModifier',
-                'AdGroupId',
-                'AdGroupMobileBidModifier',
-                'AdGroupName',
-                'AdGroupStatus',
-                'AdGroupTabletBidModifier',
-                'AdGroupType'
-            ]),
-
-            new AttributeTranslator('Budget', [
-                'BudgetId',
-                'BudgetName',
-                'BudgetReferenceCount',
-                'BudgetStatus',
-                'BudgetCampaignAssociationStatus'
-            ]),
-
-            new AttributeTranslator('Campaign', [
-                'CampaignDesktopBidModifier',
-                'CampaignGroupId',
-                'CampaignId',
-                'CampaignMobileBidModifier',
-                'CampaignName',
-                'CampaignStatus',
-                'CampaignTabletBidModifier',
-                'CampaignTrialType'
-            ]),
-
-            new AttributeTranslator('Keyword', [
-                'KeywordMatchType'
-            ]),
-
-            new AttributeTranslator('Placement', [
-                'CampaignId',
-                'CampaignName',
-                'CampaignStatus'
-            ], 'Campaign'),
-
-            new AttributeTranslator('Video', [
-                'VideoChannelId',
-                'VideoDuration',
-                'VideoId',
-                'VideoTitle'
-            ]),
-
-            new AttributeTranslator('Partition', [
-                'PartitionType'
-            ]),
-
-            new AttributeTranslator('Audience', [
-                'UserListName' => 'Name'
-            ])
         ];
 
         $adGroupLevel = [
@@ -141,7 +78,7 @@ class AttributeFactory
         }
     }
 
-    private function getAdWordsAttributeType(string $id, string $type, $specialValue, $percentage): string
+    private function normalizeAttributeType(string $id, string $type, $specialValue, $percentage): string
     {
         $overrideType = [
             'averagecpv' => 'currency',
@@ -181,7 +118,7 @@ class AttributeFactory
         return $default;
     }
 
-    private function isAdWordsMetric(string $id, string $behavior): bool
+    private function isMetric(string $id, string $behavior): bool
     {
         $actuallyIsAMetric = [
             'estimatedaddclicksatfirstpositioncpc',
@@ -215,14 +152,14 @@ class AttributeFactory
         $attribute = new TransientAttribute();
 
         $attribute->parent = Attribute::class;
-        $attribute->platform = 'AdWords';
-        $attribute->path = "AdWords/Attributes/{$reportName}";
+        $attribute->platform = 'Facebook';
+        $attribute->path = "Facebook/Attributes/{$reportName}";
         $attribute->id = $this->getId($entity, $originalProperty);
         $attribute->property = $this->normalizeProperty($originalProperty);
         $attribute->raw_property = $originalProperty;
         $attribute->is_filter = $filterable;
-        $attribute->type = $this->getAdWordsAttributeType($attribute->id, $originalType, $specialValue, $percentage);
-        $attribute->is_metric = $this->isAdWordsMetric($attribute->id, $behavior);
+        $attribute->type = $this->normalizeAttributeType($attribute->id, $originalType, $specialValue, $percentage);
+        $attribute->is_metric = $this->isMetric($attribute->id, $behavior);
         $attribute->is_dimension = !$attribute->is_metric;
         $attribute->is_percentage = $percentage;
         $attribute->values = $predicateValues;

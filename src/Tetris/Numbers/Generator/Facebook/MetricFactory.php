@@ -6,7 +6,7 @@ use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\TransientMetric;
 use Tetris\Numbers\Utils\ArrayUtils;
-use Tetris\Numbers\Generator\AdWords\LegacyTypeParser;
+use Tetris\Numbers\Generator\Shared\LegacyTypeParser;
 
 class MetricFactory
 {

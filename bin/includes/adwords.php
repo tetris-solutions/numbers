@@ -10,7 +10,7 @@ use Tetris\Numbers\Base\Sum\ImpressionShareSum;
 use Tetris\Numbers\Base\Sum\LostImpressionShareSum;
 use Tetris\Numbers\Generator\AdWords\AttributeFactory;
 use Tetris\Numbers\Generator\AdWords\MetricFactory;
-use Tetris\Numbers\Generator\AdWords\LegacyTypeParser;
+use Tetris\Numbers\Generator\Shared\LegacyTypeParser;
 use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
 
