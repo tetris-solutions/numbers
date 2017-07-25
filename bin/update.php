@@ -5,8 +5,8 @@ namespace Tetris\Numbers;
 
 use Tetris\Numbers\Generator\AdWords\MetricFactory;
 use Tetris\Numbers\Generator\Generator;
-use Tetris\Numbers\Generator\TransientAttribute;
-use Tetris\Numbers\Generator\TransientMetric;
+use Tetris\Numbers\Generator\Shared\TransientAttribute;
+use Tetris\Numbers\Generator\Shared\TransientMetric;
 
 require __DIR__ . '/../vendor/autoload.php';
 

@@ -7,7 +7,7 @@ use stdClass;
 use FacebookAds\Api;
 use Facebook\Facebook;
 use Tetris\Numbers\Report\Query\QueryBase;
-use Tetris\Numbers\Report\Query\Query;
+
 
 class FacebookResolver extends Facebook implements Resolver
 {

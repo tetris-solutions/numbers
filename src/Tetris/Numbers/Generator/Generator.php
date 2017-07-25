@@ -5,6 +5,10 @@ namespace Tetris\Numbers\Generator;
 use gossi\codegen\generator\CodeFileGenerator;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpProperty;
+use Tetris\Numbers\Generator\Shared\ClassWrapper;
+use Tetris\Numbers\Generator\Shared\TransientField;
+use Tetris\Numbers\Generator\Shared\TransientAttribute;
+use Tetris\Numbers\Generator\Shared\TransientMetric;
 use function Tetris\Numbers\prettyVarExport;
 
 abstract class Generator
@@ -83,7 +87,7 @@ abstract class Generator
         $configClass->setParentClassName($class->getName());
 
         foreach (get_object_vars($config) as $key => $value) {
-            $isTransientProp = property_exists(Transient::class, $key);
+            $isTransientProp = property_exists(TransientField::class, $key);
             $isFinalProperty = property_exists($config->parent, $key);
 
             if ($isTransientProp && !$isFinalProperty) {

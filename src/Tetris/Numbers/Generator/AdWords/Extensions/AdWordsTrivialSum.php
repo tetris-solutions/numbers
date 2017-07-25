@@ -2,11 +2,10 @@
 
 namespace Tetris\Numbers\Generator\AdWords\Extensions;
 
-
 use Tetris\Numbers\Base\Sum\TrivialSum;
-use Tetris\Numbers\Generator\Extension;
-use Tetris\Numbers\Generator\ExtensionApply;
-use Tetris\Numbers\Generator\TransientMetric;
+use Tetris\Numbers\Generator\Shared\Extension;
+use Tetris\Numbers\Generator\Shared\ExtensionApply;
+use Tetris\Numbers\Generator\Shared\TransientMetric;
 
 class AdWordsTrivialSum implements Extension
 {

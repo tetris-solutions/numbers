@@ -2,8 +2,8 @@
 
 namespace Tetris\Numbers\Generator\AdWords\Extensions;
 
-use Tetris\Numbers\Generator\Extension;
-use Tetris\Numbers\Generator\ExtensionApply;
+use Tetris\Numbers\Generator\Shared\Extension;
+use Tetris\Numbers\Generator\Shared\ExtensionApply;
 
 class AdWordsSpecialMetric implements Extension
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tetris\Numbers\Generator\AdWords\Extensions;
+namespace Tetris\Numbers\Generator\Shared\Extensions;
 
 use Tetris\Numbers\Base\Parser\ComplexValueParser;
 use Tetris\Numbers\Base\Parser\FloatParser;
@@ -8,11 +8,11 @@ use Tetris\Numbers\Base\Parser\IntegerParser;
 use Tetris\Numbers\Base\Parser\JSONParser;
 use Tetris\Numbers\Base\Parser\PercentParser;
 use Tetris\Numbers\Base\Parser\RawParser;
-use Tetris\Numbers\Generator\Extension;
-use Tetris\Numbers\Generator\ExtensionApply;
-use Tetris\Numbers\Generator\TransientMetric;
+use Tetris\Numbers\Generator\Shared\Extension;
+use Tetris\Numbers\Generator\Shared\TransientMetric;
+use Tetris\Numbers\Generator\Shared\ExtensionApply;
 
-class AdWordsParser implements Extension
+class DefaultParser implements Extension
 {
     use ExtensionApply;
 

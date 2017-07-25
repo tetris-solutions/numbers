@@ -2,8 +2,8 @@
 
 namespace Tetris\Numbers\Report\MetaData;
 
-use Tetris\Numbers\Report\MetaData\Meta;
-use Tetris\Numbers\Report\MetaData\MetaDataReader;
+
+
 use Tetris\Numbers\Resolver\FacebookResolver;
 
 abstract class MetaData implements MetaDataReader

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tetris\Numbers\Generator;
+namespace Tetris\Numbers\Generator\Shared;
 
 
 class AttributeTranslator

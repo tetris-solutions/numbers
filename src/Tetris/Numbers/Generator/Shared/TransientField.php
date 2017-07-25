@@ -1,9 +1,9 @@
 <?php
 
-namespace Tetris\Numbers\Generator;
+namespace Tetris\Numbers\Generator\Shared;
 
 
-trait Transient
+trait TransientField
 {
     /**
      * @var string
@@ -39,7 +39,7 @@ trait Transient
         foreach (get_object_vars($this) as $key => $value) {
             $isLegacyAttribute = !in_array($key, $this->blacklist) && (
                     property_exists(get_parent_class($this), $key) ||
-                    property_exists(LegacyTransient::class, $key)
+                    property_exists(LegacyTransientField::class, $key)
                 );
 
             if ($isLegacyAttribute && isset($value)) {

@@ -1,15 +1,12 @@
 <?php
 
-namespace Tetris\Numbers\Generator\AdWords;
+namespace Tetris\Numbers\Generator\Facebook;
 
 use Tetris\Numbers\Base\Metric;
-use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsTrivialSum;
-use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsSpecialMetric;
-use Tetris\Numbers\Generator\AdWords\Extensions\AdWordsInferredSum;
-use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\TransientMetric;
 use Tetris\Numbers\Utils\ArrayUtils;
+use Tetris\Numbers\Generator\AdWords\LegacyTypeParser;
 
 class MetricFactory
 {
@@ -27,10 +24,7 @@ class MetricFactory
     {
         $this->legacyTypeParser = new LegacyTypeParser();
         $this->extensions = [
-            new DefaultParser(),
-            new AdWordsTrivialSum(),
-            new AdWordsSpecialMetric($fields),
-            new AdWordsInferredSum()
+
         ];
     }
 
@@ -79,7 +73,7 @@ class MetricFactory
         $source = new TransientMetric();
 
         $source->id = $id;
-        $source->platform = 'AdWords';
+        $source->platform = 'Facebook';
         $source->path = "{$source->platform}/Metrics/$entity";
         $source->parent = Metric::class;
         $source->metric = $id;

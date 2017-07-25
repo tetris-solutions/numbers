@@ -1,11 +1,12 @@
 <?php
 
-namespace Tetris\Numbers\Generator\AdWords;
+namespace Tetris\Numbers\Generator\Facebook;
 
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 use Tetris\Numbers\Generator\Shared\AttributeTranslator;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
+use Tetris\Numbers\Generator\AdWords\LegacyTypeParser;
 
 class AttributeFactory
 {

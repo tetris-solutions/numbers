@@ -1,13 +1,13 @@
 <?php
 
-namespace Tetris\Numbers\Generator;
+namespace Tetris\Numbers\Generator\Shared;
 
 use Tetris\Numbers\Base\Attribute;
 
 class TransientAttribute extends Attribute
 {
-    use Transient;
-    use LegacyTransient;
+    use TransientField;
+    use LegacyTransientField;
 
     function __construct()
     {

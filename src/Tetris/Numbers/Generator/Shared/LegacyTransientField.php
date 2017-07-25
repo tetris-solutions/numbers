@@ -1,9 +1,9 @@
 <?php
 
-namespace Tetris\Numbers\Generator;
+namespace Tetris\Numbers\Generator\Shared;
 
 
-trait LegacyTransient
+trait LegacyTransientField
 {
     /**
      * @var callable|null

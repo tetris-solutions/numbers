@@ -12,7 +12,7 @@ use Tetris\Numbers\Generator\AdWords\AttributeFactory;
 use Tetris\Numbers\Generator\AdWords\MetricFactory;
 use Tetris\Numbers\Generator\AdWords\LegacyTypeParser;
 use Tetris\Numbers\Generator\Generator;
-use Tetris\Numbers\Generator\TransientAttribute;
+use Tetris\Numbers\Generator\Shared\TransientAttribute;
 
 function impressionShareSum(string $metric)
 {
@@ -225,7 +225,7 @@ function getAdwordsConfig(): array
 
                 foreach ($attr->incompatible as $property) {
                     /**
-                     * @var TransientAttribute $other
+                     * @var \Tetris\Numbers\Generator\Shared\TransientAttribute $other
                      */
                     foreach ($attributes as $other) {
                         if ($other->raw_property === $property) {
