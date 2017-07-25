@@ -42,7 +42,6 @@ class ClassWrapper extends PhpClass
         $this->parentClass = $config->parent;
 
         $parentName = $this->bareClassName($config->parent);
-        $platform = ucfirst($config->platform);
 
         $name = implode("_",
             array_merge(
@@ -52,7 +51,7 @@ class ClassWrapper extends PhpClass
             )
         );
 
-        $namespace = "Tetris\\Numbers\\Generated\\$platform\\$parentName";
+        $namespace = "Tetris\\Numbers\\Generated\\$parentName";
 
         $this->setName($name);
         $this->setNamespace($namespace);

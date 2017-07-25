@@ -1,7 +1,7 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Attribute\Attribute_JSONParser_Parsable;
+use Tetris\Numbers\Generated\Attribute\Attribute_JSONParser_Parsable;
 
 return new class extends Attribute_JSONParser_Parsable {
 

@@ -1,5 +1,5 @@
 <?php
-namespace Tetris\Numbers\Generated\AdWords\Attribute;
+namespace Tetris\Numbers\Generated\Attribute;
 
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\Parsable;

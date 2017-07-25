@@ -1,7 +1,7 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\AdWords\Source\Source_PercentParser_Parsable;
+use Tetris\Numbers\Generated\Source\Source_PercentParser_Parsable;
 
 return new class extends Source_PercentParser_Parsable {
 
