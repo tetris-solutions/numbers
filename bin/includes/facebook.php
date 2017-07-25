@@ -69,7 +69,7 @@ function getFacebookConfig(): array
         'float'
     ];
 
-    $fbDatePart = function (string $part) use (&$fields) {
+    $cloneDateStartAs = function (string $part) use (&$fields) {
         $fields[$part] = $fields['date_start'];
 
         return [
@@ -80,12 +80,12 @@ function getFacebookConfig(): array
     };
 
     $inferredDimensions = [
-        'month' => $fbDatePart('month'),
-        'year' => $fbDatePart('year'),
-        'week' => $fbDatePart('week'),
-        'day_of_week' => $fbDatePart('day_of_week'),
-        'month_of_year' => $fbDatePart('month_of_year'),
-        'quarter' => $fbDatePart('quarter')
+        'month' => $cloneDateStartAs('month'),
+        'year' => $cloneDateStartAs('year'),
+        'week' => $cloneDateStartAs('week'),
+        'day_of_week' => $cloneDateStartAs('day_of_week'),
+        'month_of_year' => $cloneDateStartAs('month_of_year'),
+        'quarter' => $cloneDateStartAs('quarter')
     ];
 
     function isFacebookCurrencyMetric(array $field): bool

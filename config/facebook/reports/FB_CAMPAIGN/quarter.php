@@ -4,6 +4,7 @@ return [
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "property_name" => "quarter",
     "id" => "quarter",
     "property" => "date_start",
     "type" => "string",

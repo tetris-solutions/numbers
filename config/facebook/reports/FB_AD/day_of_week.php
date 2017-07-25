@@ -4,6 +4,7 @@ return [
     "is_metric" => FALSE,
     "is_dimension" => TRUE,
     "is_percentage" => FALSE,
+    "property_name" => "day_of_week",
     "id" => "day_of_week",
     "property" => "date_start",
     "type" => "string",

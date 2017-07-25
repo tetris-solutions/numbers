@@ -2,6 +2,7 @@
 
 namespace Tetris\Numbers\Generator\Shared;
 
+use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Utils\ArrayUtils;
 
@@ -52,7 +53,7 @@ class MetricFactory extends FieldFactory
         return $config;
     }
 
-    protected function apply(TransientMetric $config, Extension $extension): TransientMetric
+    protected function apply(TransientMetric $config, Extension $extension): Field
     {
         return $extension->extend($config);
     }

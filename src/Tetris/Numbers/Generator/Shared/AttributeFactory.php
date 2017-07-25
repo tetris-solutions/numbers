@@ -91,9 +91,15 @@ abstract class AttributeFactory extends FieldFactory
                 $attribute->type,
                 $attribute->property
             );
-            $attribute->traits['parser'] = $this->parser->getParser($attribute->type);
+
+            $attribute = $this->parser->extend($attribute);
         } else {
-            $attribute->traits['parser'] = $this->parser->getParser('raw');
+            $realType = $attribute->type;
+            $attribute->type = 'raw';
+
+            $attribute = $this->parser->extend($attribute);
+
+            $attribute->type = $realType;
         }
 
         return $attribute;

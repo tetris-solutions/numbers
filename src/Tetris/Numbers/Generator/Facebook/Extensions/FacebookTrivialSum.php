@@ -2,10 +2,12 @@
 
 namespace Tetris\Numbers\Generator\Facebook\Extensions;
 
+use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
 use Tetris\Numbers\Generator\Shared\TransientMetric;
+use function Tetris\Numbers\simpleSum;
 
 class FacebookTrivialSum implements Extension
 {
@@ -41,15 +43,19 @@ class FacebookTrivialSum implements Extension
         'video_avg_time_watched_actions'
     ];
 
-    function patch(TransientMetric $source): TransientMetric
+    function patch(Field $source): array
     {
+        $patch = [
+            'traits' => []
+        ];
+
         $trivial = in_array($source->id, self::fields);
 
         if ($trivial) {
-            $source->sum = \Tetris\Numbers\simpleSum($source->id);
-            $source->traits['sum'] = TrivialSum::class;
+            $patch['sum'] = simpleSum($source->id);
+            $patch['traits']['sum'] = TrivialSum::class;
         }
 
-        return $source;
+        return $patch;
     }
 }

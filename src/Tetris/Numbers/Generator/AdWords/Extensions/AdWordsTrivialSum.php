@@ -2,17 +2,22 @@
 
 namespace Tetris\Numbers\Generator\AdWords\Extensions;
 
+use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
-use Tetris\Numbers\Generator\Shared\TransientMetric;
+use function Tetris\Numbers\simpleSum;
 
 class AdWordsTrivialSum implements Extension
 {
     use ExtensionApply;
 
-    function patch(TransientMetric $source): TransientMetric
+    function patch(Field $source): array
     {
+        $patch = [
+            'traits' => []
+        ];
+
         $trivial = (
             $source->type === 'integer' ||
             $source->type === 'decimal' ||
@@ -20,10 +25,10 @@ class AdWordsTrivialSum implements Extension
         );
 
         if ($trivial) {
-            $source->sum = \Tetris\Numbers\simpleSum($source->id);
-            $source->traits['sum'] = TrivialSum::class;
+            $patch['sum'] = simpleSum($source->id);
+            $patch['traits']['sum'] = TrivialSum::class;
         }
 
-        return $source;
+        return $patch;
     }
 }

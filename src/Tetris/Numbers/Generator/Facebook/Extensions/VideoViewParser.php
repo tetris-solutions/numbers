@@ -33,7 +33,6 @@ class VideoViewParser implements Extension
 
     function __construct()
     {
-        $this->map = [];
         $legacySource = makeParserFromSource('action');
 
         foreach (self::videoFields as $videoField) {

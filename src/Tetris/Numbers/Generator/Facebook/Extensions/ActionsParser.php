@@ -16,7 +16,6 @@ class ActionsParser implements Extension
 
     function __construct()
     {
-        $this->map = [];
         $legacySource = makeParserFromSource('action');
 
         foreach (self::getActionTypes() as $actionType => $name) {

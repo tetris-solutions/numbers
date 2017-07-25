@@ -2,7 +2,15 @@
 
 namespace Tetris\Numbers\Generator\Shared;
 
+use Tetris\Numbers\Base\Field;
+
 interface Extension
 {
-    function extend(TransientMetric $config): TransientMetric;
+    function patch(Field $source): array;
+
+    /**
+     * @param TransientMetric|TransientAttribute $config
+     * @return TransientMetric|TransientAttribute
+     */
+    function extend($config);
 }

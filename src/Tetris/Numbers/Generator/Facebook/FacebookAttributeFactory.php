@@ -2,8 +2,8 @@
 
 namespace Tetris\Numbers\Generator\Facebook;
 
+use Tetris\Numbers\Generator\Facebook\Extensions\FacebookParser;
 use Tetris\Numbers\Generator\Shared\AttributeFactory;
-use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 use Tetris\Numbers\Generator\Shared\AttributeTranslator;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
 
@@ -16,7 +16,7 @@ class FacebookAttributeFactory extends AttributeFactory
     {
         parent::__construct();
 
-        $this->parser = new DefaultParser();
+        $this->parser = new FacebookParser();
         $this->translators = [
             new AttributeTranslator('Account', [
                 'account_id',

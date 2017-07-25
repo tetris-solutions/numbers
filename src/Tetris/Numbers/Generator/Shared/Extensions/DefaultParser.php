@@ -2,6 +2,7 @@
 
 namespace Tetris\Numbers\Generator\Shared\Extensions;
 
+use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Base\Parser\ComplexValueParser;
 use Tetris\Numbers\Base\Parser\FloatParser;
 use Tetris\Numbers\Base\Parser\IntegerParser;
@@ -9,6 +10,8 @@ use Tetris\Numbers\Base\Parser\JSONParser;
 use Tetris\Numbers\Base\Parser\PercentParser;
 use Tetris\Numbers\Base\Parser\RawParser;
 use Tetris\Numbers\Generator\Shared\Extension;
+use Tetris\Numbers\Generator\Shared\TransientAttribute;
+use Tetris\Numbers\Generator\Shared\TransientField;
 use Tetris\Numbers\Generator\Shared\TransientMetric;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
 
@@ -16,11 +19,9 @@ class DefaultParser implements Extension
 {
     use ExtensionApply;
 
-    public $map;
-
     function __construct()
     {
-        $this->map = [
+        $parsers = [
             'list' => JSONParser::class,
             'percentage' => PercentParser::class,
             'currency' => FloatParser::class,
@@ -29,17 +30,23 @@ class DefaultParser implements Extension
             'raw' => RawParser::class,
             'special' => ComplexValueParser::class
         ];
+
+        foreach ($parsers as $type => $class) {
+            $this->map[$type] = [
+                'traits' => [
+                    'parser' => $class
+                ]
+            ];
+        }
     }
 
-    function getParser(string $type)
+    function getParser(string $type, string $id): array
     {
-        return $this->map[$type] ?? null;
+        return $this->map[$type] ?? $this->map['raw'];
     }
 
-    function patch(TransientMetric $source): TransientMetric
+    function patch(Field $source): array
     {
-        $source->traits['parser'] = $this->map[$source->type] ?? $this->map['raw'];
-
-        return $source;
+        return $this->getParser($source->type, $source->id);
     }
 }

@@ -28,4 +28,9 @@ abstract class Attribute extends Field
      * @var array|null
      */
     public $incompatible;
+
+    /**
+     * @var string|null
+     */
+    public $property_name;
 }

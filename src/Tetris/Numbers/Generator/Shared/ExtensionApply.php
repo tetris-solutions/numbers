@@ -2,21 +2,27 @@
 
 namespace Tetris\Numbers\Generator\Shared;
 
+use Tetris\Numbers\Base\Field;
+
 trait ExtensionApply
 {
     /**
-     * @var array|null
+     * @var array
      */
-    public $map;
+    public $map = [];
 
-    function patch(TransientMetric $source): array
+    function patch(Field $source): array
     {
-        return isset($this->map[$source->metric])
-            ? $this->map[$source->metric]
+        return isset($this->map[$source->id])
+            ? $this->map[$source->id]
             : [];
     }
 
-    function extend(TransientMetric $config): TransientMetric
+    /**
+     * @param TransientMetric|TransientAttribute $config
+     * @return TransientMetric|TransientAttribute
+     */
+    function extend($config)
     {
         foreach ($this->patch($config) as $key => $value) {
             if ($key === 'traits' || $key === 'interfaces') {
