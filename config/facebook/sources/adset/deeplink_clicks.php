@@ -2,11 +2,11 @@
 return [
     "metric" => "deeplink_clicks",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "deeplink_clicks"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'deeplink_clicks'}));
     },

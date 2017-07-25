@@ -2,13 +2,12 @@
 return [
     "metric" => "reach",
     "entity" => "Campaign",
-    "platform" => "facebook",
-    "report" => "FB_CAMPAIGN",
     "fields" => [
         "reach"
     ],
+    "report" => "FB_CAMPAIGN",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'reach'}));
-    },
-    "sum" => NULL
+    }
 ];

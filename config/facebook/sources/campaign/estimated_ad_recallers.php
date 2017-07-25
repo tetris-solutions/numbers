@@ -2,11 +2,11 @@
 return [
     "metric" => "estimated_ad_recallers",
     "entity" => "Campaign",
-    "platform" => "facebook",
-    "report" => "FB_CAMPAIGN",
     "fields" => [
         "estimated_ad_recallers"
     ],
+    "report" => "FB_CAMPAIGN",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'estimated_ad_recallers'}));
     },

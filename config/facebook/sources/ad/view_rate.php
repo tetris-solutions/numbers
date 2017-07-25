@@ -2,12 +2,16 @@
 return [
     "metric" => "view_rate",
     "entity" => "Ad",
-    "platform" => "facebook",
-    "report" => "FB_AD",
     "fields" => [
         "impressions",
         "actions"
     ],
+    "inferred_from" => [
+        "video_view",
+        "impressions"
+    ],
+    "report" => "FB_AD",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $collection = 'actions';
         $type = 'video_view';
@@ -42,9 +46,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "video_view",
-        "impressions"
-    ]
+    }
 ];

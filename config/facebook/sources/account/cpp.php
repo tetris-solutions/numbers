@@ -2,13 +2,12 @@
 return [
     "metric" => "cpp",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "cpp"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'cpp'}));
-    },
-    "sum" => NULL
+    }
 ];

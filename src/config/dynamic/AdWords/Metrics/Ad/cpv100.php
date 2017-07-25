@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Metric\Metric_CPV100Parser_CPV100Sum_Parsable_Summable;
+use Tetris\Numbers\Generated\Metric\Metric_AdWordsCPV100Parser_CPV100Sum_Parsable_Summable;
 
-return new class extends Metric_CPV100Parser_CPV100Sum_Parsable_Summable {
+return new class extends Metric_AdWordsCPV100Parser_CPV100Sum_Parsable_Summable {
 
 	public $costMetric = 'cost';
 

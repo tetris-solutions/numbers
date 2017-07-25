@@ -2,11 +2,15 @@
 return [
     "metric" => "ctr",
     "entity" => "Ad",
-    "platform" => "facebook",
-    "report" => "FB_AD",
     "fields" => [
         "ctr"
     ],
+    "inferred_from" => [
+        "clicks",
+        "impressions"
+    ],
+    "report" => "FB_AD",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         $valueAsNumericString = str_replace(['%', ','], '', $data->{'ctr'});
     
@@ -27,9 +31,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "clicks",
-        "impressions"
-    ]
+    }
 ];

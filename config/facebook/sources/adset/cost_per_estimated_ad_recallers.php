@@ -2,11 +2,15 @@
 return [
     "metric" => "cost_per_estimated_ad_recallers",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "cost_per_estimated_ad_recallers"
     ],
+    "inferred_from" => [
+        "spend",
+        "estimated_ad_recallers"
+    ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'cost_per_estimated_ad_recallers'}));
     },
@@ -25,9 +29,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "spend",
-        "estimated_ad_recallers"
-    ]
+    }
 ];

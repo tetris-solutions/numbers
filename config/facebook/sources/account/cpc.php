@@ -2,11 +2,15 @@
 return [
     "metric" => "cpc",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "cpc"
     ],
+    "inferred_from" => [
+        "spend",
+        "clicks"
+    ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'cpc'}));
     },
@@ -25,9 +29,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "spend",
-        "clicks"
-    ]
+    }
 ];

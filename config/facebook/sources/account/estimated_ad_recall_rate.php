@@ -2,13 +2,12 @@
 return [
     "metric" => "estimated_ad_recall_rate",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "estimated_ad_recall_rate"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'estimated_ad_recall_rate'}));
-    },
-    "sum" => NULL
+    }
 ];

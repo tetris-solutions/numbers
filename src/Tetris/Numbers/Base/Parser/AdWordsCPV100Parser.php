@@ -4,7 +4,7 @@ namespace Tetris\Numbers\Base\Parser;
 
 use Tetris\Numbers\Report\Query\QueryBase;
 
-trait CPV100Parser
+trait AdWordsCPV100Parser
 {
     public $costProperty;
     public $views100PercentileProperty;

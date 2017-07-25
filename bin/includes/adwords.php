@@ -3,7 +3,7 @@
 namespace Tetris\Numbers;
 
 use Tetris\Adwords\ReportMap;
-use Tetris\Numbers\Base\Parser\CPV100Parser;
+use Tetris\Numbers\Base\Parser\AdWordsCPV100Parser;
 use Tetris\Numbers\Base\Parser\TriangulationParser;
 use Tetris\Numbers\Base\Sum\CPV100Sum;
 use Tetris\Numbers\Base\Sum\ImpressionShareSum;
@@ -63,7 +63,7 @@ function cpv100AdWords(string $cost, string $views100Percentile, string $views)
 
     return [
         'traits' => [
-            'parser' => CPV100Parser::class
+            'parser' => AdWordsCPV100Parser::class
         ],
         'costProperty' => $cost,
         'views100PercentileProperty' => $views100Percentile,
@@ -199,7 +199,7 @@ function getAdwordsConfig(): array
                 $source = $sourceFactory->create(
                     $attribute->id,
                     $attribute->property,
-                    $metric['type'],
+                    $attribute->type,
                     $entity,
                     $reportName
                 );

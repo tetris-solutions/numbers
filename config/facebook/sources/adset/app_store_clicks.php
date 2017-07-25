@@ -2,11 +2,11 @@
 return [
     "metric" => "app_store_clicks",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "app_store_clicks"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'app_store_clicks'}));
     },

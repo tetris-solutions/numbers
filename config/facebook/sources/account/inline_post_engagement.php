@@ -2,11 +2,11 @@
 return [
     "metric" => "inline_post_engagement",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "inline_post_engagement"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'inline_post_engagement'}));
     },

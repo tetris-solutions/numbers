@@ -2,11 +2,11 @@
 return [
     "metric" => "unique_social_clicks",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "unique_social_clicks"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'unique_social_clicks'}));
     },

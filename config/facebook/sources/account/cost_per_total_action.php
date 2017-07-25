@@ -2,11 +2,15 @@
 return [
     "metric" => "cost_per_total_action",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "cost_per_total_action"
     ],
+    "inferred_from" => [
+        "spend",
+        "total_actions"
+    ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'cost_per_total_action'}));
     },
@@ -25,9 +29,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "spend",
-        "total_actions"
-    ]
+    }
 ];

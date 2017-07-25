@@ -2,12 +2,16 @@
 return [
     "metric" => "cpr",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "spend",
         "reach"
     ],
+    "inferred_from" => [
+        "spend",
+        "reach"
+    ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $conv = floatval(str_replace(',', '', $data->{'spend'}));
         $cost = floatval(str_replace(',', '', $data->{'reach'}));
@@ -29,9 +33,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "spend",
-        "reach"
-    ]
+    }
 ];

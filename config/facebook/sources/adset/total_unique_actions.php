@@ -2,11 +2,11 @@
 return [
     "metric" => "total_unique_actions",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "total_unique_actions"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'total_unique_actions'}));
     },

@@ -2,12 +2,16 @@
 return [
     "metric" => "cpa",
     "entity" => "Campaign",
-    "platform" => "facebook",
-    "report" => "FB_CAMPAIGN",
     "fields" => [
         "total_actions",
         "total_action_value"
     ],
+    "inferred_from" => [
+        "total_actions",
+        "total_action_value"
+    ],
+    "report" => "FB_CAMPAIGN",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $conv = floatval(str_replace(',', '', $data->{'total_actions'}));
         $cost = floatval(str_replace(',', '', $data->{'total_action_value'}));
@@ -29,9 +33,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "total_actions",
-        "total_action_value"
-    ]
+    }
 ];

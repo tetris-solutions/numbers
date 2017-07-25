@@ -2,11 +2,11 @@
 return [
     "metric" => "canvas_avg_view_percent",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "canvas_avg_view_percent"
     ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'canvas_avg_view_percent'}));
     },

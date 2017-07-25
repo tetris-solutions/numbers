@@ -2,11 +2,15 @@
 return [
     "metric" => "inline_link_click_ctr",
     "entity" => "Ad",
-    "platform" => "facebook",
-    "report" => "FB_AD",
     "fields" => [
         "inline_link_click_ctr"
     ],
+    "inferred_from" => [
+        "inline_link_clicks",
+        "impressions"
+    ],
+    "report" => "FB_AD",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'inline_link_click_ctr'}));
     },
@@ -25,9 +29,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "inline_link_clicks",
-        "impressions"
-    ]
+    }
 ];

@@ -2,12 +2,16 @@
 return [
     "metric" => "cpv100",
     "entity" => "Ad",
-    "platform" => "facebook",
-    "report" => "FB_AD",
     "fields" => [
         "spend",
         "video_p100_watched_actions"
     ],
+    "inferred_from" => [
+        "spend",
+        "video_p100_watched_actions"
+    ],
+    "report" => "FB_AD",
+    "platform" => "facebook",
     "parse" => function ($data) {
         $spend = floatval(str_replace(',', '', $data->{'spend'}));
     
@@ -42,9 +46,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "spend",
-        "video_p100_watched_actions"
-    ]
+    }
 ];

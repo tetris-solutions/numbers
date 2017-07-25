@@ -2,13 +2,12 @@
 return [
     "metric" => "cost_per_unique_click",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "cost_per_unique_click"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'cost_per_unique_click'}));
-    },
-    "sum" => NULL
+    }
 ];

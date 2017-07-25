@@ -2,6 +2,8 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Numbers\Base\Parser\FacebookCPV100Parser;
+use Tetris\Numbers\Base\Parser\ViewRateParser;
 use Tetris\Numbers\Generator\Facebook\FacebookAttributeFactory;
 use Tetris\Numbers\Generator\Facebook\FacebookMetricFactory;
 use Tetris\Numbers\Generator\Generator;
@@ -11,6 +13,12 @@ function cpv100Facebook(string $spend, string $video100p)
     $source = makeParserFromSource('cpv100-facebook');
 
     return [
+        'spendProperty' => $spend,
+        'actionsProperty' => $video100p,
+        'actionType' => 'video_view',
+        'traits' => [
+            'parser' => FacebookCPV100Parser::class
+        ],
         'fields' => [$spend, $video100p],
         'parse' => $source($spend, $video100p, 'video_view')
     ];
@@ -21,6 +29,12 @@ function viewRateFacebook(string $videoViewAction, string $impressions)
     $source = makeParserFromSource('view-rate-facebook');
 
     return [
+        'actionsProperty' => $videoViewAction,
+        'impressionsProperty' => $impressions,
+        'actionType' => 'video_view',
+        'traits' => [
+            'parser' => ViewRateParser::class
+        ],
         'fields' => [$impressions, $videoViewAction],
         'parse' => $source($videoViewAction, 'video_view', $impressions)
     ];
@@ -188,28 +202,36 @@ function getFacebookConfig(): array
                         'type' => $attribute->type
                     ];
 
-                $source = [
-                    'metric' => $attribute->id,
-                    'entity' => $entity,
-                    'platform' => 'facebook',
-                    'report' => $reportName,
-                    'fields' => [$originalAttributeName],
-                    'parse' => $parsers[$attribute->type]($originalAttributeName),
-                    'sum' => null
-                ];
+                $source = $sourceFactory->create(
+                    $attribute->id,
+                    $attribute->property,
+                    $metric['type'],
+                    $entity,
+                    $reportName
+                );
+//                $source = [
+//                    'metric' => $attribute->id,
+//                    'entity' => $entity,
+//                    'platform' => 'facebook',
+//                    'report' => $reportName,
+//                    'fields' => [$originalAttributeName],
+//                    'parse' => $parsers[$attribute->type]($originalAttributeName),
+//                    'sum' => null
+//                ];
+//
+//                if (in_array($attribute->id, $simpleSumMetrics)) {
+//                    $source['sum'] = simpleSum($attribute['id']);
+//                }
+//
+//                if (isset($specialMetricConfig[$attribute->id])) {
+//                    $source = array_merge($source, $specialMetricConfig[$attribute->id]);
+//                }
+//
+//                if (isset($inferredMetricSumConfig[$attribute->id])) {
+//                    $source = array_merge($source, $inferredMetricSumConfig[$attribute->id]);
+//                }
 
-                if (in_array($attribute->id, $simpleSumMetrics)) {
-                    $source['sum'] = simpleSum($attribute['id']);
-                }
-
-                if (isset($specialMetricConfig[$attribute->id])) {
-                    $source = array_merge($source, $specialMetricConfig[$attribute->id]);
-                }
-
-                if (isset($inferredMetricSumConfig[$attribute->id])) {
-                    $source = array_merge($source, $inferredMetricSumConfig[$attribute->id]);
-                }
-
+                Generator::add($source);
                 $output['sources'][] = $source;
                 $output['metrics'][$attribute->id] = $metric;
             }

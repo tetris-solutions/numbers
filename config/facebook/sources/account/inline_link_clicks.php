@@ -2,11 +2,11 @@
 return [
     "metric" => "inline_link_clicks",
     "entity" => "Account",
-    "platform" => "facebook",
-    "report" => "FB_ACCOUNT",
     "fields" => [
         "inline_link_clicks"
     ],
+    "report" => "FB_ACCOUNT",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'inline_link_clicks'}));
     },

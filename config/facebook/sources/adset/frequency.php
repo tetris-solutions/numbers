@@ -2,11 +2,15 @@
 return [
     "metric" => "frequency",
     "entity" => "AdSet",
-    "platform" => "facebook",
-    "report" => "FB_ADSET",
     "fields" => [
         "frequency"
     ],
+    "inferred_from" => [
+        "impressions",
+        "reach"
+    ],
+    "report" => "FB_ADSET",
+    "platform" => "facebook",
     "parse" => function ($data): float {
         return floatval(str_replace(',', '', $data->{'frequency'}));
     },
@@ -25,9 +29,5 @@ return [
         return (float)$sumDivisor !== 0.0
             ? $sumDividend / $sumDivisor
             : 0;
-    },
-    "inferred_from" => [
-        "impressions",
-        "reach"
-    ]
+    }
 ];
