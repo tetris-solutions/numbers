@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Report;
 
-use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\FilterMetaData;
 use Tetris\Numbers\Report\MetaData\MetaDataV2;
 use Tetris\Numbers\Utils\ObjectUtils;
@@ -27,7 +27,7 @@ class ReportV2 extends ReportBlueprint
         }
 
         /**
-         * @var AttributeMetaData $attribute
+         * @var Attribute $attribute
          */
         $attribute = $this->attributes[$attributeId];
 

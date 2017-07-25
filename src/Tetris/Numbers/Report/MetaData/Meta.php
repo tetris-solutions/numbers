@@ -3,7 +3,7 @@
 namespace Tetris\Numbers\Report\MetaData;
 
 
-use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\Attribute;
 use Tetris\Services\FlagsService;
 
 trait Meta
@@ -126,7 +126,7 @@ trait Meta
     }
 
     /**
-     * @param array|AttributeMetaData $config
+     * @param array|Attribute $config
      */
     protected static function setBreakdownPermutation(&$config)
     {

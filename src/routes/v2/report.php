@@ -4,7 +4,6 @@ namespace Tetris\Numbers;
 
 use Tetris\Numbers\API\TokenManager;
 use Tetris\Numbers\Report\Query\QueryV2;
-use Tetris\Numbers\Report\ResultParser;
 use Tetris\Numbers\Report\ResultParserV2;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;

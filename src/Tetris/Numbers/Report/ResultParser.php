@@ -4,9 +4,9 @@ namespace Tetris\Numbers\Report;
 
 use Exception;
 use stdClass;
-use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\Attribute;
+use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Base\Parsable;
-use Tetris\Numbers\Base\MetricMetaData;
 use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Services\FlagsService;
@@ -126,7 +126,7 @@ abstract class ResultParser
         }
 
         /**
-         * @var AttributeMetaData|array $attribute
+         * @var Attribute|array $attribute
          */
         foreach ($report->dimensions as $attribute) {
             $dimensionId = $attribute['id'];
@@ -147,7 +147,7 @@ abstract class ResultParser
         }
 
         /**
-         * @var MetricMetaData|array $metric
+         * @var Metric|array $metric
          */
         foreach ($report->metrics as $metric) {
             $row->{$metric['id']} = $metric instanceof Parsable

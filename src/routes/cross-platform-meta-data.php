@@ -5,12 +5,13 @@ namespace Tetris\Numbers;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Tetris\Numbers\Report\MetaData\MetaData;
+use Tetris\Numbers\Utils\ArrayUtils;
 
 global $app;
 
 $crossMetaRouteHandler = secured('get-cross-platform-meta-data', function (Request $req, Response $res, array $params): Response {
     $entity = $req->getQueryParam('entity');
-    $platforms = uniq(explode(',', $req->getQueryParam('platforms')));
+    $platforms = ArrayUtils::uniq(explode(',', $req->getQueryParam('platforms')));
 
     $byPlatform = [];
     $attributes = [];

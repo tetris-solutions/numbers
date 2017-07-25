@@ -5,7 +5,6 @@ namespace Tetris\Numbers;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Tetris\Numbers\API\TokenManager;
-use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Numbers\Utils\ArrayUtils;
 use Throwable;

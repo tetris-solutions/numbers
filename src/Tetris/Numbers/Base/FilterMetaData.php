@@ -3,7 +3,7 @@
 namespace Tetris\Numbers\Base;
 
 
-class FilterMetaData extends AttributeMetaData
+class FilterMetaData extends Attribute
 {
     /**
      * @var array

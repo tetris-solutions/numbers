@@ -4,10 +4,10 @@ namespace Tetris\Numbers\Report;
 
 use Exception;
 use stdClass;
-use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\FilterMetaData;
+use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Base\Parsable;
-use Tetris\Numbers\Base\MetricMetaData;
 use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Services\FlagsService;
@@ -128,7 +128,7 @@ abstract class ResultParserV2
         }
 
         /**
-         * @var AttributeMetaData $attribute
+         * @var Attribute $attribute
          */
         foreach ($report->dimensions as $attribute) {
             $row->{$attribute->id} = $attribute instanceof Parsable
@@ -137,7 +137,7 @@ abstract class ResultParserV2
         }
 
         /**
-         * @var MetricMetaData $metric
+         * @var Metric $metric
          */
         foreach ($report->metrics as $metric) {
             $row->{$metric->id} = $metric instanceof Parsable
@@ -192,7 +192,7 @@ abstract class ResultParserV2
             }
 
             /**
-             * @var MetricMetaData $metric
+             * @var Metric $metric
              */
             foreach ($metrics as $metricId => $metric) {
                 $row->{$metricId} = $metric instanceof Summable

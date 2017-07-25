@@ -4,11 +4,9 @@ namespace Tetris\Numbers\Report\MetaData;
 
 
 use Tetris\Numbers\Base\Attribute;
-use Tetris\Numbers\Base\AttributeMetaData;
 use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Resolver\FacebookResolver;
-use Tetris\Numbers\Utils\ObjectUtils;
 
 class MetaDataV2 implements MetaDataReader
 {
@@ -32,28 +30,20 @@ class MetaDataV2 implements MetaDataReader
              * @var Attribute $attribute
              */
             foreach ($reportAttributes as $attribute) {
-                /**
-                 * @var AttributeMetaData $metaData
-                 */
-                $metaData = ObjectUtils::cast(
-                    AttributeMetaData::class,
-                    $attribute
-                );
-
                 if (
                     !$attribute->is_metric &&
                     $platform === 'facebook' &&
                     FacebookResolver::isBreakdown($attribute->id)
                 ) {
-                    $metaData->is_breakdown = true;
-                    self::setBreakdownPermutation($metaData);
+                    $attribute->is_breakdown = true;
+                    self::setBreakdownPermutation($attribute);
                 }
 
-                $attributes[$attribute->id] = $metaData;
+                $attributes[$attribute->id] = $attribute;
             }
 
             /**
-             * @var AttributeMetaData $attrMetaData
+             * @var Attribute $attrMetaData
              */
             $attrMetaData = $attributes[$source->id];
 

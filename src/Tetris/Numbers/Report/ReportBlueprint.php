@@ -3,7 +3,7 @@
 namespace Tetris\Numbers\Report;
 
 
-use Tetris\Numbers\Base\MetricMetaData;
+use Tetris\Numbers\Base\Metric;
 
 abstract class ReportBlueprint
 {
@@ -46,7 +46,7 @@ abstract class ReportBlueprint
     }
 
     /**
-     * @param MetricMetaData|array $metric
+     * @param Metric|array $metric
      * @param bool $isAuxiliary
      */
     function addMetric($metric, $isAuxiliary = false)

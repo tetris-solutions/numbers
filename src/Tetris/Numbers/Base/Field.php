@@ -8,6 +8,7 @@ use ArrayAccess;
 abstract class Field implements ArrayAccess
 {
     use GenericArrayAccess;
+    use FieldMetaData;
 
     /**
      * @var string

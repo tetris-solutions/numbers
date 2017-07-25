@@ -4,13 +4,13 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Tetris\Numbers\Base\AttributeMetaData;
+use Tetris\Numbers\Base\Attribute;
 use stdClass;
 use Tetris\Numbers\Report\MetaData\MetaDataV2;
 
 function nullLess(array $ls): array
 {
-    return array_map(function (AttributeMetaData $source): stdClass {
+    return array_map(function (Attribute $source): stdClass {
         $metaData = new stdClass();
 
         foreach (get_object_vars($source) as $key => $value) {

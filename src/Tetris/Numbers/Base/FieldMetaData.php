@@ -2,20 +2,25 @@
 
 namespace Tetris\Numbers\Base;
 
-class AttributeMetaData extends Attribute
+
+trait FieldMetaData
 {
+
     /**
-     * @var string
+     * @var string|null
      */
     public $name;
+
     /**
-     * @var bool
+     * @var bool|null
      */
     public $is_breakdown;
+
     /**
-     * @var bool
+     * @var bool|null
      */
     public $requires_id;
+
     /**
      * @var array|null
      */
