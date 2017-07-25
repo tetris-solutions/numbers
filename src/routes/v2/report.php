@@ -15,7 +15,7 @@ use Tetris\Services\FlagsService;
 
 global $app;
 
-$app->post('/v2/report',
+$app->post('/',
     secured('get-report', function (Request $request, Response $response, array $params) {
         /**
          * @var FlagsService $flags

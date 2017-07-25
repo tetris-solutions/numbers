@@ -38,5 +38,5 @@ function metaDataRouteHandlerV2(string $action)
 
 global $app;
 
-$app->get('/v2/meta-data', metaDataRouteHandlerV2('get-meta-data-v2'));
-$app->get('/v2/meta-data/{attribute}', metaDataRouteHandlerV2('get-attribute-meta-data-v2'));
+$app->get('/meta-data', metaDataRouteHandlerV2('get-meta-data'));
+$app->get('/meta-data/{attribute}', metaDataRouteHandlerV2('get-attribute-meta-data'));
