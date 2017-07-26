@@ -16,8 +16,6 @@ class FacebookMetricFactory extends MetricFactory
 
     function __construct()
     {
-        parent::__construct();
-
         $this->extensions = [
             new FacebookParser(),
             new FacebookTrivialSum(),

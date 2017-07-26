@@ -14,8 +14,6 @@ class AdWordsMetricFactory extends MetricFactory
 
     function __construct(array $fields)
     {
-        parent::__construct();
-
         $this->extensions = [
             new DefaultParser(),
             new AdWordsTrivialSum(),

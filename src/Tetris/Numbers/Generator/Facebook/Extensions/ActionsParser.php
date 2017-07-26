@@ -16,8 +16,6 @@ class ActionsParser implements Extension
 
     function __construct()
     {
-        $legacySource = makeParserFromSource('action');
-
         foreach (self::getActionTypes() as $actionType => $name) {
             $this->map[$actionType] = [
                 'actionsProperty' => 'actions',
@@ -26,9 +24,7 @@ class ActionsParser implements Extension
                     'parser' => ActionParser::class,
                     'sum' => TrivialSum::class
                 ],
-                'fields' => ['actions'],
-                'parse' => $legacySource('actions', $actionType),
-                'sum' => simpleSum($actionType)
+                'fields' => ['actions']
             ];
         }
     }

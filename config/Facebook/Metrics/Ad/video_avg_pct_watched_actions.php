@@ -1,9 +1,9 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Shared\Metric\Metric_ActionParser_TrivialSum_Parsable_Summable;
+use Tetris\Numbers\Generated\Shared\Metric\Metric_ActionParser_Parsable;
 
-return new class extends Metric_ActionParser_TrivialSum_Parsable_Summable {
+return new class extends Metric_ActionParser_Parsable {
 
 	public $actionsProperty = 'video_avg_pct_watched_actions';
 

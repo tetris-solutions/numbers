@@ -7,5 +7,4 @@ use Tetris\Numbers\Base\Metric;
 class TransientMetric extends Metric
 {
     use TransientField;
-    use LegacyTransientField;
 }

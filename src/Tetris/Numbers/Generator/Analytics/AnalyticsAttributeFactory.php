@@ -13,8 +13,6 @@ class AnalyticsAttributeFactory extends AttributeFactory
 
     function __construct()
     {
-        parent::__construct();
-
         $this->parser = new AnalyticsParser();
         $this->translators = [
             new AttributeTranslator('Campaign', [

@@ -12,8 +12,6 @@ class AnalyticsMetricFactory extends MetricFactory
 
     function __construct()
     {
-        parent::__construct();
-
         $this->extensions = [
             new AnalyticsParser(),
             new AnalyticsTrivialSum()

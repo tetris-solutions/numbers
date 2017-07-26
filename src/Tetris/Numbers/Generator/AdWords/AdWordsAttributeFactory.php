@@ -13,8 +13,6 @@ class AdWordsAttributeFactory extends AttributeFactory
 
     function __construct()
     {
-        parent::__construct();
-
         $this->parser = new DefaultParser();
         $this->translators = [
             new AttributeTranslator('Account', [

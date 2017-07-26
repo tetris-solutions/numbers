@@ -33,22 +33,22 @@ class VideoViewParser implements Extension
 
     function __construct()
     {
-        $legacySource = makeParserFromSource('action');
-
         foreach (self::videoFields as $videoField) {
-            $isAverage = strpos($videoField, '_avg_') !== FALSE;
-
-            $this->map[$videoField] = [
+            $cfg = [
                 'actionsProperty' => $videoField,
                 'actionType' => 'video_view',
                 'traits' => [
-                    'parser' => ActionParser::class,
-                    'sum' => TrivialSum::class
+                    'parser' => ActionParser::class
                 ],
-                'fields' => [$videoField],
-                'parse' => $legacySource($videoField, 'video_view'),
-                'sum' => $isAverage ? null : simpleSum($videoField)
+                'fields' => [$videoField]
             ];
+
+            $isAverage = strpos($videoField, '_avg_') !== FALSE;
+            if (!$isAverage) {
+                $cfg['traits']['sum'] = TrivialSum::class;
+            }
+
+            $this->map[$videoField] = $cfg;
         }
     }
 }

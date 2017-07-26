@@ -30,27 +30,4 @@ trait TransientField
      * @var array
      */
     public $traits = [];
-
-    /**
-     * @var array
-     */
-    protected $blacklist = [];
-
-    function asArray(): array
-    {
-        $array = [];
-
-        foreach (get_object_vars($this) as $key => $value) {
-            $isLegacyAttribute = !in_array($key, $this->blacklist) && (
-                    property_exists(get_parent_class($this), $key) ||
-                    property_exists(LegacyTransientField::class, $key)
-                );
-
-            if ($isLegacyAttribute && isset($value)) {
-                $array[$key] = $value;
-            }
-        }
-
-        return $array;
-    }
 }

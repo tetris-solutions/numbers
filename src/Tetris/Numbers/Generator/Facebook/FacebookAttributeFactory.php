@@ -14,8 +14,6 @@ class FacebookAttributeFactory extends AttributeFactory
 
     function __construct()
     {
-        parent::__construct();
-
         $this->parser = new FacebookParser();
         $this->translators = [
             new AttributeTranslator('Account', [

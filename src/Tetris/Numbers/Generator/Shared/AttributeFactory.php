@@ -81,11 +81,6 @@ abstract class AttributeFactory extends FieldFactory
         $attribute->incompatible = $incompatibleFields;
 
         if ($this->isParsable($attribute)) {
-            $attribute->parse = $this->legacyParser->getFactory(
-                $attribute->type,
-                $attribute->property
-            );
-
             $attribute = $this->parser->extend($attribute);
         } else {
             $realType = $attribute->type;
