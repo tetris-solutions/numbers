@@ -2,7 +2,6 @@
 
 namespace Tetris\Numbers\Report\MetaData;
 
-use stdClass;
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Base\Summable;

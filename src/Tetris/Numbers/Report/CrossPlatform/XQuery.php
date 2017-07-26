@@ -3,6 +3,7 @@
 namespace Tetris\Numbers\Report\CrossPlatform;
 
 use Tetris\Numbers\Report\MetaData\MetaData;
+use Tetris\Numbers\Report\MetaData\MetaDataV2;
 use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\Report\Query\QueryBlueprint;
 
@@ -90,11 +91,11 @@ class XQuery extends QueryBlueprint
             } else if ($this->notPrefixed($globalAttributeId)) {
 
                 if ($isAuxiliary) {
-                    $replacement = MetaData::getAttributeMerge($globalAttributeId, $this->platform);
+                    $replacement = MetaDataV2::getAttributeMerge($globalAttributeId, $this->platform);
                     $platformAttributeId = $globalAttributeId;
                     $globalAttributeId = $replacement['id'];
                 } else {
-                    $replacement = MetaData::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
+                    $replacement = MetaDataV2::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
                     $platformAttributeId = $replacement['id'];
                 }
 
@@ -119,11 +120,11 @@ class XQuery extends QueryBlueprint
                 $transform = $same;
             } else if ($this->notPrefixed($globalAttributeId)) {
                 if ($isAuxiliary) {
-                    $replacement = MetaData::getAttributeMerge($globalAttributeId, $this->platform);
+                    $replacement = MetaDataV2::getAttributeMerge($globalAttributeId, $this->platform);
                     $platformAttributeId = $globalAttributeId;
                     $globalAttributeId = $replacement['id'];
                 } else {
-                    $replacement = MetaData::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
+                    $replacement = MetaDataV2::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
                     $platformAttributeId = $replacement['id'];
                 }
 
@@ -165,7 +166,7 @@ class XQuery extends QueryBlueprint
                 $platformAttributeId = $this->removePrefix($globalAttributeId);
                 $transform = $same;
             } else if ($this->notPrefixed($globalAttributeId)) {
-                $replacement = MetaData::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
+                $replacement = MetaDataV2::getPlatformSpecificAttribute($globalAttributeId, $this->platform);
 
                 $platformAttributeId = $replacement['id'];
                 $transform = $replacement['transform'];

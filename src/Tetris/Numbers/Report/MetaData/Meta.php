@@ -95,6 +95,34 @@ trait Meta
         return self::requireCached(realpath(__DIR__ . '/../../../../config/attribute-merges.php'));
     }
 
+    static function getPlatformSpecificAttribute(string $attribute, string $platform): array
+    {
+        $identity = function ($val) {
+            return $val;
+        };
+
+        $found = [
+            'id' => $attribute,
+            'transform' => $identity
+        ];
+
+        $map = self::getReplaceMap();
+
+        foreach ($map[$platform] as $original => $replacement) {
+            $id = is_array($replacement) ? $replacement[0] : $replacement;
+
+            if ($id === $attribute) {
+                $found = [
+                    'id' => $original,
+                    'transform' => is_array($replacement) ? $replacement[1] : $identity
+                ];
+                break;
+            }
+        }
+
+        return $found;
+    }
+
     static function getAttributeMerge(string $attribute, string $platform): array
     {
         $map = self::getReplaceMap();
