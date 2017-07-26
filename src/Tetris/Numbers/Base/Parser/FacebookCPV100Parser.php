@@ -28,4 +28,17 @@ trait FacebookCPV100Parser
 
         return !$actionValue ? 0 : $spend / $actionValue;
     }
+
+    static function spec(string $spend, string $video100p): array
+    {
+        return [
+            'spendProperty' => $spend,
+            'actionsProperty' => $video100p,
+            'actionType' => 'video_view',
+            'traits' => [
+                'parser' => self::class
+            ],
+            'fields' => [$spend, $video100p]
+        ];
+    }
 }

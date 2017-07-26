@@ -2,38 +2,10 @@
 
 namespace Tetris\Numbers;
 
-use Tetris\Numbers\Base\Parser\FacebookCPV100Parser;
-use Tetris\Numbers\Base\Parser\ViewRateParser;
 use Tetris\Numbers\Generator\Facebook\Extensions\ActionsParser;
 use Tetris\Numbers\Generator\Facebook\Extensions\VideoViewParser;
 use Tetris\Numbers\Generator\Facebook\FacebookAttributeFactory;
 use Tetris\Numbers\Generator\Facebook\FacebookMetricFactory;
-
-function cpv100Facebook(string $spend, string $video100p)
-{
-    return [
-        'spendProperty' => $spend,
-        'actionsProperty' => $video100p,
-        'actionType' => 'video_view',
-        'traits' => [
-            'parser' => FacebookCPV100Parser::class
-        ],
-        'fields' => [$spend, $video100p]
-    ];
-}
-
-function viewRateFacebook(string $videoViewAction, string $impressions)
-{
-    return [
-        'actionsProperty' => $videoViewAction,
-        'impressionsProperty' => $impressions,
-        'actionType' => 'video_view',
-        'traits' => [
-            'parser' => ViewRateParser::class
-        ],
-        'fields' => [$impressions, $videoViewAction]
-    ];
-}
 
 function getFacebookConfig(): array
 {

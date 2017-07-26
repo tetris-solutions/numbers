@@ -28,4 +28,17 @@ trait ViewRateParser
 
         return !$impressions ? 0 : $actionValue / $impressions;
     }
+
+    static function spec(string $videoViewAction, string $impressions): array
+    {
+        return [
+            'actionsProperty' => $videoViewAction,
+            'impressionsProperty' => $impressions,
+            'actionType' => 'video_view',
+            'traits' => [
+                'parser' => self::class
+            ],
+            'fields' => [$impressions, $videoViewAction]
+        ];
+    }
 }
