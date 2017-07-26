@@ -14,18 +14,18 @@ abstract class MetaDataV2 implements MetaDataReader
 
     const configDir = __DIR__ . '/../../../../config/dynamic';
 
-    static function asPlainObject(Attribute $source): stdClass
+    static function asPlainObject(Attribute $source): array
     {
-        $metaData = new stdClass();
+        $metaData = [];
 
         foreach (get_object_vars($source) as $key => $value) {
             if (isset($value)) {
-                $metaData->{$key} = $value;
+                $metaData[$key] = $value;
             }
         }
 
-        unset($metaData->names);
-        unset($metaData->property);
+        unset($metaData['names']);
+        unset($metaData['property']);
 
         return $metaData;
     }

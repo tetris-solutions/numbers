@@ -4,7 +4,7 @@ namespace Tetris\Numbers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Tetris\Numbers\Report\MetaData\MetaData;
+use Tetris\Numbers\Report\MetaData\MetaDataV2;
 use Tetris\Numbers\Utils\ArrayUtils;
 
 global $app;
@@ -21,7 +21,7 @@ $crossMetaRouteHandler = secured('get-cross-platform-meta-data', function (Reque
         $output = [];
 
         foreach ($input as $id => $config) {
-            $replacement = MetaData::getAttributeMerge($id, $platform);
+            $replacement = MetaDataV2::getAttributeMerge($id, $platform);
             $alternateId = $replacement['id'];
 
             $config['id'] = $alternateId;
@@ -39,7 +39,7 @@ $crossMetaRouteHandler = secured('get-cross-platform-meta-data', function (Reque
 
     foreach ($platforms as $platform) {
         $byPlatform[$platform] = $translate($platform,
-            MetaData::listAttributes($platform, $entity));
+            MetaDataV2::listAttributes($platform, $entity));
     }
 
     foreach ($inventory as $attributeId => $platformsAttributeAppearsIn) {
