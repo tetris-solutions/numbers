@@ -30,7 +30,7 @@ trait CPV100Sum
         return $totalFullViews === 0.0 ? 0 : $totalCost / $totalFullViews;
     }
 
-    static function spec(string $cost, string $views100Percentile, string $views): array
+    static function sumSpec(string $cost, string $views100Percentile, string $views): array
     {
         return [
             'traits' => [

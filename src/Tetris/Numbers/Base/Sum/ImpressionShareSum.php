@@ -32,7 +32,7 @@ trait ImpressionShareSum
             : $totalImpressions / $totalPossibleImpressions;
     }
 
-    static function spec($impressions = 'impressions'): array
+    static function sumSpec($impressions = 'impressions'): array
     {
         return [
             'traits' => [

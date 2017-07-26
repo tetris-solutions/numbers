@@ -29,7 +29,7 @@ trait FacebookCPV100Parser
         return !$actionValue ? 0 : $spend / $actionValue;
     }
 
-    static function spec(string $spend, string $video100p): array
+    static function parserSpec(string $spend, string $video100p): array
     {
         return [
             'spendProperty' => $spend,

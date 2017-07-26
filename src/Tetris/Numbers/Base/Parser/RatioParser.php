@@ -24,7 +24,7 @@ trait RatioParser
         return $cost === 0.0 ? 0.0 : $conv / $cost;
     }
 
-    static function spec(string $dividend, string $divisor): array
+    static function parserSpec(string $dividend, string $divisor): array
     {
         $both = [$dividend, $divisor];
 

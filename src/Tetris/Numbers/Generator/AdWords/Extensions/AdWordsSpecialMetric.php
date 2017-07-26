@@ -46,8 +46,8 @@ class AdWordsSpecialMetric implements Extension
     function __construct(array $fields)
     {
         $fixed = [
-            'roas' => RatioParser::spec('ConversionValue', 'Cost'),
-            'cpv100' => AdWordsCPV100Parser::spec('Cost', 'VideoQuartile100Rate', 'VideoViews')
+            'roas' => RatioParser::parserSpec('ConversionValue', 'Cost'),
+            'cpv100' => AdWordsCPV100Parser::parserSpec('Cost', 'VideoQuartile100Rate', 'VideoViews')
         ];
 
         $this->map = array_merge($fixed, $this->build($fields, self::metrics));
@@ -68,7 +68,7 @@ class AdWordsSpecialMetric implements Extension
                 $auxMetrics[] = $part;
             }
 
-            $config[strtolower($name)] = TriangulationParser::spec($name, $auxMetrics);
+            $config[strtolower($name)] = TriangulationParser::parserSpec($name, $auxMetrics);
         }
 
         return $config;

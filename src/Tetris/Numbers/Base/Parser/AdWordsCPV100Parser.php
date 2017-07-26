@@ -23,7 +23,7 @@ trait AdWordsCPV100Parser
         return $fullViews === 0.0 ? 0.0 : $cost / $fullViews;
     }
 
-    static function spec(string $cost, string $views100Percentile, string $views): array
+    static function parserSpec(string $cost, string $views100Percentile, string $views): array
     {
         return [
             'traits' => [

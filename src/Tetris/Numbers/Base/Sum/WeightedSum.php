@@ -24,7 +24,7 @@ trait WeightedSum
             : 0;
     }
 
-    static function spec(string $weight): array
+    static function sumSpec(string $weight): array
     {
         return [
             'traits' => [

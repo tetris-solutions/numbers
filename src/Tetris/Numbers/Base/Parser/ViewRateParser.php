@@ -29,7 +29,7 @@ trait ViewRateParser
         return !$impressions ? 0 : $actionValue / $impressions;
     }
 
-    static function spec(string $videoViewAction, string $impressions): array
+    static function parserSpec(string $videoViewAction, string $impressions): array
     {
         return [
             'actionsProperty' => $videoViewAction,

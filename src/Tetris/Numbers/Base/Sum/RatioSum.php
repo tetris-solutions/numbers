@@ -28,7 +28,7 @@ trait RatioSum
             : 0;
     }
 
-    static function spec(string $dividendMetric, string $divisorMetric): array
+    static function sumSpec(string $dividendMetric, string $divisorMetric): array
     {
         return [
             'traits' => [

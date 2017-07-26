@@ -35,7 +35,7 @@ trait LostImpressionShareSum
             : $totalLostImpressions / $totalPossibleImpressions;
     }
 
-    static function spec(string $impressionShare, $impressions = 'impressions'): array
+    static function sumSpec(string $impressionShare, $impressions = 'impressions'): array
     {
         return [
             'traits' => [

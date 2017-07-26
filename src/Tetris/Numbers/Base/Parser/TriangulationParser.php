@@ -32,7 +32,7 @@ trait TriangulationParser
         return $remaining;
     }
 
-    static function spec(string $metric, array $auxMetrics): array
+    static function parserSpec(string $metric, array $auxMetrics): array
     {
         return [
             'traits' => [

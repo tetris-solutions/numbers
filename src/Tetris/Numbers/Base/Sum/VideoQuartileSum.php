@@ -28,7 +28,7 @@ trait VideoQuartileSum
             : 0;
     }
 
-    static function spec(string $percent): array
+    static function sumSpec(string $percent): array
     {
         $quartile = "videoquartile{$percent}rate";
 
