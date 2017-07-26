@@ -2,10 +2,10 @@
 
 namespace Tetris\Numbers\Report\CrossPlatform;
 
-use Tetris\Numbers\Report\MetaData\MetaData;
 use Tetris\Numbers\Report\MetaData\MetaDataV2;
-use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Numbers\Report\Query\QueryBlueprint;
+use Tetris\Numbers\Report\Query\QueryV2;
 
 class XQuery extends QueryBlueprint
 {
@@ -181,7 +181,7 @@ class XQuery extends QueryBlueprint
 
     private function wire()
     {
-        $this->query = new Query($this->locale, [
+        $this->query = new QueryV2($this->locale, [
             'ad_account' => $this->adAccountId,
             'tetris_account' => $this->tetrisAccountId,
             'entity' => $this->entity,
@@ -208,7 +208,7 @@ class XQuery extends QueryBlueprint
         }
     }
 
-    function toRegularQuery(): Query
+    function toRegularQuery(): QueryBase
     {
         if (empty($this->query)) {
             $this->wire();
