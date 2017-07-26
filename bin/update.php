@@ -29,8 +29,6 @@ function platformAttribute(string $platform, string $report): TransientAttribute
     $attribute->is_metric = false;
     $attribute->is_dimension = true;
     $attribute->traits['parser'] = PlatformParser::class;
-    $source = makeParserFromSource('constant');
-    $attribute->parse = $source(strtolower($platform));
     $attribute->names = [
         'en' => 'Platform',
         'pt-BR' => 'Plataforma'

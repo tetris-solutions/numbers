@@ -14,7 +14,6 @@ use Tetris\Numbers\Generator\Shared\TransientAttribute;
 
 function impressionShareSum(string $metric)
 {
-    $source = makeParserFromSource('impression-share-sum');
     $impressions = 'impressions';
 
     return [
@@ -22,44 +21,35 @@ function impressionShareSum(string $metric)
             'sum' => ImpressionShareSum::class
         ],
         'impressionsMetric' => $impressions,
-        'inferred_from' => [$impressions],
-        'sum' => $source($metric, $impressions)
+        'inferred_from' => [$impressions]
     ];
 }
 
 function lostImpressionShareSum(string $metric, string $impressionShare)
 {
-    $source = makeParserFromSource('lost-impression-share-sum');
-
     return [
         'traits' => [
             'sum' => LostImpressionShareSum::class
         ],
         'impressionShareMetric' => $impressionShare,
         'impressionsMetric' => 'impressions',
-        'inferred_from' => [$impressionShare, 'impressions'],
-        'sum' => $source($metric, $impressionShare, 'impressions')
+        'inferred_from' => [$impressionShare, 'impressions']
     ];
 }
 
 function specialValueTriangulation(string $metric, array $auxMetrics)
 {
-    $source = makeParserFromSource('special-value-triangulation');
-
     return [
         'traits' => [
             'parser' => TriangulationParser::class
         ],
         'auxiliaryMetrics' => $auxMetrics,
-        'fields' => array_merge([$metric], $auxMetrics),
-        'parse' => $source($metric, join(',', $auxMetrics))
+        'fields' => array_merge([$metric], $auxMetrics)
     ];
 }
 
 function cpv100AdWords(string $cost, string $views100Percentile, string $views)
 {
-    $source = makeParserFromSource('cpv100-adwords');
-
     return [
         'traits' => [
             'parser' => AdWordsCPV100Parser::class
@@ -67,15 +57,12 @@ function cpv100AdWords(string $cost, string $views100Percentile, string $views)
         'costProperty' => $cost,
         'views100PercentileProperty' => $views100Percentile,
         'viewsProperty' => $views,
-        'fields' => [$cost, $views100Percentile, $views],
-        'parse' => $source($cost, $views100Percentile, $views)
+        'fields' => [$cost, $views100Percentile, $views]
     ];
 }
 
 function cpv100AdwordsSum(string $cost, string $views100Percentile, string $views)
 {
-    $source = makeParserFromSource('cpv100-adwords-sum');
-
     return [
         'traits' => [
             'sum' => CPV100Sum::class
@@ -83,8 +70,7 @@ function cpv100AdwordsSum(string $cost, string $views100Percentile, string $view
         'costMetric' => $cost,
         'views100PercentileMetric' => $views100Percentile,
         'viewsMetric' => $views,
-        'inferred_from' => [$cost, $views100Percentile, $views],
-        'sum' => $source($cost, $views100Percentile, $views)
+        'inferred_from' => [$cost, $views100Percentile, $views]
     ];
 }
 

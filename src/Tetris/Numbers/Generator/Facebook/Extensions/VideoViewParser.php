@@ -7,8 +7,6 @@ use Tetris\Numbers\Base\Parser\ActionParser;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
-use function Tetris\Numbers\makeParserFromSource;
-use function Tetris\Numbers\simpleSum;
 
 class VideoViewParser implements Extension
 {

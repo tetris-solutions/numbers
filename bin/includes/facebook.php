@@ -11,8 +11,6 @@ use Tetris\Numbers\Generator\Facebook\FacebookMetricFactory;
 
 function cpv100Facebook(string $spend, string $video100p)
 {
-    $source = makeParserFromSource('cpv100-facebook');
-
     return [
         'spendProperty' => $spend,
         'actionsProperty' => $video100p,
@@ -20,15 +18,12 @@ function cpv100Facebook(string $spend, string $video100p)
         'traits' => [
             'parser' => FacebookCPV100Parser::class
         ],
-        'fields' => [$spend, $video100p],
-        'parse' => $source($spend, $video100p, 'video_view')
+        'fields' => [$spend, $video100p]
     ];
 }
 
 function viewRateFacebook(string $videoViewAction, string $impressions)
 {
-    $source = makeParserFromSource('view-rate-facebook');
-
     return [
         'actionsProperty' => $videoViewAction,
         'impressionsProperty' => $impressions,
@@ -36,8 +31,7 @@ function viewRateFacebook(string $videoViewAction, string $impressions)
         'traits' => [
             'parser' => ViewRateParser::class
         ],
-        'fields' => [$impressions, $videoViewAction],
-        'parse' => $source($videoViewAction, 'video_view', $impressions)
+        'fields' => [$impressions, $videoViewAction]
     ];
 }
 
@@ -73,8 +67,7 @@ function getFacebookConfig(): array
 
         return [
             'property' => 'date_start',
-            'property_name' => $part,
-            'parse' => makeParserFromSource("fb-{$part}")('date_start')
+            'property_name' => $part
         ];
     };
 

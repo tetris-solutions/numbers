@@ -6,7 +6,6 @@ use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
-use function Tetris\Numbers\simpleSum;
 
 class AnalyticsTrivialSum implements Extension
 {
@@ -19,7 +18,6 @@ class AnalyticsTrivialSum implements Extension
         ];
 
         if ($source->type === 'integer') {
-            $patch['sum'] = simpleSum($source->id);
             $patch['traits']['sum'] = TrivialSum::class;
         }
 

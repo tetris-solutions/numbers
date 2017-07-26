@@ -6,7 +6,6 @@ use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
-use function Tetris\Numbers\simpleSum;
 
 class AdWordsTrivialSum implements Extension
 {
@@ -25,7 +24,6 @@ class AdWordsTrivialSum implements Extension
         );
 
         if ($trivial) {
-            $patch['sum'] = simpleSum($source->id);
             $patch['traits']['sum'] = TrivialSum::class;
         }
 

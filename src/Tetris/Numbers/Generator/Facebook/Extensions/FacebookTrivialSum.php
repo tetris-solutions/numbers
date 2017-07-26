@@ -7,8 +7,6 @@ use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
 
-use function Tetris\Numbers\simpleSum;
-
 class FacebookTrivialSum implements Extension
 {
     use ExtensionApply;
@@ -52,7 +50,6 @@ class FacebookTrivialSum implements Extension
         $trivial = in_array($source->id, self::fields);
 
         if ($trivial) {
-            $patch['sum'] = simpleSum($source->id);
             $patch['traits']['sum'] = TrivialSum::class;
         }
 
