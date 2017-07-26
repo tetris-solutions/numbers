@@ -6,7 +6,6 @@ namespace Tetris\Numbers;
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\Parser\PlatformParser;
 use Tetris\Numbers\Generator\Generator;
-use Tetris\Numbers\Generator\Shared\MetricFactory;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
 use Tetris\Numbers\Generator\Shared\TransientMetric;
 

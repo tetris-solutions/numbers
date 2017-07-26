@@ -34,4 +34,16 @@ trait LostImpressionShareSum
             ? 0
             : $totalLostImpressions / $totalPossibleImpressions;
     }
+
+    static function spec(string $impressionShare, $impressions = 'impressions'): array
+    {
+        return [
+            'traits' => [
+                'sum' => self::class
+            ],
+            'impressionShareMetric' => $impressionShare,
+            'impressionsMetric' => $impressions,
+            'inferred_from' => [$impressionShare, $impressions]
+        ];
+    }
 }

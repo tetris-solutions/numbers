@@ -6,36 +6,9 @@ use Tetris\Adwords\ReportMap;
 use Tetris\Numbers\Base\Parser\AdWordsCPV100Parser;
 use Tetris\Numbers\Base\Parser\TriangulationParser;
 use Tetris\Numbers\Base\Sum\CPV100Sum;
-use Tetris\Numbers\Base\Sum\ImpressionShareSum;
-use Tetris\Numbers\Base\Sum\LostImpressionShareSum;
 use Tetris\Numbers\Generator\AdWords\AdWordsAttributeFactory;
 use Tetris\Numbers\Generator\AdWords\AdWordsMetricFactory;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
-
-function impressionShareSum(string $metric)
-{
-    $impressions = 'impressions';
-
-    return [
-        'traits' => [
-            'sum' => ImpressionShareSum::class
-        ],
-        'impressionsMetric' => $impressions,
-        'inferred_from' => [$impressions]
-    ];
-}
-
-function lostImpressionShareSum(string $metric, string $impressionShare)
-{
-    return [
-        'traits' => [
-            'sum' => LostImpressionShareSum::class
-        ],
-        'impressionShareMetric' => $impressionShare,
-        'impressionsMetric' => 'impressions',
-        'inferred_from' => [$impressionShare, 'impressions']
-    ];
-}
 
 function specialValueTriangulation(string $metric, array $auxMetrics)
 {

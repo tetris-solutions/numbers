@@ -2,6 +2,8 @@
 
 namespace Tetris\Numbers\Generator\AdWords\Extensions;
 
+use Tetris\Numbers\Base\Sum\ImpressionShareSum;
+use Tetris\Numbers\Base\Sum\LostImpressionShareSum;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
 
@@ -12,13 +14,13 @@ class AdWordsInferredSum implements Extension
     function __construct()
     {
         $this->map = [
-            'searchbudgetlostimpressionshare' => \Tetris\Numbers\lostImpressionShareSum('searchbudgetlostimpressionshare', 'searchimpressionshare'),
-            'searchranklostimpressionshare' => \Tetris\Numbers\lostImpressionShareSum('searchranklostimpressionshare', 'searchimpressionshare'),
-            'searchimpressionshare' => \Tetris\Numbers\impressionShareSum('searchimpressionshare'),
+            'searchbudgetlostimpressionshare' => LostImpressionShareSum::spec('searchimpressionshare'),
+            'searchranklostimpressionshare' => LostImpressionShareSum::spec('searchimpressionshare'),
+            'searchimpressionshare' => ImpressionShareSum::spec(),
 
-            'contentbudgetlostimpressionshare' => \Tetris\Numbers\lostImpressionShareSum('contentbudgetlostimpressionshare', 'contentimpressionshare'),
-            'contentranklostimpressionshare' => \Tetris\Numbers\lostImpressionShareSum('contentranklostimpressionshare', 'contentimpressionshare'),
-            'contentimpressionshare' => \Tetris\Numbers\impressionShareSum('contentimpressionshare'),
+            'contentbudgetlostimpressionshare' => LostImpressionShareSum::spec('contentimpressionshare'),
+            'contentranklostimpressionshare' => LostImpressionShareSum::spec('contentimpressionshare'),
+            'contentimpressionshare' => ImpressionShareSum::spec(),
 
             'allconversionrate' => \Tetris\Numbers\customRatioSum('allconversions', 'clicks'),
             'averagecost' => \Tetris\Numbers\customRatioSum('cost', 'interactions'),
@@ -51,3 +53,4 @@ class AdWordsInferredSum implements Extension
         ];
     }
 }
+

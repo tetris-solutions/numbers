@@ -4,7 +4,6 @@ namespace Tetris\Numbers;
 
 use Tetris\Numbers\Generator\Analytics\AnalyticsAttributeFactory;
 use Tetris\Numbers\Generator\Analytics\AnalyticsMetricFactory;
-use Tetris\Numbers\Generator\Generator;
 
 function normalizeGAType(string $type): string
 {
