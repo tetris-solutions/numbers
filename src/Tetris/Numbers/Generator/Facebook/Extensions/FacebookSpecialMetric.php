@@ -4,6 +4,7 @@ namespace Tetris\Numbers\Generator\Facebook\Extensions;
 
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
+use Tetris\Numbers\Base\Parser\RatioParser;
 
 class FacebookSpecialMetric implements Extension
 {
@@ -12,9 +13,9 @@ class FacebookSpecialMetric implements Extension
     function __construct()
     {
         $this->map = [
-            'roas' => \Tetris\Numbers\customRatioParser('total_action_value', 'spend'),
-            'cpa' => \Tetris\Numbers\customRatioParser('total_actions', 'total_action_value'),
-            'cpr' => \Tetris\Numbers\customRatioParser('spend', 'reach'),
+            'roas' => RatioParser::spec('total_action_value', 'spend'),
+            'cpa' => RatioParser::spec('total_actions', 'total_action_value'),
+            'cpr' => RatioParser::spec('spend', 'reach'),
             'cpv100' => \Tetris\Numbers\cpv100Facebook('spend', 'video_p100_watched_actions'),
             'view_rate' => \Tetris\Numbers\viewRateFacebook('actions', 'impressions')
         ];

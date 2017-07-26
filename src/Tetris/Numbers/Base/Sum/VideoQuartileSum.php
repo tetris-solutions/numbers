@@ -27,4 +27,18 @@ trait VideoQuartileSum
             ? $partialViews / $totalViews
             : 0;
     }
+
+    static function spec(string $percent): array
+    {
+        $quartile = "videoquartile{$percent}rate";
+
+        return [
+            'traits' => [
+                'sum' => self::class
+            ],
+            'videoViewsMetric' => 'videoviews',
+            'videoQuartileMetric' => $quartile,
+            "inferred_from" => ['videoviews']
+        ];
+    }
 }

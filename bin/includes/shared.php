@@ -2,11 +2,6 @@
 
 namespace Tetris\Numbers;
 
-use Tetris\Numbers\Base\Parser\RatioParser;
-use Tetris\Numbers\Base\Sum\RatioSum;
-use Tetris\Numbers\Base\Sum\VideoQuartileSum;
-use Tetris\Numbers\Base\Sum\WeightedSum;
-
 function prettyVarExport($var, $level = 0)
 {
     $padString = ' ';
@@ -41,55 +36,4 @@ function prettyVarExport($var, $level = 0)
         default:
             return var_export($var, TRUE);
     }
-}
-
-function customRatioSum(string $dividendMetric, string $divisorMetric): array
-{
-    return [
-        'traits' => [
-            'sum' => RatioSum::class
-        ],
-        'dividendMetric' => $dividendMetric,
-        'divisorMetric' => $divisorMetric,
-        "inferred_from" => [$dividendMetric, $divisorMetric]
-    ];
-}
-
-function weightedAverage(string $metric, string $weight): array
-{
-    return [
-        'traits' => [
-            'sum' => WeightedSum::class
-        ],
-        'weightMetric' => $weight,
-        "inferred_from" => [$weight]
-    ];
-}
-
-function videoQuartileSum(string $percent): array
-{
-    $quartile = "videoquartile{$percent}rate";
-
-    return [
-        'traits' => [
-            'sum' => VideoQuartileSum::class
-        ],
-        'videoViewsMetric' => 'videoviews',
-        'videoQuartileMetric' => $quartile,
-        "inferred_from" => ['videoviews']
-    ];
-}
-
-function customRatioParser(string $dividend, string $divisor)
-{
-    $both = [$dividend, $divisor];
-
-    return [
-        'traits' => [
-            'parser' => RatioParser::class
-        ],
-        'dividendProperty' => $dividend,
-        'divisorProperty' => $divisor,
-        'fields' => $both
-    ];
 }

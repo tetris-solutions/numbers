@@ -3,49 +3,9 @@
 namespace Tetris\Numbers;
 
 use Tetris\Adwords\ReportMap;
-use Tetris\Numbers\Base\Parser\AdWordsCPV100Parser;
-use Tetris\Numbers\Base\Parser\TriangulationParser;
-use Tetris\Numbers\Base\Sum\CPV100Sum;
 use Tetris\Numbers\Generator\AdWords\AdWordsAttributeFactory;
 use Tetris\Numbers\Generator\AdWords\AdWordsMetricFactory;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
-
-function specialValueTriangulation(string $metric, array $auxMetrics)
-{
-    return [
-        'traits' => [
-            'parser' => TriangulationParser::class
-        ],
-        'auxiliaryMetrics' => $auxMetrics,
-        'fields' => array_merge([$metric], $auxMetrics)
-    ];
-}
-
-function cpv100AdWords(string $cost, string $views100Percentile, string $views)
-{
-    return [
-        'traits' => [
-            'parser' => AdWordsCPV100Parser::class
-        ],
-        'costProperty' => $cost,
-        'views100PercentileProperty' => $views100Percentile,
-        'viewsProperty' => $views,
-        'fields' => [$cost, $views100Percentile, $views]
-    ];
-}
-
-function cpv100AdwordsSum(string $cost, string $views100Percentile, string $views)
-{
-    return [
-        'traits' => [
-            'sum' => CPV100Sum::class
-        ],
-        'costMetric' => $cost,
-        'views100PercentileMetric' => $views100Percentile,
-        'viewsMetric' => $views,
-        'inferred_from' => [$cost, $views100Percentile, $views]
-    ];
-}
 
 function adWordsFieldsBlacklist(): callable
 {

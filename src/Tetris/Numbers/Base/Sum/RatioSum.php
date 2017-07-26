@@ -27,4 +27,16 @@ trait RatioSum
             ? $sumDividend / $sumDivisor
             : 0;
     }
+
+    static function spec(string $dividendMetric, string $divisorMetric): array
+    {
+        return [
+            'traits' => [
+                'sum' => self::class
+            ],
+            'dividendMetric' => $dividendMetric,
+            'divisorMetric' => $divisorMetric,
+            "inferred_from" => [$dividendMetric, $divisorMetric]
+        ];
+    }
 }

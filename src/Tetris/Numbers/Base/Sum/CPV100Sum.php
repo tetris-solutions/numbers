@@ -29,4 +29,17 @@ trait CPV100Sum
 
         return $totalFullViews === 0.0 ? 0 : $totalCost / $totalFullViews;
     }
+
+    static function spec(string $cost, string $views100Percentile, string $views): array
+    {
+        return [
+            'traits' => [
+                'sum' => self::class
+            ],
+            'costMetric' => $cost,
+            'views100PercentileMetric' => $views100Percentile,
+            'viewsMetric' => $views,
+            'inferred_from' => [$cost, $views100Percentile, $views]
+        ];
+    }
 }

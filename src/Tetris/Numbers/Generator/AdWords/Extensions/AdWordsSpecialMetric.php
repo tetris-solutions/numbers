@@ -2,6 +2,9 @@
 
 namespace Tetris\Numbers\Generator\AdWords\Extensions;
 
+use Tetris\Numbers\Base\Parser\AdWordsCPV100Parser;
+use Tetris\Numbers\Base\Parser\RatioParser;
+use Tetris\Numbers\Base\Parser\TriangulationParser;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
 
@@ -43,8 +46,8 @@ class AdWordsSpecialMetric implements Extension
     function __construct(array $fields)
     {
         $fixed = [
-            'roas' => \Tetris\Numbers\customRatioParser('ConversionValue', 'Cost'),
-            'cpv100' => \Tetris\Numbers\cpv100Adwords('Cost', 'VideoQuartile100Rate', 'VideoViews')
+            'roas' => RatioParser::spec('ConversionValue', 'Cost'),
+            'cpv100' => AdWordsCPV100Parser::spec('Cost', 'VideoQuartile100Rate', 'VideoViews')
         ];
 
         $this->map = array_merge($fixed, $this->build($fields, self::metrics));
@@ -65,7 +68,7 @@ class AdWordsSpecialMetric implements Extension
                 $auxMetrics[] = $part;
             }
 
-            $config[strtolower($name)] = \Tetris\Numbers\specialValueTriangulation($name, $auxMetrics);
+            $config[strtolower($name)] = TriangulationParser::spec($name, $auxMetrics);
         }
 
         return $config;

@@ -23,4 +23,15 @@ trait WeightedSum
             ? $sumDividend / $sumDivisor
             : 0;
     }
+
+    static function spec(string $weight): array
+    {
+        return [
+            'traits' => [
+                'sum' => self::class
+            ],
+            'weightMetric' => $weight,
+            "inferred_from" => [$weight]
+        ];
+    }
 }

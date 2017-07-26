@@ -23,4 +23,18 @@ trait RatioParser
 
         return $cost === 0.0 ? 0.0 : $conv / $cost;
     }
+
+    static function spec(string $dividend, string $divisor): array
+    {
+        $both = [$dividend, $divisor];
+
+        return [
+            'traits' => [
+                'parser' => self::class
+            ],
+            'dividendProperty' => $dividend,
+            'divisorProperty' => $divisor,
+            'fields' => $both
+        ];
+    }
 }
