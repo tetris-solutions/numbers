@@ -3,9 +3,9 @@
 namespace Tetris\Numbers\Base;
 
 
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 
 interface Parsable
 {
-    function parse($source, QueryBase $query);
+    function parse($source, Query $query);
 }

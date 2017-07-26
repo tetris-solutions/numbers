@@ -3,7 +3,7 @@
 namespace Tetris\Numbers\Base\Parser;
 
 use Tetris\Numbers\Base\ComplexValue;
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 
 trait ComplexValueParser
 {
@@ -40,10 +40,10 @@ trait ComplexValueParser
 
     /**
      * @param $source
-     * @param QueryBase $query
+     * @param Query $query
      * @return float|null|ComplexValue
      */
-    function parse($source, QueryBase $query)
+    function parse($source, Query $query)
     {
         return $this->transform($this->getValue($source));
     }

@@ -9,10 +9,10 @@ use Tetris\Numbers\Base\FilterMetaData;
 use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Base\Parsable;
 use Tetris\Numbers\Base\Summable;
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 use Tetris\Services\FlagsService;
 
-abstract class ResultParserV2
+abstract class ResultParser
 {
     static function filter(array $allRows, array $filters): array
     {
@@ -99,7 +99,7 @@ abstract class ResultParserV2
         return $flags->isDebugMode();
     }
 
-    static function parse($receivedObject, QueryBase $query): stdClass
+    static function parse($receivedObject, Query $query): stdClass
     {
         $report = $query->report;
         if (is_array($receivedObject)) {

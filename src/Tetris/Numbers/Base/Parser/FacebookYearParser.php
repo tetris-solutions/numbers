@@ -2,11 +2,11 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 
 trait FacebookYearParser
 {
-    function parse($source, QueryBase $queryBase)
+    function parse($source, Query $queryBase)
     {
         return date('Y', strtotime($this->getValue($source)));
     }

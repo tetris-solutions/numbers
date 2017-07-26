@@ -3,8 +3,8 @@
 namespace Tetris\Numbers;
 
 use Tetris\Numbers\API\TokenManager;
-use Tetris\Numbers\Report\Query\QueryV2;
-use Tetris\Numbers\Report\ResultParserV2;
+use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\ResultParser;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;
 use Tetris\Numbers\Resolver\FacebookResolver;
@@ -35,7 +35,7 @@ $app->post('/',
             !in_array('id', $body['dimensions'])
         );
 
-        $query = new QueryV2($locale, $body);
+        $query = new Query($locale, $body);
         /**
          * @var TokenManager $tkm
          */
@@ -57,7 +57,7 @@ $app->post('/',
         }
 
         foreach ($rows as $index => $row) {
-            $rows[$index] = ResultParserV2::parse($row, $query);
+            $rows[$index] = ResultParser::parse($row, $query);
         }
 
         $notAuxiliary = function (string $dimensionId) use ($query): bool {
@@ -67,14 +67,14 @@ $app->post('/',
         if ($shouldAggregate) {
             $dimensionIds = array_filter(array_column($query->report->dimensions, 'id'), $notAuxiliary);
 
-            $rows = ResultParserV2::aggregate(
+            $rows = ResultParser::aggregate(
                 $rows,
                 $dimensionIds,
                 $query->report->metrics
             );
         }
 
-        $rows = ResultParserV2::filter($rows, $query->report->filters);
+        $rows = ResultParser::filter($rows, $query->report->filters);
 
         return $response->withJson([
             'exceptions' => $exceptions,

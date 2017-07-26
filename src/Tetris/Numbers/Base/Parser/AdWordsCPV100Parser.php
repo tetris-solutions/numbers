@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 
 trait AdWordsCPV100Parser
 {
@@ -10,7 +10,7 @@ trait AdWordsCPV100Parser
     public $views100PercentileProperty;
     public $viewsProperty;
 
-    function parse($source, QueryBase $query)
+    function parse($source, Query $query)
     {
         $cost = floatval(str_replace(',', '', $source->{$this->costProperty}));
         $fullViewPercent = str_replace(['%', ','], '', $source->{$this->views100PercentileProperty});

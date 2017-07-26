@@ -6,7 +6,7 @@ use Facebook\GraphNodes\GraphEdge;
 use stdClass;
 use FacebookAds\Api;
 use Facebook\Facebook;
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 
 
 class FacebookResolver extends Facebook implements Resolver
@@ -43,7 +43,7 @@ class FacebookResolver extends Facebook implements Resolver
         return in_array($dimension, self::getBreakdowns());
     }
 
-    function resolve(QueryBase $query, bool $shouldAggregate): array
+    function resolve(Query $query, bool $shouldAggregate): array
     {
         $report = $query->report;
         $rows = [];

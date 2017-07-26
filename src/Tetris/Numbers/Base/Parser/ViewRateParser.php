@@ -3,7 +3,7 @@
 namespace Tetris\Numbers\Base\Parser;
 
 
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 
 trait ViewRateParser
 {
@@ -11,7 +11,7 @@ trait ViewRateParser
     public $impressionsProperty;
     public $actionType;
 
-    function parse($source, QueryBase $queryBase)
+    function parse($source, Query $queryBase)
     {
         $impressions = floatval(str_replace(',', '', $source->{$this->impressionsProperty}));
 

@@ -2,12 +2,12 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 use DateTime;
 
 trait AnalyticsWeekParser
 {
-    function parse($source, QueryBase $queryBase)
+    function parse($source, Query $queryBase)
     {
         $date = new DateTime();
         $isoWeek = $this->getValue($source);

@@ -2,14 +2,14 @@
 
 namespace Tetris\Numbers\Base\Parser;
 
-use Tetris\Numbers\Report\Query\QueryBase;
+use Tetris\Numbers\Report\Query\Query;
 
 trait ActionParser
 {
     public $actionsProperty;
     public $actionType;
 
-    function parse($source, QueryBase $queryBase)
+    function parse($source, Query $queryBase)
     {
         if (empty($source->{$this->actionsProperty})) return NULL;
 
