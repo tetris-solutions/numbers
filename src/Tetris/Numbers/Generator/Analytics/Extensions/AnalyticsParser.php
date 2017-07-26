@@ -6,17 +6,6 @@ use Tetris\Numbers\Base\Parser\AnalyticsDateParser;
 use Tetris\Numbers\Base\Parser\AnalyticsMonthOfYearParser;
 use Tetris\Numbers\Base\Parser\AnalyticsWeekParser;
 use Tetris\Numbers\Base\Parser\AnalyticsYearMonthParser;
-use Tetris\Numbers\Base\Parser\FacebookDayOfWeekParser;
-use Tetris\Numbers\Base\Parser\FacebookMonthOfYearParser;
-use Tetris\Numbers\Base\Parser\FacebookMonthParser;
-use Tetris\Numbers\Base\Parser\FacebookQuarterParser;
-use Tetris\Numbers\Base\Parser\FacebookWeekParser;
-use Tetris\Numbers\Base\Parser\FacebookYearParser;
-
-//use Tetris\Numbers\Base\Parser\FloatParser;
-//use Tetris\Numbers\Base\Parser\IntegerParser;
-//use Tetris\Numbers\Base\Parser\PercentParser;
-//use Tetris\Numbers\Base\Parser\RawParser;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 
 class AnalyticsParser extends DefaultParser
@@ -33,15 +22,6 @@ class AnalyticsParser extends DefaultParser
     function __construct()
     {
         parent::__construct();
-
-//        $this->map = [
-//            'STRING' => RawParser::class,
-//            'INTEGER' => IntegerParser::class,
-//            'FLOAT' => FloatParser::class,
-//            'PERCENT' => PercentParser::class,
-//            'TIME' => RawParser::class,
-//            'CURRENCY' => FloatParser::class
-//        ];
 
         foreach (self::dateParsers as $name => $class) {
             $this->dateParts[$name] = [

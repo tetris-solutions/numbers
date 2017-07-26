@@ -6,7 +6,7 @@ use Tetris\Numbers\Base\Field;
 use Tetris\Numbers\Base\Sum\TrivialSum;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
-use Tetris\Numbers\Generator\Shared\TransientMetric;
+
 use function Tetris\Numbers\simpleSum;
 
 class FacebookTrivialSum implements Extension
