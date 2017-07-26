@@ -14,7 +14,7 @@ use function Tetris\Numbers\prettyVarExport;
 abstract class Generator
 {
     const classRoot = __DIR__ . '/../../../../src';
-    const configRoot = __DIR__ . '/../../../../src/config/dynamic';
+    const configRoot = __DIR__ . '/../../../../config';
 
     private static $inventory = [];
 

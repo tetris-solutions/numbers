@@ -11,7 +11,7 @@ abstract class MetaDataV2 implements MetaDataReader
 {
     use Meta;
 
-    const configDir = __DIR__ . '/../../../../config/dynamic';
+    const configDir = __DIR__ . '/../../../../../config';
 
     static function asPlainObject(Attribute $source): array
     {

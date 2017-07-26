@@ -1,0 +1,34 @@
+<?php
+namespace Tetris\Numbers\Config;
+
+use Tetris\Numbers\Generated\Shared\Metric\Metric_PercentParser_RatioSum_Parsable_Summable;
+
+return new class extends Metric_PercentParser_RatioSum_Parsable_Summable {
+
+	public $dividendMetric = 'videoviews';
+
+	public $divisorMetric = 'impressions';
+
+	public $entity = 'AdGroup';
+
+	public $fields = [
+	    "VideoViewRate"
+	];
+
+	public $id = 'videoviewrate';
+
+	public $inferred_from = [
+	    "videoviews",
+	    "impressions"
+	];
+
+	public $metric = 'videoviewrate';
+
+	public $platform = 'adwords';
+
+	public $property = 'VideoViewRate';
+
+	public $report = 'ADGROUP_PERFORMANCE_REPORT';
+
+	public $type = 'percentage';
+};
