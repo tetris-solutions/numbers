@@ -7,8 +7,9 @@ use Slim\Http\Response;
 use Tetris\Numbers\API\TokenManager;
 use Tetris\Numbers\Report\CrossPlatform\CrossPlatformReport;
 use Tetris\Numbers\Report\CrossPlatform\XQuery;
-use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Query\QueryBase;
 use Tetris\Numbers\Report\ResultParser;
+use Tetris\Numbers\Report\ResultParserV2;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;
 use Tetris\Numbers\Resolver\FacebookResolver;
@@ -59,7 +60,7 @@ $app->post('/x',
             try {
                 $query = $xQuery->toRegularQuery();
             } catch (Throwable $e) {
-                if ($e->getCode() === Query::BAD_REQUEST_CODE) {
+                if ($e->getCode() === QueryBase::BAD_REQUEST_CODE) {
                     continue;
                 } else {
                     throw $e;
@@ -82,19 +83,19 @@ $app->post('/x',
             }
 
             foreach ($partial as $index => $row) {
-                $rows[] = $group->obfuscate($xQuery, ResultParser::parse($row, $query));
+                $rows[] = $group->obfuscate($xQuery, ResultParserV2::parse($row, $query));
             }
         }
 
         if ($aggregateMode) {
-            $rows = ResultParser::aggregate(
+            $rows = ResultParserV2::aggregate(
                 $rows,
                 $group->getDimensions(),
                 $group->getMetrics()
             );
         }
 
-        $filtered = ResultParser::filter($rows, $group->filters());
+        $filtered = ResultParserV2::filter($rows, $group->filters());
 
         $clean = function ($o) use ($debugMode, $body) {
             $row = [];

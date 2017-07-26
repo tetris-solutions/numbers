@@ -3,8 +3,8 @@
 namespace Tetris\Numbers\Report\Query;
 
 use Exception;
-use Tetris\Numbers\Report\Report;
 use DateTime;
+use Tetris\Numbers\Report\ReportV2;
 
 abstract class QueryBase extends QueryBlueprint
 {
@@ -17,7 +17,7 @@ abstract class QueryBase extends QueryBlueprint
     ];
 
     /**
-     * @var Report
+     * @var ReportV2
      */
     public $report;
 
