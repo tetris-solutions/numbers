@@ -69,11 +69,9 @@ class MetaDataV2 implements MetaDataReader
     {
         $capitalizedPlatform = self::capitalized($platform);
 
-        $attributes = array_merge(
-            self::readDirFiles(realpath(self::configDir . "/{$capitalizedPlatform}/Attributes/{$reportName}"))/*,
-            @todo implement artificial dimensions for v2
-            self::getArtificialDimensions()*/
-        );
+        $attributesDir = realpath(self::configDir . "/{$capitalizedPlatform}/Attributes/{$reportName}");
+
+        $attributes = self::readDirFiles($attributesDir);
 
         /**
          * @var Attribute $attribute

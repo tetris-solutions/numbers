@@ -3,6 +3,8 @@
 
 namespace Tetris\Numbers;
 
+use Tetris\Numbers\Base\Attribute;
+use Tetris\Numbers\Base\Parser\PlatformParser;
 use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\Shared\MetricFactory;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
@@ -15,12 +17,21 @@ require 'includes/facebook.php';
 require 'includes/adwords.php';
 require 'includes/analytics.php';
 
-function clearSource($source)
+function platformAttribute(string $platform, string $report): TransientAttribute
 {
-    return MetricFactory::clear(
-        $source instanceof TransientMetric
-            ? $source->asArray()
-            : $source);
+    $attribute = new TransientAttribute();
+    $attribute->parent = Attribute::class;
+    $attribute->platform = $platform;
+    $attribute->path = "{$attribute->platform}/Attributes/{$report}";
+    $attribute->id = 'platform';
+    $attribute->type = 'string';
+    $attribute->is_metric = false;
+    $attribute->is_dimension = true;
+    $attribute->traits['parser'] = PlatformParser::class;
+    $source = makeParserFromSource('constant');
+    $attribute->parse = $source(strtolower($platform));
+
+    return $attribute;
 }
 
 function updateConfig()
@@ -56,9 +67,11 @@ function updateConfig()
         foreach ($config['sources'] as $source) {
             $entity = strtolower($source['entity']);
 
+            Generator::add($source);
+
             file_put_contents(
                 __DIR__ . "/../config/{$platform}/sources/{$entity}/{$source['metric']}.php",
-                "<?php\nreturn " . prettyVarExport(clearSource($source)) . ";\n"
+                "<?php\nreturn " . prettyVarExport(MetricFactory::clear($source->asArray())) . ";\n"
             );
         }
 
@@ -67,13 +80,11 @@ function updateConfig()
              * @var TransientAttribute|array $attribute
              */
             foreach ($report['attributes'] as $id => $attribute) {
-                if ($attribute instanceof TransientAttribute) {
-                    $attribute = $attribute->asArray();
-                }
+                Generator::add($attribute);
 
                 file_put_contents(
                     __DIR__ . "/../config/{$platform}/reports/{$reportName}/{$id}.php",
-                    "<?php\nreturn " . prettyVarExport($attribute) . ";\n"
+                    "<?php\nreturn " . prettyVarExport($attribute->asArray()) . ";\n"
                 );
             }
         }

@@ -29,7 +29,14 @@ function getAnalyticsConfig(): array
     $output = [
         'entities' => [$entity],
         'metrics' => [],
-        'reports' => [$reportName => ['id' => $reportName, 'attributes' => []]],
+        'reports' => [
+            $reportName => [
+                'id' => $reportName,
+                'attributes' => [
+                    'platform' => platformAttribute('Analytics', $reportName)
+                ]
+            ]
+        ],
         'sources' => []
     ];
 
@@ -99,8 +106,6 @@ function getAnalyticsConfig(): array
                 $reportName
             );
 
-            Generator::add($source);
-
             $output['sources'][] = $source;
             $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ??  [
                     'id' => $attribute->id,
@@ -108,9 +113,7 @@ function getAnalyticsConfig(): array
                 ];
         }
 
-        Generator::add($attribute);
-
-        $output['reports']['GA_DEFAULT']['attributes'][$attribute->id] = $attribute;
+        $output['reports'][$reportName]['attributes'][$attribute->id] = $attribute;
     }
 
     return $output;

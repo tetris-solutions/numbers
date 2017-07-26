@@ -7,7 +7,7 @@ abstract class Attribute extends Field
     /**
      * @var bool
      */
-    public $is_filter;
+    public $is_filter = false;
     /**
      * @var bool
      */
@@ -19,7 +19,7 @@ abstract class Attribute extends Field
     /**
      * @var bool
      */
-    public $is_percentage;
+    public $is_percentage = false;
     /**
      * @var array|null
      */

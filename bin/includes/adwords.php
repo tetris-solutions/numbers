@@ -10,7 +10,6 @@ use Tetris\Numbers\Base\Sum\ImpressionShareSum;
 use Tetris\Numbers\Base\Sum\LostImpressionShareSum;
 use Tetris\Numbers\Generator\AdWords\AdWordsAttributeFactory;
 use Tetris\Numbers\Generator\AdWords\AdWordsMetricFactory;
-use Tetris\Numbers\Generator\Generator;
 use Tetris\Numbers\Generator\Shared\TransientAttribute;
 
 function impressionShareSum(string $metric)
@@ -106,10 +105,6 @@ function adWordsFieldsBlacklist(): callable
 
 function extendFields(string $entity, $fields): array
 {
-//    if ($entity === 'Keyword') {
-//        $fields['AverageQualityScore'] = $fields['QualityScore'];
-//    }
-//
     if (isset($fields['ConversionValue']) && isset($fields['Cost'])) {
         $fields['Roas'] = $fields['Cost'];
         $fields['Roas']['Filterable'] = false;
@@ -165,13 +160,16 @@ function getAdwordsConfig(): array
 
         $reportConfig = [
             'id' => $reportName,
-            'attributes' => []
+            'attributes' => [
+                'platform' => platformAttribute('AdWords', $reportName)
+            ]
         ];
 
         $entity = $entityNameMap[$reportName];
         $output['entities'][$entity] = $entity;
 
         $sourceFactory = new AdwordsMetricFactory($fields);
+
 
         foreach ($fields as $originalProperty => $adWordsField) {
             if ($isBlacklisted($originalProperty)) continue;
@@ -199,8 +197,6 @@ function getAdwordsConfig(): array
                     $reportName
                 );
 
-                Generator::add($source);
-
                 $output['sources'][] = $source;
                 $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ?? [
                         'id' => $attribute->id,
@@ -223,7 +219,7 @@ function getAdwordsConfig(): array
 
                 foreach ($attr->incompatible as $property) {
                     /**
-                     * @var \Tetris\Numbers\Generator\Shared\TransientAttribute $other
+                     * @var TransientAttribute $other
                      */
                     foreach ($attributes as $other) {
                         if ($other->raw_property === $property) {
@@ -234,8 +230,6 @@ function getAdwordsConfig(): array
 
                 $attr->incompatible = $incompatibleFields;
             }
-
-            Generator::add($attr);
 
             $reportConfig['attributes'][$index] = $attr;
         }

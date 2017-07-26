@@ -8,7 +8,6 @@ use Tetris\Numbers\Generator\Facebook\Extensions\ActionsParser;
 use Tetris\Numbers\Generator\Facebook\Extensions\VideoViewParser;
 use Tetris\Numbers\Generator\Facebook\FacebookAttributeFactory;
 use Tetris\Numbers\Generator\Facebook\FacebookMetricFactory;
-use Tetris\Numbers\Generator\Generator;
 
 function cpv100Facebook(string $spend, string $video100p)
 {
@@ -112,7 +111,9 @@ function getFacebookConfig(): array
 
         $output['reports'][$reportName] = [
             'id' => $reportName,
-            'attributes' => []
+            'attributes' => [
+                'platform' => platformAttribute('Facebook', $reportName)
+            ]
         ];
 
         foreach ($fields as $originalAttributeName => $field) {
@@ -138,7 +139,6 @@ function getFacebookConfig(): array
                     $reportName
                 );
 
-                Generator::add($source);
                 $output['sources'][] = $source;
                 $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ??  [
                         'id' => $attribute->id,
@@ -154,7 +154,6 @@ function getFacebookConfig(): array
                 }
             }
 
-            Generator::add($attribute);
             $output['reports'][$reportName]['attributes'][$attribute->id] = $attribute;
         }
 
@@ -164,10 +163,7 @@ function getFacebookConfig(): array
                 $entity,
                 $videoMetricName,
                 'decimal',
-                true,
-                false,
-                false,
-                null
+                true
             );
 
 
@@ -185,10 +181,6 @@ function getFacebookConfig(): array
             );
 
             $output['sources'][] = $source;
-
-            Generator::add($attribute);
-            Generator::add($source);
-
             $output['reports'][$reportName]['attributes'][$attribute->id] = $attribute;
         }
 
@@ -199,10 +191,7 @@ function getFacebookConfig(): array
                 $entity,
                 $actionType,
                 'decimal',
-                true,
-                false,
-                false,
-                null
+                true
             );
 
 
@@ -220,9 +209,6 @@ function getFacebookConfig(): array
             );
 
             $output['sources'][] = $source;
-
-            Generator::add($attribute);
-            Generator::add($source);
 
             $output['reports'][$reportName]['attributes'][$actionType] = $attribute;
         }
