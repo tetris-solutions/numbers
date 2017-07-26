@@ -29,6 +29,11 @@ abstract class Field implements ArrayAccess
      */
     public $platform;
 
+    /**
+     * @var array|null
+     */
+    public $names;
+
     protected function getValue($source)
     {
         return $source->{$this->property} ?? null;

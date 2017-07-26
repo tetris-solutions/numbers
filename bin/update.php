@@ -20,6 +20,7 @@ require 'includes/analytics.php';
 function platformAttribute(string $platform, string $report): TransientAttribute
 {
     $attribute = new TransientAttribute();
+
     $attribute->parent = Attribute::class;
     $attribute->platform = $platform;
     $attribute->path = "{$attribute->platform}/Attributes/{$report}";
@@ -30,6 +31,10 @@ function platformAttribute(string $platform, string $report): TransientAttribute
     $attribute->traits['parser'] = PlatformParser::class;
     $source = makeParserFromSource('constant');
     $attribute->parse = $source(strtolower($platform));
+    $attribute->names = [
+        'en' => 'Platform',
+        'pt-BR' => 'Plataforma'
+    ];
 
     return $attribute;
 }

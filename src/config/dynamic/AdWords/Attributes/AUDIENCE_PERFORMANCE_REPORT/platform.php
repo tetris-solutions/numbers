@@ -15,6 +15,11 @@ return new class extends Attribute_PlatformParser_Parsable {
 
 	public $is_percentage = false;
 
+	public $names = [
+	    "en" => "Platform",
+	    "pt-BR" => "Plataforma"
+	];
+
 	public $platform = 'adwords';
 
 	public $type = 'string';

@@ -6,6 +6,10 @@ return [
     "is_percentage" => FALSE,
     "id" => "platform",
     "type" => "string",
+    "names" => [
+        "en" => "Platform",
+        "pt-BR" => "Plataforma"
+    ],
     "parse" => function () {
         return 'analytics';
     }
