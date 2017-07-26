@@ -2,17 +2,33 @@
 
 namespace Tetris\Numbers\Report\MetaData;
 
-
+use stdClass;
 use Tetris\Numbers\Base\Attribute;
 use Tetris\Numbers\Base\Metric;
 use Tetris\Numbers\Base\Summable;
 use Tetris\Numbers\Resolver\FacebookResolver;
 
-class MetaDataV2 implements MetaDataReader
+abstract class MetaDataV2 implements MetaDataReader
 {
     use Meta;
 
     const configDir = __DIR__ . '/../../../../config/dynamic';
+
+    static function asPlainObject(Attribute $source): stdClass
+    {
+        $metaData = new stdClass();
+
+        foreach (get_object_vars($source) as $key => $value) {
+            if (isset($value)) {
+                $metaData->{$key} = $value;
+            }
+        }
+
+        unset($metaData->names);
+        unset($metaData->property);
+
+        return $metaData;
+    }
 
     static function listAttributes(string $platform, string $entity): array
     {
@@ -55,7 +71,9 @@ class MetaDataV2 implements MetaDataReader
             $attributes[$source->id] = $attrMetaData;
         }
 
-        return $attributes;
+        return array_map(function ($a) {
+            return self::asPlainObject($a);
+        }, $attributes);
     }
 
     static function getSources(string $platform, string $entity): array
