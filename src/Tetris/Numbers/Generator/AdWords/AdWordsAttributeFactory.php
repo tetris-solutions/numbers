@@ -56,8 +56,7 @@ class AdWordsAttributeFactory extends AttributeFactory
             ]),
 
             new AttributeTranslator('Keyword', [
-                'KeywordMatchType',
-                'AverageQualityScore' => 'QualityScore'
+                'KeywordMatchType'
             ]),
 
             new AttributeTranslator('Placement', [

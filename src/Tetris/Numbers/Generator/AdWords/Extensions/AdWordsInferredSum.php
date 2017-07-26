@@ -51,7 +51,7 @@ class AdWordsInferredSum implements Extension
             'videoquartile100rate' => VideoQuartileSum::spec(100),
 
             'averageposition' => WeightedSum::spec('impressions'),
-            'qualityscore' => WeightedSum::spec('impressions'),
+            'averagequalityscore' => WeightedSum::spec('impressions'),
             'roas' => RatioSum::spec('conversionvalue', 'cost'),
             'cpv100' => CPV100Sum::spec('cost', 'videoquartile100rate', 'videoviews')
         ];
