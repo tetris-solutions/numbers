@@ -22,6 +22,8 @@ function normalizeGAType(string $type): string
 
 function getAnalyticsConfig(): array
 {
+    $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/analytics-fields.json'), true);
+
     $reportName = 'GA_DEFAULT';
     $entity = 'Campaign';
 
@@ -40,43 +42,66 @@ function getAnalyticsConfig(): array
     ];
 
     $fieldList = [
-        'ga:date',
-        'ga:campaign',
-        'ga:source',
-        'ga:medium',
-        'ga:deviceCategory',
+        'ga:adClicks',
         'ga:adContent',
-        'ga:region',
-        'ga:newUsers',
-        'ga:users',
-        'ga:percentNewSessions',
-        'ga:sessions',
-        'ga:bounces',
+        'ga:adCost',
         'ga:bounceRate',
-        'ga:sessionDuration',
+        'ga:bounces',
+        'ga:campaign',
+        'ga:CPC',
+        'ga:CTR',
+        'ga:date',
+        'ga:dayOfWeekName',
+        'ga:deviceCategory',
+        'ga:entrances',
+        'ga:exits',
         'ga:goalCompletionsAll',
         'ga:goalConversionRateAll',
         'ga:goalStartsAll',
+        'ga:hour',
+        'ga:impressions',
+        'ga:isoYearIsoWeek',
+        'ga:itemQuantity',
+        'ga:medium',
+        'ga:month',
+        'ga:newUsers',
+        'ga:pagePath',
+        'ga:pageValue',
         'ga:pageviews',
         'ga:pageviewsPerSession',
+        'ga:percentNewSessions',
+        'ga:region',
+        'ga:ROAS',
+        'ga:screenviews',
+        'ga:sessionDuration',
+        'ga:sessions',
+        'ga:source',
+        'ga:sourceMedium',
         'ga:timeOnPage',
         'ga:totalEvents',
+        'ga:totalValue',
+        'ga:transactions',
+        'ga:transactionRevenue',
         'ga:uniqueEvents',
-        'ga:ROAS',
-        'ga:CTR',
-        'ga:CPC',
-        'ga:impressions',
-        'ga:adClicks',
-        'ga:adCost',
-        'ga:yearMonth',
-        'ga:hour',
+        'ga:uniquePageviews',
+        'ga:users',
         'ga:year',
-        'ga:isoYearIsoWeek',
-        'ga:dayOfWeekName',
-        'ga:month'
+        'ga:yearMonth'
     ];
 
-    $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/analytics-fields.json'), true);
+    for ($i = 1; $i <= 10; $i++) {
+        $completions = "ga:goal{$i}Completions";
+        $conversionRate = "ga:goal{$i}ConversionRate";
+        $starts = "ga:goal{$i}Starts";
+
+        $fieldsConfig[$completions] = $fieldsConfig["ga:goalCompletionsAll"];
+        $fieldsConfig[$completions]['description'] =
+
+        $fieldList[] = $completions;
+        $fieldList[] = $conversionRate;
+        $fieldList[] = $starts;
+    }
+
 
     $attributeFactory = new AnalyticsAttributeFactory();
     $sourceFactory = new AnalyticsMetricFactory();
@@ -88,12 +113,12 @@ function getAnalyticsConfig(): array
             $reportName,
             $entity,
             $originalAttributeName,
-            $config['type'],
+            $config['dataType'],
             false,
-            $config['type'] === 'PERCENT',
+            $config['dataType'] === 'PERCENT',
             false,
             null,
-            $config['group']
+            $config['type']
         );
 
         if ($attribute->is_metric) {

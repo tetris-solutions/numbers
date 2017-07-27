@@ -51,13 +51,16 @@ function genLocales()
         ];
 
         foreach ($analytics as $name => $metadata) {
-            if (!isset($fields['analytics'][$name])) {
-                $fields['analytics'][$name] = $metadata['name'];
+            $oldName = $fields['analytics'][$name] ?? null;
+
+            if (!$oldName) {
+                $fields['analytics'][$name] = $metadata['uiName'];
             }
         }
 
         foreach ($adwords as $name => $metadata) {
-            if (!isset($fields['adwords'][$name])) {
+            $oldName = $fields['adwords'][$name] ?? null;
+            if (!$oldName) {
                 $fields['adwords'][$name] = $metadata['DisplayName'];
             }
         }
@@ -70,6 +73,7 @@ function genLocales()
 
         ksort($fields['adwords']);
         ksort($fields['facebook']);
+        ksort($fields['analytics']);
 
         $content = "<?php\nreturn [\n";
 

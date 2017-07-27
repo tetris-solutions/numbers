@@ -24,7 +24,7 @@ class AnalyticsAttributeFactory extends AttributeFactory
 
     protected function isMetric(TransientAttribute $attribute, $behaviorOrGroup): bool
     {
-        return $behaviorOrGroup !== 'Dimensions';
+        return $behaviorOrGroup === 'METRIC';
     }
 
     protected function getId(string $entity, string $attributeName): string
