@@ -16,6 +16,7 @@
 
         config.id = templateId.replace('XX', String(i))
         config.attributes = Object.assign({}, config.attributes)
+        config.attributes.uiName = config.attributes.uiName.replace('XX', String(i))
         config.attributes.description = config.attributes.description.replace('the requested goal number', `Goal ${i}`)
 
         items.push(config)
