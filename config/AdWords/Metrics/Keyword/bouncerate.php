@@ -1,7 +1,7 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Shared\Metric\Metric_PercentParser_Parsable;
+use Tetris\Numbers\Generated\Metric\Metric_PercentParser_Parsable;
 
 return new class extends Metric_PercentParser_Parsable {
 

@@ -1,7 +1,7 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Shared\Metric\Metric_RawParser_Parsable;
+use Tetris\Numbers\Generated\Metric\Metric_RawParser_Parsable;
 
 return new class extends Metric_RawParser_Parsable {
 

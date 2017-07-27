@@ -1,7 +1,7 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Shared\Attribute\Attribute_AnalyticsMonthOfYearParser_Parsable;
+use Tetris\Numbers\Generated\Attribute\Attribute_AnalyticsMonthOfYearParser_Parsable;
 
 return new class extends Attribute_AnalyticsMonthOfYearParser_Parsable {
 

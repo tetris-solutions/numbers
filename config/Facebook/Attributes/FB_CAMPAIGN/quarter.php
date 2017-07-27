@@ -1,7 +1,7 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Shared\Attribute\Attribute_FacebookQuarterParser_Parsable;
+use Tetris\Numbers\Generated\Attribute\Attribute_FacebookQuarterParser_Parsable;
 
 return new class extends Attribute_FacebookQuarterParser_Parsable {
 

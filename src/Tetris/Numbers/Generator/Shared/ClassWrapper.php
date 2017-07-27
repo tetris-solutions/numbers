@@ -51,7 +51,7 @@ class ClassWrapper extends PhpClass
             )
         );
 
-        $namespace = "Tetris\\Numbers\\Generated\\Shared\\$parentName";
+        $namespace = "Tetris\\Numbers\\Generated\\$parentName";
 
         $this->setName($name);
         $this->setNamespace($namespace);

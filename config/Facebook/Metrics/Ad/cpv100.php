@@ -1,7 +1,7 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Shared\Metric\Metric_FacebookCPV100Parser_RatioSum_Parsable_Summable;
+use Tetris\Numbers\Generated\Metric\Metric_FacebookCPV100Parser_RatioSum_Parsable_Summable;
 
 return new class extends Metric_FacebookCPV100Parser_RatioSum_Parsable_Summable {
 

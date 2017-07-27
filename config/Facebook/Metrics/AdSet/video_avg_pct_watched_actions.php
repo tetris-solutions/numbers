@@ -1,7 +1,7 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Shared\Metric\Metric_ActionParser_Parsable;
+use Tetris\Numbers\Generated\Metric\Metric_ActionParser_Parsable;
 
 return new class extends Metric_ActionParser_Parsable {
 
