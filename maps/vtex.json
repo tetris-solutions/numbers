@@ -1,0 +1,12 @@
+{
+	"quantity": {
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "quantity"
+	},
+	"lastChange": {
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Date"
+	}
+}
