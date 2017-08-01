@@ -75,7 +75,7 @@ abstract class Generator
      * @param ClassWrapper $class
      * @param CodeFileGenerator $generator
      */
-    private function genConfig($config, ClassWrapper $class, CodeFileGenerator $generator)
+    private static function genConfig($config, ClassWrapper $class, CodeFileGenerator $generator)
     {
         $configClass = new PhpClass();
         $name = uniqid('Config');

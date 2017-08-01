@@ -27,10 +27,13 @@ class VtexAttributeFactory extends AttributeFactory
         return $behaviorOrGroup === 'METRIC';
     }
 
+    protected function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string 
+    {
+        return $originalType;
+    }
+
     protected function getId(string $entity, string $attributeName): string
     {
-        $attributeName = strtolower(substr($attributeName, 3));
-
         return parent::getId($entity, $attributeName);
     }
 

@@ -15,9 +15,9 @@ return new class extends Attribute_DateParser_Parsable {
 
 	public $is_percentage = false;
 
-	public $platform = 'analytics';
+	public $platform = 'vtex';
 
-	public $property = 'ga:date';
+	public $property = 'lastChange';
 
 	public $type = 'string';
 };

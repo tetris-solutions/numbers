@@ -2,10 +2,7 @@
 
 namespace Tetris\Numbers\Generator\Vtex\Extensions;
 
-use Tetris\Numbers\Base\Parser\VtexDateParser;
-use Tetris\Numbers\Base\Parser\VtexMonthOfYearParser;
-use Tetris\Numbers\Base\Parser\VtexWeekParser;
-use Tetris\Numbers\Base\Parser\VtexYearMonthParser;
+use Tetris\Numbers\Base\Parser\DateParser;
 use Tetris\Numbers\Generator\Shared\Extensions\DefaultParser;
 
 class VtexParser extends DefaultParser
@@ -13,7 +10,7 @@ class VtexParser extends DefaultParser
     private $dateParts = [];
 
     const dateParsers = [
-        'date' => VtexDateParser::class
+        'date' => DateParser::class
     ];
 
     function __construct()
