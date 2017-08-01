@@ -1,5 +1,5 @@
 {
-	"quantity": {
+	"item_quantity": {
 		"type": "METRIC",
 		"dataType": "integer",
 		"uiName": "quantity"

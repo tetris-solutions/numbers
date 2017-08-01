@@ -17,7 +17,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $platform = 'vtex';
 
-	public $property = 'quantity';
+	public $property = 'item_quantity';
 
 	public $type = 'integer';
 };

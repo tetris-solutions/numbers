@@ -8,7 +8,7 @@ return new class extends Metric_IntegerParser_TrivialSum_Parsable_Summable {
 	public $entity = 'Order';
 
 	public $fields = [
-	    "quantity"
+	    "item_quantity"
 	];
 
 	public $id = 'quantity';
@@ -17,7 +17,7 @@ return new class extends Metric_IntegerParser_TrivialSum_Parsable_Summable {
 
 	public $platform = 'vtex';
 
-	public $property = 'quantity';
+	public $property = 'item_quantity';
 
 	public $report = 'VTEX_ORDER';
 

@@ -27,7 +27,7 @@ function getVtexConfig(): array
     ];
 
     $fieldList = [
-        'quantity',
+        'item_quantity',
         'lastChange'
     ];
 
