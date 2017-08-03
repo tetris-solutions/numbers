@@ -1,10 +1,14 @@
 {
+	"orderId": {
+		"type": "DIMENSION",
+		"dataType": ""
+	},
 	"item_quantity": {
 		"type": "METRIC",
 		"dataType": "integer",
 		"uiName": "quantity"
 	},
-	"lastChange": {
+	"creationDate": {
 		"type": "DIMENSION",
 		"dataType": "string",
 		"uiName": "Date"

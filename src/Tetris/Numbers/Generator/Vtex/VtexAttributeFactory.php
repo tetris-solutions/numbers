@@ -17,7 +17,7 @@ class VtexAttributeFactory extends AttributeFactory
         $this->translators = [
             new AttributeTranslator('Order', [
                 'orderId' => 'id',
-                'lastChange' => 'date',
+                'creationDate' => 'date',
                 'item_quantity' => 'quantity'
             ])
         ];

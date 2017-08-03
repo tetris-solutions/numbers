@@ -17,7 +17,7 @@ return new class extends Attribute_DateParser_Parsable {
 
 	public $platform = 'vtex';
 
-	public $property = 'lastChange';
+	public $property = 'creationDate';
 
 	public $type = 'string';
 };
