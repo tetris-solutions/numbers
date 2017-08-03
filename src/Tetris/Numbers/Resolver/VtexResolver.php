@@ -2,8 +2,8 @@
 
 namespace Tetris\Numbers\Resolver;
 
+use DateTime;
 use Tetris\Numbers\Base\Attribute;
-use Tetris\Numbers\Report\MetaData\MetaDataV2;
 use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\API\VTEXApi;
 use stdClass;
@@ -25,7 +25,7 @@ class VtexResolver implements Resolver
         );
     }
 
-    private function breakOnItems(stdClass $order): array
+    private function splitOverItems(stdClass $order): array
     {
         $items = [];
 
@@ -49,10 +49,8 @@ class VtexResolver implements Resolver
         return $items;
     }
 
-    function resolve(Query $query, bool $aggregateMode): array
+    private function requiresGet(Query $query): bool
     {
-        $requiresGet = false;
-
         $dimensions = array_map(function ($id) use ($query) {
             return $query->report->attributes[$id];
         }, $query->dimensions);
@@ -67,33 +65,48 @@ class VtexResolver implements Resolver
          */
         foreach ($attributes as $attr) {
             if ($attr->group === 'get') {
-                $requiresGet = true;
-                break;
+                return true;
             }
         }
 
-        $orders = $this->api->listOrders(
-            $query->since,
-            $query->until,
-            $query->filters['ids']
-        );
+        return false;
+    }
 
+    private function ordersInPeriod(DateTime $since, DateTime $until): array
+    {
         $items = [];
 
+        $orders = $this->api->listOrders($since, $until);
+
         foreach ($orders as $order) {
-            foreach ($this->breakOnItems($order) as $key => $item) {
+            foreach ($this->splitOverItems($order) as $key => $item) {
                 $items[$key] = $item;
             }
         }
 
-        $orderIds = [];
+        return $items;
+    }
 
-        if ($requiresGet) {
-            foreach ($items as $item) {
-                if (in_array($orderIds, $item->orderId)) continue;
+    function resolve(Query $query, bool $aggregateMode): array
+    {
+        $items = [];
+        $orderIds = $query->filters['id'] ?? [];
+        $requiresList = empty($query->filters['id'] ?? null);
 
-                $extendedItems = $this->breakOnItems(
-                    $this->api->getOrder($item->orderId)
+        if ($requiresList) {
+            $items = $this->ordersInPeriod($query->since, $query->until);
+
+            $orderIds = array_unique(
+                array_map(function (stdClass $item): string {
+                    return $item->orderId;
+                }, $items)
+            );
+        }
+
+        if (!$requiresList || $this->requiresGet($query)) {
+            foreach ($orderIds as $orderId) {
+                $extendedItems = $this->splitOverItems(
+                    $this->api->getOrder($orderId)
                 );
 
                 foreach ($extendedItems as $key => $extendedItem) {
@@ -102,11 +115,7 @@ class VtexResolver implements Resolver
                         (array)($items[$key] ?? [])
                     );
                 }
-
-                $orderIds[] = $item->orderId;
             }
-
-
         }
 
         return array_values($items);
