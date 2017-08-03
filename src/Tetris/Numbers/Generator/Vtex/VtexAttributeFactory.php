@@ -37,7 +37,7 @@ class VtexAttributeFactory extends AttributeFactory
                 'orderId' => 'id',
                 'creationDate' => 'date',
                 'item_quantity',
-                'item_sellerSku',
+                'item_sellerSku' => 'sku',
                 'item_price',
 //                'item_seller',
 //                'item_description',
