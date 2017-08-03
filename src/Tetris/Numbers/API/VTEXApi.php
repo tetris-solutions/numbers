@@ -3,6 +3,7 @@
 namespace Tetris\Numbers\API;
 
 use Httpful\Http;
+use Slim\Http\Uri;
 use Tetris\Exceptions\ApiException;
 use stdClass;
 use Httpful\Request as HttpRequest;
@@ -63,9 +64,13 @@ class VTEXApi
         return $response;
     }
 
-    function listOrders(): array
+    function listOrders(\DateTime $start, \DateTime $end, $orderIds = []): array
     {
-        $uri = "http://{$this->name}.{$this->environment}.com.br/api/oms/pvt/orders";
+        $from = $start->format('Y-m-d') . 'T00:00:00.000Z';
+        $to = $end->format('Y-m-d') . 'T23:59:59.000Z';
+
+        $uri = "http://{$this->name}.{$this->environment}.com.br/api/oms/pvt/orders?" .
+            'f_creationDate=creationDate' . urlencode(":[{$from} TO {$to}]");
 
         $response = HttpRequest::init()
             ->method(Http::GET)
