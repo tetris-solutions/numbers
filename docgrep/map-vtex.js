@@ -3,9 +3,11 @@
   const fields = []
   const {
     curry,
+    keys,
     endsWith,
-    forEach,
-    isObject,
+    each,
+    isArray,
+    isPlainObject,
     uniqBy,
     keyBy,
     isNumber,
@@ -19,7 +21,7 @@
       return 'date'
     }
 
-    if (endsWith(id, 'Id') || endsWith(id, '_id')) {
+    if (endsWith(id, 'Id') || endsWith(id, '_id') || endsWith(id, '.id')) {
       return 'string'
     }
 
@@ -34,6 +36,18 @@
   const fieldId = (key, prefix) => `${prefix}${key}`
 
   function makeField (endpoint, value, property, prefix = '') {
+    if (value && isPlainObject(value)) {
+      each(keys(value), k =>
+        makeField(endpoint, value[k], k, `${prefix}${property}.`)
+      )
+
+      return
+    }
+
+    if (isArray(value)) {
+      return
+    }
+
     const id = fieldId(property, prefix)
 
     fields.push({
@@ -43,6 +57,7 @@
       dataType: typeOf(id, value),
       uiName: snakeCase(id.replace('.', '_'))
         .split('_')
+        .slice(-2)
         .map(upperFirst)
         .join(' '),
       endpoint
@@ -54,16 +69,16 @@
   function run () {
     const parse = curry((endpoint, value, key) => {
       if (key === 'items') {
-        forEach(head(value), makeItemField(endpoint))
-      } else if (!isObject(value)) {
+        each(head(value), makeItemField(endpoint))
+      } else {
         makeField(endpoint, value, key)
       }
     })
 
     const textArea = document.createElement('textarea')
 
-    forEach(vtexOrderLite, parse('list'))
-    forEach(vtexOrder, parse('get'))
+    each(vtexOrderLite, parse('list'))
+    each(vtexOrder, parse('get'))
 
     textArea.value = JSON.stringify(
       keyBy(uniqBy(fields, 'id'), 'id'),

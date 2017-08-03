@@ -5,7 +5,7 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $id = 'item_attachments';
+	public $id = 'clientprofiledata.phone';
 
 	public $is_dimension = true;
 
@@ -17,7 +17,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $platform = 'vtex';
 
-	public $property = 'item_attachments';
+	public $property = 'clientProfileData.phone';
 
-	public $type = 'object';
+	public $type = 'string';
 };

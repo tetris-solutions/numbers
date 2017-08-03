@@ -45,7 +45,8 @@ function genLocales()
 
         $fields = [
             'analytics' => $oldFields['analytics'] ?? [],
-            'vtex' => $oldFields['vtex'] ?? [],
+//            'vtex' => $oldFields['vtex'] ?? [],
+            'vtex' => [],
             'adwords' => $oldFields['adwords'],
             'facebook' => array_merge($actionTypes, $oldFields['facebook'])
         ];
