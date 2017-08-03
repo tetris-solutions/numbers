@@ -27,9 +27,10 @@ class VtexResolver implements Resolver
     {
         $items = [];
 
-        foreach ($order->items as $item) {
-            foreach ($item as $key => $value) {
-                unset($item->{$key});
+        foreach ($order->items as $source) {
+            $item = new stdClass();
+
+            foreach ($source as $key => $value) {
                 $item->{"item_{$key}"} = $value;
             }
 
