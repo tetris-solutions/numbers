@@ -35,7 +35,10 @@ class TokenManager extends ApiService
                 ->uri($uri)
                 ->send();
 
-            $this->accountCache[$accountId] = $this->parseObjectBody($this->parseResponse($response));
+            $acc = $this->parseObjectBody($this->parseResponse($response));
+            $acc->token->id = $acc->external_id;
+
+            $this->accountCache[$accountId] = $acc;
         }
 
         return $this->accountCache[$accountId];
