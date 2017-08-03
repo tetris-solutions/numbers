@@ -7,7 +7,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $group = 'get';
 
-	public $id = 'item_name';
+	public $id = 'name';
 
 	public $is_dimension = true;
 

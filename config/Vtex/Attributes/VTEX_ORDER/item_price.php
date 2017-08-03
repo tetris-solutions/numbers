@@ -7,7 +7,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $group = 'list';
 
-	public $id = 'item_sellingprice';
+	public $id = 'item_price';
 
 	public $is_dimension = false;
 
@@ -19,7 +19,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $platform = 'vtex';
 
-	public $property = 'item_sellingPrice';
+	public $property = 'item_price';
 
 	public $type = 'integer';
 };
