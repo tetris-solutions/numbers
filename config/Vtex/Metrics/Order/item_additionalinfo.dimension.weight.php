@@ -11,6 +11,8 @@ return new class extends Metric_IntegerParser_TrivialSum_Parsable_Summable {
 	    "item_additionalInfo.dimension.weight"
 	];
 
+	public $group = 'get';
+
 	public $id = 'item_additionalinfo.dimension.weight';
 
 	public $metric = 'item_additionalinfo.dimension.weight';

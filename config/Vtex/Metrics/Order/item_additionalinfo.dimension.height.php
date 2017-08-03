@@ -11,6 +11,8 @@ return new class extends Metric_FloatParser_Parsable {
 	    "item_additionalInfo.dimension.height"
 	];
 
+	public $group = 'get';
+
 	public $id = 'item_additionalinfo.dimension.height';
 
 	public $metric = 'item_additionalinfo.dimension.height';

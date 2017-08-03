@@ -11,6 +11,8 @@ return new class extends Metric_FloatParser_Parsable {
 	    "item_additionalInfo.dimension.cubicweight"
 	];
 
+	public $group = 'get';
+
 	public $id = 'item_additionalinfo.dimension.cubicweight';
 
 	public $metric = 'item_additionalinfo.dimension.cubicweight';

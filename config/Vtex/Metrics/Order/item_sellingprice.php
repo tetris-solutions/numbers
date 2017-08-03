@@ -11,6 +11,8 @@ return new class extends Metric_IntegerParser_TrivialSum_Parsable_Summable {
 	    "item_sellingPrice"
 	];
 
+	public $group = 'list';
+
 	public $id = 'item_sellingprice';
 
 	public $metric = 'item_sellingprice';

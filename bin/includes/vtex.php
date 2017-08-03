@@ -49,7 +49,8 @@ function getVtexConfig(): array
                 $attribute->property,
                 $attribute->type,
                 $entity,
-                $reportName
+                $reportName,
+                $config['endpoint']
             );
 
             $output['sources'][] = $source;
