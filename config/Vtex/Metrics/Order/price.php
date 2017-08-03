@@ -11,9 +11,9 @@ return new class extends Metric_IntegerParser_TrivialSum_Parsable_Summable {
 	    "item_price"
 	];
 
-	public $id = 'item_price';
+	public $id = 'price';
 
-	public $metric = 'item_price';
+	public $metric = 'price';
 
 	public $platform = 'vtex';
 

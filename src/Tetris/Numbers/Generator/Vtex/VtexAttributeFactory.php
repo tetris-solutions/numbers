@@ -36,8 +36,9 @@ class VtexAttributeFactory extends AttributeFactory
             new AttributeTranslator('Order', [
                 'orderId' => 'id',
                 'creationDate' => 'date',
-                'item_quantity' => 'quantity',
-                'item_sellerSku' => 'sku',
+                'item_quantity',
+                'item_sellerSku',
+                'item_price',
 //                'item_seller',
 //                'item_description',
 //                'item_ean',
@@ -45,7 +46,6 @@ class VtexAttributeFactory extends AttributeFactory
 //                'item_id',
 //                'item_productId',
 //                'item_sellingPrice',
-//                'item_price',
 //                'item_uniqueId',
 //                'item_lockId',
 //                'item_name',
@@ -64,14 +64,14 @@ class VtexAttributeFactory extends AttributeFactory
 //                'item_shippingPrice',
 //                'item_rewardValue',
 
-                'marketingData.utmSource' => 'utmSource',
-                'marketingData.utmPartner' => 'utmPartner',
-                'marketingData.utmMedium' => 'utmMedium',
-                'marketingData.coupon' => 'coupon',
-                'marketingData.utmiCampaign' => 'utmiCampaign',
-                'marketingData.utmipage' => 'utmipage',
-                'marketingData.utmiPart' => 'utmiPart'
-            ])
+                'marketingData.utmSource',
+                'marketingData.utmPartner',
+                'marketingData.utmMedium',
+                'marketingData.coupon',
+                'marketingData.utmiCampaign',
+                'marketingData.utmipage',
+                'marketingData.utmiPart'
+            ], ['item_', 'marketingData.'])
         ];
     }
 
