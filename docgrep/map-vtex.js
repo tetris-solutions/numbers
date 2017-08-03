@@ -67,11 +67,9 @@
     const fields = keyBy(
       uniqBy(
         compact(
-          flatten(
-            concat(
-              map(map(vtexOrderLite, parse), mark('list')),
-              map(map(vtexOrder, parse), mark('get'))
-            )
+          concat(
+            map(flatten(map(vtexOrderLite, parse)), mark('list')),
+            map(flatten(map(vtexOrder, parse)), mark('get'))
           )
         ),
         'id'

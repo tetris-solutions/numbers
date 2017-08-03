@@ -28,63 +28,72 @@
 		"property": "seller",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "Seller"
+		"uiName": "Seller",
+		"endpoint": "list"
 	},
 	"item_quantity": {
 		"id": "item_quantity",
 		"property": "quantity",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "Quantity"
+		"uiName": "Quantity",
+		"endpoint": "list"
 	},
 	"item_description": {
 		"id": "item_description",
 		"property": "description",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "Description"
+		"uiName": "Description",
+		"endpoint": "list"
 	},
 	"item_ean": {
 		"id": "item_ean",
 		"property": "ean",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Ean"
+		"uiName": "Ean",
+		"endpoint": "list"
 	},
 	"item_refId": {
 		"id": "item_refId",
 		"property": "refId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "RefId"
+		"uiName": "RefId",
+		"endpoint": "list"
 	},
 	"item_id": {
 		"id": "item_id",
 		"property": "id",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "Id"
+		"uiName": "Id",
+		"endpoint": "list"
 	},
 	"item_productId": {
 		"id": "item_productId",
 		"property": "productId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "ProductId"
+		"uiName": "ProductId",
+		"endpoint": "list"
 	},
 	"item_sellingPrice": {
 		"id": "item_sellingPrice",
 		"property": "sellingPrice",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "SellingPrice"
+		"uiName": "SellingPrice",
+		"endpoint": "list"
 	},
 	"item_price": {
 		"id": "item_price",
 		"property": "price",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "Price"
+		"uiName": "Price",
+		"endpoint": "list"
 	},
 	"totalValue": {
 		"id": "totalValue",
@@ -283,175 +292,200 @@
 		"property": "uniqueId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "UniqueId"
+		"uiName": "UniqueId",
+		"endpoint": "get"
 	},
 	"item_lockId": {
 		"id": "item_lockId",
 		"property": "lockId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "LockId"
+		"uiName": "LockId",
+		"endpoint": "get"
 	},
 	"item_itemAttachment": {
 		"id": "item_itemAttachment",
 		"property": "itemAttachment",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "ItemAttachment"
+		"uiName": "ItemAttachment",
+		"endpoint": "get"
 	},
 	"item_attachments": {
 		"id": "item_attachments",
 		"property": "attachments",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Attachments"
+		"uiName": "Attachments",
+		"endpoint": "get"
 	},
 	"item_name": {
 		"id": "item_name",
 		"property": "name",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "Name"
+		"uiName": "Name",
+		"endpoint": "get"
 	},
 	"item_listPrice": {
 		"id": "item_listPrice",
 		"property": "listPrice",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "ListPrice"
+		"uiName": "ListPrice",
+		"endpoint": "get"
 	},
 	"item_manualPrice": {
 		"id": "item_manualPrice",
 		"property": "manualPrice",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "ManualPrice"
+		"uiName": "ManualPrice",
+		"endpoint": "get"
 	},
 	"item_priceTags": {
 		"id": "item_priceTags",
 		"property": "priceTags",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "PriceTags"
+		"uiName": "PriceTags",
+		"endpoint": "get"
 	},
 	"item_imageUrl": {
 		"id": "item_imageUrl",
 		"property": "imageUrl",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "ImageUrl"
+		"uiName": "ImageUrl",
+		"endpoint": "get"
 	},
 	"item_detailUrl": {
 		"id": "item_detailUrl",
 		"property": "detailUrl",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "DetailUrl"
+		"uiName": "DetailUrl",
+		"endpoint": "get"
 	},
 	"item_components": {
 		"id": "item_components",
 		"property": "components",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Components"
+		"uiName": "Components",
+		"endpoint": "get"
 	},
 	"item_bundleItems": {
 		"id": "item_bundleItems",
 		"property": "bundleItems",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "BundleItems"
+		"uiName": "BundleItems",
+		"endpoint": "get"
 	},
 	"item_params": {
 		"id": "item_params",
 		"property": "params",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Params"
+		"uiName": "Params",
+		"endpoint": "get"
 	},
 	"item_offerings": {
 		"id": "item_offerings",
 		"property": "offerings",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Offerings"
+		"uiName": "Offerings",
+		"endpoint": "get"
 	},
 	"item_sellerSku": {
 		"id": "item_sellerSku",
 		"property": "sellerSku",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "SellerSku"
+		"uiName": "SellerSku",
+		"endpoint": "get"
 	},
 	"item_priceValidUntil": {
 		"id": "item_priceValidUntil",
 		"property": "priceValidUntil",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "PriceValidUntil"
+		"uiName": "PriceValidUntil",
+		"endpoint": "get"
 	},
 	"item_commission": {
 		"id": "item_commission",
 		"property": "commission",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "Commission"
+		"uiName": "Commission",
+		"endpoint": "get"
 	},
 	"item_tax": {
 		"id": "item_tax",
 		"property": "tax",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "Tax"
+		"uiName": "Tax",
+		"endpoint": "get"
 	},
 	"item_preSaleDate": {
 		"id": "item_preSaleDate",
 		"property": "preSaleDate",
 		"type": "DIMENSION",
 		"dataType": "date",
-		"uiName": "PreSaleDate"
+		"uiName": "PreSaleDate",
+		"endpoint": "get"
 	},
 	"item_additionalInfo": {
 		"id": "item_additionalInfo",
 		"property": "additionalInfo",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "AdditionalInfo"
+		"uiName": "AdditionalInfo",
+		"endpoint": "get"
 	},
 	"item_measurementUnit": {
 		"id": "item_measurementUnit",
 		"property": "measurementUnit",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "MeasurementUnit"
+		"uiName": "MeasurementUnit",
+		"endpoint": "get"
 	},
 	"item_unitMultiplier": {
 		"id": "item_unitMultiplier",
 		"property": "unitMultiplier",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "UnitMultiplier"
+		"uiName": "UnitMultiplier",
+		"endpoint": "get"
 	},
 	"item_isGift": {
 		"id": "item_isGift",
 		"property": "isGift",
 		"type": "DIMENSION",
 		"dataType": "boolean",
-		"uiName": "IsGift"
+		"uiName": "IsGift",
+		"endpoint": "get"
 	},
 	"item_shippingPrice": {
 		"id": "item_shippingPrice",
 		"property": "shippingPrice",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "ShippingPrice"
+		"uiName": "ShippingPrice",
+		"endpoint": "get"
 	},
 	"item_rewardValue": {
 		"id": "item_rewardValue",
 		"property": "rewardValue",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "RewardValue"
+		"uiName": "RewardValue",
+		"endpoint": "get"
 	},
 	"giftRegistryData": {
 		"id": "giftRegistryData",
