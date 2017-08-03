@@ -7,7 +7,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $group = 'get';
 
-	public $id = 'shippingdata.address.number';
+	public $id = 'postalcode';
 
 	public $is_dimension = true;
 
@@ -19,7 +19,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $platform = 'vtex';
 
-	public $property = 'shippingData.address.number';
+	public $property = 'shippingData.address.postalCode';
 
 	public $type = 'string';
 };

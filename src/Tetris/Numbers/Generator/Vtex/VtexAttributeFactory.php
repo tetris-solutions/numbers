@@ -70,8 +70,27 @@ class VtexAttributeFactory extends AttributeFactory
                 'marketingData.coupon',
                 'marketingData.utmiCampaign',
                 'marketingData.utmipage',
-                'marketingData.utmiPart'
-            ], ['item_', 'marketingData.'])
+                'marketingData.utmiPart',
+
+                'shippingData.id' => 'shipping_id',
+                'shippingData.address.addressType',
+                'shippingData.address.receiverName',
+                'shippingData.address.addressId',
+                'shippingData.address.postalCode',
+                'shippingData.address.city',
+                'shippingData.address.state',
+                'shippingData.address.country',
+                'shippingData.address.street',
+                'shippingData.address.number',
+                'shippingData.address.neighborhood',
+                'shippingData.address.complement',
+                'shippingData.address.reference',
+                'shippingData.trackingHints'
+            ], [
+                'item_',
+                'marketingData.',
+                'shippingData.address.'
+            ])
         ];
     }
 
