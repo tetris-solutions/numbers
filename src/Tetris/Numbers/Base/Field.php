@@ -34,6 +34,11 @@ abstract class Field implements ArrayAccess
      */
     public $names;
 
+    /**
+     * @var string|null
+     */
+    public $group;
+
     protected function getValue($source)
     {
         return $source->{$this->property} ?? null;

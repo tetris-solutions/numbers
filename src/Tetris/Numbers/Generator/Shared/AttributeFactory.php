@@ -41,7 +41,7 @@ abstract class AttributeFactory extends FieldFactory
 
     protected abstract function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string;
 
-    protected abstract function isMetric(TransientAttribute $attribute, $behaviorOrGroup): bool;
+    protected abstract function isMetric(TransientAttribute $attribute, $group): bool;
 
     protected abstract function isParsable(TransientAttribute $attribute): bool;
 
@@ -54,7 +54,7 @@ abstract class AttributeFactory extends FieldFactory
         $isPercentage = false,
         $isSpecialValue = false,
         $description = null,
-        $behavior = null,
+        $group = null,
         $predicateValues = null,
         $incompatibleFields = null
     ): TransientAttribute
@@ -70,7 +70,8 @@ abstract class AttributeFactory extends FieldFactory
         $attribute->raw_property = $originalProperty;
         $attribute->is_filter = $isFilterable;
         $attribute->type = $originalType;
-        $attribute->is_metric = $this->isMetric($attribute, $behavior);
+        $attribute->is_metric = $this->isMetric($attribute, $group);
+        $attribute->group = $group;
 
         // normalize
         $attribute->type = $this->normalizeType($attribute, $originalType, $isSpecialValue, $isPercentage);

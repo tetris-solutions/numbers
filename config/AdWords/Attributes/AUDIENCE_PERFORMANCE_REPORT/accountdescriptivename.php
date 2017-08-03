@@ -5,6 +5,8 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
+	public $group = 'Attribute';
+
 	public $id = 'accountdescriptivename';
 
 	public $is_dimension = true;

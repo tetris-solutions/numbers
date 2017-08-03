@@ -75,9 +75,9 @@ class VtexAttributeFactory extends AttributeFactory
         ];
     }
 
-    protected function isMetric(TransientAttribute $attribute, $behaviorOrGroup): bool
+    protected function isMetric(TransientAttribute $attribute, $group): bool
     {
-        return $behaviorOrGroup === 'METRIC';
+        return $attribute->type === 'integer' || $attribute->type === 'decimal';
     }
 
     protected function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string

@@ -5,6 +5,8 @@ use Tetris\Numbers\Generated\Attribute\Attribute_JSONParser_Parsable;
 
 return new class extends Attribute_JSONParser_Parsable {
 
+	public $group = 'Attribute';
+
 	public $id = 'creativefinalurls';
 
 	public $is_dimension = true;

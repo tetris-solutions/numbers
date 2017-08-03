@@ -35,12 +35,12 @@ function getVtexConfig(): array
             $reportName,
             $entity,
             $originalAttributeName,
-            $config['dataType'],
+            $config['type'],
             false,
             false,
             false,
-            null,
-            $config['type']
+            $config['description'],
+            $config['endpoint']
         );
 
         if ($attribute->is_metric) {

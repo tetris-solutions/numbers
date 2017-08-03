@@ -53,14 +53,13 @@
     fields.push({
       id,
       property,
-      type: isNumber(value) ? 'METRIC' : 'DIMENSION',
-      dataType: typeOf(id, value),
-      uiName: snakeCase(id.replace('.', '_'))
+      endpoint,
+      type: typeOf(id, value),
+      description: snakeCase(id.replace('.', '_'))
         .split('_')
         .slice(-2)
         .map(upperFirst)
-        .join(' '),
-      endpoint
+        .join(' ')
     })
   }
 

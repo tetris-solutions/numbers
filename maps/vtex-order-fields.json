@@ -2,945 +2,827 @@
   "orderId": {
     "id": "orderId",
     "property": "orderId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Order Id",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Order Id"
   },
   "creationDate": {
     "id": "creationDate",
     "property": "creationDate",
-    "type": "DIMENSION",
-    "dataType": "date",
-    "uiName": "Creation Date",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "date",
+    "description": "Creation Date"
   },
   "clientName": {
     "id": "clientName",
     "property": "clientName",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Client Name",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Client Name"
   },
   "item_seller": {
     "id": "item_seller",
     "property": "seller",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Item Seller",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Item Seller"
   },
   "item_quantity": {
     "id": "item_quantity",
     "property": "quantity",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Item Quantity",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "integer",
+    "description": "Item Quantity"
   },
   "item_description": {
     "id": "item_description",
     "property": "description",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Item Description",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Item Description"
   },
   "item_ean": {
     "id": "item_ean",
     "property": "ean",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Item Ean",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "object",
+    "description": "Item Ean"
   },
   "item_refId": {
     "id": "item_refId",
     "property": "refId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Ref Id",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Ref Id"
   },
   "item_id": {
     "id": "item_id",
     "property": "id",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Item Id",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Item Id"
   },
   "item_productId": {
     "id": "item_productId",
     "property": "productId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Product Id",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Product Id"
   },
   "item_sellingPrice": {
     "id": "item_sellingPrice",
     "property": "sellingPrice",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Selling Price",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "integer",
+    "description": "Selling Price"
   },
   "item_price": {
     "id": "item_price",
     "property": "price",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Item Price",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "integer",
+    "description": "Item Price"
   },
   "totalValue": {
     "id": "totalValue",
     "property": "totalValue",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Total Value",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "integer",
+    "description": "Total Value"
   },
   "paymentNames": {
     "id": "paymentNames",
     "property": "paymentNames",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Payment Names",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Payment Names"
   },
   "status": {
     "id": "status",
     "property": "status",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Status",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Status"
   },
   "statusDescription": {
     "id": "statusDescription",
     "property": "statusDescription",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Status Description",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Status Description"
   },
   "marketPlaceOrderId": {
     "id": "marketPlaceOrderId",
     "property": "marketPlaceOrderId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Order Id",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Order Id"
   },
   "sequence": {
     "id": "sequence",
     "property": "sequence",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Sequence",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Sequence"
   },
   "salesChannel": {
     "id": "salesChannel",
     "property": "salesChannel",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Sales Channel",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Sales Channel"
   },
   "affiliateId": {
     "id": "affiliateId",
     "property": "affiliateId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Affiliate Id",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Affiliate Id"
   },
   "origin": {
     "id": "origin",
     "property": "origin",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Origin",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "Origin"
   },
   "workflowInErrorState": {
     "id": "workflowInErrorState",
     "property": "workflowInErrorState",
-    "type": "DIMENSION",
-    "dataType": "boolean",
-    "uiName": "Error State",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "boolean",
+    "description": "Error State"
   },
   "workflowInRetry": {
     "id": "workflowInRetry",
     "property": "workflowInRetry",
-    "type": "DIMENSION",
-    "dataType": "boolean",
-    "uiName": "In Retry",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "boolean",
+    "description": "In Retry"
   },
   "lastMessageUnread": {
     "id": "lastMessageUnread",
     "property": "lastMessageUnread",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Message Unread",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "object",
+    "description": "Message Unread"
   },
   "ShippingEstimatedDate": {
     "id": "ShippingEstimatedDate",
     "property": "ShippingEstimatedDate",
-    "type": "DIMENSION",
-    "dataType": "date",
-    "uiName": "Estimated Date",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "date",
+    "description": "Estimated Date"
   },
   "orderIsComplete": {
     "id": "orderIsComplete",
     "property": "orderIsComplete",
-    "type": "DIMENSION",
-    "dataType": "boolean",
-    "uiName": "Is Complete",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "boolean",
+    "description": "Is Complete"
   },
   "listId": {
     "id": "listId",
     "property": "listId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "List Id",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "string",
+    "description": "List Id"
   },
   "listType": {
     "id": "listType",
     "property": "listType",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "List Type",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "object",
+    "description": "List Type"
   },
   "authorizedDate": {
     "id": "authorizedDate",
     "property": "authorizedDate",
-    "type": "DIMENSION",
-    "dataType": "date",
-    "uiName": "Authorized Date",
-    "endpoint": "list"
+    "endpoint": "list",
+    "type": "date",
+    "description": "Authorized Date"
   },
   "marketplaceOrderId": {
     "id": "marketplaceOrderId",
     "property": "marketplaceOrderId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Order Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Order Id"
   },
   "marketplaceServicesEndpoint": {
     "id": "marketplaceServicesEndpoint",
     "property": "marketplaceServicesEndpoint",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Services Endpoint",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Services Endpoint"
   },
   "sellerOrderId": {
     "id": "sellerOrderId",
     "property": "sellerOrderId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Order Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Order Id"
   },
   "merchantName": {
     "id": "merchantName",
     "property": "merchantName",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Merchant Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Merchant Name"
   },
   "value": {
     "id": "value",
     "property": "value",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Value",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Value"
   },
   "lastChange": {
     "id": "lastChange",
     "property": "lastChange",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Last Change",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Last Change"
   },
   "orderGroup": {
     "id": "orderGroup",
     "property": "orderGroup",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Order Group",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Order Group"
   },
   "item_uniqueId": {
     "id": "item_uniqueId",
     "property": "uniqueId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Unique Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Unique Id"
   },
   "item_lockId": {
     "id": "item_lockId",
     "property": "lockId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Lock Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Lock Id"
   },
   "item_itemAttachment.name": {
     "id": "item_itemAttachment.name",
     "property": "name",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Attachment Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Attachment Name"
   },
   "item_name": {
     "id": "item_name",
     "property": "name",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Item Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Item Name"
   },
   "item_listPrice": {
     "id": "item_listPrice",
     "property": "listPrice",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "List Price",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "List Price"
   },
   "item_manualPrice": {
     "id": "item_manualPrice",
     "property": "manualPrice",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Manual Price",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Manual Price"
   },
   "item_imageUrl": {
     "id": "item_imageUrl",
     "property": "imageUrl",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Image Url",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Image Url"
   },
   "item_detailUrl": {
     "id": "item_detailUrl",
     "property": "detailUrl",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Detail Url",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Detail Url"
   },
   "item_sellerSku": {
     "id": "item_sellerSku",
     "property": "sellerSku",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Seller Sku",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Seller Sku"
   },
   "item_priceValidUntil": {
     "id": "item_priceValidUntil",
     "property": "priceValidUntil",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Valid Until",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Valid Until"
   },
   "item_commission": {
     "id": "item_commission",
     "property": "commission",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Item Commission",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Item Commission"
   },
   "item_tax": {
     "id": "item_tax",
     "property": "tax",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Item Tax",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Item Tax"
   },
   "item_preSaleDate": {
     "id": "item_preSaleDate",
     "property": "preSaleDate",
-    "type": "DIMENSION",
-    "dataType": "date",
-    "uiName": "Sale Date",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "date",
+    "description": "Sale Date"
   },
   "item_additionalInfo.brandName": {
     "id": "item_additionalInfo.brandName",
     "property": "brandName",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Brand Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Brand Name"
   },
   "item_additionalInfo.brandId": {
     "id": "item_additionalInfo.brandId",
     "property": "brandId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Brand Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Brand Id"
   },
   "item_additionalInfo.categoriesIds": {
     "id": "item_additionalInfo.categoriesIds",
     "property": "categoriesIds",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Categories Ids",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Categories Ids"
   },
   "item_additionalInfo.productClusterId": {
     "id": "item_additionalInfo.productClusterId",
     "property": "productClusterId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Cluster Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Cluster Id"
   },
   "item_additionalInfo.commercialConditionId": {
     "id": "item_additionalInfo.commercialConditionId",
     "property": "commercialConditionId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Condition Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Condition Id"
   },
   "item_additionalInfo.dimension.cubicweight": {
     "id": "item_additionalInfo.dimension.cubicweight",
     "property": "cubicweight",
-    "type": "METRIC",
-    "dataType": "decimal",
-    "uiName": "Dimension Cubicweight",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "decimal",
+    "description": "Dimension Cubicweight"
   },
   "item_additionalInfo.dimension.height": {
     "id": "item_additionalInfo.dimension.height",
     "property": "height",
-    "type": "METRIC",
-    "dataType": "decimal",
-    "uiName": "Dimension Height",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "decimal",
+    "description": "Dimension Height"
   },
   "item_additionalInfo.dimension.length": {
     "id": "item_additionalInfo.dimension.length",
     "property": "length",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Dimension Length",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Dimension Length"
   },
   "item_additionalInfo.dimension.weight": {
     "id": "item_additionalInfo.dimension.weight",
     "property": "weight",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Dimension Weight",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Dimension Weight"
   },
   "item_additionalInfo.dimension.width": {
     "id": "item_additionalInfo.dimension.width",
     "property": "width",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Dimension Width",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Dimension Width"
   },
   "item_additionalInfo.offeringInfo": {
     "id": "item_additionalInfo.offeringInfo",
     "property": "offeringInfo",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Offering Info",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Offering Info"
   },
   "item_additionalInfo.offeringType": {
     "id": "item_additionalInfo.offeringType",
     "property": "offeringType",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Offering Type",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Offering Type"
   },
   "item_additionalInfo.offeringTypeId": {
     "id": "item_additionalInfo.offeringTypeId",
     "property": "offeringTypeId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Type Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Type Id"
   },
   "item_measurementUnit": {
     "id": "item_measurementUnit",
     "property": "measurementUnit",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Measurement Unit",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Measurement Unit"
   },
   "item_unitMultiplier": {
     "id": "item_unitMultiplier",
     "property": "unitMultiplier",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Unit Multiplier",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Unit Multiplier"
   },
   "item_isGift": {
     "id": "item_isGift",
     "property": "isGift",
-    "type": "DIMENSION",
-    "dataType": "boolean",
-    "uiName": "Is Gift",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "boolean",
+    "description": "Is Gift"
   },
   "item_shippingPrice": {
     "id": "item_shippingPrice",
     "property": "shippingPrice",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Shipping Price",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Shipping Price"
   },
   "item_rewardValue": {
     "id": "item_rewardValue",
     "property": "rewardValue",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Reward Value",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Reward Value"
   },
   "clientProfileData.id": {
     "id": "clientProfileData.id",
     "property": "id",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Data Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Data Id"
   },
   "clientProfileData.email": {
     "id": "clientProfileData.email",
     "property": "email",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Data Email",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Data Email"
   },
   "clientProfileData.firstName": {
     "id": "clientProfileData.firstName",
     "property": "firstName",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "First Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "First Name"
   },
   "clientProfileData.lastName": {
     "id": "clientProfileData.lastName",
     "property": "lastName",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Last Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Last Name"
   },
   "clientProfileData.documentType": {
     "id": "clientProfileData.documentType",
     "property": "documentType",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Document Type",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Document Type"
   },
   "clientProfileData.document": {
     "id": "clientProfileData.document",
     "property": "document",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Data Document",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Data Document"
   },
   "clientProfileData.phone": {
     "id": "clientProfileData.phone",
     "property": "phone",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Data Phone",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Data Phone"
   },
   "clientProfileData.corporateName": {
     "id": "clientProfileData.corporateName",
     "property": "corporateName",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Corporate Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Corporate Name"
   },
   "clientProfileData.tradeName": {
     "id": "clientProfileData.tradeName",
     "property": "tradeName",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Trade Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Trade Name"
   },
   "clientProfileData.corporateDocument": {
     "id": "clientProfileData.corporateDocument",
     "property": "corporateDocument",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Corporate Document",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Corporate Document"
   },
   "clientProfileData.stateInscription": {
     "id": "clientProfileData.stateInscription",
     "property": "stateInscription",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "State Inscription",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "State Inscription"
   },
   "clientProfileData.corporatePhone": {
     "id": "clientProfileData.corporatePhone",
     "property": "corporatePhone",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Corporate Phone",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Corporate Phone"
   },
   "clientProfileData.isCorporate": {
     "id": "clientProfileData.isCorporate",
     "property": "isCorporate",
-    "type": "DIMENSION",
-    "dataType": "boolean",
-    "uiName": "Is Corporate",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "boolean",
+    "description": "Is Corporate"
   },
   "clientProfileData.userProfileId": {
     "id": "clientProfileData.userProfileId",
     "property": "userProfileId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Profile Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Profile Id"
   },
   "clientProfileData.customerClass": {
     "id": "clientProfileData.customerClass",
     "property": "customerClass",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Customer Class",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Customer Class"
   },
   "giftRegistryData": {
     "id": "giftRegistryData",
     "property": "giftRegistryData",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Registry Data",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Registry Data"
   },
   "marketingData.id": {
     "id": "marketingData.id",
     "property": "id",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Data Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Data Id"
   },
   "marketingData.utmSource": {
     "id": "marketingData.utmSource",
     "property": "utmSource",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Utm Source",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Utm Source"
   },
   "marketingData.utmPartner": {
     "id": "marketingData.utmPartner",
     "property": "utmPartner",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Utm Partner",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Utm Partner"
   },
   "marketingData.utmMedium": {
     "id": "marketingData.utmMedium",
     "property": "utmMedium",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Utm Medium",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Utm Medium"
   },
   "marketingData.utmCampaign": {
     "id": "marketingData.utmCampaign",
     "property": "utmCampaign",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Utm Campaign",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Utm Campaign"
   },
   "marketingData.coupon": {
     "id": "marketingData.coupon",
     "property": "coupon",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Data Coupon",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Data Coupon"
   },
   "marketingData.utmiCampaign": {
     "id": "marketingData.utmiCampaign",
     "property": "utmiCampaign",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Utmi Campaign",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Utmi Campaign"
   },
   "marketingData.utmipage": {
     "id": "marketingData.utmipage",
     "property": "utmipage",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Data Utmipage",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Data Utmipage"
   },
   "marketingData.utmiPart": {
     "id": "marketingData.utmiPart",
     "property": "utmiPart",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Utmi Part",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Utmi Part"
   },
   "ratesAndBenefitsData.id": {
     "id": "ratesAndBenefitsData.id",
     "property": "id",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Data Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Data Id"
   },
   "shippingData.id": {
     "id": "shippingData.id",
     "property": "id",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Data Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Data Id"
   },
   "shippingData.address.addressType": {
     "id": "shippingData.address.addressType",
     "property": "addressType",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address Type",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address Type"
   },
   "shippingData.address.receiverName": {
     "id": "shippingData.address.receiverName",
     "property": "receiverName",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Receiver Name",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Receiver Name"
   },
   "shippingData.address.addressId": {
     "id": "shippingData.address.addressId",
     "property": "addressId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address Id"
   },
   "shippingData.address.postalCode": {
     "id": "shippingData.address.postalCode",
     "property": "postalCode",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Postal Code",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Postal Code"
   },
   "shippingData.address.city": {
     "id": "shippingData.address.city",
     "property": "city",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address City",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address City"
   },
   "shippingData.address.state": {
     "id": "shippingData.address.state",
     "property": "state",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address State",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address State"
   },
   "shippingData.address.country": {
     "id": "shippingData.address.country",
     "property": "country",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address Country",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address Country"
   },
   "shippingData.address.street": {
     "id": "shippingData.address.street",
     "property": "street",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address Street",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address Street"
   },
   "shippingData.address.number": {
     "id": "shippingData.address.number",
     "property": "number",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address Number",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address Number"
   },
   "shippingData.address.neighborhood": {
     "id": "shippingData.address.neighborhood",
     "property": "neighborhood",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address Neighborhood",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address Neighborhood"
   },
   "shippingData.address.complement": {
     "id": "shippingData.address.complement",
     "property": "complement",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Address Complement",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Address Complement"
   },
   "shippingData.address.reference": {
     "id": "shippingData.address.reference",
     "property": "reference",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Address Reference",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Address Reference"
   },
   "shippingData.trackingHints": {
     "id": "shippingData.trackingHints",
     "property": "trackingHints",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Tracking Hints",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Tracking Hints"
   },
   "callCenterOperatorData": {
     "id": "callCenterOperatorData",
     "property": "callCenterOperatorData",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Operator Data",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Operator Data"
   },
   "followUpEmail": {
     "id": "followUpEmail",
     "property": "followUpEmail",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Up Email",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Up Email"
   },
   "lastMessage": {
     "id": "lastMessage",
     "property": "lastMessage",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Last Message",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Last Message"
   },
   "hostname": {
     "id": "hostname",
     "property": "hostname",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Hostname",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Hostname"
   },
   "changesAttachment": {
     "id": "changesAttachment",
     "property": "changesAttachment",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Changes Attachment",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Changes Attachment"
   },
   "openTextField": {
     "id": "openTextField",
     "property": "openTextField",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Text Field",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Text Field"
   },
   "roundingError": {
     "id": "roundingError",
     "property": "roundingError",
-    "type": "METRIC",
-    "dataType": "integer",
-    "uiName": "Rounding Error",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "integer",
+    "description": "Rounding Error"
   },
   "orderFormId": {
     "id": "orderFormId",
     "property": "orderFormId",
-    "type": "DIMENSION",
-    "dataType": "string",
-    "uiName": "Form Id",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "string",
+    "description": "Form Id"
   },
   "commercialConditionData": {
     "id": "commercialConditionData",
     "property": "commercialConditionData",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Condition Data",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Condition Data"
   },
   "isCompleted": {
     "id": "isCompleted",
     "property": "isCompleted",
-    "type": "DIMENSION",
-    "dataType": "boolean",
-    "uiName": "Is Completed",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "boolean",
+    "description": "Is Completed"
   },
   "customData": {
     "id": "customData",
     "property": "customData",
-    "type": "DIMENSION",
-    "dataType": "object",
-    "uiName": "Custom Data",
-    "endpoint": "get"
+    "endpoint": "get",
+    "type": "object",
+    "description": "Custom Data"
   }
 }

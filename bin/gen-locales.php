@@ -45,8 +45,7 @@ function genLocales()
 
         $fields = [
             'analytics' => $oldFields['analytics'] ?? [],
-//            'vtex' => $oldFields['vtex'] ?? [],
-            'vtex' => [],
+            'vtex' => $oldFields['vtex'] ?? [],
             'adwords' => $oldFields['adwords'],
             'facebook' => array_merge($actionTypes, $oldFields['facebook'])
         ];
@@ -63,7 +62,7 @@ function genLocales()
             $oldName = $fields['vtex'][$name] ?? null;
 
             if (!$oldName) {
-                $fields['vtex'][$name] = $metadata['uiName'];
+                $fields['vtex'][$name] = $metadata['description'];
             }
         }
 
