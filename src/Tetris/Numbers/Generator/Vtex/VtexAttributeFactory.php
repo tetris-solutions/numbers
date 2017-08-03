@@ -28,7 +28,7 @@ class VtexAttributeFactory extends AttributeFactory
         return $behaviorOrGroup === 'METRIC';
     }
 
-    protected function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string 
+    protected function normalizeType(TransientAttribute $attribute, string $originalType, $isSpecialValue, $isPercentage): string
     {
         return $originalType;
     }

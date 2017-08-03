@@ -1,0 +1,552 @@
+{
+	"orderId": {
+		"id": "orderId",
+		"property": "orderId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "OrderId",
+		"endpoint": "list"
+	},
+	"creationDate": {
+		"id": "creationDate",
+		"property": "creationDate",
+		"type": "DIMENSION",
+		"dataType": "date",
+		"uiName": "CreationDate",
+		"endpoint": "list"
+	},
+	"clientName": {
+		"id": "clientName",
+		"property": "clientName",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "ClientName",
+		"endpoint": "list"
+	},
+	"item_seller": {
+		"id": "item_seller",
+		"property": "seller",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Seller"
+	},
+	"item_quantity": {
+		"id": "item_quantity",
+		"property": "quantity",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "Quantity"
+	},
+	"item_description": {
+		"id": "item_description",
+		"property": "description",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Description"
+	},
+	"item_ean": {
+		"id": "item_ean",
+		"property": "ean",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "Ean"
+	},
+	"item_refId": {
+		"id": "item_refId",
+		"property": "refId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "RefId"
+	},
+	"item_id": {
+		"id": "item_id",
+		"property": "id",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Id"
+	},
+	"item_productId": {
+		"id": "item_productId",
+		"property": "productId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "ProductId"
+	},
+	"item_sellingPrice": {
+		"id": "item_sellingPrice",
+		"property": "sellingPrice",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "SellingPrice"
+	},
+	"item_price": {
+		"id": "item_price",
+		"property": "price",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "Price"
+	},
+	"totalValue": {
+		"id": "totalValue",
+		"property": "totalValue",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "TotalValue",
+		"endpoint": "list"
+	},
+	"paymentNames": {
+		"id": "paymentNames",
+		"property": "paymentNames",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "PaymentNames",
+		"endpoint": "list"
+	},
+	"status": {
+		"id": "status",
+		"property": "status",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Status",
+		"endpoint": "list"
+	},
+	"statusDescription": {
+		"id": "statusDescription",
+		"property": "statusDescription",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "StatusDescription",
+		"endpoint": "list"
+	},
+	"marketPlaceOrderId": {
+		"id": "marketPlaceOrderId",
+		"property": "marketPlaceOrderId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "MarketPlaceOrderId",
+		"endpoint": "list"
+	},
+	"sequence": {
+		"id": "sequence",
+		"property": "sequence",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Sequence",
+		"endpoint": "list"
+	},
+	"salesChannel": {
+		"id": "salesChannel",
+		"property": "salesChannel",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "SalesChannel",
+		"endpoint": "list"
+	},
+	"affiliateId": {
+		"id": "affiliateId",
+		"property": "affiliateId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "AffiliateId",
+		"endpoint": "list"
+	},
+	"origin": {
+		"id": "origin",
+		"property": "origin",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Origin",
+		"endpoint": "list"
+	},
+	"workflowInErrorState": {
+		"id": "workflowInErrorState",
+		"property": "workflowInErrorState",
+		"type": "DIMENSION",
+		"dataType": "boolean",
+		"uiName": "WorkflowInErrorState",
+		"endpoint": "list"
+	},
+	"workflowInRetry": {
+		"id": "workflowInRetry",
+		"property": "workflowInRetry",
+		"type": "DIMENSION",
+		"dataType": "boolean",
+		"uiName": "WorkflowInRetry",
+		"endpoint": "list"
+	},
+	"lastMessageUnread": {
+		"id": "lastMessageUnread",
+		"property": "lastMessageUnread",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "LastMessageUnread",
+		"endpoint": "list"
+	},
+	"ShippingEstimatedDate": {
+		"id": "ShippingEstimatedDate",
+		"property": "ShippingEstimatedDate",
+		"type": "DIMENSION",
+		"dataType": "date",
+		"uiName": "ShippingEstimatedDate",
+		"endpoint": "list"
+	},
+	"orderIsComplete": {
+		"id": "orderIsComplete",
+		"property": "orderIsComplete",
+		"type": "DIMENSION",
+		"dataType": "boolean",
+		"uiName": "OrderIsComplete",
+		"endpoint": "list"
+	},
+	"listId": {
+		"id": "listId",
+		"property": "listId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "ListId",
+		"endpoint": "list"
+	},
+	"listType": {
+		"id": "listType",
+		"property": "listType",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "ListType",
+		"endpoint": "list"
+	},
+	"authorizedDate": {
+		"id": "authorizedDate",
+		"property": "authorizedDate",
+		"type": "DIMENSION",
+		"dataType": "date",
+		"uiName": "AuthorizedDate",
+		"endpoint": "list"
+	},
+	"marketplaceOrderId": {
+		"id": "marketplaceOrderId",
+		"property": "marketplaceOrderId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "MarketplaceOrderId",
+		"endpoint": "get"
+	},
+	"marketplaceServicesEndpoint": {
+		"id": "marketplaceServicesEndpoint",
+		"property": "marketplaceServicesEndpoint",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "MarketplaceServicesEndpoint",
+		"endpoint": "get"
+	},
+	"sellerOrderId": {
+		"id": "sellerOrderId",
+		"property": "sellerOrderId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "SellerOrderId",
+		"endpoint": "get"
+	},
+	"merchantName": {
+		"id": "merchantName",
+		"property": "merchantName",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "MerchantName",
+		"endpoint": "get"
+	},
+	"value": {
+		"id": "value",
+		"property": "value",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "Value",
+		"endpoint": "get"
+	},
+	"lastChange": {
+		"id": "lastChange",
+		"property": "lastChange",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "LastChange",
+		"endpoint": "get"
+	},
+	"orderGroup": {
+		"id": "orderGroup",
+		"property": "orderGroup",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "OrderGroup",
+		"endpoint": "get"
+	},
+	"item_uniqueId": {
+		"id": "item_uniqueId",
+		"property": "uniqueId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "UniqueId"
+	},
+	"item_lockId": {
+		"id": "item_lockId",
+		"property": "lockId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "LockId"
+	},
+	"item_itemAttachment": {
+		"id": "item_itemAttachment",
+		"property": "itemAttachment",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "ItemAttachment"
+	},
+	"item_attachments": {
+		"id": "item_attachments",
+		"property": "attachments",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "Attachments"
+	},
+	"item_name": {
+		"id": "item_name",
+		"property": "name",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Name"
+	},
+	"item_listPrice": {
+		"id": "item_listPrice",
+		"property": "listPrice",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "ListPrice"
+	},
+	"item_manualPrice": {
+		"id": "item_manualPrice",
+		"property": "manualPrice",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "ManualPrice"
+	},
+	"item_priceTags": {
+		"id": "item_priceTags",
+		"property": "priceTags",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "PriceTags"
+	},
+	"item_imageUrl": {
+		"id": "item_imageUrl",
+		"property": "imageUrl",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "ImageUrl"
+	},
+	"item_detailUrl": {
+		"id": "item_detailUrl",
+		"property": "detailUrl",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "DetailUrl"
+	},
+	"item_components": {
+		"id": "item_components",
+		"property": "components",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "Components"
+	},
+	"item_bundleItems": {
+		"id": "item_bundleItems",
+		"property": "bundleItems",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "BundleItems"
+	},
+	"item_params": {
+		"id": "item_params",
+		"property": "params",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "Params"
+	},
+	"item_offerings": {
+		"id": "item_offerings",
+		"property": "offerings",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "Offerings"
+	},
+	"item_sellerSku": {
+		"id": "item_sellerSku",
+		"property": "sellerSku",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "SellerSku"
+	},
+	"item_priceValidUntil": {
+		"id": "item_priceValidUntil",
+		"property": "priceValidUntil",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "PriceValidUntil"
+	},
+	"item_commission": {
+		"id": "item_commission",
+		"property": "commission",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "Commission"
+	},
+	"item_tax": {
+		"id": "item_tax",
+		"property": "tax",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "Tax"
+	},
+	"item_preSaleDate": {
+		"id": "item_preSaleDate",
+		"property": "preSaleDate",
+		"type": "DIMENSION",
+		"dataType": "date",
+		"uiName": "PreSaleDate"
+	},
+	"item_additionalInfo": {
+		"id": "item_additionalInfo",
+		"property": "additionalInfo",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "AdditionalInfo"
+	},
+	"item_measurementUnit": {
+		"id": "item_measurementUnit",
+		"property": "measurementUnit",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "MeasurementUnit"
+	},
+	"item_unitMultiplier": {
+		"id": "item_unitMultiplier",
+		"property": "unitMultiplier",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "UnitMultiplier"
+	},
+	"item_isGift": {
+		"id": "item_isGift",
+		"property": "isGift",
+		"type": "DIMENSION",
+		"dataType": "boolean",
+		"uiName": "IsGift"
+	},
+	"item_shippingPrice": {
+		"id": "item_shippingPrice",
+		"property": "shippingPrice",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "ShippingPrice"
+	},
+	"item_rewardValue": {
+		"id": "item_rewardValue",
+		"property": "rewardValue",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "RewardValue"
+	},
+	"giftRegistryData": {
+		"id": "giftRegistryData",
+		"property": "giftRegistryData",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "GiftRegistryData",
+		"endpoint": "get"
+	},
+	"callCenterOperatorData": {
+		"id": "callCenterOperatorData",
+		"property": "callCenterOperatorData",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "CallCenterOperatorData",
+		"endpoint": "get"
+	},
+	"followUpEmail": {
+		"id": "followUpEmail",
+		"property": "followUpEmail",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "FollowUpEmail",
+		"endpoint": "get"
+	},
+	"lastMessage": {
+		"id": "lastMessage",
+		"property": "lastMessage",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "LastMessage",
+		"endpoint": "get"
+	},
+	"hostname": {
+		"id": "hostname",
+		"property": "hostname",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "Hostname",
+		"endpoint": "get"
+	},
+	"changesAttachment": {
+		"id": "changesAttachment",
+		"property": "changesAttachment",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "ChangesAttachment",
+		"endpoint": "get"
+	},
+	"openTextField": {
+		"id": "openTextField",
+		"property": "openTextField",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "OpenTextField",
+		"endpoint": "get"
+	},
+	"roundingError": {
+		"id": "roundingError",
+		"property": "roundingError",
+		"type": "METRIC",
+		"dataType": "integer",
+		"uiName": "RoundingError",
+		"endpoint": "get"
+	},
+	"orderFormId": {
+		"id": "orderFormId",
+		"property": "orderFormId",
+		"type": "DIMENSION",
+		"dataType": "string",
+		"uiName": "OrderFormId",
+		"endpoint": "get"
+	},
+	"commercialConditionData": {
+		"id": "commercialConditionData",
+		"property": "commercialConditionData",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "CommercialConditionData",
+		"endpoint": "get"
+	},
+	"isCompleted": {
+		"id": "isCompleted",
+		"property": "isCompleted",
+		"type": "DIMENSION",
+		"dataType": "boolean",
+		"uiName": "IsCompleted",
+		"endpoint": "get"
+	},
+	"customData": {
+		"id": "customData",
+		"property": "customData",
+		"type": "DIMENSION",
+		"dataType": "object",
+		"uiName": "CustomData",
+		"endpoint": "get"
+	}
+}

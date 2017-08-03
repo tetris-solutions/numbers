@@ -1,4 +1,4 @@
-{
+const vtexOrder = {
   "orderId": "v11132894rihp-01",
   "sequence": "11132894",
   "marketplaceOrderId": "",

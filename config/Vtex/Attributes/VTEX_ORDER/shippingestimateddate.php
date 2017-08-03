@@ -1,11 +1,11 @@
 <?php
 namespace Tetris\Numbers\Config;
 
-use Tetris\Numbers\Generated\Attribute\Attribute_DateParser_Parsable;
+use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
-return new class extends Attribute_DateParser_Parsable {
+return new class extends Attribute_RawParser_Parsable {
 
-	public $id = 'date';
+	public $id = 'shippingestimateddate';
 
 	public $is_dimension = true;
 
@@ -17,7 +17,7 @@ return new class extends Attribute_DateParser_Parsable {
 
 	public $platform = 'vtex';
 
-	public $property = 'creationDate';
+	public $property = 'ShippingEstimatedDate';
 
 	public $type = 'date';
 };

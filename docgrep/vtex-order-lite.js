@@ -1,4 +1,4 @@
-{
+const vtexOrderLite = {
   "orderId": "BWW-Lojas_Americanas-264809574701",
   "creationDate": "2017-08-03T02:12:58.0000000+00:00",
   "clientName": "Tavise nogueira coho",

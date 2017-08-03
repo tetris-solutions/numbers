@@ -7,7 +7,7 @@ use Tetris\Numbers\Generator\Vtex\VtexMetricFactory;
 
 function getVtexConfig(): array
 {
-    $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/vtex.json'), true);
+    $fieldsConfig = json_decode(file_get_contents(__DIR__ . '/../../maps/vtex-order-fields.json'), true);
 
     $reportName = 'VTEX_ORDER';
     $entity = 'Order';
@@ -26,18 +26,11 @@ function getVtexConfig(): array
         'sources' => []
     ];
 
-    $fieldList = [
-        'item_quantity',
-        'creationDate'
-    ];
-
 
     $attributeFactory = new VtexAttributeFactory();
     $sourceFactory = new VtexMetricFactory();
 
-    foreach ($fieldList as $originalAttributeName) {
-        $config = $fieldsConfig[$originalAttributeName];
-
+    foreach ($fieldsConfig as $originalAttributeName => $config) {
         $attribute = $attributeFactory->create(
             $reportName,
             $entity,
