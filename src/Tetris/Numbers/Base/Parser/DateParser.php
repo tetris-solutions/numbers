@@ -4,7 +4,7 @@ namespace Tetris\Numbers\Base\Parser;
 
 use Tetris\Numbers\Report\Query\Query;
 
-trait AnalyticsDateParser
+trait DateParser
 {
     function parse($source, Query $queryBase)
     {

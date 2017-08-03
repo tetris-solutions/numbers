@@ -15,6 +15,7 @@ function genLocales()
         json_decode(file_get_contents(__DIR__ . '/../maps/insight-fields.json'), true)
     );
     $analytics = json_decode(file_get_contents(__DIR__ . '/../maps/analytics-fields.json'), true);
+    $vtex = json_decode(file_get_contents(__DIR__ . '/../maps/vtex-order-fields.json'), true);
     $actionTypes = json_decode(file_get_contents(__DIR__ . '/../maps/facebook-action-types.json'), true);
 
     $adwords = [];
@@ -43,9 +44,8 @@ function genLocales()
         $oldFields = require($outputPath);
 
         $fields = [
-            'analytics' => isset($oldFields['analytics'])
-                ? $oldFields['analytics']
-                : [],
+            'analytics' => $oldFields['analytics'] ?? [],
+            'vtex' => $oldFields['vtex'] ?? [],
             'adwords' => $oldFields['adwords'],
             'facebook' => array_merge($actionTypes, $oldFields['facebook'])
         ];
@@ -55,6 +55,14 @@ function genLocales()
 
             if (!$oldName) {
                 $fields['analytics'][$name] = $metadata['uiName'];
+            }
+        }
+
+        foreach ($vtex as $name => $metadata) {
+            $oldName = $fields['vtex'][$name] ?? null;
+
+            if (!$oldName) {
+                $fields['vtex'][$name] = $metadata['description'];
             }
         }
 

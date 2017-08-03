@@ -12,7 +12,6 @@ use Tetris\Numbers\Report\MetaData\MetaDataV2;
 class Query extends QueryBlueprint
 {
     protected static $requiredParameters = [
-        'ad_account',
         'tetris_account',
         'entity',
         'metrics',
@@ -43,7 +42,7 @@ class Query extends QueryBlueprint
         $this->entity = $query['entity'];
         $this->platform = $query['platform'];
         $this->tetrisAccountId = $query['tetris_account'];
-        $this->adAccountId = $query['ad_account'];
+        $this->adAccountId = $query['ad_account'] ?? null;
 
         if ($this->platform === 'analytics') {
             $this->gaViewId = $query['ga_view_id'];

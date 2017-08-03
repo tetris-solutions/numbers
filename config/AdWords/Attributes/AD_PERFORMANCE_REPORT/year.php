@@ -5,6 +5,8 @@ use Tetris\Numbers\Generated\Attribute\Attribute_IntegerParser_Parsable;
 
 return new class extends Attribute_IntegerParser_Parsable {
 
+	public $group = 'Segment';
+
 	public $id = 'year';
 
 	public $is_dimension = true;

@@ -2,6 +2,8 @@
 
 namespace Tetris\Numbers;
 
+error_reporting(E_ERROR);
+
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Tetris\Numbers\API\TokenManager;

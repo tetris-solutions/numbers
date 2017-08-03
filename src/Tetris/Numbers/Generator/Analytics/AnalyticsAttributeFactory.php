@@ -22,9 +22,9 @@ class AnalyticsAttributeFactory extends AttributeFactory
         ];
     }
 
-    protected function isMetric(TransientAttribute $attribute, $behaviorOrGroup): bool
+    protected function isMetric(TransientAttribute $attribute, $group): bool
     {
-        return $behaviorOrGroup === 'METRIC';
+        return $group === 'METRIC';
     }
 
     protected function getId(string $entity, string $attributeName): string
