@@ -5,7 +5,7 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
-	public $id = 'item_sellersku';
+	public $id = 'utmipage';
 
 	public $is_dimension = true;
 
@@ -17,7 +17,7 @@ return new class extends Attribute_RawParser_Parsable {
 
 	public $platform = 'vtex';
 
-	public $property = 'item_sellerSku';
+	public $property = 'marketingData.utmipage';
 
 	public $type = 'string';
 };
