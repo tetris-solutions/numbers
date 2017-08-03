@@ -1,19 +1,17 @@
 (function () {
   'use strict'
+  const fields = []
   const {
-    assign,
+    curry,
     endsWith,
-    isEmpty,
+    forEach,
     isObject,
-    map,
-    concat,
     uniqBy,
     keyBy,
     isNumber,
     upperFirst,
-    flatten,
-    head,
-    compact
+    snakeCase,
+    head
   } = _
 
   function typeOf (id, value) {
@@ -35,49 +33,43 @@
 
   const fieldId = (key, prefix) => `${prefix}${key}`
 
-  function makeField (value, property, prefix = '') {
+  function makeField (endpoint, value, property, prefix = '') {
     const id = fieldId(property, prefix)
 
-    return {
+    fields.push({
       id,
       property,
       type: isNumber(value) ? 'METRIC' : 'DIMENSION',
       dataType: typeOf(id, value),
-      uiName: id.split('_')
-        .slice(isEmpty(prefix) ? 0 : 1)
+      uiName: snakeCase(id.replace('.', '_'))
+        .split('_')
         .map(upperFirst)
-        .join(' ')
-    }
+        .join(' '),
+      endpoint
+    })
   }
 
-  const makeItemField = (v, k) => makeField(v, k, 'item_')
+  const makeItemField = e => (v, k) => makeField(e, v, k, 'item_')
 
   function run () {
-    function parse (value, key) {
+    const parse = curry((endpoint, value, key) => {
       if (key === 'items') {
-        return map(head(value), makeItemField)
+        forEach(head(value), makeItemField(endpoint))
       } else if (!isObject(value)) {
-        return makeField(value, key)
+        makeField(endpoint, value, key)
       }
-    }
+    })
 
     const textArea = document.createElement('textarea')
-    const mark = endpoint => o => o && assign(o, {endpoint})
 
-    const fields = keyBy(
-      uniqBy(
-        compact(
-          concat(
-            map(flatten(map(vtexOrderLite, parse)), mark('list')),
-            map(flatten(map(vtexOrder, parse)), mark('get'))
-          )
-        ),
-        'id'
-      ),
-      'id'
+    forEach(vtexOrderLite, parse('list'))
+    forEach(vtexOrder, parse('get'))
+
+    textArea.value = JSON.stringify(
+      keyBy(uniqBy(fields, 'id'), 'id'),
+      null,
+      2
     )
-
-    textArea.value = JSON.stringify(fields, null, 2)
     textArea.style.width = '100vw'
     textArea.style.height = '70vh'
 

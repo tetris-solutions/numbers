@@ -4,7 +4,7 @@
 		"property": "orderId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "OrderId",
+		"uiName": "Order Id",
 		"endpoint": "list"
 	},
 	"creationDate": {
@@ -12,7 +12,7 @@
 		"property": "creationDate",
 		"type": "DIMENSION",
 		"dataType": "date",
-		"uiName": "CreationDate",
+		"uiName": "Creation Date",
 		"endpoint": "list"
 	},
 	"clientName": {
@@ -20,7 +20,7 @@
 		"property": "clientName",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "ClientName",
+		"uiName": "Client Name",
 		"endpoint": "list"
 	},
 	"item_seller": {
@@ -28,7 +28,7 @@
 		"property": "seller",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "Seller",
+		"uiName": "Item Seller",
 		"endpoint": "list"
 	},
 	"item_quantity": {
@@ -36,7 +36,7 @@
 		"property": "quantity",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "Quantity",
+		"uiName": "Item Quantity",
 		"endpoint": "list"
 	},
 	"item_description": {
@@ -44,7 +44,7 @@
 		"property": "description",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "Description",
+		"uiName": "Item Description",
 		"endpoint": "list"
 	},
 	"item_ean": {
@@ -52,7 +52,7 @@
 		"property": "ean",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Ean",
+		"uiName": "Item Ean",
 		"endpoint": "list"
 	},
 	"item_refId": {
@@ -60,7 +60,7 @@
 		"property": "refId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "RefId",
+		"uiName": "Item Ref Id",
 		"endpoint": "list"
 	},
 	"item_id": {
@@ -68,7 +68,7 @@
 		"property": "id",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "Id",
+		"uiName": "Item Id",
 		"endpoint": "list"
 	},
 	"item_productId": {
@@ -76,7 +76,7 @@
 		"property": "productId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "ProductId",
+		"uiName": "Item Product Id",
 		"endpoint": "list"
 	},
 	"item_sellingPrice": {
@@ -84,7 +84,7 @@
 		"property": "sellingPrice",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "SellingPrice",
+		"uiName": "Item Selling Price",
 		"endpoint": "list"
 	},
 	"item_price": {
@@ -92,7 +92,7 @@
 		"property": "price",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "Price",
+		"uiName": "Item Price",
 		"endpoint": "list"
 	},
 	"totalValue": {
@@ -100,7 +100,7 @@
 		"property": "totalValue",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "TotalValue",
+		"uiName": "Total Value",
 		"endpoint": "list"
 	},
 	"paymentNames": {
@@ -108,7 +108,7 @@
 		"property": "paymentNames",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "PaymentNames",
+		"uiName": "Payment Names",
 		"endpoint": "list"
 	},
 	"status": {
@@ -124,7 +124,7 @@
 		"property": "statusDescription",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "StatusDescription",
+		"uiName": "Status Description",
 		"endpoint": "list"
 	},
 	"marketPlaceOrderId": {
@@ -132,7 +132,7 @@
 		"property": "marketPlaceOrderId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "MarketPlaceOrderId",
+		"uiName": "Market Place Order Id",
 		"endpoint": "list"
 	},
 	"sequence": {
@@ -148,7 +148,7 @@
 		"property": "salesChannel",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "SalesChannel",
+		"uiName": "Sales Channel",
 		"endpoint": "list"
 	},
 	"affiliateId": {
@@ -156,7 +156,7 @@
 		"property": "affiliateId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "AffiliateId",
+		"uiName": "Affiliate Id",
 		"endpoint": "list"
 	},
 	"origin": {
@@ -172,7 +172,7 @@
 		"property": "workflowInErrorState",
 		"type": "DIMENSION",
 		"dataType": "boolean",
-		"uiName": "WorkflowInErrorState",
+		"uiName": "Workflow In Error State",
 		"endpoint": "list"
 	},
 	"workflowInRetry": {
@@ -180,7 +180,7 @@
 		"property": "workflowInRetry",
 		"type": "DIMENSION",
 		"dataType": "boolean",
-		"uiName": "WorkflowInRetry",
+		"uiName": "Workflow In Retry",
 		"endpoint": "list"
 	},
 	"lastMessageUnread": {
@@ -188,7 +188,7 @@
 		"property": "lastMessageUnread",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "LastMessageUnread",
+		"uiName": "Last Message Unread",
 		"endpoint": "list"
 	},
 	"ShippingEstimatedDate": {
@@ -196,7 +196,7 @@
 		"property": "ShippingEstimatedDate",
 		"type": "DIMENSION",
 		"dataType": "date",
-		"uiName": "ShippingEstimatedDate",
+		"uiName": "Shipping Estimated Date",
 		"endpoint": "list"
 	},
 	"orderIsComplete": {
@@ -204,7 +204,7 @@
 		"property": "orderIsComplete",
 		"type": "DIMENSION",
 		"dataType": "boolean",
-		"uiName": "OrderIsComplete",
+		"uiName": "Order Is Complete",
 		"endpoint": "list"
 	},
 	"listId": {
@@ -212,7 +212,7 @@
 		"property": "listId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "ListId",
+		"uiName": "List Id",
 		"endpoint": "list"
 	},
 	"listType": {
@@ -220,7 +220,7 @@
 		"property": "listType",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "ListType",
+		"uiName": "List Type",
 		"endpoint": "list"
 	},
 	"authorizedDate": {
@@ -228,7 +228,7 @@
 		"property": "authorizedDate",
 		"type": "DIMENSION",
 		"dataType": "date",
-		"uiName": "AuthorizedDate",
+		"uiName": "Authorized Date",
 		"endpoint": "list"
 	},
 	"marketplaceOrderId": {
@@ -236,7 +236,7 @@
 		"property": "marketplaceOrderId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "MarketplaceOrderId",
+		"uiName": "Marketplace Order Id",
 		"endpoint": "get"
 	},
 	"marketplaceServicesEndpoint": {
@@ -244,7 +244,7 @@
 		"property": "marketplaceServicesEndpoint",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "MarketplaceServicesEndpoint",
+		"uiName": "Marketplace Services Endpoint",
 		"endpoint": "get"
 	},
 	"sellerOrderId": {
@@ -252,7 +252,7 @@
 		"property": "sellerOrderId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "SellerOrderId",
+		"uiName": "Seller Order Id",
 		"endpoint": "get"
 	},
 	"merchantName": {
@@ -260,7 +260,7 @@
 		"property": "merchantName",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "MerchantName",
+		"uiName": "Merchant Name",
 		"endpoint": "get"
 	},
 	"value": {
@@ -276,7 +276,7 @@
 		"property": "lastChange",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "LastChange",
+		"uiName": "Last Change",
 		"endpoint": "get"
 	},
 	"orderGroup": {
@@ -284,7 +284,7 @@
 		"property": "orderGroup",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "OrderGroup",
+		"uiName": "Order Group",
 		"endpoint": "get"
 	},
 	"item_uniqueId": {
@@ -292,7 +292,7 @@
 		"property": "uniqueId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "UniqueId",
+		"uiName": "Item Unique Id",
 		"endpoint": "get"
 	},
 	"item_lockId": {
@@ -300,7 +300,7 @@
 		"property": "lockId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "LockId",
+		"uiName": "Item Lock Id",
 		"endpoint": "get"
 	},
 	"item_itemAttachment": {
@@ -308,7 +308,7 @@
 		"property": "itemAttachment",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "ItemAttachment",
+		"uiName": "Item Item Attachment",
 		"endpoint": "get"
 	},
 	"item_attachments": {
@@ -316,7 +316,7 @@
 		"property": "attachments",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Attachments",
+		"uiName": "Item Attachments",
 		"endpoint": "get"
 	},
 	"item_name": {
@@ -324,7 +324,7 @@
 		"property": "name",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "Name",
+		"uiName": "Item Name",
 		"endpoint": "get"
 	},
 	"item_listPrice": {
@@ -332,7 +332,7 @@
 		"property": "listPrice",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "ListPrice",
+		"uiName": "Item List Price",
 		"endpoint": "get"
 	},
 	"item_manualPrice": {
@@ -340,7 +340,7 @@
 		"property": "manualPrice",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "ManualPrice",
+		"uiName": "Item Manual Price",
 		"endpoint": "get"
 	},
 	"item_priceTags": {
@@ -348,7 +348,7 @@
 		"property": "priceTags",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "PriceTags",
+		"uiName": "Item Price Tags",
 		"endpoint": "get"
 	},
 	"item_imageUrl": {
@@ -356,7 +356,7 @@
 		"property": "imageUrl",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "ImageUrl",
+		"uiName": "Item Image Url",
 		"endpoint": "get"
 	},
 	"item_detailUrl": {
@@ -364,7 +364,7 @@
 		"property": "detailUrl",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "DetailUrl",
+		"uiName": "Item Detail Url",
 		"endpoint": "get"
 	},
 	"item_components": {
@@ -372,7 +372,7 @@
 		"property": "components",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Components",
+		"uiName": "Item Components",
 		"endpoint": "get"
 	},
 	"item_bundleItems": {
@@ -380,7 +380,7 @@
 		"property": "bundleItems",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "BundleItems",
+		"uiName": "Item Bundle Items",
 		"endpoint": "get"
 	},
 	"item_params": {
@@ -388,7 +388,7 @@
 		"property": "params",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Params",
+		"uiName": "Item Params",
 		"endpoint": "get"
 	},
 	"item_offerings": {
@@ -396,7 +396,7 @@
 		"property": "offerings",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "Offerings",
+		"uiName": "Item Offerings",
 		"endpoint": "get"
 	},
 	"item_sellerSku": {
@@ -404,7 +404,7 @@
 		"property": "sellerSku",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "SellerSku",
+		"uiName": "Item Seller Sku",
 		"endpoint": "get"
 	},
 	"item_priceValidUntil": {
@@ -412,7 +412,7 @@
 		"property": "priceValidUntil",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "PriceValidUntil",
+		"uiName": "Item Price Valid Until",
 		"endpoint": "get"
 	},
 	"item_commission": {
@@ -420,7 +420,7 @@
 		"property": "commission",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "Commission",
+		"uiName": "Item Commission",
 		"endpoint": "get"
 	},
 	"item_tax": {
@@ -428,7 +428,7 @@
 		"property": "tax",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "Tax",
+		"uiName": "Item Tax",
 		"endpoint": "get"
 	},
 	"item_preSaleDate": {
@@ -436,7 +436,7 @@
 		"property": "preSaleDate",
 		"type": "DIMENSION",
 		"dataType": "date",
-		"uiName": "PreSaleDate",
+		"uiName": "Item Pre Sale Date",
 		"endpoint": "get"
 	},
 	"item_additionalInfo": {
@@ -444,7 +444,7 @@
 		"property": "additionalInfo",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "AdditionalInfo",
+		"uiName": "Item Additional Info",
 		"endpoint": "get"
 	},
 	"item_measurementUnit": {
@@ -452,7 +452,7 @@
 		"property": "measurementUnit",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "MeasurementUnit",
+		"uiName": "Item Measurement Unit",
 		"endpoint": "get"
 	},
 	"item_unitMultiplier": {
@@ -460,7 +460,7 @@
 		"property": "unitMultiplier",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "UnitMultiplier",
+		"uiName": "Item Unit Multiplier",
 		"endpoint": "get"
 	},
 	"item_isGift": {
@@ -468,7 +468,7 @@
 		"property": "isGift",
 		"type": "DIMENSION",
 		"dataType": "boolean",
-		"uiName": "IsGift",
+		"uiName": "Item Is Gift",
 		"endpoint": "get"
 	},
 	"item_shippingPrice": {
@@ -476,7 +476,7 @@
 		"property": "shippingPrice",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "ShippingPrice",
+		"uiName": "Item Shipping Price",
 		"endpoint": "get"
 	},
 	"item_rewardValue": {
@@ -484,7 +484,7 @@
 		"property": "rewardValue",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "RewardValue",
+		"uiName": "Item Reward Value",
 		"endpoint": "get"
 	},
 	"giftRegistryData": {
@@ -492,7 +492,7 @@
 		"property": "giftRegistryData",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "GiftRegistryData",
+		"uiName": "Gift Registry Data",
 		"endpoint": "get"
 	},
 	"callCenterOperatorData": {
@@ -500,7 +500,7 @@
 		"property": "callCenterOperatorData",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "CallCenterOperatorData",
+		"uiName": "Call Center Operator Data",
 		"endpoint": "get"
 	},
 	"followUpEmail": {
@@ -508,7 +508,7 @@
 		"property": "followUpEmail",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "FollowUpEmail",
+		"uiName": "Follow Up Email",
 		"endpoint": "get"
 	},
 	"lastMessage": {
@@ -516,7 +516,7 @@
 		"property": "lastMessage",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "LastMessage",
+		"uiName": "Last Message",
 		"endpoint": "get"
 	},
 	"hostname": {
@@ -532,7 +532,7 @@
 		"property": "changesAttachment",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "ChangesAttachment",
+		"uiName": "Changes Attachment",
 		"endpoint": "get"
 	},
 	"openTextField": {
@@ -540,7 +540,7 @@
 		"property": "openTextField",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "OpenTextField",
+		"uiName": "Open Text Field",
 		"endpoint": "get"
 	},
 	"roundingError": {
@@ -548,7 +548,7 @@
 		"property": "roundingError",
 		"type": "METRIC",
 		"dataType": "integer",
-		"uiName": "RoundingError",
+		"uiName": "Rounding Error",
 		"endpoint": "get"
 	},
 	"orderFormId": {
@@ -556,7 +556,7 @@
 		"property": "orderFormId",
 		"type": "DIMENSION",
 		"dataType": "string",
-		"uiName": "OrderFormId",
+		"uiName": "Order Form Id",
 		"endpoint": "get"
 	},
 	"commercialConditionData": {
@@ -564,7 +564,7 @@
 		"property": "commercialConditionData",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "CommercialConditionData",
+		"uiName": "Commercial Condition Data",
 		"endpoint": "get"
 	},
 	"isCompleted": {
@@ -572,7 +572,7 @@
 		"property": "isCompleted",
 		"type": "DIMENSION",
 		"dataType": "boolean",
-		"uiName": "IsCompleted",
+		"uiName": "Is Completed",
 		"endpoint": "get"
 	},
 	"customData": {
@@ -580,7 +580,7 @@
 		"property": "customData",
 		"type": "DIMENSION",
 		"dataType": "object",
-		"uiName": "CustomData",
+		"uiName": "Custom Data",
 		"endpoint": "get"
 	}
 }
