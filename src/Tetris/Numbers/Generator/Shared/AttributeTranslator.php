@@ -55,7 +55,6 @@ class AttributeTranslator
                 }
 
                 if ($original === $property) {
-                    echo "[$prefix] $original === $property :: $replacement\n";
                     return $replacement;
                 }
             }

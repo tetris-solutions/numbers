@@ -6,3 +6,5 @@ composer.lock
 vendor
 node_modules
 /analytics-google-client.json
+/config/
+/src/Tetris/Numbers/Generated/

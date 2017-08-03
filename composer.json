@@ -2,6 +2,9 @@
   "name": "tetris/numbers",
   "description": "Gateway to external metrics",
   "license": "MIT",
+  "scripts": {
+    "post-install-cmd": "bin/gen-locales.php && bin/update.php"
+  },
   "authors": [
     {
       "name": "Christian Amaral",
