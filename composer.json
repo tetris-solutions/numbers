@@ -3,7 +3,7 @@
   "description": "Gateway to external metrics",
   "license": "MIT",
   "scripts": {
-    "post-install-cmd": "bin/gen-locales.php && bin/update.php"
+    "post-update-cmd": "bin/gen-locales.php && bin/update.php"
   },
   "authors": [
     {
