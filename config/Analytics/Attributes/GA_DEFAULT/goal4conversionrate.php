@@ -5,6 +5,8 @@ use Tetris\Numbers\Generated\Attribute\Attribute_RawParser_Parsable;
 
 return new class extends Attribute_RawParser_Parsable {
 
+	public $group = 'METRIC';
+
 	public $id = 'goal4conversionrate';
 
 	public $is_dimension = false;

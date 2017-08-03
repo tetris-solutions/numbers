@@ -18,10 +18,18 @@ class MetricFactory extends FieldFactory
         return $extension->extend($config);
     }
 
-    function create(string $id, string $property, string $type, string $entity, string $report): TransientMetric
+    function create(
+        string $id,
+        string $property,
+        string $type,
+        string $entity,
+        string $report,
+        $group = null
+    ): TransientMetric
     {
         $source = new TransientMetric();
 
+        $source->group = $group;
         $source->id = $id;
         $source->platform = $this->platform;
         $source->path = "{$source->platform}/Metrics/$entity";

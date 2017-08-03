@@ -1,0 +1,27 @@
+<?php
+namespace Tetris\Numbers\Config;
+
+use Tetris\Numbers\Generated\Metric\Metric_IntegerParser_TrivialSum_Parsable_Summable;
+
+return new class extends Metric_IntegerParser_TrivialSum_Parsable_Summable {
+
+	public $entity = 'Order';
+
+	public $fields = [
+	    "item_unitMultiplier"
+	];
+
+	public $group = 'get';
+
+	public $id = 'item_unitmultiplier';
+
+	public $metric = 'item_unitmultiplier';
+
+	public $platform = 'vtex';
+
+	public $property = 'item_unitMultiplier';
+
+	public $report = 'VTEX_ORDER';
+
+	public $type = 'integer';
+};

@@ -87,6 +87,19 @@ abstract class ResultParser
 
     private static function isDebugMode()
     {
+        $envFlag = getenv('INCLUDE_SOURCE');
+
+        if ($envFlag) {
+            $flag = strtolower($envFlag);
+
+            switch ($flag) {
+                case 'true':
+                    return true;
+                case 'false':
+                    return false;
+            }
+        }
+
         if (!isset($GLOBALS['app'])) {
             return false;
         }

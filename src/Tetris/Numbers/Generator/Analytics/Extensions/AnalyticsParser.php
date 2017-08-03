@@ -2,7 +2,7 @@
 
 namespace Tetris\Numbers\Generator\Analytics\Extensions;
 
-use Tetris\Numbers\Base\Parser\AnalyticsDateParser;
+use Tetris\Numbers\Base\Parser\DateParser;
 use Tetris\Numbers\Base\Parser\AnalyticsMonthOfYearParser;
 use Tetris\Numbers\Base\Parser\AnalyticsWeekParser;
 use Tetris\Numbers\Base\Parser\AnalyticsYearMonthParser;
@@ -13,7 +13,7 @@ class AnalyticsParser extends DefaultParser
     private $dateParts = [];
 
     const dateParsers = [
-        'date' => AnalyticsDateParser::class,
+        'date' => DateParser::class,
         'yearmonth' => AnalyticsYearMonthParser::class,
         'isoyearisoweek' => AnalyticsWeekParser::class,
         'monthofyear' => AnalyticsMonthOfYearParser::class

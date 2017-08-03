@@ -52,22 +52,6 @@ function getFacebookConfig(): array
         'quarter' => $cloneDateStartAs('quarter')
     ];
 
-    function isFacebookCurrencyMetric(array $field): bool
-    {
-        $attributes = ['id', 'description'];
-        $keywords = ['cost', 'spend', 'amount'];
-
-        foreach ($attributes as $attribute) {
-            foreach ($keywords as $keyword) {
-                if (isset($field[$attribute]) && strpos($field[$attribute], $keyword) !== FALSE) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
     $attributeFactory = new FacebookAttributeFactory();
     $sourceFactory = new FacebookMetricFactory();
 

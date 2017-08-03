@@ -5,6 +5,8 @@ use Tetris\Numbers\Generated\Attribute\Attribute_AnalyticsWeekParser_Parsable;
 
 return new class extends Attribute_AnalyticsWeekParser_Parsable {
 
+	public $group = 'DIMENSION';
+
 	public $id = 'isoyearisoweek';
 
 	public $is_dimension = true;

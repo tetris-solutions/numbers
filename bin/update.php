@@ -15,6 +15,7 @@ require 'includes/shared.php';
 require 'includes/facebook.php';
 require 'includes/adwords.php';
 require 'includes/analytics.php';
+require 'includes/vtex.php';
 
 function platformAttribute(string $platform, string $report): TransientAttribute
 {
@@ -38,7 +39,7 @@ function platformAttribute(string $platform, string $report): TransientAttribute
 
 function updateConfig()
 {
-    foreach ([getFacebookConfig(), getAdwordsConfig(), getAnalyticsConfig()] as $config) {
+    foreach ([getFacebookConfig(), getAdwordsConfig(), getAnalyticsConfig(), getVtexConfig()] as $config) {
         /**
          * @var TransientMetric|array $source
          */

@@ -28,7 +28,9 @@ class AttributeTranslator
     {
         $this->entity = $entity;
         $this->dictionary = $dictionary;
-        $this->prefix = $prefix ? $prefix : $entity;
+        $this->prefix = $prefix
+            ? is_array($prefix) ? $prefix : [$prefix]
+            : [$entity];
     }
 
     /**
@@ -42,17 +44,20 @@ class AttributeTranslator
             return null;
         }
 
-        foreach ($this->dictionary as $key => $value) {
-            if (is_numeric($key)) {
-                $original = $value;
-                $replacement = substr($original, strlen($this->prefix));
-            } else {
-                $original = $key;
-                $replacement = $value;
-            }
+        foreach ($this->prefix as $prefix) {
+            foreach ($this->dictionary as $key => $value) {
+                if (is_numeric($key) && substr($property, 0, strlen($prefix)) === $prefix) {
+                    $original = $value;
+                    $replacement = substr($original, strlen($prefix));
+                } else {
+                    $original = $key;
+                    $replacement = $value;
+                }
 
-            if ($original === $property) {
-                return $replacement;
+                if ($original === $property) {
+                    echo "[$prefix] $original === $property :: $replacement\n";
+                    return $replacement;
+                }
             }
         }
 

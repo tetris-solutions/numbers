@@ -21,6 +21,8 @@ trait Meta
                 return 'Facebook';
             case 'analytics':
                 return 'Analytics';
+            case 'vtex':
+                return 'Vtex';
             default:
                 throw new \Exception("Platform {$platform} not supported");
         }

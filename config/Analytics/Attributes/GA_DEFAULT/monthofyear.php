@@ -5,6 +5,8 @@ use Tetris\Numbers\Generated\Attribute\Attribute_AnalyticsMonthOfYearParser_Pars
 
 return new class extends Attribute_AnalyticsMonthOfYearParser_Parsable {
 
+	public $group = 'DIMENSION';
+
 	public $id = 'monthofyear';
 
 	public $is_dimension = true;

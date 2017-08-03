@@ -33,7 +33,7 @@ abstract class QueryBlueprint
     public $filters;
     /**
      * ad account
-     * @var string $adAccountId
+     * @var string|null $adAccountId
      */
     public $adAccountId;
     /**

@@ -8,6 +8,7 @@ use Tetris\Numbers\Report\ResultParser;
 use Tetris\Numbers\Resolver\AdWordsResolver;
 use Tetris\Numbers\Resolver\AnalyticsResolver;
 use Tetris\Numbers\Resolver\FacebookResolver;
+use Tetris\Numbers\Resolver\VtexResolver;
 use Throwable;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -25,7 +26,8 @@ $app->post('/',
         $classes = [
             'adwords' => AdWordsResolver::class,
             'facebook' => FacebookResolver::class,
-            'analytics' => AnalyticsResolver::class
+            'analytics' => AnalyticsResolver::class,
+            'vtex' => VtexResolver::class
         ];
         $body = $request->getParsedBody();
 
