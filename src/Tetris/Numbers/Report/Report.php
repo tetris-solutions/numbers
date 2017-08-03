@@ -10,6 +10,20 @@ use Tetris\Numbers\Utils\ObjectUtils;
 
 class Report
 {
+    const adWordsAnalytics = [
+        'ga:impressions' => 'impressions',
+        'ga:adClicks' => 'adclicks',
+        'ga:ROAS' => 'roas',
+        'ga:CPC' => 'cpc',
+        'ga:CTR' => 'ctr',
+        'ga:CPM' => 'cpm',
+        'ga:adCost' => 'adcost'
+    ];
+
+    const fbAnalytics = [
+//        'ga:CPM' => 'cpm'
+    ];
+
     public $dimensions = [];
     public $fields = [];
     public $filters = [];
@@ -93,6 +107,26 @@ class Report
 
         if ($isAuxiliary) {
             $this->auxiliary[$metricId] = $metricId;
+        }
+    }
+
+    private function unsetMetric(string $id, string $property)
+    {
+        unset($this->metrics[$id]);
+        unset($this->fields[$property]);
+    }
+
+    function untangleAdWords()
+    {
+        foreach (self::adWordsAnalytics as $property => $id) {
+            $this->unsetMetric($id, $property);
+        }
+    }
+
+    function untangleFacebook()
+    {
+        foreach (self::fbAnalytics as $property => $id) {
+            $this->unsetMetric($id, $property);
         }
     }
 }

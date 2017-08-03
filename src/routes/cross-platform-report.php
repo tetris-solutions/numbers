@@ -18,6 +18,7 @@ use Throwable;
 
 global $app;
 
+
 $app->post('/x',
     secured('get-cross-platform-report', function (Request $request, Response $response, array $params) {
         /**
@@ -33,10 +34,10 @@ $app->post('/x',
         ];
         $body = $request->getParsedBody();
 
-        $group = new CrossPlatformReport();
+        $crossPlatformReport = new CrossPlatformReport();
 
         foreach ($body['accounts'] as $acc) {
-            $group->addAccount($locale, $acc, $body);
+            $crossPlatformReport->addAccount($locale, $acc, $body);
         }
 
         $aggregateMode = (
@@ -55,7 +56,7 @@ $app->post('/x',
         /**
          * @var XQuery $xQuery
          */
-        foreach ($group->queries as $xQuery) {
+        foreach ($crossPlatformReport->queries as $xQuery) {
             try {
                 $query = $xQuery->toRegularQuery();
             } catch (Throwable $e) {
@@ -68,6 +69,16 @@ $app->post('/x',
 
             $account = $tkm->getAccount($query->tetrisAccountId);
             $resolverClass = $classes[$query->platform];
+
+            if ($query->platform === 'analytics') {
+                if ($crossPlatformReport->containsPlatform('facebook')) {
+                    $query->report->untangleFacebook();
+                }
+
+                if ($crossPlatformReport->containsPlatform('adwords')) {
+                    $query->report->untangleAdWords();
+                }
+            }
 
             /**
              * @var Resolver $resolver
@@ -82,19 +93,19 @@ $app->post('/x',
             }
 
             foreach ($partial as $index => $row) {
-                $rows[] = $group->obfuscate($xQuery, ResultParser::parse($row, $query));
+                $rows[] = $crossPlatformReport->obfuscate($xQuery, ResultParser::parse($row, $query));
             }
         }
 
         if ($aggregateMode) {
             $rows = ResultParser::aggregate(
                 $rows,
-                $group->getDimensions(),
-                $group->getMetrics()
+                $crossPlatformReport->getDimensions(),
+                $crossPlatformReport->getMetrics()
             );
         }
 
-        $filtered = ResultParser::filter($rows, $group->filters());
+        $filtered = ResultParser::filter($rows, $crossPlatformReport->filters());
 
         $clean = function ($o) use ($debugMode, $body) {
             $row = [];

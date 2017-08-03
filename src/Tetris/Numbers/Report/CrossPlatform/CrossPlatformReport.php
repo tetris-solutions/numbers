@@ -140,4 +140,18 @@ class CrossPlatformReport
 
         return $filters;
     }
+
+    function containsPlatform(string $platform)
+    {
+        /**
+         * @var XQuery $xQuery
+         */
+        foreach ($this->queries as $xQuery) {
+            if ($xQuery->platform === $platform) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
