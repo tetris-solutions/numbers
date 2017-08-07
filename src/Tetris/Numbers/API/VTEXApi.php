@@ -68,21 +68,32 @@ class VTEXApi
     {
         $from = $start->format('Y-m-d') . 'T00:00:00.000Z';
         $to = $end->format('Y-m-d') . 'T23:59:59.000Z';
+        $page = 1;
 
-        $uri = "http://{$this->name}.{$this->environment}.com.br/api/oms/pvt/orders?" .
-            'per_page=100&' .
-            'f_creationDate=creationDate' . urlencode(":[{$from} TO {$to}]");
+        $result = [];
 
-        $response = HttpRequest::init()
-            ->method(Http::GET)
-            ->addHeader('Accept', 'application/json')
-            ->addHeader('Content-Type', 'application/json')
-            ->addHeader('X-VTEX-API-AppKey', $this->user)
-            ->addHeader('X-VTEX-API-AppToken', $this->password)
-            ->uri($uri)
-            ->send();
+        do {
+            $uri = "http://{$this->name}.{$this->environment}.com.br/api/oms/pvt/orders?" .
+                "page={$page}&" .
+                'per_page=100&' .
+                'f_creationDate=creationDate' . urlencode(":[{$from} TO {$to}]");
 
-        return $this->parseObjectBody($this->parseResponse($response))->list;
+            $response = HttpRequest::init()
+                ->method(Http::GET)
+                ->addHeader('Accept', 'application/json')
+                ->addHeader('Content-Type', 'application/json')
+                ->addHeader('X-VTEX-API-AppKey', $this->user)
+                ->addHeader('X-VTEX-API-AppToken', $this->password)
+                ->uri($uri)
+                ->send();
+
+            $auxObj = $this->parseObjectBody($this->parseResponse($response));
+            $result = array_merge($result, $auxObj->list);
+            
+            $page++;
+        } while ($page <= $auxObj->paging->pages);
+
+        return $result;
     }
 
     function getOrder(string $orderId): stdClass
