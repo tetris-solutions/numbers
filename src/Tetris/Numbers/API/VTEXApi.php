@@ -70,6 +70,7 @@ class VTEXApi
         $to = $end->format('Y-m-d') . 'T23:59:59.000Z';
 
         $uri = "http://{$this->name}.{$this->environment}.com.br/api/oms/pvt/orders?" .
+            'per_page=100&' .
             'f_creationDate=creationDate' . urlencode(":[{$from} TO {$to}]");
 
         $response = HttpRequest::init()
