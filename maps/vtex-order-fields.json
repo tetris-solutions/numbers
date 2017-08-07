@@ -241,7 +241,7 @@
     "id": "lastChange",
     "property": "lastChange",
     "endpoint": "get",
-    "type": "string",
+    "type": "date",
     "description": "Last Change"
   },
   "orderGroup": {
