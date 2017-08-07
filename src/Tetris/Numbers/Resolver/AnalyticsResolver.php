@@ -44,7 +44,7 @@ class AnalyticsResolver implements Resolver
         $metrics = [];
         $dimensions = [];
 
-        foreach ($query->metrics as $metric) {
+        foreach ($query->report->metrics as $metric) {
             foreach ($metric['fields'] as $field) {
                 $metrics[] = ['expression' => $field];
             }
