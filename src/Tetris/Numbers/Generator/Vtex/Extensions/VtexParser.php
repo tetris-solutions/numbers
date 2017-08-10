@@ -10,7 +10,8 @@ class VtexParser extends DefaultParser
     private $dateParts = [];
 
     const dateParsers = [
-        // 'date' => DateParser::class
+        'date' => DateParser::class,
+        'lastChange' => DateParser::class
     ];
 
     function __construct()
