@@ -45,7 +45,7 @@ class VtexAttributeFactory extends AttributeFactory
                 'marketingData.utmPartner',
                 'marketingData.utmMedium',
                 'marketingData.coupon',
-                'marketingData.utmiCampaign',
+                'marketingData.utmCampaign',
                 'marketingData.utmipage',
                 'marketingData.utmiPart',
 
