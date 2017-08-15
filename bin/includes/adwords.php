@@ -30,6 +30,7 @@ function extendFields(string $entity, $fields): array
 
     if (isset($fields['ConversionValue']) && isset($fields['Cost'])) {
         $fields['Roas'] = $fields['Cost'];
+        $fields['Roas']['Percentage'] = true;
         $fields['Roas']['Filterable'] = false;
     }
 
