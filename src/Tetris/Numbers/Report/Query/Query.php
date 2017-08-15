@@ -53,8 +53,8 @@ class Query extends QueryBlueprint
         $this->until = new DateTime($query['to']);
 
         $this->metrics = array_map([$this, 'mountMetric'], $query['metrics']);
-        $this->dimensions = $query['dimensions'];
-        $this->filters = $query['filters'];
+        $this->dimensions = $query['dimensions'] ?? [];
+        $this->filters = $query['filters'] ?? [];
     }
 
     private static function validateQuery(array $query)
@@ -106,8 +106,10 @@ class Query extends QueryBlueprint
          * @var Metric $metric
          */
         foreach ($this->metrics as $metric) {
-            foreach ($metric->inferred_from as $subMetric) {
-                $this->report->addMetric($this->mountMetric($subMetric), true);
+            if (isset($metric->inferred_from)) {
+                foreach ($metric->inferred_from as $subMetric) {
+                    $this->report->addMetric($this->mountMetric($subMetric), true);
+                }
             }
         }
 
