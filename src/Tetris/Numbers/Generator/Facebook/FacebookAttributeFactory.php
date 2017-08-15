@@ -44,6 +44,7 @@ class FacebookAttributeFactory extends AttributeFactory
         $notId = substr($attribute->property, -3) !== '_id';
 
         return $notId && (
+                $attribute->type === 'decimal' ||
                 $attribute->type === 'float' ||
                 $attribute->type === 'percentage' ||
                 $attribute->type === 'numeric string'
