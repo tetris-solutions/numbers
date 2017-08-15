@@ -102,13 +102,11 @@ class VtexResolver implements Resolver
                 }, $items)
             );
         }
-  
-        $orders = $this->api->getOrders($orderIds);
 
         if (!$requiresList || $this->requiresGet($query)) {
-            foreach ($orders as $order) {
+            foreach ($this->api->getOrders($orderIds) as $order) {
                 $extendedItems = $this->splitOverItems($order);
-                
+
                 foreach ($extendedItems as $key => $extendedItem) {
                     $items[$key] = (object)array_merge(
                         (array)$extendedItem,

@@ -43,7 +43,7 @@ class VTEXApi
     private function parseObjectBody(GuzzleResponse $response): \stdClass
     {
         $body = json_decode($response->getBody()->getContents());
-        
+
         if (empty($body) || $body instanceof \stdClass === FALSE) {
             throw new ApiException($response);
         }
@@ -71,8 +71,8 @@ class VTEXApi
 
         $query = [
             'f_creationDate' => "creationDate:[{$from} TO {$to}]",
-            'per_page'=>'100',
-            'page'=>1
+            'per_page' => '100',
+            'page' => 1
         ];
 
         $firstResponse = $this->client->request('GET', '', ['query' => $query]);
@@ -108,7 +108,7 @@ class VTEXApi
 
     function getOrder(string $orderId): stdClass
     {
-        $response = $this->client->request('GET', 'orders/'.$orderId);
+        $response = $this->client->request('GET', 'orders/' . $orderId);
         return $this->parseObjectBody($this->parseResponse($response));
     }
 
@@ -117,7 +117,7 @@ class VTEXApi
         $result = [];
         $requests = function () use (&$orderIds) {
             foreach ($orderIds as $orderId) {
-                yield new GuzzleRequest('GET', 'orders/'.$orderId);
+                yield new GuzzleRequest('GET', 'orders/' . $orderId);
             }
         };
         $pool = new GuzzlePool($this->client, $requests(), [
@@ -130,12 +130,12 @@ class VTEXApi
                 throw new ApiException($reason);
             }
         ]);
-        
+
         // Initiate the transfers and create a promise
         $promise = $pool->promise();
         // Force the pool of requests to complete.
         $promise->wait();
- 
+
         return $result;
     }
 }
