@@ -122,7 +122,7 @@ class VTEXApi
             }
         };
         $pool = new GuzzlePool($this->client, $requests(), [
-            'concurrency' => 200,
+            'concurrency' => 50,
             'fulfilled' => function ($response, $index) use (&$orderIds, &$result) {
                 // this is delivered each successful response
                 array_push($result, $this->parseObjectBody($this->parseResponse($response)));
