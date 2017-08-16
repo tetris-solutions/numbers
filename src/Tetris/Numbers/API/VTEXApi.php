@@ -71,6 +71,7 @@ class VTEXApi
 
         $query = [
             'f_creationDate' => "creationDate:[{$from} TO {$to}]",
+            'utc' => '-0300',
             'per_page' => '100',
             'page' => 1
         ];
@@ -84,7 +85,7 @@ class VTEXApi
         $requests = function () use (&$query, &$totalPages) {
             do {
                 $query['page']++;
-                yield new GuzzleRequest('GET', "?f_creationDate={$query['f_creationDate']}&per_page={$query['per_page']}&page={$query['page']}");
+                yield new GuzzleRequest('GET', "?f_creationDate={$query['f_creationDate']}&per_page={$query['per_page']}&page={$query['page']}&utc={$query['utc']}");
             } while ($query['page'] < $totalPages);
         };
         $pool = new GuzzlePool($this->client, $requests(), [
