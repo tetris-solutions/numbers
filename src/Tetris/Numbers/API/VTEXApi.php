@@ -89,7 +89,7 @@ class VTEXApi
             } while ($query['page'] < $totalPages);
         };
         $pool = new GuzzlePool($this->client, $requests(), [
-            'concurrency' => $totalPages,
+            'concurrency' => 50,
             'fulfilled' => function ($response, $index) use (&$result) {
                 // this is delivered each successful response
                 $result = array_merge($result, $this->parseObjectBody($this->parseResponse($response))->list);
