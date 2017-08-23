@@ -33,9 +33,14 @@ function secured(string $action, \Closure $routeHandler): callable
 
         try {
             $routeHandler = $routeHandler->bindTo($this);
+            /**
+             * @var Response $result
+             */
             $result = $routeHandler($request, $response, $params);
 
             $logger->debug("request {$action}", ArrayUtils::flatten([
+                'response_status' => $result->getStatusCode(),
+                'response_size' => $result->getBody()->getSize(),
                 'category' => 'action',
                 'action' => $action,
                 'request' => $req
