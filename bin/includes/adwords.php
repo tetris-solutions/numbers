@@ -105,7 +105,7 @@ function getAdwordsConfig(): array
                 $adWordsField['Type'],
                 $adWordsField['Filterable'],
                 $adWordsField['Percentage'],
-                $adWordsField['SpecialValue'],
+                $adWordsField['SpecialValue'] || $originalProperty === 'AverageQualityScore',
                 null,
                 $adWordsField['Behavior'],
                 $adWordsField['PredicateValues'] ?? null,

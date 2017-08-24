@@ -114,7 +114,6 @@ class AdWordsAttributeFactory extends AttributeFactory
             'averagecpv' => 'currency',
             'averagecpe' => 'currency',
             'averagecpm' => 'currency',
-            'averagequalityscore' => 'integer',
             'qualityscore' => 'string'
         ];
 
