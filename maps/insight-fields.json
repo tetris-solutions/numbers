@@ -27,7 +27,7 @@
   "ad_name": {
     "id": "ad_name",
     "type": "string",
-    "description": "The unique ID of the ad you're viewing in reporting."
+    "description": "The name of the ad you're viewing in reporting."
   },
   "adset_id": {
     "id": "adset_id",
@@ -41,7 +41,7 @@
   },
   "app_store_clicks": {
     "id": "app_store_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of clicks on links to an app store in your ads."
   },
   "buying_type": {
@@ -51,7 +51,7 @@
   },
   "call_to_action_clicks": {
     "id": "call_to_action_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of times people clicked the call-to-action button on your ad."
   },
   "campaign_id": {
@@ -66,12 +66,12 @@
   },
   "canvas_avg_view_percent": {
     "id": "canvas_avg_view_percent",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average percentage of the Facebook Canvas that people saw. Canvas is a screen that opens on mobile after a person clicks the Canvas link in your ad. It may include a series of interactive or multimedia components, including video, images, product catalogs and more."
   },
   "canvas_avg_view_time": {
     "id": "canvas_avg_view_time",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average total time, in seconds, that people spent viewing a Facebook Canvas. Canvas is a screen that opens on mobile after a person clicks the Canvas link in your ad. It may include a series of interactive or multimedia components, including video, images, product catalogs and more."
   },
   "canvas_component_avg_pct_view": {
@@ -81,7 +81,7 @@
   },
   "clicks": {
     "id": "clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of clicks on your ads."
   },
   "cost_per_10_sec_video_view": {
@@ -96,22 +96,27 @@
   },
   "cost_per_estimated_ad_recallers": {
     "id": "cost_per_estimated_ad_recallers",
-    "type": "numeric string",
-    "description": "The average cost for each estimated ad recall lift."
+    "type": "float",
+    "description": "The average cost for each estimated ad recall lift. This metric is only available for assets in the Brand Awareness Objective."
   },
   "cost_per_inline_link_click": {
     "id": "cost_per_inline_link_click",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average cost of each inline link click."
   },
   "cost_per_inline_post_engagement": {
     "id": "cost_per_inline_post_engagement",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average cost of each inline post engagement."
+  },
+  "cost_per_outbound_click": {
+    "id": "cost_per_outbound_click",
+    "type": "list<AdsActionStats>",
+    "description": "The average cost for each outbound click."
   },
   "cost_per_total_action": {
     "id": "cost_per_total_action",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average cost of a relevant action."
   },
   "cost_per_unique_action_type": {
@@ -121,32 +126,37 @@
   },
   "cost_per_unique_click": {
     "id": "cost_per_unique_click",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average cost for each unique click (all)."
   },
   "cost_per_unique_inline_link_click": {
     "id": "cost_per_unique_inline_link_click",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average cost of each unique inline link click."
+  },
+  "cost_per_unique_outbound_click": {
+    "id": "cost_per_unique_outbound_click",
+    "type": "list<AdsActionStats>",
+    "description": "The average cost for each unique outbound click."
   },
   "cpc": {
     "id": "cpc",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average cost for each click (all)."
   },
   "cpm": {
     "id": "cpm",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average cost for 1,000 impressions."
   },
   "cpp": {
     "id": "cpp",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average cost to reach 1,000 people."
   },
   "ctr": {
     "id": "ctr",
-    "type": "numeric string",
+    "type": "float",
     "description": "The percentage of times people saw your ad and performed a click (all)."
   },
   "date_start": {
@@ -161,62 +171,82 @@
   },
   "deeplink_clicks": {
     "id": "deeplink_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of clicks on links to specific parts of an app."
   },
   "estimated_ad_recall_rate": {
     "id": "estimated_ad_recall_rate",
-    "type": "numeric string",
-    "description": "The rate at which an estimated number of additional people, when asked, would remember seeing your ads within 2 days."
+    "type": "float",
+    "description": "The rate at which an estimated number of additional people, when asked, would remember seeing your ads within 2 days. This metric is only available for assets in the Brand Awareness Objective."
   },
   "estimated_ad_recallers": {
     "id": "estimated_ad_recallers",
-    "type": "numeric string",
-    "description": "An estimate of the number of additional people who may remember seeing your ads, if asked, within 2 days. This metric shows results for ads using brand awareness, video views and Page post engagement objectives."
+    "type": "unsigned int32",
+    "description": "An estimate of the number of additional people who may remember seeing your ads, if asked, within 2 days. This metric is only available for assets in the Brand Awareness Objective."
   },
   "frequency": {
     "id": "frequency",
-    "type": "numeric string",
+    "type": "float",
     "description": "The average number of times each person saw your ad."
   },
   "impressions": {
     "id": "impressions",
-    "type": "numeric string",
-    "description": "The number of times your ads were viewed."
-  },
-  "impressions_dummy": {
-    "id": "impressions_dummy",
     "type": "string",
-    "description": "Dummy"
+    "description": "The number of times your ads were viewed."
   },
   "inline_link_click_ctr": {
     "id": "inline_link_click_ctr",
-    "type": "numeric string",
+    "type": "float",
     "description": "The percentage of time people saw your ads and performed an inline link click."
   },
   "inline_link_clicks": {
     "id": "inline_link_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of clicks on links to select destinations or experiences, on or off Facebook-owned properties. Inline link clicks use a fixed 1-day-click attribution window."
   },
   "inline_post_engagement": {
     "id": "inline_post_engagement",
-    "type": "numeric string",
-    "description": "The total number of actions that people take involving your ads (or all posts, in some cases). Inline post engagements use a fixed 1-day-click attribution window."
+    "type": "unsigned int32",
+    "description": "The total number of actions that people take involving your ads. Inline post engagements use a fixed 1-day-click attribution window."
+  },
+  "mobile_app_purchase_roas": {
+    "id": "mobile_app_purchase_roas",
+    "type": "list<AdsActionStats>",
+    "description": "The total return on ad spend (ROAS) from mobile app purchases. This is based on the value that you assigned when you set up the app event."
+  },
+  "newsfeed_avg_position": {
+    "id": "newsfeed_avg_position",
+    "type": "float",
+    "description": "The average position where your ad was inserted into people's news feeds on mobile and desktop. Position 1 is the one at the top of the feed."
+  },
+  "newsfeed_clicks": {
+    "id": "newsfeed_clicks",
+    "type": "unsigned int32",
+    "description": "The total number of clicks your ad received in people's news feed, on mobile and desktop."
+  },
+  "newsfeed_impressions": {
+    "id": "newsfeed_impressions",
+    "type": "unsigned int32",
+    "description": "The total number of times your ad was inserted into people's news feeds, on mobile and desktop."
   },
   "objective": {
     "id": "objective",
     "type": "string",
     "description": "The objective you selected for your campaign. Your objective reflects the goal you want to achieve with your advertising."
   },
-  "place_page_name": {
-    "id": "place_page_name",
-    "type": "string",
-    "description": "The name of the place page involved in impression or click. Has to be used together with Business Locations breakdown."
+  "outbound_clicks": {
+    "id": "outbound_clicks",
+    "type": "list<AdsActionStats>",
+    "description": "The number of clicks on links that take people off Facebook-owned properties."
+  },
+  "outbound_clicks_ctr": {
+    "id": "outbound_clicks_ctr",
+    "type": "list<AdsActionStats>",
+    "description": "The percentage of times people saw your ad and performed an outbound click."
   },
   "reach": {
     "id": "reach",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of people who saw your ads at least once. Reach is different from impressions, which may include multiple views of your ads by the same people."
   },
   "relevance_score": {
@@ -226,42 +256,42 @@
   },
   "social_clicks": {
     "id": "social_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of clicks (all) when your ad was displayed with social information, which shows other Facebook friends who engaged with your Facebook Page or ad."
   },
   "social_impressions": {
     "id": "social_impressions",
-    "type": "numeric string",
+    "type": "impressions",
     "description": "The number of times your ads were viewed when displayed with social information, which shows Facebook friends who engaged with your Facebook Page or ad."
   },
   "social_reach": {
     "id": "social_reach",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of people who saw your ad when displayed with social information, which shows other Facebook friends who engaged with your Facebook Page or ad."
   },
   "social_spend": {
     "id": "social_spend",
-    "type": "numeric string",
+    "type": "float",
     "description": "The total amount you've spent so far for your ads showed with social information. (ex: Jane Doe likes this)."
   },
   "spend": {
     "id": "spend",
-    "type": "numeric string",
+    "type": "float",
     "description": "The estimated total amount of money you've spent on your campaign, ad set or ad during its schedule."
   },
   "total_action_value": {
     "id": "total_action_value",
-    "type": "numeric string",
+    "type": "float",
     "description": "The total value of all conversions attributed to your ads."
   },
   "total_actions": {
     "id": "total_actions",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The total number of actions people took that are attributed to your ads. Actions may include engagement, clicks or conversions."
   },
   "total_unique_actions": {
     "id": "total_unique_actions",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of people who took an action that was attributed to your ads."
   },
   "unique_actions": {
@@ -271,33 +301,53 @@
   },
   "unique_clicks": {
     "id": "unique_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of people who performed a click (all)."
   },
   "unique_ctr": {
     "id": "unique_ctr",
-    "type": "numeric string",
+    "type": "float",
     "description": "The percentage of people who saw your ad and performed a unique click (all)."
+  },
+  "unique_impressions": {
+    "id": "unique_impressions",
+    "type": "unsigned int32",
+    "description": "The number of people who saw your ads at least once."
   },
   "unique_inline_link_click_ctr": {
     "id": "unique_inline_link_click_ctr",
-    "type": "numeric string",
+    "type": "float",
     "description": "The percentage of times people saw your ad and performed a link click. Inline click-through rate uses a fixed 1-day-click attribution window."
   },
   "unique_inline_link_clicks": {
     "id": "unique_inline_link_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of people who performed an inline link click."
   },
   "unique_link_clicks_ctr": {
     "id": "unique_link_clicks_ctr",
-    "type": "numeric string",
+    "type": "float",
     "description": "The percentage of people who saw your ad and performed a link click."
+  },
+  "unique_outbound_clicks": {
+    "id": "unique_outbound_clicks",
+    "type": "list<AdsActionStats>",
+    "description": "The number of people who performed an outbound click."
+  },
+  "unique_outbound_clicks_ctr": {
+    "id": "unique_outbound_clicks_ctr",
+    "type": "list<AdsActionStats>",
+    "description": "The percentage of people who saw your ad and performed an outbound click."
   },
   "unique_social_clicks": {
     "id": "unique_social_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of people who performed a click (all) on your ad when it was displayed with social information, which shows other Facebook friends who engaged with your Facebook Page or ad."
+  },
+  "unique_social_impressions": {
+    "id": "unique_social_impressions",
+    "type": "unsigned int32",
+    "description": "The number of people the ad was served to with social context."
   },
   "video_10_sec_watched_actions": {
     "id": "video_10_sec_watched_actions",
@@ -323,6 +373,11 @@
     "id": "video_avg_time_watched_actions",
     "type": "list<AdsActionStats>",
     "description": "The average time a video was watched."
+  },
+  "video_complete_watched_actions": {
+    "id": "video_complete_watched_actions",
+    "type": "list<AdsActionStats>",
+    "description": "This shows the number of total views of at least 30 seconds or to the end of your video, whichever occurs first."
   },
   "video_p100_watched_actions": {
     "id": "video_p100_watched_actions",
@@ -351,12 +406,17 @@
   },
   "website_clicks": {
     "id": "website_clicks",
-    "type": "numeric string",
+    "type": "unsigned int32",
     "description": "The number of clicks on links to your website in your ads."
   },
   "website_ctr": {
     "id": "website_ctr",
     "type": "list<AdsActionStats>",
     "description": "The percentage of times people saw your ad and performed a link click."
+  },
+  "website_purchase_roas": {
+    "id": "website_purchase_roas",
+    "type": "list<AdsActionStats>",
+    "description": "The total return on ad spend (ROAS) from website purchases. This is based on the value of all conversions recorded by the Facebook pixel on your website and attributed to your ads."
   }
 }

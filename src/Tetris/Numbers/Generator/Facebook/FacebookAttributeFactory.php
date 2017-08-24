@@ -44,6 +44,9 @@ class FacebookAttributeFactory extends AttributeFactory
         $notId = substr($attribute->property, -3) !== '_id';
 
         return $notId && (
+                $attribute->id === 'impressions' ||
+                $attribute->type === 'impressions' ||
+                $attribute->type === 'unsigned int32' ||
                 $attribute->type === 'decimal' ||
                 $attribute->type === 'float' ||
                 $attribute->type === 'percentage' ||
@@ -94,14 +97,23 @@ class FacebookAttributeFactory extends AttributeFactory
     {
         $type = $this->overrideType($attribute, $originalType);
 
+        switch ($type) {
+            case 'unsigned int32':
+                return 'integer';
+        }
+
         if ($attribute->is_metric) {
+            // type has to be either [currency, percentage, decimal, integer]
+
             if ($this->isCurrency($attribute)) {
                 return 'currency';
             }
 
-            return $type === 'percentage'
-                ? 'percentage'
-                : 'decimal';
+            if ($type === 'percentage') {
+                return 'percentage';
+            }
+
+            return 'decimal';
         }
 
         return $type;

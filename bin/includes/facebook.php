@@ -21,6 +21,7 @@ function getFacebookConfig(): array
         'sources' => []
     ];
 
+
     $fields['roas'] = $fields['spend'];
 
     $fields['cpa'] = $fields['cpc'];
@@ -31,7 +32,9 @@ function getFacebookConfig(): array
     $validTypes = [
         'numeric string',
         'string',
-        'float'
+        'unsigned int32',
+        'float',
+        'impressions'
     ];
 
     $cloneDateStartAs = function (string $part) use (&$fields) {
