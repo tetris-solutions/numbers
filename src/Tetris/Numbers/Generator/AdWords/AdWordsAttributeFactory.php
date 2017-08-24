@@ -114,7 +114,8 @@ class AdWordsAttributeFactory extends AttributeFactory
             'averagecpv' => 'currency',
             'averagecpe' => 'currency',
             'averagecpm' => 'currency',
-            'averagequalityscore' => 'decimal'
+            'averagequalityscore' => 'integer',
+            'qualityscore' => 'string'
         ];
 
         $default = strtolower($originalType);
