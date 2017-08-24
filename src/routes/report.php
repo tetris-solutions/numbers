@@ -33,7 +33,6 @@ $app->post('/',
 
         $shouldAggregate = (
             !empty($body['filters']['id']) &&
-            count($body['filters']['id']) > 1 &&
             !in_array('id', $body['dimensions'])
         );
 

@@ -42,7 +42,6 @@ $app->post('/x',
 
         $aggregateMode = (
             !empty($body['filters']['id']) &&
-            count($body['filters']['id']) > 1 &&
             !in_array('id', $body['dimensions'])
         );
 
