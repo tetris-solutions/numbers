@@ -7,6 +7,7 @@ use Tetris\Adwords\Exceptions\NullReportException;
 use Tetris\Adwords\Request\Read\ReadInterface;
 use Tetris\Numbers\Base\FilterMetaData;
 use Tetris\Numbers\Report\Query\Query;
+use Tetris\Numbers\Report\Report;
 
 class AdWordsResolver extends Client implements Resolver
 {
@@ -85,20 +86,16 @@ class AdWordsResolver extends Client implements Resolver
         return $fields;
     }
 
-    function resolve(Query $query, bool $aggregateMode): array
+    private function query(Query $query, bool $aggregateMode)
     {
-        $this->SetClientCustomerId($query->adAccountId);
-
-        $report = $query->report;
-
-        $select = $this->select($this->addRequired($report->name, $report->fields))
-            ->from($report->name)
+        $select = $this->select($this->addRequired($query->report->name, $query->report->fields))
+            ->from($query->report->name)
             ->during($query->since, $query->until);
 
         /**
          * @var FilterMetaData|array $filterConfig
          */
-        foreach ($report->filters as $attributeId => $filterConfig) {
+        foreach ($query->report->filters as $attributeId => $filterConfig) {
             $postParsingFilter = $filterConfig['is_metric'] && $aggregateMode;
 
             if (!$postParsingFilter) {
@@ -111,5 +108,36 @@ class AdWordsResolver extends Client implements Resolver
         } catch (NullReportException $e) {
             return [];
         }
+    }
+
+    function resolve(Query $query, bool $aggregateMode): array
+    {
+        $this->SetClientCustomerId($query->adAccountId);
+
+        /**
+         * @var FilterMetaData|null $idFilter
+         */
+        $idFilter = $query->report->filters['id'] ?? null;
+
+        $result = [];
+
+        $roll = function () use (&$result, &$query, $aggregateMode) {
+            foreach ($this->query($query, $aggregateMode) as $row) {
+                $result[] = $row;
+            }
+        };
+
+        if ($idFilter && $idFilter->values) {
+            $idGroups = array_chunk($idFilter->values, 5 * 1000);
+
+            foreach ($idGroups as $ids) {
+                $query->report->filters['id']->values = $ids;
+                $roll();
+            }
+        } else {
+            $roll();
+        }
+
+        return $result;
     }
 }
