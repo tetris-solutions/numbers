@@ -45,7 +45,7 @@ class VTEXApi
         $body = json_decode($response->getBody()->getContents());
 
         if (empty($body) || $body instanceof \stdClass === FALSE) {
-            throw new ApiException('Desculpe, mas os servidores Vtex estão instáveis. Tente novamente mais tarde.');
+            throw new ApiException($response);
         }
         return $body;
     }
@@ -58,7 +58,7 @@ class VTEXApi
     private function parseResponse(GuzzleResponse $response): GuzzleResponse
     {
         if ($response->getStatusCode() !== 200) {
-            throw new ApiException('Desculpe, mas os servidores Vtex estão instáveis. Tente novamente mais tarde.');
+            throw new ApiException($response);
         }
 
         return $response;
@@ -95,7 +95,7 @@ class VTEXApi
                 $result = array_merge($result, $this->parseObjectBody($this->parseResponse($response))->list);
             },
             'rejected' => function ($reason, $index) {
-                throw new ApiException('Desculpe, mas os servidores Vtex estão instáveis. Tente novamente mais tarde.');
+                throw new Exception('Desculpe, mas os servidores Vtex estão instáveis. Tente novamente mais tarde.');
             }
         ]);
 
@@ -128,7 +128,7 @@ class VTEXApi
                 array_push($result, $this->parseObjectBody($this->parseResponse($response)));
             },
             'rejected' => function ($reason, $index) {
-                throw new ApiException('Desculpe, mas os servidores Vtex estão instáveis. Tente novamente mais tarde.');
+                throw new Exception('Desculpe, mas os servidores Vtex estão instáveis. Tente novamente mais tarde.');
             }
         ]);
 
