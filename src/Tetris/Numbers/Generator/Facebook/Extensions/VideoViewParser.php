@@ -18,7 +18,6 @@ class VideoViewParser implements Extension
         'video_30_sec_watched_actions',
         'video_avg_percent_watched_actions',
         'video_avg_time_watched_actions',
-        'video_complete_watched_actions',
         'video_p100_watched_actions',
         'video_p25_watched_actions',
         'video_p50_watched_actions',
