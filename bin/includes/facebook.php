@@ -114,9 +114,7 @@ function getFacebookConfig(): array
                 $reportName,
                 $entity,
                 $videoMetricName,
-                strpos($videoMetricName, 'cost_') === 0
-                    ? 'currency'
-                    : 'decimal',
+                'decimal',
                 true
             );
 
