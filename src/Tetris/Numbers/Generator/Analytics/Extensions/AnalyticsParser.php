@@ -2,6 +2,7 @@
 
 namespace Tetris\Numbers\Generator\Analytics\Extensions;
 
+use Tetris\Numbers\Base\Parser\AnalyticsTimeInSecondsParser;
 use Tetris\Numbers\Base\Parser\DateParser;
 use Tetris\Numbers\Base\Parser\AnalyticsMonthOfYearParser;
 use Tetris\Numbers\Base\Parser\AnalyticsWeekParser;
@@ -16,7 +17,9 @@ class AnalyticsParser extends DefaultParser
         'date' => DateParser::class,
         'yearmonth' => AnalyticsYearMonthParser::class,
         'isoyearisoweek' => AnalyticsWeekParser::class,
-        'monthofyear' => AnalyticsMonthOfYearParser::class
+        'monthofyear' => AnalyticsMonthOfYearParser::class,
+        'timeonpage' => AnalyticsTimeInSecondsParser::class,
+        'avgtimeonpage' => AnalyticsTimeInSecondsParser::class
     ];
 
     function __construct()

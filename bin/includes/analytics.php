@@ -78,6 +78,7 @@ function getAnalyticsConfig(): array
         'ga:source',
         'ga:sourceMedium',
         'ga:timeOnPage',
+        'ga:avgTimeOnPage',
         'ga:totalEvents',
         'ga:totalValue',
         'ga:transactions',
