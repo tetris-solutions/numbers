@@ -92,7 +92,7 @@ function getFacebookConfig(): array
                 );
 
                 $output['sources'][] = $source;
-                $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ??  [
+                $output['metrics'][$attribute->id] = $output['metrics'][$attribute->id] ?? [
                         'id' => $attribute->id,
                         'type' => $attribute->type
                     ];
@@ -114,7 +114,9 @@ function getFacebookConfig(): array
                 $reportName,
                 $entity,
                 $videoMetricName,
-                'decimal',
+                strpos($videoMetricName, 'cost_') === 0
+                    ? 'currency'
+                    : 'decimal',
                 true
             );
 

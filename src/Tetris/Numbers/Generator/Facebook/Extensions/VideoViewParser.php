@@ -22,7 +22,8 @@ class VideoViewParser implements Extension
         'video_p25_watched_actions',
         'video_p50_watched_actions',
         'video_p75_watched_actions',
-        'video_p95_watched_actions'
+        'video_p95_watched_actions',
+        'cost_per_10_sec_video_view'
     ];
 
     function __construct()
