@@ -118,7 +118,7 @@ class AnalyticsResolver implements Resolver
             usleep(100);
         }
 
-        usleep(rand(100, 500));
+        usleep(rand(1, 500));
 
         $predis->jsonset(microtime(true));
 
