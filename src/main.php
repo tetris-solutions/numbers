@@ -11,6 +11,7 @@ use Tetris\Numbers\Report\Query\Query;
 use Tetris\Numbers\Utils\ArrayUtils;
 use Throwable;
 
+require 'predis.php';
 require 'constants.php';
 require_once 'logger.php';
 
