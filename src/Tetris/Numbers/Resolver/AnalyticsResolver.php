@@ -15,7 +15,7 @@ use stdClass;
 
 class AnalyticsResolver implements Resolver
 {
-    const WAIT_PERIOD = 500;
+    const WAIT_PERIOD = 100;
     private $tetrisAccount;
     private $client;
     private $analytics;
@@ -32,7 +32,7 @@ class AnalyticsResolver implements Resolver
         $this->reporting = new Google_Service_AnalyticsReporting($this->client);
     }
 
-    function dispatchRequest(Query $query, bool $aggregateMode): array
+    private function dispatchRequest(Query $query, bool $aggregateMode): array
     {
         $reportRequest = new Google_Service_AnalyticsReporting_ReportRequest();
         $reportRequest->setSamplingLevel('LARGE');
@@ -118,9 +118,9 @@ class AnalyticsResolver implements Resolver
             usleep(100);
         }
 
-        usleep(rand(1, 500));
+        usleep(rand(1, 50));
 
-        $predis->jsonset(microtime(true));
+        $predis->jsonset(('analytics.last.call', microtime(true));
 
         return $this->dispatchRequest($query, $aggregateMode);
     }
