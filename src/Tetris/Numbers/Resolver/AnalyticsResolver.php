@@ -111,17 +111,17 @@ class AnalyticsResolver implements Resolver
 
     function resolve(Query $query, bool $aggregateMode): array
     {
-        global $predis;
+#        global $predis;
+#
+#        $lastCall = $predis->jsonget(self::LOCK_NAME);
 
-        $lastCall = $predis->jsonget(self::LOCK_NAME);
+#        while (microtime(true) - $lastCall >= self::WAIT_PERIOD) {
+#            usleep(100);
+#        }
 
-        while (microtime(true) - $lastCall >= self::WAIT_PERIOD) {
-            usleep(100);
-        }
+#        usleep(rand(1, 50));
 
-        usleep(rand(1, 50));
-
-        $predis->jsonset(self::LOCK_NAME, microtime(true));
+#        $predis->jsonset(self::LOCK_NAME, microtime(true));
 
         return $this->dispatchRequest($query, $aggregateMode);
     }
