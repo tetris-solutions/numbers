@@ -2,6 +2,7 @@
 
 namespace Tetris\Numbers\API;
 
+use Exception;
 use Slim\Http\Uri;
 use Tetris\Exceptions\ApiException;
 use stdClass;
