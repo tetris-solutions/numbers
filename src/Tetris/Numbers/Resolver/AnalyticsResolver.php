@@ -15,6 +15,7 @@ use stdClass;
 
 class AnalyticsResolver implements Resolver
 {
+    const LOCK_NAME = 'analytics.last.call';
     const WAIT_PERIOD = 100;
     private $tetrisAccount;
     private $client;
@@ -112,7 +113,7 @@ class AnalyticsResolver implements Resolver
     {
         global $predis;
 
-        $lastCall = $predis->jsonget('analytics.last.call');
+        $lastCall = $predis->jsonget(self::LOCK_NAME);
 
         while (microtime(true) - $lastCall >= self::WAIT_PERIOD) {
             usleep(100);
@@ -120,7 +121,7 @@ class AnalyticsResolver implements Resolver
 
         usleep(rand(1, 50));
 
-        $predis->jsonset(('analytics.last.call', microtime(true));
+        $predis->jsonset(self::LOCK_NAME, microtime(true));
 
         return $this->dispatchRequest($query, $aggregateMode);
     }
