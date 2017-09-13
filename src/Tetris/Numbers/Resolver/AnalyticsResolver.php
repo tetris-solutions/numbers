@@ -114,7 +114,7 @@ class AnalyticsResolver implements Resolver
 
         $lastCall = $predis->jsonget('analytics.last.call');
 
-        while ($lastCall - microtime(true) >= self::WAIT_PERIOD) {
+        while (microtime(true) - $lastCall >= self::WAIT_PERIOD) {
             usleep(100);
         }
 
