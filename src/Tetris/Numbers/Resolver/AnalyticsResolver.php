@@ -118,6 +118,8 @@ class AnalyticsResolver implements Resolver
             usleep(100);
         }
 
+        usleep(rand(100, 500));
+
         $predis->jsonset(microtime(true));
 
         return $this->dispatchRequest($query, $aggregateMode);
