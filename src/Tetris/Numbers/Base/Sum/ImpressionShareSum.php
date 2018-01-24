@@ -18,7 +18,11 @@ trait ImpressionShareSum
         foreach ($rows as $row) {
             $totalImpressions += $row->{$impressionField};
 
-            $impressionShare = $row->{$impressionShareField};
+            if(is_object($row->{$impressionShareField})){
+                $impressionShare = $row->{$impressionShareField}->value;
+            }else{
+                $impressionShare = $row->{$impressionShareField};
+            }
 
             if (!is_numeric($impressionShare)) return null;
 

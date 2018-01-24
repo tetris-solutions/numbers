@@ -17,8 +17,18 @@ trait LostImpressionShareSum
         $totalLostImpressions = 0;
 
         foreach ($rows as $row) {
-            $impressionShare = $row->{$impressionShareField};
-            $lostShare = $row->{$lostImpressionShareField};
+
+            if(is_object($row->{$impressionShareField})){
+                $impressionShare = $row->{$impressionShareField}->value;
+            }else{
+                $impressionShare = $row->{$impressionShareField};
+            }
+
+            if(is_object($row->{$lostImpressionShareField})){
+                $lostShare = $row->{$lostImpressionShareField}->value;
+            }else{
+                $lostShare = $row->{$lostImpressionShareField};
+            }
 
             if (!is_numeric($impressionShare) || !is_numeric($lostShare)) {
                 return null;
