@@ -112,7 +112,7 @@ class AdWordsResolver extends Client implements Resolver
 
     function resolve(Query $query, bool $aggregateMode): array
     {
-        $this->SetClientCustomerId($query->adAccountId);
+        $this->makeSession($query->adAccountId);
 
         /**
          * @var FilterMetaData|null $idFilter
