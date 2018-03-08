@@ -850,7 +850,6 @@ return [
         'EngagementRate' => 'Engagement rate',
         'Engagements' => 'Engagements',
         'EnhancedCpcEnabled' => 'Enhanced CPC enabled',
-        'EnhancedCpvEnabled' => 'Enhanced CPV enabled',
         'EnhancedDisplayCreativeLogoImageMediaId' => 'Logo ID (responsive)',
         'EnhancedDisplayCreativeMarketingImageMediaId' => 'Image ID (responsive)',
         'EstimatedAddClicksAtFirstPositionCpc' => 'Est. add. clicks/wk (first position bid)',
