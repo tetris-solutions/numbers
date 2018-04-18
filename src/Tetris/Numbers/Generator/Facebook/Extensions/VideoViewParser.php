@@ -14,7 +14,6 @@ class VideoViewParser implements Extension
 
     const videoFields = [
         'video_10_sec_watched_actions',
-        'video_15_sec_watched_actions',
         'video_30_sec_watched_actions',
         'video_avg_percent_watched_actions',
         'video_avg_time_watched_actions',

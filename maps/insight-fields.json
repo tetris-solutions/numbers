@@ -324,11 +324,6 @@
     "type": "list<AdsActionStats>",
     "description": "The number of times your video was watched for an aggregate of at least 10 seconds, or for nearly its total length, whichever happened first."
   },
-  "video_15_sec_watched_actions": {
-    "id": "video_15_sec_watched_actions",
-    "type": "list<AdsActionStats>",
-    "description": "The number of times your video was watched for an aggregate of at least 15 seconds, or for nearly its total length, whichever happened first."
-  },
   "video_30_sec_watched_actions": {
     "id": "video_30_sec_watched_actions",
     "type": "list<AdsActionStats>",

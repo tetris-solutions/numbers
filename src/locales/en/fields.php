@@ -1167,7 +1167,6 @@ return [
         'unique_social_clicks' => 'Unique Social Clicks',
         'unique_social_impressions' => 'Unique Social Impressions',
         'video_10_sec_watched_actions' => 'Video 10 Sec Watched Actions',
-        'video_15_sec_watched_actions' => 'Video 15 Sec Watched Actions',
         'video_30_sec_watched_actions' => 'Video 30 Sec Watched Actions',
         'video_avg_pct_watched_actions' => 'Video Avg Pct Watched Actions',
         'video_avg_percent_watched_actions' => 'Video Avg Percent Watched Actions',
