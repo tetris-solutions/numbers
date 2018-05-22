@@ -26,7 +26,7 @@
     "vlucas/phpdotenv": "^2.3",
     "nategood/httpful": "^0.2.20",
     "tetris/adwords": "dev-master#0.0.73",
-    "facebook/php-ads-sdk": "^2.10",
+    "facebook/php-ads-sdk": "^3.0",
     "facebook/graph-sdk": "^5.6",
     "google/apiclient": "^2.1",
     "gossi/php-code-generator": "^0.5.0",
