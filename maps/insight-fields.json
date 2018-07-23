@@ -69,11 +69,6 @@
     "type": "numeric string",
     "description": "The average total time, in seconds, that people spent viewing a Facebook Canvas. Canvas is a screen that opens on mobile after a person clicks the Canvas link in your ad. It may include a series of interactive or multimedia components, including video, images, product catalogs and more."
   },
-  "canvas_component_avg_pct_view": {
-    "id": "canvas_component_avg_pct_view",
-    "type": "list<AdsActionStats>",
-    "description": "The average percentage of time spent viewing each component of a Facebook Canvas. Canvas is a screen that opens on mobile after a person clicks the Canvas link in your ad. It may include a series of interactive or multimedia components, including video, images, product catalogs and more."
-  },
   "clicks": {
     "id": "clicks",
     "type": "numeric string",

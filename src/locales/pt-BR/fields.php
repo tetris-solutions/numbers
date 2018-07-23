@@ -1039,7 +1039,6 @@ return [
         'campaign_name' => 'Campanha',
         'canvas_avg_view_percent' => 'Percentual de Visualizações Média Canvas',
         'canvas_avg_view_time' => 'Tempo de vizualização Médio Canvas',
-        'canvas_component_avg_pct_view' => 'Canvas Component Avg Pct View',
         'checkin' => 'Check-ins',
         'clicks' => 'Cliques',
         'comment' => 'Comentários em Posts',

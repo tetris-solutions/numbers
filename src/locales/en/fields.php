@@ -1039,7 +1039,6 @@ return [
         'campaign_name' => 'Campaign Name',
         'canvas_avg_view_percent' => 'Canvas Avg View Percent',
         'canvas_avg_view_time' => 'Canvas Avg View Time',
-        'canvas_component_avg_pct_view' => 'Canvas Component Avg Pct View',
         'checkin' => 'Check-ins',
         'clicks' => 'Clicks',
         'comment' => 'Post Comments',
