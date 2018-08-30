@@ -27,6 +27,7 @@ function getFacebookConfig(): array
     $fields['cpa'] = $fields['cpc'];
     $fields['cpr'] = $fields['cpc'];
     $fields['cpv100'] = $fields['cpc'];
+    $fields['cost_per_total_action'] = $fields['cpc'];
     $fields['view_rate'] = $fields['ctr'];
 
     $validTypes = [
