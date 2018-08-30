@@ -229,26 +229,6 @@
     "type": "AdgroupRelevanceScore",
     "description": "A rating from 1 to 10 that estimates how well your target audience is responding to your ad. This score is shown after your ad receives more than 500 impressions. It's only visible when looking at reporting for ads and does not appear for ad sets and campaigns."
   },
-  "social_clicks": {
-    "id": "social_clicks",
-    "type": "numeric string",
-    "description": "The number of clicks (all) when your ad was displayed with social information, which shows other Facebook friends who engaged with your Facebook Page or ad."
-  },
-  "social_impressions": {
-    "id": "social_impressions",
-    "type": "numeric string",
-    "description": "The number of times your ads were viewed when displayed with social information, which shows Facebook friends who engaged with your Facebook Page or ad."
-  },
-  "social_reach": {
-    "id": "social_reach",
-    "type": "numeric string",
-    "description": "The number of people who saw your ad when displayed with social information, which shows other Facebook friends who engaged with your Facebook Page or ad."
-  },
-  "social_spend": {
-    "id": "social_spend",
-    "type": "numeric string",
-    "description": "The total amount you've spent so far for your ads showed with social information. (ex: Jane Doe likes this)."
-  },
   "spend": {
     "id": "spend",
     "type": "numeric string",
@@ -258,21 +238,6 @@
     "id": "total_action_value",
     "type": "numeric string",
     "description": "The total value of all conversions attributed to your ads."
-  },
-  "total_actions": {
-    "id": "total_actions",
-    "type": "numeric string",
-    "description": "The total number of actions people took that are attributed to your ads. Actions may include engagement, clicks or conversions."
-  },
-  "total_unique_actions": {
-    "id": "total_unique_actions",
-    "type": "numeric string",
-    "description": "The number of people who took an action that was attributed to your ads."
-  },
-  "unique_actions": {
-    "id": "unique_actions",
-    "type": "list<AdsActionStats>",
-    "description": "The number of people who took an action that was attributed to your ads."
   },
   "unique_clicks": {
     "id": "unique_clicks",
