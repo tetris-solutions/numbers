@@ -21,7 +21,7 @@ class FacebookInferredSum implements Extension
             'cost_per_estimated_ad_recallers' => RatioSum::sumSpec('spend', 'estimated_ad_recallers'),
             'cost_per_inline_link_click' => RatioSum::sumSpec('spend', 'inline_link_clicks'),
             'cost_per_inline_post_engagement' => RatioSum::sumSpec('spend', 'inline_post_engagement'),
-            'cost_per_total_action' => RatioSum::sumSpec('spend', 'total_actions'),
+            'cost_per_total_action' => RatioSum::sumSpec('spend', 'clicks'),
             'inline_link_click_ctr' => RatioSum::sumSpec('inline_link_clicks', 'impressions'),
             'newsfeed_avg_position' => WeightedSum::sumSpec('impressions'),
             'roas' => RatioSum::sumSpec('total_action_value', 'spend'),
