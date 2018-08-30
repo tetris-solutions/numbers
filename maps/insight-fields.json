@@ -104,11 +104,6 @@
     "type": "list<AdsActionStats>",
     "description": "The average cost for each outbound click."
   },
-  "cost_per_total_action": {
-    "id": "cost_per_total_action",
-    "type": "numeric string",
-    "description": "The average cost of a relevant action."
-  },
   "cost_per_unique_action_type": {
     "id": "cost_per_unique_action_type",
     "type": "list<AdsActionStats>",

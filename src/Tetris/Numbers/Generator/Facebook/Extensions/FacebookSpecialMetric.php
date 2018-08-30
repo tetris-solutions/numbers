@@ -3,6 +3,7 @@
 namespace Tetris\Numbers\Generator\Facebook\Extensions;
 
 use Tetris\Numbers\Base\Parser\FacebookCPV100Parser;
+use Tetris\Numbers\Base\Parser\FacebookCPTotalActionsParser;
 use Tetris\Numbers\Base\Parser\ViewRateParser;
 use Tetris\Numbers\Generator\Shared\Extension;
 use Tetris\Numbers\Generator\Shared\ExtensionApply;
@@ -19,7 +20,8 @@ class FacebookSpecialMetric implements Extension
             'cpa' => RatioParser::parserSpec('total_actions', 'total_action_value'),
             'cpr' => RatioParser::parserSpec('spend', 'reach'),
             'cpv100' => FacebookCPV100Parser::parserSpec('spend', 'video_p100_watched_actions'),
-            'view_rate' => ViewRateParser::parserSpec('actions', 'impressions')
+            'view_rate' => ViewRateParser::parserSpec('actions', 'impressions'),
+            'cost_per_total_action' => FacebookCPTotalActionsParser::parserSpec('spend', 'clicks')
         ];
     }
 }
