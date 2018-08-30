@@ -48,7 +48,7 @@ pipeline {
         sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'rm build.${env.BUILD_NUMBER}.tar.gz'"
         sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'rm -f ${env.htdocs}/public'"
         sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'ln -s ${env.htdocs}/${env.BUILD_NUMBER}/public ${env.htdocs}/public'"
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'sudo systemctl reload php7.0-fpm.service'"
+        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'sudo systemctl reload php7.2-fpm.service'"
       }
     }
   }
