@@ -1089,6 +1089,7 @@ return [
         'inline_link_click_ctr' => 'CTR de Cliques no Link',
         'inline_link_clicks' => 'Cliques no Link',
         'inline_post_engagement' => 'Engajamento com o Post',
+        'landing_page_view' => 'Landing Page Views',
         'leadgen.other' => 'Leads (formulário)',
         'like' => 'Likes na Página',
         'link_click' => 'Cliques Para o Website',

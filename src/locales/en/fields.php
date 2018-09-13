@@ -1089,6 +1089,7 @@ return [
         'inline_link_click_ctr' => 'Inline Link Click Ctr',
         'inline_link_clicks' => 'Inline Link Clicks',
         'inline_post_engagement' => 'Inline Post Engagement',
+        'landing_page_view' => 'Landing Page Views',
         'leadgen.other' => 'Leads (Form)',
         'like' => 'Page Likes',
         'link_click' => 'Website Clicks',
