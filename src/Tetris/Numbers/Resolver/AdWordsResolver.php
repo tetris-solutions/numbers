@@ -121,6 +121,13 @@ class AdWordsResolver extends Client implements Resolver
 
         $result = [];
 
+        //max entities allowed to send to adwords api
+        $entityLimit = 9999;
+        if(count($query->report->filters['id']->spec) > $entityLimit){
+            rsort($query->report->filters['id']->spec, SORT_NUMERIC);
+            $query->report->filters['id']->spec = array_slice($query->report->filters['id']->spec,0,$entityLimit);
+        }
+
         $roll = function () use (&$result, &$query, $aggregateMode) {
             foreach ($this->query($query, $aggregateMode) as $row) {
                 $result[] = $row;
