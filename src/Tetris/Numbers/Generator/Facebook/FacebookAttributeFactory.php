@@ -83,8 +83,10 @@ class FacebookAttributeFactory extends AttributeFactory
             case 'impressions':
                 return 'numeric string';
             case 'ctr':
-                return 'percentage';
+            case 'unique_ctr':
             case 'inline_link_click_ctr':
+            case 'unique_inline_link_click_ctr':
+            case 'unique_link_clicks_ctr':
                 return 'percentage';
             case 'view_rate':
                 return 'percentage';
