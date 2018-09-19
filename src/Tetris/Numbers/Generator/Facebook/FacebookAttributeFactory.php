@@ -84,6 +84,8 @@ class FacebookAttributeFactory extends AttributeFactory
                 return 'numeric string';
             case 'ctr':
                 return 'percentage';
+            case 'inline_link_click_ctr':
+                return 'percentage';
             case 'view_rate':
                 return 'percentage';
             case 'cost_per_10_sec_video_view':
