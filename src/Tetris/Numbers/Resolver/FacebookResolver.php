@@ -18,7 +18,7 @@ class FacebookResolver extends Facebook implements Resolver
         parent::__construct([
             'app_id' => getenv('FB_APP_ID'),
             'app_secret' => getenv('FB_APP_SECRET'),
-            'default_graph_version' => 'v3.1'
+            'default_graph_version' => 'v3.2'
         ]);
 
         $this->setDefaultAccessToken($accessToken->access_token);
