@@ -31,7 +31,6 @@ class FacebookTrivialSum implements Extension
         'estimated_ad_recallers',
         'canvas_avg_view_time',
         'canvas_avg_view_percent',
-        'video_avg_percent_watched_actions',
         'video_avg_time_watched_actions'
     ];
 
