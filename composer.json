@@ -21,7 +21,7 @@
   },
   "require": {
     "tetris/slim-kit": "dev-master#0.0.18",
-    "tetris/monostash": "dev-master#v0.0.5",
+    "tetris/monostash": "dev-master#0.0.6",
     "pugx/shortid-php": "^0.1.0",
     "vlucas/phpdotenv": "^2.3",
     "nategood/httpful": "^0.2.20",
